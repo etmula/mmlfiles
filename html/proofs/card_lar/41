@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">M</font> be   non  <a href="card_3.html#V4" title="CARD_3:attr.4">countable</a>  <a href="card_5.html#NM1" title="CARD_5:NM.1">Aleph</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">M</font> is  <a href="card_lar.html#V4" title="CARD_LAR:attr.4">Mahlo</a>  implies <font color="Maroon" title="c1">M</font> is  <a href="card_1.html#V2" title="CARD_1:attr.2">limit_cardinal</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:41"/>
+<font color="Maroon" title="c1">M</font> is  <a href="card_lar.html#V4" title="CARD_LAR:attr.4">Mahlo</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">M</font> is  <a href="card_1.html#V2" title="CARD_1:attr.2">limit_cardinal</a> </span><br/>
+
+<a NAME="E2:41"/><span class="kw">then </span><span class="lab"><font color="Green" title="E26">A1</font></span>: 
+<span class="p1"> { <span class="default"> <font color="Olive" title="b1">N</font> where <font color="Olive" title="b1">N</font> is   <a href="finset_1.html#NV2" title="FINSET_1:NV.2">infinite</a>   <a href="card_1.html#V1" title="CARD_1:attr.1">cardinal</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">M</font> : <font color="Olive" title="b1">N</font> is  <a href="card_5.html#V1" title="CARD_5:attr.1">regular</a>  </span> } </span>  <a href="card_lar.html#R4" title="CARD_LAR:pred.4">is_stationary_in</a> <font color="Maroon" title="c1">M</font>
+ 
+;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c2">REG</font> = <span class="p1"> { <span class="default"> <font color="Olive" title="b1">N</font> where <font color="Olive" title="b1">N</font> is   <a href="finset_1.html#NV2" title="FINSET_1:NV.2">infinite</a>   <a href="card_1.html#V1" title="CARD_1:attr.1">cardinal</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">M</font> : <font color="Olive" title="b1">N</font> is  <a href="card_5.html#V1" title="CARD_5:attr.1">regular</a>  </span> } </span>  as   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <font color="Maroon" title="c1">M</font> ;<br/>
+<span class="kw">assume </span><a NAME="E4:41"/>
+ not <font color="Maroon" title="c1">M</font> is  <a href="card_1.html#V2" title="CARD_1:attr.2">limit_cardinal</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c3">M1</font> being   <a href="card_1.html#NM1" title="CARD_1:NM.1">Cardinal</a><span class="kw"> such that </span><br/><a NAME="E6:41"/><span class="lab"><font color="Green" title="E27">A2</font></span>: 
+ <a href="card_1.html#K2" title="CARD_1:func.2">nextcard</a> <font color="Maroon" title="c3">M1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">M</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="card_1.html#D4" onmouseover="rs('card_1/D4')" onmouseout="rh()">CARD_1:def 4</a></span>;<br/>
+<a NAME="E7:41"/>
+<font color="Maroon" title="c3">M1</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c1">M</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:41"><span class="lab"><font color="Green" title="E27">A2</font></span></a>, <a class="ref" href="card_1.html#T18" onmouseover="rs('card_1/T18')" onmouseout="rh()">CARD_1:18</a></span>;<br/>
+<a NAME="E8:41"/><span class="kw">then </span>
+ <a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <font color="Maroon" title="c3">M1</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c1">M</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="ordinal1.html#T28" onmouseover="rs('ordinal1/T28')" onmouseout="rh()">ORDINAL1:28</a></span>;<br/>
+<a NAME="E9:41"/><span class="kw">then </span>
+( <font color="Maroon" title="c1">M</font> <a href="subset_1.html#K6" title="SUBSET_1:func.6">\</a> <span class="p1">(<span class="default"><a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <font color="Maroon" title="c3">M1</font></span>)</span> is  <a href="card_lar.html#V2" title="CARD_LAR:attr.2">closed</a>  &amp; <font color="Maroon" title="c1">M</font> <a href="subset_1.html#K6" title="SUBSET_1:func.6">\</a> <span class="p1">(<span class="default"><a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <font color="Maroon" title="c3">M1</font></span>)</span> is  <a href="card_lar.html#V1" title="CARD_LAR:attr.1">unbounded</a>  )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="card_lar.html#T12" target="_self" onmouseover="rs('card_lar/T12')" onmouseout="rh()">Th12</a></span>;<br/>
+<a NAME="E10:41"/><span class="kw">then </span>
+<font color="Maroon" title="c2">REG</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">M</font> <a href="subset_1.html#K6" title="SUBSET_1:func.6">\</a> <span class="p2">(<span class="default"><a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <font color="Maroon" title="c3">M1</font></span>)</span></span>)</span> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:41"><span class="lab"><font color="Green" title="E26">A1</font></span></a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c4">M2</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E12:41"/><span class="lab"><font color="Green" title="E28">A3</font></span>: 
+<font color="Maroon" title="c4">M2</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c2">REG</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">M</font> <a href="subset_1.html#K6" title="SUBSET_1:func.6">\</a> <span class="p2">(<span class="default"><a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <font color="Maroon" title="c3">M1</font></span>)</span></span>)</span>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_0.html#D1" onmouseover="rs('xboole_0/D1')" onmouseout="rh()">XBOOLE_0:def 1</a></span>;<br/>
+<a NAME="E13:41"/>
+<font color="Maroon" title="c4">M2</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c2">REG</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E12:41"><span class="lab"><font color="Green" title="E28">A3</font></span></a>, <a class="ref" href="xboole_0.html#D4" onmouseover="rs('xboole_0/D4')" onmouseout="rh()">XBOOLE_0:def 4</a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c5">N</font> being   <a href="finset_1.html#NV2" title="FINSET_1:NV.2">infinite</a>   <a href="card_1.html#V1" title="CARD_1:attr.1">cardinal</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">M</font><span class="kw"> such that </span><br/><a NAME="E15:41"/><span class="lab"><font color="Green" title="E29">A4</font></span>: 
+<font color="Maroon" title="c5">N</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">M2</font>
+ <span class="kw">and </span><br/><a NAME="E16:41"/>
+<font color="Maroon" title="c5">N</font> is  <a href="card_5.html#V1" title="CARD_5:attr.1">regular</a> 
+ ;<br/>
+<a NAME="E17:41"/>
+<font color="Maroon" title="c4">M2</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c1">M</font> <a href="subset_1.html#K6" title="SUBSET_1:func.6">\</a> <span class="p1">(<span class="default"><a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <font color="Maroon" title="c3">M1</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E12:41"><span class="lab"><font color="Green" title="E28">A3</font></span></a>, <a class="ref" href="xboole_0.html#D4" onmouseover="rs('xboole_0/D4')" onmouseout="rh()">XBOOLE_0:def 4</a></span>;<br/>
+<a NAME="E18:41"/><span class="kw">then </span>
+ not <font color="Maroon" title="c5">N</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <font color="Maroon" title="c3">M1</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E15:41"><span class="lab"><font color="Green" title="E29">A4</font></span></a>, <a class="ref" href="xboole_0.html#D5" onmouseover="rs('xboole_0/D5')" onmouseout="rh()">XBOOLE_0:def 5</a></span>;<br/>
+<a NAME="E19:41"/><span class="kw">then </span>
+ not <font color="Maroon" title="c5">N</font> <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a> <font color="Maroon" title="c3">M1</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="ordinal1.html#T22" onmouseover="rs('ordinal1/T22')" onmouseout="rh()">ORDINAL1:22</a></span>;<br/>
+<a NAME="E20:41"/><span class="kw">then </span>
+<font color="Maroon" title="c3">M1</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c5">N</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="ordinal1.html#T16" onmouseover="rs('ordinal1/T16')" onmouseout="rh()">ORDINAL1:16</a></span>;<br/>
+<a NAME="E21:41"/><span class="kw">then </span>
+( <font color="Maroon" title="c5">N</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c1">M</font> &amp;  <a href="card_1.html#K2" title="CARD_1:func.2">nextcard</a> <font color="Maroon" title="c3">M1</font> <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a> <font color="Maroon" title="c5">N</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="card_3.html#T90" onmouseover="rs('card_3/T90')" onmouseout="rh()">CARD_3:90</a></span>;<br/>
+<a NAME="E22:41"/><span class="kw">then </span>
+<font color="Maroon" title="c5">N</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c5">N</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:41"><span class="lab"><font color="Green" title="E27">A2</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E23:41"/>
+contradiction
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

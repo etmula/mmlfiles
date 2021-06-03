@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">D</font> be   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Maroon" title="c1">D</font> is  <a href="card_3.html#V4" title="CARD_3:attr.4">countable</a>  holds <br/><font color="Olive" title="b1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <font color="Maroon" title="c1">D</font> is  <a href="card_3.html#V4" title="CARD_3:attr.4">countable</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c2">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">D</font> is  <a href="card_3.html#V4" title="CARD_3:attr.4">countable</a>  implies <font color="Maroon" title="c2">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <font color="Maroon" title="c1">D</font> is  <a href="card_3.html#V4" title="CARD_3:attr.4">countable</a>  )</span><br/>
+
+
+
+<span class="kw">defpred </span><font color="Maroon">S<sub>1</sub></font>[  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>] <span class="kw">means </span>$1 <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <font color="Maroon" title="c1">D</font> is  <a href="card_3.html#V4" title="CARD_3:attr.4">countable</a> ;<br/>
+<span class="kw">assume </span><a NAME="E1:9"/>
+ <a href="card_1.html#K1" title="CARD_1:func.1">card</a> <font color="Maroon" title="c1">D</font> <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a>  <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a> 
+ ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="card_3.html#D14" onmouseover="rs('card_3/D14')" onmouseout="rh()">CARD_3:def 14</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <font color="Maroon" title="c1">D</font> is  <a href="card_3.html#V4" title="CARD_3:attr.4">countable</a> </span><br/>
+
+<a NAME="E2:9"/><span class="kw">then </span>
+ <a href="card_1.html#K1" title="CARD_1:func.1">card</a> <span class="p1">(<span class="default">1 <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <font color="Maroon" title="c1">D</font></span>)</span> <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a>  <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="card_4.html#T8" target="_self" onmouseover="rs('card_4/T8')" onmouseout="rh()">Th8</a></span>;<br/>
+<a NAME="E3:9"/><span class="kw">then </span><span class="lab"><font color="Green" title="E11">A1</font></span>: 
+1 <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <font color="Maroon" title="c1">D</font> is  <a href="card_3.html#V4" title="CARD_3:attr.4">countable</a> 
+ 
+;<br/>
+<a NAME="E4:9"/><span class="lab"><font color="Green" title="E12">A2</font></span>: 
+ for <font color="Olive" title="b1">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">k</font>] holds <br/><font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">k</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1]
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="9_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">k</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">k</font>] implies <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">k</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1] )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:9_1"/>
+<font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">k</font>]
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">k</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1]</span><br/>
+
+<a NAME="E2:9_1"/><span class="kw">then </span>
+<span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"><span class="p2">(<span class="default"><font color="Maroon" title="c3">k</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <font color="Maroon" title="c1">D</font></span>)</span>,<span class="p2">(<span class="default">1 <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <font color="Maroon" title="c1">D</font></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span> is  <a href="card_3.html#V4" title="CARD_3:attr.4">countable</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:9"><span class="lab"><font color="Green" title="E11">A1</font></span></a>, <a class="ref" href="card_4.html#T7" target="_self" onmouseover="rs('card_4/T7')" onmouseout="rh()">Th7</a></span>;<br/>
+<a NAME="E3:9_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E13">A3</font></span>: 
+ <a href="card_1.html#K1" title="CARD_1:func.1">card</a> <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"><span class="p2">(<span class="default"><font color="Maroon" title="c3">k</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <font color="Maroon" title="c1">D</font></span>)</span>,<span class="p2">(<span class="default">1 <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <font color="Maroon" title="c1">D</font></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span> <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a>  <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a> 
+ 
+;<br/>
+<a NAME="E4:9_1"/>
+ <a href="card_1.html#K1" title="CARD_1:func.1">card</a> <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"><span class="p2">(<span class="default"><font color="Maroon" title="c3">k</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <font color="Maroon" title="c1">D</font></span>)</span>,<span class="p2">(<span class="default">1 <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <font color="Maroon" title="c1">D</font></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="card_1.html#K1" title="CARD_1:func.1">card</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Maroon" title="c3">k</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <font color="Maroon" title="c1">D</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="card_4.html#T9" target="_self" onmouseover="rs('card_4/T9')" onmouseout="rh()">Th9</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:9_1"/>
+<font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">k</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1]
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:9_1"><span class="lab"><font color="Green" title="E13">A3</font></span></a>, <a class="ref" href="card_3.html#D14" onmouseover="rs('card_3/D14')" onmouseout="rh()">CARD_3:def 14</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E5:9"/>
+<span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><span class="p2">(<span class="default"><a href="finseq_1.html#K6" title="FINSEQ_1:func.6">&lt;*&gt;</a> <font color="Maroon" title="c1">D</font></span>)</span></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> is  <a href="card_3.html#V4" title="CARD_3:attr.4">countable</a> 
+ 
+;<br/>
+<a NAME="E6:9"/><span class="kw">then </span><span class="lab"><font color="Green" title="E13">A4</font></span>: 
+<font color="Maroon">S<sub>1</sub></font>[ <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> ]
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_2.html#T94" onmouseover="rs('finseq_2/T94')" onmouseout="rh()">FINSEQ_2:94</a></span>;<br/>
+<a NAME="E7:9"/>
+ for <font color="Olive" title="b1">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">k</font>]
+ 
+<span class="kw">from</span> <span class="lab"><a class="ref" href="nat_1.html#S2" onmouseover="rs('nat_1/S2')" onmouseout="rh()">NAT_1:sch 2</a>(<a class="txt" href="#E6:9"><span class="lab"><font color="Green" title="E13">A4</font></span></a>, <a class="txt" href="#E4:9"><span class="lab"><font color="Green" title="E12">A2</font></span></a>);<br/></span>
+<span class="kw">hence </span><a NAME="E8:9"/>
+<font color="Maroon" title="c2">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <font color="Maroon" title="c1">D</font> is  <a href="card_3.html#V4" title="CARD_3:attr.4">countable</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
