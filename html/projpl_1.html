@@ -1,0 +1,702 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>PROJPL_1:  Projective {P}lanes</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  Projective {P}lanes</font></span><br><span class="comment"><font color="firebrick">:: by Micha{\l} Muzalewski</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received July 28, 1994</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 1994-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div>
+<span class="kw">notation</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">a</font> be   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">G</font>;<br><span class="kw">let </span><font color="Maroon" title="c3">P</font> be   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Maroon" title="c1">G</font>;<br><a NAME="NR1"><span class="kw">antonym </span><font color="Maroon" title="c2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">|'</a> <font color="Maroon" title="c3">P</font></a><span class="kw"> for </span><font color="Maroon" title="c2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Maroon" title="c3">P</font>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">a</font>, <font color="Maroon" title="c3">b</font> be   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">G</font>;<br><span class="kw">let </span><font color="Maroon" title="c4">P</font> be   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Maroon" title="c1">G</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="R1"><span class="kw">pred</span> </a><font color="Maroon" title="c2">a</font>,<font color="Maroon" title="c3">b</font> <a href="projpl_1.html#R1" title="PROJPL_1:pred.1">|'</a> <font color="Maroon" title="c4">P</font><span class="kw"> means </span><a NAME="D1"><span class="comment"><font color="firebrick">:: PROJPL_1:def 1</font></span><br></a>( <font color="Maroon" title="c2">a</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Maroon" title="c4">P</font> &amp; <font color="Maroon" title="c3">b</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Maroon" title="c4">P</font> );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="projpl_1.html#R1" title="PROJPL_1:pred.1">|'</a> <a onclick="hs(this)" href="javascript:()">PROJPL_1:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> <br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b4">P</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font> holds <br> ( <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font> <a href="projpl_1.html#R1" title="PROJPL_1:pred.1">|'</a> <font color="Olive" title="b4">P</font> iff ( <font color="Olive" title="b2">a</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Olive" title="b4">P</font> &amp; <font color="Olive" title="b3">b</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Olive" title="b4">P</font> ) );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">a</font> be   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">G</font>;<br><span class="kw">let </span><font color="Maroon" title="c3">P</font>, <font color="Maroon" title="c4">Q</font> be   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Maroon" title="c1">G</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="R2"><span class="kw">pred</span> </a><font color="Maroon" title="c2">a</font> <a href="projpl_1.html#R2" title="PROJPL_1:pred.2">on</a> <font color="Maroon" title="c3">P</font>,<font color="Maroon" title="c4">Q</font><span class="kw"> means </span><a NAME="D2"><span class="comment"><font color="firebrick">:: PROJPL_1:def 2</font></span><br></a>( <font color="Maroon" title="c2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Maroon" title="c3">P</font> &amp; <font color="Maroon" title="c2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Maroon" title="c4">Q</font> );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+<div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="projpl_1.html#R2" title="PROJPL_1:pred.2">on</a> <a onclick="hs(this)" href="javascript:()">PROJPL_1:def 2 : <br></a><span class="hide"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> <br>  for <font color="Olive" title="b2">a</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b3">P</font>, <font color="Olive" title="b4">Q</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font> holds <br> ( <font color="Olive" title="b2">a</font> <a href="projpl_1.html#R2" title="PROJPL_1:pred.2">on</a> <font color="Olive" title="b3">P</font>,<font color="Olive" title="b4">Q</font> iff ( <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">P</font> &amp; <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">Q</font> ) );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">a</font> be   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">G</font>;<br><span class="kw">let </span><font color="Maroon" title="c3">P</font>, <font color="Maroon" title="c4">Q</font>, <font color="Maroon" title="c5">R</font> be   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Maroon" title="c1">G</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="R3"><span class="kw">pred</span> </a><font color="Maroon" title="c2">a</font> <a href="projpl_1.html#R3" title="PROJPL_1:pred.3">on</a> <font color="Maroon" title="c3">P</font>,<font color="Maroon" title="c4">Q</font>,<font color="Maroon" title="c5">R</font><span class="kw"> means </span><a NAME="D3"><span class="comment"><font color="firebrick">:: PROJPL_1:def 3</font></span><br></a>( <font color="Maroon" title="c2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Maroon" title="c3">P</font> &amp; <font color="Maroon" title="c2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Maroon" title="c4">Q</font> &amp; <font color="Maroon" title="c2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Maroon" title="c5">R</font> );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+<div about="#DT3" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="projpl_1.html#R3" title="PROJPL_1:pred.3">on</a> <a onclick="hs(this)" href="javascript:()">PROJPL_1:def 3 : <br></a><span class="hide"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> <br>  for <font color="Olive" title="b2">a</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b3">P</font>, <font color="Olive" title="b4">Q</font>, <font color="Olive" title="b5">R</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font> holds <br> ( <font color="Olive" title="b2">a</font> <a href="projpl_1.html#R3" title="PROJPL_1:pred.3">on</a> <font color="Olive" title="b3">P</font>,<font color="Olive" title="b4">Q</font>,<font color="Olive" title="b5">R</font> iff ( <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">P</font> &amp; <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">Q</font> &amp; <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">R</font> ) );<br></span>
+</div>
+<br><div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E1">Th1</font></span>: <a NAME="T1"><span class="comment"><font color="firebrick">:: PROJPL_1:1</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> <br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b5">P</font>, <font color="Olive" title="b6">Q</font>, <font color="Olive" title="b7">R</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font> holds <br> ( ( <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b5">P</font> implies <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b3">b</font>,<font color="Olive" title="b2">a</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b5">P</font> ) &amp; ( <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b5">P</font> implies ( <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b3">b</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b5">P</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b3">b</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b5">P</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b2">a</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b5">P</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b4">c</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b5">P</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b4">c</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b2">a</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b5">P</font> ) ) &amp; ( <font color="Olive" title="b2">a</font> <a href="projpl_1.html#R2" title="PROJPL_1:pred.2">on</a> <font color="Olive" title="b5">P</font>,<font color="Olive" title="b6">Q</font> implies <font color="Olive" title="b2">a</font> <a href="projpl_1.html#R2" title="PROJPL_1:pred.2">on</a> <font color="Olive" title="b6">Q</font>,<font color="Olive" title="b5">P</font> ) &amp; ( <font color="Olive" title="b2">a</font> <a href="projpl_1.html#R3" title="PROJPL_1:pred.3">on</a> <font color="Olive" title="b5">P</font>,<font color="Olive" title="b6">Q</font>,<font color="Olive" title="b7">R</font> implies ( <font color="Olive" title="b2">a</font> <a href="projpl_1.html#R3" title="PROJPL_1:pred.3">on</a> <font color="Olive" title="b5">P</font>,<font color="Olive" title="b7">R</font>,<font color="Olive" title="b6">Q</font> &amp; <font color="Olive" title="b2">a</font> <a href="projpl_1.html#R3" title="PROJPL_1:pred.3">on</a> <font color="Olive" title="b6">Q</font>,<font color="Olive" title="b5">P</font>,<font color="Olive" title="b7">R</font> &amp; <font color="Olive" title="b2">a</font> <a href="projpl_1.html#R3" title="PROJPL_1:pred.3">on</a> <font color="Olive" title="b6">Q</font>,<font color="Olive" title="b7">R</font>,<font color="Olive" title="b5">P</font> &amp; <font color="Olive" title="b2">a</font> <a href="projpl_1.html#R3" title="PROJPL_1:pred.3">on</a> <font color="Olive" title="b7">R</font>,<font color="Olive" title="b5">P</font>,<font color="Olive" title="b6">Q</font> &amp; <font color="Olive" title="b2">a</font> <a href="projpl_1.html#R3" title="PROJPL_1:pred.3">on</a> <font color="Olive" title="b7">R</font>,<font color="Olive" title="b6">Q</font>,<font color="Olive" title="b5">P</font> ) ) )</div>
+<div about="#PF5" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/5')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/5')" href="javascript:()" title="5"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IT</font> be    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> ;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V1"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="projpl_1.html#V1" title="PROJPL_1:attr.1">configuration</a> <span class="kw"> means </span><a NAME="D4"><span class="comment"><font color="firebrick">:: PROJPL_1:def 4</font></span><br></a> for <font color="Olive" title="b1">p</font>, <font color="Olive" title="b2">q</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">IT</font><br>  for <font color="Olive" title="b3">P</font>, <font color="Olive" title="b4">Q</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Maroon" title="c1">IT</font>  st <font color="Olive" title="b1">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">P</font> &amp; <font color="Olive" title="b2">q</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">P</font> &amp; <font color="Olive" title="b1">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">Q</font> &amp; <font color="Olive" title="b2">q</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">Q</font> &amp;  not <font color="Olive" title="b1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">q</font> holds <br><font color="Olive" title="b3">P</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">Q</font>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT4" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="projpl_1.html#V1" title="PROJPL_1:attr.1">configuration</a> <a onclick="hs(this)" href="javascript:()">PROJPL_1:def 4 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a>  holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="projpl_1.html#V1" title="PROJPL_1:attr.1">configuration</a>  iff  for <font color="Olive" title="b2">p</font>, <font color="Olive" title="b3">q</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IT</font><br>  for <font color="Olive" title="b4">P</font>, <font color="Olive" title="b5">Q</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IT</font>  st <font color="Olive" title="b2">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">P</font> &amp; <font color="Olive" title="b3">q</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">P</font> &amp; <font color="Olive" title="b2">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">Q</font> &amp; <font color="Olive" title="b3">q</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">Q</font> &amp;  not <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">q</font> holds <br><font color="Olive" title="b4">P</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">Q</font> );<br></span>
+</div>
+<br><div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E2">Th2</font></span>: <a NAME="T2"><span class="comment"><font color="firebrick">:: PROJPL_1:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a>  holds <br> ( <font color="Olive" title="b1">G</font> is  <a href="projpl_1.html#V1" title="PROJPL_1:attr.1">configuration</a>  iff  for <font color="Olive" title="b2">p</font>, <font color="Olive" title="b3">q</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b4">P</font>, <font color="Olive" title="b5">Q</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  st <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b2">p</font>,<font color="Olive" title="b3">q</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b4">P</font> &amp; <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b2">p</font>,<font color="Olive" title="b3">q</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b5">Q</font> &amp;  not <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">q</font> holds <br><font color="Olive" title="b4">P</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">Q</font> )</div>
+<div about="#PF7" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/7')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/7')" href="javascript:()" title="7"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T3"><span class="comment"><font color="firebrick">:: PROJPL_1:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a>  holds <br> ( <font color="Olive" title="b1">G</font> is  <a href="projpl_1.html#V1" title="PROJPL_1:attr.1">configuration</a>  iff  for <font color="Olive" title="b2">p</font>, <font color="Olive" title="b3">q</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b4">P</font>, <font color="Olive" title="b5">Q</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b2">p</font> <a href="projpl_1.html#R2" title="PROJPL_1:pred.2">on</a> <font color="Olive" title="b4">P</font>,<font color="Olive" title="b5">Q</font> &amp; <font color="Olive" title="b3">q</font> <a href="projpl_1.html#R2" title="PROJPL_1:pred.2">on</a> <font color="Olive" title="b4">P</font>,<font color="Olive" title="b5">Q</font> &amp;  not <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">q</font> holds <br><font color="Olive" title="b4">P</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">Q</font> )</div>
+<div about="#PF8" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/8')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/8')" href="javascript:()" title="8"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E3">Th4</font></span>: <a NAME="T4"><span class="comment"><font color="firebrick">:: PROJPL_1:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a>  holds <br> ( <font color="Olive" title="b1">G</font> is   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a> iff ( <font color="Olive" title="b1">G</font> is  <a href="projpl_1.html#V1" title="PROJPL_1:attr.1">configuration</a>  &amp; (  for <font color="Olive" title="b2">p</font>, <font color="Olive" title="b3">q</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font>  ex <font color="Olive" title="b4">P</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font> st <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b2">p</font>,<font color="Olive" title="b3">q</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b4">P</font> ) &amp;  ex <font color="Olive" title="b2">p</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> ex <font color="Olive" title="b3">P</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font> st <font color="Olive" title="b2">p</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Olive" title="b3">P</font> &amp; (  for <font color="Olive" title="b2">P</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  ex <font color="Olive" title="b3">a</font>, <font color="Olive" title="b4">b</font>, <font color="Olive" title="b5">c</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> st <br>( <font color="Olive" title="b3">a</font>,<font color="Olive" title="b4">b</font>,<font color="Olive" title="b5">c</font> <a href="zfmisc_1.html#R1" title="ZFMISC_1:pred.1">are_mutually_distinct</a>  &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b3">a</font>,<font color="Olive" title="b4">b</font>,<font color="Olive" title="b5">c</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b2">P</font> ) ) &amp; (  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">d</font>, <font color="Olive" title="b6">p</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b7">M</font>, <font color="Olive" title="b8">N</font>, <font color="Olive" title="b9">P</font>, <font color="Olive" title="b10">Q</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  st <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b6">p</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b7">M</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font>,<font color="Olive" title="b6">p</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b8">N</font> &amp; <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b9">P</font> &amp; <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b3">b</font>,<font color="Olive" title="b5">d</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b10">Q</font> &amp; <font color="Olive" title="b6">p</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Olive" title="b9">P</font> &amp; <font color="Olive" title="b6">p</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Olive" title="b10">Q</font> &amp; <font color="Olive" title="b7">M</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b8">N</font> holds <br> ex <font color="Olive" title="b11">q</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> st <font color="Olive" title="b11">q</font> <a href="projpl_1.html#R2" title="PROJPL_1:pred.2">on</a> <font color="Olive" title="b9">P</font>,<font color="Olive" title="b10">Q</font> ) ) )</div>
+<div about="#PF9" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T4"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/9')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/9')" href="javascript:()" title="9"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<a NAME="NM1"><span class="kw">mode </span>IncProjectivePlane<span class="kw"> is </span></a>  <a href="incproj.html#V5" title="INCPROJ:attr.5">2-dimensional</a>  <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">a</font>, <font color="Maroon" title="c3">b</font>, <font color="Maroon" title="c4">c</font> be   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">G</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="R4"><span class="kw">pred</span> </a><font color="Maroon" title="c2">a</font>,<font color="Maroon" title="c3">b</font>,<font color="Maroon" title="c4">c</font> <a href="projpl_1.html#R4" title="PROJPL_1:pred.4">are_collinear</a> <span class="kw"> means </span><a NAME="D5"><span class="comment"><font color="firebrick">:: PROJPL_1:def 5</font></span><br></a> ex <font color="Olive" title="b1">P</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Maroon" title="c1">G</font> st <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Maroon" title="c2">a</font>,<font color="Maroon" title="c3">b</font>,<font color="Maroon" title="c4">c</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b1">P</font>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+<div about="#DT5" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="projpl_1.html#R4" title="PROJPL_1:pred.4">are_collinear</a> <a onclick="hs(this)" href="javascript:()">PROJPL_1:def 5 : <br></a><span class="hide"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> <br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> holds <br> ( <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> <a href="projpl_1.html#R4" title="PROJPL_1:pred.4">are_collinear</a>  iff  ex <font color="Olive" title="b5">P</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font> st <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b5">P</font> );<br></span>
+</div>
+<br><div>
+<span class="kw">notation</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">a</font>, <font color="Maroon" title="c3">b</font>, <font color="Maroon" title="c4">c</font> be   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">G</font>;<br><a NAME="NR6"><span class="kw">antonym </span><font color="Maroon" title="c2">a</font>,<font color="Maroon" title="c3">b</font>,<font color="Maroon" title="c4">c</font> <a href="projpl_1.html#R4" title="PROJPL_1:pred.4">is_a_triangle</a> </a><span class="kw"> for </span><font color="Maroon" title="c2">a</font>,<font color="Maroon" title="c3">b</font>,<font color="Maroon" title="c4">c</font> <a href="projpl_1.html#R4" title="PROJPL_1:pred.4">are_collinear</a> ;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E4">Th5</font></span>: <a NAME="T5"><span class="comment"><font color="firebrick">:: PROJPL_1:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> <br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> holds <br> ( <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> <a href="projpl_1.html#R4" title="PROJPL_1:pred.4">are_collinear</a>  iff  ex <font color="Olive" title="b5">P</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font> st <br>( <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">P</font> &amp; <font color="Olive" title="b3">b</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">P</font> &amp; <font color="Olive" title="b4">c</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">P</font> ) )</div>
+<div about="#PF13" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/13')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/13')" href="javascript:()" title="13"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T6"><span class="comment"><font color="firebrick">:: PROJPL_1:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> <br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> holds <br> ( <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> <a href="projpl_1.html#NR6" title="PROJPL_1:NR.6">is_a_triangle</a>  iff  for <font color="Olive" title="b5">P</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  holds <br>( <font color="Olive" title="b2">a</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Olive" title="b5">P</font> or <font color="Olive" title="b3">b</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Olive" title="b5">P</font> or <font color="Olive" title="b4">c</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Olive" title="b5">P</font> ) ) <span class="kw">by</span> <span class="lab"><a class="ref" href="projpl_1.html#T5" target="_self" onmouseover="rs('projpl_1/T5')" onmouseout="rh()">Th5</a></span>;<br>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">a</font>, <font color="Maroon" title="c3">b</font>, <font color="Maroon" title="c4">c</font>, <font color="Maroon" title="c5">d</font> be   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">G</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="R5"><span class="kw">pred</span> </a><font color="Maroon" title="c2">a</font>,<font color="Maroon" title="c3">b</font>,<font color="Maroon" title="c4">c</font>,<font color="Maroon" title="c5">d</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a> <span class="kw"> means </span><a NAME="D6"><span class="comment"><font color="firebrick">:: PROJPL_1:def 6</font></span><br></a>( <font color="Maroon" title="c2">a</font>,<font color="Maroon" title="c3">b</font>,<font color="Maroon" title="c4">c</font> <a href="projpl_1.html#NR6" title="PROJPL_1:NR.6">is_a_triangle</a>  &amp; <font color="Maroon" title="c3">b</font>,<font color="Maroon" title="c4">c</font>,<font color="Maroon" title="c5">d</font> <a href="projpl_1.html#NR6" title="PROJPL_1:NR.6">is_a_triangle</a>  &amp; <font color="Maroon" title="c4">c</font>,<font color="Maroon" title="c5">d</font>,<font color="Maroon" title="c2">a</font> <a href="projpl_1.html#NR6" title="PROJPL_1:NR.6">is_a_triangle</a>  &amp; <font color="Maroon" title="c5">d</font>,<font color="Maroon" title="c2">a</font>,<font color="Maroon" title="c3">b</font> <a href="projpl_1.html#NR6" title="PROJPL_1:NR.6">is_a_triangle</a>  );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+<div about="#DT6" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a> <a onclick="hs(this)" href="javascript:()">PROJPL_1:def 6 : <br></a><span class="hide"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> <br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">d</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> holds <br> ( <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  iff ( <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> <a href="projpl_1.html#NR6" title="PROJPL_1:NR.6">is_a_triangle</a>  &amp; <font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font> <a href="projpl_1.html#NR6" title="PROJPL_1:NR.6">is_a_triangle</a>  &amp; <font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font>,<font color="Olive" title="b2">a</font> <a href="projpl_1.html#NR6" title="PROJPL_1:NR.6">is_a_triangle</a>  &amp; <font color="Olive" title="b5">d</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font> <a href="projpl_1.html#NR6" title="PROJPL_1:NR.6">is_a_triangle</a>  ) );<br></span>
+</div>
+<br><div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E5">Th7</font></span>: <a NAME="T7"><span class="comment"><font color="firebrick">:: PROJPL_1:7</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a>   st <font color="Olive" title="b1">G</font> is   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a> holds <br> ex <font color="Olive" title="b2">A</font>, <font color="Olive" title="b3">B</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font> st <font color="Olive" title="b2">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b3">B</font>
+</div>
+<div about="#PF15" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T7"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/15')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/15')" href="javascript:()" title="15"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E6">Th8</font></span>: <a NAME="T8"><span class="comment"><font color="firebrick">:: PROJPL_1:8</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> <br>  for <font color="Olive" title="b2">a</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b3">A</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b1">G</font> is   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a> holds <br> ex <font color="Olive" title="b4">b</font>, <font color="Olive" title="b5">c</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> st <br>( <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b4">b</font>,<font color="Olive" title="b5">c</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b3">A</font> &amp; <font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">b</font>,<font color="Olive" title="b5">c</font> <a href="zfmisc_1.html#R1" title="ZFMISC_1:pred.1">are_mutually_distinct</a>  )</div>
+<div about="#PF16" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/16')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/16')" href="javascript:()" title="16"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E7">Th9</font></span>: <a NAME="T9"><span class="comment"><font color="firebrick">:: PROJPL_1:9</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> <br>  for <font color="Olive" title="b2">a</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b3">A</font>, <font color="Olive" title="b4">B</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b1">G</font> is   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a> &amp; <font color="Olive" title="b3">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b4">B</font> holds <br> ex <font color="Olive" title="b5">b</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> st <br>( <font color="Olive" title="b5">b</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">A</font> &amp; <font color="Olive" title="b5">b</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Olive" title="b4">B</font> &amp; <font color="Olive" title="b2">a</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b5">b</font> )</div>
+<div about="#PF17" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T9"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/17')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/17')" href="javascript:()" title="17"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E8">Th10</font></span>: <a NAME="T10"><span class="comment"><font color="firebrick">:: PROJPL_1:10</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> <br>  for <font color="Olive" title="b2">a1</font>, <font color="Olive" title="b3">a2</font>, <font color="Olive" title="b4">b</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b5">A</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b1">G</font> is  <a href="projpl_1.html#V1" title="PROJPL_1:attr.1">configuration</a>  &amp; <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b2">a1</font>,<font color="Olive" title="b3">a2</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b5">A</font> &amp; <font color="Olive" title="b2">a1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b3">a2</font> &amp; <font color="Olive" title="b4">b</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Olive" title="b5">A</font> holds <br><font color="Olive" title="b2">a1</font>,<font color="Olive" title="b3">a2</font>,<font color="Olive" title="b4">b</font> <a href="projpl_1.html#NR6" title="PROJPL_1:NR.6">is_a_triangle</a> </div>
+<div about="#PF18" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T10"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/18')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/18')" href="javascript:()" title="18"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E9">Th11</font></span>: <a NAME="T11"><span class="comment"><font color="firebrick">:: PROJPL_1:11</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> <br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> <a href="projpl_1.html#R4" title="PROJPL_1:pred.4">are_collinear</a>  holds <br>( <font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b3">b</font> <a href="projpl_1.html#R4" title="PROJPL_1:pred.4">are_collinear</a>  &amp; <font color="Olive" title="b3">b</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font> <a href="projpl_1.html#R4" title="PROJPL_1:pred.4">are_collinear</a>  &amp; <font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b2">a</font> <a href="projpl_1.html#R4" title="PROJPL_1:pred.4">are_collinear</a>  &amp; <font color="Olive" title="b4">c</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font> <a href="projpl_1.html#R4" title="PROJPL_1:pred.4">are_collinear</a>  &amp; <font color="Olive" title="b4">c</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b2">a</font> <a href="projpl_1.html#R4" title="PROJPL_1:pred.4">are_collinear</a>  )</div>
+<div about="#PF19" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/19')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/19')" href="javascript:()" title="19"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T12"><span class="comment"><font color="firebrick">:: PROJPL_1:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> <br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> <a href="projpl_1.html#NR6" title="PROJPL_1:NR.6">is_a_triangle</a>  holds <br>( <font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b3">b</font> <a href="projpl_1.html#NR6" title="PROJPL_1:NR.6">is_a_triangle</a>  &amp; <font color="Olive" title="b3">b</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font> <a href="projpl_1.html#NR6" title="PROJPL_1:NR.6">is_a_triangle</a>  &amp; <font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b2">a</font> <a href="projpl_1.html#NR6" title="PROJPL_1:NR.6">is_a_triangle</a>  &amp; <font color="Olive" title="b4">c</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font> <a href="projpl_1.html#NR6" title="PROJPL_1:NR.6">is_a_triangle</a>  &amp; <font color="Olive" title="b4">c</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b2">a</font> <a href="projpl_1.html#NR6" title="PROJPL_1:NR.6">is_a_triangle</a>  ) <span class="kw">by</span> <span class="lab"><a class="ref" href="projpl_1.html#T11" target="_self" onmouseover="rs('projpl_1/T11')" onmouseout="rh()">Th11</a></span>;<br>
+</div>
+</div>
+<br><div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E10">Th13</font></span>: <a NAME="T13"><span class="comment"><font color="firebrick">:: PROJPL_1:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> <br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">d</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  holds <br>( <font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b5">d</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b3">b</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b5">d</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b4">c</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b5">d</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b4">c</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b5">d</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b5">d</font>,<font color="Olive" title="b4">c</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font>,<font color="Olive" title="b3">b</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b3">b</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b5">d</font>,<font color="Olive" title="b4">c</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font>,<font color="Olive" title="b2">a</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b4">c</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b5">d</font>,<font color="Olive" title="b3">b</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b4">c</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b5">d</font>,<font color="Olive" title="b2">a</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b2">a</font>,<font color="Olive" title="b5">d</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b2">a</font>,<font color="Olive" title="b5">d</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b3">b</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b3">b</font>,<font color="Olive" title="b5">d</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b3">b</font>,<font color="Olive" title="b5">d</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b2">a</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b2">a</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b5">d</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b5">d</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b3">b</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b5">d</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b5">d</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b2">a</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b5">d</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <font color="Olive" title="b5">d</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b2">a</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  ) <span class="kw">by</span> <span class="lab"><a class="ref" href="projpl_1.html#T11" target="_self" onmouseover="rs('projpl_1/T11')" onmouseout="rh()">Th11</a></span>;<br>
+</div>
+</div>
+<br><div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E11">Th14</font></span>: <a NAME="T14"><span class="comment"><font color="firebrick">:: PROJPL_1:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> <br>  for <font color="Olive" title="b2">a1</font>, <font color="Olive" title="b3">a2</font>, <font color="Olive" title="b4">b1</font>, <font color="Olive" title="b5">b2</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b6">A</font>, <font color="Olive" title="b7">B</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b1">G</font> is  <a href="projpl_1.html#V1" title="PROJPL_1:attr.1">configuration</a>  &amp; <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b2">a1</font>,<font color="Olive" title="b3">a2</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b6">A</font> &amp; <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b4">b1</font>,<font color="Olive" title="b5">b2</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b7">B</font> &amp; <font color="Olive" title="b2">a1</font>,<font color="Olive" title="b3">a2</font> <a href="projpl_1.html#R1" title="PROJPL_1:pred.1">|'</a> <font color="Olive" title="b7">B</font> &amp; <font color="Olive" title="b4">b1</font>,<font color="Olive" title="b5">b2</font> <a href="projpl_1.html#R1" title="PROJPL_1:pred.1">|'</a> <font color="Olive" title="b6">A</font> &amp; <font color="Olive" title="b2">a1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b3">a2</font> &amp; <font color="Olive" title="b4">b1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b5">b2</font> holds <br><font color="Olive" title="b2">a1</font>,<font color="Olive" title="b3">a2</font>,<font color="Olive" title="b4">b1</font>,<font color="Olive" title="b5">b2</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a> </div>
+<div about="#PF20" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T14"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/20')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/20')" href="javascript:()" title="20"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T15" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E12">Th15</font></span>: <a NAME="T15"><span class="comment"><font color="firebrick">:: PROJPL_1:15</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a>   st <font color="Olive" title="b1">G</font> is   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a> holds <br> ex <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">d</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> st <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a> </div>
+<div about="#PF21" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/21')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/21')" href="javascript:()" title="21"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="M1"><span class="kw">mode</span> </a> <a href="projpl_1.html#M1" title="PROJPL_1:mode.1">Quadrangle</a> of <font color="Maroon" title="c1">G</font><span class="kw"> -&gt; </span>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <span class="p1"><a href="zfmisc_1.html#K4" title="ZFMISC_1:func.4">[:</a><span class="default"> the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Maroon" title="c1">G</font>, the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Maroon" title="c1">G</font>, the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Maroon" title="c1">G</font>, the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Maroon" title="c1">G</font></span><a href="zfmisc_1.html#K4" title="ZFMISC_1:func.4">:]</a></span><span class="kw"> means </span><a NAME="D7"><span class="comment"><font color="firebrick">:: PROJPL_1:def 7</font></span><br></a><span class="kw">it</span> <a href="mcart_1.html#K4" title="MCART_1:func.4">`1_4</a> ,<span class="kw">it</span> <a href="mcart_1.html#K5" title="MCART_1:func.5">`2_4</a> ,<span class="kw">it</span> <a href="mcart_1.html#K6" title="MCART_1:func.6">`3_4</a> ,<span class="kw">it</span> <a href="mcart_1.html#K7" title="MCART_1:func.7">`4_4</a>  <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:22_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <span class="p1"><a href="zfmisc_1.html#K4" title="ZFMISC_1:func.4">[:</a><span class="default"> the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Maroon" title="c1">G</font>, the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Maroon" title="c1">G</font>, the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Maroon" title="c1">G</font>, the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Maroon" title="c1">G</font></span><a href="zfmisc_1.html#K4" title="ZFMISC_1:func.4">:]</a></span> st <font color="Olive">b<sub>1</sub></font> <a href="mcart_1.html#K4" title="MCART_1:func.4">`1_4</a> ,<font color="Olive">b<sub>1</sub></font> <a href="mcart_1.html#K5" title="MCART_1:func.5">`2_4</a> ,<font color="Olive">b<sub>1</sub></font> <a href="mcart_1.html#K6" title="MCART_1:func.6">`3_4</a> ,<font color="Olive">b<sub>1</sub></font> <a href="mcart_1.html#K7" title="MCART_1:func.7">`4_4</a>  <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a> 
+ </span><div about="#PF22_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/22_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/22_1_1')" href="javascript:()" title="22_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT7" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="projpl_1.html#M1" title="PROJPL_1:mode.1">Quadrangle</a> <a onclick="hs(this)" href="javascript:()">PROJPL_1:def 7 : <br></a><span class="hide"> for <font color="Olive" title="b1">G</font> being   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive">b<sub>2</sub></font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <span class="p1"><a href="zfmisc_1.html#K4" title="ZFMISC_1:func.4">[:</a><span class="default"> the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Olive" title="b1">G</font>, the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Olive" title="b1">G</font>, the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Olive" title="b1">G</font>, the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Olive" title="b1">G</font></span><a href="zfmisc_1.html#K4" title="ZFMISC_1:func.4">:]</a></span> holds <br> ( <font color="Olive">b<sub>2</sub></font> is    <a href="projpl_1.html#M1" title="PROJPL_1:mode.1">Quadrangle</a> of <font color="Olive" title="b1">G</font> iff <font color="Olive">b<sub>2</sub></font> <a href="mcart_1.html#K4" title="MCART_1:func.4">`1_4</a> ,<font color="Olive">b<sub>2</sub></font> <a href="mcart_1.html#K5" title="MCART_1:func.5">`2_4</a> ,<font color="Olive">b<sub>2</sub></font> <a href="mcart_1.html#K6" title="MCART_1:func.6">`3_4</a> ,<font color="Olive">b<sub>2</sub></font> <a href="mcart_1.html#K7" title="MCART_1:func.7">`4_4</a>  <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">a</font>, <font color="Maroon" title="c3">b</font> be   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">G</font>;<br><span class="kw">assume </span><a NAME="E1:23"></a><span class="lab"><font color="Green" title="E13">A1</font></span>: 
+<font color="Maroon" title="c2">a</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c3">b</font>
+ ;<br><div about="#D13" typeof="oo:Definition">
+<a NAME="K1"><span class="kw">func</span> </a><font color="Maroon" title="c2">a</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Maroon" title="c3">b</font><span class="kw"> -&gt; </span>  <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Maroon" title="c1">G</font><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E13">Def8</font></span>: <a NAME="D8"><span class="comment"><font color="firebrick">:: PROJPL_1:def 8</font></span><br></a><span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Maroon" title="c2">a</font>,<font color="Maroon" title="c3">b</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <span class="kw">it</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:23_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Maroon" title="c1">G</font> st <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Maroon" title="c2">a</font>,<font color="Maroon" title="c3">b</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive">b<sub>1</sub></font>
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="projpl_1.html#T4" target="_self" onmouseover="rs('projpl_1/T4')" onmouseout="rh()">Th4</a></span>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:23_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Maroon" title="c1">G</font>  st <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Maroon" title="c2">a</font>,<font color="Maroon" title="c3">b</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive">b<sub>1</sub></font> &amp; <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Maroon" title="c2">a</font>,<font color="Maroon" title="c3">b</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive">b<sub>2</sub></font> holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF23_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/23_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/23_1_1')" href="javascript:()" title="23_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+<div about="#DT8" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E13">Def8</font></span>   defines <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <a onclick="hs(this)" href="javascript:()">PROJPL_1:def 8 : <br></a><span class="hide"> for <font color="Olive" title="b1">G</font> being   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b2">a</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b3">b</font> holds <br> for <font color="Olive">b<sub>4</sub></font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font> holds <br> ( <font color="Olive">b<sub>4</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">a</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b3">b</font> iff <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive">b<sub>4</sub></font> );<br></span>
+</div>
+<br><div about="#T16" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E14">Th16</font></span>: <a NAME="T16"><span class="comment"><font color="firebrick">:: PROJPL_1:16</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b4">L</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b2">a</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b3">b</font> holds <br>( <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">a</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b3">b</font> &amp; <font color="Olive" title="b3">b</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">a</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b3">b</font> &amp; <font color="Olive" title="b2">a</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">b</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b2">a</font> &amp; ( <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">L</font> &amp; <font color="Olive" title="b3">b</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">L</font> implies <font color="Olive" title="b4">L</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">a</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b3">b</font> ) )</div>
+<div about="#PF24" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T16"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/24')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/24')" href="javascript:()" title="24"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T17" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E15">Th17</font></span>: <a NAME="T17"><span class="comment"><font color="firebrick">:: PROJPL_1:17</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a>   st  ex <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> st <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> <a href="projpl_1.html#NR6" title="PROJPL_1:NR.6">is_a_triangle</a>  &amp; (  for <font color="Olive" title="b2">p</font>, <font color="Olive" title="b3">q</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font>  ex <font color="Olive" title="b4">M</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font> st <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b2">p</font>,<font color="Olive" title="b3">q</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b4">M</font> ) holds <br> ex <font color="Olive" title="b2">p</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> ex <font color="Olive" title="b3">P</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font> st <font color="Olive" title="b2">p</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Olive" title="b3">P</font>
+</div>
+<div about="#PF25" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T17"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/25')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/25')" href="javascript:()" title="25"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T18" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T18"><span class="comment"><font color="firebrick">:: PROJPL_1:18</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a>   st  ex <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">d</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> st <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  holds <br> ex <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> st <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> <a href="projpl_1.html#NR6" title="PROJPL_1:NR.6">is_a_triangle</a>  ;<br>
+</div>
+</div>
+<br><div about="#T19" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E16">Th19</font></span>: <a NAME="T19"><span class="comment"><font color="firebrick">:: PROJPL_1:19</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> <br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b5">P</font>, <font color="Olive" title="b6">Q</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> <a href="projpl_1.html#NR6" title="PROJPL_1:NR.6">is_a_triangle</a>  &amp; <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b5">P</font> &amp; <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b6">Q</font> holds <br><font color="Olive" title="b5">P</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b6">Q</font>
+</div>
+<div about="#PF26" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T19"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/26')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/26')" href="javascript:()" title="26"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T20" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E17">Th20</font></span>: <a NAME="T20"><span class="comment"><font color="firebrick">:: PROJPL_1:20</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> <br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">d</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b6">P</font>, <font color="Olive" title="b7">Q</font>, <font color="Olive" title="b8">R</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  &amp; <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b6">P</font> &amp; <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b7">Q</font> &amp; <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b2">a</font>,<font color="Olive" title="b5">d</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b8">R</font> holds <br><font color="Olive" title="b6">P</font>,<font color="Olive" title="b7">Q</font>,<font color="Olive" title="b8">R</font> <a href="zfmisc_1.html#R1" title="ZFMISC_1:pred.1">are_mutually_distinct</a> </div>
+<div about="#PF27" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T20"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/27')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/27')" href="javascript:()" title="27"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T21" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E18">Th21</font></span>: <a NAME="T21"><span class="comment"><font color="firebrick">:: PROJPL_1:21</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a> <br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">p</font>, <font color="Olive" title="b4">q</font>, <font color="Olive" title="b5">r</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b6">A</font>, <font color="Olive" title="b7">P</font>, <font color="Olive" title="b8">Q</font>, <font color="Olive" title="b9">R</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b1">G</font> is  <a href="projpl_1.html#V1" title="PROJPL_1:attr.1">configuration</a>  &amp; <font color="Olive" title="b2">a</font> <a href="projpl_1.html#R3" title="PROJPL_1:pred.3">on</a> <font color="Olive" title="b7">P</font>,<font color="Olive" title="b8">Q</font>,<font color="Olive" title="b9">R</font> &amp; <font color="Olive" title="b7">P</font>,<font color="Olive" title="b8">Q</font>,<font color="Olive" title="b9">R</font> <a href="zfmisc_1.html#R1" title="ZFMISC_1:pred.1">are_mutually_distinct</a>  &amp; <font color="Olive" title="b2">a</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Olive" title="b6">A</font> &amp; <font color="Olive" title="b3">p</font> <a href="projpl_1.html#R2" title="PROJPL_1:pred.2">on</a> <font color="Olive" title="b6">A</font>,<font color="Olive" title="b7">P</font> &amp; <font color="Olive" title="b4">q</font> <a href="projpl_1.html#R2" title="PROJPL_1:pred.2">on</a> <font color="Olive" title="b6">A</font>,<font color="Olive" title="b8">Q</font> &amp; <font color="Olive" title="b5">r</font> <a href="projpl_1.html#R2" title="PROJPL_1:pred.2">on</a> <font color="Olive" title="b6">A</font>,<font color="Olive" title="b9">R</font> holds <br><font color="Olive" title="b3">p</font>,<font color="Olive" title="b4">q</font>,<font color="Olive" title="b5">r</font> <a href="zfmisc_1.html#R1" title="ZFMISC_1:pred.1">are_mutually_distinct</a> </div>
+<div about="#PF28" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T21"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/28')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/28')" href="javascript:()" title="28"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T22" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E19">Th22</font></span>: <a NAME="T22"><span class="comment"><font color="firebrick">:: PROJPL_1:22</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a>   st <font color="Olive" title="b1">G</font> is  <a href="projpl_1.html#V1" title="PROJPL_1:attr.1">configuration</a>  &amp; (  for <font color="Olive" title="b2">p</font>, <font color="Olive" title="b3">q</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font>  ex <font color="Olive" title="b4">M</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font> st <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b2">p</font>,<font color="Olive" title="b3">q</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b4">M</font> ) &amp; (  for <font color="Olive" title="b2">P</font>, <font color="Olive" title="b3">Q</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  ex <font color="Olive" title="b4">a</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> st <font color="Olive" title="b4">a</font> <a href="projpl_1.html#R2" title="PROJPL_1:pred.2">on</a> <font color="Olive" title="b2">P</font>,<font color="Olive" title="b3">Q</font> ) &amp;  ex <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">d</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> st <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  holds <br> for <font color="Olive" title="b2">P</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  ex <font color="Olive" title="b3">a</font>, <font color="Olive" title="b4">b</font>, <font color="Olive" title="b5">c</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> st <br>( <font color="Olive" title="b3">a</font>,<font color="Olive" title="b4">b</font>,<font color="Olive" title="b5">c</font> <a href="zfmisc_1.html#R1" title="ZFMISC_1:pred.1">are_mutually_distinct</a>  &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b3">a</font>,<font color="Olive" title="b4">b</font>,<font color="Olive" title="b5">c</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b2">P</font> )</div>
+<div about="#PF29" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T22"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/29')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/29')" href="javascript:()" title="29"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T23" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E20">Th23</font></span>: <a NAME="T23"><span class="comment"><font color="firebrick">:: PROJPL_1:23</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being    <a href="incsp_1.html#L1" title="INCSP_1:struct.1">IncProjStr</a>  holds <br> ( <font color="Olive" title="b1">G</font> is   <a href="projpl_1.html#NM1" title="PROJPL_1:NM.1">IncProjectivePlane</a> iff ( <font color="Olive" title="b1">G</font> is  <a href="projpl_1.html#V1" title="PROJPL_1:attr.1">configuration</a>  &amp; (  for <font color="Olive" title="b2">p</font>, <font color="Olive" title="b3">q</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font>  ex <font color="Olive" title="b4">M</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font> st <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b2">p</font>,<font color="Olive" title="b3">q</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b4">M</font> ) &amp; (  for <font color="Olive" title="b2">P</font>, <font color="Olive" title="b3">Q</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  ex <font color="Olive" title="b4">a</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> st <font color="Olive" title="b4">a</font> <a href="projpl_1.html#R2" title="PROJPL_1:pred.2">on</a> <font color="Olive" title="b2">P</font>,<font color="Olive" title="b3">Q</font> ) &amp;  ex <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">d</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> st <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  ) )</div>
+<div about="#PF30" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T23"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/30')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/30')" href="javascript:()" title="30"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be   <a href="projpl_1.html#NM1" title="PROJPL_1:NM.1">IncProjectivePlane</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">A</font>, <font color="Maroon" title="c3">B</font> be   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Maroon" title="c1">G</font>;<br><span class="kw">assume </span><a NAME="E1:31"></a><span class="lab"><font color="Green" title="E21">A1</font></span>: 
+<font color="Maroon" title="c2">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c3">B</font>
+ ;<br><div about="#D21" typeof="oo:Definition">
+<a NAME="K2"><span class="kw">func</span> </a><font color="Maroon" title="c2">A</font> <a href="projpl_1.html#K2" title="PROJPL_1:func.2">*</a> <font color="Maroon" title="c3">B</font><span class="kw"> -&gt; </span>  <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">G</font><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E21">Def9</font></span>: <a NAME="D9"><span class="comment"><font color="firebrick">:: PROJPL_1:def 9</font></span><br></a><span class="kw">it</span> <a href="projpl_1.html#R2" title="PROJPL_1:pred.2">on</a> <font color="Maroon" title="c2">A</font>,<font color="Maroon" title="c3">B</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:31_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">G</font> st <font color="Olive">b<sub>1</sub></font> <a href="projpl_1.html#R2" title="PROJPL_1:pred.2">on</a> <font color="Maroon" title="c2">A</font>,<font color="Maroon" title="c3">B</font>
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="projpl_1.html#T23" target="_self" onmouseover="rs('projpl_1/T23')" onmouseout="rh()">Th23</a></span>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:31_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">G</font>  st <font color="Olive">b<sub>1</sub></font> <a href="projpl_1.html#R2" title="PROJPL_1:pred.2">on</a> <font color="Maroon" title="c2">A</font>,<font color="Maroon" title="c3">B</font> &amp; <font color="Olive">b<sub>2</sub></font> <a href="projpl_1.html#R2" title="PROJPL_1:pred.2">on</a> <font color="Maroon" title="c2">A</font>,<font color="Maroon" title="c3">B</font> holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF31_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/31_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/31_1_1')" href="javascript:()" title="31_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+<div about="#DT9" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E21">Def9</font></span>   defines <a href="projpl_1.html#K2" title="PROJPL_1:func.2">*</a> <a onclick="hs(this)" href="javascript:()">PROJPL_1:def 9 : <br></a><span class="hide"> for <font color="Olive" title="b1">G</font> being   <a href="projpl_1.html#NM1" title="PROJPL_1:NM.1">IncProjectivePlane</a><br>  for <font color="Olive" title="b2">A</font>, <font color="Olive" title="b3">B</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b2">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b3">B</font> holds <br> for <font color="Olive">b<sub>4</sub></font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> holds <br> ( <font color="Olive">b<sub>4</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">A</font> <a href="projpl_1.html#K2" title="PROJPL_1:func.2">*</a> <font color="Olive" title="b3">B</font> iff <font color="Olive">b<sub>4</sub></font> <a href="projpl_1.html#R2" title="PROJPL_1:pred.2">on</a> <font color="Olive" title="b2">A</font>,<font color="Olive" title="b3">B</font> );<br></span>
+</div>
+<br><div about="#T24" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E22">Th24</font></span>: <a NAME="T24"><span class="comment"><font color="firebrick">:: PROJPL_1:24</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being   <a href="projpl_1.html#NM1" title="PROJPL_1:NM.1">IncProjectivePlane</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b3">A</font>, <font color="Olive" title="b4">B</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b3">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b4">B</font> holds <br>( <font color="Olive" title="b3">A</font> <a href="projpl_1.html#K2" title="PROJPL_1:func.2">*</a> <font color="Olive" title="b4">B</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">A</font> &amp; <font color="Olive" title="b3">A</font> <a href="projpl_1.html#K2" title="PROJPL_1:func.2">*</a> <font color="Olive" title="b4">B</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">B</font> &amp; <font color="Olive" title="b3">A</font> <a href="projpl_1.html#K2" title="PROJPL_1:func.2">*</a> <font color="Olive" title="b4">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">B</font> <a href="projpl_1.html#K2" title="PROJPL_1:func.2">*</a> <font color="Olive" title="b3">A</font> &amp; ( <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">A</font> &amp; <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">B</font> implies <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">A</font> <a href="projpl_1.html#K2" title="PROJPL_1:func.2">*</a> <font color="Olive" title="b4">B</font> ) )</div>
+<div about="#PF32" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T24"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/32')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/32')" href="javascript:()" title="32"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T25" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T25"><span class="comment"><font color="firebrick">:: PROJPL_1:25</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being   <a href="projpl_1.html#NM1" title="PROJPL_1:NM.1">IncProjectivePlane</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">q</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b4">A</font>, <font color="Olive" title="b5">B</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b4">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b5">B</font> &amp; <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">A</font> &amp; <font color="Olive" title="b3">q</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Olive" title="b4">A</font> &amp; <font color="Olive" title="b2">a</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b4">A</font> <a href="projpl_1.html#K2" title="PROJPL_1:func.2">*</a> <font color="Olive" title="b5">B</font> holds <br>( <span class="p1">(<span class="default"><font color="Olive" title="b3">q</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b2">a</font></span>)</span> <a href="projpl_1.html#K2" title="PROJPL_1:func.2">*</a> <font color="Olive" title="b5">B</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">B</font> &amp; <span class="p1">(<span class="default"><font color="Olive" title="b3">q</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b2">a</font></span>)</span> <a href="projpl_1.html#K2" title="PROJPL_1:func.2">*</a> <font color="Olive" title="b5">B</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Olive" title="b4">A</font> )</div>
+<div about="#PF33" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T25"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/33')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/33')" href="javascript:()" title="33"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+<div about="#T26" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E23">Th26</font></span>: <a NAME="T26"><span class="comment"><font color="firebrick">:: PROJPL_1:26</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> <a href="projpl_1.html#NR6" title="PROJPL_1:NR.6">is_a_triangle</a>  holds <br><font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> <a href="zfmisc_1.html#R1" title="ZFMISC_1:pred.1">are_mutually_distinct</a> </div>
+<div about="#PF34" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T26"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/34')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/34')" href="javascript:()" title="34"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T27" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T27"><span class="comment"><font color="firebrick">:: PROJPL_1:27</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">d</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font> <a href="projpl_1.html#R5" title="PROJPL_1:pred.5">is_a_quadrangle</a>  holds <br><font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font> <a href="zfmisc_1.html#R2" title="ZFMISC_1:pred.2">are_mutually_distinct</a> </div>
+<div about="#PF35" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T27"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/35')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/35')" href="javascript:()" title="35"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+<div about="#T28" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E24">Th28</font></span>: <a NAME="T28"><span class="comment"><font color="firebrick">:: PROJPL_1:28</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being   <a href="projpl_1.html#NM1" title="PROJPL_1:NM.1">IncProjectivePlane</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">d</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font>  holds <br>(  not <font color="Olive" title="b2">a</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b4">c</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">b</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b5">d</font> or <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">c</font> or <font color="Olive" title="b3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">d</font> or <font color="Olive" title="b4">c</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">d</font> or <font color="Olive" title="b2">a</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b4">c</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">c</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b5">d</font> )</div>
+<div about="#PF36" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T28"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/36')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/36')" href="javascript:()" title="36"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T29" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T29"><span class="comment"><font color="firebrick">:: PROJPL_1:29</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being   <a href="projpl_1.html#NM1" title="PROJPL_1:NM.1">IncProjectivePlane</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">d</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font>  holds <br>(  not <font color="Olive" title="b2">a</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b4">c</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">b</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b5">d</font> or <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">c</font> or <font color="Olive" title="b3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">d</font> or <font color="Olive" title="b4">c</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">d</font> or <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">c</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b5">d</font> )</div>
+<div about="#PF37" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T29"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/37')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/37')" href="javascript:()" title="37"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T30" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T30"><span class="comment"><font color="firebrick">:: PROJPL_1:30</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being   <a href="projpl_1.html#NM1" title="PROJPL_1:NM.1">IncProjectivePlane</a><br>  for <font color="Olive" title="b2">e</font>, <font color="Olive" title="b3">m</font>, <font color="Olive" title="b4">m9</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b5">I</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b3">m</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">I</font> &amp; <font color="Olive" title="b4">m9</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">I</font> &amp; <font color="Olive" title="b3">m</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b4">m9</font> &amp; <font color="Olive" title="b2">e</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Olive" title="b5">I</font> holds <br>( <font color="Olive" title="b3">m</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b2">e</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b4">m9</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b2">e</font> &amp; <font color="Olive" title="b2">e</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b3">m</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b2">e</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b4">m9</font> )</div>
+<div about="#PF38" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T30"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/38')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/38')" href="javascript:()" title="38"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T31" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T31"><span class="comment"><font color="firebrick">:: PROJPL_1:31</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being   <a href="projpl_1.html#NM1" title="PROJPL_1:NM.1">IncProjectivePlane</a><br>  for <font color="Olive" title="b2">e</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b3">I</font>, <font color="Olive" title="b4">L1</font>, <font color="Olive" title="b5">L2</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b2">e</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">L1</font> &amp; <font color="Olive" title="b2">e</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">L2</font> &amp; <font color="Olive" title="b4">L1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b5">L2</font> &amp; <font color="Olive" title="b2">e</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Olive" title="b3">I</font> holds <br>( <font color="Olive" title="b3">I</font> <a href="projpl_1.html#K2" title="PROJPL_1:func.2">*</a> <font color="Olive" title="b4">L1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b3">I</font> <a href="projpl_1.html#K2" title="PROJPL_1:func.2">*</a> <font color="Olive" title="b5">L2</font> &amp; <font color="Olive" title="b4">L1</font> <a href="projpl_1.html#K2" title="PROJPL_1:func.2">*</a> <font color="Olive" title="b3">I</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b5">L2</font> <a href="projpl_1.html#K2" title="PROJPL_1:func.2">*</a> <font color="Olive" title="b3">I</font> )</div>
+<div about="#PF39" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T31"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/39')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/39')" href="javascript:()" title="39"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T32" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T32"><span class="comment"><font color="firebrick">:: PROJPL_1:32</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">q</font>, <font color="Olive" title="b5">q1</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b4">q</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">a</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b3">b</font> &amp; <font color="Olive" title="b4">q</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">a</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b5">q1</font> &amp; <font color="Olive" title="b4">q</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b2">a</font> &amp; <font color="Olive" title="b5">q1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b2">a</font> &amp; <font color="Olive" title="b2">a</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b3">b</font> holds <br><font color="Olive" title="b5">q1</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">a</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b3">b</font>
+</div>
+<div about="#PF40" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T32"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/40')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/40')" href="javascript:()" title="40"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T33" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T33"><span class="comment"><font color="firebrick">:: PROJPL_1:33</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b4">c</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">a</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b3">b</font> &amp; <font color="Olive" title="b2">a</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b4">c</font> holds <br><font color="Olive" title="b3">b</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">a</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b4">c</font>
+</div>
+<div about="#PF41" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T33"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/41')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/41')" href="javascript:()" title="41"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T34" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T34"><span class="comment"><font color="firebrick">:: PROJPL_1:34</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being   <a href="projpl_1.html#NM1" title="PROJPL_1:NM.1">IncProjectivePlane</a><br>  for <font color="Olive" title="b2">q1</font>, <font color="Olive" title="b3">q2</font>, <font color="Olive" title="b4">r1</font>, <font color="Olive" title="b5">r2</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b6">H</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b4">r1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b5">r2</font> &amp; <font color="Olive" title="b4">r1</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b6">H</font> &amp; <font color="Olive" title="b5">r2</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b6">H</font> &amp; <font color="Olive" title="b2">q1</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Olive" title="b6">H</font> &amp; <font color="Olive" title="b3">q2</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Olive" title="b6">H</font> holds <br><font color="Olive" title="b2">q1</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b4">r1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b3">q2</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b5">r2</font>
+</div>
+<div about="#PF42" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T34"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/42')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/42')" href="javascript:()" title="42"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T35" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E25">Th35</font></span>: <a NAME="T35"><span class="comment"><font color="firebrick">:: PROJPL_1:35</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being   <a href="projpl_1.html#NM1" title="PROJPL_1:NM.1">IncProjectivePlane</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font>  holds <br>(  not <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">b</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b4">c</font> or <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">c</font> or <font color="Olive" title="b3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">c</font> or <font color="Olive" title="b3">b</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">c</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b2">a</font> )</div>
+<div about="#PF43" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T35"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/43')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/43')" href="javascript:()" title="43"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T36" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T36"><span class="comment"><font color="firebrick">:: PROJPL_1:36</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being   <a href="projpl_1.html#NM1" title="PROJPL_1:NM.1">IncProjectivePlane</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font>  holds <br>(  not <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">b</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b4">c</font> or <font color="Olive" title="b3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">a</font> or <font color="Olive" title="b3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">c</font> or <font color="Olive" title="b4">c</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">b</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b2">a</font> )</div>
+<div about="#PF44" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T36"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/44')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/44')" href="javascript:()" title="44"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T37" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T37"><span class="comment"><font color="firebrick">:: PROJPL_1:37</font></span><br></a><div class="add"> for <font color="Olive" title="b1">G</font> being   <a href="projpl_1.html#NM1" title="PROJPL_1:NM.1">IncProjectivePlane</a><br>  for <font color="Olive" title="b2">e</font>, <font color="Olive" title="b3">x1</font>, <font color="Olive" title="b4">x2</font>, <font color="Olive" title="b5">p1</font>, <font color="Olive" title="b6">p2</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font><br>  for <font color="Olive" title="b7">H</font>, <font color="Olive" title="b8">I</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">G</font>  st <font color="Olive" title="b3">x1</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b8">I</font> &amp; <font color="Olive" title="b4">x2</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b8">I</font> &amp; <font color="Olive" title="b2">e</font> <a href="projpl_1.html#NR1" title="PROJPL_1:NR.1">|'</a> <font color="Olive" title="b8">I</font> &amp; <font color="Olive" title="b3">x1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b4">x2</font> &amp; <font color="Olive" title="b5">p1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b2">e</font> &amp; <font color="Olive" title="b6">p2</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b2">e</font> &amp; <font color="Olive" title="b5">p1</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">e</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b3">x1</font> &amp; <font color="Olive" title="b6">p2</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">e</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b4">x2</font> holds <br> ex <font color="Olive" title="b9">r</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">G</font> st <br>( <font color="Olive" title="b9">r</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">p1</font> <a href="projpl_1.html#K1" title="PROJPL_1:func.1">*</a> <font color="Olive" title="b6">p2</font> &amp; <font color="Olive" title="b9">r</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b7">H</font> &amp; <font color="Olive" title="b9">r</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b2">e</font> )</div>
+<div about="#PF45" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T37"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projpl_1/45')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projpl_1/45')" href="javascript:()" title="45"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+</body>
+</html>

@@ -1,0 +1,519 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>PROJRED1:  Incidence Projective Space (a reduction theorem in a plane)</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  Incidence Projective Space (a reduction theorem in a plane)</font></span><br><span class="comment"><font color="firebrick">:: by Eugeniusz Kusak and Wojciech Leo\'nczuk</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received October 16, 1990</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 1990-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E1">Th1</font></span>: <a NAME="T1"><span class="comment"><font color="firebrick">:: PROJRED1:1</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">A</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font>  holds <br> not  for <font color="Olive" title="b3">a</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font> holds  <font color="Olive" title="b3">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">A</font>
+</div>
+<div about="#PF1" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/1')" href="javascript:()" title="1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E2">Th2</font></span>: <a NAME="T2"><span class="comment"><font color="firebrick">:: PROJRED1:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font>  holds <br> not  for <font color="Olive" title="b3">A</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font> holds  <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">A</font>
+</div>
+<div about="#PF2" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/2')" href="javascript:()" title="2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E3">Th3</font></span>: <a NAME="T3"><span class="comment"><font color="firebrick">:: PROJRED1:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">A</font>, <font color="Olive" title="b3">B</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font>  st <font color="Olive" title="b2">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b3">B</font> holds <br> ex <font color="Olive" title="b4">a</font>, <font color="Olive" title="b5">b</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font> st <br>( <font color="Olive" title="b4">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">A</font> &amp;  not <font color="Olive" title="b4">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">B</font> &amp; <font color="Olive" title="b5">b</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">B</font> &amp;  not <font color="Olive" title="b5">b</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">A</font> )</div>
+<div about="#PF3" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/3')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/3')" href="javascript:()" title="3"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T4"><span class="comment"><font color="firebrick">:: PROJRED1:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font>  st <font color="Olive" title="b2">a</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b3">b</font> holds <br> ex <font color="Olive" title="b4">A</font>, <font color="Olive" title="b5">B</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font> st <br>( <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">A</font> &amp;  not <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">B</font> &amp; <font color="Olive" title="b3">b</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">B</font> &amp;  not <font color="Olive" title="b3">b</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">A</font> )</div>
+<div about="#PF4" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T4"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/4')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/4')" href="javascript:()" title="4"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T5"><span class="comment"><font color="firebrick">:: PROJRED1:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font>  ex <font color="Olive" title="b3">A</font>, <font color="Olive" title="b4">B</font>, <font color="Olive" title="b5">C</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font> st <br>( <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">A</font> &amp; <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">B</font> &amp; <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">C</font> &amp; <font color="Olive" title="b3">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b4">B</font> &amp; <font color="Olive" title="b4">B</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b5">C</font> &amp; <font color="Olive" title="b5">C</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b3">A</font> )</div>
+<div about="#PF5" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/5')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/5')" href="javascript:()" title="5"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T6"><span class="comment"><font color="firebrick">:: PROJRED1:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">A</font>, <font color="Olive" title="b3">B</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font>  ex <font color="Olive" title="b4">a</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font> st <br>(  not <font color="Olive" title="b4">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">A</font> &amp;  not <font color="Olive" title="b4">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">B</font> )</div>
+<div about="#PF6" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/6')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/6')" href="javascript:()" title="6"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E4">Th7</font></span>: <a NAME="T7"><span class="comment"><font color="firebrick">:: PROJRED1:7</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">A</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font>  ex <font color="Olive" title="b3">a</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font> st <font color="Olive" title="b3">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">A</font>
+</div>
+<div about="#PF7" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T7"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/7')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/7')" href="javascript:()" title="7"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E5">Th8</font></span>: <a NAME="T8"><span class="comment"><font color="firebrick">:: PROJRED1:8</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font><br>  for <font color="Olive" title="b4">A</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font>  ex <font color="Olive" title="b5">c</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font> st <br>( <font color="Olive" title="b5">c</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">A</font> &amp; <font color="Olive" title="b5">c</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b2">a</font> &amp; <font color="Olive" title="b5">c</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b3">b</font> )</div>
+<div about="#PF8" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/8')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/8')" href="javascript:()" title="8"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T9"><span class="comment"><font color="firebrick">:: PROJRED1:9</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font>  ex <font color="Olive" title="b4">A</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font> st <br>(  not <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">A</font> &amp;  not <font color="Olive" title="b3">b</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">A</font> )</div>
+<div about="#PF9" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T9"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/9')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/9')" href="javascript:()" title="9"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E6">Th10</font></span>: <a NAME="T10"><span class="comment"><font color="firebrick">:: PROJRED1:10</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">o</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font><br>  for <font color="Olive" title="b6">A</font>, <font color="Olive" title="b7">B</font>, <font color="Olive" title="b8">P</font>, <font color="Olive" title="b9">Q</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font>  st <font color="Olive" title="b5">o</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b6">A</font> &amp; <font color="Olive" title="b5">o</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b7">B</font> &amp; <font color="Olive" title="b6">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b7">B</font> &amp; <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b6">A</font> &amp; <font color="Olive" title="b5">o</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b2">a</font> &amp; <font color="Olive" title="b3">b</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b7">B</font> &amp; <font color="Olive" title="b4">c</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b7">B</font> &amp; <font color="Olive" title="b3">b</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b4">c</font> &amp; <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b8">P</font> &amp; <font color="Olive" title="b3">b</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b8">P</font> &amp; <font color="Olive" title="b4">c</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b9">Q</font> holds <br><font color="Olive" title="b8">P</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b9">Q</font>
+</div>
+<div about="#PF10" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T10"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/10')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/10')" href="javascript:()" title="10"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E7">Th11</font></span>: <a NAME="T11"><span class="comment"><font color="firebrick">:: PROJRED1:11</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font><br>  for <font color="Olive" title="b5">A</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font>  st <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b5">A</font> holds <br>( <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b3">b</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b5">A</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b3">b</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b5">A</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b2">a</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b5">A</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b4">c</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b5">A</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b4">c</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b2">a</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b5">A</font> )</div>
+<div about="#PF11" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/11')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/11')" href="javascript:()" title="11"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E8">Th12</font></span>: <a NAME="T12"><span class="comment"><font color="firebrick">:: PROJRED1:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#V9" title="INCPROJ:attr.9">Desarguesian</a>  <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">o</font>, <font color="Olive" title="b3">b1</font>, <font color="Olive" title="b4">a1</font>, <font color="Olive" title="b5">b2</font>, <font color="Olive" title="b6">a2</font>, <font color="Olive" title="b7">b3</font>, <font color="Olive" title="b8">a3</font>, <font color="Olive" title="b9">r</font>, <font color="Olive" title="b10">s</font>, <font color="Olive" title="b11">t</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font><br>  for <font color="Olive" title="b12">C1</font>, <font color="Olive" title="b13">C2</font>, <font color="Olive" title="b14">C3</font>, <font color="Olive" title="b15">A1</font>, <font color="Olive" title="b16">A2</font>, <font color="Olive" title="b17">A3</font>, <font color="Olive" title="b18">B1</font>, <font color="Olive" title="b19">B2</font>, <font color="Olive" title="b20">B3</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font>  st <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b2">o</font>,<font color="Olive" title="b3">b1</font>,<font color="Olive" title="b4">a1</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b12">C1</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b2">o</font>,<font color="Olive" title="b6">a2</font>,<font color="Olive" title="b5">b2</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b13">C2</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b2">o</font>,<font color="Olive" title="b8">a3</font>,<font color="Olive" title="b7">b3</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b14">C3</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b8">a3</font>,<font color="Olive" title="b6">a2</font>,<font color="Olive" title="b11">t</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b15">A1</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b8">a3</font>,<font color="Olive" title="b9">r</font>,<font color="Olive" title="b4">a1</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b16">A2</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b6">a2</font>,<font color="Olive" title="b10">s</font>,<font color="Olive" title="b4">a1</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b17">A3</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b11">t</font>,<font color="Olive" title="b5">b2</font>,<font color="Olive" title="b7">b3</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b18">B1</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b3">b1</font>,<font color="Olive" title="b9">r</font>,<font color="Olive" title="b7">b3</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b19">B2</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b3">b1</font>,<font color="Olive" title="b10">s</font>,<font color="Olive" title="b5">b2</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b20">B3</font> &amp; <font color="Olive" title="b12">C1</font>,<font color="Olive" title="b13">C2</font>,<font color="Olive" title="b14">C3</font> <a href="zfmisc_1.html#R1" title="ZFMISC_1:pred.1">are_mutually_distinct</a>  &amp; <font color="Olive" title="b2">o</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b8">a3</font> &amp; <font color="Olive" title="b2">o</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b3">b1</font> &amp; <font color="Olive" title="b2">o</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b5">b2</font> &amp; <font color="Olive" title="b6">a2</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b5">b2</font> holds <br> ex <font color="Olive" title="b21">O</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font> st <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b9">r</font>,<font color="Olive" title="b10">s</font>,<font color="Olive" title="b11">t</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b21">O</font>
+</div>
+<div about="#PF12" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/12')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/12')" href="javascript:()" title="12"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E13"></a><span class="lab"><font color="Green" title="E9">Lm1</font></span>: <span about="#E13" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">d</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font><br>  for <font color="Olive" title="b6">A</font>, <font color="Olive" title="b7">B</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font>  st  ex <font color="Olive" title="b8">o</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font> st <br>( <font color="Olive" title="b8">o</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b6">A</font> &amp; <font color="Olive" title="b8">o</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b7">B</font> ) &amp; <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b6">A</font> &amp; <font color="Olive" title="b3">b</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b6">A</font> &amp; <font color="Olive" title="b4">c</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b6">A</font> &amp; <font color="Olive" title="b5">d</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b6">A</font> &amp; <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font> <a href="zfmisc_1.html#R2" title="ZFMISC_1:pred.2">are_mutually_distinct</a>  holds <br> ex <font color="Olive" title="b8">p</font>, <font color="Olive" title="b9">q</font>, <font color="Olive" title="b10">r</font>, <font color="Olive" title="b11">s</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font> st <br>( <font color="Olive" title="b8">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b7">B</font> &amp; <font color="Olive" title="b9">q</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b7">B</font> &amp; <font color="Olive" title="b10">r</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b7">B</font> &amp; <font color="Olive" title="b11">s</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b7">B</font> &amp; <font color="Olive" title="b8">p</font>,<font color="Olive" title="b9">q</font>,<font color="Olive" title="b10">r</font>,<font color="Olive" title="b11">s</font> <a href="zfmisc_1.html#R2" title="ZFMISC_1:pred.2">are_mutually_distinct</a>  )
+ </span><br><div about="#PF13" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E13"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/13')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/13')" href="javascript:()" title="13"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E10">Th13</font></span>: <a NAME="T13"><span class="comment"><font color="firebrick">:: PROJRED1:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a>  st  ex <font color="Olive" title="b2">A</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font> ex <font color="Olive" title="b3">a</font>, <font color="Olive" title="b4">b</font>, <font color="Olive" title="b5">c</font>, <font color="Olive" title="b6">d</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font> st <br>( <font color="Olive" title="b3">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">A</font> &amp; <font color="Olive" title="b4">b</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">A</font> &amp; <font color="Olive" title="b5">c</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">A</font> &amp; <font color="Olive" title="b6">d</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">A</font> &amp; <font color="Olive" title="b3">a</font>,<font color="Olive" title="b4">b</font>,<font color="Olive" title="b5">c</font>,<font color="Olive" title="b6">d</font> <a href="zfmisc_1.html#R2" title="ZFMISC_1:pred.2">are_mutually_distinct</a>  ) holds <br> for <font color="Olive" title="b2">B</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font>  ex <font color="Olive" title="b3">p</font>, <font color="Olive" title="b4">q</font>, <font color="Olive" title="b5">r</font>, <font color="Olive" title="b6">s</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font> st <br>( <font color="Olive" title="b3">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">B</font> &amp; <font color="Olive" title="b4">q</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">B</font> &amp; <font color="Olive" title="b5">r</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">B</font> &amp; <font color="Olive" title="b6">s</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">B</font> &amp; <font color="Olive" title="b3">p</font>,<font color="Olive" title="b4">q</font>,<font color="Olive" title="b5">r</font>,<font color="Olive" title="b6">s</font> <a href="zfmisc_1.html#R2" title="ZFMISC_1:pred.2">are_mutually_distinct</a>  )</div>
+<div about="#PF14" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T13"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/14')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/14')" href="javascript:()" title="14"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<a NAME="E15"></a><span class="lab"><font color="Green" title="E11">Lm2</font></span>: <span about="#E15" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#V8" title="INCPROJ:attr.8">Fanoian</a>  <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a>  ex <font color="Olive" title="b2">p</font>, <font color="Olive" title="b3">q</font>, <font color="Olive" title="b4">r</font>, <font color="Olive" title="b5">s</font>, <font color="Olive" title="b6">a</font>, <font color="Olive" title="b7">b</font>, <font color="Olive" title="b8">c</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font> ex <font color="Olive" title="b9">A</font>, <font color="Olive" title="b10">B</font>, <font color="Olive" title="b11">C</font>, <font color="Olive" title="b12">Q</font>, <font color="Olive" title="b13">L</font>, <font color="Olive" title="b14">R</font>, <font color="Olive" title="b15">S</font>, <font color="Olive" title="b16">D</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font> ex <font color="Olive" title="b17">d</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font> st <br>(  not <font color="Olive" title="b3">q</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b13">L</font> &amp;  not <font color="Olive" title="b4">r</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b13">L</font> &amp;  not <font color="Olive" title="b2">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b12">Q</font> &amp;  not <font color="Olive" title="b5">s</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b12">Q</font> &amp;  not <font color="Olive" title="b2">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b14">R</font> &amp;  not <font color="Olive" title="b4">r</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b14">R</font> &amp;  not <font color="Olive" title="b3">q</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b15">S</font> &amp;  not <font color="Olive" title="b5">s</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b15">S</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b6">a</font>,<font color="Olive" title="b2">p</font>,<font color="Olive" title="b5">s</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b13">L</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b6">a</font>,<font color="Olive" title="b3">q</font>,<font color="Olive" title="b4">r</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b12">Q</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b7">b</font>,<font color="Olive" title="b3">q</font>,<font color="Olive" title="b5">s</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b14">R</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b7">b</font>,<font color="Olive" title="b2">p</font>,<font color="Olive" title="b4">r</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b15">S</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b8">c</font>,<font color="Olive" title="b2">p</font>,<font color="Olive" title="b3">q</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b9">A</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b8">c</font>,<font color="Olive" title="b4">r</font>,<font color="Olive" title="b5">s</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b10">B</font> &amp; <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b6">a</font>,<font color="Olive" title="b7">b</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b11">C</font> &amp;  not <font color="Olive" title="b8">c</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b11">C</font> &amp; <font color="Olive" title="b7">b</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b16">D</font> &amp; <font color="Olive" title="b8">c</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b16">D</font> &amp; <font color="Olive" title="b11">C</font>,<font color="Olive" title="b16">D</font>,<font color="Olive" title="b14">R</font>,<font color="Olive" title="b15">S</font> <a href="zfmisc_1.html#R2" title="ZFMISC_1:pred.2">are_mutually_distinct</a>  &amp; <font color="Olive" title="b17">d</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b9">A</font> &amp; <font color="Olive" title="b8">c</font>,<font color="Olive" title="b17">d</font>,<font color="Olive" title="b2">p</font>,<font color="Olive" title="b3">q</font> <a href="zfmisc_1.html#R2" title="ZFMISC_1:pred.2">are_mutually_distinct</a>  )
+ </span><br><div about="#PF15" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/15')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/15')" href="javascript:()" title="15"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T14"><span class="comment"><font color="firebrick">:: PROJRED1:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#V8" title="INCPROJ:attr.8">Fanoian</a>  <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a>  ex <font color="Olive" title="b2">p</font>, <font color="Olive" title="b3">q</font>, <font color="Olive" title="b4">r</font>, <font color="Olive" title="b5">s</font>, <font color="Olive" title="b6">a</font>, <font color="Olive" title="b7">b</font>, <font color="Olive" title="b8">c</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font> ex <font color="Olive" title="b9">A</font>, <font color="Olive" title="b10">B</font>, <font color="Olive" title="b11">C</font>, <font color="Olive" title="b12">Q</font>, <font color="Olive" title="b13">L</font>, <font color="Olive" title="b14">R</font>, <font color="Olive" title="b15">S</font>, <font color="Olive" title="b16">D</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font> st <br>(  not <font color="Olive" title="b3">q</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b13">L</font> &amp;  not <font color="Olive" title="b4">r</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b13">L</font> &amp;  not <font color="Olive" title="b2">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b12">Q</font> &amp;  not <font color="Olive" title="b5">s</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b12">Q</font> &amp;  not <font color="Olive" title="b2">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b14">R</font> &amp;  not <font color="Olive" title="b4">r</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b14">R</font> &amp;  not <font color="Olive" title="b3">q</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b15">S</font> &amp;  not <font color="Olive" title="b5">s</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b15">S</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b6">a</font>,<font color="Olive" title="b2">p</font>,<font color="Olive" title="b5">s</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b13">L</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b6">a</font>,<font color="Olive" title="b3">q</font>,<font color="Olive" title="b4">r</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b12">Q</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b7">b</font>,<font color="Olive" title="b3">q</font>,<font color="Olive" title="b5">s</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b14">R</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b7">b</font>,<font color="Olive" title="b2">p</font>,<font color="Olive" title="b4">r</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b15">S</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b8">c</font>,<font color="Olive" title="b2">p</font>,<font color="Olive" title="b3">q</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b9">A</font> &amp; <span class="p1"><a href="domain_1.html#K8" title="DOMAIN_1:func.8">{</a><span class="default"><font color="Olive" title="b8">c</font>,<font color="Olive" title="b4">r</font>,<font color="Olive" title="b5">s</font></span><a href="domain_1.html#K8" title="DOMAIN_1:func.8">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b10">B</font> &amp; <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Olive" title="b6">a</font>,<font color="Olive" title="b7">b</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="incsp_1.html#R4" title="INCSP_1:pred.4">on</a> <font color="Olive" title="b11">C</font> &amp;  not <font color="Olive" title="b8">c</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b11">C</font> )</div>
+<div about="#PF16" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T14"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/16')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/16')" href="javascript:()" title="16"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T15" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T15"><span class="comment"><font color="firebrick">:: PROJRED1:15</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#V8" title="INCPROJ:attr.8">Fanoian</a>  <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a>  ex <font color="Olive" title="b2">a</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font> ex <font color="Olive" title="b3">A</font>, <font color="Olive" title="b4">B</font>, <font color="Olive" title="b5">C</font>, <font color="Olive" title="b6">D</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font> st <br>( <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">A</font> &amp; <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">B</font> &amp; <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">C</font> &amp; <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b6">D</font> &amp; <font color="Olive" title="b3">A</font>,<font color="Olive" title="b4">B</font>,<font color="Olive" title="b5">C</font>,<font color="Olive" title="b6">D</font> <a href="zfmisc_1.html#R2" title="ZFMISC_1:pred.2">are_mutually_distinct</a>  )</div>
+<div about="#PF17" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/17')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/17')" href="javascript:()" title="17"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T16" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E12">Th16</font></span>: <a NAME="T16"><span class="comment"><font color="firebrick">:: PROJRED1:16</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#V8" title="INCPROJ:attr.8">Fanoian</a>  <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a>  ex <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">d</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font> ex <font color="Olive" title="b6">A</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font> st <br>( <font color="Olive" title="b2">a</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b6">A</font> &amp; <font color="Olive" title="b3">b</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b6">A</font> &amp; <font color="Olive" title="b4">c</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b6">A</font> &amp; <font color="Olive" title="b5">d</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b6">A</font> &amp; <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font> <a href="zfmisc_1.html#R2" title="ZFMISC_1:pred.2">are_mutually_distinct</a>  )</div>
+<div about="#PF18" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T16"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/18')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/18')" href="javascript:()" title="18"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T17" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T17"><span class="comment"><font color="firebrick">:: PROJRED1:17</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#V8" title="INCPROJ:attr.8">Fanoian</a>  <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">B</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font>  ex <font color="Olive" title="b3">p</font>, <font color="Olive" title="b4">q</font>, <font color="Olive" title="b5">r</font>, <font color="Olive" title="b6">s</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font> st <br>( <font color="Olive" title="b3">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">B</font> &amp; <font color="Olive" title="b4">q</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">B</font> &amp; <font color="Olive" title="b5">r</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">B</font> &amp; <font color="Olive" title="b6">s</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">B</font> &amp; <font color="Olive" title="b3">p</font>,<font color="Olive" title="b4">q</font>,<font color="Olive" title="b5">r</font>,<font color="Olive" title="b6">s</font> <a href="zfmisc_1.html#R2" title="ZFMISC_1:pred.2">are_mutually_distinct</a>  )</div>
+<div about="#PF19" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T17"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/19')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/19')" href="javascript:()" title="19"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IPP</font> be   <a href="incproj.html#V5" title="INCPROJ:attr.5">2-dimensional</a>   <a href="incproj.html#V9" title="INCPROJ:attr.9">Desarguesian</a>  <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">K</font>, <font color="Maroon" title="c3">L</font> be   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Maroon" title="c1">IPP</font>;<br><span class="kw">let </span><font color="Maroon" title="c4">p</font> be   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">IPP</font>;<br><span class="kw">assume </span><span class="kw">that </span><br><a NAME="E1:20"></a><span class="lab"><font color="Green" title="E13">A1</font></span>: 
+ not <font color="Maroon" title="c4">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Maroon" title="c2">K</font>
+ <span class="kw">and </span><br><a NAME="E2:20"></a><span class="lab"><font color="Green" title="E14">A2</font></span>: 
+ not <font color="Maroon" title="c4">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Maroon" title="c3">L</font>
+ ;<br><div about="#D13" typeof="oo:Definition">
+<a NAME="K1"><span class="kw">func</span> </a> <a href="projred1.html#K1" title="PROJRED1:func.1">IncProj</a> (<font color="Maroon" title="c2">K</font>,<font color="Maroon" title="c4">p</font>,<font color="Maroon" title="c3">L</font>)<span class="kw"> -&gt; </span>  <a href="partfun1.html#NM1" title="PARTFUN1:NM.1">PartFunc</a> of  the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Maroon" title="c1">IPP</font>, the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Maroon" title="c1">IPP</font><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E13">Def1</font></span>: <a NAME="D1"><span class="comment"><font color="firebrick">:: PROJRED1:def 1</font></span><br></a>(  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <span class="kw">it</span> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Maroon" title="c1">IPP</font> &amp; (  for <font color="Olive" title="b1">x</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">IPP</font> holds <br> ( <font color="Olive" title="b1">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <span class="kw">it</span> iff <font color="Olive" title="b1">x</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Maroon" title="c2">K</font> ) ) &amp; (  for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">IPP</font>  st <font color="Olive" title="b1">x</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Maroon" title="c2">K</font> &amp; <font color="Olive" title="b2">y</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Maroon" title="c3">L</font> holds <br>( <span class="kw">it</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">y</font> iff  ex <font color="Olive" title="b3">X</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Maroon" title="c1">IPP</font> st <br>( <font color="Maroon" title="c4">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">X</font> &amp; <font color="Olive" title="b1">x</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">X</font> &amp; <font color="Olive" title="b2">y</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">X</font> ) ) ) );<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:20_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="partfun1.html#NM1" title="PARTFUN1:NM.1">PartFunc</a> of  the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Maroon" title="c1">IPP</font>, the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Maroon" title="c1">IPP</font> st <br>(  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive">b<sub>1</sub></font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Maroon" title="c1">IPP</font> &amp; (  for <font color="Olive" title="b2">x</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">IPP</font> holds <br> ( <font color="Olive" title="b2">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive">b<sub>1</sub></font> iff <font color="Olive" title="b2">x</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Maroon" title="c2">K</font> ) ) &amp; (  for <font color="Olive" title="b2">x</font>, <font color="Olive" title="b3">y</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">IPP</font>  st <font color="Olive" title="b2">x</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Maroon" title="c2">K</font> &amp; <font color="Olive" title="b3">y</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Maroon" title="c3">L</font> holds <br>( <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">y</font> iff  ex <font color="Olive" title="b4">X</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Maroon" title="c1">IPP</font> st <br>( <font color="Maroon" title="c4">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">X</font> &amp; <font color="Olive" title="b2">x</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">X</font> &amp; <font color="Olive" title="b3">y</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">X</font> ) ) ) )
+ </span><div about="#PF20_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/projred1/20_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/20_1_1')" href="javascript:()" title="20_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:20_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="partfun1.html#NM1" title="PARTFUN1:NM.1">PartFunc</a> of  the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Maroon" title="c1">IPP</font>, the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Maroon" title="c1">IPP</font>  st  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive">b<sub>1</sub></font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Maroon" title="c1">IPP</font> &amp; (  for <font color="Olive" title="b3">x</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">IPP</font> holds <br> ( <font color="Olive" title="b3">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive">b<sub>1</sub></font> iff <font color="Olive" title="b3">x</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Maroon" title="c2">K</font> ) ) &amp; (  for <font color="Olive" title="b3">x</font>, <font color="Olive" title="b4">y</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">IPP</font>  st <font color="Olive" title="b3">x</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Maroon" title="c2">K</font> &amp; <font color="Olive" title="b4">y</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Maroon" title="c3">L</font> holds <br>( <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">y</font> iff  ex <font color="Olive" title="b5">X</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Maroon" title="c1">IPP</font> st <br>( <font color="Maroon" title="c4">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">X</font> &amp; <font color="Olive" title="b3">x</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">X</font> &amp; <font color="Olive" title="b4">y</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">X</font> ) ) ) &amp;  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive">b<sub>2</sub></font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Maroon" title="c1">IPP</font> &amp; (  for <font color="Olive" title="b3">x</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">IPP</font> holds <br> ( <font color="Olive" title="b3">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive">b<sub>2</sub></font> iff <font color="Olive" title="b3">x</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Maroon" title="c2">K</font> ) ) &amp; (  for <font color="Olive" title="b3">x</font>, <font color="Olive" title="b4">y</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Maroon" title="c1">IPP</font>  st <font color="Olive" title="b3">x</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Maroon" title="c2">K</font> &amp; <font color="Olive" title="b4">y</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Maroon" title="c3">L</font> holds <br>( <font color="Olive">b<sub>2</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">y</font> iff  ex <font color="Olive" title="b5">X</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Maroon" title="c1">IPP</font> st <br>( <font color="Maroon" title="c4">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">X</font> &amp; <font color="Olive" title="b3">x</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">X</font> &amp; <font color="Olive" title="b4">y</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">X</font> ) ) ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF20_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/projred1/20_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/20_1_2')" href="javascript:()" title="20_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E13">Def1</font></span>   defines <a href="projred1.html#K1" title="PROJRED1:func.1">IncProj</a> <a onclick="hs(this)" href="javascript:()">PROJRED1:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#V5" title="INCPROJ:attr.5">2-dimensional</a>   <a href="incproj.html#V9" title="INCPROJ:attr.9">Desarguesian</a>  <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">K</font>, <font color="Olive" title="b3">L</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font><br>  for <font color="Olive" title="b4">p</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font>  st  not <font color="Olive" title="b4">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">K</font> &amp;  not <font color="Olive" title="b4">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">L</font> holds <br> for <font color="Olive">b<sub>5</sub></font> being   <a href="partfun1.html#NM1" title="PARTFUN1:NM.1">PartFunc</a> of  the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Olive" title="b1">IPP</font>, the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Olive" title="b1">IPP</font> holds <br> ( <font color="Olive">b<sub>5</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="projred1.html#K1" title="PROJRED1:func.1">IncProj</a> (<font color="Olive" title="b2">K</font>,<font color="Olive" title="b4">p</font>,<font color="Olive" title="b3">L</font>) iff (  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive">b<sub>5</sub></font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  the <a href="incsp_1.html#U1" title="INCSP_1:sel.1">Points</a> of <font color="Olive" title="b1">IPP</font> &amp; (  for <font color="Olive" title="b6">x</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font> holds <br> ( <font color="Olive" title="b6">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive">b<sub>5</sub></font> iff <font color="Olive" title="b6">x</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">K</font> ) ) &amp; (  for <font color="Olive" title="b6">x</font>, <font color="Olive" title="b7">y</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font>  st <font color="Olive" title="b6">x</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b2">K</font> &amp; <font color="Olive" title="b7">y</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">L</font> holds <br>( <font color="Olive">b<sub>5</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b6">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b7">y</font> iff  ex <font color="Olive" title="b8">X</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font> st <br>( <font color="Olive" title="b4">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b8">X</font> &amp; <font color="Olive" title="b6">x</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b8">X</font> &amp; <font color="Olive" title="b7">y</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b8">X</font> ) ) ) ) );<br></span>
+</div>
+<br><div about="#T18" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E14">Th18</font></span>: <a NAME="T18"><span class="comment"><font color="firebrick">:: PROJRED1:18</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#V5" title="INCPROJ:attr.5">2-dimensional</a>   <a href="incproj.html#V9" title="INCPROJ:attr.9">Desarguesian</a>  <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font><br>  for <font color="Olive" title="b3">K</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font>  st  not <font color="Olive" title="b2">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">K</font> holds <br> for <font color="Olive" title="b4">x</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font>  st <font color="Olive" title="b4">x</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">K</font> holds <br><span class="p1">(<span class="default"><a href="projred1.html#K1" title="PROJRED1:func.1">IncProj</a> (<font color="Olive" title="b3">K</font>,<font color="Olive" title="b2">p</font>,<font color="Olive" title="b3">K</font>)</span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">x</font>
+</div>
+<div about="#PF21" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T18"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/21')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/21')" href="javascript:()" title="21"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T19" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E15">Th19</font></span>: <a NAME="T19"><span class="comment"><font color="firebrick">:: PROJRED1:19</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#V5" title="INCPROJ:attr.5">2-dimensional</a>   <a href="incproj.html#V9" title="INCPROJ:attr.9">Desarguesian</a>  <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">p</font>, <font color="Olive" title="b3">x</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font><br>  for <font color="Olive" title="b4">K</font>, <font color="Olive" title="b5">L</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font>  st  not <font color="Olive" title="b2">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">K</font> &amp;  not <font color="Olive" title="b2">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">L</font> &amp; <font color="Olive" title="b3">x</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">K</font> holds <br><span class="p1">(<span class="default"><a href="projred1.html#K1" title="PROJRED1:func.1">IncProj</a> (<font color="Olive" title="b4">K</font>,<font color="Olive" title="b2">p</font>,<font color="Olive" title="b5">L</font>)</span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">x</font> is   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font>
+</div>
+<div about="#PF22" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T19"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/22')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/22')" href="javascript:()" title="22"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T20" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E16">Th20</font></span>: <a NAME="T20"><span class="comment"><font color="firebrick">:: PROJRED1:20</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#V5" title="INCPROJ:attr.5">2-dimensional</a>   <a href="incproj.html#V9" title="INCPROJ:attr.9">Desarguesian</a>  <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">p</font>, <font color="Olive" title="b3">x</font>, <font color="Olive" title="b4">y</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font><br>  for <font color="Olive" title="b5">K</font>, <font color="Olive" title="b6">L</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font>  st  not <font color="Olive" title="b2">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">K</font> &amp;  not <font color="Olive" title="b2">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b6">L</font> &amp; <font color="Olive" title="b3">x</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">K</font> &amp; <font color="Olive" title="b4">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="projred1.html#K1" title="PROJRED1:func.1">IncProj</a> (<font color="Olive" title="b5">K</font>,<font color="Olive" title="b2">p</font>,<font color="Olive" title="b6">L</font>)</span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">x</font> holds <br><font color="Olive" title="b4">y</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b6">L</font>
+</div>
+<div about="#PF23" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T20"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/23')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/23')" href="javascript:()" title="23"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T21" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T21"><span class="comment"><font color="firebrick">:: PROJRED1:21</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#V5" title="INCPROJ:attr.5">2-dimensional</a>   <a href="incproj.html#V9" title="INCPROJ:attr.9">Desarguesian</a>  <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">p</font>, <font color="Olive" title="b3">y</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font><br>  for <font color="Olive" title="b4">K</font>, <font color="Olive" title="b5">L</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font>  st  not <font color="Olive" title="b2">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">K</font> &amp;  not <font color="Olive" title="b2">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">L</font> &amp; <font color="Olive" title="b3">y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><a href="projred1.html#K1" title="PROJRED1:func.1">IncProj</a> (<font color="Olive" title="b4">K</font>,<font color="Olive" title="b2">p</font>,<font color="Olive" title="b5">L</font>)</span>)</span> holds <br><font color="Olive" title="b3">y</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">L</font>
+</div>
+<div about="#PF24" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T21"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/24')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/24')" href="javascript:()" title="24"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T22" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E17">Th22</font></span>: <a NAME="T22"><span class="comment"><font color="firebrick">:: PROJRED1:22</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#V5" title="INCPROJ:attr.5">2-dimensional</a>   <a href="incproj.html#V9" title="INCPROJ:attr.9">Desarguesian</a>  <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">p</font>, <font color="Olive" title="b3">q</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font><br>  for <font color="Olive" title="b4">K</font>, <font color="Olive" title="b5">L</font>, <font color="Olive" title="b6">R</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font>  st  not <font color="Olive" title="b2">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">K</font> &amp;  not <font color="Olive" title="b2">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">L</font> &amp;  not <font color="Olive" title="b3">q</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">L</font> &amp;  not <font color="Olive" title="b3">q</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b6">R</font> holds <br>(  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="projred1.html#K1" title="PROJRED1:func.1">IncProj</a> (<font color="Olive" title="b5">L</font>,<font color="Olive" title="b3">q</font>,<font color="Olive" title="b6">R</font>)</span>)</span> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <span class="p2">(<span class="default"><a href="projred1.html#K1" title="PROJRED1:func.1">IncProj</a> (<font color="Olive" title="b4">K</font>,<font color="Olive" title="b2">p</font>,<font color="Olive" title="b5">L</font>)</span>)</span></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <span class="p1">(<span class="default"><a href="projred1.html#K1" title="PROJRED1:func.1">IncProj</a> (<font color="Olive" title="b4">K</font>,<font color="Olive" title="b2">p</font>,<font color="Olive" title="b5">L</font>)</span>)</span> &amp;  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="projred1.html#K1" title="PROJRED1:func.1">IncProj</a> (<font color="Olive" title="b5">L</font>,<font color="Olive" title="b3">q</font>,<font color="Olive" title="b6">R</font>)</span>)</span> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <span class="p2">(<span class="default"><a href="projred1.html#K1" title="PROJRED1:func.1">IncProj</a> (<font color="Olive" title="b4">K</font>,<font color="Olive" title="b2">p</font>,<font color="Olive" title="b5">L</font>)</span>)</span></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><a href="projred1.html#K1" title="PROJRED1:func.1">IncProj</a> (<font color="Olive" title="b5">L</font>,<font color="Olive" title="b3">q</font>,<font color="Olive" title="b6">R</font>)</span>)</span> )</div>
+<div about="#PF25" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T22"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/25')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/25')" href="javascript:()" title="25"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T23" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E18">Th23</font></span>: <a NAME="T23"><span class="comment"><font color="firebrick">:: PROJRED1:23</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#V5" title="INCPROJ:attr.5">2-dimensional</a>   <a href="incproj.html#V9" title="INCPROJ:attr.9">Desarguesian</a>  <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font><br>  for <font color="Olive" title="b3">K</font>, <font color="Olive" title="b4">L</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font><br>  for <font color="Olive" title="b5">a1</font>, <font color="Olive" title="b6">b1</font>, <font color="Olive" title="b7">a2</font>, <font color="Olive" title="b8">b2</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font>  st  not <font color="Olive" title="b2">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">K</font> &amp;  not <font color="Olive" title="b2">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">L</font> &amp; <font color="Olive" title="b5">a1</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">K</font> &amp; <font color="Olive" title="b6">b1</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b3">K</font> &amp; <span class="p1">(<span class="default"><a href="projred1.html#K1" title="PROJRED1:func.1">IncProj</a> (<font color="Olive" title="b3">K</font>,<font color="Olive" title="b2">p</font>,<font color="Olive" title="b4">L</font>)</span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">a1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b7">a2</font> &amp; <span class="p1">(<span class="default"><a href="projred1.html#K1" title="PROJRED1:func.1">IncProj</a> (<font color="Olive" title="b3">K</font>,<font color="Olive" title="b2">p</font>,<font color="Olive" title="b4">L</font>)</span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b6">b1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b8">b2</font> &amp; <font color="Olive" title="b7">a2</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b8">b2</font> holds <br><font color="Olive" title="b5">a1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b6">b1</font>
+</div>
+<div about="#PF26" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T23"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/26')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/26')" href="javascript:()" title="26"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T24" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E19">Th24</font></span>: <a NAME="T24"><span class="comment"><font color="firebrick">:: PROJRED1:24</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#V5" title="INCPROJ:attr.5">2-dimensional</a>   <a href="incproj.html#V9" title="INCPROJ:attr.9">Desarguesian</a>  <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">p</font>, <font color="Olive" title="b3">x</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font><br>  for <font color="Olive" title="b4">K</font>, <font color="Olive" title="b5">L</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font>  st  not <font color="Olive" title="b2">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">K</font> &amp;  not <font color="Olive" title="b2">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">L</font> &amp; <font color="Olive" title="b3">x</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b4">K</font> &amp; <font color="Olive" title="b3">x</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">L</font> holds <br><span class="p1">(<span class="default"><a href="projred1.html#K1" title="PROJRED1:func.1">IncProj</a> (<font color="Olive" title="b4">K</font>,<font color="Olive" title="b2">p</font>,<font color="Olive" title="b5">L</font>)</span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">x</font>
+</div>
+<div about="#PF27" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T24"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/27')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/27')" href="javascript:()" title="27"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+<div about="#T25" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T25"><span class="comment"><font color="firebrick">:: PROJRED1:25</font></span><br></a><div class="add"> for <font color="Olive" title="b1">IPP</font> being   <a href="incproj.html#V5" title="INCPROJ:attr.5">2-dimensional</a>   <a href="incproj.html#V9" title="INCPROJ:attr.9">Desarguesian</a>  <a href="incproj.html#NM2" title="INCPROJ:NM.2">IncProjSp</a><br>  for <font color="Olive" title="b2">c</font>, <font color="Olive" title="b3">p</font>, <font color="Olive" title="b4">q</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font><br>  for <font color="Olive" title="b5">K</font>, <font color="Olive" title="b6">L</font>, <font color="Olive" title="b7">R</font> being   <a href="incsp_1.html#NM2" title="INCSP_1:NM.2">LINE</a> of <font color="Olive" title="b1">IPP</font>  st  not <font color="Olive" title="b3">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">K</font> &amp;  not <font color="Olive" title="b3">p</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b6">L</font> &amp;  not <font color="Olive" title="b4">q</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b6">L</font> &amp;  not <font color="Olive" title="b4">q</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b7">R</font> &amp; <font color="Olive" title="b2">c</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">K</font> &amp; <font color="Olive" title="b2">c</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b6">L</font> &amp; <font color="Olive" title="b2">c</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b7">R</font> &amp; <font color="Olive" title="b5">K</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b7">R</font> holds <br> ex <font color="Olive" title="b8">o</font> being   <a href="incsp_1.html#NM1" title="INCSP_1:NM.1">POINT</a> of <font color="Olive" title="b1">IPP</font> st <br>(  not <font color="Olive" title="b8">o</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b5">K</font> &amp;  not <font color="Olive" title="b8">o</font> <a href="incsp_1.html#R1" title="INCSP_1:pred.1">on</a> <font color="Olive" title="b7">R</font> &amp; <span class="p1">(<span class="default"><a href="projred1.html#K1" title="PROJRED1:func.1">IncProj</a> (<font color="Olive" title="b6">L</font>,<font color="Olive" title="b4">q</font>,<font color="Olive" title="b7">R</font>)</span>)</span> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <span class="p1">(<span class="default"><a href="projred1.html#K1" title="PROJRED1:func.1">IncProj</a> (<font color="Olive" title="b5">K</font>,<font color="Olive" title="b3">p</font>,<font color="Olive" title="b6">L</font>)</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="projred1.html#K1" title="PROJRED1:func.1">IncProj</a> (<font color="Olive" title="b5">K</font>,<font color="Olive" title="b8">o</font>,<font color="Olive" title="b7">R</font>) )</div>
+<div about="#PF28" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T25"></span><a class="txt" onmouseover="tooltip.show('url','proofs/projred1/28')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/projred1/28')" href="javascript:()" title="28"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+</body>
+</html>
