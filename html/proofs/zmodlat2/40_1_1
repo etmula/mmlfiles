@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">set </span><font color="Maroon" title="c3">Z</font> =  <a href="zmodlat2.html#K4" title="ZMODLAT2:func.4">EMLat</a> (<font color="Maroon" title="c2">r</font>,<font color="Maroon" title="c1">L</font>);<br/>
+<span class="kw">consider </span><font color="Maroon" title="c4">rm0</font>, <font color="Maroon" title="c5">rn0</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><span class="kw"> such that </span><br/><a NAME="E2:40_1_1"/><span class="lab"><font color="Green" title="E26">A1</font></span>: 
+( <font color="Maroon" title="c5">rn0</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; <font color="Maroon" title="c2">r</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">rm0</font> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <font color="Maroon" title="c5">rn0</font> )
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="rat_1.html#T1" onmouseover="rs('rat_1/T1')" onmouseout="rh()">RAT_1:1</a></span>;<br/>
+<a NAME="E3:40_1_1"/><span class="lab"><font color="Green" title="E27">a1</font></span>: 
+<font color="Maroon" title="c5">rn0</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <a href="int_3.html#K1" title="INT_3:func.1">INT.Ring</a>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:40_1_1"><span class="lab"><font color="Green" title="E26">A1</font></span></a></span>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c6">rn</font> = <font color="Maroon" title="c5">rn0</font>, <font color="Maroon" title="c7">rm</font> = <font color="Maroon" title="c4">rm0</font> as   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <a href="int_3.html#K1" title="INT_3:func.1">INT.Ring</a> <span class="kw">by</span> <span class="lab"><a class="ref" href="int_1.html#D2" onmouseover="rs('int_1/D2')" onmouseout="rh()">INT_1:def 2</a></span>;<br/>
+<a NAME="E5:40_1_1"/>
+ <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="numbers.html#T5" onmouseover="rs('numbers/T5')" onmouseout="rh()">NUMBERS:5</a></span>;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c8">rnf</font> = <font color="Maroon" title="c6">rn</font>, <font color="Maroon" title="c9">rmf</font> = <font color="Maroon" title="c7">rm</font> as   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a> ;<br/>
+<a NAME="E7:40_1_1"/>
+ for <font color="Olive" title="b1">v</font> being   <a href="vectsp_1.html#NM8" title="VECTSP_1:NM.8">Vector</a> of <span class="p1">(<span class="default"><a href="zmodlat2.html#K4" title="ZMODLAT2:func.4">EMLat</a> (<font color="Maroon" title="c2">r</font>,<font color="Maroon" title="c1">L</font>)</span>)</span>  st <font color="Olive" title="b1">v</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p1">(<span class="default"><a href="zmodlat2.html#K4" title="ZMODLAT2:func.4">EMLat</a> (<font color="Maroon" title="c2">r</font>,<font color="Maroon" title="c1">L</font>)</span>)</span> holds <br/><span class="p1"><a href="zmodlat1.html#K2" title="ZMODLAT1:func.2">||.</a><span class="default"><font color="Olive" title="b1">v</font></span><a href="zmodlat1.html#K2" title="ZMODLAT1:func.2">.||</a></span> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="40_1_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c10">v</font> be   <a href="vectsp_1.html#NM8" title="VECTSP_1:NM.8">Vector</a> of <span class="p1">(<span class="default"><a href="zmodlat2.html#K4" title="ZMODLAT2:func.4">EMLat</a> (<font color="Maroon" title="c2">r</font>,<font color="Maroon" title="c1">L</font>)</span>)</span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c10">v</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p1">(<span class="default"><a href="zmodlat2.html#K4" title="ZMODLAT2:func.4">EMLat</a> (<font color="Maroon" title="c2">r</font>,<font color="Maroon" title="c1">L</font>)</span>)</span> implies <span class="p1"><a href="zmodlat1.html#K2" title="ZMODLAT1:func.2">||.</a><span class="default"><font color="Maroon" title="c10">v</font></span><a href="zmodlat1.html#K2" title="ZMODLAT1:func.2">.||</a></span> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:40_1_1_1"/><span class="lab"><font color="Green" title="E28">B1</font></span>: 
+<font color="Maroon" title="c10">v</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p1">(<span class="default"><a href="zmodlat2.html#K4" title="ZMODLAT2:func.4">EMLat</a> (<font color="Maroon" title="c2">r</font>,<font color="Maroon" title="c1">L</font>)</span>)</span>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <span class="p1"><a href="zmodlat1.html#K2" title="ZMODLAT1:func.2">||.</a><span class="default"><font color="Maroon" title="c10">v</font></span><a href="zmodlat1.html#K2" title="ZMODLAT1:func.2">.||</a></span> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </span><br/>
+
+<span class="kw">consider </span><font color="Maroon" title="c11">T</font> being   <a href="ranknull.html#NM1" title="RANKNULL:NM.1">linear-transformation</a> of <span class="p1">(<span class="default"><a href="zmodul08.html#K1" title="ZMODUL08:func.1">EMbedding</a> <font color="Maroon" title="c1">L</font></span>)</span>,<span class="p1">(<span class="default"><a href="zmodul08.html#K4" title="ZMODUL08:func.4">EMbedding</a> (<font color="Maroon" title="c2">r</font>,<font color="Maroon" title="c1">L</font>)</span>)</span><span class="kw"> such that </span><br/><a NAME="E3:40_1_1_1"/><span class="lab"><font color="Green" title="E29">B2</font></span>: 
+( (  for <font color="Olive" title="b1">v</font> being   <a href="vectsp_1.html#NM8" title="VECTSP_1:NM.8">Vector</a> of <span class="p1">(<span class="default"><a href="zmodul04.html#K5" title="ZMODUL04:func.5">Z_MQ_VectSp</a> <font color="Maroon" title="c1">L</font></span>)</span>  st <font color="Olive" title="b1">v</font> <a href="struct_0.html#R1" title="STRUCT_0:pred.1">in</a>  <a href="zmodul08.html#K1" title="ZMODUL08:func.1">EMbedding</a> <font color="Maroon" title="c1">L</font> holds <br/><font color="Maroon" title="c11">T</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">v</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">r</font> <a href="vectsp_1.html#K3" title="VECTSP_1:func.3">*</a> <font color="Olive" title="b1">v</font> ) &amp; <font color="Maroon" title="c11">T</font> is  <a href="funct_2.html#V3" title="FUNCT_2:attr.3">bijective</a>  )
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="zmodul08.html#T27" onmouseover="rs('zmodul08/T27')" onmouseout="rh()">ZMODUL08:27</a></span>;<br/>
+<a NAME="E4:40_1_1_1"/>
+<font color="Maroon" title="c10">v</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><a href="zmodlat2.html#K4" title="ZMODLAT2:func.4">EMLat</a> (<font color="Maroon" title="c2">r</font>,<font color="Maroon" title="c1">L</font>)</span>)</span>
+ 
+;<br/>
+<a NAME="E5:40_1_1_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E30">B0</font></span>: 
+<font color="Maroon" title="c10">v</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">r</font> <a href="zmodul08.html#K3" title="ZMODUL08:func.3">*</a> <span class="p1">(<span class="default"><a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <span class="p2">(<span class="default"><a href="zmodul04.html#K6" title="ZMODUL04:func.6">MorphsZQ</a> <font color="Maroon" title="c1">L</font></span>)</span></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zmodlat2.html#D5" target="_self" onmouseover="rs('zmodlat2/D5')" onmouseout="rh()">defrEMLat</a></span>;<br/>
+<a NAME="E6:40_1_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c10">v</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><a href="zmodul08.html#K4" title="ZMODUL08:func.4">EMbedding</a> (<font color="Maroon" title="c2">r</font>,<font color="Maroon" title="c1">L</font>)</span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zmodul08.html#D6" onmouseover="rs('zmodul08/D6')" onmouseout="rh()">ZMODUL08:def 6</a></span>;<br/>
+<a NAME="E7:40_1_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c10">v</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Maroon" title="c11">T</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:40_1_1_1"><span class="lab"><font color="Green" title="E29">B2</font></span></a>, <a class="ref" href="funct_2.html#D3" onmouseover="rs('funct_2/D3')" onmouseout="rh()">FUNCT_2:def 3</a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c12">ve</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E9:40_1_1_1"/><span class="lab"><font color="Green" title="E31">B3</font></span>: 
+( <font color="Maroon" title="c12">ve</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><a href="zmodul08.html#K1" title="ZMODUL08:func.1">EMbedding</a> <font color="Maroon" title="c1">L</font></span>)</span> &amp; <font color="Maroon" title="c10">v</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c11">T</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c12">ve</font> )
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="funct_2.html#T11" onmouseover="rs('funct_2/T11')" onmouseout="rh()">FUNCT_2:11</a></span>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c13">vz</font> = <font color="Maroon" title="c12">ve</font> as   <a href="vectsp_1.html#NM8" title="VECTSP_1:NM.8">Vector</a> of <span class="p1">(<span class="default"><a href="zmodul04.html#K5" title="ZMODUL04:func.5">Z_MQ_VectSp</a> <font color="Maroon" title="c1">L</font></span>)</span> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E9:40_1_1_1"><span class="lab"><font color="Green" title="E31">B3</font></span></a>, <a class="ref" href="zmodul08.html#T19" onmouseover="rs('zmodul08/T19')" onmouseout="rh()">ZMODUL08:19</a></span>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c14">vd</font> = <font color="Maroon" title="c13">vz</font> as   <a href="vectsp_1.html#NM8" title="VECTSP_1:NM.8">Vector</a> of <span class="p1">(<span class="default"><a href="zmodul08.html#K2" title="ZMODUL08:func.2">DivisibleMod</a> <font color="Maroon" title="c1">L</font></span>)</span> <span class="kw">by</span> <span class="lab"><a class="ref" href="zmodul08.html#T30" onmouseover="rs('zmodul08/T30')" onmouseout="rh()">ZMODUL08:30</a></span>;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c15">zvd</font> being   <a href="vectsp_1.html#NM8" title="VECTSP_1:NM.8">Vector</a> of <span class="p1">(<span class="default"><a href="zmodul08.html#K2" title="ZMODUL08:func.2">DivisibleMod</a> <font color="Maroon" title="c1">L</font></span>)</span><span class="kw"> such that </span><br/><a NAME="E13:40_1_1_1"/><span class="lab"><font color="Green" title="E32">B4</font></span>: 
+( <font color="Maroon" title="c14">vd</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c6">rn</font> <a href="vectsp_1.html#K3" title="VECTSP_1:func.3">*</a> <font color="Maroon" title="c15">zvd</font> &amp; <font color="Maroon" title="c2">r</font> <a href="vectsp_1.html#K3" title="VECTSP_1:func.3">*</a> <font color="Maroon" title="c13">vz</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c7">rm</font> <a href="vectsp_1.html#K3" title="VECTSP_1:func.3">*</a> <font color="Maroon" title="c15">zvd</font> )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:40_1_1"><span class="lab"><font color="Green" title="E26">A1</font></span></a>, <a class="ref" href="zmodul08.html#T31" onmouseover="rs('zmodul08/T31')" onmouseout="rh()">ZMODUL08:31</a></span>;<br/>
+<a NAME="E14:40_1_1_1"/><span class="lab"><font color="Green" title="E33">BX</font></span>: 
+<font color="Maroon" title="c13">vz</font> <a href="struct_0.html#R1" title="STRUCT_0:pred.1">in</a>  <a href="zmodul08.html#K1" title="ZMODUL08:func.1">EMbedding</a> <font color="Maroon" title="c1">L</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E9:40_1_1_1"><span class="lab"><font color="Green" title="E31">B3</font></span></a></span>;<br/>
+<a NAME="E15:40_1_1_1"/><span class="lab"><font color="Green" title="E34">B5</font></span>: 
+<font color="Maroon" title="c10">v</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c7">rm</font> <a href="vectsp_1.html#K3" title="VECTSP_1:func.3">*</a> <font color="Maroon" title="c15">zvd</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:40_1_1_1"><span class="lab"><font color="Green" title="E29">B2</font></span></a>, <a class="txt" href="#E9:40_1_1_1"><span class="lab"><font color="Green" title="E31">B3</font></span></a>, <a class="txt" href="#E13:40_1_1_1"><span class="lab"><font color="Green" title="E32">B4</font></span></a>, <a class="txt" href="#E14:40_1_1_1"><span class="lab"><font color="Green" title="E33">BX</font></span></a></span>;<br/>
+<a NAME="E16:40_1_1_1"/><span class="lab"><font color="Green" title="E35">B6</font></span>: 
+<font color="Maroon" title="c10">v</font> is   <a href="vectsp_1.html#NM8" title="VECTSP_1:NM.8">Vector</a> of <span class="p1">(<span class="default"><a href="zmodul08.html#K4" title="ZMODUL08:func.4">EMbedding</a> (<font color="Maroon" title="c2">r</font>,<font color="Maroon" title="c1">L</font>)</span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:40_1_1_1"><span class="lab"><font color="Green" title="E30">B0</font></span></a>, <a class="ref" href="zmodul08.html#D6" onmouseover="rs('zmodul08/D6')" onmouseout="rh()">ZMODUL08:def 6</a></span>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c16">vd</font> = <font color="Maroon" title="c14">vd</font> as   <a href="vectsp_1.html#NM8" title="VECTSP_1:NM.8">Vector</a> of <span class="p1">(<span class="default"><a href="zmodul08.html#K1" title="ZMODUL08:func.1">EMbedding</a> <font color="Maroon" title="c1">L</font></span>)</span> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E9:40_1_1_1"><span class="lab"><font color="Green" title="E31">B3</font></span></a></span>;<br/>
+<span class="lab"><font color="Green" title="E36">B8</font></span>: <span class="p1"><a href="zmodlat1.html#K2" title="ZMODLAT1:func.2">||.</a><span class="default"><font color="Maroon" title="c10">v</font></span><a href="zmodlat1.html#K2" title="ZMODLAT1:func.2">.||</a></span> = 
+<span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="zmodlat2.html#K2" title="ZMODLAT2:func.2">ScProductDM</a> <font color="Maroon" title="c1">L</font></span>)</span> <a href="realset1.html#K1" title="REALSET1:func.1">||</a> <span class="p2">(<span class="default"><font color="Maroon" title="c2">r</font> <a href="zmodul08.html#K3" title="ZMODUL08:func.3">*</a> <span class="p3">(<span class="default"><a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <span class="p4">(<span class="default"><a href="zmodul04.html#K6" title="ZMODUL04:func.6">MorphsZQ</a> <font color="Maroon" title="c1">L</font></span>)</span></span>)</span></span>)</span></span>)</span> <a href="binop_1.html#K1" title="BINOP_1:func.1">.</a> (<font color="Maroon" title="c10">v</font>,<font color="Maroon" title="c10">v</font>)
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zmodlat2.html#D5" target="_self" onmouseover="rs('zmodlat2/D5')" onmouseout="rh()">defrEMLat</a></span>
+<br/>.= 
+<span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="zmodlat2.html#K2" title="ZMODLAT2:func.2">ScProductDM</a> <font color="Maroon" title="c1">L</font></span>)</span> <a href="realset1.html#K1" title="REALSET1:func.1">||</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p2">(<span class="default"><a href="zmodul08.html#K4" title="ZMODUL08:func.4">EMbedding</a> (<font color="Maroon" title="c2">r</font>,<font color="Maroon" title="c1">L</font>)</span>)</span></span>)</span> <a href="binop_1.html#K1" title="BINOP_1:func.1">.</a> (<font color="Maroon" title="c10">v</font>,<font color="Maroon" title="c10">v</font>)
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zmodul08.html#D6" onmouseover="rs('zmodul08/D6')" onmouseout="rh()">ZMODUL08:def 6</a></span>
+<br/>.= 
+<span class="p1">(<span class="default"><a href="zmodlat2.html#K2" title="ZMODLAT2:func.2">ScProductDM</a> <font color="Maroon" title="c1">L</font></span>)</span> <a href="binop_1.html#K1" title="BINOP_1:func.1">.</a> (<font color="Maroon" title="c10">v</font>,<font color="Maroon" title="c10">v</font>)
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E16:40_1_1_1"><span class="lab"><font color="Green" title="E35">B6</font></span></a>, <a class="ref" href="zmodlat2.html#T9" target="_self" onmouseover="rs('zmodlat2/T9')" onmouseout="rh()">ThSPrEM1</a></span>
+<br/>.= 
+<font color="Maroon" title="c4">rm0</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="zmodlat2.html#K2" title="ZMODLAT2:func.2">ScProductDM</a> <font color="Maroon" title="c1">L</font></span>)</span> <a href="binop_1.html#K2" title="BINOP_1:func.2">.</a> (<font color="Maroon" title="c15">zvd</font>,<span class="p2">(<span class="default"><font color="Maroon" title="c7">rm</font> <a href="vectsp_1.html#K3" title="VECTSP_1:func.3">*</a> <font color="Maroon" title="c15">zvd</font></span>)</span>)</span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E15:40_1_1_1"><span class="lab"><font color="Green" title="E34">B5</font></span></a>, <a class="ref" href="zmodlat2.html#T6" target="_self" onmouseover="rs('zmodlat2/T6')" onmouseout="rh()">ThSPDM1</a></span>
+<br/>.= 
+<font color="Maroon" title="c4">rm0</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="zmodlat2.html#K2" title="ZMODLAT2:func.2">ScProductDM</a> <font color="Maroon" title="c1">L</font></span>)</span> <a href="binop_1.html#K2" title="BINOP_1:func.2">.</a> (<span class="p2">(<span class="default"><font color="Maroon" title="c7">rm</font> <a href="vectsp_1.html#K3" title="VECTSP_1:func.3">*</a> <font color="Maroon" title="c15">zvd</font></span>)</span>,<font color="Maroon" title="c15">zvd</font>)</span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zmodlat2.html#T6" target="_self" onmouseover="rs('zmodlat2/T6')" onmouseout="rh()">ThSPDM1</a></span>
+<br/>.= 
+<font color="Maroon" title="c4">rm0</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><font color="Maroon" title="c4">rm0</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="zmodlat2.html#K2" title="ZMODLAT2:func.2">ScProductDM</a> <font color="Maroon" title="c1">L</font></span>)</span> <a href="binop_1.html#K2" title="BINOP_1:func.2">.</a> (<font color="Maroon" title="c15">zvd</font>,<font color="Maroon" title="c15">zvd</font>)</span>)</span></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zmodlat2.html#T6" target="_self" onmouseover="rs('zmodlat2/T6')" onmouseout="rh()">ThSPDM1</a></span>
+<br/>.= 
+<span class="p1">(<span class="default"><font color="Maroon" title="c4">rm0</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Maroon" title="c4">rm0</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="zmodlat2.html#K2" title="ZMODLAT2:func.2">ScProductDM</a> <font color="Maroon" title="c1">L</font></span>)</span> <a href="binop_1.html#K2" title="BINOP_1:func.2">.</a> (<font color="Maroon" title="c15">zvd</font>,<font color="Maroon" title="c15">zvd</font>)</span>)</span>
+
+<br/>.= 
+<span class="p1">(<span class="default"><font color="Maroon" title="c9">rmf</font> <a href="group_1.html#K8" title="GROUP_1:func.8">*</a> <font color="Maroon" title="c9">rmf</font></span>)</span> <a href="group_1.html#K8" title="GROUP_1:func.8">*</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><font color="Maroon" title="c8">rnf</font> <a href="algstr_0.html#K9" title="ALGSTR_0:func.9">"</a></span>)</span> <a href="group_1.html#K8" title="GROUP_1:func.8">*</a> <span class="p3">(<span class="default"><font color="Maroon" title="c8">rnf</font> <a href="algstr_0.html#K9" title="ALGSTR_0:func.9">"</a></span>)</span></span>)</span> <a href="group_1.html#K8" title="GROUP_1:func.8">*</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="zmodlat2.html#K1" title="ZMODLAT2:func.1">ScProductEM</a> <font color="Maroon" title="c1">L</font></span>)</span> <a href="binop_1.html#K2" title="BINOP_1:func.2">.</a> (<font color="Maroon" title="c16">vd</font>,<font color="Maroon" title="c16">vd</font>)</span>)</span></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:40_1_1"><span class="lab"><font color="Green" title="E26">A1</font></span></a>, <a class="txt" href="#E13:40_1_1_1"><span class="lab"><font color="Green" title="E32">B4</font></span></a>, <a class="ref" href="zmodlat2.html#D3" target="_self" onmouseover="rs('zmodlat2/D3')" onmouseout="rh()">defScProductDM</a></span>
+<br/>.= 
+<span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Maroon" title="c9">rmf</font> <a href="group_1.html#K8" title="GROUP_1:func.8">*</a> <font color="Maroon" title="c9">rmf</font></span>)</span> <a href="group_1.html#K8" title="GROUP_1:func.8">*</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><font color="Maroon" title="c8">rnf</font> <a href="algstr_0.html#K9" title="ALGSTR_0:func.9">"</a></span>)</span> <a href="group_1.html#K8" title="GROUP_1:func.8">*</a> <span class="p3">(<span class="default"><font color="Maroon" title="c8">rnf</font> <a href="algstr_0.html#K9" title="ALGSTR_0:func.9">"</a></span>)</span></span>)</span></span>)</span> <a href="group_1.html#K8" title="GROUP_1:func.8">*</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="zmodlat2.html#K1" title="ZMODLAT2:func.1">ScProductEM</a> <font color="Maroon" title="c1">L</font></span>)</span> <a href="binop_1.html#K2" title="BINOP_1:func.2">.</a> (<font color="Maroon" title="c16">vd</font>,<font color="Maroon" title="c16">vd</font>)</span>)</span>
+
+;<br/>
+<a NAME="E19:40_1_1_1"/><span class="lab"><font color="Green" title="E37">BY</font></span>: 
+<font color="Maroon" title="c8">rnf</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:40_1_1"><span class="lab"><font color="Green" title="E26">A1</font></span></a></span>;<br/>
+<a NAME="E20:40_1_1_1"/>
+<font color="Maroon" title="c4">rm0</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="40_1_1_1_2"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><a NAME="E1:40_1_1_1_2"/>
+<font color="Maroon" title="c4">rm0</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E2:40_1_1_1_2"/><span class="kw">then </span>
+<font color="Maroon" title="c2">r</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <a href="gaussint.html#K11" title="GAUSSINT:func.11">F_Rat</a>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:40_1_1"><span class="lab"><font color="Green" title="E26">A1</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E3:40_1_1_1_2"/>
+contradiction
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E21:40_1_1_1"/><span class="kw">then </span>
+( <font color="Maroon" title="c9">rmf</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; <font color="Maroon" title="c8">rnf</font> <a href="algstr_0.html#K9" title="ALGSTR_0:func.9">"</a>  <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E19:40_1_1_1"><span class="lab"><font color="Green" title="E37">BY</font></span></a>, <a class="ref" href="vectsp_1.html#T25" onmouseover="rs('vectsp_1/T25')" onmouseout="rh()">VECTSP_1:25</a></span>;<br/>
+<a NAME="E22:40_1_1_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E38">B9</font></span>: 
+( <font color="Maroon" title="c9">rmf</font> <a href="group_1.html#K8" title="GROUP_1:func.8">*</a> <font color="Maroon" title="c9">rmf</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; <span class="p1">(<span class="default"><font color="Maroon" title="c8">rnf</font> <a href="algstr_0.html#K9" title="ALGSTR_0:func.9">"</a></span>)</span> <a href="group_1.html#K8" title="GROUP_1:func.8">*</a> <span class="p1">(<span class="default"><font color="Maroon" title="c8">rnf</font> <a href="algstr_0.html#K9" title="ALGSTR_0:func.9">"</a></span>)</span> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xreal_1.html#T63" onmouseover="rs('xreal_1/T63')" onmouseout="rh()">XREAL_1:63</a></span>;<br/>
+<a NAME="E23:40_1_1_1"/>
+<font color="Maroon" title="c16">vd</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><a href="zmodul08.html#K1" title="ZMODUL08:func.1">EMbedding</a> <font color="Maroon" title="c1">L</font></span>)</span>
+ 
+;<br/>
+<a NAME="E24:40_1_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c16">vd</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <span class="p1">(<span class="default"><a href="zmodul04.html#K6" title="ZMODUL04:func.6">MorphsZQ</a> <font color="Maroon" title="c1">L</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zmodul08.html#D3" onmouseover="rs('zmodul08/D3')" onmouseout="rh()">ZMODUL08:def 3</a></span>;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c17">vl</font> = <font color="Maroon" title="c16">vd</font> as   <a href="vectsp_1.html#NM8" title="VECTSP_1:NM.8">Vector</a> of <span class="p1">(<span class="default"><a href="zmodlat2.html#K3" title="ZMODLAT2:func.3">EMLat</a> <font color="Maroon" title="c1">L</font></span>)</span> <span class="kw">by</span> <span class="lab"><a class="ref" href="zmodlat2.html#D4" target="_self" onmouseover="rs('zmodlat2/D4')" onmouseout="rh()">defEMLat</a></span>;<br/>
+<a NAME="E26:40_1_1_1"/>
+<font color="Maroon" title="c16">vd</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p1">(<span class="default"><a href="zmodul08.html#K1" title="ZMODUL08:func.1">EMbedding</a> <font color="Maroon" title="c1">L</font></span>)</span>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="40_1_1_1_3"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><a NAME="E1:40_1_1_1_3"/><span class="lab"><font color="Green" title="E39">C1</font></span>: 
+<font color="Maroon" title="c16">vd</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p1">(<span class="default"><a href="zmodul08.html#K1" title="ZMODUL08:func.1">EMbedding</a> <font color="Maroon" title="c1">L</font></span>)</span>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<font color="Maroon" title="c6">rn</font> <a href="vectsp_1.html#K3" title="VECTSP_1:func.3">*</a> <font color="Maroon" title="c15">zvd</font> = 
+ <a href="zmodul04.html#K3" title="ZMODUL04:func.3">zeroCoset</a> <font color="Maroon" title="c1">L</font>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E13:40_1_1_1"><span class="lab"><font color="Green" title="E32">B4</font></span></a>, <a class="txt" href="#E1:40_1_1_1_3"><span class="lab"><font color="Green" title="E39">C1</font></span></a>, <a class="ref" href="zmodul08.html#D3" onmouseover="rs('zmodul08/D3')" onmouseout="rh()">ZMODUL08:def 3</a></span>
+<br/>.= 
+ <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p1">(<span class="default"><a href="zmodul08.html#K2" title="ZMODUL08:func.2">DivisibleMod</a> <font color="Maroon" title="c1">L</font></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zmodul08.html#D4" onmouseover="rs('zmodul08/D4')" onmouseout="rh()">ZMODUL08:def 4</a></span>
+;<br/>
+<a NAME="E3:40_1_1_1_3"/><span class="kw">then </span>
+<font color="Maroon" title="c15">zvd</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p1">(<span class="default"><a href="zmodul08.html#K2" title="ZMODUL08:func.2">DivisibleMod</a> <font color="Maroon" title="c1">L</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zmodul01.html#D7" onmouseover="rs('zmodul01/D7')" onmouseout="rh()">ZMODUL01:def 7</a>, <a class="txt" href="#E3:40_1_1"><span class="lab"><font color="Green" title="E27">a1</font></span></a></span>;<br/>
+<span class="kw">then </span><font color="Maroon" title="c10">v</font> = 
+ <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p1">(<span class="default"><a href="zmodul08.html#K2" title="ZMODUL08:func.2">DivisibleMod</a> <font color="Maroon" title="c1">L</font></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E15:40_1_1_1"><span class="lab"><font color="Green" title="E34">B5</font></span></a>, <a class="ref" href="zmodul01.html#T1" onmouseover="rs('zmodul01/T1')" onmouseout="rh()">ZMODUL01:1</a></span>
+<br/>.= 
+ <a href="zmodul04.html#K3" title="ZMODUL04:func.3">zeroCoset</a> <font color="Maroon" title="c1">L</font>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zmodul08.html#D4" onmouseover="rs('zmodul08/D4')" onmouseout="rh()">ZMODUL08:def 4</a></span>
+<br/>.= 
+ <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p1">(<span class="default"><a href="zmodlat2.html#K4" title="ZMODLAT2:func.4">EMLat</a> (<font color="Maroon" title="c2">r</font>,<font color="Maroon" title="c1">L</font>)</span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zmodlat2.html#D5" target="_self" onmouseover="rs('zmodlat2/D5')" onmouseout="rh()">defrEMLat</a></span>
+;<br/>
+<span class="kw">hence </span><a NAME="E5:40_1_1_1_3"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:40_1_1_1"><span class="lab"><font color="Green" title="E28">B1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E27:40_1_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c16">vd</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="zmodul04.html#K3" title="ZMODUL04:func.3">zeroCoset</a> <font color="Maroon" title="c1">L</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zmodul08.html#D3" onmouseover="rs('zmodul08/D3')" onmouseout="rh()">ZMODUL08:def 3</a></span>;<br/>
+<a NAME="E28:40_1_1_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E39">B10</font></span>: 
+<font color="Maroon" title="c16">vd</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p1">(<span class="default"><a href="zmodlat2.html#K3" title="ZMODLAT2:func.3">EMLat</a> <font color="Maroon" title="c1">L</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zmodlat2.html#D4" target="_self" onmouseover="rs('zmodlat2/D4')" onmouseout="rh()">defEMLat</a></span>;<br/>
+<a NAME="E29:40_1_1_1"/>
+<span class="p1">(<span class="default"><a href="zmodlat2.html#K1" title="ZMODLAT2:func.1">ScProductEM</a> <font color="Maroon" title="c1">L</font></span>)</span> <a href="binop_1.html#K2" title="BINOP_1:func.2">.</a> (<font color="Maroon" title="c16">vd</font>,<font color="Maroon" title="c16">vd</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="zmodlat1.html#K2" title="ZMODLAT1:func.2">||.</a><span class="default"><font color="Maroon" title="c17">vl</font></span><a href="zmodlat1.html#K2" title="ZMODLAT1:func.2">.||</a></span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zmodlat2.html#D4" target="_self" onmouseover="rs('zmodlat2/D4')" onmouseout="rh()">defEMLat</a></span>;<br/>
+<a NAME="E30:40_1_1_1"/><span class="kw">then </span>
+<span class="p1">(<span class="default"><a href="zmodlat2.html#K1" title="ZMODLAT2:func.1">ScProductEM</a> <font color="Maroon" title="c1">L</font></span>)</span> <a href="binop_1.html#K2" title="BINOP_1:func.2">.</a> (<font color="Maroon" title="c16">vd</font>,<font color="Maroon" title="c16">vd</font>) <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E28:40_1_1_1"><span class="lab"><font color="Green" title="E39">B10</font></span></a>, <a class="ref" href="zmodlat1.html#D6" onmouseover="rs('zmodlat1/D6')" onmouseout="rh()">ZMODLAT1:def 6</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E31:40_1_1_1"/>
+<span class="p1"><a href="zmodlat1.html#K2" title="ZMODLAT1:func.2">||.</a><span class="default"><font color="Maroon" title="c10">v</font></span><a href="zmodlat1.html#K2" title="ZMODLAT1:func.2">.||</a></span> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E18:40_1_1_1"><span class="lab"><font color="Green" title="E36">B8</font></span></a>, <a class="txt" href="#E22:40_1_1_1"><span class="lab"><font color="Green" title="E38">B9</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E8:40_1_1"/>
+ <a href="zmodlat2.html#K4" title="ZMODLAT2:func.4">EMLat</a> (<font color="Maroon" title="c2">r</font>,<font color="Maroon" title="c1">L</font>) is  <a href="zmodlat1.html#V4" title="ZMODLAT1:attr.4">positive-definite</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

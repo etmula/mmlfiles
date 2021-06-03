@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">V</font> be   <a href="zmodul01.html#NM1" title="ZMODUL01:NM.1">Z_Module</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="vectsp10.html#K6" title="VECTSP10:func.6">VectQuot</a> (<font color="Maroon" title="c1">V</font>,<span class="p1">(<span class="default"><a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font></span>)</span>) is  <a href="zmodul06.html#V3" title="ZMODUL06:attr.3">torsion-free</a> </span><br/>
+
+<span class="kw">set </span><font color="Maroon" title="c2">W</font> =  <a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c3">ZQ</font> =  <a href="vectsp10.html#K6" title="VECTSP10:func.6">VectQuot</a> (<font color="Maroon" title="c1">V</font>,<span class="p1">(<span class="default"><a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font></span>)</span>);<br/>
+<a NAME="E1:20"/>
+ for <font color="Olive" title="b1">v</font> being   <a href="vectsp_1.html#NM8" title="VECTSP_1:NM.8">Vector</a> of <span class="p1">(<span class="default"><a href="vectsp10.html#K6" title="VECTSP10:func.6">VectQuot</a> (<font color="Maroon" title="c1">V</font>,<span class="p2">(<span class="default"><a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font></span>)</span>)</span>)</span>  st <font color="Olive" title="b1">v</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p1">(<span class="default"><a href="vectsp10.html#K6" title="VECTSP10:func.6">VectQuot</a> (<font color="Maroon" title="c1">V</font>,<span class="p2">(<span class="default"><a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font></span>)</span>)</span>)</span> holds <br/> not <font color="Olive" title="b1">v</font> is  <a href="zmodul06.html#V1" title="ZMODUL06:attr.1">torsion</a> 
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="20_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">v</font> be   <a href="vectsp_1.html#NM8" title="VECTSP_1:NM.8">Vector</a> of <span class="p1">(<span class="default"><a href="vectsp10.html#K6" title="VECTSP10:func.6">VectQuot</a> (<font color="Maroon" title="c1">V</font>,<span class="p2">(<span class="default"><a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font></span>)</span>)</span>)</span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c4">v</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p1">(<span class="default"><a href="vectsp10.html#K6" title="VECTSP10:func.6">VectQuot</a> (<font color="Maroon" title="c1">V</font>,<span class="p2">(<span class="default"><a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font></span>)</span>)</span>)</span> implies  not <font color="Maroon" title="c4">v</font> is  <a href="zmodul06.html#V1" title="ZMODUL06:attr.1">torsion</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:20_1"/><span class="lab"><font color="Green" title="E14">AS</font></span>: 
+<font color="Maroon" title="c4">v</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p1">(<span class="default"><a href="vectsp10.html#K6" title="VECTSP10:func.6">VectQuot</a> (<font color="Maroon" title="c1">V</font>,<span class="p2">(<span class="default"><a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font></span>)</span>)</span>)</span>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not <font color="Maroon" title="c4">v</font> is  <a href="zmodul06.html#V1" title="ZMODUL06:attr.1">torsion</a> </span><br/>
+
+<span class="kw">assume </span><a NAME="E2:20_1"/>
+<font color="Maroon" title="c4">v</font> is  <a href="zmodul06.html#V1" title="ZMODUL06:attr.1">torsion</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c5">i</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <a href="int_3.html#K1" title="INT_3:func.1">INT.Ring</a><span class="kw"> such that </span><br/><a NAME="E4:20_1"/><span class="lab"><font color="Green" title="E15">P1</font></span>: 
+( <font color="Maroon" title="c5">i</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; <font color="Maroon" title="c5">i</font> <a href="vectsp_1.html#K3" title="VECTSP_1:func.3">*</a> <font color="Maroon" title="c4">v</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p1">(<span class="default"><a href="vectsp10.html#K6" title="VECTSP10:func.6">VectQuot</a> (<font color="Maroon" title="c1">V</font>,<span class="p2">(<span class="default"><a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font></span>)</span>)</span>)</span> )
+ ;<br/>
+<a NAME="E5:20_1"/><span class="lab"><font color="Green" title="E16">P3</font></span>: 
+<font color="Maroon" title="c4">v</font> is    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="vectsp10.html#K2" title="VECTSP10:func.2">CosetSet</a> (<font color="Maroon" title="c1">V</font>,<span class="p1">(<span class="default"><a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font></span>)</span>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="vectsp10.html#D6" onmouseover="rs('vectsp10/D6')" onmouseout="rh()">VECTSP10:def 6</a></span>;<br/>
+<a NAME="E6:20_1"/><span class="kw">then </span>
+<font color="Maroon" title="c4">v</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="vectsp10.html#K2" title="VECTSP10:func.2">CosetSet</a> (<font color="Maroon" title="c1">V</font>,<span class="p1">(<span class="default"><a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font></span>)</span>)
+ 
+;<br/>
+<a NAME="E7:20_1"/><span class="kw">then </span>
+ ex <font color="Olive" title="b1">A</font> being    <a href="vectsp_4.html#M2" title="VECTSP_4:mode.2">Coset</a> of  <a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font> st <font color="Maroon" title="c4">v</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">A</font>
+ 
+;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c6">a</font> being   <a href="zmodul01.html#NM2" title="ZMODUL01:NM.2">VECTOR</a> of <font color="Maroon" title="c1">V</font><span class="kw"> such that </span><br/><a NAME="E9:20_1"/><span class="lab"><font color="Green" title="E17">A3</font></span>: 
+<font color="Maroon" title="c4">v</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c6">a</font> <a href="vectsp_4.html#K3" title="VECTSP_4:func.3">+</a> <span class="p1">(<span class="default"><a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font></span>)</span>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="vectsp_4.html#D6" onmouseover="rs('vectsp_4/D6')" onmouseout="rh()">VECTSP_4:def 6</a></span>;<br/>
+<span class="lab"><font color="Green" title="E18">A4</font></span>: <font color="Maroon" title="c5">i</font> <a href="vectsp_1.html#K3" title="VECTSP_1:func.3">*</a> <font color="Maroon" title="c4">v</font> = 
+<span class="p1">(<span class="default"><a href="vectsp10.html#K5" title="VECTSP10:func.5">lmultCoset</a> (<font color="Maroon" title="c1">V</font>,<span class="p2">(<span class="default"><a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font></span>)</span>)</span>)</span> <a href="binop_1.html#K1" title="BINOP_1:func.1">.</a> (<font color="Maroon" title="c5">i</font>,<font color="Maroon" title="c4">v</font>)
+<span class="kw">by</span> <span class="lab"><a class="ref" href="vectsp10.html#D6" onmouseover="rs('vectsp10/D6')" onmouseout="rh()">VECTSP10:def 6</a></span>
+<br/>.= 
+<span class="p1">(<span class="default"><font color="Maroon" title="c5">i</font> <a href="vectsp_1.html#K3" title="VECTSP_1:func.3">*</a> <font color="Maroon" title="c6">a</font></span>)</span> <a href="vectsp_4.html#K3" title="VECTSP_4:func.3">+</a> <span class="p1">(<span class="default"><a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="vectsp10.html#D5" onmouseover="rs('vectsp10/D5')" onmouseout="rh()">VECTSP10:def 5</a>, <a class="txt" href="#E9:20_1"><span class="lab"><font color="Green" title="E17">A3</font></span></a>, <a class="txt" href="#E5:20_1"><span class="lab"><font color="Green" title="E16">P3</font></span></a></span>
+;<br/>
+<font color="Maroon" title="c5">i</font> <a href="vectsp_1.html#K3" title="VECTSP_1:func.3">*</a> <font color="Maroon" title="c4">v</font> = 
+ <a href="vectsp10.html#K4" title="VECTSP10:func.4">zeroCoset</a> (<font color="Maroon" title="c1">V</font>,<span class="p1">(<span class="default"><a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font></span>)</span>)
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:20_1"><span class="lab"><font color="Green" title="E15">P1</font></span></a>, <a class="ref" href="vectsp10.html#D6" onmouseover="rs('vectsp10/D6')" onmouseout="rh()">VECTSP10:def 6</a></span>
+<br/>.= 
+ the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font></span>)</span>
+
+;<br/>
+<a NAME="E12:20_1"/><span class="kw">then </span>
+<font color="Maroon" title="c5">i</font> <a href="vectsp_1.html#K3" title="VECTSP_1:func.3">*</a> <font color="Maroon" title="c6">a</font> <a href="struct_0.html#R1" title="STRUCT_0:pred.1">in</a>  <a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zmodul01.html#T63" onmouseover="rs('zmodul01/T63')" onmouseout="rh()">ZMODUL01:63</a>, <a class="txt" href="#E10:20_1"><span class="lab"><font color="Green" title="E18">A4</font></span></a></span>;<br/>
+<a NAME="E13:20_1"/><span class="kw">then </span>
+<font color="Maroon" title="c5">i</font> <a href="vectsp_1.html#K3" title="VECTSP_1:func.3">*</a> <font color="Maroon" title="c6">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">v</font> where <font color="Olive" title="b1">v</font> is   <a href="zmodul01.html#NM2" title="ZMODUL01:NM.2">VECTOR</a> of <font color="Maroon" title="c1">V</font> : <font color="Olive" title="b1">v</font> is  <a href="zmodul06.html#V1" title="ZMODUL06:attr.1">torsion</a>  </span> } </span> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zmodul07.html#D1" target="_self" onmouseover="rs('zmodul07/D1')" onmouseout="rh()">defTorsionPart</a></span>;<br/>
+<a NAME="E14:20_1"/><span class="kw">then </span>
+ ex <font color="Olive" title="b1">w</font> being   <a href="zmodul01.html#NM2" title="ZMODUL01:NM.2">VECTOR</a> of <font color="Maroon" title="c1">V</font> st <br/>( <font color="Maroon" title="c5">i</font> <a href="vectsp_1.html#K3" title="VECTSP_1:func.3">*</a> <font color="Maroon" title="c6">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">w</font> &amp; <font color="Olive" title="b1">w</font> is  <a href="zmodul06.html#V1" title="ZMODUL06:attr.1">torsion</a>  )
+ 
+;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c7">j</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <a href="int_3.html#K1" title="INT_3:func.1">INT.Ring</a><span class="kw"> such that </span><br/><a NAME="E16:20_1"/><span class="lab"><font color="Green" title="E19">A5</font></span>: 
+( <font color="Maroon" title="c7">j</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; <font color="Maroon" title="c7">j</font> <a href="vectsp_1.html#K3" title="VECTSP_1:func.3">*</a> <span class="p1">(<span class="default"><font color="Maroon" title="c5">i</font> <a href="vectsp_1.html#K3" title="VECTSP_1:func.3">*</a> <font color="Maroon" title="c6">a</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Maroon" title="c1">V</font> )
+ ;<br/>
+<a NAME="E17:20_1"/>
+<span class="p1">(<span class="default"><font color="Maroon" title="c7">j</font> <a href="algstr_0.html#K6" title="ALGSTR_0:func.6">*</a> <font color="Maroon" title="c5">i</font></span>)</span> <a href="vectsp_1.html#K3" title="VECTSP_1:func.3">*</a> <font color="Maroon" title="c6">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Maroon" title="c1">V</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E16:20_1"><span class="lab"><font color="Green" title="E19">A5</font></span></a>, <a class="ref" href="vectsp_1.html#D16" onmouseover="rs('vectsp_1/D16')" onmouseout="rh()">VECTSP_1:def 16</a></span>;<br/>
+<a NAME="E18:20_1"/><span class="kw">then </span>
+<font color="Maroon" title="c6">a</font> is  <a href="zmodul06.html#V1" title="ZMODUL06:attr.1">torsion</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E16:20_1"><span class="lab"><font color="Green" title="E19">A5</font></span></a>, <a class="txt" href="#E4:20_1"><span class="lab"><font color="Green" title="E15">P1</font></span></a></span>;<br/>
+<a NAME="E19:20_1"/><span class="kw">then </span>
+<font color="Maroon" title="c6">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">v</font> where <font color="Olive" title="b1">v</font> is   <a href="zmodul01.html#NM2" title="ZMODUL01:NM.2">VECTOR</a> of <font color="Maroon" title="c1">V</font> : <font color="Olive" title="b1">v</font> is  <a href="zmodul06.html#V1" title="ZMODUL06:attr.1">torsion</a>  </span> } </span> 
+ 
+;<br/>
+<a NAME="E20:20_1"/><span class="kw">then </span>
+<font color="Maroon" title="c6">a</font> <a href="struct_0.html#R1" title="STRUCT_0:pred.1">in</a>  <a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zmodul07.html#D1" target="_self" onmouseover="rs('zmodul07/D1')" onmouseout="rh()">defTorsionPart</a></span>;<br/>
+<a NAME="E21:20_1"/><span class="kw">then </span>
+<font color="Maroon" title="c4">v</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="vectsp10.html#K4" title="VECTSP10:func.4">zeroCoset</a> (<font color="Maroon" title="c1">V</font>,<span class="p1">(<span class="default"><a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font></span>)</span>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E9:20_1"><span class="lab"><font color="Green" title="E17">A3</font></span></a>, <a class="ref" href="zmodul01.html#T63" onmouseover="rs('zmodul01/T63')" onmouseout="rh()">ZMODUL01:63</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E22:20_1"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:20_1"><span class="lab"><font color="Green" title="E14">AS</font></span></a>, <a class="ref" href="vectsp10.html#D6" onmouseover="rs('vectsp10/D6')" onmouseout="rh()">VECTSP10:def 6</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E2:20"/>
+ <a href="vectsp10.html#K6" title="VECTSP10:func.6">VectQuot</a> (<font color="Maroon" title="c1">V</font>,<span class="p1">(<span class="default"><a href="zmodul07.html#K1" title="ZMODUL07:func.1">torsion_part</a> <font color="Maroon" title="c1">V</font></span>)</span>) is  <a href="zmodul06.html#V3" title="ZMODUL06:attr.3">torsion-free</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

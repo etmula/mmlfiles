@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">defpred </span><font color="Maroon">S<sub>1</sub></font>[  <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>] <span class="kw">means </span>( $1 is   <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon">F<sub>1</sub></font>() implies <font color="Maroon">P<sub>1</sub></font>[$1] );<br/>
+<a NAME="E1:10_1"/><span class="lab"><font color="Green" title="E10">A4</font></span>: 
+ for <font color="Olive" title="b1">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b1">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; <font color="Olive" title="b1">A</font> is  <a href="ordinal1.html#V4" title="ORDINAL1:attr.4">limit_ordinal</a>  &amp; (  for <font color="Olive" title="b2">B</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b2">B</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">A</font> holds <br/><font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b2">B</font>] ) holds <br/><font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">A</font>]
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="10_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">A</font> be   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; <font color="Maroon" title="c1">A</font> is  <a href="ordinal1.html#V4" title="ORDINAL1:attr.4">limit_ordinal</a>  &amp; (  for <font color="Olive" title="b1">B</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b1">B</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c1">A</font> holds <br/><font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">B</font>] ) implies <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c1">A</font>] )</span><br/>
+
+<span class="kw">assume </span><span class="kw">that </span><br/><a NAME="E1:10_1_1"/><span class="lab"><font color="Green" title="E11">A5</font></span>: 
+( <font color="Maroon" title="c1">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; <font color="Maroon" title="c1">A</font> is  <a href="ordinal1.html#V4" title="ORDINAL1:attr.4">limit_ordinal</a>  )
+ <span class="kw">and </span><br/><a NAME="E2:10_1_1"/><span class="lab"><font color="Green" title="E12">A6</font></span>: 
+ for <font color="Olive" title="b1">B</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b1">B</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c1">A</font> &amp; <font color="Olive" title="b1">B</font> is   <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon">F<sub>1</sub></font>() holds <br/><font color="Maroon">P<sub>1</sub></font>[<font color="Olive" title="b1">B</font>]
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c1">A</font>]</span><br/>
+
+<span class="kw">assume </span><a NAME="E3:10_1_1"/>
+<font color="Maroon" title="c1">A</font> is   <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon">F<sub>1</sub></font>()
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon">P<sub>1</sub></font>[<font color="Maroon" title="c1">A</font>]</span><br/>
+
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c2">a</font> = <font color="Maroon" title="c1">A</font> as   <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon">F<sub>1</sub></font>() ;<br/>
+<a NAME="E5:10_1_1"/>
+(  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ordinal4.html#K2" title="ORDINAL4:func.2">0-element_of</a> <font color="Maroon">F<sub>1</sub></font>() &amp; (  for <font color="Olive" title="b1">b</font> being   <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon">F<sub>1</sub></font>()  st <font color="Olive" title="b1">b</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">a</font> holds <br/><font color="Maroon">P<sub>1</sub></font>[<font color="Olive" title="b1">b</font>] ) )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:10_1_1"><span class="lab"><font color="Green" title="E12">A6</font></span></a>, <a class="ref" href="ordinal4.html#T33" onmouseover="rs('ordinal4/T33')" onmouseout="rh()">ORDINAL4:33</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E6:10_1_1"/>
+<font color="Maroon">P<sub>1</sub></font>[<font color="Maroon" title="c1">A</font>]
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:10"><span class="lab"><font color="Green" title="E9">A3</font></span></a>, <a class="txt" href="#E1:10_1_1"><span class="lab"><font color="Green" title="E11">A5</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E2:10_1"/><span class="lab"><font color="Green" title="E11">A7</font></span>: 
+ for <font color="Olive" title="b1">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">A</font>] holds <br/><font color="Maroon">S<sub>1</sub></font>[ <a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <font color="Olive" title="b1">A</font>]
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="10_1_2"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">A</font> be   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c1">A</font>] implies <font color="Maroon">S<sub>1</sub></font>[ <a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <font color="Maroon" title="c1">A</font>] )</span><br/>
+
+<span class="kw">assume </span><span class="kw">that </span><br/><a NAME="E1:10_1_2"/><span class="lab"><font color="Green" title="E12">A8</font></span>: 
+( <font color="Maroon" title="c1">A</font> is   <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon">F<sub>1</sub></font>() implies <font color="Maroon">P<sub>1</sub></font>[<font color="Maroon" title="c1">A</font>] )
+ <span class="kw">and </span><br/><a NAME="E2:10_1_2"/><span class="lab"><font color="Green" title="E13">A9</font></span>: 
+ <a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <font color="Maroon" title="c1">A</font> is   <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon">F<sub>1</sub></font>()
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon">P<sub>1</sub></font>[ <a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <font color="Maroon" title="c1">A</font>]</span><br/>
+
+<a NAME="E3:10_1_2"/>
+( <font color="Maroon" title="c1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <font color="Maroon" title="c1">A</font> &amp;  <a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <font color="Maroon" title="c1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ordinal1.html#K2" title="ORDINAL1:func.2">On</a> <font color="Maroon">F<sub>1</sub></font>() )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:10_1_2"><span class="lab"><font color="Green" title="E13">A9</font></span></a>, <a class="ref" href="ordinal1.html#T6" onmouseover="rs('ordinal1/T6')" onmouseout="rh()">ORDINAL1:6</a>, <a class="ref" href="ordinal1.html#D9" onmouseover="rs('ordinal1/D9')" onmouseout="rh()">ORDINAL1:def 9</a></span>;<br/>
+<a NAME="E4:10_1_2"/><span class="kw">then </span>
+<font color="Maroon" title="c1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ordinal1.html#K2" title="ORDINAL1:func.2">On</a> <font color="Maroon">F<sub>1</sub></font>()
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="ordinal1.html#T10" onmouseover="rs('ordinal1/T10')" onmouseout="rh()">ORDINAL1:10</a></span>;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c2">a</font> = <font color="Maroon" title="c1">A</font> as   <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon">F<sub>1</sub></font>() <span class="kw">by</span> <span class="lab"><a class="ref" href="ordinal1.html#D9" onmouseover="rs('ordinal1/D9')" onmouseout="rh()">ORDINAL1:def 9</a></span>;<br/>
+<a NAME="E6:10_1_2"/>
+<font color="Maroon">P<sub>1</sub></font>[ <a href="ordinal4.html#K6" title="ORDINAL4:func.6">succ</a> <font color="Maroon" title="c2">a</font>]
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:10"><span class="lab"><font color="Green" title="E8">A2</font></span></a>, <a class="txt" href="#E1:10_1_2"><span class="lab"><font color="Green" title="E12">A8</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:10_1_2"/>
+<font color="Maroon">P<sub>1</sub></font>[ <a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <font color="Maroon" title="c1">A</font>]
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E3:10_1"/><span class="lab"><font color="Green" title="E12">A10</font></span>: 
+<font color="Maroon">S<sub>1</sub></font>[ <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> ]
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:10"><span class="lab"><font color="Green" title="E7">A1</font></span></a>, <a class="ref" href="ordinal4.html#T33" onmouseover="rs('ordinal4/T33')" onmouseout="rh()">ORDINAL4:33</a></span>;<br/>
+<a NAME="E4:10_1"/>
+ for <font color="Olive" title="b1">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a> holds  <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">A</font>]
+ 
+<span class="kw">from</span> <span class="lab"><a class="ref" href="ordinal2.html#S1" onmouseover="rs('ordinal2/S1')" onmouseout="rh()">ORDINAL2:sch 1</a>(<a class="txt" href="#E3:10_1"><span class="lab"><font color="Green" title="E12">A10</font></span></a>, <a class="txt" href="#E2:10_1"><span class="lab"><font color="Green" title="E11">A7</font></span></a>, <a class="txt" href="#E1:10_1"><span class="lab"><font color="Green" title="E10">A4</font></span></a>);<br/></span>
+<span class="kw">hence </span><a NAME="E5:10_1"/>
+ for <font color="Olive" title="b1">a</font> being   <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon">F<sub>1</sub></font>() holds  <font color="Maroon">P<sub>1</sub></font>[<font color="Olive" title="b1">a</font>]
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

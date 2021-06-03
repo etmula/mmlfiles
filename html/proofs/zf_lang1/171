@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">H</font> be   <a href="zf_lang.html#NM2" title="ZF_LANG:NM.2">ZF-formula</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being   <a href="zf_lang.html#NM1" title="ZF_LANG:NM.1">Variable</a> holds <br/> ( <font color="Maroon" title="c1">H</font> is  <a href="zf_lang.html#V11" title="ZF_LANG:attr.11">existential</a>  iff <font color="Maroon" title="c1">H</font> <a href="zf_lang1.html#K6" title="ZF_LANG1:func.6">/</a> (<font color="Olive" title="b1">x</font>,<font color="Olive" title="b2">y</font>) is  <a href="zf_lang.html#V11" title="ZF_LANG:attr.11">existential</a>  )</span><br/><span class="kw">let </span><font color="Maroon" title="c2">x</font>, <font color="Maroon" title="c3">y</font> be   <a href="zf_lang.html#NM1" title="ZF_LANG:NM.1">Variable</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">H</font> is  <a href="zf_lang.html#V11" title="ZF_LANG:attr.11">existential</a>  iff <font color="Maroon" title="c1">H</font> <a href="zf_lang1.html#K6" title="ZF_LANG1:func.6">/</a> (<font color="Maroon" title="c2">x</font>,<font color="Maroon" title="c3">y</font>) is  <a href="zf_lang.html#V11" title="ZF_LANG:attr.11">existential</a>  )</span><br/>
+
+
+
+
+
+<span class="kw">thus </span><a NAME="E1:171"/>
+( <font color="Maroon" title="c1">H</font> is  <a href="zf_lang.html#V11" title="ZF_LANG:attr.11">existential</a>  implies <font color="Maroon" title="c1">H</font> <a href="zf_lang1.html#K6" title="ZF_LANG1:func.6">/</a> (<font color="Maroon" title="c2">x</font>,<font color="Maroon" title="c3">y</font>) is  <a href="zf_lang.html#V11" title="ZF_LANG:attr.11">existential</a>  )
+  <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">H</font> <a href="zf_lang1.html#K6" title="ZF_LANG1:func.6">/</a> (<font color="Maroon" title="c2">x</font>,<font color="Maroon" title="c3">y</font>) is  <a href="zf_lang.html#V11" title="ZF_LANG:attr.11">existential</a>  implies <font color="Maroon" title="c1">H</font> is  <a href="zf_lang.html#V11" title="ZF_LANG:attr.11">existential</a>  )</span><div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="171_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">given </span><font color="Maroon" title="c4">z</font> being   <a href="zf_lang.html#NM1" title="ZF_LANG:NM.1">Variable</a>, <font color="Maroon" title="c5">H1</font> being   <a href="zf_lang.html#NM2" title="ZF_LANG:NM.2">ZF-formula</a><span class="kw"> such that </span><a NAME="E2:171_1"/><span class="lab"><font color="Green" title="E73">A1</font></span>: 
+<font color="Maroon" title="c1">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="zf_lang.html#K12" title="ZF_LANG:func.12">Ex</a> (<font color="Maroon" title="c4">z</font>,<font color="Maroon" title="c5">H1</font>)
+ ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="zf_lang.html#D23" onmouseover="rs('zf_lang/D23')" onmouseout="rh()">ZF_LANG:def 23</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">H</font> <a href="zf_lang1.html#K6" title="ZF_LANG1:func.6">/</a> (<font color="Maroon" title="c2">x</font>,<font color="Maroon" title="c3">y</font>) is  <a href="zf_lang.html#V11" title="ZF_LANG:attr.11">existential</a> </span><br/>
+
+<a NAME="E3:171_1"/>
+( <font color="Maroon" title="c4">z</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">x</font> or <font color="Maroon" title="c4">z</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c2">x</font> )
+ 
+;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c6">s</font> being   <a href="zf_lang.html#NM1" title="ZF_LANG:NM.1">Variable</a><span class="kw"> such that </span><br/><a NAME="E5:171_1"/><span class="lab"><font color="Green" title="E74">A2</font></span>: 
+( ( <font color="Maroon" title="c4">z</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">x</font> &amp; <font color="Maroon" title="c6">s</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">y</font> ) or ( <font color="Maroon" title="c4">z</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c2">x</font> &amp; <font color="Maroon" title="c6">s</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">z</font> ) )
+ ;<br/>
+<a NAME="E6:171_1"/>
+<font color="Maroon" title="c1">H</font> <a href="zf_lang1.html#K6" title="ZF_LANG1:func.6">/</a> (<font color="Maroon" title="c2">x</font>,<font color="Maroon" title="c3">y</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="zf_lang.html#K12" title="ZF_LANG:func.12">Ex</a> (<font color="Maroon" title="c6">s</font>,<span class="p1">(<span class="default"><font color="Maroon" title="c5">H1</font> <a href="zf_lang1.html#K6" title="ZF_LANG1:func.6">/</a> (<font color="Maroon" title="c2">x</font>,<font color="Maroon" title="c3">y</font>)</span>)</span>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:171_1"><span class="lab"><font color="Green" title="E73">A1</font></span></a>, <a class="txt" href="#E5:171_1"><span class="lab"><font color="Green" title="E74">A2</font></span></a>, <a class="ref" href="zf_lang1.html#T164" target="_self" onmouseover="rs('zf_lang1/T164')" onmouseout="rh()">Th164</a>, <a class="ref" href="zf_lang1.html#T165" target="_self" onmouseover="rs('zf_lang1/T165')" onmouseout="rh()">Th165</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:171_1"/>
+<font color="Maroon" title="c1">H</font> <a href="zf_lang1.html#K6" title="ZF_LANG1:func.6">/</a> (<font color="Maroon" title="c2">x</font>,<font color="Maroon" title="c3">y</font>) is  <a href="zf_lang.html#V11" title="ZF_LANG:attr.11">existential</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+
+<span class="kw">given </span><font color="Maroon" title="c4">z</font> being   <a href="zf_lang.html#NM1" title="ZF_LANG:NM.1">Variable</a>, <font color="Maroon" title="c5">G</font> being   <a href="zf_lang.html#NM2" title="ZF_LANG:NM.2">ZF-formula</a><span class="kw"> such that </span><a NAME="E3:171"/><span class="lab"><font color="Green" title="E73">A3</font></span>: 
+<font color="Maroon" title="c1">H</font> <a href="zf_lang1.html#K6" title="ZF_LANG1:func.6">/</a> (<font color="Maroon" title="c2">x</font>,<font color="Maroon" title="c3">y</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="zf_lang.html#K12" title="ZF_LANG:func.12">Ex</a> (<font color="Maroon" title="c4">z</font>,<font color="Maroon" title="c5">G</font>)
+ ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="zf_lang.html#D23" onmouseover="rs('zf_lang/D23')" onmouseout="rh()">ZF_LANG:def 23</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">H</font> is  <a href="zf_lang.html#V11" title="ZF_LANG:attr.11">existential</a> </span><br/>
+
+<a NAME="E4:171"/>
+<font color="Maroon" title="c1">H</font> <a href="zf_lang1.html#K6" title="ZF_LANG1:func.6">/</a> (<font color="Maroon" title="c2">x</font>,<font color="Maroon" title="c3">y</font>) is  <a href="zf_lang.html#V4" title="ZF_LANG:attr.4">negative</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:171"><span class="lab"><font color="Green" title="E73">A3</font></span></a></span>;<br/>
+<a NAME="E5:171"/><span class="kw">then </span>
+<font color="Maroon" title="c1">H</font> is  <a href="zf_lang.html#V4" title="ZF_LANG:attr.4">negative</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zf_lang1.html#T168" target="_self" onmouseover="rs('zf_lang1/T168')" onmouseout="rh()">Th168</a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c6">H1</font> being   <a href="zf_lang.html#NM2" title="ZF_LANG:NM.2">ZF-formula</a><span class="kw"> such that </span><br/><a NAME="E7:171"/><span class="lab"><font color="Green" title="E74">A4</font></span>: 
+<font color="Maroon" title="c1">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="zf_lang.html#K5" title="ZF_LANG:func.5">'not'</a> <font color="Maroon" title="c6">H1</font>
+ ;<br/>
+<a NAME="E8:171"/>
+(  <a href="zf_lang.html#K22" title="ZF_LANG:func.22">bound_in</a> <font color="Maroon" title="c6">H1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">x</font> or  <a href="zf_lang.html#K22" title="ZF_LANG:func.22">bound_in</a> <font color="Maroon" title="c6">H1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c2">x</font> )
+ 
+;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c7">s</font> being   <a href="zf_lang.html#NM1" title="ZF_LANG:NM.1">Variable</a><span class="kw"> such that </span><br/><a NAME="E10:171"/><span class="lab"><font color="Green" title="E75">A5</font></span>: 
+( (  <a href="zf_lang.html#K22" title="ZF_LANG:func.22">bound_in</a> <font color="Maroon" title="c6">H1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">x</font> &amp; <font color="Maroon" title="c7">s</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">y</font> ) or (  <a href="zf_lang.html#K22" title="ZF_LANG:func.22">bound_in</a> <font color="Maroon" title="c6">H1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c2">x</font> &amp; <font color="Maroon" title="c7">s</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="zf_lang.html#K22" title="ZF_LANG:func.22">bound_in</a> <font color="Maroon" title="c6">H1</font> ) )
+ ;<br/>
+<a NAME="E11:171"/><span class="lab"><font color="Green" title="E76">A6</font></span>: 
+<font color="Maroon" title="c6">H1</font> <a href="zf_lang1.html#K6" title="ZF_LANG1:func.6">/</a> (<font color="Maroon" title="c2">x</font>,<font color="Maroon" title="c3">y</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="zf_lang.html#K7" title="ZF_LANG:func.7">All</a> (<font color="Maroon" title="c4">z</font>,<span class="p1">(<span class="default"><a href="zf_lang.html#K5" title="ZF_LANG:func.5">'not'</a> <font color="Maroon" title="c5">G</font></span>)</span>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:171"><span class="lab"><font color="Green" title="E73">A3</font></span></a>, <a class="txt" href="#E7:171"><span class="lab"><font color="Green" title="E74">A4</font></span></a>, <a class="ref" href="zf_lang1.html#T156" target="_self" onmouseover="rs('zf_lang1/T156')" onmouseout="rh()">Th156</a></span>;<br/>
+<a NAME="E12:171"/><span class="kw">then </span>
+<font color="Maroon" title="c6">H1</font> <a href="zf_lang1.html#K6" title="ZF_LANG1:func.6">/</a> (<font color="Maroon" title="c2">x</font>,<font color="Maroon" title="c3">y</font>) is  <a href="zf_lang.html#V6" title="ZF_LANG:attr.6">universal</a> 
+ 
+;<br/>
+<a NAME="E13:171"/><span class="kw">then </span>
+<font color="Maroon" title="c6">H1</font> is  <a href="zf_lang.html#V6" title="ZF_LANG:attr.6">universal</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zf_lang1.html#T170" target="_self" onmouseover="rs('zf_lang1/T170')" onmouseout="rh()">Th170</a></span>;<br/>
+<a NAME="E14:171"/><span class="kw">then </span><span class="lab"><font color="Green" title="E77">A7</font></span>: 
+<font color="Maroon" title="c6">H1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="zf_lang.html#K7" title="ZF_LANG:func.7">All</a> (<span class="p1">(<span class="default"><a href="zf_lang.html#K22" title="ZF_LANG:func.22">bound_in</a> <font color="Maroon" title="c6">H1</font></span>)</span>,<span class="p1">(<span class="default"><a href="zf_lang.html#K23" title="ZF_LANG:func.23">the_scope_of</a> <font color="Maroon" title="c6">H1</font></span>)</span>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zf_lang.html#T44" onmouseover="rs('zf_lang/T44')" onmouseout="rh()">ZF_LANG:44</a></span>;<br/>
+<a NAME="E15:171"/><span class="kw">then </span>
+ <a href="zf_lang.html#K7" title="ZF_LANG:func.7">All</a> (<font color="Maroon" title="c4">z</font>,<span class="p1">(<span class="default"><a href="zf_lang.html#K5" title="ZF_LANG:func.5">'not'</a> <font color="Maroon" title="c5">G</font></span>)</span>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="zf_lang.html#K7" title="ZF_LANG:func.7">All</a> (<font color="Maroon" title="c7">s</font>,<span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="zf_lang.html#K23" title="ZF_LANG:func.23">the_scope_of</a> <font color="Maroon" title="c6">H1</font></span>)</span> <a href="zf_lang1.html#K6" title="ZF_LANG1:func.6">/</a> (<font color="Maroon" title="c2">x</font>,<font color="Maroon" title="c3">y</font>)</span>)</span>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E11:171"><span class="lab"><font color="Green" title="E76">A6</font></span></a>, <a class="txt" href="#E10:171"><span class="lab"><font color="Green" title="E75">A5</font></span></a>, <a class="ref" href="zf_lang1.html#T159" target="_self" onmouseover="rs('zf_lang1/T159')" onmouseout="rh()">Th159</a>, <a class="ref" href="zf_lang1.html#T160" target="_self" onmouseover="rs('zf_lang1/T160')" onmouseout="rh()">Th160</a></span>;<br/>
+<a NAME="E16:171"/><span class="kw">then </span>
+ <a href="zf_lang.html#K5" title="ZF_LANG:func.5">'not'</a> <font color="Maroon" title="c5">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="zf_lang.html#K23" title="ZF_LANG:func.23">the_scope_of</a> <font color="Maroon" title="c6">H1</font></span>)</span> <a href="zf_lang1.html#K6" title="ZF_LANG1:func.6">/</a> (<font color="Maroon" title="c2">x</font>,<font color="Maroon" title="c3">y</font>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zf_lang.html#T3" onmouseover="rs('zf_lang/T3')" onmouseout="rh()">ZF_LANG:3</a></span>;<br/>
+<a NAME="E17:171"/><span class="kw">then </span>
+<span class="p1">(<span class="default"><a href="zf_lang.html#K23" title="ZF_LANG:func.23">the_scope_of</a> <font color="Maroon" title="c6">H1</font></span>)</span> <a href="zf_lang1.html#K6" title="ZF_LANG1:func.6">/</a> (<font color="Maroon" title="c2">x</font>,<font color="Maroon" title="c3">y</font>) is  <a href="zf_lang.html#V4" title="ZF_LANG:attr.4">negative</a> 
+ 
+;<br/>
+<a NAME="E18:171"/><span class="kw">then </span>
+ <a href="zf_lang.html#K23" title="ZF_LANG:func.23">the_scope_of</a> <font color="Maroon" title="c6">H1</font> is  <a href="zf_lang.html#V4" title="ZF_LANG:attr.4">negative</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zf_lang1.html#T168" target="_self" onmouseover="rs('zf_lang1/T168')" onmouseout="rh()">Th168</a></span>;<br/>
+<a NAME="E19:171"/><span class="kw">then </span>
+<font color="Maroon" title="c1">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="zf_lang.html#K12" title="ZF_LANG:func.12">Ex</a> (<span class="p1">(<span class="default"><a href="zf_lang.html#K22" title="ZF_LANG:func.22">bound_in</a> <font color="Maroon" title="c6">H1</font></span>)</span>,<span class="p1">(<span class="default"><a href="zf_lang.html#K19" title="ZF_LANG:func.19">the_argument_of</a> <span class="p2">(<span class="default"><a href="zf_lang.html#K23" title="ZF_LANG:func.23">the_scope_of</a> <font color="Maroon" title="c6">H1</font></span>)</span></span>)</span>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E7:171"><span class="lab"><font color="Green" title="E74">A4</font></span></a>, <a class="txt" href="#E14:171"><span class="lab"><font color="Green" title="E77">A7</font></span></a>, <a class="ref" href="zf_lang.html#D30" onmouseover="rs('zf_lang/D30')" onmouseout="rh()">ZF_LANG:def 30</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E20:171"/>
+<font color="Maroon" title="c1">H</font> is  <a href="zf_lang.html#V11" title="ZF_LANG:attr.11">existential</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
