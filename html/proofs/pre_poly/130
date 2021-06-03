@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="pre_poly.html#K17" title="PRE_POLY:func.17">BagOrder</a> <font color="Maroon" title="c1">n</font> <a href="orders_1.html#R3" title="ORDERS_1:pred.3">linearly_orders</a>  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Maroon" title="c1">n</font></span><br/>
+
+<span class="kw">set </span><font color="Maroon" title="c2">BO</font> =  <a href="pre_poly.html#K17" title="PRE_POLY:func.17">BagOrder</a> <font color="Maroon" title="c1">n</font>;<br/>
+<a NAME="E1:130"/><span class="lab"><font color="Green" title="E55">A1</font></span>: 
+ <a href="pre_poly.html#K17" title="PRE_POLY:func.17">BagOrder</a> <font color="Maroon" title="c1">n</font> <a href="relat_2.html#R8" title="RELAT_2:pred.8">is_transitive_in</a>  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Maroon" title="c1">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="pre_poly.html#E77"><span class="lab"><font color="Green" title="E53">Lm3</font></span></a></span>;<br/>
+<a NAME="E2:130"/><span class="lab"><font color="Green" title="E56">A2</font></span>: 
+ <a href="pre_poly.html#K17" title="PRE_POLY:func.17">BagOrder</a> <font color="Maroon" title="c1">n</font> <a href="relat_2.html#R6" title="RELAT_2:pred.6">is_connected_in</a>  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Maroon" title="c1">n</font>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="130_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">x</font>, <font color="Maroon" title="c4">y</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="relat_2.html#D6" onmouseover="rs('relat_2/D6')" onmouseout="rh()">RELAT_2:def 6</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c3">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Maroon" title="c1">n</font> or  not <font color="Maroon" title="c4">y</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Maroon" title="c1">n</font> or <font color="Maroon" title="c3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">y</font> or <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Maroon" title="c3">x</font>,<font color="Maroon" title="c4">y</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="pre_poly.html#K17" title="PRE_POLY:func.17">BagOrder</a> <font color="Maroon" title="c1">n</font> or <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Maroon" title="c4">y</font>,<font color="Maroon" title="c3">x</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="pre_poly.html#K17" title="PRE_POLY:func.17">BagOrder</a> <font color="Maroon" title="c1">n</font> )</span><br/>
+
+<span class="kw">assume </span><span class="kw">that </span><br/><a NAME="E1:130_1"/><span class="lab"><font color="Green" title="E57">A3</font></span>: 
+( <font color="Maroon" title="c3">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Maroon" title="c1">n</font> &amp; <font color="Maroon" title="c4">y</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Maroon" title="c1">n</font> )
+ <span class="kw">and </span><br/><a NAME="E2:130_1"/>
+<font color="Maroon" title="c3">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c4">y</font>
+ <span class="kw">and </span><br/><a NAME="E3:130_1"/><span class="lab"><font color="Green" title="E58">A4</font></span>: 
+ not <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Maroon" title="c3">x</font>,<font color="Maroon" title="c4">y</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="pre_poly.html#K17" title="PRE_POLY:func.17">BagOrder</a> <font color="Maroon" title="c1">n</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Maroon" title="c4">y</font>,<font color="Maroon" title="c3">x</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="pre_poly.html#K17" title="PRE_POLY:func.17">BagOrder</a> <font color="Maroon" title="c1">n</font></span><br/>
+
+<span class="kw">reconsider </span><font color="Maroon" title="c5">p</font> = <font color="Maroon" title="c3">x</font>, <font color="Maroon" title="c6">q</font> = <font color="Maroon" title="c4">y</font> as   <a href="pre_poly.html#NM2" title="PRE_POLY:NM.2">bag</a> of <font color="Maroon" title="c1">n</font> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:130_1"><span class="lab"><font color="Green" title="E57">A3</font></span></a></span>;<br/>
+<a NAME="E5:130_1"/>
+ not <font color="Maroon" title="c5">p</font> <a href="pre_poly.html#R2" title="PRE_POLY:pred.2">&lt;='</a> <font color="Maroon" title="c6">q</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:130_1"><span class="lab"><font color="Green" title="E58">A4</font></span></a>, <a class="ref" href="pre_poly.html#D14" target="_self" onmouseover="rs('pre_poly/D14')" onmouseout="rh()">Def13</a></span>;<br/>
+<a NAME="E6:130_1"/><span class="kw">then </span>
+<font color="Maroon" title="c6">q</font> <a href="pre_poly.html#R2" title="PRE_POLY:pred.2">&lt;='</a> <font color="Maroon" title="c5">p</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="pre_poly.html#T45" target="_self" onmouseover="rs('pre_poly/T45')" onmouseout="rh()">Th44</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:130_1"/>
+<span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Maroon" title="c4">y</font>,<font color="Maroon" title="c3">x</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="pre_poly.html#K17" title="PRE_POLY:func.17">BagOrder</a> <font color="Maroon" title="c1">n</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="pre_poly.html#D14" target="_self" onmouseover="rs('pre_poly/D14')" onmouseout="rh()">Def13</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E3:130"/>
+(  <a href="pre_poly.html#K17" title="PRE_POLY:func.17">BagOrder</a> <font color="Maroon" title="c1">n</font> <a href="relat_2.html#R1" title="RELAT_2:pred.1">is_reflexive_in</a>  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Maroon" title="c1">n</font> &amp;  <a href="pre_poly.html#K17" title="PRE_POLY:func.17">BagOrder</a> <font color="Maroon" title="c1">n</font> <a href="relat_2.html#R4" title="RELAT_2:pred.4">is_antisymmetric_in</a>  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Maroon" title="c1">n</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="pre_poly.html#E75"><span class="lab"><font color="Green" title="E51">Lm1</font></span></a>, <a class="txt" href="pre_poly.html#E76"><span class="lab"><font color="Green" title="E52">Lm2</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E4:130"/>
+ <a href="pre_poly.html#K17" title="PRE_POLY:func.17">BagOrder</a> <font color="Maroon" title="c1">n</font> <a href="orders_1.html#R3" title="ORDERS_1:pred.3">linearly_orders</a>  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Maroon" title="c1">n</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:130"><span class="lab"><font color="Green" title="E55">A1</font></span></a>, <a class="txt" href="#E2:130"><span class="lab"><font color="Green" title="E56">A2</font></span></a>, <a class="ref" href="orders_1.html#D9" onmouseover="rs('orders_1/D9')" onmouseout="rh()">ORDERS_1:def 9</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
