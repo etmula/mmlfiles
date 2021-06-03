@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="orders_2.html#V3" title="ORDERS_2:attr.3">reflexive</a>   <a href="orders_2.html#V4" title="ORDERS_2:attr.4">transitive</a>   <a href="orders_2.html#L1" title="ORDERS_2:struct.1">RelStr</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="waybel_0.html#K7" title="WAYBEL_0:func.7">Ids</a> <font color="Maroon" title="c1">L</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="waybel_0.html#K8" title="WAYBEL_0:func.8">Filt</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">L</font> <a href="yellow_7.html#NK1" title="YELLOW_7:NK.1">opp</a></span>)</span></span><br/>
+
+<a NAME="E1:8"/><span class="lab"><font color="Green" title="E5">A1</font></span>: 
+ <a href="waybel_0.html#K8" title="WAYBEL_0:func.8">Filt</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">L</font> <a href="yellow_7.html#NK1" title="YELLOW_7:NK.1">opp</a></span>)</span> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="waybel_0.html#K7" title="WAYBEL_0:func.7">Ids</a> <font color="Maroon" title="c1">L</font>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="8_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c2">x</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="tarski.html#D3" onmouseover="rs('tarski/D3')" onmouseout="rh()">TARSKI:def 3</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="waybel_0.html#K8" title="WAYBEL_0:func.8">Filt</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">L</font> <a href="yellow_7.html#NK1" title="YELLOW_7:NK.1">opp</a></span>)</span> or <font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="waybel_0.html#K7" title="WAYBEL_0:func.7">Ids</a> <font color="Maroon" title="c1">L</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:8_1"/>
+<font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="waybel_0.html#K8" title="WAYBEL_0:func.8">Filt</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">L</font> <a href="yellow_7.html#NK1" title="YELLOW_7:NK.1">opp</a></span>)</span>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="waybel_0.html#K7" title="WAYBEL_0:func.7">Ids</a> <font color="Maroon" title="c1">L</font></span><br/>
+
+<a NAME="E2:8_1"/><span class="kw">then </span>
+<font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">X</font> where <font color="Olive" title="b1">X</font> is   <a href="waybel_0.html#NM4" title="WAYBEL_0:NM.4">Filter</a> of <span class="p1">(<span class="default"><font color="Maroon" title="c1">L</font> <a href="yellow_7.html#NK1" title="YELLOW_7:NK.1">opp</a></span>)</span> : verum </span> } </span> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="waybel_0.html#D24" onmouseover="rs('waybel_0/D24')" onmouseout="rh()">WAYBEL_0:def 24</a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c3">x1</font> being   <a href="waybel_0.html#NM4" title="WAYBEL_0:NM.4">Filter</a> of <span class="p1">(<span class="default"><font color="Maroon" title="c1">L</font> <a href="yellow_7.html#NK1" title="YELLOW_7:NK.1">opp</a></span>)</span><span class="kw"> such that </span><br/><a NAME="E4:8_1"/><span class="lab"><font color="Green" title="E6">A2</font></span>: 
+<font color="Maroon" title="c3">x1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">x</font>
+ ;<br/>
+<a NAME="E5:8_1"/>
+( <font color="Maroon" title="c3">x1</font> is   <a href="waybel_0.html#V12" title="WAYBEL_0:attr.12">lower</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">L</font> &amp; <font color="Maroon" title="c3">x1</font> is   <a href="waybel_0.html#V1" title="WAYBEL_0:attr.1">directed</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">L</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="yellow_7.html#T26" onmouseover="rs('yellow_7/T26')" onmouseout="rh()">YELLOW_7:26</a>, <a class="ref" href="yellow_7.html#T28" onmouseover="rs('yellow_7/T28')" onmouseout="rh()">YELLOW_7:28</a></span>;<br/>
+<a NAME="E6:8_1"/><span class="kw">then </span>
+<font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">X</font> where <font color="Olive" title="b1">X</font> is   <a href="waybel_0.html#NM3" title="WAYBEL_0:NM.3">Ideal</a> of <font color="Maroon" title="c1">L</font> : verum </span> } </span> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:8_1"><span class="lab"><font color="Green" title="E6">A2</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:8_1"/>
+<font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="waybel_0.html#K7" title="WAYBEL_0:func.7">Ids</a> <font color="Maroon" title="c1">L</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="waybel_0.html#D23" onmouseover="rs('waybel_0/D23')" onmouseout="rh()">WAYBEL_0:def 23</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E2:8"/>
+ <a href="waybel_0.html#K7" title="WAYBEL_0:func.7">Ids</a> <font color="Maroon" title="c1">L</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="waybel_0.html#K8" title="WAYBEL_0:func.8">Filt</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">L</font> <a href="yellow_7.html#NK1" title="YELLOW_7:NK.1">opp</a></span>)</span>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="8_2"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c2">x</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="tarski.html#D3" onmouseover="rs('tarski/D3')" onmouseout="rh()">TARSKI:def 3</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="waybel_0.html#K7" title="WAYBEL_0:func.7">Ids</a> <font color="Maroon" title="c1">L</font> or <font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="waybel_0.html#K8" title="WAYBEL_0:func.8">Filt</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">L</font> <a href="yellow_7.html#NK1" title="YELLOW_7:NK.1">opp</a></span>)</span> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:8_2"/>
+<font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="waybel_0.html#K7" title="WAYBEL_0:func.7">Ids</a> <font color="Maroon" title="c1">L</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="waybel_0.html#K8" title="WAYBEL_0:func.8">Filt</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">L</font> <a href="yellow_7.html#NK1" title="YELLOW_7:NK.1">opp</a></span>)</span></span><br/>
+
+<a NAME="E2:8_2"/><span class="kw">then </span>
+<font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">X</font> where <font color="Olive" title="b1">X</font> is   <a href="waybel_0.html#NM3" title="WAYBEL_0:NM.3">Ideal</a> of <font color="Maroon" title="c1">L</font> : verum </span> } </span> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="waybel_0.html#D23" onmouseover="rs('waybel_0/D23')" onmouseout="rh()">WAYBEL_0:def 23</a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c3">x1</font> being   <a href="waybel_0.html#NM3" title="WAYBEL_0:NM.3">Ideal</a> of <font color="Maroon" title="c1">L</font><span class="kw"> such that </span><br/><a NAME="E4:8_2"/><span class="lab"><font color="Green" title="E6">A3</font></span>: 
+<font color="Maroon" title="c3">x1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">x</font>
+ ;<br/>
+<a NAME="E5:8_2"/>
+( <font color="Maroon" title="c3">x1</font> is   <a href="waybel_0.html#V13" title="WAYBEL_0:attr.13">upper</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><font color="Maroon" title="c1">L</font> <a href="yellow_7.html#NK1" title="YELLOW_7:NK.1">opp</a></span>)</span> &amp; <font color="Maroon" title="c3">x1</font> is   <a href="waybel_0.html#V2" title="WAYBEL_0:attr.2">filtered</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><font color="Maroon" title="c1">L</font> <a href="yellow_7.html#NK1" title="YELLOW_7:NK.1">opp</a></span>)</span> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="yellow_7.html#T26" onmouseover="rs('yellow_7/T26')" onmouseout="rh()">YELLOW_7:26</a>, <a class="ref" href="yellow_7.html#T28" onmouseover="rs('yellow_7/T28')" onmouseout="rh()">YELLOW_7:28</a></span>;<br/>
+<a NAME="E6:8_2"/><span class="kw">then </span>
+<font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">X</font> where <font color="Olive" title="b1">X</font> is   <a href="waybel_0.html#NM4" title="WAYBEL_0:NM.4">Filter</a> of <span class="p1">(<span class="default"><font color="Maroon" title="c1">L</font> <a href="yellow_7.html#NK1" title="YELLOW_7:NK.1">opp</a></span>)</span> : verum </span> } </span> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:8_2"><span class="lab"><font color="Green" title="E6">A3</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:8_2"/>
+<font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="waybel_0.html#K8" title="WAYBEL_0:func.8">Filt</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">L</font> <a href="yellow_7.html#NK1" title="YELLOW_7:NK.1">opp</a></span>)</span>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="waybel_0.html#D24" onmouseover="rs('waybel_0/D24')" onmouseout="rh()">WAYBEL_0:def 24</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E3:8"/>
+ <a href="waybel_0.html#K7" title="WAYBEL_0:func.7">Ids</a> <font color="Maroon" title="c1">L</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="waybel_0.html#K8" title="WAYBEL_0:func.8">Filt</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">L</font> <a href="yellow_7.html#NK1" title="YELLOW_7:NK.1">opp</a></span>)</span>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:8"><span class="lab"><font color="Green" title="E5">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
