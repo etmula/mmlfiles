@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">defpred </span><font color="Maroon">S<sub>1</sub></font>[   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ] <span class="kw">means </span> for <font color="Olive" title="b1">p</font> being   <a href="trees_3.html#V5" title="TREES_3:attr.5">FinTree-yielding</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a>  st  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">p</font> holds <br/> <a href="trees_3.html#K11" title="TREES_3:func.11">tree</a> <font color="Olive" title="b1">p</font> is   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="trees_1.html#NM1" title="TREES_1:NM.1">Tree</a>;<br/>
+<a NAME="E1:123_1_1"/><span class="lab"><font color="Green" title="E49">A1</font></span>: 
+<font color="Maroon">S<sub>1</sub></font>[ <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> ]
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="123_1_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c2">p</font> be   <a href="trees_3.html#V5" title="TREES_3:attr.5">FinTree-yielding</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies  <a href="trees_3.html#K11" title="TREES_3:func.11">tree</a> <font color="Maroon" title="c2">p</font> is   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="trees_1.html#NM1" title="TREES_1:NM.1">Tree</a> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:123_1_1_1"/>
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="trees_3.html#K11" title="TREES_3:func.11">tree</a> <font color="Maroon" title="c2">p</font> is   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="trees_1.html#NM1" title="TREES_1:NM.1">Tree</a></span><br/>
+
+<a NAME="E2:123_1_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E3:123_1_1_1"/>
+ <a href="trees_3.html#K11" title="TREES_3:func.11">tree</a> <font color="Maroon" title="c2">p</font> is   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="trees_1.html#NM1" title="TREES_1:NM.1">Tree</a>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="trees_3.html#T52" target="_self" onmouseover="rs('trees_3/T52')" onmouseout="rh()">Th52</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E2:123_1_1"/><span class="lab"><font color="Green" title="E50">A2</font></span>: 
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">n</font>] holds <br/><font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1]
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="123_1_1_2"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c2">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c2">n</font>] implies <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c2">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1] )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:123_1_1_2"/><span class="lab"><font color="Green" title="E51">A3</font></span>: 
+ for <font color="Olive" title="b1">p</font> being   <a href="trees_3.html#V5" title="TREES_3:attr.5">FinTree-yielding</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a>  st  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">n</font> holds <br/> <a href="trees_3.html#K11" title="TREES_3:func.11">tree</a> <font color="Olive" title="b1">p</font> is   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="trees_1.html#NM1" title="TREES_1:NM.1">Tree</a>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c2">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1]</span><br/>
+
+<span class="kw">let </span><font color="Maroon" title="c3">p</font> be   <a href="trees_3.html#V5" title="TREES_3:attr.5">FinTree-yielding</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c3">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 implies  <a href="trees_3.html#K11" title="TREES_3:func.11">tree</a> <font color="Maroon" title="c3">p</font> is   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="trees_1.html#NM1" title="TREES_1:NM.1">Tree</a> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E2:123_1_1_2"/><span class="lab"><font color="Green" title="E52">A4</font></span>: 
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c3">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="trees_3.html#K11" title="TREES_3:func.11">tree</a> <font color="Maroon" title="c3">p</font> is   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="trees_1.html#NM1" title="TREES_1:NM.1">Tree</a></span><br/>
+
+<a NAME="E3:123_1_1_2"/>
+<font color="Maroon" title="c3">p</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:123_1_1_2"><span class="lab"><font color="Green" title="E52">A4</font></span></a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c4">q</font> being   <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a>, <font color="Maroon" title="c5">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E5:123_1_1_2"/><span class="lab"><font color="Green" title="E53">A5</font></span>: 
+<font color="Maroon" title="c3">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">q</font> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <span class="p1"><a href="finseq_1.html#K9" title="FINSEQ_1:func.9">&lt;*</a><span class="default"><font color="Maroon" title="c5">x</font></span><a href="finseq_1.html#K9" title="FINSEQ_1:func.9">*&gt;</a></span>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_1.html#T46" onmouseover="rs('finseq_1/T46')" onmouseout="rh()">FINSEQ_1:46</a></span>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c6">q</font> = <font color="Maroon" title="c4">q</font> as   <a href="trees_3.html#V5" title="TREES_3:attr.5">FinTree-yielding</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:123_1_1_2"><span class="lab"><font color="Green" title="E53">A5</font></span></a>, <a class="ref" href="trees_3.html#T26" target="_self" onmouseover="rs('trees_3/T26')" onmouseout="rh()">Th26</a></span>;<br/>
+<a NAME="E7:123_1_1_2"/>
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <span class="p1"><a href="finseq_1.html#K9" title="FINSEQ_1:func.9">&lt;*</a><span class="default"><font color="Maroon" title="c5">x</font></span><a href="finseq_1.html#K9" title="FINSEQ_1:func.9">*&gt;</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_1.html#T40" onmouseover="rs('finseq_1/T40')" onmouseout="rh()">FINSEQ_1:40</a></span>;<br/>
+<a NAME="E8:123_1_1_2"/><span class="kw">then </span><span class="lab"><font color="Green" title="E54">A6</font></span>: 
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c3">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c6">q</font></span>)</span> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:123_1_1_2"><span class="lab"><font color="Green" title="E53">A5</font></span></a>, <a class="ref" href="finseq_1.html#T22" onmouseover="rs('finseq_1/T22')" onmouseout="rh()">FINSEQ_1:22</a></span>;<br/>
+<a NAME="E9:123_1_1_2"/><span class="kw">then </span>
+ <a href="trees_3.html#K11" title="TREES_3:func.11">tree</a> <font color="Maroon" title="c6">q</font> is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:123_1_1_2"><span class="lab"><font color="Green" title="E51">A3</font></span></a>, <a class="txt" href="#E2:123_1_1_2"><span class="lab"><font color="Green" title="E52">A4</font></span></a></span>;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c7">W</font> = <span class="p1">(<span class="default"><a href="trees_3.html#K11" title="TREES_3:func.11">tree</a> <font color="Maroon" title="c6">q</font></span>)</span> <a href="xboole_0.html#K2" title="XBOOLE_0:func.2">\/</a> <span class="p1">(<span class="default"><a href="trees_1.html#K2" title="TREES_1:func.2">elementary_tree</a> <span class="p2">(<span class="default"><font color="Maroon" title="c2">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span> as   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="trees_1.html#NM1" title="TREES_1:NM.1">Tree</a> ;<br/>
+<a NAME="E11:123_1_1_2"/>
+<span class="p1"><a href="finseq_1.html#K9" title="FINSEQ_1:func.9">&lt;*</a><span class="default"><font color="Maroon" title="c5">x</font></span><a href="finseq_1.html#K9" title="FINSEQ_1:func.9">*&gt;</a></span> is  <a href="trees_3.html#V5" title="TREES_3:attr.5">FinTree-yielding</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:123_1_1_2"><span class="lab"><font color="Green" title="E53">A5</font></span></a>, <a class="ref" href="trees_3.html#T26" target="_self" onmouseover="rs('trees_3/T26')" onmouseout="rh()">Th26</a></span>;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c8">x</font> = <font color="Maroon" title="c5">x</font> as   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="trees_1.html#NM1" title="TREES_1:NM.1">Tree</a> <span class="kw">by</span> <span class="lab"><a class="ref" href="trees_3.html#T29" target="_self" onmouseover="rs('trees_3/T29')" onmouseout="rh()">Th29</a></span>;<br/>
+<a NAME="E13:123_1_1_2"/>
+<font color="Maroon" title="c2">n</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c2">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_1.html#T13" onmouseover="rs('nat_1/T13')" onmouseout="rh()">NAT_1:13</a></span>;<br/>
+<a NAME="E14:123_1_1_2"/><span class="kw">then </span>
+<span class="p1"><a href="trees_3.html#K14" title="TREES_3:func.14">&lt;*</a><span class="default"><font color="Maroon" title="c2">n</font></span><a href="trees_3.html#K14" title="TREES_3:func.14">*&gt;</a></span> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="trees_1.html#K2" title="TREES_1:func.2">elementary_tree</a> <span class="p1">(<span class="default"><font color="Maroon" title="c2">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="trees_1.html#T28" onmouseover="rs('trees_1/T28')" onmouseout="rh()">TREES_1:28</a></span>;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c9">r</font> = <span class="p1"><a href="trees_3.html#K14" title="TREES_3:func.14">&lt;*</a><span class="default"><font color="Maroon" title="c2">n</font></span><a href="trees_3.html#K14" title="TREES_3:func.14">*&gt;</a></span> as    <a href="trees_1.html#M1" title="TREES_1:mode.1">Element</a> of <font color="Maroon" title="c7">W</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_0.html#D3" onmouseover="rs('xboole_0/D3')" onmouseout="rh()">XBOOLE_0:def 3</a></span>;<br/>
+<a NAME="E16:123_1_1_2"/>
+ <a href="trees_3.html#K11" title="TREES_3:func.11">tree</a> <font color="Maroon" title="c3">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c7">W</font> <a href="trees_1.html#K5" title="TREES_1:func.5">with-replacement</a> (<font color="Maroon" title="c9">r</font>,<font color="Maroon" title="c8">x</font>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:123_1_1_2"><span class="lab"><font color="Green" title="E52">A4</font></span></a>, <a class="txt" href="#E5:123_1_1_2"><span class="lab"><font color="Green" title="E53">A5</font></span></a>, <a class="txt" href="#E8:123_1_1_2"><span class="lab"><font color="Green" title="E54">A6</font></span></a>, <a class="ref" href="trees_3.html#T55" target="_self" onmouseover="rs('trees_3/T55')" onmouseout="rh()">Th55</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E17:123_1_1_2"/>
+ <a href="trees_3.html#K11" title="TREES_3:func.11">tree</a> <font color="Maroon" title="c3">p</font> is   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="trees_1.html#NM1" title="TREES_1:NM.1">Tree</a>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E3:123_1_1"/>
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">n</font>]
+ 
+<span class="kw">from</span> <span class="lab"><a class="ref" href="nat_1.html#S2" onmouseover="rs('nat_1/S2')" onmouseout="rh()">NAT_1:sch 2</a>(<a class="txt" href="#E1:123_1_1"><span class="lab"><font color="Green" title="E49">A1</font></span></a>, <a class="txt" href="#E2:123_1_1"><span class="lab"><font color="Green" title="E50">A2</font></span></a>);<br/></span>
+<a NAME="E4:123_1_1"/><span class="kw">then </span>
+(  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">p</font> implies  <a href="trees_3.html#K11" title="TREES_3:func.11">tree</a> <font color="Maroon" title="c1">p</font> is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  )
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E5:123_1_1"/>
+ <a href="trees_3.html#K11" title="TREES_3:func.11">tree</a> <font color="Maroon" title="c1">p</font> is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

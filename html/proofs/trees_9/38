@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">t1</font>, <font color="Maroon" title="c2">t2</font> be   <a href="trees_2.html#NM4" title="TREES_2:NM.4">DecoratedTree</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">t1</font> is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  &amp;  <a href="trees_9.html#K3" title="TREES_9:func.3">Subtrees</a> <font color="Maroon" title="c1">t1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="trees_9.html#K3" title="TREES_9:func.3">Subtrees</a> <font color="Maroon" title="c2">t2</font> implies <font color="Maroon" title="c1">t1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">t2</font> )</span><br/>
+
+
+
+<span class="kw">assume </span><span class="kw">that </span><br/><a NAME="E1:38"/><span class="lab"><font color="Green" title="E20">A1</font></span>: 
+<font color="Maroon" title="c1">t1</font> is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a> 
+ <span class="kw">and </span><br/><a NAME="E2:38"/><span class="lab"><font color="Green" title="E21">A2</font></span>: 
+ <a href="trees_9.html#K3" title="TREES_9:func.3">Subtrees</a> <font color="Maroon" title="c1">t1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="trees_9.html#K3" title="TREES_9:func.3">Subtrees</a> <font color="Maroon" title="c2">t2</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">t1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">t2</font></span><br/>
+
+<span class="kw">reconsider </span><font color="Maroon" title="c3">t</font> = <font color="Maroon" title="c1">t1</font> as   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="trees_2.html#NM4" title="TREES_2:NM.4">DecoratedTree</a> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:38"><span class="lab"><font color="Green" title="E20">A1</font></span></a></span>;<br/>
+<a NAME="E4:38"/>
+<font color="Maroon" title="c1">t1</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="trees_9.html#K3" title="TREES_9:func.3">Subtrees</a> <font color="Maroon" title="c2">t2</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:38"><span class="lab"><font color="Green" title="E21">A2</font></span></a>, <a class="ref" href="trees_9.html#T11" target="_self" onmouseover="rs('trees_9/T11')" onmouseout="rh()">Th11</a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c4">n</font> being   <a href="trees_4.html#NM1" title="TREES_4:NM.1">Node</a> of <font color="Maroon" title="c2">t2</font><span class="kw"> such that </span><br/><a NAME="E6:38"/><span class="lab"><font color="Green" title="E22">A3</font></span>: 
+<font color="Maroon" title="c1">t1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">t2</font> <a href="trees_2.html#K5" title="TREES_2:func.5">|</a> <font color="Maroon" title="c4">n</font>
+ ;<br/>
+<a NAME="E7:38"/>
+<font color="Maroon" title="c2">t2</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="trees_9.html#K3" title="TREES_9:func.3">Subtrees</a> <font color="Maroon" title="c1">t1</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:38"><span class="lab"><font color="Green" title="E21">A2</font></span></a>, <a class="ref" href="trees_9.html#T11" target="_self" onmouseover="rs('trees_9/T11')" onmouseout="rh()">Th11</a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c5">m</font> being   <a href="trees_4.html#NM1" title="TREES_4:NM.1">Node</a> of <font color="Maroon" title="c1">t1</font><span class="kw"> such that </span><br/><a NAME="E9:38"/><span class="lab"><font color="Green" title="E23">A4</font></span>: 
+<font color="Maroon" title="c2">t2</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">t1</font> <a href="trees_2.html#K5" title="TREES_2:func.5">|</a> <font color="Maroon" title="c5">m</font>
+ ;<br/>
+<a NAME="E10:38"/>
+ <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">t1</font> <a href="trees_2.html#K5" title="TREES_2:func.5">|</a> <font color="Maroon" title="c5">m</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c1">t1</font></span>)</span> <a href="trees_1.html#K4" title="TREES_1:func.4">|</a> <font color="Maroon" title="c5">m</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="trees_2.html#D10" onmouseover="rs('trees_2/D10')" onmouseout="rh()">TREES_2:def 10</a></span>;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c6">p</font> = <font color="Maroon" title="c5">m</font> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <font color="Maroon" title="c4">n</font> as    <a href="trees_1.html#M1" title="TREES_1:mode.1">Element</a> of  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c3">t</font> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E9:38"><span class="lab"><font color="Green" title="E23">A4</font></span></a>, <a class="ref" href="trees_1.html#D6" onmouseover="rs('trees_1/D6')" onmouseout="rh()">TREES_1:def 6</a></span>;<br/>
+<a NAME="E12:38"/>
+<font color="Maroon" title="c3">t</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">t</font> <a href="trees_2.html#K5" title="TREES_2:func.5">|</a> <font color="Maroon" title="c6">p</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:38"><span class="lab"><font color="Green" title="E22">A3</font></span></a>, <a class="txt" href="#E9:38"><span class="lab"><font color="Green" title="E23">A4</font></span></a>, <a class="ref" href="trees_9.html#T3" target="_self" onmouseover="rs('trees_9/T3')" onmouseout="rh()">Th3</a></span>;<br/>
+<a NAME="E13:38"/><span class="kw">then </span>
+ <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c3">t</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c3">t</font></span>)</span> <a href="trees_1.html#K4" title="TREES_1:func.4">|</a> <font color="Maroon" title="c6">p</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="trees_2.html#D10" onmouseover="rs('trees_2/D10')" onmouseout="rh()">TREES_2:def 10</a></span>;<br/>
+<a NAME="E14:38"/><span class="kw">then </span>
+<font color="Maroon" title="c4">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="trees_9.html#T9" target="_self" onmouseover="rs('trees_9/T9')" onmouseout="rh()">Th9</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E15:38"/>
+<font color="Maroon" title="c1">t1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">t2</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:38"><span class="lab"><font color="Green" title="E22">A3</font></span></a>, <a class="ref" href="trees_9.html#T1" target="_self" onmouseover="rs('trees_9/T1')" onmouseout="rh()">Th1</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

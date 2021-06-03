@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">X</font> be   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">A1</font>, <font color="Olive" title="b2">A2</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">X</font>  st <font color="Olive" title="b1">A1</font> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <font color="Olive" title="b2">A2</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  &amp; <font color="Olive" title="b1">A1</font>,<font color="Olive" title="b2">A2</font> <a href="connsp_1.html#R1" title="CONNSP_1:pred.1">are_separated</a>  holds <br/>( <font color="Olive" title="b1">A1</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  &amp; <font color="Olive" title="b2">A2</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  )</span><br/><span class="kw">let </span><font color="Maroon" title="c2">A1</font>, <font color="Maroon" title="c3">A2</font> be   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">X</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">A1</font> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <font color="Maroon" title="c3">A2</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  &amp; <font color="Maroon" title="c2">A1</font>,<font color="Maroon" title="c3">A2</font> <a href="connsp_1.html#R1" title="CONNSP_1:pred.1">are_separated</a>  implies ( <font color="Maroon" title="c2">A1</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  &amp; <font color="Maroon" title="c3">A2</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  ) )</span><br/>
+
+
+
+
+
+<span class="kw">assume </span><a NAME="E1:50"/><span class="lab"><font color="Green" title="E28">A1</font></span>: 
+<font color="Maroon" title="c2">A1</font> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <font color="Maroon" title="c3">A2</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c2">A1</font>,<font color="Maroon" title="c3">A2</font> <a href="connsp_1.html#R1" title="CONNSP_1:pred.1">are_separated</a>  or ( <font color="Maroon" title="c2">A1</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  &amp; <font color="Maroon" title="c3">A2</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  ) )</span><br/>
+
+<a NAME="E2:50"/><span class="lab"><font color="Green" title="E29">A2</font></span>: 
+<font color="Maroon" title="c2">A1</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c2">A1</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="pre_topc.html#T18" onmouseover="rs('pre_topc/T18')" onmouseout="rh()">PRE_TOPC:18</a></span>;<br/>
+<span class="kw">assume </span><a NAME="E3:50"/><span class="lab"><font color="Green" title="E30">A3</font></span>: 
+<font color="Maroon" title="c2">A1</font>,<font color="Maroon" title="c3">A2</font> <a href="connsp_1.html#R1" title="CONNSP_1:pred.1">are_separated</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">A1</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  &amp; <font color="Maroon" title="c3">A2</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  )</span><br/>
+
+<a NAME="E4:50"/><span class="kw">then </span>
+<font color="Maroon" title="c3">A2</font> <a href="xboole_0.html#R1" title="XBOOLE_0:pred.1">misses</a>  <a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c2">A1</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="connsp_1.html#D1" onmouseover="rs('connsp_1/D1')" onmouseout="rh()">CONNSP_1:def 1</a></span>;<br/>
+<a NAME="E5:50"/><span class="kw">then </span><span class="lab"><font color="Green" title="E31">A4</font></span>: 
+<font color="Maroon" title="c3">A2</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <span class="p1">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c2">A1</font></span>)</span> <a href="subset_1.html#K3" title="SUBSET_1:func.3">`</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="subset_1.html#T23" onmouseover="rs('subset_1/T23')" onmouseout="rh()">SUBSET_1:23</a></span>;<br/>
+<a NAME="E6:50"/>
+<font color="Maroon" title="c2">A1</font> <a href="xboole_0.html#R1" title="XBOOLE_0:pred.1">misses</a>  <a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c3">A2</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:50"><span class="lab"><font color="Green" title="E30">A3</font></span></a>, <a class="ref" href="connsp_1.html#D1" onmouseover="rs('connsp_1/D1')" onmouseout="rh()">CONNSP_1:def 1</a></span>;<br/>
+<a NAME="E7:50"/><span class="kw">then </span><span class="lab"><font color="Green" title="E32">A5</font></span>: 
+<font color="Maroon" title="c2">A1</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <span class="p1">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c3">A2</font></span>)</span> <a href="subset_1.html#K3" title="SUBSET_1:func.3">`</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="subset_1.html#T23" onmouseover="rs('subset_1/T23')" onmouseout="rh()">SUBSET_1:23</a></span>;<br/>
+<a NAME="E8:50"/><span class="lab"><font color="Green" title="E33">A6</font></span>: 
+<font color="Maroon" title="c3">A2</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c3">A2</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="pre_topc.html#T18" onmouseover="rs('pre_topc/T18')" onmouseout="rh()">PRE_TOPC:18</a></span>;<br/>
+<span class="lab"><font color="Green" title="E34">A7</font></span>: <span class="p1">(<span class="default"><font color="Maroon" title="c2">A1</font> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <font color="Maroon" title="c3">A2</font></span>)</span> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c3">A2</font></span>)</span> <a href="subset_1.html#K3" title="SUBSET_1:func.3">`</a></span>)</span> = 
+<span class="p1">(<span class="default"><font color="Maroon" title="c2">A1</font> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <font color="Maroon" title="c3">A2</font></span>)</span> <a href="subset_1.html#K7" title="SUBSET_1:func.7">\</a> <span class="p1">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c3">A2</font></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="subset_1.html#T13" onmouseover="rs('subset_1/T13')" onmouseout="rh()">SUBSET_1:13</a></span>
+<br/>.= 
+<span class="p1">(<span class="default"><font color="Maroon" title="c2">A1</font> <a href="subset_1.html#K7" title="SUBSET_1:func.7">\</a> <span class="p2">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c3">A2</font></span>)</span></span>)</span> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">A2</font> <a href="subset_1.html#K7" title="SUBSET_1:func.7">\</a> <span class="p2">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c3">A2</font></span>)</span></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_1.html#T42" onmouseover="rs('xboole_1/T42')" onmouseout="rh()">XBOOLE_1:42</a></span>
+<br/>.= 
+<span class="p1">(<span class="default"><font color="Maroon" title="c2">A1</font> <a href="subset_1.html#K7" title="SUBSET_1:func.7">\</a> <span class="p2">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c3">A2</font></span>)</span></span>)</span> <a href="xboole_0.html#K2" title="XBOOLE_0:func.2">\/</a> <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E8:50"><span class="lab"><font color="Green" title="E33">A6</font></span></a>, <a class="ref" href="xboole_1.html#T37" onmouseover="rs('xboole_1/T37')" onmouseout="rh()">XBOOLE_1:37</a></span>
+<br/>.= 
+<font color="Maroon" title="c2">A1</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c3">A2</font></span>)</span> <a href="subset_1.html#K3" title="SUBSET_1:func.3">`</a></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="subset_1.html#T13" onmouseover="rs('subset_1/T13')" onmouseout="rh()">SUBSET_1:13</a></span>
+<br/>.= 
+<font color="Maroon" title="c2">A1</font>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E7:50"><span class="lab"><font color="Green" title="E32">A5</font></span></a>, <a class="ref" href="xboole_1.html#T28" onmouseover="rs('xboole_1/T28')" onmouseout="rh()">XBOOLE_1:28</a></span>
+;<br/>
+<span class="p1">(<span class="default"><font color="Maroon" title="c2">A1</font> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <font color="Maroon" title="c3">A2</font></span>)</span> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c2">A1</font></span>)</span> <a href="subset_1.html#K3" title="SUBSET_1:func.3">`</a></span>)</span> = 
+<span class="p1">(<span class="default"><font color="Maroon" title="c2">A1</font> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <font color="Maroon" title="c3">A2</font></span>)</span> <a href="subset_1.html#K7" title="SUBSET_1:func.7">\</a> <span class="p1">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c2">A1</font></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="subset_1.html#T13" onmouseover="rs('subset_1/T13')" onmouseout="rh()">SUBSET_1:13</a></span>
+<br/>.= 
+<span class="p1">(<span class="default"><font color="Maroon" title="c2">A1</font> <a href="subset_1.html#K7" title="SUBSET_1:func.7">\</a> <span class="p2">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c2">A1</font></span>)</span></span>)</span> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">A2</font> <a href="subset_1.html#K7" title="SUBSET_1:func.7">\</a> <span class="p2">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c2">A1</font></span>)</span></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_1.html#T42" onmouseover="rs('xboole_1/T42')" onmouseout="rh()">XBOOLE_1:42</a></span>
+<br/>.= 
+<a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> <a href="xboole_0.html#K2" title="XBOOLE_0:func.2">\/</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">A2</font> <a href="subset_1.html#K7" title="SUBSET_1:func.7">\</a> <span class="p2">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c2">A1</font></span>)</span></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:50"><span class="lab"><font color="Green" title="E29">A2</font></span></a>, <a class="ref" href="xboole_1.html#T37" onmouseover="rs('xboole_1/T37')" onmouseout="rh()">XBOOLE_1:37</a></span>
+<br/>.= 
+<font color="Maroon" title="c3">A2</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c2">A1</font></span>)</span> <a href="subset_1.html#K3" title="SUBSET_1:func.3">`</a></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="subset_1.html#T13" onmouseover="rs('subset_1/T13')" onmouseout="rh()">SUBSET_1:13</a></span>
+<br/>.= 
+<font color="Maroon" title="c3">A2</font>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:50"><span class="lab"><font color="Green" title="E31">A4</font></span></a>, <a class="ref" href="xboole_1.html#T28" onmouseover="rs('xboole_1/T28')" onmouseout="rh()">XBOOLE_1:28</a></span>
+;<br/>
+<span class="kw">hence </span><a NAME="E11:50"/>
+( <font color="Maroon" title="c2">A1</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  &amp; <font color="Maroon" title="c3">A2</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:50"><span class="lab"><font color="Green" title="E28">A1</font></span></a>, <a class="txt" href="#E9:50"><span class="lab"><font color="Green" title="E34">A7</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
