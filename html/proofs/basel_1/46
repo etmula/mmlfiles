@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c2">r</font> be   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c2">r</font> implies <a href="sin_cos.html#K16" title="SIN_COS:func.16">sin</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c2">r</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c2">r</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:46"/>
+ <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c2">r</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <a href="sin_cos.html#K16" title="SIN_COS:func.16">sin</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c2">r</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c2">r</font></span><br/>
+
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c3">A</font> = <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,<font color="Maroon" title="c2">r</font></span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span> as   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="measure5.html#V2" title="MEASURE5:attr.2">closed_interval</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> <span class="kw">by</span> <span class="lab"><a class="ref" href="measure5.html#D3" onmouseover="rs('measure5/D3')" onmouseout="rh()">MEASURE5:def 3</a>, <a class="ref" href="xxreal_1.html#T1" onmouseover="rs('xxreal_1/T1')" onmouseout="rh()">XXREAL_1:1</a></span>;<br/>
+<a NAME="E3:46"/><span class="lab"><font color="Green" title="E29">A1</font></span>: 
+ <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <a href="sin_cos.html#K18" title="SIN_COS:func.18">cos</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="funct_2.html#D1" onmouseover="rs('funct_2/D1')" onmouseout="rh()">FUNCT_2:def 1</a></span>;<br/>
+<a NAME="E4:46"/><span class="kw">then </span>
+ <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <span class="p1">(<span class="default"><a href="sin_cos.html#K18" title="SIN_COS:func.18">cos</a> <a href="partfun1.html#K2" title="PARTFUN1:func.2">|</a> <font color="Maroon" title="c3">A</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">A</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="relat_1.html#T62" onmouseover="rs('relat_1/T62')" onmouseout="rh()">RELAT_1:62</a></span>;<br/>
+<a NAME="E5:46"/><span class="kw">then </span>
+<a href="sin_cos.html#K18" title="SIN_COS:func.18">cos</a> <a href="partfun1.html#K2" title="PARTFUN1:func.2">|</a> <font color="Maroon" title="c3">A</font> is  <a href="partfun1.html#V1" title="PARTFUN1:attr.1">total</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="partfun1.html#D2" onmouseover="rs('partfun1/D2')" onmouseout="rh()">PARTFUN1:def 2</a></span>;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c4">cA</font> = <a href="sin_cos.html#K18" title="SIN_COS:func.18">cos</a> <a href="integra5.html#K1" title="INTEGRA5:func.1">||</a> <font color="Maroon" title="c3">A</font> as   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <font color="Maroon" title="c3">A</font>,<a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> ;<br/>
+<a NAME="E7:46"/><span class="lab"><font color="Green" title="E30">A2</font></span>: 
+( <font color="Maroon" title="c4">cA</font> <a href="partfun1.html#K2" title="PARTFUN1:func.2">|</a> <font color="Maroon" title="c3">A</font> is  <a href="comseq_2.html#V1" title="COMSEQ_2:attr.1">bounded</a>  &amp; <font color="Maroon" title="c4">cA</font> is  <a href="integra1.html#V3" title="INTEGRA1:attr.3">integrable</a>  )
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="46_1"><span class="kw">proof </span></a><div class="add">
+
+<a NAME="E1:46_1"/>
+<a href="sin_cos.html#K18" title="SIN_COS:func.18">cos</a> <a href="partfun1.html#K2" title="PARTFUN1:func.2">|</a> <font color="Maroon" title="c3">A</font> is  <a href="fcont_1.html#V1" title="FCONT_1:attr.1">continuous</a> 
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E2:46_1"/>
+( <font color="Maroon" title="c4">cA</font> <a href="partfun1.html#K2" title="PARTFUN1:func.2">|</a> <font color="Maroon" title="c3">A</font> is  <a href="comseq_2.html#V1" title="COMSEQ_2:attr.1">bounded</a>  &amp; <font color="Maroon" title="c4">cA</font> is  <a href="integra1.html#V3" title="INTEGRA1:attr.3">integrable</a>  )
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="integra5.html#D1" onmouseover="rs('integra5/D1')" onmouseout="rh()">INTEGRA5:def 1</a>, <a class="ref" href="integra5.html#T11" onmouseover="rs('integra5/T11')" onmouseout="rh()">INTEGRA5:11</a>, <a class="ref" href="integra5.html#T10" onmouseover="rs('integra5/T10')" onmouseout="rh()">INTEGRA5:10</a>, <a class="txt" href="#E3:46"><span class="lab"><font color="Green" title="E29">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E8:46"/><span class="lab"><font color="Green" title="E31">A3</font></span>: 
+ <a href="integra1.html#K12" title="INTEGRA1:func.12">integral</a> <font color="Maroon" title="c4">cA</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <a href="sin_cos.html#K16" title="SIN_COS:func.16">sin</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c2">r</font>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="46_2"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">thus </span> <a href="integra1.html#K12" title="INTEGRA1:func.12">integral</a> <font color="Maroon" title="c4">cA</font> = 
+ <a href="integra5.html#K2" title="INTEGRA5:func.2">integral</a> (<a href="sin_cos.html#K18" title="SIN_COS:func.18">cos</a>,<font color="Maroon" title="c3">A</font>)
+<span class="kw">by</span> <span class="lab"><a class="ref" href="integra5.html#D2" onmouseover="rs('integra5/D2')" onmouseout="rh()">INTEGRA5:def 2</a></span>
+<br/>.= 
+ <a href="integra5.html#K4" title="INTEGRA5:func.4">integral</a> (<a href="sin_cos.html#K18" title="SIN_COS:func.18">cos</a>,<a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,<font color="Maroon" title="c2">r</font>)
+<span class="kw">by</span> <span class="lab"><a class="ref" href="integra5.html#T19" onmouseover="rs('integra5/T19')" onmouseout="rh()">INTEGRA5:19</a></span>
+<br/>.= 
+<span class="p1">(<span class="default"><a href="sin_cos.html#K16" title="SIN_COS:func.16">sin</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c2">r</font></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p1">(<span class="default"><a href="sin_cos.html#K16" title="SIN_COS:func.16">sin</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="integra7.html#T24" onmouseover="rs('integra7/T24')" onmouseout="rh()">INTEGRA7:24</a></span>
+<br/>.= 
+<a href="sin_cos.html#K16" title="SIN_COS:func.16">sin</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c2">r</font>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="sin_cos.html#T30" onmouseover="rs('sin_cos/T30')" onmouseout="rh()">SIN_COS:30</a></span>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">set </span><font color="Maroon" title="c5">Z0</font> =  <a href="taylor_1.html#K1" title="TAYLOR_1:func.1">#Z</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>;<br/>
+<a NAME="E9:46"/><span class="lab"><font color="Green" title="E32">A4</font></span>: 
+ <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <span class="p1">(<span class="default"><a href="taylor_1.html#K1" title="TAYLOR_1:func.1">#Z</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="funct_2.html#D1" onmouseover="rs('funct_2/D1')" onmouseout="rh()">FUNCT_2:def 1</a></span>;<br/>
+<a NAME="E10:46"/><span class="kw">then </span>
+ <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="taylor_1.html#K1" title="TAYLOR_1:func.1">#Z</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span> <a href="partfun1.html#K2" title="PARTFUN1:func.2">|</a> <font color="Maroon" title="c3">A</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">A</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="relat_1.html#T62" onmouseover="rs('relat_1/T62')" onmouseout="rh()">RELAT_1:62</a></span>;<br/>
+<a NAME="E11:46"/><span class="kw">then </span>
+<span class="p1">(<span class="default"><a href="taylor_1.html#K1" title="TAYLOR_1:func.1">#Z</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span> <a href="partfun1.html#K2" title="PARTFUN1:func.2">|</a> <font color="Maroon" title="c3">A</font> is  <a href="partfun1.html#V1" title="PARTFUN1:attr.1">total</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="partfun1.html#D2" onmouseover="rs('partfun1/D2')" onmouseout="rh()">PARTFUN1:def 2</a></span>;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c6">ZA</font> = <span class="p1">(<span class="default"><a href="taylor_1.html#K1" title="TAYLOR_1:func.1">#Z</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span> <a href="integra5.html#K1" title="INTEGRA5:func.1">||</a> <font color="Maroon" title="c3">A</font> as   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <font color="Maroon" title="c3">A</font>,<a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> ;<br/>
+<a NAME="E13:46"/><span class="lab"><font color="Green" title="E33">A5</font></span>: 
+( <font color="Maroon" title="c6">ZA</font> <a href="partfun1.html#K2" title="PARTFUN1:func.2">|</a> <font color="Maroon" title="c3">A</font> is  <a href="comseq_2.html#V1" title="COMSEQ_2:attr.1">bounded</a>  &amp; <font color="Maroon" title="c6">ZA</font> is  <a href="integra1.html#V3" title="INTEGRA1:attr.3">integrable</a>  )
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="46_3"><span class="kw">proof </span></a><div class="add">
+
+<a NAME="E1:46_3"/>
+<span class="p1">(<span class="default"><a href="taylor_1.html#K1" title="TAYLOR_1:func.1">#Z</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span> <a href="partfun1.html#K2" title="PARTFUN1:func.2">|</a> <font color="Maroon" title="c3">A</font> is  <a href="fcont_1.html#V1" title="FCONT_1:attr.1">continuous</a> 
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E2:46_3"/>
+( <font color="Maroon" title="c6">ZA</font> <a href="partfun1.html#K2" title="PARTFUN1:func.2">|</a> <font color="Maroon" title="c3">A</font> is  <a href="comseq_2.html#V1" title="COMSEQ_2:attr.1">bounded</a>  &amp; <font color="Maroon" title="c6">ZA</font> is  <a href="integra1.html#V3" title="INTEGRA1:attr.3">integrable</a>  )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E9:46"><span class="lab"><font color="Green" title="E32">A4</font></span></a>, <a class="ref" href="integra5.html#D1" onmouseover="rs('integra5/D1')" onmouseout="rh()">INTEGRA5:def 1</a>, <a class="ref" href="integra5.html#T11" onmouseover="rs('integra5/T11')" onmouseout="rh()">INTEGRA5:11</a>, <a class="ref" href="integra5.html#T10" onmouseover="rs('integra5/T10')" onmouseout="rh()">INTEGRA5:10</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E14:46"/><span class="lab"><font color="Green" title="E34">A6</font></span>: 
+ <a href="integra1.html#K12" title="INTEGRA1:func.12">integral</a> <font color="Maroon" title="c6">ZA</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">r</font>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="46_4"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">set </span><font color="Maroon" title="c7">Z1</font> =  <a href="taylor_1.html#K1" title="TAYLOR_1:func.1">#Z</a> 1;<br/>
+<a NAME="E1:46_4"/><span class="lab"><font color="Green" title="E35">A7</font></span>: 
+<span class="p1">(<span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1</span>)</span> <a href="valued_1.html#K26" title="VALUED_1:func.26">(#)</a> <span class="p1">(<span class="default"><a href="taylor_1.html#K1" title="TAYLOR_1:func.1">#Z</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span> <a href="funct_2.html#R2" title="FUNCT_2:pred.2">=</a>  <a href="taylor_1.html#K1" title="TAYLOR_1:func.1">#Z</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="rfunct_1.html#T21" onmouseover="rs('rfunct_1/T21')" onmouseout="rh()">RFUNCT_1:21</a></span>;<br/>
+<span class="lab"><font color="Green" title="E36">A8</font></span>: <span class="p1">(<span class="default"><a href="taylor_1.html#K1" title="TAYLOR_1:func.1">#Z</a> 1</span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c2">r</font> = 
+<font color="Maroon" title="c2">r</font> <a href="prepower.html#K3" title="PREPOWER:func.3">#Z</a> 1
+<span class="kw">by</span> <span class="lab"><a class="ref" href="taylor_1.html#D1" onmouseover="rs('taylor_1/D1')" onmouseout="rh()">TAYLOR_1:def 1</a></span>
+<br/>.= 
+<font color="Maroon" title="c2">r</font>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="prepower.html#T35" onmouseover="rs('prepower/T35')" onmouseout="rh()">PREPOWER:35</a></span>
+;<br/>
+<span class="lab"><font color="Green" title="E37">A9</font></span>: <span class="p1">(<span class="default"><a href="taylor_1.html#K1" title="TAYLOR_1:func.1">#Z</a> 1</span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> = 
+<a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="prepower.html#K3" title="PREPOWER:func.3">#Z</a> 1
+<span class="kw">by</span> <span class="lab"><a class="ref" href="taylor_1.html#D1" onmouseover="rs('taylor_1/D1')" onmouseout="rh()">TAYLOR_1:def 1</a></span>
+<br/>.= 
+ <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="prepower.html#T35" onmouseover="rs('prepower/T35')" onmouseout="rh()">PREPOWER:35</a></span>
+;<br/>
+<span class="kw">thus </span> <a href="integra1.html#K12" title="INTEGRA1:func.12">integral</a> <font color="Maroon" title="c6">ZA</font> = 
+ <a href="integra5.html#K2" title="INTEGRA5:func.2">integral</a> (<span class="p1">(<span class="default"><a href="taylor_1.html#K1" title="TAYLOR_1:func.1">#Z</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span>,<font color="Maroon" title="c3">A</font>)
+<span class="kw">by</span> <span class="lab"><a class="ref" href="integra5.html#D2" onmouseover="rs('integra5/D2')" onmouseout="rh()">INTEGRA5:def 2</a></span>
+<br/>.= 
+ <a href="integra5.html#K4" title="INTEGRA5:func.4">integral</a> (<span class="p1">(<span class="default"><a href="taylor_1.html#K1" title="TAYLOR_1:func.1">#Z</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span>,<a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,<font color="Maroon" title="c2">r</font>)
+<span class="kw">by</span> <span class="lab"><a class="ref" href="integra5.html#T19" onmouseover="rs('integra5/T19')" onmouseout="rh()">INTEGRA5:19</a></span>
+<br/>.= 
+<span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="taylor_1.html#K1" title="TAYLOR_1:func.1">#Z</a> 1</span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c2">r</font></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="taylor_1.html#K1" title="TAYLOR_1:func.1">#Z</a> 1</span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:46_4"><span class="lab"><font color="Green" title="E35">A7</font></span></a>, <a class="ref" href="integra7.html#T30" onmouseover="rs('integra7/T30')" onmouseout="rh()">INTEGRA7:30</a></span>
+<br/>.= 
+<font color="Maroon" title="c2">r</font>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:46_4"><span class="lab"><font color="Green" title="E36">A8</font></span></a>, <a class="txt" href="#E3:46_4"><span class="lab"><font color="Green" title="E37">A9</font></span></a></span>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E15:46"/>
+ for <font color="Olive" title="b1">r</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>  st <font color="Olive" title="b1">r</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c3">A</font> holds <br/><font color="Maroon" title="c4">cA</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">r</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c6">ZA</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">r</font>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="46_5"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c7">r</font> be   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c7">r</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c3">A</font> implies <font color="Maroon" title="c4">cA</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c7">r</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c6">ZA</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c7">r</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:46_5"/><span class="lab"><font color="Green" title="E35">A10</font></span>: 
+<font color="Maroon" title="c7">r</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c3">A</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c4">cA</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c7">r</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c6">ZA</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c7">r</font></span><br/>
+
+<a NAME="E2:46_5"/><span class="kw">then </span>
+<font color="Maroon" title="c6">ZA</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c7">r</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="taylor_1.html#K1" title="TAYLOR_1:func.1">#Z</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c7">r</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="funct_1.html#T49" onmouseover="rs('funct_1/T49')" onmouseout="rh()">FUNCT_1:49</a></span>;<br/>
+<span class="kw">then </span><span class="lab"><font color="Green" title="E36">A11</font></span>: <font color="Maroon" title="c6">ZA</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c7">r</font> = 
+<font color="Maroon" title="c7">r</font> <a href="prepower.html#K3" title="PREPOWER:func.3">#Z</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="taylor_1.html#D1" onmouseover="rs('taylor_1/D1')" onmouseout="rh()">TAYLOR_1:def 1</a></span>
+<br/>.= 
+1
+<span class="kw">by</span> <span class="lab"><a class="ref" href="prepower.html#T34" onmouseover="rs('prepower/T34')" onmouseout="rh()">PREPOWER:34</a></span>
+;<br/>
+<a NAME="E4:46_5"/>
+ <a href="sin_cos.html#K19" title="SIN_COS:func.19">cos</a> <font color="Maroon" title="c7">r</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="sin_cos6.html#T6" onmouseover="rs('sin_cos6/T6')" onmouseout="rh()">SIN_COS6:6</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:46_5"/>
+<font color="Maroon" title="c4">cA</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c7">r</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c6">ZA</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c7">r</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:46_5"><span class="lab"><font color="Green" title="E36">A11</font></span></a>, <a class="txt" href="#E1:46_5"><span class="lab"><font color="Green" title="E35">A10</font></span></a>, <a class="ref" href="funct_1.html#T49" onmouseover="rs('funct_1/T49')" onmouseout="rh()">FUNCT_1:49</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E16:46"/>
+<a href="sin_cos.html#K16" title="SIN_COS:func.16">sin</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c2">r</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c2">r</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E7:46"><span class="lab"><font color="Green" title="E30">A2</font></span></a>, <a class="txt" href="#E8:46"><span class="lab"><font color="Green" title="E31">A3</font></span></a>, <a class="txt" href="#E13:46"><span class="lab"><font color="Green" title="E33">A5</font></span></a>, <a class="txt" href="#E14:46"><span class="lab"><font color="Green" title="E34">A6</font></span></a>, <a class="ref" href="integra2.html#T34" onmouseover="rs('integra2/T34')" onmouseout="rh()">INTEGRA2:34</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
