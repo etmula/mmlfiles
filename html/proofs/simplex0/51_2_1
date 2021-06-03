@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">set </span><font color="Maroon" title="c2">E</font> =  the    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">D</font>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c3">B</font> =  <a href="setfam_1.html#K9" title="SETFAM_1:func.9">bool</a> <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"> the    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">D</font></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> as   <a href="setfam_1.html#NM1" title="SETFAM_1:NM.1">Subset-Family</a> of <font color="Maroon" title="c1">D</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="zfmisc_1.html#T67" onmouseover="rs('zfmisc_1/T67')" onmouseout="rh()">ZFMISC_1:67</a></span>;<br/>
+<a NAME="E2:51_2_1"/>
+ <a href="struct_0.html#K2" title="STRUCT_0:func.2">[#]</a> <a href="pre_topc.html#G1" title="PRE_TOPC:aggr.1">TopStruct</a>(# <font color="Maroon" title="c1">D</font>,<font color="Maroon" title="c3">B</font> #) <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="subset_1.html#K2" title="SUBSET_1:func.2">[#]</a> <font color="Maroon" title="c1">D</font>
+ 
+;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c4">T</font> =  <a href="pre_topc.html#G1" title="PRE_TOPC:aggr.1">TopStruct</a>(# <font color="Maroon" title="c1">D</font>,<font color="Maroon" title="c3">B</font> #) as    <a href="simplex0.html#M1" title="SIMPLEX0:mode.1">SimplicialComplexStr</a> of <font color="Maroon" title="c1">D</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="simplex0.html#D9" target="_self" onmouseover="rs('simplex0/D9')" onmouseout="rh()">Def9</a></span>;<br/>
+<span class="kw">take </span>
+<font color="Maroon" title="c4">T</font>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c4">T</font> is  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  &amp; <font color="Maroon" title="c4">T</font> is  <a href="simplex0.html#V6" title="SIMPLEX0:attr.6">total</a>  &amp; <font color="Maroon" title="c4">T</font> is  <a href="simplex0.html#NV10" title="SIMPLEX0:NV.10">with_empty_element</a>  &amp; <font color="Maroon" title="c4">T</font> is  <a href="simplex0.html#NV9" title="SIMPLEX0:NV.9">with_non-empty_element</a>  &amp; <font color="Maroon" title="c4">T</font> is  <a href="simplex0.html#V2" title="SIMPLEX0:attr.2">finite-vertices</a>  &amp; <font color="Maroon" title="c4">T</font> is  <a href="matroid0.html#V1" title="MATROID0:attr.1">subset-closed</a>  &amp; <font color="Maroon" title="c4">T</font> is  <a href="pre_topc.html#V1" title="PRE_TOPC:attr.1">strict</a>  )</span><br/>
+
+<a NAME="E4:51_2_1"/><span class="lab"><font color="Green" title="E23">A1</font></span>: 
+ <a href="simplex0.html#K4" title="SIMPLEX0:func.4">Vertices</a> <font color="Maroon" title="c4">T</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"> the    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">D</font></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="51_2_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c5">x</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="tarski.html#D3" onmouseover="rs('tarski/D3')" onmouseout="rh()">TARSKI:def 3</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="simplex0.html#K4" title="SIMPLEX0:func.4">Vertices</a> <font color="Maroon" title="c4">T</font> or <font color="Maroon" title="c5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"> the    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">D</font></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:51_2_1_1"/><span class="lab"><font color="Green" title="E24">A2</font></span>: 
+<font color="Maroon" title="c5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="simplex0.html#K4" title="SIMPLEX0:func.4">Vertices</a> <font color="Maroon" title="c4">T</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"> the    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">D</font></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span></span><br/>
+
+<span class="kw">reconsider </span><font color="Maroon" title="c6">v</font> = <font color="Maroon" title="c5">x</font> as   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c4">T</font> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:51_2_1_1"><span class="lab"><font color="Green" title="E24">A2</font></span></a></span>;<br/>
+<a NAME="E3:51_2_1_1"/>
+<font color="Maroon" title="c6">v</font> is  <a href="simplex0.html#V1" title="SIMPLEX0:attr.1">vertex-like</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:51_2_1_1"><span class="lab"><font color="Green" title="E24">A2</font></span></a>, <a class="ref" href="simplex0.html#D4" target="_self" onmouseover="rs('simplex0/D4')" onmouseout="rh()">Def4</a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c7">S</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c4">T</font><span class="kw"> such that </span><br/><a NAME="E5:51_2_1_1"/><span class="lab"><font color="Green" title="E25">A3</font></span>: 
+<font color="Maroon" title="c7">S</font> is  <a href="simplex0.html#NV2" title="SIMPLEX0:NV.2">simplex-like</a> 
+ <span class="kw">and </span><br/><a NAME="E6:51_2_1_1"/><span class="lab"><font color="Green" title="E26">A4</font></span>: 
+<font color="Maroon" title="c6">v</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c7">S</font>
+ ;<br/>
+<a NAME="E7:51_2_1_1"/>
+<font color="Maroon" title="c7">S</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c3">B</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:51_2_1_1"><span class="lab"><font color="Green" title="E25">A3</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E8:51_2_1_1"/>
+<font color="Maroon" title="c5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"> the    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">D</font></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:51_2_1_1"><span class="lab"><font color="Green" title="E26">A4</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E5:51_2_1"/>
+<span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"> the    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">D</font></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c3">B</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zfmisc_1.html#D1" onmouseover="rs('zfmisc_1/D1')" onmouseout="rh()">ZFMISC_1:def 1</a></span>;<br/>
+<a NAME="E6:51_2_1"/><span class="kw">then </span>
+<font color="Maroon" title="c3">B</font> is  <a href="setfam_1.html#NV3" title="SETFAM_1:NV.3">with_non-empty_element</a> 
+ 
+;<br/>
+<a NAME="E7:51_2_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E24">A5</font></span>: 
+(  <a href="struct_0.html#K2" title="STRUCT_0:func.2">[#]</a> <font color="Maroon" title="c4">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">D</font> &amp; <font color="Maroon" title="c4">T</font> is  <a href="simplex0.html#NV9" title="SIMPLEX0:NV.9">with_non-empty_element</a>  )
+ 
+;<br/>
+<span class="kw">thus </span><a NAME="E8:51_2_1"/>
+(  not <font color="Maroon" title="c4">T</font> is  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  &amp; <font color="Maroon" title="c4">T</font> is  <a href="simplex0.html#V6" title="SIMPLEX0:attr.6">total</a>  &amp; <font color="Maroon" title="c4">T</font> is  <a href="simplex0.html#NV10" title="SIMPLEX0:NV.10">with_empty_element</a>  &amp; <font color="Maroon" title="c4">T</font> is  <a href="simplex0.html#NV9" title="SIMPLEX0:NV.9">with_non-empty_element</a>  &amp; <font color="Maroon" title="c4">T</font> is  <a href="simplex0.html#V2" title="SIMPLEX0:attr.2">finite-vertices</a>  &amp; <font color="Maroon" title="c4">T</font> is  <a href="matroid0.html#V1" title="MATROID0:attr.1">subset-closed</a>  &amp; <font color="Maroon" title="c4">T</font> is  <a href="pre_topc.html#V1" title="PRE_TOPC:attr.1">strict</a>  )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:51_2_1"><span class="lab"><font color="Green" title="E23">A1</font></span></a>, <a class="txt" href="#E7:51_2_1"><span class="lab"><font color="Green" title="E24">A5</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c2">M</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="metric_1.html#V6" title="METRIC_1:attr.6">Reflexive</a>   <a href="metric_1.html#L1" title="METRIC_1:struct.1">MetrStruct</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">K</font> being   <a href="simplex0.html#NM1" title="SIMPLEX0:NM.1">SimplicialComplexStr</a>  st <font color="Olive" title="b1">K</font> is  <a href="simplex0.html#V2" title="SIMPLEX0:attr.2">finite-vertices</a>  holds <br/><font color="Olive" title="b1">K</font> is <font color="Maroon" title="c2">M</font> <a href="simplex2.html#V1" title="SIMPLEX2:attr.1">bounded</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c3">K</font> be   <a href="simplex0.html#NM1" title="SIMPLEX0:NM.1">SimplicialComplexStr</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">K</font> is  <a href="simplex0.html#V2" title="SIMPLEX0:attr.2">finite-vertices</a>  implies <font color="Maroon" title="c3">K</font> is <font color="Maroon" title="c2">M</font> <a href="simplex2.html#V1" title="SIMPLEX2:attr.1">bounded</a>  )</span><br/>
+
+
+
+<span class="kw">set </span><font color="Maroon" title="c4">V</font> =  <a href="simplex0.html#K4" title="SIMPLEX0:func.4">Vertices</a> <font color="Maroon" title="c3">K</font>;<br/>
+<span class="kw">assume </span><a NAME="E1:13"/>
+<font color="Maroon" title="c3">K</font> is  <a href="simplex0.html#V2" title="SIMPLEX0:attr.2">finite-vertices</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">K</font> is <font color="Maroon" title="c2">M</font> <a href="simplex2.html#V1" title="SIMPLEX2:attr.1">bounded</a> </span><br/>
+
+<a NAME="E2:13"/><span class="kw">then </span>
+ <a href="simplex0.html#K4" title="SIMPLEX0:func.4">Vertices</a> <font color="Maroon" title="c3">K</font> is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a> 
+ 
+;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c5">VM</font> = <span class="p1">(<span class="default"><a href="simplex0.html#K4" title="SIMPLEX0:func.4">Vertices</a> <font color="Maroon" title="c3">K</font></span>)</span> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="struct_0.html#K2" title="STRUCT_0:func.2">[#]</a> <font color="Maroon" title="c2">M</font></span>)</span> as   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c2">M</font> ;<br/>
+<span class="kw">take </span>
+ <a href="tbsp_1.html#K2" title="TBSP_1:func.2">diameter</a> <font color="Maroon" title="c5">VM</font>
+; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="simplex2.html#D2" target="_self" onmouseover="rs('simplex2/D2')" onmouseout="rh()">SIMPLEX2:def 2</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">A</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c2">M</font>  st <font color="Olive" title="b1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  the <a href="pre_topc.html#U1" title="PRE_TOPC:sel.1">topology</a> of <font color="Maroon" title="c3">K</font> holds <br/>( <font color="Olive" title="b1">A</font> is  <a href="tbsp_1.html#V6" title="TBSP_1:attr.6">bounded</a>  &amp;  <a href="tbsp_1.html#K2" title="TBSP_1:func.2">diameter</a> <font color="Olive" title="b1">A</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="tbsp_1.html#K2" title="TBSP_1:func.2">diameter</a> <font color="Maroon" title="c5">VM</font> )</span><br/>
+
+<span class="kw">let </span><font color="Maroon" title="c6">A</font> be   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c2">M</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c6">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  the <a href="pre_topc.html#U1" title="PRE_TOPC:sel.1">topology</a> of <font color="Maroon" title="c3">K</font> implies ( <font color="Maroon" title="c6">A</font> is  <a href="tbsp_1.html#V6" title="TBSP_1:attr.6">bounded</a>  &amp;  <a href="tbsp_1.html#K2" title="TBSP_1:func.2">diameter</a> <font color="Maroon" title="c6">A</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="tbsp_1.html#K2" title="TBSP_1:func.2">diameter</a> <font color="Maroon" title="c5">VM</font> ) )</span><br/>
+
+<span class="kw">assume </span><a NAME="E4:13"/><span class="lab"><font color="Green" title="E5">A1</font></span>: 
+<font color="Maroon" title="c6">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  the <a href="pre_topc.html#U1" title="PRE_TOPC:sel.1">topology</a> of <font color="Maroon" title="c3">K</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c6">A</font> is  <a href="tbsp_1.html#V6" title="TBSP_1:attr.6">bounded</a>  &amp;  <a href="tbsp_1.html#K2" title="TBSP_1:func.2">diameter</a> <font color="Maroon" title="c6">A</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="tbsp_1.html#K2" title="TBSP_1:func.2">diameter</a> <font color="Maroon" title="c5">VM</font> )</span><br/>
+
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c7">S</font> = <font color="Maroon" title="c6">A</font> as   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c3">K</font> ;<br/>
+<a NAME="E6:13"/>
+<font color="Maroon" title="c7">S</font> is  <a href="simplex0.html#NV2" title="SIMPLEX0:NV.2">simplex-like</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:13"><span class="lab"><font color="Green" title="E5">A1</font></span></a>, <a class="ref" href="pre_topc.html#D2" onmouseover="rs('pre_topc/D2')" onmouseout="rh()">PRE_TOPC:def 2</a></span>;<br/>
+<a NAME="E7:13"/><span class="kw">then </span>
+<font color="Maroon" title="c6">A</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="simplex0.html#K4" title="SIMPLEX0:func.4">Vertices</a> <font color="Maroon" title="c3">K</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="simplex0.html#T17" onmouseover="rs('simplex0/T17')" onmouseout="rh()">SIMPLEX0:17</a></span>;<br/>
+<a NAME="E8:13"/><span class="kw">then </span>
+<font color="Maroon" title="c6">A</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c5">VM</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_1.html#T19" onmouseover="rs('xboole_1/T19')" onmouseout="rh()">XBOOLE_1:19</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E9:13"/>
+( <font color="Maroon" title="c6">A</font> is  <a href="tbsp_1.html#V6" title="TBSP_1:attr.6">bounded</a>  &amp;  <a href="tbsp_1.html#K2" title="TBSP_1:func.2">diameter</a> <font color="Maroon" title="c6">A</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="tbsp_1.html#K2" title="TBSP_1:func.2">diameter</a> <font color="Maroon" title="c5">VM</font> )
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="tbsp_1.html#T24" onmouseover="rs('tbsp_1/T24')" onmouseout="rh()">TBSP_1:24</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
