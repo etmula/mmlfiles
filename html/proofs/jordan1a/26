@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">i</font>, <font color="Maroon" title="c2">j</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">G</font> being   <a href="goboard1.html#NM1" title="GOBOARD1:NM.1">Go-board</a>  st <font color="Maroon" title="c1">i</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">G</font> &amp; <font color="Maroon" title="c2">j</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="matrix_0.html#K1" title="MATRIX_0:func.1">width</a> <font color="Olive" title="b1">G</font> holds <br/> not  <a href="goboard5.html#K3" title="GOBOARD5:func.3">cell</a> (<font color="Olive" title="b1">G</font>,<font color="Maroon" title="c1">i</font>,<font color="Maroon" title="c2">j</font>) is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c3">G</font> be   <a href="goboard1.html#NM1" title="GOBOARD1:NM.1">Go-board</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">i</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c3">G</font> &amp; <font color="Maroon" title="c2">j</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="matrix_0.html#K1" title="MATRIX_0:func.1">width</a> <font color="Maroon" title="c3">G</font> implies  not  <a href="goboard5.html#K3" title="GOBOARD5:func.3">cell</a> (<font color="Maroon" title="c3">G</font>,<font color="Maroon" title="c1">i</font>,<font color="Maroon" title="c2">j</font>) is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  )</span><br/>
+
+
+
+
+
+<span class="kw">assume </span><a NAME="E1:26"/>
+( <font color="Maroon" title="c1">i</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c3">G</font> &amp; <font color="Maroon" title="c2">j</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="matrix_0.html#K1" title="MATRIX_0:func.1">width</a> <font color="Maroon" title="c3">G</font> )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not  <a href="goboard5.html#K3" title="GOBOARD5:func.3">cell</a> (<font color="Maroon" title="c3">G</font>,<font color="Maroon" title="c1">i</font>,<font color="Maroon" title="c2">j</font>) is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> </span><br/>
+
+<a NAME="E2:26"/><span class="kw">then </span>
+ not  <a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <span class="p1">(<span class="default"><a href="goboard5.html#K3" title="GOBOARD5:func.3">cell</a> (<font color="Maroon" title="c3">G</font>,<font color="Maroon" title="c1">i</font>,<font color="Maroon" title="c2">j</font>)</span>)</span> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="goboard9.html#T14" onmouseover="rs('goboard9/T14')" onmouseout="rh()">GOBOARD9:14</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E3:26"/>
+ not  <a href="goboard5.html#K3" title="GOBOARD5:func.3">cell</a> (<font color="Maroon" title="c3">G</font>,<font color="Maroon" title="c1">i</font>,<font color="Maroon" title="c2">j</font>) is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="tops_1.html#T16" onmouseover="rs('tops_1/T16')" onmouseout="rh()">TOPS_1:16</a>, <a class="ref" href="xboole_1.html#T3" onmouseover="rs('xboole_1/T3')" onmouseout="rh()">XBOOLE_1:3</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

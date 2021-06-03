@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c2">v</font> be   <a href="glib_000.html#NM10" title="GLIB_000:NM.10">Vertex</a> of <font color="Maroon" title="c1">G</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">v</font> is  <a href="glib_000.html#V10" title="GLIB_000:attr.10">isolated</a>  &amp;  not <font color="Maroon" title="c2">v</font> is  <a href="glib_002.html#V5" title="GLIB_002:attr.5">cut-vertex</a>  &amp;  not <font color="Maroon" title="c2">v</font> is  <a href="glib_000.html#V11" title="GLIB_000:attr.11">endvertex</a>  )</span><br/>
+
+<a NAME="E1:78_1_1"/>
+<font color="Maroon" title="c2">v</font> <a href="glib_000.html#K28" title="GLIB_000:func.28">.edgesInOut()</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E2:78_1_1"/>
+<font color="Maroon" title="c2">v</font> is  <a href="glib_000.html#V10" title="GLIB_000:attr.10">isolated</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="glib_000.html#D49" onmouseover="rs('glib_000/D49')" onmouseout="rh()">GLIB_000:def 49</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c2">v</font> is  <a href="glib_002.html#V5" title="GLIB_002:attr.5">cut-vertex</a>  &amp;  not <font color="Maroon" title="c2">v</font> is  <a href="glib_000.html#V11" title="GLIB_000:attr.11">endvertex</a>  )</span><br/>
+
+<span class="kw">hence </span><a NAME="E3:78_1_1"/>
+ not <font color="Maroon" title="c2">v</font> is  <a href="glib_002.html#V5" title="GLIB_002:attr.5">cut-vertex</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not <font color="Maroon" title="c2">v</font> is  <a href="glib_000.html#V11" title="GLIB_000:attr.11">endvertex</a> </span><br/>
+
+<span class="kw">thus </span><a NAME="E4:78_1_1"/>
+ not <font color="Maroon" title="c2">v</font> is  <a href="glib_000.html#V11" title="GLIB_000:attr.11">endvertex</a> 
+  <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="78_1_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><a NAME="E1:78_1_1_1"/>
+<font color="Maroon" title="c2">v</font> is  <a href="glib_000.html#V11" title="GLIB_000:attr.11">endvertex</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c3">e</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E3:78_1_1_1"/><span class="lab"><font color="Green" title="E60">A1</font></span>: 
+( <font color="Maroon" title="c2">v</font> <a href="glib_000.html#K28" title="GLIB_000:func.28">.edgesInOut()</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><font color="Maroon" title="c3">e</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span> &amp;  not <font color="Maroon" title="c3">e</font> <a href="glib_000.html#R1" title="GLIB_000:pred.1">Joins</a> <font color="Maroon" title="c2">v</font>,<font color="Maroon" title="c2">v</font>,<font color="Maroon" title="c1">G</font> )
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="glib_000.html#D51" onmouseover="rs('glib_000/D51')" onmouseout="rh()">GLIB_000:def 51</a></span>;<br/>
+<span class="kw">thus </span><a NAME="E4:78_1_1_1"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:78_1_1_1"><span class="lab"><font color="Green" title="E60">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+
+
+</div>

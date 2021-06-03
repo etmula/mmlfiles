@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be   <a href="glib_000.html#NM2" title="GLIB_000:NM.2">_Graph</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  ex <font color="Olive" title="b1">v1</font>, <font color="Olive" title="b2">v2</font> being   <a href="glib_000.html#NM10" title="GLIB_000:NM.10">Vertex</a> of <font color="Maroon" title="c1">G</font> st <font color="Olive" title="b1">v1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b2">v2</font> implies  not <font color="Maroon" title="c1">G</font> is  <a href="glib_000.html#V4" title="GLIB_000:attr.4">trivial</a>  )</span><br/>
+
+<span class="kw">given </span><font color="Maroon" title="c2">v1</font>, <font color="Maroon" title="c3">v2</font> being   <a href="glib_000.html#NM10" title="GLIB_000:NM.10">Vertex</a> of <font color="Maroon" title="c1">G</font><span class="kw"> such that </span><a NAME="E2:15"/><span class="lab"><font color="Green" title="E15">A1</font></span>: 
+<font color="Maroon" title="c2">v1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c3">v2</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not <font color="Maroon" title="c1">G</font> is  <a href="glib_000.html#V4" title="GLIB_000:attr.4">trivial</a> </span><br/>
+
+<a NAME="E3:15"/>
+ <a href="card_1.html#K1" title="CARD_1:func.1">card</a> <span class="p1">(<span class="default"><a href="glib_000.html#K6" title="GLIB_000:func.6">the_Vertices_of</a> <font color="Maroon" title="c1">G</font></span>)</span> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> 1
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="15_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><a NAME="E1:15_1"/>
+ <a href="card_1.html#K1" title="CARD_1:func.1">card</a> <span class="p1">(<span class="default"><a href="glib_000.html#K6" title="GLIB_000:func.6">the_Vertices_of</a> <font color="Maroon" title="c1">G</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E2:15_1"/><span class="kw">then </span>
+ <a href="card_1.html#K4" title="CARD_1:func.4">card</a> <span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><font color="Maroon" title="c2">v1</font>,<font color="Maroon" title="c3">v2</font></span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="card_1.html#T11" onmouseover="rs('card_1/T11')" onmouseout="rh()">CARD_1:11</a></span>;<br/>
+<a NAME="E3:15_1"/><span class="kw">then </span>
+<span class="p1"><a href="domain_1.html#K7" title="DOMAIN_1:func.7">{</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="domain_1.html#K7" title="DOMAIN_1:func.7">}</a></span> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:15"><span class="lab"><font color="Green" title="E15">A1</font></span></a>, <a class="ref" href="card_2.html#T57" onmouseover="rs('card_2/T57')" onmouseout="rh()">CARD_2:57</a>, <a class="ref" href="card_1.html#T50" onmouseover="rs('card_1/T50')" onmouseout="rh()">CARD_1:50</a></span>;<br/>
+<a NAME="E4:15_1"/><span class="kw">then </span>
+1 <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zfmisc_1.html#T32" onmouseover="rs('zfmisc_1/T32')" onmouseout="rh()">ZFMISC_1:32</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:15_1"/>
+contradiction
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E4:15"/>
+ not <font color="Maroon" title="c1">G</font> is  <a href="glib_000.html#V4" title="GLIB_000:attr.4">trivial</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="glib_000.html#D19" onmouseover="rs('glib_000/D19')" onmouseout="rh()">GLIB_000:def 19</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

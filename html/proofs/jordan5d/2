@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">i</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( 3 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">i</font> implies <font color="Maroon" title="c1">i</font> <a href="nat_d.html#K4" title="NAT_D:func.4">mod</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">i</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:2"/><span class="lab"><font color="Green" title="E3">A1</font></span>: 
+3 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">i</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">i</font> <a href="nat_d.html#K4" title="NAT_D:func.4">mod</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">i</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1</span><br/>
+
+<a NAME="E2:2"/><span class="kw">then </span><span class="lab"><font color="Green" title="E4">A2</font></span>: 
+<font color="Maroon" title="c1">i</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">i</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xreal_1.html#T233" onmouseover="rs('xreal_1/T233')" onmouseout="rh()">XREAL_1:233</a>, <a class="ref" href="xxreal_0.html#T2" onmouseover="rs('xxreal_0/T2')" onmouseout="rh()">XXREAL_0:2</a></span>;<br/>
+3 <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1 = 
+<span class="p1">(<span class="default">2 <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1
+
+<br/>.= 
+2
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_d.html#T34" onmouseover="rs('nat_d/T34')" onmouseout="rh()">NAT_D:34</a></span>
+;<br/>
+<a NAME="E4:2"/><span class="kw">then </span>
+2 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">i</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:2"><span class="lab"><font color="Green" title="E3">A1</font></span></a>, <a class="ref" href="nat_d.html#T42" onmouseover="rs('nat_d/T42')" onmouseout="rh()">NAT_D:42</a></span>;<br/>
+<a NAME="E5:2"/><span class="kw">then </span>
+1 <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c1">i</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:2"><span class="lab"><font color="Green" title="E4">A2</font></span></a>, <a class="ref" href="xxreal_0.html#T2" onmouseover="rs('xxreal_0/T2')" onmouseout="rh()">XXREAL_0:2</a></span>;<br/>
+<a NAME="E6:2"/><span class="kw">then </span>
+1 <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Maroon" title="c1">i</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">i</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1</span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Maroon" title="c1">i</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xreal_1.html#T8" onmouseover="rs('xreal_1/T8')" onmouseout="rh()">XREAL_1:8</a></span>;<br/>
+<a NAME="E7:2"/><span class="kw">then </span>
+<span class="p1">(<span class="default">1 <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Maroon" title="c1">i</font></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1 <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Maroon" title="c1">i</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1</span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Maroon" title="c1">i</font></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xreal_1.html#T14" onmouseover="rs('xreal_1/T14')" onmouseout="rh()">XREAL_1:14</a></span>;<br/>
+<a NAME="E8:2"/><span class="kw">then </span><span class="lab"><font color="Green" title="E5">A3</font></span>: 
+<font color="Maroon" title="c1">i</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">i</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1</span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">i</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1</span>)</span>
+ 
+;<br/>
+<a NAME="E9:2"/>
+<font color="Maroon" title="c1">i</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">i</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_d.html#T35" onmouseover="rs('nat_d/T35')" onmouseout="rh()">NAT_D:35</a></span>;<br/>
+<span class="kw">hence </span><font color="Maroon" title="c1">i</font> <a href="nat_d.html#K4" title="NAT_D:func.4">mod</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">i</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span> = 
+<font color="Maroon" title="c1">i</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">i</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1</span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:2"><span class="lab"><font color="Green" title="E4">A2</font></span></a>, <a class="txt" href="#E8:2"><span class="lab"><font color="Green" title="E5">A3</font></span></a>, <a class="ref" href="jordan4.html#T2" onmouseover="rs('jordan4/T2')" onmouseout="rh()">JORDAN4:2</a></span>
+<br/>.= 
+1
+
+;<br/> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

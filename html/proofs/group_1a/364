@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be   <a href="group_1a.html#NM1" title="GROUP_1A:NM.1">addGroup</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">G</font>  st <font color="Olive" title="b1">A</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b2">B</font> holds <br/> <a href="group_1a.html#K7" title="GROUP_1A:func.7">-</a> <font color="Olive" title="b1">A</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="group_1a.html#K7" title="GROUP_1A:func.7">-</a> <font color="Olive" title="b2">B</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">A</font>, <font color="Maroon" title="c3">B</font> be   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">G</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">A</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c3">B</font> implies  <a href="group_1a.html#K7" title="GROUP_1A:func.7">-</a> <font color="Maroon" title="c2">A</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="group_1a.html#K7" title="GROUP_1A:func.7">-</a> <font color="Maroon" title="c3">B</font> )</span><br/>
+
+
+
+
+
+<span class="kw">assume </span><a NAME="E1:364"/><span class="lab"><font color="Green" title="E240">A1</font></span>: 
+<font color="Maroon" title="c2">A</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c3">B</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="group_1a.html#K7" title="GROUP_1A:func.7">-</a> <font color="Maroon" title="c2">A</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="group_1a.html#K7" title="GROUP_1A:func.7">-</a> <font color="Maroon" title="c3">B</font></span><br/>
+
+<span class="kw">let </span><font color="Maroon" title="c4">a</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="tarski.html#D3" onmouseover="rs('tarski/D3')" onmouseout="rh()">TARSKI:def 3</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c4">a</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="group_1a.html#K7" title="GROUP_1A:func.7">-</a> <font color="Maroon" title="c2">A</font> or <font color="Maroon" title="c4">a</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="group_1a.html#K7" title="GROUP_1A:func.7">-</a> <font color="Maroon" title="c3">B</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E2:364"/>
+<font color="Maroon" title="c4">a</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="group_1a.html#K7" title="GROUP_1A:func.7">-</a> <font color="Maroon" title="c2">A</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c4">a</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="group_1a.html#K7" title="GROUP_1A:func.7">-</a> <font color="Maroon" title="c3">B</font></span><br/>
+
+<a NAME="E3:364"/><span class="kw">then </span>
+ ex <font color="Olive" title="b1">g</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">G</font> st <br/>( <font color="Maroon" title="c4">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="group_1a.html#K2" title="GROUP_1A:func.2">-</a> <font color="Olive" title="b1">g</font> &amp; <font color="Olive" title="b1">g</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">A</font> )
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E4:364"/>
+<font color="Maroon" title="c4">a</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="group_1a.html#K7" title="GROUP_1A:func.7">-</a> <font color="Maroon" title="c3">B</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:364"><span class="lab"><font color="Green" title="E240">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

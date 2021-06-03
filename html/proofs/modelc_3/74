@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">v</font> be   <a href="modelc_2.html#NM1" title="MODELC_2:NM.1">LTL-formula</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">N1</font>, <font color="Olive" title="b2">N2</font> being   <a href="modelc_3.html#V1" title="MODELC_3:attr.1">strict</a>   <a href="modelc_3.html#L1" title="MODELC_3:struct.1">LTLnode</a> over <font color="Maroon" title="c1">v</font>  st <font color="Olive" title="b2">N2</font> <a href="modelc_3.html#R4" title="MODELC_3:pred.4">is_succ_of</a> <font color="Olive" title="b1">N1</font> holds <br/> <a href="modelc_3.html#K21" title="MODELC_3:func.21">len</a> <font color="Olive" title="b2">N2</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <span class="p1">(<span class="default"><a href="modelc_3.html#K21" title="MODELC_3:func.21">len</a> <font color="Olive" title="b1">N1</font></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1</span><br/><span class="kw">let </span><font color="Maroon" title="c2">N1</font>, <font color="Maroon" title="c3">N2</font> be   <a href="modelc_3.html#V1" title="MODELC_3:attr.1">strict</a>   <a href="modelc_3.html#L1" title="MODELC_3:struct.1">LTLnode</a> over <font color="Maroon" title="c1">v</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">N2</font> <a href="modelc_3.html#R4" title="MODELC_3:pred.4">is_succ_of</a> <font color="Maroon" title="c2">N1</font> implies  <a href="modelc_3.html#K21" title="MODELC_3:func.21">len</a> <font color="Maroon" title="c3">N2</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <span class="p1">(<span class="default"><a href="modelc_3.html#K21" title="MODELC_3:func.21">len</a> <font color="Maroon" title="c2">N1</font></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1 )</span><br/>
+
+
+
+
+
+<span class="kw">set </span><font color="Maroon" title="c4">r1</font> =  <a href="modelc_3.html#K18" title="MODELC_3:func.18">len</a>  the <a href="modelc_3.html#U2" title="MODELC_3:sel.2">LTLnew</a> of <font color="Maroon" title="c2">N1</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c5">r2</font> =  <a href="modelc_3.html#K18" title="MODELC_3:func.18">len</a>  the <a href="modelc_3.html#U2" title="MODELC_3:sel.2">LTLnew</a> of <font color="Maroon" title="c3">N2</font>;<br/>
+<span class="kw">assume </span><a NAME="E1:74"/>
+<font color="Maroon" title="c3">N2</font> <a href="modelc_3.html#R4" title="MODELC_3:pred.4">is_succ_of</a> <font color="Maroon" title="c2">N1</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="modelc_3.html#K21" title="MODELC_3:func.21">len</a> <font color="Maroon" title="c3">N2</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <span class="p1">(<span class="default"><a href="modelc_3.html#K21" title="MODELC_3:func.21">len</a> <font color="Maroon" title="c2">N1</font></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1</span><br/>
+
+<a NAME="E2:74"/><span class="kw">then </span>
+( <font color="Maroon" title="c3">N2</font> <a href="modelc_3.html#R2" title="MODELC_3:pred.2">is_succ1_of</a> <font color="Maroon" title="c2">N1</font> or <font color="Maroon" title="c3">N2</font> <a href="modelc_3.html#R3" title="MODELC_3:pred.3">is_succ2_of</a> <font color="Maroon" title="c2">N1</font> )
+ 
+;<br/>
+<a NAME="E3:74"/><span class="kw">then </span>
+ <a href="modelc_3.html#K18" title="MODELC_3:func.18">len</a>  the <a href="modelc_3.html#U2" title="MODELC_3:sel.2">LTLnew</a> of <font color="Maroon" title="c3">N2</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <span class="p1">(<span class="default"><a href="modelc_3.html#K18" title="MODELC_3:func.18">len</a>  the <a href="modelc_3.html#U2" title="MODELC_3:sel.2">LTLnew</a> of <font color="Maroon" title="c2">N1</font></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="modelc_3.html#T19" target="_self" onmouseover="rs('modelc_3/T19')" onmouseout="rh()">Th19</a>, <a class="ref" href="modelc_3.html#T20" target="_self" onmouseover="rs('modelc_3/T20')" onmouseout="rh()">Th20</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E4:74"/>
+ <a href="modelc_3.html#K21" title="MODELC_3:func.21">len</a> <font color="Maroon" title="c3">N2</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <span class="p1">(<span class="default"><a href="modelc_3.html#K21" title="MODELC_3:func.21">len</a> <font color="Maroon" title="c2">N1</font></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="modelc_3.html#E5"><span class="lab"><font color="Green" title="E5">Lm5</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

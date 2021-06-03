@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">set </span><font color="Maroon" title="c4">k</font> =  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c3">l</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c5">QCP</font> = <span class="p1"> { <span class="default"> <font color="Olive" title="b1">Q</font> where <font color="Olive" title="b1">Q</font> is   <a href="qc_lang1.html#NM4" title="QC_LANG1:NM.4">QC-pred_symbol</a> of <font color="Maroon" title="c1">A</font> :  <a href="qc_lang1.html#K7" title="QC_LANG1:func.7">the_arity_of</a> <font color="Olive" title="b1">Q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c3">l</font> </span> } </span> ;<br/>
+<a NAME="E1:31_1_1"/>
+<font color="Maroon" title="c2">P</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">Q</font> where <font color="Olive" title="b1">Q</font> is   <a href="qc_lang1.html#NM4" title="QC_LANG1:NM.4">QC-pred_symbol</a> of <font color="Maroon" title="c1">A</font> :  <a href="qc_lang1.html#K7" title="QC_LANG1:func.7">the_arity_of</a> <font color="Olive" title="b1">Q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c3">l</font> </span> } </span> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:31"><span class="lab"><font color="Green" title="E12">A1</font></span></a></span>;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c6">P</font> = <font color="Maroon" title="c2">P</font> as   <a href="qc_lang1.html#NM8" title="QC_LANG1:NM.8">QC-pred_symbol</a> of <span class="p1">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c3">l</font></span>)</span>,<font color="Maroon" title="c1">A</font> ;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c7">l</font> = <font color="Maroon" title="c3">l</font> as   <a href="qc_lang1.html#NM9" title="QC_LANG1:NM.9">QC-variable_list</a> of  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c3">l</font>,<font color="Maroon" title="c1">A</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="card_1.html#D7" onmouseover="rs('card_1/D7')" onmouseout="rh()">CARD_1:def 7</a></span>;<br/>
+<a NAME="E4:31_1_1"/><span class="lab"><font color="Green" title="E13">A2</font></span>: 
+ <a href="qc_lang1.html#K9" title="QC_LANG1:func.9">QC-WFF</a> <font color="Maroon" title="c1">A</font> is   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <font color="Maroon" title="c1">A</font> <a href="qc_lang1.html#V1" title="QC_LANG1:attr.1">-closed</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="qc_lang1.html#D11" target="_self" onmouseover="rs('qc_lang1/D11')" onmouseout="rh()">Def11</a></span>;<br/>
+<a NAME="E5:31_1_1"/>
+ for <font color="Olive" title="b1">D</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <font color="Maroon" title="c1">A</font> <a href="qc_lang1.html#V1" title="QC_LANG1:attr.1">-closed</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  holds  <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><font color="Maroon" title="c6">P</font></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <font color="Maroon" title="c7">l</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">D</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="qc_lang1.html#D10" target="_self" onmouseover="rs('qc_lang1/D10')" onmouseout="rh()">Def10</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E6:31_1_1"/>
+<span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><font color="Maroon" title="c2">P</font></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <font color="Maroon" title="c3">l</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="qc_lang1.html#K9" title="QC_LANG1:func.9">QC-WFF</a> <font color="Maroon" title="c1">A</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:31_1_1"><span class="lab"><font color="Green" title="E13">A2</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

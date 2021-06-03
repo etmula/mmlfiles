@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be   <a href="algstr_0.html#V15" title="ALGSTR_0:attr.15">strict</a>  <a href="group_1.html#NM1" title="GROUP_1:NM.1">Group</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">G</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="group_2.html#K6" title="GROUP_2:func.6">(1).</a> <font color="Maroon" title="c1">G</font> implies  ex <font color="Olive" title="b1">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">G</font> st <font color="Olive" title="b1">b</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="group_1.html#K1" title="GROUP_1:func.1">1_</a> <font color="Maroon" title="c1">G</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:23"/><span class="lab"><font color="Green" title="E13">A1</font></span>: 
+<font color="Maroon" title="c1">G</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="group_2.html#K6" title="GROUP_2:func.6">(1).</a> <font color="Maroon" title="c1">G</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  ex <font color="Olive" title="b1">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">G</font> st <font color="Olive" title="b1">b</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="group_1.html#K1" title="GROUP_1:func.1">1_</a> <font color="Maroon" title="c1">G</font></span><br/>
+
+<span class="kw">assume </span><a NAME="E2:23"/><span class="lab"><font color="Green" title="E14">A2</font></span>: 
+ for <font color="Olive" title="b1">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">G</font> holds   not <font color="Olive" title="b1">b</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="group_1.html#K1" title="GROUP_1:func.1">1_</a> <font color="Maroon" title="c1">G</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E3:23"/>
+ for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">G</font> holds  <font color="Olive" title="b1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">y</font>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="23_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c2">x</font>, <font color="Maroon" title="c3">y</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">G</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">y</font></span><br/>
+
+<a NAME="E1:23_1"/>
+<font color="Maroon" title="c2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="group_1.html#K1" title="GROUP_1:func.1">1_</a> <font color="Maroon" title="c1">G</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:23"><span class="lab"><font color="Green" title="E14">A2</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E2:23_1"/>
+<font color="Maroon" title="c2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">y</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:23"><span class="lab"><font color="Green" title="E14">A2</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E4:23"/><span class="kw">then </span>
+<font color="Maroon" title="c1">G</font> is  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a> 
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E5:23"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:23"><span class="lab"><font color="Green" title="E13">A1</font></span></a>, <a class="ref" href="group_6.html#T12" onmouseover="rs('group_6/T12')" onmouseout="rh()">GROUP_6:12</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

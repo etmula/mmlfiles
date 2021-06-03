@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <a href="binari_6.html#K2" title="BINARI_6:func.2">Nat2BL</a> <a href="finseq_2.html#K8" title="FINSEQ_2:func.8">.</a> <span class="p1">(<span class="default">2 <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c1">n</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="euclid.html#K5" title="EUCLID:func.5">0*</a> <font color="Maroon" title="c1">n</font></span>)</span> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <span class="p1"><a href="binarith.html#K10" title="BINARITH:func.10">&lt;*</a><span class="default">1</span><a href="binarith.html#K10" title="BINARITH:func.10">*&gt;</a></span></span><br/>
+
+<a NAME="E1:19"/><span class="lab"><font color="Green" title="E11">X1</font></span>: 
+2 <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 2 <a href="ntalgo_2.html#K2" title="NTALGO_2:func.2">to_power</a> <font color="Maroon" title="c1">n</font>
+ 
+;<br/>
+<span class="lab"><font color="Green" title="E12">X3</font></span>:  <a href="binari_6.html#K1" title="BINARI_6:func.1">LenBSeq</a> <span class="p1">(<span class="default">2 <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c1">n</font></span>)</span> = 
+<span class="p1"><a href="int_1.html#K1" title="INT_1:func.1">[\</a><span class="default"><span class="p2">(<span class="default"><a href="power.html#K3" title="POWER:func.3">log</a> (2,<span class="p3">(<span class="default">2 <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c1">n</font></span>)</span>)</span>)</span></span><a href="int_1.html#K1" title="INT_1:func.1">/]</a></span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1
+<span class="kw">by</span> <span class="lab"><a class="ref" href="ntalgo_2.html#T5" target="_self" onmouseover="rs('ntalgo_2/T5')" onmouseout="rh()">EXL2</a></span>
+<br/>.= 
+<span class="p1"><a href="int_1.html#K1" title="INT_1:func.1">[\</a><span class="default"><font color="Maroon" title="c1">n</font></span><a href="int_1.html#K1" title="INT_1:func.1">/]</a></span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:19"><span class="lab"><font color="Green" title="E11">X1</font></span></a>, <a class="ref" href="power.html#D3" onmouseover="rs('power/D3')" onmouseout="rh()">POWER:def 3</a></span>
+<br/>.= 
+<font color="Maroon" title="c1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1
+<span class="kw">by</span> <span class="lab"><a class="ref" href="int_1.html#T25" onmouseover="rs('int_1/T25')" onmouseout="rh()">INT_1:25</a></span>
+;<br/>
+<a NAME="E3:19"/>
+2 <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c1">n</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="ordinal1.html#D12" onmouseover="rs('ordinal1/D12')" onmouseout="rh()">ORDINAL1:def 12</a></span>;<br/>
+<span class="kw">then </span><a href="binari_6.html#K2" title="BINARI_6:func.2">Nat2BL</a> <a href="finseq_2.html#K8" title="FINSEQ_2:func.8">.</a> <span class="p1">(<span class="default">2 <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c1">n</font></span>)</span> = 
+<span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="binari_3.html#K1" title="BINARI_3:func.1">-BinarySequence</a> <span class="p1">(<span class="default">2 <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c1">n</font></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:19"><span class="lab"><font color="Green" title="E12">X3</font></span></a>, <a class="ref" href="binari_6.html#D2" onmouseover="rs('binari_6/D2')" onmouseout="rh()">BINARI_6:def 2</a></span>
+<br/>.= 
+<span class="p1">(<span class="default"><a href="euclid.html#K5" title="EUCLID:func.5">0*</a> <font color="Maroon" title="c1">n</font></span>)</span> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <span class="p1"><a href="binarith.html#K10" title="BINARITH:func.10">&lt;*</a><span class="default">1</span><a href="binarith.html#K10" title="BINARITH:func.10">*&gt;</a></span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="binari_3.html#T28" onmouseover="rs('binari_3/T28')" onmouseout="rh()">BINARI_3:28</a>, <a class="txt" href="#E1:19"><span class="lab"><font color="Green" title="E11">X1</font></span></a></span>
+;<br/>
+<span class="kw">hence </span><a NAME="E5:19"/>
+<a href="binari_6.html#K2" title="BINARI_6:func.2">Nat2BL</a> <a href="finseq_2.html#K8" title="FINSEQ_2:func.8">.</a> <span class="p1">(<span class="default">2 <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c1">n</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="euclid.html#K5" title="EUCLID:func.5">0*</a> <font color="Maroon" title="c1">n</font></span>)</span> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <span class="p1"><a href="binarith.html#K10" title="BINARITH:func.10">&lt;*</a><span class="default">1</span><a href="binarith.html#K10" title="BINARITH:func.10">*&gt;</a></span>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

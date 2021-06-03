@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">p</font> be   <a href="hurwitz.html#V1" title="HURWITZ:attr.1">Hurwitz</a>  <a href="polynom3.html#NM1" title="POLYNOM3:NM.1">Polynomial</a> of <a href="complfld.html#K1" title="COMPLFLD:func.1">F_Complex</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="hurwitz2.html#K1" title="HURWITZ2:func.1">even_part</a> <font color="Maroon" title="c1">p</font>, <a href="hurwitz2.html#K2" title="HURWITZ2:func.2">odd_part</a> <font color="Maroon" title="c1">p</font> <a href="ratfunc1.html#NR4" title="RATFUNC1:NR.4">have_no_common_roots</a> </span><br/>
+
+<span class="kw">set </span><font color="Maroon" title="c2">e</font> =  <a href="hurwitz2.html#K1" title="HURWITZ2:func.1">even_part</a> <font color="Maroon" title="c1">p</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c3">o</font> =  <a href="hurwitz2.html#K2" title="HURWITZ2:func.2">odd_part</a> <font color="Maroon" title="c1">p</font>;<br/>
+<span class="kw">let </span><font color="Maroon" title="c4">x</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <a href="complfld.html#K1" title="COMPLFLD:func.1">F_Complex</a>; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="ratfunc1.html#D4" onmouseover="rs('ratfunc1/D4')" onmouseout="rh()">RATFUNC1:def 4</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not <font color="Maroon" title="c4">x</font> <a href="ratfunc1.html#R1" title="RATFUNC1:pred.1">is_a_common_root_of</a>  <a href="hurwitz2.html#K1" title="HURWITZ2:func.1">even_part</a> <font color="Maroon" title="c1">p</font>, <a href="hurwitz2.html#K2" title="HURWITZ2:func.2">odd_part</a> <font color="Maroon" title="c1">p</font></span><br/>
+
+<span class="kw">assume </span><a NAME="E1:45"/><span class="lab"><font color="Green" title="E27">A1</font></span>: 
+<font color="Maroon" title="c4">x</font> <a href="ratfunc1.html#R1" title="RATFUNC1:pred.1">is_a_common_root_of</a>  <a href="hurwitz2.html#K1" title="HURWITZ2:func.1">even_part</a> <font color="Maroon" title="c1">p</font>, <a href="hurwitz2.html#K2" title="HURWITZ2:func.2">odd_part</a> <font color="Maroon" title="c1">p</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E2:45"/><span class="lab"><font color="Green" title="E28">A2</font></span>: 
+<font color="Maroon" title="c4">x</font> <a href="polynom5.html#R1" title="POLYNOM5:pred.1">is_a_root_of</a> <span class="p1">(<span class="default"><a href="hurwitz2.html#K1" title="HURWITZ2:func.1">even_part</a> <font color="Maroon" title="c1">p</font></span>)</span> <a href="polynom3.html#K8" title="POLYNOM3:func.8">+</a> <span class="p1">(<span class="default"><a href="hurwitz2.html#K2" title="HURWITZ2:func.2">odd_part</a> <font color="Maroon" title="c1">p</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:45"><span class="lab"><font color="Green" title="E27">A1</font></span></a>, <a class="ref" href="ratfunc1.html#T16" onmouseover="rs('ratfunc1/T16')" onmouseout="rh()">RATFUNC1:16</a></span>;<br/>
+<a NAME="E3:45"/>
+<span class="p1">(<span class="default"><a href="hurwitz2.html#K1" title="HURWITZ2:func.1">even_part</a> <font color="Maroon" title="c1">p</font></span>)</span> <a href="polynom3.html#K8" title="POLYNOM3:func.8">+</a> <span class="p1">(<span class="default"><a href="hurwitz2.html#K2" title="HURWITZ2:func.2">odd_part</a> <font color="Maroon" title="c1">p</font></span>)</span> <a href="funct_2.html#R2" title="FUNCT_2:pred.2">=</a> <font color="Maroon" title="c1">p</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="hurwitz2.html#T9" target="_self" onmouseover="rs('hurwitz2/T9')" onmouseout="rh()">Th9</a></span>;<br/>
+<a NAME="E4:45"/><span class="kw">then </span><span class="lab"><font color="Green" title="E29">A3</font></span>: 
+(  <a href="complex1.html#K3" title="COMPLEX1:func.3">Re</a> <font color="Maroon" title="c4">x</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a>  <a href="ordinal1.html#K5" title="ORDINAL1:func.5">0</a>  &amp;  <a href="complex1.html#K3" title="COMPLEX1:func.3">Re</a> <span class="p1">(<span class="default"><a href="algstr_0.html#K4" title="ALGSTR_0:func.4">-</a> <font color="Maroon" title="c4">x</font></span>)</span> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a>  <a href="ordinal1.html#K5" title="ORDINAL1:func.5">0</a>  )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:45"><span class="lab"><font color="Green" title="E27">A1</font></span></a>, <a class="ref" href="hurwitz2.html#T26" target="_self" onmouseover="rs('hurwitz2/T26')" onmouseout="rh()">Th26</a>, <a class="txt" href="#E2:45"><span class="lab"><font color="Green" title="E28">A2</font></span></a>, <a class="ref" href="hurwitz.html#D8" onmouseover="rs('hurwitz/D8')" onmouseout="rh()">HURWITZ:def 8</a></span>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c5">s</font> = <font color="Maroon" title="c4">x</font> as   <a href="xcmplx_0.html#NM1" title="XCMPLX_0:NM.1">Complex</a> ;<br/>
+<a NAME="E6:45"/>
+ <a href="complex1.html#K3" title="COMPLEX1:func.3">Re</a> <span class="p1">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <font color="Maroon" title="c5">s</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <span class="p1">(<span class="default"><a href="complex1.html#K3" title="COMPLEX1:func.3">Re</a> <font color="Maroon" title="c5">s</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="complex1.html#T17" onmouseover="rs('complex1/T17')" onmouseout="rh()">COMPLEX1:17</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:45"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:45"><span class="lab"><font color="Green" title="E29">A3</font></span></a>, <a class="ref" href="complfld.html#T2" onmouseover="rs('complfld/T2')" onmouseout="rh()">COMPLFLD:2</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">defpred </span><font color="Maroon">S<sub>1</sub></font>[  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>] <span class="kw">means </span> for <font color="Olive" title="b1">a</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  holds   <a href="mmlquery.html#K24" title="MMLQUERY:func.24">#occurrences</a> (<font color="Olive" title="b1">a</font>,<font color="Maroon" title="c1">A</font>) <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> $1;<br/>
+<a NAME="E1:69_1_1"/>
+<font color="Maroon">S<sub>1</sub></font>[ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">A</font>]
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="mmlquery.html#T54" target="_self" onmouseover="rs('mmlquery/T54')" onmouseout="rh()">Th54</a></span>;<br/>
+<a NAME="E2:69_1_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E25">A1</font></span>: 
+ ex <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">n</font>]
+ 
+;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><span class="kw"> such that </span><br/><a NAME="E4:69_1_1"/><span class="lab"><font color="Green" title="E26">A2</font></span>: 
+( <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c2">n</font>] &amp; (  for <font color="Olive" title="b1">m</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">m</font>] holds <br/><font color="Maroon" title="c2">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b1">m</font> ) )
+ <span class="kw">from</span> <span class="lab"><a class="ref" href="nat_1.html#S5" onmouseover="rs('nat_1/S5')" onmouseout="rh()">NAT_1:sch 5</a>(<a class="txt" href="#E2:69_1_1"><span class="lab"><font color="Green" title="E25">A1</font></span></a>);<br/></span>
+<span class="kw">take </span>
+<font color="Maroon" title="c2">n</font>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( (  for <font color="Olive" title="b1">a</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  holds   <a href="mmlquery.html#K24" title="MMLQUERY:func.24">#occurrences</a> (<font color="Olive" title="b1">a</font>,<font color="Maroon" title="c1">A</font>) <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c2">n</font> ) &amp; (  for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st (  for <font color="Olive" title="b2">a</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  holds   <a href="mmlquery.html#K24" title="MMLQUERY:func.24">#occurrences</a> (<font color="Olive" title="b2">a</font>,<font color="Maroon" title="c1">A</font>) <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b1">n</font> ) holds <br/><font color="Maroon" title="c2">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b1">n</font> ) )</span><br/>
+
+<span class="kw">thus </span><a NAME="E5:69_1_1"/>
+( (  for <font color="Olive" title="b1">a</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  holds   <a href="mmlquery.html#K24" title="MMLQUERY:func.24">#occurrences</a> (<font color="Olive" title="b1">a</font>,<font color="Maroon" title="c1">A</font>) <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c2">n</font> ) &amp; (  for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st (  for <font color="Olive" title="b2">a</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  holds   <a href="mmlquery.html#K24" title="MMLQUERY:func.24">#occurrences</a> (<font color="Olive" title="b2">a</font>,<font color="Maroon" title="c1">A</font>) <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b1">n</font> ) holds <br/><font color="Maroon" title="c2">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b1">n</font> ) )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:69_1_1"><span class="lab"><font color="Green" title="E26">A2</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

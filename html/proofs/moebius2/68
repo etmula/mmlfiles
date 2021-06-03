@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">n</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b1">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a> holds  <font color="Olive" title="b1">p</font> <a href="nat_3.html#K11" title="NAT_3:func.11">|-count</a> <font color="Maroon" title="c1">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> 1 ) implies <font color="Maroon" title="c1">n</font> is  <a href="moebius1.html#NV2" title="MOEBIUS1:NV.2">square-free</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:68"/><span class="lab"><font color="Green" title="E36">A1</font></span>: 
+( <font color="Maroon" title="c1">n</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b1">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a> holds  <font color="Olive" title="b1">p</font> <a href="nat_3.html#K11" title="NAT_3:func.11">|-count</a> <font color="Maroon" title="c1">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> 1 ) )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">n</font> is  <a href="moebius1.html#NV2" title="MOEBIUS1:NV.2">square-free</a> </span><br/>
+
+<span class="kw">assume </span><a NAME="E2:68"/>
+<font color="Maroon" title="c1">n</font> is  <a href="moebius1.html#V1" title="MOEBIUS1:attr.1">square-containing</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c2">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a><span class="kw"> such that </span><br/><a NAME="E4:68"/><span class="lab"><font color="Green" title="E37">A2</font></span>: 
+<font color="Maroon" title="c2">p</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> 2 <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Maroon" title="c1">n</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="moebius1.html#D1" onmouseover="rs('moebius1/D1')" onmouseout="rh()">MOEBIUS1:def 1</a></span>;<br/>
+<a NAME="E5:68"/>
+<font color="Maroon" title="c2">p</font> <a href="nat_3.html#K11" title="NAT_3:func.11">|-count</a> <font color="Maroon" title="c1">n</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1 <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:68"><span class="lab"><font color="Green" title="E36">A1</font></span></a>, <a class="txt" href="#E4:68"><span class="lab"><font color="Green" title="E37">A2</font></span></a>, <a class="ref" href="moebius2.html#T40" target="_self" onmouseover="rs('moebius2/T40')" onmouseout="rh()">Ciek</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E6:68"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:68"><span class="lab"><font color="Green" title="E36">A1</font></span></a>, <a class="ref" href="nat_1.html#T13" onmouseover="rs('nat_1/T13')" onmouseout="rh()">NAT_1:13</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">A</font> be    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">G</font>, <font color="Olive" title="b2">H</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="qc_lang1.html#K9" title="QC_LANG1:func.9">QC-WFF</a> <font color="Maroon" title="c1">A</font>  st <font color="Olive" title="b1">G</font> <a href="qc_lang2.html#R2" title="QC_LANG2:pred.2">is_subformula_of</a> <font color="Olive" title="b2">H</font> &amp; <font color="Olive" title="b2">H</font> <a href="qc_lang2.html#R2" title="QC_LANG2:pred.2">is_subformula_of</a> <font color="Olive" title="b1">G</font> holds <br/><font color="Olive" title="b1">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">H</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">G</font>, <font color="Maroon" title="c3">H</font> be    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="qc_lang1.html#K9" title="QC_LANG1:func.9">QC-WFF</a> <font color="Maroon" title="c1">A</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">G</font> <a href="qc_lang2.html#R2" title="QC_LANG2:pred.2">is_subformula_of</a> <font color="Maroon" title="c3">H</font> &amp; <font color="Maroon" title="c3">H</font> <a href="qc_lang2.html#R2" title="QC_LANG2:pred.2">is_subformula_of</a> <font color="Maroon" title="c2">G</font> implies <font color="Maroon" title="c2">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">H</font> )</span><br/>
+
+
+
+
+
+<span class="kw">assume </span><span class="kw">that </span><br/><a NAME="E1:55"/><span class="lab"><font color="Green" title="E33">A1</font></span>: 
+<font color="Maroon" title="c2">G</font> <a href="qc_lang2.html#R2" title="QC_LANG2:pred.2">is_subformula_of</a> <font color="Maroon" title="c3">H</font>
+ <span class="kw">and </span><br/><a NAME="E2:55"/><span class="lab"><font color="Green" title="E34">A2</font></span>: 
+<font color="Maroon" title="c3">H</font> <a href="qc_lang2.html#R2" title="QC_LANG2:pred.2">is_subformula_of</a> <font color="Maroon" title="c2">G</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">H</font></span><br/>
+
+<span class="kw">assume </span><a NAME="E3:55"/><span class="lab"><font color="Green" title="E35">A3</font></span>: 
+<font color="Maroon" title="c2">G</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c3">H</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E4:55"/><span class="kw">then </span>
+<font color="Maroon" title="c2">G</font> <a href="qc_lang2.html#R3" title="QC_LANG2:pred.3">is_proper_subformula_of</a> <font color="Maroon" title="c3">H</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:55"><span class="lab"><font color="Green" title="E33">A1</font></span></a></span>;<br/>
+<a NAME="E5:55"/><span class="kw">then </span><span class="lab"><font color="Green" title="E36">A4</font></span>: 
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <span class="p1">(<span class="default"><a href="qc_lang1.html#K11" title="QC_LANG1:func.11">@</a> <font color="Maroon" title="c2">G</font></span>)</span> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <span class="p1">(<span class="default"><a href="qc_lang1.html#K11" title="QC_LANG1:func.11">@</a> <font color="Maroon" title="c3">H</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="qc_lang2.html#T54" target="_self" onmouseover="rs('qc_lang2/T54')" onmouseout="rh()">Th54</a></span>;<br/>
+<a NAME="E6:55"/>
+<font color="Maroon" title="c3">H</font> <a href="qc_lang2.html#R3" title="QC_LANG2:pred.3">is_proper_subformula_of</a> <font color="Maroon" title="c2">G</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:55"><span class="lab"><font color="Green" title="E34">A2</font></span></a>, <a class="txt" href="#E3:55"><span class="lab"><font color="Green" title="E35">A3</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:55"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:55"><span class="lab"><font color="Green" title="E36">A4</font></span></a>, <a class="ref" href="qc_lang2.html#T54" target="_self" onmouseover="rs('qc_lang2/T54')" onmouseout="rh()">Th54</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

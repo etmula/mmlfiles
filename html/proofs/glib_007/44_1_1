@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">G1</font> be    <a href="glib_007.html#M1" title="GLIB_007:mode.1">reverseEdgeDirections</a> of <font color="Maroon" title="c1">G</font>,<font color="Maroon" title="c2">E</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">G1</font> is  <a href="chord.html#V2" title="CHORD:attr.2">complete</a> </span><br/>
+
+<a NAME="E1:44_1_1"/>
+ for <font color="Olive" title="b1">v1</font>, <font color="Olive" title="b2">v2</font> being   <a href="glib_000.html#NM10" title="GLIB_000:NM.10">Vertex</a> of <font color="Maroon" title="c3">G1</font>  st <font color="Olive" title="b1">v1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b2">v2</font> holds <br/><font color="Olive" title="b1">v1</font>,<font color="Olive" title="b2">v2</font> <a href="chord.html#R1" title="CHORD:pred.1">are_adjacent</a> 
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="44_1_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">v1</font>, <font color="Maroon" title="c5">v2</font> be   <a href="glib_000.html#NM10" title="GLIB_000:NM.10">Vertex</a> of <font color="Maroon" title="c3">G1</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c4">v1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c5">v2</font> implies <font color="Maroon" title="c4">v1</font>,<font color="Maroon" title="c5">v2</font> <a href="chord.html#R1" title="CHORD:pred.1">are_adjacent</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:44_1_1_1"/><span class="lab"><font color="Green" title="E28">A1</font></span>: 
+<font color="Maroon" title="c4">v1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c5">v2</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c4">v1</font>,<font color="Maroon" title="c5">v2</font> <a href="chord.html#R1" title="CHORD:pred.1">are_adjacent</a> </span><br/>
+
+<span class="kw">reconsider </span><font color="Maroon" title="c6">u1</font> = <font color="Maroon" title="c4">v1</font>, <font color="Maroon" title="c7">u2</font> = <font color="Maroon" title="c5">v2</font> as   <a href="glib_000.html#NM10" title="GLIB_000:NM.10">Vertex</a> of <font color="Maroon" title="c1">G</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="glib_007.html#T10" target="_self" onmouseover="rs('glib_007/T10')" onmouseout="rh()">Th10</a></span>;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c8">e</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E4:44_1_1_1"/><span class="lab"><font color="Green" title="E29">A2</font></span>: 
+<font color="Maroon" title="c8">e</font> <a href="glib_000.html#R1" title="GLIB_000:pred.1">Joins</a> <font color="Maroon" title="c6">u1</font>,<font color="Maroon" title="c7">u2</font>,<font color="Maroon" title="c1">G</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:44_1_1_1"><span class="lab"><font color="Green" title="E28">A1</font></span></a>, <a class="ref" href="chord.html#D6" onmouseover="rs('chord/D6')" onmouseout="rh()">CHORD:def 6</a>, <a class="ref" href="chord.html#D3" onmouseover="rs('chord/D3')" onmouseout="rh()">CHORD:def 3</a></span>;<br/>
+<span class="kw">thus </span><a NAME="E5:44_1_1_1"/>
+<font color="Maroon" title="c4">v1</font>,<font color="Maroon" title="c5">v2</font> <a href="chord.html#R1" title="CHORD:pred.1">are_adjacent</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="chord.html#D3" onmouseover="rs('chord/D3')" onmouseout="rh()">CHORD:def 3</a>, <a class="txt" href="#E4:44_1_1_1"><span class="lab"><font color="Green" title="E29">A2</font></span></a>, <a class="ref" href="glib_007.html#T9" target="_self" onmouseover="rs('glib_007/T9')" onmouseout="rh()">Th9</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E2:44_1_1"/>
+<font color="Maroon" title="c3">G1</font> is  <a href="chord.html#V2" title="CHORD:attr.2">complete</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="chord.html#D6" onmouseover="rs('chord/D6')" onmouseout="rh()">CHORD:def 6</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">P</font>, <font color="Maroon" title="c4">Q</font> be   <a href="ltlaxio3.html#NM1" title="LTLAXIO3:NM.1">PNPair</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c4">Q</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ltlaxio4.html#K9" title="LTLAXIO4:func.9">compn</a> <font color="Maroon" title="c3">P</font> implies <font color="Maroon" title="c4">Q</font> is  <a href="ltlaxio3.html#V3" title="LTLAXIO3:attr.3">complete</a>  )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:44"/><span class="lab"><font color="Green" title="E22">A1</font></span>: 
+<font color="Maroon" title="c4">Q</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ltlaxio4.html#K9" title="LTLAXIO4:func.9">compn</a> <font color="Maroon" title="c3">P</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c4">Q</font> is  <a href="ltlaxio3.html#V3" title="LTLAXIO3:attr.3">complete</a> </span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c5">Q1</font> being   <a href="ltlaxio3.html#NM1" title="LTLAXIO3:NM.1">PNPair</a><span class="kw"> such that </span><br/><a NAME="E3:44"/>
+<font color="Maroon" title="c5">Q1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">Q</font>
+ <span class="kw">and </span><br/><a NAME="E4:44"/><span class="lab"><font color="Green" title="E23">A2</font></span>: 
+<font color="Maroon" title="c5">Q1</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ltlaxio4.html#K6" title="LTLAXIO4:func.6">comp</a> <span class="p1">(<span class="default"><a href="ltlaxio4.html#K8" title="LTLAXIO4:func.8">untn</a> <font color="Maroon" title="c3">P</font></span>)</span>
+ ;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c6">x</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <span class="kw"> such that </span><br/><a NAME="E6:44"/>
+<font color="Maroon" title="c5">Q1</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c6">x</font>
+ <span class="kw">and </span><br/><a NAME="E7:44"/><span class="lab"><font color="Green" title="E24">A3</font></span>: 
+<font color="Maroon" title="c6">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><a href="ltlaxio4.html#K5" title="LTLAXIO4:func.5">comp</a> <font color="Olive" title="b1">R</font></span>)</span> where <font color="Olive" title="b1">R</font> is   <a href="ltlaxio3.html#NM1" title="LTLAXIO3:NM.1">PNPair</a> : <font color="Olive" title="b1">R</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ltlaxio4.html#K8" title="LTLAXIO4:func.8">untn</a> <font color="Maroon" title="c3">P</font> </span> } </span> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:44"><span class="lab"><font color="Green" title="E23">A2</font></span></a>, <a class="ref" href="tarski.html#D4" onmouseover="rs('tarski/D4')" onmouseout="rh()">TARSKI:def 4</a></span>;<br/>
+<a NAME="E8:44"/>
+ ex <font color="Olive" title="b1">R</font> being   <a href="ltlaxio3.html#NM1" title="LTLAXIO3:NM.1">PNPair</a> st <br/>( <font color="Maroon" title="c6">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio4.html#K5" title="LTLAXIO4:func.5">comp</a> <font color="Olive" title="b1">R</font> &amp; <font color="Olive" title="b1">R</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ltlaxio4.html#K8" title="LTLAXIO4:func.8">untn</a> <font color="Maroon" title="c3">P</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E7:44"><span class="lab"><font color="Green" title="E24">A3</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E9:44"/>
+<font color="Maroon" title="c4">Q</font> is  <a href="ltlaxio3.html#V3" title="LTLAXIO3:attr.3">complete</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="ltlaxio4.html#T19" target="_self" onmouseover="rs('ltlaxio4/T19')" onmouseout="rh()">Th19</a>, <a class="txt" href="#E1:44"><span class="lab"><font color="Green" title="E22">A1</font></span></a>, <a class="ref" href="ltlaxio4.html#T13" target="_self" onmouseover="rs('ltlaxio4/T13')" onmouseout="rh()">Th13</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

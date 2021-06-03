@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">X</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">G</font> being   <a href="graph_1.html#V6" title="GRAPH_1:attr.6">finite</a>  <a href="graph_1.html#NM3" title="GRAPH_1:NM.3">Graph</a><br/>  for <font color="Olive" title="b2">v</font> being   <a href="graph_3.html#NM2" title="GRAPH_3:NM.2">Vertex</a> of <font color="Olive" title="b1">G</font>  st  <a href="graph_3.html#K7" title="GRAPH_3:func.7">Degree</a> (<font color="Olive" title="b2">v</font>,<font color="Maroon" title="c1">X</font>) <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br/> not  <a href="graph_3.html#K4" title="GRAPH_3:func.4">Edges_At</a> (<font color="Olive" title="b2">v</font>,<font color="Maroon" title="c1">X</font>) is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c2">G</font> be   <a href="graph_1.html#V6" title="GRAPH_1:attr.6">finite</a>  <a href="graph_1.html#NM3" title="GRAPH_1:NM.3">Graph</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">v</font> being   <a href="graph_3.html#NM2" title="GRAPH_3:NM.2">Vertex</a> of <font color="Maroon" title="c2">G</font>  st  <a href="graph_3.html#K7" title="GRAPH_3:func.7">Degree</a> (<font color="Olive" title="b1">v</font>,<font color="Maroon" title="c1">X</font>) <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br/> not  <a href="graph_3.html#K4" title="GRAPH_3:func.4">Edges_At</a> (<font color="Olive" title="b1">v</font>,<font color="Maroon" title="c1">X</font>) is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c3">v</font> be   <a href="graph_3.html#NM2" title="GRAPH_3:NM.2">Vertex</a> of <font color="Maroon" title="c2">G</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="graph_3.html#K7" title="GRAPH_3:func.7">Degree</a> (<font color="Maroon" title="c3">v</font>,<font color="Maroon" title="c1">X</font>) <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies  not  <a href="graph_3.html#K4" title="GRAPH_3:func.4">Edges_At</a> (<font color="Maroon" title="c3">v</font>,<font color="Maroon" title="c1">X</font>) is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  )</span><br/>
+
+
+
+
+
+<span class="kw">assume </span><a NAME="E1:38"/><span class="lab"><font color="Green" title="E28">A1</font></span>: 
+ <a href="graph_3.html#K7" title="GRAPH_3:func.7">Degree</a> (<font color="Maroon" title="c3">v</font>,<font color="Maroon" title="c1">X</font>) <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not  <a href="graph_3.html#K4" title="GRAPH_3:func.4">Edges_At</a> (<font color="Maroon" title="c3">v</font>,<font color="Maroon" title="c1">X</font>) is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> </span><br/>
+
+<span class="kw">assume </span><a NAME="E2:38"/><span class="lab"><font color="Green" title="E29">A2</font></span>: 
+ <a href="graph_3.html#K4" title="GRAPH_3:func.4">Edges_At</a> (<font color="Maroon" title="c3">v</font>,<font color="Maroon" title="c1">X</font>) is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E3:38"/><span class="kw">then </span>
+ <a href="graph_3.html#K2" title="GRAPH_3:func.2">Edges_In</a> (<font color="Maroon" title="c3">v</font>,<font color="Maroon" title="c1">X</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E4:38"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:38"><span class="lab"><font color="Green" title="E28">A1</font></span></a>, <a class="txt" href="#E2:38"><span class="lab"><font color="Green" title="E29">A2</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

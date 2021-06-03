@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">defpred </span><font color="Maroon">S<sub>1</sub></font>[  <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>] <span class="kw">means </span><font color="Maroon" title="c1">B</font> <a href="polnot_1.html#K4" title="POLNOT_1:func.4">^^</a> <font color="Maroon" title="c1">B</font> is  <a href="polnot_1.html#V3" title="POLNOT_1:attr.3">antichain-like</a> ;<br/>
+<a NAME="E1:75_1_1"/><span class="lab"><font color="Green" title="E53">A2</font></span>: 
+<font color="Maroon">S<sub>1</sub></font>[ <a href="ordinal1.html#K5" title="ORDINAL1:func.5">0</a> ]
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="polnot_1.html#T6" target="_self" onmouseover="rs('polnot_1/T6')" onmouseout="rh()">Th7</a></span>;<br/>
+<a NAME="E2:75_1_1"/><span class="lab"><font color="Green" title="E54">A3</font></span>: 
+ for <font color="Olive" title="b1">k</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>  st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">k</font>] holds <br/><font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">k</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1]
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="75_1_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">k</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">k</font>] implies <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">k</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1] )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:75_1_1_1"/>
+<font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">k</font>]
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">k</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1]</span><br/>
+
+<a NAME="E2:75_1_1_1"/><span class="kw">then </span>
+<span class="p1">(<span class="default"><font color="Maroon" title="c1">B</font> <a href="polnot_1.html#K4" title="POLNOT_1:func.4">^^</a> <font color="Maroon" title="c3">k</font></span>)</span> <a href="polnot_1.html#K2" title="POLNOT_1:func.2">^</a> <font color="Maroon" title="c1">B</font> is  <a href="polnot_1.html#V3" title="POLNOT_1:attr.3">antichain-like</a> 
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E3:75_1_1_1"/>
+<font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">k</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1]
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="polnot_1.html#T6" target="_self" onmouseover="rs('polnot_1/T6')" onmouseout="rh()">Th7</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E3:75_1_1"/>
+ for <font color="Olive" title="b1">k</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a> holds  <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">k</font>]
+ 
+<span class="kw">from</span> <span class="lab"><a class="ref" href="nat_1.html#S2" onmouseover="rs('nat_1/S2')" onmouseout="rh()">NAT_1:sch 2</a>(<a class="txt" href="#E1:75_1_1"><span class="lab"><font color="Green" title="E53">A2</font></span></a>, <a class="txt" href="#E2:75_1_1"><span class="lab"><font color="Green" title="E54">A3</font></span></a>);<br/></span>
+<span class="kw">hence </span><a NAME="E4:75_1_1"/>
+<font color="Maroon" title="c1">B</font> <a href="polnot_1.html#K4" title="POLNOT_1:func.4">^^</a> <font color="Maroon" title="c2">n</font> is  <a href="polnot_1.html#V3" title="POLNOT_1:attr.3">antichain-like</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

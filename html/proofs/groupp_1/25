@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">p</font> be   <a href="int_2.html#V1" title="INT_2:attr.1">prime</a>  <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">G</font> being   <a href="struct_0.html#V8" title="STRUCT_0:attr.8">finite</a>  <a href="group_1.html#NM1" title="GROUP_1:NM.1">Group</a>  st (  for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">G</font> holds  <font color="Olive" title="b2">a</font> is <font color="Maroon" title="c1">p</font> <a href="groupp_1.html#V1" title="GROUPP_1:attr.1">-power</a>  ) holds <br/><font color="Olive" title="b1">G</font> is <font color="Maroon" title="c1">p</font> <a href="group_10.html#V2" title="GROUP_10:attr.2">-group</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c2">G</font> be   <a href="struct_0.html#V8" title="STRUCT_0:attr.8">finite</a>  <a href="group_1.html#NM1" title="GROUP_1:NM.1">Group</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( (  for <font color="Olive" title="b1">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c2">G</font> holds  <font color="Olive" title="b1">a</font> is <font color="Maroon" title="c1">p</font> <a href="groupp_1.html#V1" title="GROUPP_1:attr.1">-power</a>  ) implies <font color="Maroon" title="c2">G</font> is <font color="Maroon" title="c1">p</font> <a href="group_10.html#V2" title="GROUP_10:attr.2">-group</a>  )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:25"/><span class="lab"><font color="Green" title="E16">A1</font></span>: 
+ for <font color="Olive" title="b1">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c2">G</font> holds  <font color="Olive" title="b1">a</font> is <font color="Maroon" title="c1">p</font> <a href="groupp_1.html#V1" title="GROUPP_1:attr.1">-power</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">G</font> is <font color="Maroon" title="c1">p</font> <a href="group_10.html#V2" title="GROUP_10:attr.2">-group</a> </span><br/>
+
+<span class="kw">assume </span><a NAME="E2:25"/>
+ not <font color="Maroon" title="c2">G</font> is <font color="Maroon" title="c1">p</font> <a href="group_10.html#V2" title="GROUP_10:attr.2">-group</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E3:25"/><span class="kw">then </span>
+ for <font color="Olive" title="b1">r</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>  holds  <a href="group_1.html#K7" title="GROUP_1:func.7">card</a> <font color="Maroon" title="c2">G</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c1">p</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Olive" title="b1">r</font>
+ 
+;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c3">s</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <span class="kw"> such that </span><br/><a NAME="E5:25"/><span class="lab"><font color="Green" title="E17">A2</font></span>: 
+( <font color="Maroon" title="c3">s</font> is  <a href="int_2.html#V1" title="INT_2:attr.1">prime</a>  &amp; <font color="Maroon" title="c3">s</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a>  <a href="group_1.html#K7" title="GROUP_1:func.7">card</a> <font color="Maroon" title="c2">G</font> )
+ <span class="kw">and </span><br/><a NAME="E6:25"/><span class="lab"><font color="Green" title="E18">A3</font></span>: 
+<font color="Maroon" title="c3">s</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c1">p</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="groupp_1.html#T1" target="_self" onmouseover="rs('groupp_1/T1')" onmouseout="rh()">Th1</a></span>;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c4">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c2">G</font><span class="kw"> such that </span><br/><a NAME="E8:25"/><span class="lab"><font color="Green" title="E19">A4</font></span>: 
+ <a href="group_1.html#K6" title="GROUP_1:func.6">ord</a> <font color="Maroon" title="c4">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">s</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:25"><span class="lab"><font color="Green" title="E17">A2</font></span></a>, <a class="ref" href="group_10.html#T11" onmouseover="rs('group_10/T11')" onmouseout="rh()">GROUP_10:11</a></span>;<br/>
+<a NAME="E9:25"/>
+<font color="Maroon" title="c4">b</font> is <font color="Maroon" title="c1">p</font> <a href="groupp_1.html#V1" title="GROUPP_1:attr.1">-power</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:25"><span class="lab"><font color="Green" title="E16">A1</font></span></a></span>;<br/>
+<a NAME="E10:25"/><span class="kw">then </span>
+ ex <font color="Olive" title="b1">r1</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a> st  <a href="group_1.html#K6" title="GROUP_1:func.6">ord</a> <font color="Maroon" title="c4">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">p</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Olive" title="b1">r1</font>
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E11:25"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:25"><span class="lab"><font color="Green" title="E17">A2</font></span></a>, <a class="txt" href="#E8:25"><span class="lab"><font color="Green" title="E19">A4</font></span></a>, <a class="txt" href="#E6:25"><span class="lab"><font color="Green" title="E18">A3</font></span></a>, <a class="ref" href="nat_3.html#T6" onmouseover="rs('nat_3/T6')" onmouseout="rh()">NAT_3:6</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

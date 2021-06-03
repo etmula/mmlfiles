@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">set </span><font color="Maroon" title="c1">A</font> =  <a href="kurato_1.html#K6" title="KURATO_1:func.6">KurExSet</a> ;<br/>
+<span class="kw">assume </span><a NAME="E1:55"/>
+<span class="p1"><a href="tarski.html#K2" title="TARSKI:func.2">{</a><span class="default"><a href="kurato_1.html#K6" title="KURATO_1:func.6">KurExSet</a>,<span class="p2">(<span class="default"><a href="kurato_1.html#K6" title="KURATO_1:func.6">KurExSet</a> <a href="subset_1.html#K3" title="SUBSET_1:func.3">`</a></span>)</span></span><a href="tarski.html#K2" title="TARSKI:func.2">}</a></span> <a href="xboole_0.html#NR5" title="XBOOLE_0:NR.5">meets</a>  <a href="kurato_1.html#K3" title="KURATO_1:func.3">Kurat14ClPart</a> <a href="kurato_1.html#K6" title="KURATO_1:func.6">KurExSet</a>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c2">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E3:55"/><span class="lab"><font color="Green" title="E46">A1</font></span>: 
+<font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"><a href="tarski.html#K2" title="TARSKI:func.2">{</a><span class="default"><a href="kurato_1.html#K6" title="KURATO_1:func.6">KurExSet</a>,<span class="p2">(<span class="default"><a href="kurato_1.html#K6" title="KURATO_1:func.6">KurExSet</a> <a href="subset_1.html#K3" title="SUBSET_1:func.3">`</a></span>)</span></span><a href="tarski.html#K2" title="TARSKI:func.2">}</a></span>
+ <span class="kw">and </span><br/><a NAME="E4:55"/><span class="lab"><font color="Green" title="E47">A2</font></span>: 
+<font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="kurato_1.html#K3" title="KURATO_1:func.3">Kurat14ClPart</a> <a href="kurato_1.html#K6" title="KURATO_1:func.6">KurExSet</a>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_0.html#T3" onmouseover="rs('xboole_0/T3')" onmouseout="rh()">XBOOLE_0:3</a></span>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c3">x</font> = <font color="Maroon" title="c2">x</font> as   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <a href="topmetr.html#K3" title="TOPMETR:func.3">R^1</a> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:55"><span class="lab"><font color="Green" title="E47">A2</font></span></a></span>;<br/>
+<a NAME="E6:55"/>
+( <font color="Maroon" title="c3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="kurato_1.html#K6" title="KURATO_1:func.6">KurExSet</a>  or <font color="Maroon" title="c3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <a href="kurato_1.html#K6" title="KURATO_1:func.6">KurExSet</a> <a href="subset_1.html#K3" title="SUBSET_1:func.3">`</a>  )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:55"><span class="lab"><font color="Green" title="E46">A1</font></span></a>, <a class="ref" href="tarski.html#D2" onmouseover="rs('tarski/D2')" onmouseout="rh()">TARSKI:def 2</a></span>;<br/>
+<a NAME="E7:55"/><span class="kw">then </span><span class="lab"><font color="Green" title="E48">A3</font></span>: 
+<font color="Maroon" title="c3">x</font> <a href="subset_1.html#K3" title="SUBSET_1:func.3">`</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="kurato_1.html#K6" title="KURATO_1:func.6">KurExSet</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:55"><span class="lab"><font color="Green" title="E47">A2</font></span></a>, <a class="ref" href="tops_2.html#D2" onmouseover="rs('tops_2/D2')" onmouseout="rh()">TOPS_2:def 2</a></span>;<br/>
+<a NAME="E8:55"/>
+<font color="Maroon" title="c3">x</font> is  <a href="pre_topc.html#V4" title="PRE_TOPC:attr.4">closed</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:55"><span class="lab"><font color="Green" title="E47">A2</font></span></a>, <a class="ref" href="tops_2.html#D2" onmouseover="rs('tops_2/D2')" onmouseout="rh()">TOPS_2:def 2</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E9:55"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E7:55"><span class="lab"><font color="Green" title="E48">A3</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

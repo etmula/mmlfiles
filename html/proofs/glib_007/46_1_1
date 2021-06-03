@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">G1</font> be    <a href="glib_007.html#M1" title="GLIB_007:mode.1">reverseEdgeDirections</a> of <font color="Maroon" title="c1">G</font>,<font color="Maroon" title="c2">E</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">G1</font> is  <a href="chord.html#V6" title="CHORD:attr.6">chordal</a> </span><br/>
+
+<a NAME="E1:46_1_1"/>
+ for <font color="Olive" title="b1">W1</font> being    <a href="glib_001.html#M3" title="GLIB_001:mode.3">Walk</a> of <font color="Maroon" title="c3">G1</font>  st <font color="Olive" title="b1">W1</font> <a href="glib_001.html#K15" title="GLIB_001:func.15">.length()</a>  <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 3 &amp; <font color="Olive" title="b1">W1</font> is  <a href="glib_001.html#V8" title="GLIB_001:attr.8">Cycle-like</a>  holds <br/><font color="Olive" title="b1">W1</font> is  <a href="chord.html#V5" title="CHORD:attr.5">chordal</a> 
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="46_1_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">W1</font> be    <a href="glib_001.html#M3" title="GLIB_001:mode.3">Walk</a> of <font color="Maroon" title="c3">G1</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c4">W1</font> <a href="glib_001.html#K15" title="GLIB_001:func.15">.length()</a>  <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 3 &amp; <font color="Maroon" title="c4">W1</font> is  <a href="glib_001.html#V8" title="GLIB_001:attr.8">Cycle-like</a>  implies <font color="Maroon" title="c4">W1</font> is  <a href="chord.html#V5" title="CHORD:attr.5">chordal</a>  )</span><br/>
+
+<span class="kw">reconsider </span><font color="Maroon" title="c5">W</font> = <font color="Maroon" title="c4">W1</font> as    <a href="glib_001.html#M3" title="GLIB_001:mode.3">Walk</a> of <font color="Maroon" title="c1">G</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="glib_007.html#T15" target="_self" onmouseover="rs('glib_007/T15')" onmouseout="rh()">Th15</a></span>;<br/>
+<span class="kw">assume </span><a NAME="E2:46_1_1_1"/>
+( <font color="Maroon" title="c4">W1</font> <a href="glib_001.html#K15" title="GLIB_001:func.15">.length()</a>  <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 3 &amp; <font color="Maroon" title="c4">W1</font> is  <a href="glib_001.html#V8" title="GLIB_001:attr.8">Cycle-like</a>  )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c4">W1</font> is  <a href="chord.html#V5" title="CHORD:attr.5">chordal</a> </span><br/>
+
+<a NAME="E3:46_1_1_1"/><span class="kw">then </span>
+( <font color="Maroon" title="c5">W</font> <a href="glib_001.html#K15" title="GLIB_001:func.15">.length()</a>  <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 3 &amp; <font color="Maroon" title="c5">W</font> is  <a href="glib_001.html#V8" title="GLIB_001:attr.8">Cycle-like</a>  )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="glib_006.html#T24" onmouseover="rs('glib_006/T24')" onmouseout="rh()">GLIB_006:24</a>, <a class="ref" href="glib_001.html#T114" onmouseover="rs('glib_001/T114')" onmouseout="rh()">GLIB_001:114</a></span>;<br/>
+<a NAME="E4:46_1_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c5">W</font> is  <a href="chord.html#V5" title="CHORD:attr.5">chordal</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="chord.html#D11" onmouseover="rs('chord/D11')" onmouseout="rh()">CHORD:def 11</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:46_1_1_1"/>
+<font color="Maroon" title="c4">W1</font> is  <a href="chord.html#V5" title="CHORD:attr.5">chordal</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="glib_007.html#T18" target="_self" onmouseover="rs('glib_007/T18')" onmouseout="rh()">Th18</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E2:46_1_1"/>
+<font color="Maroon" title="c3">G1</font> is  <a href="chord.html#V6" title="CHORD:attr.6">chordal</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="chord.html#D11" onmouseover="rs('chord/D11')" onmouseout="rh()">CHORD:def 11</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

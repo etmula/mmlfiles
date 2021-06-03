@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">p</font> be    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="hilbert1.html#K1" title="HILBERT1:func.1">HP-WFF</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">p</font> is  <a href="hilbert3.html#V1" title="HILBERT3:attr.1">canonical</a>  implies <font color="Maroon" title="c1">p</font> is  <a href="hilbert3.html#V2" title="HILBERT3:attr.2">pseudo-canonical</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:56_1_1"/><span class="lab"><font color="Green" title="E34">A1</font></span>: 
+<font color="Maroon" title="c1">p</font> is  <a href="hilbert3.html#V1" title="HILBERT3:attr.1">canonical</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">p</font> is  <a href="hilbert3.html#V2" title="HILBERT3:attr.2">pseudo-canonical</a> </span><br/>
+
+<span class="kw">let </span><font color="Maroon" title="c2">V</font> be   <a href="hilbert3.html#NM1" title="HILBERT3:NM.1">SetValuation</a>; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="hilbert3.html#D8" target="_self" onmouseover="rs('hilbert3/D8')" onmouseout="rh()">HILBERT3:def 8</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">P</font> being    <a href="hilbert3.html#M1" title="HILBERT3:mode.1">Permutation</a> of <font color="Maroon" title="c2">V</font>  ex <font color="Olive" title="b2">x</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  st <font color="Olive" title="b2">x</font> <a href="abian.html#R1" title="ABIAN:pred.1">is_a_fixpoint_of</a>  <a href="hilbert3.html#K5" title="HILBERT3:func.5">Perm</a> (<font color="Olive" title="b1">P</font>,<font color="Maroon" title="c1">p</font>)</span><br/>
+
+<span class="kw">consider </span><font color="Maroon" title="c3">x</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <span class="kw"> such that </span><br/><a NAME="E3:56_1_1"/><span class="lab"><font color="Green" title="E35">A2</font></span>: 
+ for <font color="Olive" title="b1">P</font> being    <a href="hilbert3.html#M1" title="HILBERT3:mode.1">Permutation</a> of <font color="Maroon" title="c2">V</font> holds  <font color="Maroon" title="c3">x</font> <a href="abian.html#R1" title="ABIAN:pred.1">is_a_fixpoint_of</a>  <a href="hilbert3.html#K5" title="HILBERT3:func.5">Perm</a> (<font color="Olive" title="b1">P</font>,<font color="Maroon" title="c1">p</font>)
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:56_1_1"><span class="lab"><font color="Green" title="E34">A1</font></span></a></span>;<br/>
+<span class="kw">let </span><font color="Maroon" title="c4">P</font> be    <a href="hilbert3.html#M1" title="HILBERT3:mode.1">Permutation</a> of <font color="Maroon" title="c2">V</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  ex <font color="Olive" title="b1">x</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  st <font color="Olive" title="b1">x</font> <a href="abian.html#R1" title="ABIAN:pred.1">is_a_fixpoint_of</a>  <a href="hilbert3.html#K5" title="HILBERT3:func.5">Perm</a> (<font color="Maroon" title="c4">P</font>,<font color="Maroon" title="c1">p</font>)</span><br/>
+
+<span class="kw">take </span>
+<font color="Maroon" title="c3">x</font>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">x</font> <a href="abian.html#R1" title="ABIAN:pred.1">is_a_fixpoint_of</a>  <a href="hilbert3.html#K5" title="HILBERT3:func.5">Perm</a> (<font color="Maroon" title="c4">P</font>,<font color="Maroon" title="c1">p</font>)</span><br/>
+
+<span class="kw">thus </span><a NAME="E4:56_1_1"/>
+<font color="Maroon" title="c3">x</font> <a href="abian.html#R1" title="ABIAN:pred.1">is_a_fixpoint_of</a>  <a href="hilbert3.html#K5" title="HILBERT3:func.5">Perm</a> (<font color="Maroon" title="c4">P</font>,<font color="Maroon" title="c1">p</font>)
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:56_1_1"><span class="lab"><font color="Green" title="E35">A2</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

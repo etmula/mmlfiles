@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="lattad_1.html#NM2" title="LATTAD_1:NM.2">GAD_Lattice</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>  iff  <a href="lattad_1.html#K4" title="LATTAD_1:func.4">ThetaOrder</a> <font color="Maroon" title="c1">L</font> is  <a href="orders_1.html#V2" title="ORDERS_1:attr.2">being_partial-order</a>  )</span><br/>
+
+<span class="kw">set </span><font color="Maroon" title="c2">R</font> =  <a href="lattad_1.html#K4" title="LATTAD_1:func.4">ThetaOrder</a> <font color="Maroon" title="c1">L</font>;<br/>
+<span class="kw">thus </span><a NAME="E1:79"/>
+( <font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>  implies  <a href="lattad_1.html#K4" title="LATTAD_1:func.4">ThetaOrder</a> <font color="Maroon" title="c1">L</font> is  <a href="orders_1.html#V2" title="ORDERS_1:attr.2">being_partial-order</a>  )
+  <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="lattad_1.html#K4" title="LATTAD_1:func.4">ThetaOrder</a> <font color="Maroon" title="c1">L</font> is  <a href="orders_1.html#V2" title="ORDERS_1:attr.2">being_partial-order</a>  implies <font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>  )</span><div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="79_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><a NAME="E1:79_1"/>
+<font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="lattad_1.html#K4" title="LATTAD_1:func.4">ThetaOrder</a> <font color="Maroon" title="c1">L</font> is  <a href="orders_1.html#V2" title="ORDERS_1:attr.2">being_partial-order</a> </span><br/>
+
+<a NAME="E2:79_1"/><span class="kw">then </span>
+ <a href="lattad_1.html#K4" title="LATTAD_1:func.4">ThetaOrder</a> <font color="Maroon" title="c1">L</font> is  <a href="relat_2.html#V4" title="RELAT_2:attr.4">antisymmetric</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="lattad_1.html#T55" target="_self" onmouseover="rs('lattad_1/T55')" onmouseout="rh()">Th31146</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E3:79_1"/>
+ <a href="lattad_1.html#K4" title="LATTAD_1:func.4">ThetaOrder</a> <font color="Maroon" title="c1">L</font> is  <a href="orders_1.html#V2" title="ORDERS_1:attr.2">being_partial-order</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="orders_1.html#D5" onmouseover="rs('orders_1/D5')" onmouseout="rh()">ORDERS_1:def 5</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+
+<span class="kw">assume </span><a NAME="E2:79"/>
+ <a href="lattad_1.html#K4" title="LATTAD_1:func.4">ThetaOrder</a> <font color="Maroon" title="c1">L</font> is  <a href="orders_1.html#V2" title="ORDERS_1:attr.2">being_partial-order</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a> </span><br/>
+
+<a NAME="E3:79"/><span class="kw">then </span>
+ <a href="lattad_1.html#K4" title="LATTAD_1:func.4">ThetaOrder</a> <font color="Maroon" title="c1">L</font> is  <a href="relat_2.html#V4" title="RELAT_2:attr.4">antisymmetric</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="orders_1.html#D5" onmouseover="rs('orders_1/D5')" onmouseout="rh()">ORDERS_1:def 5</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E4:79"/>
+<font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="lattad_1.html#T55" target="_self" onmouseover="rs('lattad_1/T55')" onmouseout="rh()">Th31146</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

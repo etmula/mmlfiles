@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">seq</font> be   <a href="mesfunc5.html#NM1" title="MESFUNC5:NM.1">ExtREAL_sequence</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">seq</font> is <a href="supinf_2.html#V6" title="SUPINF_2:attr.6">V116</a>() implies  not <font color="Maroon" title="c1">seq</font> is  <a href="mesfunc5.html#V9" title="MESFUNC5:attr.9">convergent_to_-infty</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:8"/><span class="lab"><font color="Green" title="E5">A1</font></span>: 
+<font color="Maroon" title="c1">seq</font> is <a href="supinf_2.html#V6" title="SUPINF_2:attr.6">V116</a>()
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not <font color="Maroon" title="c1">seq</font> is  <a href="mesfunc5.html#V9" title="MESFUNC5:attr.9">convergent_to_-infty</a> </span><br/>
+
+<span class="kw">assume </span><a NAME="E2:8"/>
+<font color="Maroon" title="c1">seq</font> is  <a href="mesfunc5.html#V9" title="MESFUNC5:attr.9">convergent_to_-infty</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><span class="kw"> such that </span><br/><a NAME="E4:8"/><span class="lab"><font color="Green" title="E6">A2</font></span>: 
+ for <font color="Olive" title="b1">m</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Maroon" title="c2">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b1">m</font> holds <br/><font color="Maroon" title="c1">seq</font> <a href="supinf_2.html#K12" title="SUPINF_2:func.12">.</a> <font color="Olive" title="b1">m</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1
+ ;<br/>
+<a NAME="E5:8"/>
+<font color="Maroon" title="c1">seq</font> <a href="supinf_2.html#K12" title="SUPINF_2:func.12">.</a> <font color="Maroon" title="c2">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:8"><span class="lab"><font color="Green" title="E6">A2</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E6:8"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:8"><span class="lab"><font color="Green" title="E5">A1</font></span></a>, <a class="ref" href="supinf_2.html#T51" onmouseover="rs('supinf_2/T51')" onmouseout="rh()">SUPINF_2:51</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

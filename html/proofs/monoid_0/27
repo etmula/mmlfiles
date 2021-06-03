@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="algstr_0.html#L3" title="ALGSTR_0:struct.3">multMagma</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">G</font> is  <a href="monoid_0.html#V16" title="MONOID_0:attr.16">cancelable</a>  iff ( <font color="Maroon" title="c1">G</font> is  <a href="monoid_0.html#V14" title="MONOID_0:attr.14">left-cancelable</a>  &amp; <font color="Maroon" title="c1">G</font> is  <a href="monoid_0.html#V15" title="MONOID_0:attr.15">right-cancelable</a>  ) )</span><br/>
+
+<span class="kw">thus </span><a NAME="E1:27"/>
+( <font color="Maroon" title="c1">G</font> is  <a href="monoid_0.html#V16" title="MONOID_0:attr.16">cancelable</a>  implies ( <font color="Maroon" title="c1">G</font> is  <a href="monoid_0.html#V14" title="MONOID_0:attr.14">left-cancelable</a>  &amp; <font color="Maroon" title="c1">G</font> is  <a href="monoid_0.html#V15" title="MONOID_0:attr.15">right-cancelable</a>  ) )
+  <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">G</font> is  <a href="monoid_0.html#V14" title="MONOID_0:attr.14">left-cancelable</a>  &amp; <font color="Maroon" title="c1">G</font> is  <a href="monoid_0.html#V15" title="MONOID_0:attr.15">right-cancelable</a>  implies <font color="Maroon" title="c1">G</font> is  <a href="monoid_0.html#V16" title="MONOID_0:attr.16">cancelable</a>  )</span><div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="27_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><a NAME="E1:27_1"/>
+<font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c1">G</font>) is  <a href="monoid_0.html#V8" title="MONOID_0:attr.8">cancelable</a> 
+ ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="monoid_0.html#D19" target="_self" onmouseover="rs('monoid_0/D19')" onmouseout="rh()">MONOID_0:def 19</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">G</font> is  <a href="monoid_0.html#V14" title="MONOID_0:attr.14">left-cancelable</a>  &amp; <font color="Maroon" title="c1">G</font> is  <a href="monoid_0.html#V15" title="MONOID_0:attr.15">right-cancelable</a>  )</span><br/>
+
+<span class="kw">hence </span><a NAME="E2:27_1"/>
+( <font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c1">G</font>) is  <a href="monoid_0.html#V6" title="MONOID_0:attr.6">left-cancelable</a>  &amp; <font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c1">G</font>) is  <a href="monoid_0.html#V7" title="MONOID_0:attr.7">right-cancelable</a>  )
+ ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="monoid_0.html#D17" target="_self" onmouseover="rs('monoid_0/D17')" onmouseout="rh()">MONOID_0:def 17</a>,<a class="ref" href="monoid_0.html#D18" target="_self" onmouseover="rs('monoid_0/D18')" onmouseout="rh()">MONOID_0:def 18</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+
+<span class="kw">assume </span><a NAME="E2:27"/>
+( <font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c1">G</font>) is  <a href="monoid_0.html#V6" title="MONOID_0:attr.6">left-cancelable</a>  &amp; <font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c1">G</font>) is  <a href="monoid_0.html#V7" title="MONOID_0:attr.7">right-cancelable</a>  )
+ ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="monoid_0.html#D17" target="_self" onmouseover="rs('monoid_0/D17')" onmouseout="rh()">MONOID_0:def 17</a>,<a class="ref" href="monoid_0.html#D18" target="_self" onmouseover="rs('monoid_0/D18')" onmouseout="rh()">MONOID_0:def 18</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">G</font> is  <a href="monoid_0.html#V16" title="MONOID_0:attr.16">cancelable</a> </span><br/>
+
+<span class="kw">hence </span><a NAME="E3:27"/>
+<font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c1">G</font>) is  <a href="monoid_0.html#V8" title="MONOID_0:attr.8">cancelable</a> 
+ ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="monoid_0.html#D19" target="_self" onmouseover="rs('monoid_0/D19')" onmouseout="rh()">MONOID_0:def 19</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

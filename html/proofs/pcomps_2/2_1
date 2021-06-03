@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">consider </span><font color="Maroon" title="c1">Y</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <span class="kw"> such that </span><br/><a NAME="E2:2_1"/><span class="lab"><font color="Green" title="E4">A3</font></span>: 
+ for <font color="Olive" title="b1">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br/> ( <font color="Olive" title="b1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c1">Y</font> iff ( <font color="Olive" title="b1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon">F<sub>1</sub></font>() &amp; <font color="Maroon">P<sub>1</sub></font>[<font color="Olive" title="b1">x</font>] ) )
+ <span class="kw">from</span> <span class="lab"><a class="ref" href="xboole_0.html#S1" onmouseover="rs('xboole_0/S1')" onmouseout="rh()">XBOOLE_0:sch 1</a>();<br/></span>
+<a NAME="E3:2_1"/><span class="lab"><font color="Green" title="E5">A4</font></span>: 
+ ex <font color="Olive" title="b1">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  st <font color="Olive" title="b1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c1">Y</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:2"><span class="lab"><font color="Green" title="E3">A2</font></span></a>, <a class="txt" href="#E2:2_1"><span class="lab"><font color="Green" title="E4">A3</font></span></a></span>;<br/>
+<a NAME="E4:2_1"/>
+ for <font color="Olive" title="b1">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>   st <font color="Olive" title="b1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c1">Y</font> holds <br/><font color="Olive" title="b1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon">F<sub>1</sub></font>()
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:2_1"><span class="lab"><font color="Green" title="E4">A3</font></span></a></span>;<br/>
+<a NAME="E5:2_1"/><span class="kw">then </span>
+<font color="Maroon" title="c1">Y</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon">F<sub>1</sub></font>()
+ 
+;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c2">X</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E7:2_1"/><span class="lab"><font color="Green" title="E6">A5</font></span>: 
+<font color="Maroon" title="c2">X</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c1">Y</font>
+ <span class="kw">and </span><br/><a NAME="E8:2_1"/><span class="lab"><font color="Green" title="E7">A6</font></span>: 
+ for <font color="Olive" title="b1">Z</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>   st <font color="Olive" title="b1">Z</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c1">Y</font> holds <br/><span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Maroon" title="c2">X</font>,<font color="Olive" title="b1">Z</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon">F<sub>2</sub></font>()
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:2"><span class="lab"><font color="Green" title="E2">A1</font></span></a>, <a class="txt" href="#E3:2_1"><span class="lab"><font color="Green" title="E5">A4</font></span></a>, <a class="ref" href="wellord1.html#T5" onmouseover="rs('wellord1/T5')" onmouseout="rh()">WELLORD1:5</a></span>;<br/>
+<a NAME="E9:2_1"/><span class="lab"><font color="Green" title="E8">A7</font></span>: 
+ for <font color="Olive" title="b1">M</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st <font color="Olive" title="b1">M</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon">F<sub>1</sub></font>() &amp; <font color="Maroon">P<sub>1</sub></font>[<font color="Olive" title="b1">M</font>] holds <br/><span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Maroon" title="c2">X</font>,<font color="Olive" title="b1">M</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon">F<sub>2</sub></font>()
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:2_1"><span class="lab"><font color="Green" title="E4">A3</font></span></a>, <a class="txt" href="#E8:2_1"><span class="lab"><font color="Green" title="E7">A6</font></span></a></span>;<br/>
+<a NAME="E10:2_1"/>
+( <font color="Maroon" title="c2">X</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon">F<sub>1</sub></font>() &amp; <font color="Maroon">P<sub>1</sub></font>[<font color="Maroon" title="c2">X</font>] )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:2_1"><span class="lab"><font color="Green" title="E4">A3</font></span></a>, <a class="txt" href="#E7:2_1"><span class="lab"><font color="Green" title="E6">A5</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E11:2_1"/>
+ ex <font color="Olive" title="b1">X</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  st <br/>( <font color="Olive" title="b1">X</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon">F<sub>1</sub></font>() &amp; <font color="Maroon">P<sub>1</sub></font>[<font color="Olive" title="b1">X</font>] &amp; (  for <font color="Olive" title="b2">Y</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st <font color="Olive" title="b2">Y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon">F<sub>1</sub></font>() &amp; <font color="Maroon">P<sub>1</sub></font>[<font color="Olive" title="b2">Y</font>] holds <br/><span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon">F<sub>2</sub></font>() ) )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E9:2_1"><span class="lab"><font color="Green" title="E8">A7</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

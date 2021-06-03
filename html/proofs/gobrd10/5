@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">i1</font>, <font color="Maroon" title="c2">i2</font>, <font color="Maroon" title="c3">j1</font>, <font color="Maroon" title="c4">j2</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">i1</font>,<font color="Maroon" title="c3">j1</font>,<font color="Maroon" title="c2">i2</font>,<font color="Maroon" title="c4">j2</font> <a href="gobrd10.html#R2" title="GOBRD10:pred.2">are_adjacent</a>  implies <font color="Maroon" title="c1">i1</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1,<font color="Maroon" title="c3">j1</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1,<font color="Maroon" title="c2">i2</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1,<font color="Maroon" title="c4">j2</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 <a href="gobrd10.html#R2" title="GOBRD10:pred.2">are_adjacent</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:5"/>
+<font color="Maroon" title="c1">i1</font>,<font color="Maroon" title="c3">j1</font>,<font color="Maroon" title="c2">i2</font>,<font color="Maroon" title="c4">j2</font> <a href="gobrd10.html#R2" title="GOBRD10:pred.2">are_adjacent</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">i1</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1,<font color="Maroon" title="c3">j1</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1,<font color="Maroon" title="c2">i2</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1,<font color="Maroon" title="c4">j2</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 <a href="gobrd10.html#R2" title="GOBRD10:pred.2">are_adjacent</a> </span><br/>
+
+<a NAME="E2:5"/><span class="kw">then </span>
+( ( <font color="Maroon" title="c1">i1</font>,<font color="Maroon" title="c2">i2</font> <a href="gobrd10.html#R1" title="GOBRD10:pred.1">are_adjacent</a>  &amp; <font color="Maroon" title="c3">j1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">j2</font> ) or ( <font color="Maroon" title="c1">i1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">i2</font> &amp; <font color="Maroon" title="c3">j1</font>,<font color="Maroon" title="c4">j2</font> <a href="gobrd10.html#R1" title="GOBRD10:pred.1">are_adjacent</a>  ) )
+ 
+;<br/>
+<a NAME="E3:5"/><span class="kw">then </span>
+( ( <font color="Maroon" title="c1">i1</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1,<font color="Maroon" title="c2">i2</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 <a href="gobrd10.html#R1" title="GOBRD10:pred.1">are_adjacent</a>  &amp; <font color="Maroon" title="c3">j1</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">j2</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 ) or ( <font color="Maroon" title="c1">i1</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">i2</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 &amp; <font color="Maroon" title="c3">j1</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1,<font color="Maroon" title="c4">j2</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 <a href="gobrd10.html#R1" title="GOBRD10:pred.1">are_adjacent</a>  ) )
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E4:5"/>
+<font color="Maroon" title="c1">i1</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1,<font color="Maroon" title="c3">j1</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1,<font color="Maroon" title="c2">i2</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1,<font color="Maroon" title="c4">j2</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 <a href="gobrd10.html#R2" title="GOBRD10:pred.2">are_adjacent</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">t</font> be   <a href="grzlog_1.html#NM2" title="GRZLOG_1:NM.2">GRZ-formula</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">t</font> is  <a href="grzlog_1.html#V1" title="GRZLOG_1:attr.1">atomic</a>  or <font color="Maroon" title="c1">t</font> is  <a href="grzlog_1.html#V2" title="GRZLOG_1:attr.2">negative</a>  or <font color="Maroon" title="c1">t</font> is  <a href="grzlog_1.html#V3" title="GRZLOG_1:attr.3">conjunctive</a>  or <font color="Maroon" title="c1">t</font> is  <a href="grzlog_1.html#V4" title="GRZLOG_1:attr.4">being_equality</a>  )</span><br/>
+
+<span class="kw">set </span><font color="Maroon" title="c2">s</font> =  <a href="polnot_1.html#K27" title="POLNOT_1:func.27">Polish-WFF-head</a> <font color="Maroon" title="c1">t</font>;<br/>
+<span class="kw">assume </span><a NAME="E1:31"/><span class="lab"><font color="Green" title="E12">A1</font></span>: 
+(  not <font color="Maroon" title="c1">t</font> is  <a href="grzlog_1.html#V1" title="GRZLOG_1:attr.1">atomic</a>  &amp;  not <font color="Maroon" title="c1">t</font> is  <a href="grzlog_1.html#V2" title="GRZLOG_1:attr.2">negative</a>  &amp;  not <font color="Maroon" title="c1">t</font> is  <a href="grzlog_1.html#V3" title="GRZLOG_1:attr.3">conjunctive</a>  &amp;  not <font color="Maroon" title="c1">t</font> is  <a href="grzlog_1.html#V4" title="GRZLOG_1:attr.4">being_equality</a>  )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E2:31"/><span class="kw">then </span>
+ not  <a href="polnot_1.html#K27" title="POLNOT_1:func.27">Polish-WFF-head</a> <font color="Maroon" title="c1">t</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="grzlog_1.html#K6" title="GRZLOG_1:func.6">GRZ-ops</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="enumset1.html#D1" onmouseover="rs('enumset1/D1')" onmouseout="rh()">ENUMSET1:def 1</a></span>;<br/>
+<a NAME="E3:31"/><span class="kw">then </span><span class="lab"><font color="Green" title="E13">A2</font></span>: 
+ <a href="polnot_1.html#K27" title="POLNOT_1:func.27">Polish-WFF-head</a> <font color="Maroon" title="c1">t</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="grzlog_1.html#K1" title="GRZLOG_1:func.1">VAR</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_0.html#D3" onmouseover="rs('xboole_0/D3')" onmouseout="rh()">XBOOLE_0:def 3</a></span>;<br/>
+<a NAME="E4:31"/>
+ <a href="polnot_1.html#K27" title="POLNOT_1:func.27">Polish-WFF-head</a> <font color="Maroon" title="c1">t</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <a href="grzlog_1.html#K7" title="GRZLOG_1:func.7">GRZ-symbols</a> <a href="polnot_1.html#K15" title="POLNOT_1:func.15">-head</a> <font color="Maroon" title="c1">t</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="polnot_1.html#D33" onmouseover="rs('polnot_1/D33')" onmouseout="rh()">POLNOT_1:def 33</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:31"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:31"><span class="lab"><font color="Green" title="E12">A1</font></span></a>, <a class="txt" href="#E3:31"><span class="lab"><font color="Green" title="E13">A2</font></span></a>, <a class="ref" href="grzlog_1.html#T3" target="_self" onmouseover="rs('grzlog_1/T3')" onmouseout="rh()">Th5</a>, <a class="ref" href="polnot_1.html#T69" onmouseover="rs('polnot_1/T69')" onmouseout="rh()">POLNOT_1:69</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

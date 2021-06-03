@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">defpred </span><font color="Maroon">S<sub>1</sub></font>[   <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of <font color="Maroon" title="c1">D</font>] <span class="kw">means </span>contradiction;<br/>
+<a NAME="E1:22_1_1"/><span class="lab"><font color="Green" title="E5">A1</font></span>: 
+ for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of <font color="Maroon" title="c1">D</font>  st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">a</font>] &amp; <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b2">b</font>] holds <br/> <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">b</font>
+ 
+;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c2">r</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="margrel1.html#K2" title="MARGREL1:func.2">relations_on</a> <font color="Maroon" title="c1">D</font><span class="kw"> such that </span><br/><a NAME="E3:22_1_1"/><span class="lab"><font color="Green" title="E6">A2</font></span>: 
+ for <font color="Olive" title="b1">a</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of <font color="Maroon" title="c1">D</font> holds <br/> ( <font color="Olive" title="b1">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">r</font> iff <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">a</font>] )
+ <span class="kw">from</span> <span class="lab"><a class="ref" href="margrel1.html#S2" target="_self" onmouseover="rs('margrel1/S2')" onmouseout="rh()">MARGREL1:sch 2</a>(<a class="txt" href="#E1:22_1_1"><span class="lab"><font color="Green" title="E5">A1</font></span></a>);<br/></span>
+<span class="kw">take </span>
+<font color="Maroon" title="c2">r</font>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">a</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of <font color="Maroon" title="c1">D</font>  holds  not <font color="Olive" title="b1">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">r</font></span><br/>
+
+<span class="kw">thus </span><a NAME="E4:22_1_1"/>
+ for <font color="Olive" title="b1">a</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of <font color="Maroon" title="c1">D</font>  holds  not <font color="Olive" title="b1">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">r</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:22_1_1"><span class="lab"><font color="Green" title="E6">A2</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">assume </span><a NAME="E1:94"/><span class="lab"><font color="Green" title="E51">A1</font></span>: 
+ <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a>  is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c1">SP</font> =  <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a>  as   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  ;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><span class="kw"> such that </span><br/><a NAME="E4:94"/><span class="lab"><font color="Green" title="E52">A2</font></span>: 
+ <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a> , <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c2">n</font> <a href="tarski.html#R3" title="TARSKI:pred.3">are_equipotent</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:94"><span class="lab"><font color="Green" title="E51">A1</font></span></a>, <a class="ref" href="finseq_1.html#T56" onmouseover="rs('finseq_1/T56')" onmouseout="rh()">FINSEQ_1:56</a></span>;<br/>
+<a NAME="E5:94"/>
+ <a href="card_1.html#K1" title="CARD_1:func.1">card</a> <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="card_1.html#K4" title="CARD_1:func.4">card</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c2">n</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:94"><span class="lab"><font color="Green" title="E52">A2</font></span></a>, <a class="ref" href="card_1.html#T5" onmouseover="rs('card_1/T5')" onmouseout="rh()">CARD_1:5</a></span>;<br/>
+<a NAME="E6:94"/><span class="kw">then </span>
+ <a href="card_1.html#K1" title="CARD_1:func.1">card</a> <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="card_1.html#K4" title="CARD_1:func.4">card</a> <font color="Maroon" title="c2">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_1.html#T55" onmouseover="rs('finseq_1/T55')" onmouseout="rh()">FINSEQ_1:55</a></span>;<br/>
+<a NAME="E7:94"/><span class="kw">then </span><span class="lab"><font color="Green" title="E53">A3</font></span>: 
+ <a href="card_1.html#K4" title="CARD_1:func.4">card</a> <font color="Maroon" title="c1">SP</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">n</font>
+ 
+;<br/>
+<span class="kw">set </span><font color="Maroon" title="c3">p</font> =  <a href="newton.html#K10" title="NEWTON:func.10">primenumber</a> <span class="p1">(<span class="default"><font color="Maroon" title="c2">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c4">SPp</font> =  <a href="newton.html#K9" title="NEWTON:func.9">SetPrimenumber</a> <span class="p1">(<span class="default"><a href="newton.html#K10" title="NEWTON:func.10">primenumber</a> <span class="p2">(<span class="default"><font color="Maroon" title="c2">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span>;<br/>
+<a NAME="E8:94"/><span class="lab"><font color="Green" title="E54">A4</font></span>: 
+<font color="Maroon" title="c2">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="card_1.html#K4" title="CARD_1:func.4">card</a> <span class="p1">(<span class="default"><a href="newton.html#K9" title="NEWTON:func.9">SetPrimenumber</a> <span class="p2">(<span class="default"><a href="newton.html#K10" title="NEWTON:func.10">primenumber</a> <span class="p3">(<span class="default"><font color="Maroon" title="c2">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="newton.html#D8" target="_self" onmouseover="rs('newton/D8')" onmouseout="rh()">Def8</a></span>;<br/>
+<a NAME="E9:94"/>
+ <a href="card_1.html#K4" title="CARD_1:func.4">card</a> <span class="p1">(<span class="default"><a href="newton.html#K9" title="NEWTON:func.9">SetPrimenumber</a> <span class="p2">(<span class="default"><a href="newton.html#K10" title="NEWTON:func.10">primenumber</a> <span class="p3">(<span class="default"><font color="Maroon" title="c2">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span></span>)</span> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="card_1.html#K4" title="CARD_1:func.4">card</a> <font color="Maroon" title="c1">SP</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="newton.html#T68" target="_self" onmouseover="rs('newton/T68')" onmouseout="rh()">Th68</a>, <a class="ref" href="nat_1.html#T43" onmouseover="rs('nat_1/T43')" onmouseout="rh()">NAT_1:43</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E10:94"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E7:94"><span class="lab"><font color="Green" title="E53">A3</font></span></a>, <a class="txt" href="#E8:94"><span class="lab"><font color="Green" title="E54">A4</font></span></a>, <a class="ref" href="nat_1.html#T13" onmouseover="rs('nat_1/T13')" onmouseout="rh()">NAT_1:13</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

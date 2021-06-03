@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">f</font> be   <a href="struct_0.html#NM7" title="STRUCT_0:NM.7">FinSequence</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> 2</span>)</span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">p</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> 2</span>)</span>  st <font color="Olive" title="b1">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="topreal1.html#K3" title="TOPREAL1:func.3">L~</a> <font color="Maroon" title="c1">f</font> holds <br/> <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <span class="p1">(<span class="default"><a href="jordan3.html#K2" title="JORDAN3:func.2">L_Cut</a> (<font color="Maroon" title="c1">f</font>,<font color="Olive" title="b1">p</font>)</span>)</span> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1</span><br/><span class="kw">let </span><font color="Maroon" title="c2">p</font> be   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> 2</span>)</span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="topreal1.html#K3" title="TOPREAL1:func.3">L~</a> <font color="Maroon" title="c1">f</font> implies  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <span class="p1">(<span class="default"><a href="jordan3.html#K2" title="JORDAN3:func.2">L_Cut</a> (<font color="Maroon" title="c1">f</font>,<font color="Maroon" title="c2">p</font>)</span>)</span> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1 )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:1"/>
+<font color="Maroon" title="c2">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="topreal1.html#K3" title="TOPREAL1:func.3">L~</a> <font color="Maroon" title="c1">f</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <span class="p1">(<span class="default"><a href="jordan3.html#K2" title="JORDAN3:func.2">L_Cut</a> (<font color="Maroon" title="c1">f</font>,<font color="Maroon" title="c2">p</font>)</span>)</span> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1</span><br/>
+
+<a NAME="E2:1"/><span class="kw">then </span>
+ <a href="jordan3.html#K2" title="JORDAN3:func.2">L_Cut</a> (<font color="Maroon" title="c1">f</font>,<font color="Maroon" title="c2">p</font>) <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="jordan1e.html#T3" onmouseover="rs('jordan1e/T3')" onmouseout="rh()">JORDAN1E:3</a></span>;<br/>
+<a NAME="E3:1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E2">A1</font></span>: 
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <span class="p1">(<span class="default"><a href="jordan3.html#K2" title="JORDAN3:func.2">L_Cut</a> (<font color="Maroon" title="c1">f</font>,<font color="Maroon" title="c2">p</font>)</span>)</span> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_1.html#T3" onmouseover="rs('nat_1/T3')" onmouseout="rh()">NAT_1:3</a></span>;<br/>
+<a NAME="E4:1"/>
+1 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E5:1"/>
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <span class="p1">(<span class="default"><a href="jordan3.html#K2" title="JORDAN3:func.2">L_Cut</a> (<font color="Maroon" title="c1">f</font>,<font color="Maroon" title="c2">p</font>)</span>)</span> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:1"><span class="lab"><font color="Green" title="E2">A1</font></span></a>, <a class="ref" href="nat_1.html#T13" onmouseover="rs('nat_1/T13')" onmouseout="rh()">NAT_1:13</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

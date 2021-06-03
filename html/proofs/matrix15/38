@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">K</font> be   <a href="vectsp_1.html#NM5" title="VECTSP_1:NM.5">Field</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being   <a href="matrix_1.html#NM1" title="MATRIX_1:NM.1">Matrix</a> of <font color="Maroon" title="c1">K</font>  st  not  <a href="matrix15.html#K4" title="MATRIX15:func.4">Solutions_of</a> (<font color="Olive" title="b1">A</font>,<font color="Olive" title="b2">B</font>) is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  holds <br/> <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">B</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">A</font>, <font color="Maroon" title="c3">B</font> be   <a href="matrix_1.html#NM1" title="MATRIX_1:NM.1">Matrix</a> of <font color="Maroon" title="c1">K</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not  <a href="matrix15.html#K4" title="MATRIX15:func.4">Solutions_of</a> (<font color="Maroon" title="c2">A</font>,<font color="Maroon" title="c3">B</font>) is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  implies  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c2">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c3">B</font> )</span><br/>
+
+
+
+
+
+<span class="kw">assume </span><a NAME="E1:38"/>
+ not  <a href="matrix15.html#K4" title="MATRIX15:func.4">Solutions_of</a> (<font color="Maroon" title="c2">A</font>,<font color="Maroon" title="c3">B</font>) is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c2">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c3">B</font></span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c4">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E3:38"/><span class="lab"><font color="Green" title="E32">A1</font></span>: 
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="matrix15.html#K4" title="MATRIX15:func.4">Solutions_of</a> (<font color="Maroon" title="c2">A</font>,<font color="Maroon" title="c3">B</font>)
+ ;<br/>
+<a NAME="E4:38"/>
+ ex <font color="Olive" title="b1">X</font> being   <a href="matrix_1.html#NM1" title="MATRIX_1:NM.1">Matrix</a> of <font color="Maroon" title="c1">K</font> st <br/>( <font color="Olive" title="b1">X</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">x</font> &amp;  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">X</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="matrix_0.html#K1" title="MATRIX_0:func.1">width</a> <font color="Maroon" title="c2">A</font> &amp;  <a href="matrix_0.html#K1" title="MATRIX_0:func.1">width</a> <font color="Olive" title="b1">X</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="matrix_0.html#K1" title="MATRIX_0:func.1">width</a> <font color="Maroon" title="c3">B</font> &amp; <font color="Maroon" title="c2">A</font> <a href="matrix_3.html#K4" title="MATRIX_3:func.4">*</a> <font color="Olive" title="b1">X</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">B</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:38"><span class="lab"><font color="Green" title="E32">A1</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:38"/>
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c2">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c3">B</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="matrix_3.html#D4" onmouseover="rs('matrix_3/D4')" onmouseout="rh()">MATRIX_3:def 4</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

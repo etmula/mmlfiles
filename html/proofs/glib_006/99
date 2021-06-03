@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">G2</font> be   <a href="glib_000.html#NM2" title="GLIB_000:NM.2">_Graph</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">V</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br/>  for <font color="Olive" title="b2">G1</font> being    <a href="glib_006.html#M2" title="GLIB_006:mode.2">addVertices</a> of <font color="Maroon" title="c1">G2</font>,<font color="Olive" title="b1">V</font> holds  <font color="Maroon" title="c1">G2</font> is   <a href="glib_000.html#NM5" title="GLIB_000:NM.5">inducedSubgraph</a> of <font color="Olive" title="b2">G1</font>,<span class="p1">(<span class="default"><a href="glib_000.html#K6" title="GLIB_000:func.6">the_Vertices_of</a> <font color="Maroon" title="c1">G2</font></span>)</span></span><br/><span class="kw">let </span><font color="Maroon" title="c2">V</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">G1</font> being    <a href="glib_006.html#M2" title="GLIB_006:mode.2">addVertices</a> of <font color="Maroon" title="c1">G2</font>,<font color="Maroon" title="c2">V</font> holds  <font color="Maroon" title="c1">G2</font> is   <a href="glib_000.html#NM5" title="GLIB_000:NM.5">inducedSubgraph</a> of <font color="Olive" title="b1">G1</font>,<span class="p1">(<span class="default"><a href="glib_000.html#K6" title="GLIB_000:func.6">the_Vertices_of</a> <font color="Maroon" title="c1">G2</font></span>)</span></span><br/><span class="kw">let </span><font color="Maroon" title="c3">G1</font> be    <a href="glib_006.html#M2" title="GLIB_006:mode.2">addVertices</a> of <font color="Maroon" title="c1">G2</font>,<font color="Maroon" title="c2">V</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">G2</font> is   <a href="glib_000.html#NM5" title="GLIB_000:NM.5">inducedSubgraph</a> of <font color="Maroon" title="c3">G1</font>,<span class="p1">(<span class="default"><a href="glib_000.html#K6" title="GLIB_000:func.6">the_Vertices_of</a> <font color="Maroon" title="c1">G2</font></span>)</span></span><br/>
+
+
+
+
+
+<span class="kw">set </span><font color="Maroon" title="c4">V2</font> =  <a href="glib_000.html#K6" title="GLIB_000:func.6">the_Vertices_of</a> <font color="Maroon" title="c1">G2</font>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c5">G3</font> = <font color="Maroon" title="c1">G2</font> as    <a href="glib_000.html#M1" title="GLIB_000:mode.1">Subgraph</a> of <font color="Maroon" title="c3">G1</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="glib_006.html#T57" target="_self" onmouseover="rs('glib_006/T57')" onmouseout="rh()">Th61</a></span>;<br/>
+<a NAME="E2:99"/><span class="lab"><font color="Green" title="E65">A2</font></span>: 
+ <a href="glib_000.html#K24" title="GLIB_000:func.24">the_Vertices_of</a> <font color="Maroon" title="c5">G3</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="glib_000.html#K6" title="GLIB_000:func.6">the_Vertices_of</a> <font color="Maroon" title="c1">G2</font>
+ 
+;<br/>
+<span class="lab"><font color="Green" title="E66">A3</font></span>:  <a href="glib_000.html#K25" title="GLIB_000:func.25">the_Edges_of</a> <font color="Maroon" title="c5">G3</font> = 
+ <a href="glib_000.html#K7" title="GLIB_000:func.7">the_Edges_of</a> <font color="Maroon" title="c3">G1</font>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="glib_006.html#D10" target="_self" onmouseover="rs('glib_006/D10')" onmouseout="rh()">Def10</a></span>
+<br/>.= 
+<font color="Maroon" title="c3">G1</font> <a href="glib_000.html#K21" title="GLIB_000:func.21">.edgesBetween</a> <span class="p1">(<span class="default"><a href="glib_000.html#K6" title="GLIB_000:func.6">the_Vertices_of</a> <font color="Maroon" title="c1">G2</font></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="glib_006.html#T81" target="_self" onmouseover="rs('glib_006/T81')" onmouseout="rh()">Th85</a></span>
+;<br/>
+<span class="kw">thus </span><a NAME="E4:99"/>
+<font color="Maroon" title="c1">G2</font> is   <a href="glib_000.html#NM5" title="GLIB_000:NM.5">inducedSubgraph</a> of <font color="Maroon" title="c3">G1</font>,<span class="p1">(<span class="default"><a href="glib_000.html#K6" title="GLIB_000:func.6">the_Vertices_of</a> <font color="Maroon" title="c1">G2</font></span>)</span>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:99"><span class="lab"><font color="Green" title="E65">A2</font></span></a>, <a class="txt" href="#E3:99"><span class="lab"><font color="Green" title="E66">A3</font></span></a>, <a class="ref" href="glib_000.html#D37" onmouseover="rs('glib_000/D37')" onmouseout="rh()">GLIB_000:def 37</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

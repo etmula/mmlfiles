@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">Al</font> be    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">A</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="qc_lang1.html#K3" title="QC_LANG1:func.3">bound_QC-variables</a> <font color="Maroon" title="c1">Al</font></span>)</span>  st <font color="Olive" title="b1">A</font> is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  holds <br/> ex <font color="Olive" title="b2">x</font> being   <a href="qc_lang1.html#NM5" title="QC_LANG1:NM.5">bound_QC-variable</a> of <font color="Maroon" title="c1">Al</font> st  not <font color="Olive" title="b2">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">A</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">A</font> be   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="qc_lang1.html#K3" title="QC_LANG1:func.3">bound_QC-variables</a> <font color="Maroon" title="c1">Al</font></span>)</span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">A</font> is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  implies  ex <font color="Olive" title="b1">x</font> being   <a href="qc_lang1.html#NM5" title="QC_LANG1:NM.5">bound_QC-variable</a> of <font color="Maroon" title="c1">Al</font> st  not <font color="Olive" title="b1">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">A</font> )</span><br/>
+
+
+
+<a NAME="E1:34"/><span class="lab"><font color="Green" title="E32">A1</font></span>: 
+ not  <a href="qc_lang1.html#K3" title="QC_LANG1:func.3">bound_QC-variables</a> <font color="Maroon" title="c1">Al</font> is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="calcul_1.html#T64" onmouseover="rs('calcul_1/T64')" onmouseout="rh()">CALCUL_1:64</a></span>;<br/>
+<span class="kw">assume </span><a NAME="E2:34"/>
+<font color="Maroon" title="c2">A</font> is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not  for <font color="Olive" title="b1">x</font> being   <a href="qc_lang1.html#NM5" title="QC_LANG1:NM.5">bound_QC-variable</a> of <font color="Maroon" title="c1">Al</font> holds  <font color="Olive" title="b1">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">A</font></span><br/>
+
+<a NAME="E3:34"/><span class="kw">then </span>
+ not  for <font color="Olive" title="b1">b</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br/> ( <font color="Olive" title="b1">b</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c2">A</font> iff <font color="Olive" title="b1">b</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="qc_lang1.html#K3" title="QC_LANG1:func.3">bound_QC-variables</a> <font color="Maroon" title="c1">Al</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:34"><span class="lab"><font color="Green" title="E32">A1</font></span></a>, <a class="ref" href="tarski.html#T2" onmouseover="rs('tarski/T2')" onmouseout="rh()">TARSKI:2</a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c3">b</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <span class="kw"> such that </span><br/><a NAME="E5:34"/><span class="lab"><font color="Green" title="E33">A2</font></span>: 
+ not <font color="Maroon" title="c3">b</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">A</font>
+ <span class="kw">and </span><br/><a NAME="E6:34"/><span class="lab"><font color="Green" title="E34">A3</font></span>: 
+<font color="Maroon" title="c3">b</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="qc_lang1.html#K3" title="QC_LANG1:func.3">bound_QC-variables</a> <font color="Maroon" title="c1">Al</font>
+ ;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c4">x</font> = <font color="Maroon" title="c3">b</font> as   <a href="qc_lang1.html#NM5" title="QC_LANG1:NM.5">bound_QC-variable</a> of <font color="Maroon" title="c1">Al</font> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:34"><span class="lab"><font color="Green" title="E34">A3</font></span></a></span>;<br/>
+<span class="kw">take </span>
+<font color="Maroon" title="c4">x</font>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not <font color="Maroon" title="c4">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">A</font></span><br/>
+
+<span class="kw">thus </span><a NAME="E8:34"/>
+ not <font color="Maroon" title="c4">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">A</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:34"><span class="lab"><font color="Green" title="E33">A2</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

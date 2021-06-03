@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">H</font> be   <a href="modelc_1.html#NM1" title="MODELC_1:NM.1">CTL-formula</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">H</font> is  <a href="modelc_1.html#V7" title="MODELC_1:attr.7">ExistUntill</a>  implies <font color="Maroon" title="c1">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="modelc_1.html#K15" title="MODELC_1:func.15">the_left_argument_of</a> <font color="Maroon" title="c1">H</font></span>)</span> <a href="modelc_1.html#K11" title="MODELC_1:func.11">EU</a> <span class="p1">(<span class="default"><a href="modelc_1.html#K16" title="MODELC_1:func.16">the_right_argument_of</a> <font color="Maroon" title="c1">H</font></span>)</span> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:38"/><span class="lab"><font color="Green" title="E34">A1</font></span>: 
+<font color="Maroon" title="c1">H</font> is  <a href="modelc_1.html#V7" title="MODELC_1:attr.7">ExistUntill</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="modelc_1.html#K15" title="MODELC_1:func.15">the_left_argument_of</a> <font color="Maroon" title="c1">H</font></span>)</span> <a href="modelc_1.html#K11" title="MODELC_1:func.11">EU</a> <span class="p1">(<span class="default"><a href="modelc_1.html#K16" title="MODELC_1:func.16">the_right_argument_of</a> <font color="Maroon" title="c1">H</font></span>)</span></span><br/>
+
+<a NAME="E2:38"/><span class="kw">then </span>
+<font color="Maroon" title="c1">H</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> 1 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 4
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="modelc_1.html#E29"><span class="lab"><font color="Green" title="E16">Lm7</font></span></a></span>;<br/>
+<a NAME="E3:38"/><span class="kw">then </span><span class="lab"><font color="Green" title="E35">A2</font></span>: 
+ not <font color="Maroon" title="c1">H</font> is  <a href="modelc_1.html#V4" title="MODELC_1:attr.4">conjunctive</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="modelc_1.html#E26"><span class="lab"><font color="Green" title="E13">Lm4</font></span></a></span>;<br/>
+<a NAME="E4:38"/><span class="kw">then </span>
+ ex <font color="Olive" title="b1">H1</font> being   <a href="modelc_1.html#NM1" title="MODELC_1:NM.1">CTL-formula</a> st <font color="Maroon" title="c1">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">H1</font> <a href="modelc_1.html#K11" title="MODELC_1:func.11">EU</a> <span class="p1">(<span class="default"><a href="modelc_1.html#K16" title="MODELC_1:func.16">the_right_argument_of</a> <font color="Maroon" title="c1">H</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:38"><span class="lab"><font color="Green" title="E34">A1</font></span></a>, <a class="ref" href="modelc_1.html#D23" target="_self" onmouseover="rs('modelc_1/D23')" onmouseout="rh()">Def23</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:38"/>
+<font color="Maroon" title="c1">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="modelc_1.html#K15" title="MODELC_1:func.15">the_left_argument_of</a> <font color="Maroon" title="c1">H</font></span>)</span> <a href="modelc_1.html#K11" title="MODELC_1:func.11">EU</a> <span class="p1">(<span class="default"><a href="modelc_1.html#K16" title="MODELC_1:func.16">the_right_argument_of</a> <font color="Maroon" title="c1">H</font></span>)</span>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:38"><span class="lab"><font color="Green" title="E34">A1</font></span></a>, <a class="txt" href="#E3:38"><span class="lab"><font color="Green" title="E35">A2</font></span></a>, <a class="ref" href="modelc_1.html#D22" target="_self" onmouseover="rs('modelc_1/D22')" onmouseout="rh()">Def22</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">M</font> be   <a href="metric_1.html#NM2" title="METRIC_1:NM.2">PseudoMetricSpace</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font>, <font color="Olive" title="b3">z</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">M</font>  st <font color="Olive" title="b1">x</font> <a href="metric_2.html#R3" title="METRIC_2:pred.3">tolerates</a> <font color="Olive" title="b2">y</font> &amp; <font color="Olive" title="b2">y</font> <a href="metric_2.html#R3" title="METRIC_2:pred.3">tolerates</a> <font color="Olive" title="b3">z</font> holds <br/><font color="Olive" title="b1">x</font> <a href="metric_2.html#R3" title="METRIC_2:pred.3">tolerates</a> <font color="Olive" title="b3">z</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">x</font>, <font color="Maroon" title="c3">y</font>, <font color="Maroon" title="c4">z</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">M</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">x</font> <a href="metric_2.html#R3" title="METRIC_2:pred.3">tolerates</a> <font color="Maroon" title="c3">y</font> &amp; <font color="Maroon" title="c3">y</font> <a href="metric_2.html#R3" title="METRIC_2:pred.3">tolerates</a> <font color="Maroon" title="c4">z</font> implies <font color="Maroon" title="c2">x</font> <a href="metric_2.html#R3" title="METRIC_2:pred.3">tolerates</a> <font color="Maroon" title="c4">z</font> )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:6"/>
+( <font color="Maroon" title="c2">x</font> <a href="metric_2.html#R3" title="METRIC_2:pred.3">tolerates</a> <font color="Maroon" title="c3">y</font> &amp; <font color="Maroon" title="c3">y</font> <a href="metric_2.html#R3" title="METRIC_2:pred.3">tolerates</a> <font color="Maroon" title="c4">z</font> )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">x</font> <a href="metric_2.html#R3" title="METRIC_2:pred.3">tolerates</a> <font color="Maroon" title="c4">z</font></span><br/>
+
+<a NAME="E2:6"/><span class="kw">then </span>
+(  <a href="metric_1.html#K3" title="METRIC_1:func.3">dist</a> (<font color="Maroon" title="c2">x</font>,<font color="Maroon" title="c3">y</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp;  <a href="metric_1.html#K3" title="METRIC_1:func.3">dist</a> (<font color="Maroon" title="c3">y</font>,<font color="Maroon" title="c4">z</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  )
+ 
+;<br/>
+<a NAME="E3:6"/><span class="kw">then </span>
+ <a href="metric_1.html#K3" title="METRIC_1:func.3">dist</a> (<font color="Maroon" title="c2">x</font>,<font color="Maroon" title="c4">z</font>) <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="metric_1.html#T4" onmouseover="rs('metric_1/T4')" onmouseout="rh()">METRIC_1:4</a></span>;<br/>
+<a NAME="E4:6"/><span class="kw">then </span>
+ <a href="metric_1.html#K3" title="METRIC_1:func.3">dist</a> (<font color="Maroon" title="c2">x</font>,<font color="Maroon" title="c4">z</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="metric_1.html#T5" onmouseover="rs('metric_1/T5')" onmouseout="rh()">METRIC_1:5</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:6"/>
+<font color="Maroon" title="c2">x</font> <a href="metric_2.html#R3" title="METRIC_2:pred.3">tolerates</a> <font color="Maroon" title="c4">z</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

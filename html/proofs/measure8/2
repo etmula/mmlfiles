@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">seq</font> be   <a href="mesfunc5.html#NM1" title="MESFUNC5:NM.1">ExtREAL_sequence</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">seq</font> is  <a href="supinf_2.html#V6" title="SUPINF_2:attr.6">nonnegative</a>  implies ( <font color="Maroon" title="c1">seq</font> is  <a href="mesfunc9.html#V1" title="MESFUNC9:attr.1">summable</a>  &amp;  <a href="supinf_2.html#K17" title="SUPINF_2:func.17">SUM</a> <font color="Maroon" title="c1">seq</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="mesfunc9.html#K2" title="MESFUNC9:func.2">Sum</a> <font color="Maroon" title="c1">seq</font> ) )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:2"/>
+<font color="Maroon" title="c1">seq</font> is  <a href="supinf_2.html#V6" title="SUPINF_2:attr.6">nonnegative</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">seq</font> is  <a href="mesfunc9.html#V1" title="MESFUNC9:attr.1">summable</a>  &amp;  <a href="supinf_2.html#K17" title="SUPINF_2:func.17">SUM</a> <font color="Maroon" title="c1">seq</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="mesfunc9.html#K2" title="MESFUNC9:func.2">Sum</a> <font color="Maroon" title="c1">seq</font> )</span><br/>
+
+<a NAME="E2:2"/><span class="kw">then </span><span class="lab"><font color="Green" title="E3">A1</font></span>: 
+ <a href="mesfunc9.html#K1" title="MESFUNC9:func.1">Partial_Sums</a> <font color="Maroon" title="c1">seq</font> is  <a href="valued_0.html#V7" title="VALUED_0:attr.7">non-decreasing</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="mesfunc9.html#T16" onmouseover="rs('mesfunc9/T16')" onmouseout="rh()">MESFUNC9:16</a></span>;<br/>
+<a NAME="E3:2"/><span class="kw">then </span>
+ <a href="mesfunc9.html#K1" title="MESFUNC9:func.1">Partial_Sums</a> <font color="Maroon" title="c1">seq</font> is  <a href="mesfunc5.html#V10" title="MESFUNC5:attr.10">convergent</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="rinfsup2.html#T37" onmouseover="rs('rinfsup2/T37')" onmouseout="rh()">RINFSUP2:37</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E4:2"/>
+<font color="Maroon" title="c1">seq</font> is  <a href="mesfunc9.html#V1" title="MESFUNC9:attr.1">summable</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="supinf_2.html#K17" title="SUPINF_2:func.17">SUM</a> <font color="Maroon" title="c1">seq</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="mesfunc9.html#K2" title="MESFUNC9:func.2">Sum</a> <font color="Maroon" title="c1">seq</font></span><br/>
+
+<a NAME="E5:2"/>
+ <a href="mesfunc5.html#K2" title="MESFUNC5:func.2">lim</a> <span class="p1">(<span class="default"><a href="mesfunc9.html#K1" title="MESFUNC9:func.1">Partial_Sums</a> <font color="Maroon" title="c1">seq</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="rinfsup2.html#K1" title="RINFSUP2:func.1">sup</a> <span class="p1">(<span class="default"><a href="mesfunc9.html#K1" title="MESFUNC9:func.1">Partial_Sums</a> <font color="Maroon" title="c1">seq</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:2"><span class="lab"><font color="Green" title="E3">A1</font></span></a>, <a class="ref" href="rinfsup2.html#T37" onmouseover="rs('rinfsup2/T37')" onmouseout="rh()">RINFSUP2:37</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E6:2"/>
+ <a href="mesfunc9.html#K2" title="MESFUNC9:func.2">Sum</a> <font color="Maroon" title="c1">seq</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="supinf_2.html#K17" title="SUPINF_2:func.17">SUM</a> <font color="Maroon" title="c1">seq</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="measure8.html#T1" target="_self" onmouseover="rs('measure8/T1')" onmouseout="rh()">Th1</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

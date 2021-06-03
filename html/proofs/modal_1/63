@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">defpred </span><font color="Maroon">S<sub>1</sub></font>[   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="modal_1.html#K6" title="MODAL_1:func.6">MP-WFF</a> ] <span class="kw">means </span>( $1 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modal_1.html#K17" title="MODAL_1:func.17">VERUM</a>  or $1 is   <a href="modal_1.html#V1" title="MODAL_1:attr.1">atomic</a>  <a href="modal_1.html#NM3" title="MODAL_1:NM.3">MP-wff</a> or $1 is   <a href="modal_1.html#V2" title="MODAL_1:attr.2">negative</a>  <a href="modal_1.html#NM3" title="MODAL_1:NM.3">MP-wff</a> or $1 is   <a href="modal_1.html#V3" title="MODAL_1:attr.3">necessitive</a>  <a href="modal_1.html#NM3" title="MODAL_1:NM.3">MP-wff</a> or $1 is   <a href="modal_1.html#V4" title="MODAL_1:attr.4">conjunctive</a>  <a href="modal_1.html#NM3" title="MODAL_1:NM.3">MP-wff</a> );<br/>
+<a NAME="E1:63"/><span class="lab"><font color="Green" title="E43">A1</font></span>: 
+<font color="Maroon">S<sub>1</sub></font>[ <a href="modal_1.html#K17" title="MODAL_1:func.17">VERUM</a> ]
+ 
+;<br/>
+<a NAME="E2:63"/><span class="lab"><font color="Green" title="E44">A2</font></span>: 
+ for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="modal_1.html#K6" title="MODAL_1:func.6">MP-WFF</a>   st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">A</font>] holds <br/><font color="Maroon">S<sub>1</sub></font>[ <a href="modal_1.html#K10" title="MODAL_1:func.10">'not'</a> <font color="Olive" title="b1">A</font>]
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="modal_1.html#D17" target="_self" onmouseover="rs('modal_1/D17')" onmouseout="rh()">Def17</a></span>;<br/>
+<a NAME="E3:63"/><span class="lab"><font color="Green" title="E45">A3</font></span>: 
+ for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="modal_1.html#K6" title="MODAL_1:func.6">MP-WFF</a>   st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">A</font>] &amp; <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b2">B</font>] holds <br/><font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">A</font> <a href="modal_1.html#K12" title="MODAL_1:func.12">'&amp;'</a> <font color="Olive" title="b2">B</font>]
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="modal_1.html#D19" target="_self" onmouseover="rs('modal_1/D19')" onmouseout="rh()">Def19</a></span>;<br/>
+<a NAME="E4:63"/><span class="lab"><font color="Green" title="E46">A4</font></span>: 
+ for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="modal_1.html#K6" title="MODAL_1:func.6">MP-WFF</a>   st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">A</font>] holds <br/><font color="Maroon">S<sub>1</sub></font>[ <a href="modal_1.html#K11" title="MODAL_1:func.11">(#)</a> <font color="Olive" title="b1">A</font>]
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="modal_1.html#D18" target="_self" onmouseover="rs('modal_1/D18')" onmouseout="rh()">Def18</a></span>;<br/>
+<a NAME="E5:63"/><span class="lab"><font color="Green" title="E47">A5</font></span>: 
+ for <font color="Olive" title="b1">p</font> being   <a href="modal_1.html#NM1" title="MODAL_1:NM.1">MP-variable</a> holds  <font color="Maroon">S<sub>1</sub></font>[ <a href="modal_1.html#K16" title="MODAL_1:func.16">@</a> <font color="Olive" title="b1">p</font>]
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="modal_1.html#D16" target="_self" onmouseover="rs('modal_1/D16')" onmouseout="rh()">Def16</a></span>;<br/>
+<span class="kw">thus </span><a NAME="E6:63"/>
+ for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="modal_1.html#K6" title="MODAL_1:func.6">MP-WFF</a>  holds  <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">A</font>]
+ <span class="kw">from</span> <span class="lab"><a class="ref" href="modal_1.html#S1" target="_self" onmouseover="rs('modal_1/S1')" onmouseout="rh()">MODAL_1:sch 1</a>(<a class="txt" href="#E1:63"><span class="lab"><font color="Green" title="E43">A1</font></span></a>, <a class="txt" href="#E5:63"><span class="lab"><font color="Green" title="E47">A5</font></span></a>, <a class="txt" href="#E2:63"><span class="lab"><font color="Green" title="E44">A2</font></span></a>, <a class="txt" href="#E4:63"><span class="lab"><font color="Green" title="E46">A4</font></span></a>, <a class="txt" href="#E3:63"><span class="lab"><font color="Green" title="E45">A3</font></span></a>);</span> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

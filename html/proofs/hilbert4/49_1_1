@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">p</font> be    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="hilbert1.html#K1" title="HILBERT1:func.1">HP-WFF</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">p</font> is  <a href="hilbert3.html#V2" title="HILBERT3:attr.2">pseudo-canonical</a>  implies <font color="Maroon" title="c3">p</font> is  <a href="hilbert4.html#V1" title="HILBERT4:attr.1">classical</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:49_1_1"/><span class="lab"><font color="Green" title="E23">AA</font></span>: 
+<font color="Maroon" title="c3">p</font> is  <a href="hilbert3.html#V2" title="HILBERT3:attr.2">pseudo-canonical</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">p</font> is  <a href="hilbert4.html#V1" title="HILBERT4:attr.1">classical</a> </span><br/>
+
+<span class="kw">defpred </span><font color="Maroon">S<sub>2</sub></font>[  <a href="funct_1.html#NM1" title="FUNCT_1:NM.1">Function</a>] <span class="kw">means </span> ex <font color="Olive" title="b1">x</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  st <font color="Olive" title="b1">x</font> <a href="abian.html#R1" title="ABIAN:pred.1">is_a_fixpoint_of</a> <font color="Maroon">c<sub>1</sub></font>;<br/>
+<span class="kw">assume </span><a NAME="E2:49_1_1"/>
+ not <font color="Maroon" title="c3">p</font> is  <a href="hilbert4.html#V1" title="HILBERT4:attr.1">classical</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c4">v</font> being   <a href="hilbert4.html#NM1" title="HILBERT4:NM.1">SetValuation0</a><span class="kw"> such that </span><br/><a NAME="E4:49_1_1"/><span class="lab"><font color="Green" title="E24">B0</font></span>: 
+ <a href="hilbert4.html#K10" title="HILBERT4:func.10">SetVal0</a> (<font color="Maroon" title="c4">v</font>,<font color="Maroon" title="c3">p</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ ;<br/>
+<span class="kw">set </span><font color="Maroon" title="c5">P</font> = <font color="Maroon" title="c4">v</font> <a href="hilbert4.html#K8" title="HILBERT4:func.8">tohilbperm</a> ;<br/>
+<span class="kw">set </span><font color="Maroon" title="c6">V</font> = <font color="Maroon" title="c4">v</font> <a href="hilbert4.html#K7" title="HILBERT4:func.7">tohilbval</a> ;<br/>
+<a NAME="E5:49_1_1"/>
+ <a href="fomodel0.html#K32" title="FOMODEL0:func.32">fixpoints</a> <span class="p1">(<span class="default"><a href="hilbert3.html#K5" title="HILBERT3:func.5">Perm</a> (<span class="p2">(<span class="default"><font color="Maroon" title="c4">v</font> <a href="hilbert4.html#K8" title="HILBERT4:func.8">tohilbperm</a></span>)</span>,<font color="Maroon" title="c3">p</font>)</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="hilbert4.html#E29"><span class="lab"><font color="Green" title="E21">Lm100</font></span></a>, <a class="txt" href="#E4:49_1_1"><span class="lab"><font color="Green" title="E24">B0</font></span></a></span>;<br/>
+<a NAME="E6:49_1_1"/><span class="kw">then </span>
+ not <font color="Maroon">S<sub>2</sub></font>[ <a href="hilbert3.html#K5" title="HILBERT3:func.5">Perm</a> (<span class="p1">(<span class="default"><font color="Maroon" title="c4">v</font> <a href="hilbert4.html#K8" title="HILBERT4:func.8">tohilbperm</a></span>)</span>,<font color="Maroon" title="c3">p</font>)]
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="fomodel0.html#T69" onmouseover="rs('fomodel0/T69')" onmouseout="rh()">FOMODEL0:69</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:49_1_1"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:49_1_1"><span class="lab"><font color="Green" title="E23">AA</font></span></a>, <a class="ref" href="hilbert3.html#D8" onmouseover="rs('hilbert3/D8')" onmouseout="rh()">HILBERT3:def 8</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

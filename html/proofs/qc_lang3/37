@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">A</font> be    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">x</font> being   <a href="qc_lang1.html#NM5" title="QC_LANG1:NM.5">bound_QC-variable</a> of <font color="Maroon" title="c1">A</font>  ex <font color="Olive" title="b2">t</font> being   <a href="qc_lang1.html#NM2" title="QC_LANG1:NM.2">QC-symbol</a> of <font color="Maroon" title="c1">A</font> st  <a href="qc_lang3.html#K2" title="QC_LANG3:func.2">x.</a> <font color="Olive" title="b2">t</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">x</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">x</font> be   <a href="qc_lang1.html#NM5" title="QC_LANG1:NM.5">bound_QC-variable</a> of <font color="Maroon" title="c1">A</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  ex <font color="Olive" title="b1">t</font> being   <a href="qc_lang1.html#NM2" title="QC_LANG1:NM.2">QC-symbol</a> of <font color="Maroon" title="c1">A</font> st  <a href="qc_lang3.html#K2" title="QC_LANG3:func.2">x.</a> <font color="Olive" title="b1">t</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">x</font></span><br/>
+
+
+
+<span class="kw">consider </span><font color="Maroon" title="c3">i</font>, <font color="Maroon" title="c4">t</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E2:37"/><span class="lab"><font color="Green" title="E21">A1</font></span>: 
+<font color="Maroon" title="c3">i</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default">4</span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span>
+ <span class="kw">and </span><br/><a NAME="E3:37"/><span class="lab"><font color="Green" title="E22">A2</font></span>: 
+<font color="Maroon" title="c4">t</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="qc_lang1.html#K1" title="QC_LANG1:func.1">QC-symbols</a> <font color="Maroon" title="c1">A</font>
+ <span class="kw">and </span><br/><a NAME="E4:37"/><span class="lab"><font color="Green" title="E23">A3</font></span>: 
+<span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Maroon" title="c3">i</font>,<font color="Maroon" title="c4">t</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">x</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="zfmisc_1.html#D2" onmouseover="rs('zfmisc_1/D2')" onmouseout="rh()">ZFMISC_1:def 2</a></span>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c5">t</font> = <font color="Maroon" title="c4">t</font> as   <a href="qc_lang1.html#NM2" title="QC_LANG1:NM.2">QC-symbol</a> of <font color="Maroon" title="c1">A</font> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:37"><span class="lab"><font color="Green" title="E22">A2</font></span></a></span>;<br/>
+<span class="kw">take </span>
+<font color="Maroon" title="c5">t</font>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="qc_lang3.html#K2" title="QC_LANG3:func.2">x.</a> <font color="Maroon" title="c5">t</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">x</font></span><br/>
+
+<span class="kw">thus </span><a NAME="E6:37"/>
+ <a href="qc_lang3.html#K2" title="QC_LANG3:func.2">x.</a> <font color="Maroon" title="c5">t</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">x</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:37"><span class="lab"><font color="Green" title="E21">A1</font></span></a>, <a class="txt" href="#E4:37"><span class="lab"><font color="Green" title="E23">A3</font></span></a>, <a class="ref" href="tarski.html#D1" onmouseover="rs('tarski/D1')" onmouseout="rh()">TARSKI:def 1</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

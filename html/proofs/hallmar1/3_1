@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">consider </span><font color="Maroon" title="c1">n</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <span class="kw"> such that </span><br/><a NAME="E2:3_1"/><span class="lab"><font color="Green" title="E4">A3</font></span>: 
+<font color="Maroon" title="c1">n</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1
+ <span class="kw">and </span><br/><a NAME="E3:3_1"/><span class="lab"><font color="Green" title="E5">A4</font></span>: 
+<font color="Maroon">P<sub>1</sub></font>[<font color="Maroon" title="c1">n</font>]
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:3"><span class="lab"><font color="Green" title="E2">A1</font></span></a></span>;<br/>
+<a NAME="E4:3_1"/>
+<font color="Maroon" title="c1">n</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1 <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:3_1"><span class="lab"><font color="Green" title="E4">A3</font></span></a>, <a class="ref" href="nat_1.html#T13" onmouseover="rs('nat_1/T13')" onmouseout="rh()">NAT_1:13</a></span>;<br/>
+<a NAME="E5:3_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E6">A5</font></span>: 
+( <font color="Maroon">P<sub>1</sub></font>[<font color="Maroon" title="c1">n</font>] &amp; <font color="Maroon" title="c1">n</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 2 )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:3_1"><span class="lab"><font color="Green" title="E5">A4</font></span></a></span>;<br/>
+<a NAME="E6:3_1"/><span class="lab"><font color="Green" title="E7">A6</font></span>: 
+ for <font color="Olive" title="b1">k</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>   st 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b1">k</font> &amp; <font color="Olive" title="b1">k</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c1">n</font> &amp; <font color="Maroon">P<sub>1</sub></font>[<font color="Olive" title="b1">k</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1] holds <br/><font color="Maroon">P<sub>1</sub></font>[<font color="Olive" title="b1">k</font>]
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:3"><span class="lab"><font color="Green" title="E3">A2</font></span></a></span>;<br/>
+<a NAME="E7:3_1"/>
+ for <font color="Olive" title="b1">k</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>   st 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b1">k</font> &amp; <font color="Olive" title="b1">k</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">n</font> holds <br/><font color="Maroon">P<sub>1</sub></font>[<font color="Olive" title="b1">k</font>]
+ 
+<span class="kw">from</span> <span class="lab"><a class="ref" href="hallmar1.html#S1" target="_self" onmouseover="rs('hallmar1/S1')" onmouseout="rh()">HALLMAR1:sch 1</a>(<a class="txt" href="#E5:3_1"><span class="lab"><font color="Green" title="E6">A5</font></span></a>, <a class="txt" href="#E6:3_1"><span class="lab"><font color="Green" title="E7">A6</font></span></a>);<br/></span>
+<span class="kw">hence </span><a NAME="E8:3_1"/>
+<font color="Maroon">P<sub>1</sub></font>[1]
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:3_1"><span class="lab"><font color="Green" title="E4">A3</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

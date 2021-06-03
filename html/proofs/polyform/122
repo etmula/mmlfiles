@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">p</font> be   <a href="polyform.html#NM2" title="POLYFORM:NM.2">polyhedron</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">p</font> is  <a href="polyform.html#V5" title="POLYFORM:attr.5">simply-connected</a>  &amp;  <a href="polyform.html#K4" title="POLYFORM:func.4">dim</a> <font color="Maroon" title="c1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 2 implies  <a href="polyform.html#K9" title="POLYFORM:func.9">num-vertices</a> <font color="Maroon" title="c1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="polyform.html#K10" title="POLYFORM:func.10">num-edges</a> <font color="Maroon" title="c1">p</font> )</span><br/>
+
+<span class="kw">set </span><font color="Maroon" title="c2">s</font> = <span class="p1">(<span class="default"><a href="polyform.html#K8" title="POLYFORM:func.8">num-polytopes</a> (<font color="Maroon" title="c1">p</font>,<a href="numbers.html#K5" title="NUMBERS:func.5">0</a>)</span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p1">(<span class="default"><a href="polyform.html#K8" title="POLYFORM:func.8">num-polytopes</a> (<font color="Maroon" title="c1">p</font>,1)</span>)</span>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c3">c</font> =  <a href="polyform.html#K25" title="POLYFORM:func.25">alternating-f-vector</a> <font color="Maroon" title="c1">p</font>;<br/>
+<span class="kw">assume </span><a NAME="E1:122"/>
+<font color="Maroon" title="c1">p</font> is  <a href="polyform.html#V5" title="POLYFORM:attr.5">simply-connected</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not  <a href="polyform.html#K4" title="POLYFORM:func.4">dim</a> <font color="Maroon" title="c1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 2 or  <a href="polyform.html#K9" title="POLYFORM:func.9">num-vertices</a> <font color="Maroon" title="c1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="polyform.html#K10" title="POLYFORM:func.10">num-edges</a> <font color="Maroon" title="c1">p</font> )</span><br/>
+
+<a NAME="E2:122"/><span class="kw">then </span><span class="lab"><font color="Green" title="E96">A1</font></span>: 
+<font color="Maroon" title="c1">p</font> is  <a href="polyform.html#V6" title="POLYFORM:attr.6">eulerian</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="polyform.html#T88" target="_self" onmouseover="rs('polyform/T88')" onmouseout="rh()">Th86</a></span>;<br/>
+<span class="kw">assume </span><a NAME="E3:122"/><span class="lab"><font color="Green" title="E97">A2</font></span>: 
+ <a href="polyform.html#K4" title="POLYFORM:func.4">dim</a> <font color="Maroon" title="c1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 2
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="polyform.html#K9" title="POLYFORM:func.9">num-vertices</a> <font color="Maroon" title="c1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="polyform.html#K10" title="POLYFORM:func.10">num-edges</a> <font color="Maroon" title="c1">p</font></span><br/>
+
+<a NAME="E4:122"/><span class="kw">then </span><span class="lab"><font color="Green" title="E98">A3</font></span>: 
+<span class="p1">(<span class="default"><a href="polyform.html#K8" title="POLYFORM:func.8">num-polytopes</a> (<font color="Maroon" title="c1">p</font>,<a href="numbers.html#K5" title="NUMBERS:func.5">0</a>)</span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p1">(<span class="default"><a href="polyform.html#K8" title="POLYFORM:func.8">num-polytopes</a> (<font color="Maroon" title="c1">p</font>,1)</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="rvsum_1.html#K16" title="RVSUM_1:func.16">Sum</a> <span class="p1">(<span class="default"><a href="polyform.html#K26" title="POLYFORM:func.26">alternating-proper-f-vector</a> <font color="Maroon" title="c1">p</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="polyform.html#T85" target="_self" onmouseover="rs('polyform/T85')" onmouseout="rh()">Th83</a></span>;<br/>
+ <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  = 
+ <a href="rvsum_1.html#K16" title="RVSUM_1:func.16">Sum</a> <span class="p1">(<span class="default"><a href="polyform.html#K25" title="POLYFORM:func.25">alternating-f-vector</a> <font color="Maroon" title="c1">p</font></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:122"><span class="lab"><font color="Green" title="E96">A1</font></span></a></span>
+<br/>.= 
+<span class="p1">(<span class="default"><a href="polyform.html#K8" title="POLYFORM:func.8">num-polytopes</a> (<font color="Maroon" title="c1">p</font>,<a href="numbers.html#K5" title="NUMBERS:func.5">0</a>)</span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p1">(<span class="default"><a href="polyform.html#K8" title="POLYFORM:func.8">num-polytopes</a> (<font color="Maroon" title="c1">p</font>,1)</span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:122"><span class="lab"><font color="Green" title="E97">A2</font></span></a>, <a class="txt" href="#E4:122"><span class="lab"><font color="Green" title="E98">A3</font></span></a>, <a class="ref" href="polyform.html#T5" target="_self" onmouseover="rs('polyform/T5')" onmouseout="rh()">Th4</a>, <a class="ref" href="polyform.html#T83" target="_self" onmouseover="rs('polyform/T83')" onmouseout="rh()">Th81</a></span>
+;<br/>
+<span class="kw">hence </span><a NAME="E6:122"/>
+ <a href="polyform.html#K9" title="POLYFORM:func.9">num-vertices</a> <font color="Maroon" title="c1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="polyform.html#K10" title="POLYFORM:func.10">num-edges</a> <font color="Maroon" title="c1">p</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">G1</font> be    <a href="glib_007.html#M1" title="GLIB_007:mode.1">reverseEdgeDirections</a> of <font color="Maroon" title="c1">G</font>,<font color="Maroon" title="c2">E</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">G1</font> is  <a href="glib_000.html#V5" title="GLIB_000:attr.5">non-multi</a> </span><br/>
+
+<a NAME="E1:36_1_1"/>
+ for <font color="Olive" title="b1">e1</font>, <font color="Olive" title="b2">e2</font>, <font color="Olive" title="b3">v1</font>, <font color="Olive" title="b4">v2</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>   st <font color="Olive" title="b1">e1</font> <a href="glib_000.html#R1" title="GLIB_000:pred.1">Joins</a> <font color="Olive" title="b3">v1</font>,<font color="Olive" title="b4">v2</font>,<font color="Maroon" title="c3">G1</font> &amp; <font color="Olive" title="b2">e2</font> <a href="glib_000.html#R1" title="GLIB_000:pred.1">Joins</a> <font color="Olive" title="b3">v1</font>,<font color="Olive" title="b4">v2</font>,<font color="Maroon" title="c3">G1</font> holds <br/><font color="Olive" title="b1">e1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">e2</font>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="36_1_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">e1</font>, <font color="Maroon" title="c5">e2</font>, <font color="Maroon" title="c6">v1</font>, <font color="Maroon" title="c7">v2</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c4">e1</font> <a href="glib_000.html#R1" title="GLIB_000:pred.1">Joins</a> <font color="Maroon" title="c6">v1</font>,<font color="Maroon" title="c7">v2</font>,<font color="Maroon" title="c3">G1</font> &amp; <font color="Maroon" title="c5">e2</font> <a href="glib_000.html#R1" title="GLIB_000:pred.1">Joins</a> <font color="Maroon" title="c6">v1</font>,<font color="Maroon" title="c7">v2</font>,<font color="Maroon" title="c3">G1</font> implies <font color="Maroon" title="c4">e1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c5">e2</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:36_1_1_1"/>
+( <font color="Maroon" title="c4">e1</font> <a href="glib_000.html#R1" title="GLIB_000:pred.1">Joins</a> <font color="Maroon" title="c6">v1</font>,<font color="Maroon" title="c7">v2</font>,<font color="Maroon" title="c3">G1</font> &amp; <font color="Maroon" title="c5">e2</font> <a href="glib_000.html#R1" title="GLIB_000:pred.1">Joins</a> <font color="Maroon" title="c6">v1</font>,<font color="Maroon" title="c7">v2</font>,<font color="Maroon" title="c3">G1</font> )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c4">e1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c5">e2</font></span><br/>
+
+<a NAME="E2:36_1_1_1"/><span class="kw">then </span>
+( <font color="Maroon" title="c4">e1</font> <a href="glib_000.html#R1" title="GLIB_000:pred.1">Joins</a> <font color="Maroon" title="c6">v1</font>,<font color="Maroon" title="c7">v2</font>,<font color="Maroon" title="c1">G</font> &amp; <font color="Maroon" title="c5">e2</font> <a href="glib_000.html#R1" title="GLIB_000:pred.1">Joins</a> <font color="Maroon" title="c6">v1</font>,<font color="Maroon" title="c7">v2</font>,<font color="Maroon" title="c1">G</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="glib_007.html#T9" target="_self" onmouseover="rs('glib_007/T9')" onmouseout="rh()">Th9</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E3:36_1_1_1"/>
+<font color="Maroon" title="c4">e1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c5">e2</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="glib_000.html#D20" onmouseover="rs('glib_000/D20')" onmouseout="rh()">GLIB_000:def 20</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E2:36_1_1"/>
+<font color="Maroon" title="c3">G1</font> is  <a href="glib_000.html#V5" title="GLIB_000:attr.5">non-multi</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="glib_000.html#D20" onmouseover="rs('glib_000/D20')" onmouseout="rh()">GLIB_000:def 20</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

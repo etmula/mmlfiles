@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be   <a href="glib_000.html#NM2" title="GLIB_000:NM.2">_Graph</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c1">G</font> is  <a href="glib_000.html#V4" title="GLIB_000:attr.4">trivial</a>  &amp; <font color="Maroon" title="c1">G</font> is  <a href="glib_008.html#V1" title="GLIB_008:attr.1">edgeless</a>  implies (  not <font color="Maroon" title="c1">G</font> is  <a href="glib_002.html#V1" title="GLIB_002:attr.1">connected</a>  &amp;  not <font color="Maroon" title="c1">G</font> is  <a href="glib_002.html#V3" title="GLIB_002:attr.3">Tree-like</a>  &amp;  not <font color="Maroon" title="c1">G</font> is  <a href="chord.html#V2" title="CHORD:attr.2">complete</a>  ) )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:71_3_1"/><span class="lab"><font color="Green" title="E56">A2</font></span>: 
+(  not <font color="Maroon" title="c1">G</font> is  <a href="glib_000.html#V4" title="GLIB_000:attr.4">trivial</a>  &amp; <font color="Maroon" title="c1">G</font> is  <a href="glib_008.html#V1" title="GLIB_008:attr.1">edgeless</a>  )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c1">G</font> is  <a href="glib_002.html#V1" title="GLIB_002:attr.1">connected</a>  &amp;  not <font color="Maroon" title="c1">G</font> is  <a href="glib_002.html#V3" title="GLIB_002:attr.3">Tree-like</a>  &amp;  not <font color="Maroon" title="c1">G</font> is  <a href="chord.html#V2" title="CHORD:attr.2">complete</a>  )</span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c2">v1</font>, <font color="Maroon" title="c3">v2</font> being   <a href="glib_000.html#NM10" title="GLIB_000:NM.10">Vertex</a> of <font color="Maroon" title="c1">G</font><span class="kw"> such that </span><br/><a NAME="E3:71_3_1"/><span class="lab"><font color="Green" title="E57">A3</font></span>: 
+<font color="Maroon" title="c2">v1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c3">v2</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="glib_000.html#T21" onmouseover="rs('glib_000/T21')" onmouseout="rh()">GLIB_000:21</a></span>;<br/>
+<a NAME="E4:71_3_1"/>
+ for <font color="Olive" title="b1">W</font> being    <a href="glib_001.html#M3" title="GLIB_001:mode.3">Walk</a> of <font color="Maroon" title="c1">G</font>  holds  not <font color="Olive" title="b1">W</font> <a href="glib_001.html#R1" title="GLIB_001:pred.1">is_Walk_from</a> <font color="Maroon" title="c2">v1</font>,<font color="Maroon" title="c3">v2</font>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="71_3_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">given </span><font color="Maroon" title="c4">W</font> being    <a href="glib_001.html#M3" title="GLIB_001:mode.3">Walk</a> of <font color="Maroon" title="c1">G</font><span class="kw"> such that </span><a NAME="E2:71_3_1_1"/><span class="lab"><font color="Green" title="E58">A4</font></span>: 
+<font color="Maroon" title="c4">W</font> <a href="glib_001.html#R1" title="GLIB_001:pred.1">is_Walk_from</a> <font color="Maroon" title="c2">v1</font>,<font color="Maroon" title="c3">v2</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E3:71_3_1_1"/>
+( <font color="Maroon" title="c4">W</font> <a href="glib_001.html#K3" title="GLIB_001:func.3">.first()</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">v1</font> &amp; <font color="Maroon" title="c4">W</font> <a href="glib_001.html#K4" title="GLIB_001:func.4">.last()</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">v2</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:71_3_1_1"><span class="lab"><font color="Green" title="E58">A4</font></span></a>, <a class="ref" href="glib_001.html#D23" onmouseover="rs('glib_001/D23')" onmouseout="rh()">GLIB_001:def 23</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E4:71_3_1_1"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:71_3_1"><span class="lab"><font color="Green" title="E56">A2</font></span></a>, <a class="txt" href="#E3:71_3_1"><span class="lab"><font color="Green" title="E57">A3</font></span></a>, <a class="ref" href="glib_001.html#T127" onmouseover="rs('glib_001/T127')" onmouseout="rh()">GLIB_001:127</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E5:71_3_1"/>
+(  not <font color="Maroon" title="c1">G</font> is  <a href="glib_002.html#V1" title="GLIB_002:attr.1">connected</a>  &amp;  not <font color="Maroon" title="c1">G</font> is  <a href="glib_002.html#V3" title="GLIB_002:attr.3">Tree-like</a>  &amp;  not <font color="Maroon" title="c1">G</font> is  <a href="chord.html#V2" title="CHORD:attr.2">complete</a>  )
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="glib_002.html#D1" onmouseover="rs('glib_002/D1')" onmouseout="rh()">GLIB_002:def 1</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

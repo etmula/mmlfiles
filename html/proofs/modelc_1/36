@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">H</font> be   <a href="modelc_1.html#NM1" title="MODELC_1:NM.1">CTL-formula</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">H</font> is  <a href="modelc_1.html#V6" title="MODELC_1:attr.6">ExistGlobal</a>  implies <font color="Maroon" title="c1">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modelc_1.html#K10" title="MODELC_1:func.10">EG</a> <span class="p1">(<span class="default"><a href="modelc_1.html#K14" title="MODELC_1:func.14">the_argument_of</a> <font color="Maroon" title="c1">H</font></span>)</span> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:36"/><span class="lab"><font color="Green" title="E32">A1</font></span>: 
+<font color="Maroon" title="c1">H</font> is  <a href="modelc_1.html#V6" title="MODELC_1:attr.6">ExistGlobal</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modelc_1.html#K10" title="MODELC_1:func.10">EG</a> <span class="p1">(<span class="default"><a href="modelc_1.html#K14" title="MODELC_1:func.14">the_argument_of</a> <font color="Maroon" title="c1">H</font></span>)</span></span><br/>
+
+<a NAME="E2:36"/><span class="kw">then </span><span class="lab"><font color="Green" title="E33">A2</font></span>: 
+ not <font color="Maroon" title="c1">H</font> is  <a href="modelc_1.html#V5" title="MODELC_1:attr.5">ExistNext</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="modelc_1.html#E40"><span class="lab"><font color="Green" title="E27">Lm18</font></span></a></span>;<br/>
+<a NAME="E3:36"/>
+ not <font color="Maroon" title="c1">H</font> is  <a href="modelc_1.html#V3" title="MODELC_1:attr.3">negative</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:36"><span class="lab"><font color="Green" title="E32">A1</font></span></a>, <a class="txt" href="modelc_1.html#E40"><span class="lab"><font color="Green" title="E27">Lm18</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E4:36"/>
+<font color="Maroon" title="c1">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modelc_1.html#K10" title="MODELC_1:func.10">EG</a> <span class="p1">(<span class="default"><a href="modelc_1.html#K14" title="MODELC_1:func.14">the_argument_of</a> <font color="Maroon" title="c1">H</font></span>)</span>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:36"><span class="lab"><font color="Green" title="E32">A1</font></span></a>, <a class="txt" href="#E2:36"><span class="lab"><font color="Green" title="E33">A2</font></span></a>, <a class="ref" href="modelc_1.html#D21" target="_self" onmouseover="rs('modelc_1/D21')" onmouseout="rh()">Def21</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

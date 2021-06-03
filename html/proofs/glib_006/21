@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">G1</font>, <font color="Maroon" title="c2">G2</font> be   <a href="glib_000.html#NM2" title="GLIB_000:NM.2">_Graph</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">W1</font> being    <a href="glib_001.html#M3" title="GLIB_001:mode.3">Walk</a> of <font color="Maroon" title="c1">G1</font><br/>  for <font color="Olive" title="b2">W2</font> being    <a href="glib_001.html#M3" title="GLIB_001:mode.3">Walk</a> of <font color="Maroon" title="c2">G2</font>  st <font color="Olive" title="b1">W1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">W2</font> &amp; <font color="Olive" title="b1">W1</font> is  <a href="glib_001.html#V4" title="GLIB_001:attr.4">Trail-like</a>  holds <br/><font color="Olive" title="b2">W2</font> is  <a href="glib_001.html#V4" title="GLIB_001:attr.4">Trail-like</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c3">W1</font> be    <a href="glib_001.html#M3" title="GLIB_001:mode.3">Walk</a> of <font color="Maroon" title="c1">G1</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">W2</font> being    <a href="glib_001.html#M3" title="GLIB_001:mode.3">Walk</a> of <font color="Maroon" title="c2">G2</font>  st <font color="Maroon" title="c3">W1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">W2</font> &amp; <font color="Maroon" title="c3">W1</font> is  <a href="glib_001.html#V4" title="GLIB_001:attr.4">Trail-like</a>  holds <br/><font color="Olive" title="b1">W2</font> is  <a href="glib_001.html#V4" title="GLIB_001:attr.4">Trail-like</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c4">W2</font> be    <a href="glib_001.html#M3" title="GLIB_001:mode.3">Walk</a> of <font color="Maroon" title="c2">G2</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">W1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">W2</font> &amp; <font color="Maroon" title="c3">W1</font> is  <a href="glib_001.html#V4" title="GLIB_001:attr.4">Trail-like</a>  implies <font color="Maroon" title="c4">W2</font> is  <a href="glib_001.html#V4" title="GLIB_001:attr.4">Trail-like</a>  )</span><br/>
+
+
+
+
+
+<span class="kw">assume </span><a NAME="E1:21"/>
+<font color="Maroon" title="c3">W1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">W2</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c3">W1</font> is  <a href="glib_001.html#V4" title="GLIB_001:attr.4">Trail-like</a>  or <font color="Maroon" title="c4">W2</font> is  <a href="glib_001.html#V4" title="GLIB_001:attr.4">Trail-like</a>  )</span><br/>
+
+<a NAME="E2:21"/><span class="kw">then </span><span class="lab"><font color="Green" title="E18">A2</font></span>: 
+<font color="Maroon" title="c3">W1</font> <a href="glib_001.html#K12" title="GLIB_001:func.12">.edgeSeq()</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">W2</font> <a href="glib_001.html#K12" title="GLIB_001:func.12">.edgeSeq()</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="glib_001.html#T86" onmouseover="rs('glib_001/T86')" onmouseout="rh()">GLIB_001:86</a></span>;<br/>
+<span class="kw">assume </span><a NAME="E3:21"/>
+<font color="Maroon" title="c3">W1</font> is  <a href="glib_001.html#V4" title="GLIB_001:attr.4">Trail-like</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c4">W2</font> is  <a href="glib_001.html#V4" title="GLIB_001:attr.4">Trail-like</a> </span><br/>
+
+<a NAME="E4:21"/><span class="kw">then </span>
+<font color="Maroon" title="c4">W2</font> <a href="glib_001.html#K12" title="GLIB_001:func.12">.edgeSeq()</a>  is  <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:21"><span class="lab"><font color="Green" title="E18">A2</font></span></a>, <a class="ref" href="glib_001.html#D27" onmouseover="rs('glib_001/D27')" onmouseout="rh()">GLIB_001:def 27</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:21"/>
+<font color="Maroon" title="c4">W2</font> is  <a href="glib_001.html#V4" title="GLIB_001:attr.4">Trail-like</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="glib_001.html#D27" onmouseover="rs('glib_001/D27')" onmouseout="rh()">GLIB_001:def 27</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

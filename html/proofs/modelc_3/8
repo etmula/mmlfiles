@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">H</font> be   <a href="modelc_2.html#NM1" title="MODELC_2:NM.1">LTL-formula</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( ( <font color="Maroon" title="c1">H</font> is  <a href="modelc_2.html#V4" title="MODELC_2:attr.4">conjunctive</a>  or <font color="Maroon" title="c1">H</font> is  <a href="modelc_2.html#V5" title="MODELC_2:attr.5">disjunctive</a>  or <font color="Maroon" title="c1">H</font> is  <a href="modelc_2.html#V7" title="MODELC_2:attr.7">Until</a>  or <font color="Maroon" title="c1">H</font> is  <a href="modelc_2.html#V8" title="MODELC_2:attr.8">Release</a>  ) implies (  <a href="modelc_2.html#K11" title="MODELC_2:func.11">the_left_argument_of</a> <font color="Maroon" title="c1">H</font> <a href="modelc_2.html#R2" title="MODELC_2:pred.2">is_subformula_of</a> <font color="Maroon" title="c1">H</font> &amp;  <a href="modelc_2.html#K12" title="MODELC_2:func.12">the_right_argument_of</a> <font color="Maroon" title="c1">H</font> <a href="modelc_2.html#R2" title="MODELC_2:pred.2">is_subformula_of</a> <font color="Maroon" title="c1">H</font> ) )</span><br/>
+
+<span class="kw">set </span><font color="Maroon" title="c2">G1</font> =  <a href="modelc_2.html#K11" title="MODELC_2:func.11">the_left_argument_of</a> <font color="Maroon" title="c1">H</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c3">G2</font> =  <a href="modelc_2.html#K12" title="MODELC_2:func.12">the_right_argument_of</a> <font color="Maroon" title="c1">H</font>;<br/>
+<span class="kw">assume </span><a NAME="E1:8"/><span class="lab"><font color="Green" title="E9">A1</font></span>: 
+( <font color="Maroon" title="c1">H</font> is  <a href="modelc_2.html#V4" title="MODELC_2:attr.4">conjunctive</a>  or <font color="Maroon" title="c1">H</font> is  <a href="modelc_2.html#V5" title="MODELC_2:attr.5">disjunctive</a>  or <font color="Maroon" title="c1">H</font> is  <a href="modelc_2.html#V7" title="MODELC_2:attr.7">Until</a>  or <font color="Maroon" title="c1">H</font> is  <a href="modelc_2.html#V8" title="MODELC_2:attr.8">Release</a>  )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="modelc_2.html#K11" title="MODELC_2:func.11">the_left_argument_of</a> <font color="Maroon" title="c1">H</font> <a href="modelc_2.html#R2" title="MODELC_2:pred.2">is_subformula_of</a> <font color="Maroon" title="c1">H</font> &amp;  <a href="modelc_2.html#K12" title="MODELC_2:func.12">the_right_argument_of</a> <font color="Maroon" title="c1">H</font> <a href="modelc_2.html#R2" title="MODELC_2:pred.2">is_subformula_of</a> <font color="Maroon" title="c1">H</font> )</span><br/>
+
+<a NAME="E2:8"/><span class="kw">then </span>
+ <a href="modelc_2.html#K12" title="MODELC_2:func.12">the_right_argument_of</a> <font color="Maroon" title="c1">H</font> <a href="modelc_2.html#R1" title="MODELC_2:pred.1">is_immediate_constituent_of</a> <font color="Maroon" title="c1">H</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="modelc_2.html#T22" onmouseover="rs('modelc_2/T22')" onmouseout="rh()">MODELC_2:22</a>, <a class="ref" href="modelc_2.html#T23" onmouseover="rs('modelc_2/T23')" onmouseout="rh()">MODELC_2:23</a>, <a class="ref" href="modelc_2.html#T24" onmouseover="rs('modelc_2/T24')" onmouseout="rh()">MODELC_2:24</a>, <a class="ref" href="modelc_2.html#T25" onmouseover="rs('modelc_2/T25')" onmouseout="rh()">MODELC_2:25</a></span>;<br/>
+<a NAME="E3:8"/><span class="kw">then </span><span class="lab"><font color="Green" title="E10">A2</font></span>: 
+ <a href="modelc_2.html#K12" title="MODELC_2:func.12">the_right_argument_of</a> <font color="Maroon" title="c1">H</font> <a href="modelc_2.html#R3" title="MODELC_2:pred.3">is_proper_subformula_of</a> <font color="Maroon" title="c1">H</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="modelc_2.html#T29" onmouseover="rs('modelc_2/T29')" onmouseout="rh()">MODELC_2:29</a></span>;<br/>
+<a NAME="E4:8"/>
+ <a href="modelc_2.html#K11" title="MODELC_2:func.11">the_left_argument_of</a> <font color="Maroon" title="c1">H</font> <a href="modelc_2.html#R1" title="MODELC_2:pred.1">is_immediate_constituent_of</a> <font color="Maroon" title="c1">H</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:8"><span class="lab"><font color="Green" title="E9">A1</font></span></a>, <a class="ref" href="modelc_2.html#T22" onmouseover="rs('modelc_2/T22')" onmouseout="rh()">MODELC_2:22</a>, <a class="ref" href="modelc_2.html#T23" onmouseover="rs('modelc_2/T23')" onmouseout="rh()">MODELC_2:23</a>, <a class="ref" href="modelc_2.html#T24" onmouseover="rs('modelc_2/T24')" onmouseout="rh()">MODELC_2:24</a>, <a class="ref" href="modelc_2.html#T25" onmouseover="rs('modelc_2/T25')" onmouseout="rh()">MODELC_2:25</a></span>;<br/>
+<a NAME="E5:8"/><span class="kw">then </span>
+ <a href="modelc_2.html#K11" title="MODELC_2:func.11">the_left_argument_of</a> <font color="Maroon" title="c1">H</font> <a href="modelc_2.html#R3" title="MODELC_2:pred.3">is_proper_subformula_of</a> <font color="Maroon" title="c1">H</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="modelc_2.html#T29" onmouseover="rs('modelc_2/T29')" onmouseout="rh()">MODELC_2:29</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E6:8"/>
+(  <a href="modelc_2.html#K11" title="MODELC_2:func.11">the_left_argument_of</a> <font color="Maroon" title="c1">H</font> <a href="modelc_2.html#R2" title="MODELC_2:pred.2">is_subformula_of</a> <font color="Maroon" title="c1">H</font> &amp;  <a href="modelc_2.html#K12" title="MODELC_2:func.12">the_right_argument_of</a> <font color="Maroon" title="c1">H</font> <a href="modelc_2.html#R2" title="MODELC_2:pred.2">is_subformula_of</a> <font color="Maroon" title="c1">H</font> )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:8"><span class="lab"><font color="Green" title="E10">A2</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

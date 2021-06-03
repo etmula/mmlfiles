@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<a NAME="E1:29_1_1"/>
+( <font color="Maroon" title="c1">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c3">n</font> implies  not <font color="Maroon" title="c1">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">n</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1 )
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="29_1_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><a NAME="E1:29_1_1_1"/>
+<font color="Maroon" title="c1">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c3">n</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not <font color="Maroon" title="c1">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">n</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1</span><br/>
+
+<a NAME="E2:29_1_1_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E23">A1</font></span>: 
+<font color="Maroon" title="c1">i</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c3">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_1.html#T1" onmouseover="rs('finseq_1/T1')" onmouseout="rh()">FINSEQ_1:1</a></span>;<br/>
+<span class="kw">assume </span><a NAME="E3:29_1_1_1"/>
+<font color="Maroon" title="c1">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">n</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">hence </span><a NAME="E4:29_1_1_1"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:29_1_1_1"><span class="lab"><font color="Green" title="E23">A1</font></span></a>, <a class="ref" href="nat_1.html#T13" onmouseover="rs('nat_1/T13')" onmouseout="rh()">NAT_1:13</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E2:29_1_1"/>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>  st <font color="Maroon" title="c1">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c3">n</font> &amp; <font color="Maroon" title="c1">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">n</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1 holds <br/>( <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="radix_3.html#K6" title="RADIX_3:func.6">SDSub_Add_Data</a> (<span class="p2">(<span class="default"><a href="radix_1.html#K4" title="RADIX_1:func.4">DigA</a> (<font color="Maroon" title="c4">x</font>,<font color="Maroon" title="c1">i</font>)</span>)</span>,<font color="Maroon" title="c2">k</font>)</span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><a href="radix_3.html#K5" title="RADIX_3:func.5">SDSub_Add_Carry</a> (<span class="p2">(<span class="default"><a href="radix_1.html#K4" title="RADIX_1:func.4">DigA</a> (<font color="Maroon" title="c4">x</font>,<span class="p3">(<span class="default"><font color="Maroon" title="c1">i</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span>)</span>)</span>,<font color="Maroon" title="c2">k</font>)</span>)</span> iff <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="radix_3.html#K5" title="RADIX_3:func.5">SDSub_Add_Carry</a> (<span class="p1">(<span class="default"><a href="radix_1.html#K4" title="RADIX_1:func.4">DigA</a> (<font color="Maroon" title="c4">x</font>,<span class="p2">(<span class="default"><font color="Maroon" title="c1">i</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span>)</span>)</span>,<font color="Maroon" title="c2">k</font>) )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

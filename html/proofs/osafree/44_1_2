@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">set </span><font color="Maroon" title="c3">PTA</font> =  <a href="osafree.html#K8" title="OSAFREE:func.8">ParsedTermsOSA</a> <font color="Maroon" title="c2">X</font>;<br/>
+<span class="kw">let </span><font color="Maroon" title="c4">L1</font>, <font color="Maroon" title="c5">L2</font> be   <a href="osalg_4.html#V3" title="OSALG_4:attr.3">monotone</a>  <a href="osalg_4.html#NM4" title="OSALG_4:NM.4">OSCongruence</a> of  <a href="osafree.html#K8" title="OSAFREE:func.8">ParsedTermsOSA</a> <font color="Maroon" title="c2">X</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( (  for <font color="Olive" title="b1">R</font> being   <a href="osalg_4.html#V3" title="OSALG_4:attr.3">monotone</a>  <a href="osalg_4.html#NM4" title="OSALG_4:NM.4">OSCongruence</a> of  <a href="osafree.html#K8" title="OSAFREE:func.8">ParsedTermsOSA</a> <font color="Maroon" title="c2">X</font> holds  <font color="Maroon" title="c4">L1</font> <a href="pboole.html#R2" title="PBOOLE:pred.2">c=</a> <font color="Olive" title="b1">R</font> ) &amp; (  for <font color="Olive" title="b1">R</font> being   <a href="osalg_4.html#V3" title="OSALG_4:attr.3">monotone</a>  <a href="osalg_4.html#NM4" title="OSALG_4:NM.4">OSCongruence</a> of  <a href="osafree.html#K8" title="OSAFREE:func.8">ParsedTermsOSA</a> <font color="Maroon" title="c2">X</font> holds  <font color="Maroon" title="c5">L2</font> <a href="pboole.html#R2" title="PBOOLE:pred.2">c=</a> <font color="Olive" title="b1">R</font> ) implies <font color="Maroon" title="c4">L1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c5">L2</font> )</span><br/>
+
+<span class="kw">assume </span><span class="kw">that </span><br/><a NAME="E1:44_1_2"/><span class="lab"><font color="Green" title="E27">A47</font></span>: 
+ for <font color="Olive" title="b1">R</font> being   <a href="osalg_4.html#V3" title="OSALG_4:attr.3">monotone</a>  <a href="osalg_4.html#NM4" title="OSALG_4:NM.4">OSCongruence</a> of  <a href="osafree.html#K8" title="OSAFREE:func.8">ParsedTermsOSA</a> <font color="Maroon" title="c2">X</font> holds  <font color="Maroon" title="c4">L1</font> <a href="pboole.html#R2" title="PBOOLE:pred.2">c=</a> <font color="Olive" title="b1">R</font>
+ <span class="kw">and </span><br/><a NAME="E2:44_1_2"/><span class="lab"><font color="Green" title="E28">A48</font></span>: 
+ for <font color="Olive" title="b1">R</font> being   <a href="osalg_4.html#V3" title="OSALG_4:attr.3">monotone</a>  <a href="osalg_4.html#NM4" title="OSALG_4:NM.4">OSCongruence</a> of  <a href="osafree.html#K8" title="OSAFREE:func.8">ParsedTermsOSA</a> <font color="Maroon" title="c2">X</font> holds  <font color="Maroon" title="c5">L2</font> <a href="pboole.html#R2" title="PBOOLE:pred.2">c=</a> <font color="Olive" title="b1">R</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c4">L1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c5">L2</font></span><br/>
+
+<a NAME="E3:44_1_2"/><span class="lab"><font color="Green" title="E29">A49</font></span>: 
+<font color="Maroon" title="c5">L2</font> <a href="pboole.html#R2" title="PBOOLE:pred.2">c=</a> <font color="Maroon" title="c4">L1</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:44_1_2"><span class="lab"><font color="Green" title="E28">A48</font></span></a></span>;<br/>
+<a NAME="E4:44_1_2"/>
+<font color="Maroon" title="c4">L1</font> <a href="pboole.html#R2" title="PBOOLE:pred.2">c=</a> <font color="Maroon" title="c5">L2</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:44_1_2"><span class="lab"><font color="Green" title="E27">A47</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:44_1_2"/>
+<font color="Maroon" title="c4">L1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c5">L2</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:44_1_2"><span class="lab"><font color="Green" title="E29">A49</font></span></a>, <a class="ref" href="pboole.html#T146" onmouseover="rs('pboole/T146')" onmouseout="rh()">PBOOLE:146</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

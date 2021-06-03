@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   non  <a href="struct_0.html#V11" title="STRUCT_0:attr.11">void</a>   <a href="msualg_1.html#L1" title="MSUALG_1:struct.1">ManySortedSign</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">v</font> being   <a href="msafree2.html#NM1" title="MSAFREE2:NM.1">Vertex</a> of <font color="Maroon" title="c1">G</font>  st <font color="Olive" title="b1">v</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="msafree2.html#K2" title="MSAFREE2:func.2">InputVertices</a> <font color="Maroon" title="c1">G</font> holds <br/> for <font color="Olive" title="b2">o</font> being   <a href="msualg_1.html#NM2" title="MSUALG_1:NM.2">OperSymbol</a> of <font color="Maroon" title="c1">G</font>  holds  not  <a href="msualg_1.html#K2" title="MSUALG_1:func.2">the_result_sort_of</a> <font color="Olive" title="b2">o</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">v</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">v</font> be   <a href="msafree2.html#NM1" title="MSAFREE2:NM.1">Vertex</a> of <font color="Maroon" title="c1">G</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">v</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="msafree2.html#K2" title="MSAFREE2:func.2">InputVertices</a> <font color="Maroon" title="c1">G</font> implies  for <font color="Olive" title="b1">o</font> being   <a href="msualg_1.html#NM2" title="MSUALG_1:NM.2">OperSymbol</a> of <font color="Maroon" title="c1">G</font>  holds  not  <a href="msualg_1.html#K2" title="MSUALG_1:func.2">the_result_sort_of</a> <font color="Olive" title="b1">o</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">v</font> )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:4"/><span class="lab"><font color="Green" title="E3">A1</font></span>: 
+<font color="Maroon" title="c2">v</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="msafree2.html#K2" title="MSAFREE2:func.2">InputVertices</a> <font color="Maroon" title="c1">G</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">o</font> being   <a href="msualg_1.html#NM2" title="MSUALG_1:NM.2">OperSymbol</a> of <font color="Maroon" title="c1">G</font>  holds  not  <a href="msualg_1.html#K2" title="MSUALG_1:func.2">the_result_sort_of</a> <font color="Olive" title="b1">o</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">v</font></span><br/>
+
+<span class="kw">let </span><font color="Maroon" title="c3">o</font> be   <a href="msualg_1.html#NM2" title="MSUALG_1:NM.2">OperSymbol</a> of <font color="Maroon" title="c1">G</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not  <a href="msualg_1.html#K2" title="MSUALG_1:func.2">the_result_sort_of</a> <font color="Maroon" title="c3">o</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">v</font></span><br/>
+
+<span class="kw">assume </span><a NAME="E2:4"/><span class="lab"><font color="Green" title="E4">A2</font></span>: 
+ <a href="msualg_1.html#K2" title="MSUALG_1:func.2">the_result_sort_of</a> <font color="Maroon" title="c3">o</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">v</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E3:4"/>
+<font color="Maroon" title="c3">o</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  the <a href="struct_0.html#U4" title="STRUCT_0:sel.4">carrier'</a> of <font color="Maroon" title="c1">G</font>
+ 
+;<br/>
+<a NAME="E4:4"/><span class="kw">then </span>
+<font color="Maroon" title="c3">o</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a>  the <a href="msualg_1.html#U2" title="MSUALG_1:sel.2">ResultSort</a> of <font color="Maroon" title="c1">G</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="funct_2.html#D1" onmouseover="rs('funct_2/D1')" onmouseout="rh()">FUNCT_2:def 1</a></span>;<br/>
+<a NAME="E5:4"/><span class="kw">then </span>
+<font color="Maroon" title="c2">v</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a>  the <a href="msualg_1.html#U2" title="MSUALG_1:sel.2">ResultSort</a> of <font color="Maroon" title="c1">G</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:4"><span class="lab"><font color="Green" title="E4">A2</font></span></a>, <a class="ref" href="funct_1.html#D3" onmouseover="rs('funct_1/D3')" onmouseout="rh()">FUNCT_1:def 3</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E6:4"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:4"><span class="lab"><font color="Green" title="E3">A1</font></span></a>, <a class="ref" href="xboole_0.html#D5" onmouseover="rs('xboole_0/D5')" onmouseout="rh()">XBOOLE_0:def 5</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">a</font>, <font color="Maroon" title="c2">b</font>, <font color="Maroon" title="c3">n</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">a</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Maroon" title="c2">b</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c3">n</font></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p1">(<span class="default"><font color="Maroon" title="c2">b</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c3">n</font></span>)</span></span><br/>
+
+
+
+
+
+<span class="kw">defpred </span><font color="Maroon">S<sub>1</sub></font>[  <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>] <span class="kw">means </span><font color="Maroon" title="c1">a</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Maroon" title="c2">b</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> $1</span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p1">(<span class="default"><font color="Maroon" title="c2">b</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> $1</span>)</span>;<br/>
+<a NAME="E1:53"/><span class="lab"><font color="Green" title="E34">A1</font></span>: 
+<font color="Maroon">S<sub>1</sub></font>[ <a href="ordinal1.html#K5" title="ORDINAL1:func.5">0</a> ]
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="newton01.html#E45"><span class="lab"><font color="Green" title="E28">Lm18b</font></span></a></span>;<br/>
+<a NAME="E2:53"/><span class="lab"><font color="Green" title="E35">A2</font></span>: 
+ for <font color="Olive" title="b1">x</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>  st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">x</font>] holds <br/><font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">x</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1]
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="53_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">x</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c4">x</font>] implies <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c4">x</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1] )</span><br/>
+
+<a NAME="E1:53_1"/>
+( <font color="Maroon" title="c4">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ordinal1.html#K5" title="ORDINAL1:func.5">0</a>  or <font color="Maroon" title="c4">x</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="ordinal1.html#K5" title="ORDINAL1:func.5">0</a>  )
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E2:53_1"/>
+( <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c4">x</font>] implies <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c4">x</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1] )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="newton01.html#E46"><span class="lab"><font color="Green" title="E29">Lm18f</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E3:53"/>
+ for <font color="Olive" title="b1">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a> holds  <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">m</font>]
+ 
+<span class="kw">from</span> <span class="lab"><a class="ref" href="nat_1.html#S2" onmouseover="rs('nat_1/S2')" onmouseout="rh()">NAT_1:sch 2</a>(<a class="txt" href="#E1:53"><span class="lab"><font color="Green" title="E34">A1</font></span></a>, <a class="txt" href="#E2:53"><span class="lab"><font color="Green" title="E35">A2</font></span></a>);<br/></span>
+<span class="kw">hence </span><a NAME="E4:53"/>
+<font color="Maroon" title="c1">a</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Maroon" title="c2">b</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c3">n</font></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p1">(<span class="default"><font color="Maroon" title="c2">b</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c3">n</font></span>)</span>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

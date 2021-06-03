@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">I</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">M</font> being   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Maroon" title="c1">I</font><br/>  for <font color="Olive" title="b3">SF</font> being   <a href="mssubfam.html#NM1" title="MSSUBFAM:NM.1">MSSubsetFamily</a> of <font color="Olive" title="b2">M</font>  st <font color="Olive" title="b1">A</font> <a href="pboole.html#R1" title="PBOOLE:pred.1">in</a> <font color="Olive" title="b3">SF</font> holds <br/><font color="Olive" title="b1">A</font> is    <a href="pboole.html#M3" title="PBOOLE:mode.3">ManySortedSubset</a> of <font color="Olive" title="b2">M</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">A</font>, <font color="Maroon" title="c3">M</font> be   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Maroon" title="c1">I</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">SF</font> being   <a href="mssubfam.html#NM1" title="MSSUBFAM:NM.1">MSSubsetFamily</a> of <font color="Maroon" title="c3">M</font>  st <font color="Maroon" title="c2">A</font> <a href="pboole.html#R1" title="PBOOLE:pred.1">in</a> <font color="Olive" title="b1">SF</font> holds <br/><font color="Maroon" title="c2">A</font> is    <a href="pboole.html#M3" title="PBOOLE:mode.3">ManySortedSubset</a> of <font color="Maroon" title="c3">M</font></span><br/><span class="kw">let </span><font color="Maroon" title="c4">SF</font> be   <a href="mssubfam.html#NM1" title="MSSUBFAM:NM.1">MSSubsetFamily</a> of <font color="Maroon" title="c3">M</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">A</font> <a href="pboole.html#R1" title="PBOOLE:pred.1">in</a> <font color="Maroon" title="c4">SF</font> implies <font color="Maroon" title="c2">A</font> is    <a href="pboole.html#M3" title="PBOOLE:mode.3">ManySortedSubset</a> of <font color="Maroon" title="c3">M</font> )</span><br/>
+
+
+
+
+
+
+
+<a NAME="E1:54"/><span class="lab"><font color="Green" title="E7">A1</font></span>: 
+<font color="Maroon" title="c4">SF</font> <a href="pboole.html#R2" title="PBOOLE:pred.2">c=</a>  <a href="mssubfam.html#K1" title="MSSUBFAM:func.1">bool</a> <font color="Maroon" title="c3">M</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="pboole.html#D18" onmouseover="rs('pboole/D18')" onmouseout="rh()">PBOOLE:def 18</a></span>;<br/>
+<span class="kw">assume </span><a NAME="E2:54"/>
+<font color="Maroon" title="c2">A</font> <a href="pboole.html#R1" title="PBOOLE:pred.1">in</a> <font color="Maroon" title="c4">SF</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">A</font> is    <a href="pboole.html#M3" title="PBOOLE:mode.3">ManySortedSubset</a> of <font color="Maroon" title="c3">M</font></span><br/>
+
+<a NAME="E3:54"/><span class="kw">then </span>
+<font color="Maroon" title="c2">A</font> <a href="pboole.html#R1" title="PBOOLE:pred.1">in</a>  <a href="mssubfam.html#K1" title="MSSUBFAM:func.1">bool</a> <font color="Maroon" title="c3">M</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:54"><span class="lab"><font color="Green" title="E7">A1</font></span></a>, <a class="ref" href="pboole.html#T9" onmouseover="rs('pboole/T9')" onmouseout="rh()">PBOOLE:9</a></span>;<br/>
+<a NAME="E4:54"/><span class="kw">then </span>
+<font color="Maroon" title="c2">A</font> <a href="pboole.html#R2" title="PBOOLE:pred.2">c=</a> <font color="Maroon" title="c3">M</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="mboolean.html#T18" onmouseover="rs('mboolean/T18')" onmouseout="rh()">MBOOLEAN:18</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:54"/>
+<font color="Maroon" title="c2">A</font> is    <a href="pboole.html#M3" title="PBOOLE:mode.3">ManySortedSubset</a> of <font color="Maroon" title="c3">M</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="pboole.html#D18" onmouseover="rs('pboole/D18')" onmouseout="rh()">PBOOLE:def 18</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

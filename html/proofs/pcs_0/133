@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">P</font>, <font color="Maroon" title="c4">Q</font> be   <a href="pcs_0.html#NM1" title="PCS_0:NM.1">pcs</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">P</font> <a href="tsep_1.html#R1" title="TSEP_1:pred.1">misses</a> <font color="Maroon" title="c4">Q</font> implies  <a href="pcs_0.html#K19" title="PCS_0:func.19">pcs-sum</a> (<font color="Maroon" title="c3">P</font>,<font color="Maroon" title="c4">Q</font>) is   <a href="pcs_0.html#NM1" title="PCS_0:NM.1">pcs</a> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:133"/><span class="lab"><font color="Green" title="E37">A1</font></span>: 
+<font color="Maroon" title="c3">P</font> <a href="tsep_1.html#R1" title="TSEP_1:pred.1">misses</a> <font color="Maroon" title="c4">Q</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="pcs_0.html#K19" title="PCS_0:func.19">pcs-sum</a> (<font color="Maroon" title="c3">P</font>,<font color="Maroon" title="c4">Q</font>) is   <a href="pcs_0.html#NM1" title="PCS_0:NM.1">pcs</a></span><br/>
+
+<span class="kw">set </span><font color="Maroon" title="c5">R</font> =  <a href="pcs_0.html#K19" title="PCS_0:func.19">pcs-sum</a> (<font color="Maroon" title="c3">P</font>,<font color="Maroon" title="c4">Q</font>);<br/>
+<a NAME="E2:133"/><span class="lab"><font color="Green" title="E38">A2</font></span>: 
+ <a href="pcs_0.html#K1" title="PCS_0:func.1">field</a>  the <a href="orders_2.html#U1" title="ORDERS_2:sel.1">InternalRel</a> of <span class="p1">(<span class="default"><a href="pcs_0.html#K19" title="PCS_0:func.19">pcs-sum</a> (<font color="Maroon" title="c3">P</font>,<font color="Maroon" title="c4">Q</font>)</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><a href="pcs_0.html#K19" title="PCS_0:func.19">pcs-sum</a> (<font color="Maroon" title="c3">P</font>,<font color="Maroon" title="c4">Q</font>)</span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="orders_1.html#T12" onmouseover="rs('orders_1/T12')" onmouseout="rh()">ORDERS_1:12</a></span>;<br/>
+<a NAME="E3:133"/>
+ the <a href="orders_2.html#U1" title="ORDERS_2:sel.1">InternalRel</a> of <span class="p1">(<span class="default"><a href="pcs_0.html#K19" title="PCS_0:func.19">pcs-sum</a> (<font color="Maroon" title="c3">P</font>,<font color="Maroon" title="c4">Q</font>)</span>)</span> is  <a href="relat_2.html#V8" title="RELAT_2:attr.8">transitive</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:133"><span class="lab"><font color="Green" title="E37">A1</font></span></a>, <a class="ref" href="pcs_0.html#T18" target="_self" onmouseover="rs('pcs_0/T18')" onmouseout="rh()">Th18</a></span>;<br/>
+<a NAME="E4:133"/><span class="kw">then </span>
+ the <a href="orders_2.html#U1" title="ORDERS_2:sel.1">InternalRel</a> of <span class="p1">(<span class="default"><a href="pcs_0.html#K19" title="PCS_0:func.19">pcs-sum</a> (<font color="Maroon" title="c3">P</font>,<font color="Maroon" title="c4">Q</font>)</span>)</span> <a href="relat_2.html#R8" title="RELAT_2:pred.8">is_transitive_in</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><a href="pcs_0.html#K19" title="PCS_0:func.19">pcs-sum</a> (<font color="Maroon" title="c3">P</font>,<font color="Maroon" title="c4">Q</font>)</span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:133"><span class="lab"><font color="Green" title="E38">A2</font></span></a></span>;<br/>
+<a NAME="E5:133"/><span class="kw">then </span><span class="lab"><font color="Green" title="E39">A3</font></span>: 
+ <a href="pcs_0.html#K19" title="PCS_0:func.19">pcs-sum</a> (<font color="Maroon" title="c3">P</font>,<font color="Maroon" title="c4">Q</font>) is  <a href="orders_2.html#V4" title="ORDERS_2:attr.4">transitive</a> 
+ 
+;<br/>
+<a NAME="E6:133"/>
+ <a href="pcs_0.html#K19" title="PCS_0:func.19">pcs-sum</a> (<font color="Maroon" title="c3">P</font>,<font color="Maroon" title="c4">Q</font>) is  <a href="pcs_0.html#V13" title="PCS_0:attr.13">pcs-compatible</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:133"><span class="lab"><font color="Green" title="E37">A1</font></span></a>, <a class="ref" href="pcs_0.html#T19" target="_self" onmouseover="rs('pcs_0/T19')" onmouseout="rh()">Th19</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:133"/>
+ <a href="pcs_0.html#K19" title="PCS_0:func.19">pcs-sum</a> (<font color="Maroon" title="c3">P</font>,<font color="Maroon" title="c4">Q</font>) is   <a href="pcs_0.html#NM1" title="PCS_0:NM.1">pcs</a>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:133"><span class="lab"><font color="Green" title="E39">A3</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

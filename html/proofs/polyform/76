@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">p</font> be   <a href="polyform.html#NM2" title="POLYFORM:NM.2">polyhedron</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">p</font> is  <a href="polyform.html#V5" title="POLYFORM:attr.5">simply-connected</a>  iff  for <font color="Olive" title="b1">n</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a> holds  <font color="Olive" title="b1">n</font> <a href="polyform.html#K19" title="POLYFORM:func.19">-circuit-space</a> <font color="Maroon" title="c1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> <a href="polyform.html#K21" title="POLYFORM:func.21">-bounding-chain-space</a> <font color="Maroon" title="c1">p</font> )</span><br/>
+
+<span class="kw">defpred </span><font color="Maroon">S<sub>1</sub></font>[  <a href="polyform.html#NM2" title="POLYFORM:NM.2">polyhedron</a>] <span class="kw">means </span> for <font color="Olive" title="b1">n</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a> holds  <font color="Olive" title="b1">n</font> <a href="polyform.html#K19" title="POLYFORM:func.19">-circuit-space</a> $1 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> <a href="polyform.html#K21" title="POLYFORM:func.21">-bounding-chain-space</a> $1;<br/>
+<span class="kw">thus </span><a NAME="E1:76"/>
+( <font color="Maroon" title="c1">p</font> is  <a href="polyform.html#V5" title="POLYFORM:attr.5">simply-connected</a>  implies <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c1">p</font>] )
+  <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( (  for <font color="Olive" title="b1">n</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a> holds  <font color="Olive" title="b1">n</font> <a href="polyform.html#K19" title="POLYFORM:func.19">-circuit-space</a> <font color="Maroon" title="c1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> <a href="polyform.html#K21" title="POLYFORM:func.21">-bounding-chain-space</a> <font color="Maroon" title="c1">p</font> ) implies <font color="Maroon" title="c1">p</font> is  <a href="polyform.html#V5" title="POLYFORM:attr.5">simply-connected</a>  )</span><div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="76_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><a NAME="E1:76_1"/><span class="lab"><font color="Green" title="E56">A1</font></span>: 
+<font color="Maroon" title="c1">p</font> is  <a href="polyform.html#V5" title="POLYFORM:attr.5">simply-connected</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c1">p</font>]</span><br/>
+
+<span class="kw">let </span><font color="Maroon" title="c2">n</font> be   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">n</font> <a href="polyform.html#K19" title="POLYFORM:func.19">-circuit-space</a> <font color="Maroon" title="c1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">n</font> <a href="polyform.html#K21" title="POLYFORM:func.21">-bounding-chain-space</a> <font color="Maroon" title="c1">p</font></span><br/>
+
+<a NAME="E2:76_1"/>
+<font color="Maroon" title="c2">n</font> <a href="polyform.html#K20" title="POLYFORM:func.20">-circuits</a> <font color="Maroon" title="c1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">n</font> <a href="polyform.html#K22" title="POLYFORM:func.22">-bounding-chains</a> <font color="Maroon" title="c1">p</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:76_1"><span class="lab"><font color="Green" title="E56">A1</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E3:76_1"/>
+<font color="Maroon" title="c2">n</font> <a href="polyform.html#K19" title="POLYFORM:func.19">-circuit-space</a> <font color="Maroon" title="c1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">n</font> <a href="polyform.html#K21" title="POLYFORM:func.21">-bounding-chain-space</a> <font color="Maroon" title="c1">p</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="vectsp_4.html#T29" onmouseover="rs('vectsp_4/T29')" onmouseout="rh()">VECTSP_4:29</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+
+<span class="kw">thus </span><a NAME="E2:76"/>
+( <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c1">p</font>] implies <font color="Maroon" title="c1">p</font> is  <a href="polyform.html#V5" title="POLYFORM:attr.5">simply-connected</a>  )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
