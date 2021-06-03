@@ -1,0 +1,552 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>PAPDESAF:  Fanoian, Pappian and Desarguesian Affine Spaces</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  Fanoian, Pappian and Desarguesian Affine Spaces</font></span><br><span class="comment"><font color="firebrick">:: by Krzysztof Pra\.zmowski</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received November 16, 1990</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 1990-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">OAS</font> be   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a>;<br>
+<div about="#FC1" typeof="oo:Theorem">
+<a NAME="FC1"><span class="kw">cluster </span></a> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Maroon" title="c1">OAS</font><span class="kw"> -&gt; </span> non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>   <a href="diraf.html#V1" title="DIRAF:attr.1">AffinSpace-like</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br>(  <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Maroon" title="c1">OAS</font> is  <a href="diraf.html#V1" title="DIRAF:attr.1">AffinSpace-like</a>  &amp;  not  <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Maroon" title="c1">OAS</font> is  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  )</span>;<br></span><span class="kw">by</span> <span class="lab"><a class="ref" href="diraf.html#T41" onmouseover="rs('diraf/T41')" onmouseout="rh()">DIRAF:41</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">OAS</font> be   <a href="analoaf.html#NM2" title="ANALOAF:NM.2">OAffinPlane</a>;<br>
+<div about="#FC2" typeof="oo:Theorem">
+<a NAME="FC2"><span class="kw">cluster </span></a> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Maroon" title="c1">OAS</font><span class="kw"> -&gt; </span> <a href="diraf.html#V2" title="DIRAF:attr.2">2-dimensional</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Maroon" title="c1">OAS</font> is  <a href="diraf.html#V2" title="DIRAF:attr.2">2-dimensional</a> </span>;<br></span><span class="kw">by</span> <span class="lab"><a class="ref" href="diraf.html#T45" onmouseover="rs('diraf/T45')" onmouseout="rh()">DIRAF:45</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E1">Th1</font></span>: <a NAME="T1"><span class="comment"><font color="firebrick">:: PAPDESAF:1</font></span><br></a><div class="add"> for <font color="Olive" title="b1">OAS</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a><br>  for <font color="Olive" title="b2">x</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  holds <br> ( ( <font color="Olive" title="b2">x</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">OAS</font> implies <font color="Olive" title="b2">x</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <span class="p1">(<span class="default"><a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Olive" title="b1">OAS</font></span>)</span> ) &amp; ( <font color="Olive" title="b2">x</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <span class="p1">(<span class="default"><a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Olive" title="b1">OAS</font></span>)</span> implies <font color="Olive" title="b2">x</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">OAS</font> ) &amp; ( <font color="Olive" title="b2">x</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">OAS</font> implies <font color="Olive" title="b2">x</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Olive" title="b1">OAS</font></span>)</span> ) &amp; ( <font color="Olive" title="b2">x</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Olive" title="b1">OAS</font></span>)</span> implies <font color="Olive" title="b2">x</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">OAS</font> ) )</div>
+<div about="#PF3" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/3')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/3')" href="javascript:()" title="3"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E2">Th2</font></span>: <a NAME="T2"><span class="comment"><font color="firebrick">:: PAPDESAF:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">OAS</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">OAS</font><br>  for <font color="Olive" title="b5">a9</font>, <font color="Olive" title="b6">b9</font>, <font color="Olive" title="b7">c9</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <span class="p1">(<span class="default"><a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Olive" title="b1">OAS</font></span>)</span>  st <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">a9</font> &amp; <font color="Olive" title="b3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b6">b9</font> &amp; <font color="Olive" title="b4">c</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b7">c9</font> holds <br>( <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> <a href="diraf.html#R3" title="DIRAF:pred.3">are_collinear</a>  iff  <a href="aff_1.html#R1" title="AFF_1:pred.1">LIN</a> <font color="Olive" title="b5">a9</font>,<font color="Olive" title="b6">b9</font>,<font color="Olive" title="b7">c9</font> )</div>
+<div about="#PF4" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/4')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/4')" href="javascript:()" title="4"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E3">Th3</font></span>: <a NAME="T3"><span class="comment"><font color="firebrick">:: PAPDESAF:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b2">x</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  holds <br> ( <font color="Olive" title="b2">x</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <span class="p1">(<span class="default"><a href="analoaf.html#K2" title="ANALOAF:func.2">OASpace</a> <font color="Olive" title="b1">V</font></span>)</span> iff <font color="Olive" title="b2">x</font> is   <a href="rlvect_1.html#NM1" title="RLVECT_1:NM.1">VECTOR</a> of <font color="Olive" title="b1">V</font> )</div>
+<div about="#PF5" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/5')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/5')" href="javascript:()" title="5"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E4">Th4</font></span>: <a NAME="T4"><span class="comment"><font color="firebrick">:: PAPDESAF:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b2">OAS</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a>  st <font color="Olive" title="b2">OAS</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="analoaf.html#K2" title="ANALOAF:func.2">OASpace</a> <font color="Olive" title="b1">V</font> holds <br> for <font color="Olive" title="b3">a</font>, <font color="Olive" title="b4">b</font>, <font color="Olive" title="b5">c</font>, <font color="Olive" title="b6">d</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b2">OAS</font><br>  for <font color="Olive" title="b7">u</font>, <font color="Olive" title="b8">v</font>, <font color="Olive" title="b9">w</font>, <font color="Olive" title="b10">y</font> being   <a href="rlvect_1.html#NM1" title="RLVECT_1:NM.1">VECTOR</a> of <font color="Olive" title="b1">V</font>  st <font color="Olive" title="b3">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b7">u</font> &amp; <font color="Olive" title="b4">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b8">v</font> &amp; <font color="Olive" title="b5">c</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b9">w</font> &amp; <font color="Olive" title="b6">d</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b10">y</font> holds <br>( <font color="Olive" title="b3">a</font>,<font color="Olive" title="b4">b</font> <a href="diraf.html#R2" title="DIRAF:pred.2">'||'</a> <font color="Olive" title="b5">c</font>,<font color="Olive" title="b6">d</font> iff <font color="Olive" title="b7">u</font>,<font color="Olive" title="b8">v</font> <a href="geomtrap.html#R1" title="GEOMTRAP:pred.1">'||'</a> <font color="Olive" title="b9">w</font>,<font color="Olive" title="b10">y</font> )</div>
+<div about="#PF6" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T4"></span><a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/6')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/6')" href="javascript:()" title="6"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T5"><span class="comment"><font color="firebrick">:: PAPDESAF:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b2">OAS</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a>  st <font color="Olive" title="b2">OAS</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="analoaf.html#K2" title="ANALOAF:func.2">OASpace</a> <font color="Olive" title="b1">V</font> holds <br> ex <font color="Olive" title="b3">u</font>, <font color="Olive" title="b4">v</font> being   <a href="rlvect_1.html#NM1" title="RLVECT_1:NM.1">VECTOR</a> of <font color="Olive" title="b1">V</font> st <br> for <font color="Olive" title="b5">a</font>, <font color="Olive" title="b6">b</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>  st <span class="p1">(<span class="default"><font color="Olive" title="b5">a</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b3">u</font></span>)</span> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <span class="p1">(<span class="default"><font color="Olive" title="b6">b</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b4">v</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Olive" title="b1">V</font> holds <br>( <font color="Olive" title="b5">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; <font color="Olive" title="b6">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  )</div>
+<div about="#PF7" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/7')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/7')" href="javascript:()" title="7"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">AS</font> be   <a href="diraf.html#NM1" title="DIRAF:NM.1">AffinSpace</a>;<br><div about="#D0" typeof="oo:Definition">
+<span class="kw">redefine </span><span class="kw">attr</span> <font color="Maroon" title="c1">AS</font> is  <a href="translac.html#V1" title="TRANSLAC:attr.1">Fanoian</a> <span class="kw"> means </span><a NAME="D1"><span class="comment"><font color="firebrick">:: PAPDESAF:def 1</font></span><br></a> for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font>, <font color="Olive" title="b3">c</font>, <font color="Olive" title="b4">d</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">AS</font>  st <font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b3">c</font>,<font color="Olive" title="b4">d</font> &amp; <font color="Olive" title="b1">a</font>,<font color="Olive" title="b3">c</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b2">b</font>,<font color="Olive" title="b4">d</font> &amp; <font color="Olive" title="b1">a</font>,<font color="Olive" title="b4">d</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b2">b</font>,<font color="Olive" title="b3">c</font> holds <br><font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b1">a</font>,<font color="Olive" title="b3">c</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">compatibility</span> </a><span class="hide"><br><a NAME="E1:8_1"></a>
+( <font color="Maroon" title="c1">AS</font> is  <a href="translac.html#V1" title="TRANSLAC:attr.1">Fanoian</a>  iff  for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font>, <font color="Olive" title="b3">c</font>, <font color="Olive" title="b4">d</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">AS</font>  st <font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b3">c</font>,<font color="Olive" title="b4">d</font> &amp; <font color="Olive" title="b1">a</font>,<font color="Olive" title="b3">c</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b2">b</font>,<font color="Olive" title="b4">d</font> &amp; <font color="Olive" title="b1">a</font>,<font color="Olive" title="b4">d</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b2">b</font>,<font color="Olive" title="b3">c</font> holds <br><font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b1">a</font>,<font color="Olive" title="b3">c</font> )
+ </span><div about="#PF8_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/8_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/8_1_1')" href="javascript:()" title="8_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="translac.html#V1" title="TRANSLAC:attr.1">Fanoian</a> <a onclick="hs(this)" href="javascript:()">PAPDESAF:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">AS</font> being   <a href="diraf.html#NM1" title="DIRAF:NM.1">AffinSpace</a> holds <br> ( <font color="Olive" title="b1">AS</font> is  <a href="translac.html#V1" title="TRANSLAC:attr.1">Fanoian</a>  iff  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">d</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">AS</font>  st <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font> &amp; <font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b3">b</font>,<font color="Olive" title="b5">d</font> &amp; <font color="Olive" title="b2">a</font>,<font color="Olive" title="b5">d</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> holds <br><font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font> );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IT</font> be   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a>;<br><div about="#D5" typeof="oo:Definition">
+<a NAME="V1"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="papdesaf.html#V1" title="PAPDESAF:attr.1">Pappian</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E5">Def2</font></span>: <a NAME="D2"><span class="comment"><font color="firebrick">:: PAPDESAF:def 2</font></span><br></a> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Maroon" title="c1">IT</font> is  <a href="aff_2.html#V2" title="AFF_2:attr.2">Pappian</a> ;<br>
+</div>
+<div about="#D6" typeof="oo:Definition">
+<a NAME="V2"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="papdesaf.html#V2" title="PAPDESAF:attr.2">Desarguesian</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E6">Def3</font></span>: <a NAME="D3"><span class="comment"><font color="firebrick">:: PAPDESAF:def 3</font></span><br></a> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Maroon" title="c1">IT</font> is  <a href="aff_2.html#V4" title="AFF_2:attr.4">Desarguesian</a> ;<br>
+</div>
+<div about="#D7" typeof="oo:Definition">
+<a NAME="V3"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="papdesaf.html#V3" title="PAPDESAF:attr.3">Moufangian</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E7">Def4</font></span>: <a NAME="D4"><span class="comment"><font color="firebrick">:: PAPDESAF:def 4</font></span><br></a> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Maroon" title="c1">IT</font> is  <a href="aff_2.html#V7" title="AFF_2:attr.7">Moufangian</a> ;<br>
+</div>
+<div about="#D8" typeof="oo:Definition">
+<a NAME="V4"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="papdesaf.html#V4" title="PAPDESAF:attr.4">translation</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E8">Def5</font></span>: <a NAME="D5"><span class="comment"><font color="firebrick">:: PAPDESAF:def 5</font></span><br></a> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Maroon" title="c1">IT</font> is  <a href="aff_2.html#V11" title="AFF_2:attr.11">translational</a> ;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E5">Def2</font></span>   defines <a href="papdesaf.html#V1" title="PAPDESAF:attr.1">Pappian</a> <a onclick="hs(this)" href="javascript:()">PAPDESAF:def 2 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a> holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="papdesaf.html#V1" title="PAPDESAF:attr.1">Pappian</a>  iff  <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Olive" title="b1">IT</font> is  <a href="aff_2.html#V2" title="AFF_2:attr.2">Pappian</a>  );<br></span>
+</div>
+<br><div about="#DT3" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E6">Def3</font></span>   defines <a href="papdesaf.html#V2" title="PAPDESAF:attr.2">Desarguesian</a> <a onclick="hs(this)" href="javascript:()">PAPDESAF:def 3 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a> holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="papdesaf.html#V2" title="PAPDESAF:attr.2">Desarguesian</a>  iff  <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Olive" title="b1">IT</font> is  <a href="aff_2.html#V4" title="AFF_2:attr.4">Desarguesian</a>  );<br></span>
+</div>
+<br><div about="#DT4" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E7">Def4</font></span>   defines <a href="papdesaf.html#V3" title="PAPDESAF:attr.3">Moufangian</a> <a onclick="hs(this)" href="javascript:()">PAPDESAF:def 4 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a> holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="papdesaf.html#V3" title="PAPDESAF:attr.3">Moufangian</a>  iff  <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Olive" title="b1">IT</font> is  <a href="aff_2.html#V7" title="AFF_2:attr.7">Moufangian</a>  );<br></span>
+</div>
+<br><div about="#DT5" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E8">Def5</font></span>   defines <a href="papdesaf.html#V4" title="PAPDESAF:attr.4">translation</a> <a onclick="hs(this)" href="javascript:()">PAPDESAF:def 5 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a> holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="papdesaf.html#V4" title="PAPDESAF:attr.4">translation</a>  iff  <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Olive" title="b1">IT</font> is  <a href="aff_2.html#V11" title="AFF_2:attr.11">translational</a>  );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">OAS</font> be   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V5"><span class="kw">attr</span> </a><font color="Maroon" title="c1">OAS</font> is  <a href="papdesaf.html#V5" title="PAPDESAF:attr.5">satisfying_DES</a> <span class="kw"> means </span><a NAME="D6"><span class="comment"><font color="firebrick">:: PAPDESAF:def 6</font></span><br></a> for <font color="Olive" title="b1">o</font>, <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">a1</font>, <font color="Olive" title="b6">b1</font>, <font color="Olive" title="b7">c1</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">OAS</font>  st <font color="Olive" title="b1">o</font>,<font color="Olive" title="b2">a</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b1">o</font>,<font color="Olive" title="b5">a1</font> &amp; <font color="Olive" title="b1">o</font>,<font color="Olive" title="b3">b</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b1">o</font>,<font color="Olive" title="b6">b1</font> &amp; <font color="Olive" title="b1">o</font>,<font color="Olive" title="b4">c</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b1">o</font>,<font color="Olive" title="b7">c1</font> &amp;  not <font color="Olive" title="b1">o</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font> <a href="diraf.html#R3" title="DIRAF:pred.3">are_collinear</a>  &amp;  not <font color="Olive" title="b1">o</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font> <a href="diraf.html#R3" title="DIRAF:pred.3">are_collinear</a>  &amp; <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b5">a1</font>,<font color="Olive" title="b6">b1</font> &amp; <font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b5">a1</font>,<font color="Olive" title="b7">c1</font> holds <br><font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b6">b1</font>,<font color="Olive" title="b7">c1</font>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT6" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="papdesaf.html#V5" title="PAPDESAF:attr.5">satisfying_DES</a> <a onclick="hs(this)" href="javascript:()">PAPDESAF:def 6 : <br></a><span class="hide"> for <font color="Olive" title="b1">OAS</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a> holds <br> ( <font color="Olive" title="b1">OAS</font> is  <a href="papdesaf.html#V5" title="PAPDESAF:attr.5">satisfying_DES</a>  iff  for <font color="Olive" title="b2">o</font>, <font color="Olive" title="b3">a</font>, <font color="Olive" title="b4">b</font>, <font color="Olive" title="b5">c</font>, <font color="Olive" title="b6">a1</font>, <font color="Olive" title="b7">b1</font>, <font color="Olive" title="b8">c1</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">OAS</font>  st <font color="Olive" title="b2">o</font>,<font color="Olive" title="b3">a</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b6">a1</font> &amp; <font color="Olive" title="b2">o</font>,<font color="Olive" title="b4">b</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b7">b1</font> &amp; <font color="Olive" title="b2">o</font>,<font color="Olive" title="b5">c</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b8">c1</font> &amp;  not <font color="Olive" title="b2">o</font>,<font color="Olive" title="b3">a</font>,<font color="Olive" title="b4">b</font> <a href="diraf.html#R3" title="DIRAF:pred.3">are_collinear</a>  &amp;  not <font color="Olive" title="b2">o</font>,<font color="Olive" title="b3">a</font>,<font color="Olive" title="b5">c</font> <a href="diraf.html#R3" title="DIRAF:pred.3">are_collinear</a>  &amp; <font color="Olive" title="b3">a</font>,<font color="Olive" title="b4">b</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b6">a1</font>,<font color="Olive" title="b7">b1</font> &amp; <font color="Olive" title="b3">a</font>,<font color="Olive" title="b5">c</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b6">a1</font>,<font color="Olive" title="b8">c1</font> holds <br><font color="Olive" title="b4">b</font>,<font color="Olive" title="b5">c</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b7">b1</font>,<font color="Olive" title="b8">c1</font> );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">OAS</font> be   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V6"><span class="kw">attr</span> </a><font color="Maroon" title="c1">OAS</font> is  <a href="papdesaf.html#V6" title="PAPDESAF:attr.6">satisfying_DES_1</a> <span class="kw"> means </span><a NAME="D7"><span class="comment"><font color="firebrick">:: PAPDESAF:def 7</font></span><br></a> for <font color="Olive" title="b1">o</font>, <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">a1</font>, <font color="Olive" title="b6">b1</font>, <font color="Olive" title="b7">c1</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">OAS</font>  st <font color="Olive" title="b2">a</font>,<font color="Olive" title="b1">o</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b1">o</font>,<font color="Olive" title="b5">a1</font> &amp; <font color="Olive" title="b3">b</font>,<font color="Olive" title="b1">o</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b1">o</font>,<font color="Olive" title="b6">b1</font> &amp; <font color="Olive" title="b4">c</font>,<font color="Olive" title="b1">o</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b1">o</font>,<font color="Olive" title="b7">c1</font> &amp;  not <font color="Olive" title="b1">o</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font> <a href="diraf.html#R3" title="DIRAF:pred.3">are_collinear</a>  &amp;  not <font color="Olive" title="b1">o</font>,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font> <a href="diraf.html#R3" title="DIRAF:pred.3">are_collinear</a>  &amp; <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b6">b1</font>,<font color="Olive" title="b5">a1</font> &amp; <font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b7">c1</font>,<font color="Olive" title="b5">a1</font> holds <br><font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b7">c1</font>,<font color="Olive" title="b6">b1</font>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT7" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="papdesaf.html#V6" title="PAPDESAF:attr.6">satisfying_DES_1</a> <a onclick="hs(this)" href="javascript:()">PAPDESAF:def 7 : <br></a><span class="hide"> for <font color="Olive" title="b1">OAS</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a> holds <br> ( <font color="Olive" title="b1">OAS</font> is  <a href="papdesaf.html#V6" title="PAPDESAF:attr.6">satisfying_DES_1</a>  iff  for <font color="Olive" title="b2">o</font>, <font color="Olive" title="b3">a</font>, <font color="Olive" title="b4">b</font>, <font color="Olive" title="b5">c</font>, <font color="Olive" title="b6">a1</font>, <font color="Olive" title="b7">b1</font>, <font color="Olive" title="b8">c1</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">OAS</font>  st <font color="Olive" title="b3">a</font>,<font color="Olive" title="b2">o</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b6">a1</font> &amp; <font color="Olive" title="b4">b</font>,<font color="Olive" title="b2">o</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b7">b1</font> &amp; <font color="Olive" title="b5">c</font>,<font color="Olive" title="b2">o</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b8">c1</font> &amp;  not <font color="Olive" title="b2">o</font>,<font color="Olive" title="b3">a</font>,<font color="Olive" title="b4">b</font> <a href="diraf.html#R3" title="DIRAF:pred.3">are_collinear</a>  &amp;  not <font color="Olive" title="b2">o</font>,<font color="Olive" title="b3">a</font>,<font color="Olive" title="b5">c</font> <a href="diraf.html#R3" title="DIRAF:pred.3">are_collinear</a>  &amp; <font color="Olive" title="b3">a</font>,<font color="Olive" title="b4">b</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b7">b1</font>,<font color="Olive" title="b6">a1</font> &amp; <font color="Olive" title="b3">a</font>,<font color="Olive" title="b5">c</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b8">c1</font>,<font color="Olive" title="b6">a1</font> holds <br><font color="Olive" title="b4">b</font>,<font color="Olive" title="b5">c</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b8">c1</font>,<font color="Olive" title="b7">b1</font> );<br></span>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E9">Th6</font></span>: <a NAME="T6"><span class="comment"><font color="firebrick">:: PAPDESAF:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">OAS</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a>  st <font color="Olive" title="b1">OAS</font> is  <a href="papdesaf.html#V6" title="PAPDESAF:attr.6">satisfying_DES_1</a>  holds <br><font color="Olive" title="b1">OAS</font> is  <a href="papdesaf.html#V5" title="PAPDESAF:attr.5">satisfying_DES</a> </div>
+<div about="#PF12" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/12')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/12')" href="javascript:()" title="12"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E10">Th7</font></span>: <a NAME="T7"><span class="comment"><font color="firebrick">:: PAPDESAF:7</font></span><br></a><div class="add"> for <font color="Olive" title="b1">OAS</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a><br>  for <font color="Olive" title="b2">o</font>, <font color="Olive" title="b3">a</font>, <font color="Olive" title="b4">b</font>, <font color="Olive" title="b5">a9</font>, <font color="Olive" title="b6">b9</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">OAS</font>  st  not <font color="Olive" title="b2">o</font>,<font color="Olive" title="b3">a</font>,<font color="Olive" title="b4">b</font> <a href="diraf.html#R3" title="DIRAF:pred.3">are_collinear</a>  &amp; <font color="Olive" title="b3">a</font>,<font color="Olive" title="b2">o</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b5">a9</font> &amp; <font color="Olive" title="b2">o</font>,<font color="Olive" title="b4">b</font>,<font color="Olive" title="b6">b9</font> <a href="diraf.html#R3" title="DIRAF:pred.3">are_collinear</a>  &amp; <font color="Olive" title="b3">a</font>,<font color="Olive" title="b4">b</font> <a href="diraf.html#R2" title="DIRAF:pred.2">'||'</a> <font color="Olive" title="b5">a9</font>,<font color="Olive" title="b6">b9</font> holds <br>( <font color="Olive" title="b4">b</font>,<font color="Olive" title="b2">o</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b6">b9</font> &amp; <font color="Olive" title="b3">a</font>,<font color="Olive" title="b4">b</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b6">b9</font>,<font color="Olive" title="b5">a9</font> )</div>
+<div about="#PF13" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T7"></span><a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/13')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/13')" href="javascript:()" title="13"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E11">Th8</font></span>: <a NAME="T8"><span class="comment"><font color="firebrick">:: PAPDESAF:8</font></span><br></a><div class="add"> for <font color="Olive" title="b1">OAS</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a><br>  for <font color="Olive" title="b2">o</font>, <font color="Olive" title="b3">a</font>, <font color="Olive" title="b4">b</font>, <font color="Olive" title="b5">a9</font>, <font color="Olive" title="b6">b9</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">OAS</font>  st  not <font color="Olive" title="b2">o</font>,<font color="Olive" title="b3">a</font>,<font color="Olive" title="b4">b</font> <a href="diraf.html#R3" title="DIRAF:pred.3">are_collinear</a>  &amp; <font color="Olive" title="b2">o</font>,<font color="Olive" title="b3">a</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b5">a9</font> &amp; <font color="Olive" title="b2">o</font>,<font color="Olive" title="b4">b</font>,<font color="Olive" title="b6">b9</font> <a href="diraf.html#R3" title="DIRAF:pred.3">are_collinear</a>  &amp; <font color="Olive" title="b3">a</font>,<font color="Olive" title="b4">b</font> <a href="diraf.html#R2" title="DIRAF:pred.2">'||'</a> <font color="Olive" title="b5">a9</font>,<font color="Olive" title="b6">b9</font> holds <br>( <font color="Olive" title="b2">o</font>,<font color="Olive" title="b4">b</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b6">b9</font> &amp; <font color="Olive" title="b3">a</font>,<font color="Olive" title="b4">b</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b5">a9</font>,<font color="Olive" title="b6">b9</font> )</div>
+<div about="#PF14" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/14')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/14')" href="javascript:()" title="14"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E12">Th9</font></span>: <a NAME="T9"><span class="comment"><font color="firebrick">:: PAPDESAF:9</font></span><br></a><div class="add"> for <font color="Olive" title="b1">OAP</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a>  st <font color="Olive" title="b1">OAP</font> is  <a href="papdesaf.html#V6" title="PAPDESAF:attr.6">satisfying_DES_1</a>  holds <br> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Olive" title="b1">OAP</font> is  <a href="aff_2.html#V4" title="AFF_2:attr.4">Desarguesian</a> </div>
+<div about="#PF15" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T9"></span><a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/15')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/15')" href="javascript:()" title="15"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E13">Th10</font></span>: <a NAME="T10"><span class="comment"><font color="firebrick">:: PAPDESAF:10</font></span><br></a><div class="add"> for <font color="Olive" title="b1">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b2">o</font>, <font color="Olive" title="b3">u</font>, <font color="Olive" title="b4">v</font>, <font color="Olive" title="b5">u1</font>, <font color="Olive" title="b6">v1</font> being   <a href="rlvect_1.html#NM1" title="RLVECT_1:NM.1">VECTOR</a> of <font color="Olive" title="b1">V</font><br>  for <font color="Olive" title="b7">r</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>  st <font color="Olive" title="b2">o</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b3">u</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b7">r</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <span class="p1">(<span class="default"><font color="Olive" title="b5">u1</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b2">o</font></span>)</span> &amp; <font color="Olive" title="b7">r</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; <font color="Olive" title="b2">o</font>,<font color="Olive" title="b4">v</font> <a href="geomtrap.html#R1" title="GEOMTRAP:pred.1">'||'</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b6">v1</font> &amp;  not <font color="Olive" title="b2">o</font>,<font color="Olive" title="b3">u</font> <a href="geomtrap.html#R1" title="GEOMTRAP:pred.1">'||'</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b4">v</font> &amp; <font color="Olive" title="b3">u</font>,<font color="Olive" title="b4">v</font> <a href="geomtrap.html#R1" title="GEOMTRAP:pred.1">'||'</a> <font color="Olive" title="b5">u1</font>,<font color="Olive" title="b6">v1</font> holds <br>( <font color="Olive" title="b6">v1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">u1</font> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <font color="Olive" title="b7">r</font></span>)</span> <a href="xcmplx_0.html#K5" title="XCMPLX_0:func.5">"</a></span>)</span> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <span class="p2">(<span class="default"><font color="Olive" title="b4">v</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b3">u</font></span>)</span></span>)</span> &amp; <font color="Olive" title="b6">v1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">o</font> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <font color="Olive" title="b7">r</font></span>)</span> <a href="xcmplx_0.html#K5" title="XCMPLX_0:func.5">"</a></span>)</span> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <span class="p2">(<span class="default"><font color="Olive" title="b4">v</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b2">o</font></span>)</span></span>)</span> &amp; <font color="Olive" title="b4">v</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b3">u</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <font color="Olive" title="b7">r</font></span>)</span> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <span class="p1">(<span class="default"><font color="Olive" title="b6">v1</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b5">u1</font></span>)</span> )</div>
+<div about="#PF16" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T10"></span><a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/16')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/16')" href="javascript:()" title="16"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E18"></a><span class="lab"><font color="Green" title="E14">Lm1</font></span>: <span about="#E18" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b2">u</font>, <font color="Olive" title="b3">v</font>, <font color="Olive" title="b4">w</font> being   <a href="rlvect_1.html#NM1" title="RLVECT_1:NM.1">VECTOR</a> of <font color="Olive" title="b1">V</font>  st <font color="Olive" title="b2">u</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b3">v</font> &amp; <font color="Olive" title="b4">w</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b3">v</font> &amp; <font color="Olive" title="b2">u</font>,<font color="Olive" title="b3">v</font> <a href="analoaf.html#R1" title="ANALOAF:pred.1">//</a> <font color="Olive" title="b3">v</font>,<font color="Olive" title="b4">w</font> holds <br> ex <font color="Olive" title="b5">r</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> st <br>( <font color="Olive" title="b3">v</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b2">u</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">r</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">w</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b3">v</font></span>)</span> &amp;  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b5">r</font> )
+ </span><br><div about="#PF17" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E18"></span><a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/17')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/17')" href="javascript:()" title="17"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E15">Th11</font></span>: <a NAME="T11"><span class="comment"><font color="firebrick">:: PAPDESAF:11</font></span><br></a><div class="add"> for <font color="Olive" title="b1">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b2">OAS</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a>  st <font color="Olive" title="b2">OAS</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="analoaf.html#K2" title="ANALOAF:func.2">OASpace</a> <font color="Olive" title="b1">V</font> holds <br><font color="Olive" title="b2">OAS</font> is  <a href="papdesaf.html#V6" title="PAPDESAF:attr.6">satisfying_DES_1</a> </div>
+<div about="#PF18" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/18')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/18')" href="javascript:()" title="18"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T12"><span class="comment"><font color="firebrick">:: PAPDESAF:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b2">OAS</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a>  st <font color="Olive" title="b2">OAS</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="analoaf.html#K2" title="ANALOAF:func.2">OASpace</a> <font color="Olive" title="b1">V</font> holds <br>( <font color="Olive" title="b2">OAS</font> is  <a href="papdesaf.html#V6" title="PAPDESAF:attr.6">satisfying_DES_1</a>  &amp; <font color="Olive" title="b2">OAS</font> is  <a href="papdesaf.html#V5" title="PAPDESAF:attr.5">satisfying_DES</a>  ) <span class="kw">by</span> <span class="lab"><a class="ref" href="papdesaf.html#T6" target="_self" onmouseover="rs('papdesaf/T6')" onmouseout="rh()">Th6</a>, <a class="ref" href="papdesaf.html#T11" target="_self" onmouseover="rs('papdesaf/T11')" onmouseout="rh()">Th11</a></span>;<br>
+</div>
+</div>
+<br><a NAME="E21"></a><span class="lab"><font color="Green" title="E16">Lm2</font></span>: <span about="#E21" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b2">y</font>, <font color="Olive" title="b3">u</font>, <font color="Olive" title="b4">v</font> being   <a href="rlvect_1.html#NM1" title="RLVECT_1:NM.1">VECTOR</a> of <font color="Olive" title="b1">V</font>  st <font color="Olive" title="b2">y</font>,<font color="Olive" title="b3">u</font> <a href="geomtrap.html#R1" title="GEOMTRAP:pred.1">'||'</a> <font color="Olive" title="b2">y</font>,<font color="Olive" title="b4">v</font> &amp; <font color="Olive" title="b2">y</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b3">u</font> &amp; <font color="Olive" title="b2">y</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b4">v</font> holds <br> ex <font color="Olive" title="b5">r</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> st <br>( <font color="Olive" title="b3">u</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b2">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">r</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">v</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b2">y</font></span>)</span> &amp; <font color="Olive" title="b5">r</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  )
+ </span><br><div about="#PF19" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E21"></span><a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/19')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/19')" href="javascript:()" title="19"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E22"></a><span class="lab"><font color="Green" title="E17">Lm3</font></span>: <span about="#E22" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b2">u</font>, <font color="Olive" title="b3">v</font>, <font color="Olive" title="b4">y</font> being   <a href="rlvect_1.html#NM1" title="RLVECT_1:NM.1">VECTOR</a> of <font color="Olive" title="b1">V</font> holds  <span class="p1">(<span class="default"><font color="Olive" title="b2">u</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b4">y</font></span>)</span> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">v</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b4">y</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">u</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b3">v</font>
+ </span><br><div about="#PF20" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E22"></span><a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/20')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/20')" href="javascript:()" title="20"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E18">Th13</font></span>: <a NAME="T13"><span class="comment"><font color="firebrick">:: PAPDESAF:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b2">OAS</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a>  st <font color="Olive" title="b2">OAS</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="analoaf.html#K2" title="ANALOAF:func.2">OASpace</a> <font color="Olive" title="b1">V</font> holds <br> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Olive" title="b2">OAS</font> is  <a href="aff_2.html#V2" title="AFF_2:attr.2">Pappian</a> </div>
+<div about="#PF21" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T13"></span><a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/21')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/21')" href="javascript:()" title="21"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E19">Th14</font></span>: <a NAME="T14"><span class="comment"><font color="firebrick">:: PAPDESAF:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b2">OAS</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a>  st <font color="Olive" title="b2">OAS</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="analoaf.html#K2" title="ANALOAF:func.2">OASpace</a> <font color="Olive" title="b1">V</font> holds <br> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Olive" title="b2">OAS</font> is  <a href="aff_2.html#V4" title="AFF_2:attr.4">Desarguesian</a>  <span class="kw">by</span> <span class="lab"><a class="ref" href="papdesaf.html#T9" target="_self" onmouseover="rs('papdesaf/T9')" onmouseout="rh()">Th9</a>, <a class="ref" href="papdesaf.html#T11" target="_self" onmouseover="rs('papdesaf/T11')" onmouseout="rh()">Th11</a></span>;<br>
+</div>
+</div>
+<br><div about="#T15" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E20">Th15</font></span>: <a NAME="T15"><span class="comment"><font color="firebrick">:: PAPDESAF:15</font></span><br></a><div class="add"> for <font color="Olive" title="b1">AS</font> being   <a href="diraf.html#NM1" title="DIRAF:NM.1">AffinSpace</a>  st <font color="Olive" title="b1">AS</font> is  <a href="aff_2.html#V4" title="AFF_2:attr.4">Desarguesian</a>  holds <br><font color="Olive" title="b1">AS</font> is  <a href="aff_2.html#V7" title="AFF_2:attr.7">Moufangian</a> </div>
+<div about="#PF22" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/22')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/22')" href="javascript:()" title="22"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T16" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E21">Th16</font></span>: <a NAME="T16"><span class="comment"><font color="firebrick">:: PAPDESAF:16</font></span><br></a><div class="add"> for <font color="Olive" title="b1">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b2">OAS</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a>  st <font color="Olive" title="b2">OAS</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="analoaf.html#K2" title="ANALOAF:func.2">OASpace</a> <font color="Olive" title="b1">V</font> holds <br> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Olive" title="b2">OAS</font> is  <a href="aff_2.html#V7" title="AFF_2:attr.7">Moufangian</a> </div>
+<div about="#PF23" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T16"></span><a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/23')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/23')" href="javascript:()" title="23"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T17" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E22">Th17</font></span>: <a NAME="T17"><span class="comment"><font color="firebrick">:: PAPDESAF:17</font></span><br></a><div class="add"> for <font color="Olive" title="b1">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b2">OAS</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a>  st <font color="Olive" title="b2">OAS</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="analoaf.html#K2" title="ANALOAF:func.2">OASpace</a> <font color="Olive" title="b1">V</font> holds <br> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Olive" title="b2">OAS</font> is  <a href="aff_2.html#V11" title="AFF_2:attr.11">translational</a> </div>
+<div about="#PF24" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T17"></span><a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/24')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/24')" href="javascript:()" title="24"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T18" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E23">Th18</font></span>: <a NAME="T18"><span class="comment"><font color="firebrick">:: PAPDESAF:18</font></span><br></a><div class="add"> for <font color="Olive" title="b1">OAS</font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a> holds   <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Olive" title="b1">OAS</font> is  <a href="translac.html#V1" title="TRANSLAC:attr.1">Fanoian</a> </div>
+<div about="#PF25" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T18"></span><a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/25')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/25')" href="javascript:()" title="25"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC1" typeof="oo:Theorem">
+<a NAME="RC1"><span class="kw">cluster </span></a><a href="struct_0.html#V2" title="STRUCT_0:attr.2">V54</a>()  non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>   <a href="analoaf.html#V2" title="ANALOAF:attr.2">OAffinSpace-like</a>   <a href="papdesaf.html#V1" title="PAPDESAF:attr.1">Pappian</a>   <a href="papdesaf.html#V2" title="PAPDESAF:attr.2">Desarguesian</a>   <a href="papdesaf.html#V3" title="PAPDESAF:attr.3">Moufangian</a>   <a href="papdesaf.html#V4" title="PAPDESAF:attr.4">translation</a>   for    <a href="analoaf.html#L1" title="ANALOAF:struct.1">AffinStruct</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:26_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a> st <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="papdesaf.html#V1" title="PAPDESAF:attr.1">Pappian</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="papdesaf.html#V2" title="PAPDESAF:attr.2">Desarguesian</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="papdesaf.html#V3" title="PAPDESAF:attr.3">Moufangian</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="papdesaf.html#V4" title="PAPDESAF:attr.4">translation</a>  )
+ </span><div about="#PF26_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/26_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/26_1_1')" href="javascript:()" title="26_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC2" typeof="oo:Theorem">
+<a NAME="RC2"><span class="kw">cluster </span></a><a href="struct_0.html#V2" title="STRUCT_0:attr.2">V54</a>()  non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>   <a href="analoaf.html#V1" title="ANALOAF:attr.1">strict</a>   <a href="diraf.html#V1" title="DIRAF:attr.1">AffinSpace-like</a>   <a href="diraf.html#V2" title="DIRAF:attr.2">2-dimensional</a>   <a href="aff_2.html#V2" title="AFF_2:attr.2">Pappian</a>   <a href="aff_2.html#V4" title="AFF_2:attr.4">Desarguesian</a>   <a href="aff_2.html#V7" title="AFF_2:attr.7">Moufangian</a>   <a href="aff_2.html#V11" title="AFF_2:attr.11">translational</a>   <a href="translac.html#V1" title="TRANSLAC:attr.1">Fanoian</a>   for    <a href="analoaf.html#L1" title="ANALOAF:struct.1">AffinStruct</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:27_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="diraf.html#NM2" title="DIRAF:NM.2">AffinPlane</a> st <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="analoaf.html#V1" title="ANALOAF:attr.1">strict</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="translac.html#V1" title="TRANSLAC:attr.1">Fanoian</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="aff_2.html#V2" title="AFF_2:attr.2">Pappian</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="aff_2.html#V4" title="AFF_2:attr.4">Desarguesian</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="aff_2.html#V7" title="AFF_2:attr.7">Moufangian</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="aff_2.html#V11" title="AFF_2:attr.11">translational</a>  )
+ </span><div about="#PF27_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/27_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/27_1_1')" href="javascript:()" title="27_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC3" typeof="oo:Theorem">
+<a NAME="RC3"><span class="kw">cluster </span></a><a href="struct_0.html#V2" title="STRUCT_0:attr.2">V54</a>()  non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>   <a href="analoaf.html#V1" title="ANALOAF:attr.1">strict</a>   <a href="diraf.html#V1" title="DIRAF:attr.1">AffinSpace-like</a>   <a href="aff_2.html#V2" title="AFF_2:attr.2">Pappian</a>   <a href="aff_2.html#V4" title="AFF_2:attr.4">Desarguesian</a>   <a href="aff_2.html#V7" title="AFF_2:attr.7">Moufangian</a>   <a href="aff_2.html#V11" title="AFF_2:attr.11">translational</a>   <a href="translac.html#V1" title="TRANSLAC:attr.1">Fanoian</a>   for    <a href="analoaf.html#L1" title="ANALOAF:struct.1">AffinStruct</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:28_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="diraf.html#NM1" title="DIRAF:NM.1">AffinSpace</a> st <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="analoaf.html#V1" title="ANALOAF:attr.1">strict</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="translac.html#V1" title="TRANSLAC:attr.1">Fanoian</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="aff_2.html#V2" title="AFF_2:attr.2">Pappian</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="aff_2.html#V4" title="AFF_2:attr.4">Desarguesian</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="aff_2.html#V7" title="AFF_2:attr.7">Moufangian</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="aff_2.html#V11" title="AFF_2:attr.11">translational</a>  )
+ </span><div about="#PF28_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/papdesaf/28_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/papdesaf/28_1_1')" href="javascript:()" title="28_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">OAS</font> be   <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a>;<br>
+<div about="#FC3" typeof="oo:Theorem">
+<a NAME="FC3"><span class="kw">cluster </span></a> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Maroon" title="c1">OAS</font><span class="kw"> -&gt; </span> <a href="translac.html#V1" title="TRANSLAC:attr.1">Fanoian</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Maroon" title="c1">OAS</font> is  <a href="translac.html#V1" title="TRANSLAC:attr.1">Fanoian</a> </span>;<br></span><span class="kw">by</span> <span class="lab"><a class="ref" href="papdesaf.html#T18" target="_self" onmouseover="rs('papdesaf/T18')" onmouseout="rh()">Th18</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">OAS</font> be   <a href="papdesaf.html#V1" title="PAPDESAF:attr.1">Pappian</a>  <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a>;<br>
+<div about="#FC4" typeof="oo:Theorem">
+<a NAME="FC4"><span class="kw">cluster </span></a> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Maroon" title="c1">OAS</font><span class="kw"> -&gt; </span> <a href="aff_2.html#V2" title="AFF_2:attr.2">Pappian</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Maroon" title="c1">OAS</font> is  <a href="aff_2.html#V2" title="AFF_2:attr.2">Pappian</a> </span>;<br></span><span class="kw">by</span> <span class="lab"><a class="ref" href="papdesaf.html#D2" target="_self" onmouseover="rs('papdesaf/D2')" onmouseout="rh()">Def2</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">OAS</font> be   <a href="papdesaf.html#V2" title="PAPDESAF:attr.2">Desarguesian</a>  <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a>;<br>
+<div about="#FC5" typeof="oo:Theorem">
+<a NAME="FC5"><span class="kw">cluster </span></a> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Maroon" title="c1">OAS</font><span class="kw"> -&gt; </span> <a href="aff_2.html#V4" title="AFF_2:attr.4">Desarguesian</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Maroon" title="c1">OAS</font> is  <a href="aff_2.html#V4" title="AFF_2:attr.4">Desarguesian</a> </span>;<br></span><span class="kw">by</span> <span class="lab"><a class="ref" href="papdesaf.html#D3" target="_self" onmouseover="rs('papdesaf/D3')" onmouseout="rh()">Def3</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">OAS</font> be   <a href="papdesaf.html#V3" title="PAPDESAF:attr.3">Moufangian</a>  <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a>;<br>
+<div about="#FC6" typeof="oo:Theorem">
+<a NAME="FC6"><span class="kw">cluster </span></a> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Maroon" title="c1">OAS</font><span class="kw"> -&gt; </span> <a href="aff_2.html#V7" title="AFF_2:attr.7">Moufangian</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Maroon" title="c1">OAS</font> is  <a href="aff_2.html#V7" title="AFF_2:attr.7">Moufangian</a> </span>;<br></span><span class="kw">by</span> <span class="lab"><a class="ref" href="papdesaf.html#D4" target="_self" onmouseover="rs('papdesaf/D4')" onmouseout="rh()">Def4</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">OAS</font> be   <a href="papdesaf.html#V4" title="PAPDESAF:attr.4">translation</a>  <a href="analoaf.html#NM1" title="ANALOAF:NM.1">OAffinSpace</a>;<br>
+<div about="#FC7" typeof="oo:Theorem">
+<a NAME="FC7"><span class="kw">cluster </span></a> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Maroon" title="c1">OAS</font><span class="kw"> -&gt; </span> <a href="aff_2.html#V11" title="AFF_2:attr.11">translational</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="diraf.html#K2" title="DIRAF:func.2">Lambda</a> <font color="Maroon" title="c1">OAS</font> is  <a href="aff_2.html#V11" title="AFF_2:attr.11">translational</a> </span>;<br></span><span class="kw">by</span> <span class="lab"><a class="ref" href="papdesaf.html#D5" target="_self" onmouseover="rs('papdesaf/D5')" onmouseout="rh()">Def5</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+</body>
+</html>

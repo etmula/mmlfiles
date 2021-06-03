@@ -1,0 +1,444 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>POLYNOM6:  On polynomials with coefficients in a ring of polynomials</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  On polynomials with coefficients in a ring of polynomials</font></span><br><span class="comment"><font color="firebrick">:: by Barbara Dzienis</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received August 10, 2001</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 2001-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div>
+<span class="kw">notation</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L1</font>, <font color="Maroon" title="c2">L2</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="algstr_0.html#L6" title="ALGSTR_0:struct.6">doubleLoopStr</a> ;<br><a NAME="NR1"><span class="kw">synonym </span><font color="Maroon" title="c1">L1</font>,<font color="Maroon" title="c2">L2</font> <a href="quofield.html#R2" title="QUOFIELD:pred.2">are_isomorphic</a> </a><span class="kw"> for </span><font color="Maroon" title="c1">L1</font> <a href="quofield.html#R2" title="QUOFIELD:pred.2">is_ringisomorph_to</a> <font color="Maroon" title="c2">L2</font>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L1</font>, <font color="Maroon" title="c2">L2</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="algstr_0.html#L6" title="ALGSTR_0:struct.6">doubleLoopStr</a> ;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="quofield.html#R2" title="QUOFIELD:pred.2">are_isomorphic</a><br><span class="kw">redefine </span><a NAME="R1"><span class="kw">pred</span> </a><font color="Maroon" title="c1">L1</font> <a href="polynom6.html#R1" title="POLYNOM6:pred.1">is_ringisomorph_to</a> <font color="Maroon" title="c2">L2</font>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">reflexivity</span> </a><span class="hide"><br><a NAME="E1:2_1"></a>
+ for <font color="Olive" title="b1">L1</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="algstr_0.html#L6" title="ALGSTR_0:struct.6">doubleLoopStr</a>  holds  <a href="quofield.html#R2" title="QUOFIELD:pred.2">R86</a>(<font color="Olive">b<sub>1</sub></font>,<font color="Olive">b<sub>1</sub></font>)
+ </span><div about="#PF2_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/2_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/2_1_1')" href="javascript:()" title="2_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E1">Th1</font></span>: <a NAME="T1"><span class="comment"><font color="firebrick">:: POLYNOM6:1</font></span><br></a><div class="add"> for <font color="Olive" title="b1">o1</font>, <font color="Olive" title="b2">o2</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a><br>  for <font color="Olive" title="b3">B</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st (  for <font color="Olive" title="b4">x</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  holds <br> ( <font color="Olive" title="b4">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b3">B</font> iff  ex <font color="Olive" title="b5">o</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a> st <br>( <font color="Olive" title="b4">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b5">o</font> &amp; <font color="Olive" title="b5">o</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">o2</font> ) ) ) holds <br><font color="Olive" title="b1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b2">o2</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">o1</font> <a href="xboole_0.html#K2" title="XBOOLE_0:func.2">\/</a> <font color="Olive" title="b3">B</font>
+</div>
+<div about="#PF3" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/3')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/3')" href="javascript:()" title="3"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">o1</font> be   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">o2</font> be   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>;<br>
+<div about="#FC1" typeof="oo:Theorem">
+<a NAME="FC1"><span class="kw">cluster </span></a><font color="Maroon" title="c1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Maroon" title="c2">o2</font><span class="kw"> -&gt; </span> non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:4_1"></a>
+ not <font color="Maroon" title="c1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Maroon" title="c2">o2</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="ordinal3.html#T26" onmouseover="rs('ordinal3/T26')" onmouseout="rh()">ORDINAL3:26</a></span>;<br>
+
+<div about="#FC2" typeof="oo:Theorem">
+<a NAME="FC2"><span class="kw">cluster </span></a><font color="Maroon" title="c2">o2</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Maroon" title="c1">o1</font><span class="kw"> -&gt; </span> non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:4_2"></a>
+ not <font color="Maroon" title="c2">o2</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Maroon" title="c1">o1</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="ordinal3.html#T26" onmouseover="rs('ordinal3/T26')" onmouseout="rh()">ORDINAL3:26</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E2">Th2</font></span>: <a NAME="T2"><span class="comment"><font color="firebrick">:: POLYNOM6:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="pre_poly.html#NM2" title="PRE_POLY:NM.2">bag</a> of <font color="Olive" title="b1">n</font>  st <font color="Olive" title="b2">a</font> <a href="pre_poly.html#R1" title="PRE_POLY:pred.1">&lt;</a> <font color="Olive" title="b3">b</font> holds <br> ex <font color="Olive" title="b4">o</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a> st <br>( <font color="Olive" title="b4">o</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">n</font> &amp; <font color="Olive" title="b2">a</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">o</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b3">b</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">o</font> &amp; (  for <font color="Olive" title="b5">l</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b5">l</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b4">o</font> holds <br><font color="Olive" title="b2">a</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">l</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">b</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">l</font> ) )</div>
+<div about="#PF5" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/5')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/5')" href="javascript:()" title="5"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">o1</font>, <font color="Maroon" title="c2">o2</font> be   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>;<br><span class="kw">let </span><font color="Maroon" title="c3">a</font> be    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Maroon" title="c1">o1</font>;<br><span class="kw">let </span><font color="Maroon" title="c4">b</font> be    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Maroon" title="c2">o2</font>;<br><div about="#D3" typeof="oo:Definition">
+<a NAME="K1"><span class="kw">func</span> </a><font color="Maroon" title="c3">a</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Maroon" title="c4">b</font><span class="kw"> -&gt; </span>   <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Maroon" title="c2">o2</font></span>)</span><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E3">Def1</font></span>: <a NAME="D1"><span class="comment"><font color="firebrick">:: POLYNOM6:def 1</font></span><br></a> for <font color="Olive" title="b1">o</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a> holds <br> ( ( <font color="Olive" title="b1">o</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c1">o1</font> implies <span class="kw">it</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">o</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">a</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">o</font> ) &amp; ( <font color="Olive" title="b1">o</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Maroon" title="c2">o2</font></span>)</span> <a href="subset_1.html#K6" title="SUBSET_1:func.6">\</a> <font color="Maroon" title="c1">o1</font> implies <span class="kw">it</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">o</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">b</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">o</font> <a href="ordinal3.html#K5" title="ORDINAL3:func.5">-^</a> <font color="Maroon" title="c1">o1</font></span>)</span> ) );<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:6_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Maroon" title="c2">o2</font></span>)</span> st <br> for <font color="Olive" title="b2">o</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a> holds <br> ( ( <font color="Olive" title="b2">o</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c1">o1</font> implies <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">o</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">a</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">o</font> ) &amp; ( <font color="Olive" title="b2">o</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Maroon" title="c2">o2</font></span>)</span> <a href="subset_1.html#K6" title="SUBSET_1:func.6">\</a> <font color="Maroon" title="c1">o1</font> implies <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">o</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">b</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">o</font> <a href="ordinal3.html#K5" title="ORDINAL3:func.5">-^</a> <font color="Maroon" title="c1">o1</font></span>)</span> ) )
+ </span><div about="#PF6_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/6_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/6_1_1')" href="javascript:()" title="6_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:6_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Maroon" title="c2">o2</font></span>)</span>  st (  for <font color="Olive" title="b3">o</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a> holds <br> ( ( <font color="Olive" title="b3">o</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c1">o1</font> implies <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">o</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">a</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">o</font> ) &amp; ( <font color="Olive" title="b3">o</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Maroon" title="c2">o2</font></span>)</span> <a href="subset_1.html#K6" title="SUBSET_1:func.6">\</a> <font color="Maroon" title="c1">o1</font> implies <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">o</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">b</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">o</font> <a href="ordinal3.html#K5" title="ORDINAL3:func.5">-^</a> <font color="Maroon" title="c1">o1</font></span>)</span> ) ) ) &amp; (  for <font color="Olive" title="b3">o</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a> holds <br> ( ( <font color="Olive" title="b3">o</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c1">o1</font> implies <font color="Olive">b<sub>2</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">o</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">a</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">o</font> ) &amp; ( <font color="Olive" title="b3">o</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Maroon" title="c2">o2</font></span>)</span> <a href="subset_1.html#K6" title="SUBSET_1:func.6">\</a> <font color="Maroon" title="c1">o1</font> implies <font color="Olive">b<sub>2</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">o</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">b</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">o</font> <a href="ordinal3.html#K5" title="ORDINAL3:func.5">-^</a> <font color="Maroon" title="c1">o1</font></span>)</span> ) ) ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF6_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/6_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/6_1_2')" href="javascript:()" title="6_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E3">Def1</font></span>   defines <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <a onclick="hs(this)" href="javascript:()">POLYNOM6:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">o1</font>, <font color="Olive" title="b2">o2</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a><br>  for <font color="Olive" title="b3">a</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b1">o1</font><br>  for <font color="Olive" title="b4">b</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b2">o2</font><br>  for <font color="Olive">b<sub>5</sub></font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b2">o2</font></span>)</span> holds <br> ( <font color="Olive">b<sub>5</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">a</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b4">b</font> iff  for <font color="Olive" title="b6">o</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a> holds <br> ( ( <font color="Olive" title="b6">o</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">o1</font> implies <font color="Olive">b<sub>5</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b6">o</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">a</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b6">o</font> ) &amp; ( <font color="Olive" title="b6">o</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b2">o2</font></span>)</span> <a href="subset_1.html#K6" title="SUBSET_1:func.6">\</a> <font color="Olive" title="b1">o1</font> implies <font color="Olive">b<sub>5</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b6">o</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">b</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b6">o</font> <a href="ordinal3.html#K5" title="ORDINAL3:func.5">-^</a> <font color="Olive" title="b1">o1</font></span>)</span> ) ) );<br></span>
+</div>
+<br><div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E4">Th3</font></span>: <a NAME="T3"><span class="comment"><font color="firebrick">:: POLYNOM6:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">o1</font>, <font color="Olive" title="b2">o2</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a><br>  for <font color="Olive" title="b3">a</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b1">o1</font><br>  for <font color="Olive" title="b4">b</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b2">o2</font>  st <font color="Olive" title="b2">o2</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  holds <br><font color="Olive" title="b3">a</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b4">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">a</font>
+</div>
+<div about="#PF7" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/7')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/7')" href="javascript:()" title="7"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T4"><span class="comment"><font color="firebrick">:: POLYNOM6:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">o1</font>, <font color="Olive" title="b2">o2</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a><br>  for <font color="Olive" title="b3">a</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b1">o1</font><br>  for <font color="Olive" title="b4">b</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b2">o2</font>  st <font color="Olive" title="b1">o1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  holds <br><font color="Olive" title="b3">a</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b4">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">b</font>
+</div>
+<div about="#PF8" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T4"></span><a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/8')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/8')" href="javascript:()" title="8"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E5">Th5</font></span>: <a NAME="T5"><span class="comment"><font color="firebrick">:: POLYNOM6:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">o1</font>, <font color="Olive" title="b2">o2</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a><br>  for <font color="Olive" title="b3">b1</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b1">o1</font><br>  for <font color="Olive" title="b4">b2</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b2">o2</font> holds <br> ( <font color="Olive" title="b3">b1</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b4">b2</font> <a href="pboole.html#R6" title="PBOOLE:pred.6">=</a>  <a href="pre_poly.html#K16" title="PRE_POLY:func.16">EmptyBag</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b2">o2</font></span>)</span> iff ( <font color="Olive" title="b3">b1</font> <a href="pboole.html#R6" title="PBOOLE:pred.6">=</a>  <a href="pre_poly.html#K16" title="PRE_POLY:func.16">EmptyBag</a> <font color="Olive" title="b1">o1</font> &amp; <font color="Olive" title="b4">b2</font> <a href="pboole.html#R6" title="PBOOLE:pred.6">=</a>  <a href="pre_poly.html#K16" title="PRE_POLY:func.16">EmptyBag</a> <font color="Olive" title="b2">o2</font> ) )</div>
+<div about="#PF9" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/9')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/9')" href="javascript:()" title="9"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E6">Th6</font></span>: <a NAME="T6"><span class="comment"><font color="firebrick">:: POLYNOM6:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">o1</font>, <font color="Olive" title="b2">o2</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a><br>  for <font color="Olive" title="b3">c</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b2">o2</font></span>)</span>  ex <font color="Olive" title="b4">c1</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b1">o1</font> ex <font color="Olive" title="b5">c2</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b2">o2</font> st <font color="Olive" title="b3">c</font> <a href="pboole.html#R6" title="PBOOLE:pred.6">=</a> <font color="Olive" title="b4">c1</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b5">c2</font>
+</div>
+<div about="#PF10" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/10')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/10')" href="javascript:()" title="10"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E7">Th7</font></span>: <a NAME="T7"><span class="comment"><font color="firebrick">:: POLYNOM6:7</font></span><br></a><div class="add"> for <font color="Olive" title="b1">o1</font>, <font color="Olive" title="b2">o2</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a><br>  for <font color="Olive" title="b3">b1</font>, <font color="Olive" title="b4">c1</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b1">o1</font><br>  for <font color="Olive" title="b5">b2</font>, <font color="Olive" title="b6">c2</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b2">o2</font>  st <font color="Olive" title="b3">b1</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b5">b2</font> <a href="pboole.html#R6" title="PBOOLE:pred.6">=</a> <font color="Olive" title="b4">c1</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b6">c2</font> holds <br>( <font color="Olive" title="b3">b1</font> <a href="pboole.html#R6" title="PBOOLE:pred.6">=</a> <font color="Olive" title="b4">c1</font> &amp; <font color="Olive" title="b5">b2</font> <a href="pboole.html#R6" title="PBOOLE:pred.6">=</a> <font color="Olive" title="b6">c2</font> )</div>
+<div about="#PF11" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T7"></span><a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/11')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/11')" href="javascript:()" title="11"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E8">Th8</font></span>: <a NAME="T8"><span class="comment"><font color="firebrick">:: POLYNOM6:8</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a><br>  for <font color="Olive" title="b2">L</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="algstr_0.html#V13" title="ALGSTR_0:attr.13">right_complementable</a>   <a href="rlvect_1.html#V2" title="RLVECT_1:attr.2">Abelian</a>   <a href="rlvect_1.html#V3" title="RLVECT_1:attr.3">add-associative</a>   <a href="rlvect_1.html#V4" title="RLVECT_1:attr.4">right_zeroed</a>   <a href="group_1.html#V3" title="GROUP_1:attr.3">associative</a>   <a href="vectsp_1.html#V5" title="VECTSP_1:attr.5">distributive</a>   <a href="algstr_0.html#L6" title="ALGSTR_0:struct.6">doubleLoopStr</a> <br>  for <font color="Olive" title="b3">p</font>, <font color="Olive" title="b4">q</font>, <font color="Olive" title="b5">r</font> being   <a href="polynom1.html#NM1" title="POLYNOM1:NM.1">Series</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">L</font> holds  <span class="p1">(<span class="default"><font color="Olive" title="b3">p</font> <a href="polynom1.html#K6" title="POLYNOM1:func.6">+</a> <font color="Olive" title="b4">q</font></span>)</span> <a href="polynom1.html#K10" title="POLYNOM1:func.10">*'</a> <font color="Olive" title="b5">r</font> <a href="funct_2.html#R2" title="FUNCT_2:pred.2">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">p</font> <a href="polynom1.html#K10" title="POLYNOM1:func.10">*'</a> <font color="Olive" title="b5">r</font></span>)</span> <a href="polynom1.html#K6" title="POLYNOM1:func.6">+</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">q</font> <a href="polynom1.html#K10" title="POLYNOM1:func.10">*'</a> <font color="Olive" title="b5">r</font></span>)</span>
+</div>
+<div about="#PF12" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/12')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/12')" href="javascript:()" title="12"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">L</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>   <a href="algstr_0.html#V13" title="ALGSTR_0:attr.13">right_complementable</a>   <a href="rlvect_1.html#V2" title="RLVECT_1:attr.2">Abelian</a>   <a href="rlvect_1.html#V3" title="RLVECT_1:attr.3">add-associative</a>   <a href="rlvect_1.html#V4" title="RLVECT_1:attr.4">right_zeroed</a>   <a href="group_1.html#V3" title="GROUP_1:attr.3">associative</a>   <a href="vectsp_1.html#V4" title="VECTSP_1:attr.4">well-unital</a>   <a href="vectsp_1.html#V5" title="VECTSP_1:attr.5">distributive</a>   <a href="algstr_0.html#L6" title="ALGSTR_0:struct.6">doubleLoopStr</a> ;<br>
+<div about="#FC3" typeof="oo:Theorem">
+<a NAME="FC3"><span class="kw">cluster </span></a> <a href="polynom1.html#K12" title="POLYNOM1:func.12">Polynom-Ring</a> (<font color="Maroon" title="c1">n</font>,<font color="Maroon" title="c2">L</font>)<span class="kw"> -&gt; </span> non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>   <a href="vectsp_1.html#V5" title="VECTSP_1:attr.5">distributive</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:13_1"></a>
+(  not  <a href="polynom1.html#K12" title="POLYNOM1:func.12">Polynom-Ring</a> (<font color="Maroon" title="c1">n</font>,<font color="Maroon" title="c2">L</font>) is  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  &amp;  <a href="polynom1.html#K12" title="POLYNOM1:func.12">Polynom-Ring</a> (<font color="Maroon" title="c1">n</font>,<font color="Maroon" title="c2">L</font>) is  <a href="vectsp_1.html#V5" title="VECTSP_1:attr.5">distributive</a>  )
+ </span><div about="#PF13_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/13_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/13_1_1')" href="javascript:()" title="13_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">o1</font>, <font color="Maroon" title="c2">o2</font> be   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>;<br><span class="kw">let </span><font color="Maroon" title="c3">L</font> be   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>   <a href="algstr_0.html#V13" title="ALGSTR_0:attr.13">right_complementable</a>   <a href="rlvect_1.html#V3" title="RLVECT_1:attr.3">add-associative</a>   <a href="rlvect_1.html#V4" title="RLVECT_1:attr.4">right_zeroed</a>   <a href="vectsp_1.html#V4" title="VECTSP_1:attr.4">well-unital</a>   <a href="vectsp_1.html#V5" title="VECTSP_1:attr.5">distributive</a>   <a href="algstr_0.html#L6" title="ALGSTR_0:struct.6">doubleLoopStr</a> ;<br><span class="kw">let </span><font color="Maroon" title="c4">P</font> be   <a href="polynom1.html#NM2" title="POLYNOM1:NM.2">Polynomial</a> of <font color="Maroon" title="c1">o1</font>,<span class="p1">(<span class="default"><a href="polynom1.html#K12" title="POLYNOM1:func.12">Polynom-Ring</a> (<font color="Maroon" title="c2">o2</font>,<font color="Maroon" title="c3">L</font>)</span>)</span>;<br><div about="#D9" typeof="oo:Definition">
+<a NAME="K2"><span class="kw">func</span> </a> <a href="polynom6.html#K2" title="POLYNOM6:func.2">Compress</a> <font color="Maroon" title="c4">P</font><span class="kw"> -&gt; </span>  <a href="polynom1.html#NM2" title="POLYNOM1:NM.2">Polynomial</a> of <span class="p1">(<span class="default"><font color="Maroon" title="c1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Maroon" title="c2">o2</font></span>)</span>,<font color="Maroon" title="c3">L</font><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E9">Def2</font></span>: <a NAME="D2"><span class="comment"><font color="firebrick">:: POLYNOM6:def 2</font></span><br></a> for <font color="Olive" title="b1">b</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Maroon" title="c2">o2</font></span>)</span>  ex <font color="Olive" title="b2">b1</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Maroon" title="c1">o1</font> ex <font color="Olive" title="b3">b2</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Maroon" title="c2">o2</font> ex <font color="Olive" title="b4">Q1</font> being   <a href="polynom1.html#NM2" title="POLYNOM1:NM.2">Polynomial</a> of <font color="Maroon" title="c2">o2</font>,<font color="Maroon" title="c3">L</font> st <br>( <font color="Olive" title="b4">Q1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">P</font> <a href="polynom1.html#K4" title="POLYNOM1:func.4">.</a> <font color="Olive" title="b2">b1</font> &amp; <font color="Olive" title="b1">b</font> <a href="pboole.html#R8" title="PBOOLE:pred.8">=</a> <font color="Olive" title="b2">b1</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b3">b2</font> &amp; <span class="kw">it</span> <a href="polynom1.html#K4" title="POLYNOM1:func.4">.</a> <font color="Olive" title="b1">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">Q1</font> <a href="polynom1.html#K4" title="POLYNOM1:func.4">.</a> <font color="Olive" title="b3">b2</font> );<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:14_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="polynom1.html#NM2" title="POLYNOM1:NM.2">Polynomial</a> of <span class="p1">(<span class="default"><font color="Maroon" title="c1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Maroon" title="c2">o2</font></span>)</span>,<font color="Maroon" title="c3">L</font> st <br> for <font color="Olive" title="b2">b</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Maroon" title="c2">o2</font></span>)</span>  ex <font color="Olive" title="b3">b1</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Maroon" title="c1">o1</font> ex <font color="Olive" title="b4">b2</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Maroon" title="c2">o2</font> ex <font color="Olive" title="b5">Q1</font> being   <a href="polynom1.html#NM2" title="POLYNOM1:NM.2">Polynomial</a> of <font color="Maroon" title="c2">o2</font>,<font color="Maroon" title="c3">L</font> st <br>( <font color="Olive" title="b5">Q1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">P</font> <a href="polynom1.html#K4" title="POLYNOM1:func.4">.</a> <font color="Olive" title="b3">b1</font> &amp; <font color="Olive" title="b2">b</font> <a href="pboole.html#R8" title="PBOOLE:pred.8">=</a> <font color="Olive" title="b3">b1</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b4">b2</font> &amp; <font color="Olive">b<sub>1</sub></font> <a href="polynom1.html#K4" title="POLYNOM1:func.4">.</a> <font color="Olive" title="b2">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">Q1</font> <a href="polynom1.html#K4" title="POLYNOM1:func.4">.</a> <font color="Olive" title="b4">b2</font> )
+ </span><div about="#PF14_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/14_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/14_1_1')" href="javascript:()" title="14_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:14_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="polynom1.html#NM2" title="POLYNOM1:NM.2">Polynomial</a> of <span class="p1">(<span class="default"><font color="Maroon" title="c1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Maroon" title="c2">o2</font></span>)</span>,<font color="Maroon" title="c3">L</font>  st (  for <font color="Olive" title="b3">b</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Maroon" title="c2">o2</font></span>)</span>  ex <font color="Olive" title="b4">b1</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Maroon" title="c1">o1</font> ex <font color="Olive" title="b5">b2</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Maroon" title="c2">o2</font> ex <font color="Olive" title="b6">Q1</font> being   <a href="polynom1.html#NM2" title="POLYNOM1:NM.2">Polynomial</a> of <font color="Maroon" title="c2">o2</font>,<font color="Maroon" title="c3">L</font> st <br>( <font color="Olive" title="b6">Q1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">P</font> <a href="polynom1.html#K4" title="POLYNOM1:func.4">.</a> <font color="Olive" title="b4">b1</font> &amp; <font color="Olive" title="b3">b</font> <a href="pboole.html#R8" title="PBOOLE:pred.8">=</a> <font color="Olive" title="b4">b1</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b5">b2</font> &amp; <font color="Olive">b<sub>1</sub></font> <a href="polynom1.html#K4" title="POLYNOM1:func.4">.</a> <font color="Olive" title="b3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b6">Q1</font> <a href="polynom1.html#K4" title="POLYNOM1:func.4">.</a> <font color="Olive" title="b5">b2</font> ) ) &amp; (  for <font color="Olive" title="b3">b</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Maroon" title="c2">o2</font></span>)</span>  ex <font color="Olive" title="b4">b1</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Maroon" title="c1">o1</font> ex <font color="Olive" title="b5">b2</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Maroon" title="c2">o2</font> ex <font color="Olive" title="b6">Q1</font> being   <a href="polynom1.html#NM2" title="POLYNOM1:NM.2">Polynomial</a> of <font color="Maroon" title="c2">o2</font>,<font color="Maroon" title="c3">L</font> st <br>( <font color="Olive" title="b6">Q1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">P</font> <a href="polynom1.html#K4" title="POLYNOM1:func.4">.</a> <font color="Olive" title="b4">b1</font> &amp; <font color="Olive" title="b3">b</font> <a href="pboole.html#R8" title="PBOOLE:pred.8">=</a> <font color="Olive" title="b4">b1</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b5">b2</font> &amp; <font color="Olive">b<sub>2</sub></font> <a href="polynom1.html#K4" title="POLYNOM1:func.4">.</a> <font color="Olive" title="b3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b6">Q1</font> <a href="polynom1.html#K4" title="POLYNOM1:func.4">.</a> <font color="Olive" title="b5">b2</font> ) ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF14_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/14_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/14_1_2')" href="javascript:()" title="14_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+<div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E9">Def2</font></span>   defines <a href="polynom6.html#K2" title="POLYNOM6:func.2">Compress</a> <a onclick="hs(this)" href="javascript:()">POLYNOM6:def 2 : <br></a><span class="hide"> for <font color="Olive" title="b1">o1</font>, <font color="Olive" title="b2">o2</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a><br>  for <font color="Olive" title="b3">L</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>   <a href="algstr_0.html#V13" title="ALGSTR_0:attr.13">right_complementable</a>   <a href="rlvect_1.html#V3" title="RLVECT_1:attr.3">add-associative</a>   <a href="rlvect_1.html#V4" title="RLVECT_1:attr.4">right_zeroed</a>   <a href="vectsp_1.html#V4" title="VECTSP_1:attr.4">well-unital</a>   <a href="vectsp_1.html#V5" title="VECTSP_1:attr.5">distributive</a>   <a href="algstr_0.html#L6" title="ALGSTR_0:struct.6">doubleLoopStr</a> <br>  for <font color="Olive" title="b4">P</font> being   <a href="polynom1.html#NM2" title="POLYNOM1:NM.2">Polynomial</a> of <font color="Olive" title="b1">o1</font>,<span class="p1">(<span class="default"><a href="polynom1.html#K12" title="POLYNOM1:func.12">Polynom-Ring</a> (<font color="Olive" title="b2">o2</font>,<font color="Olive" title="b3">L</font>)</span>)</span><br>  for <font color="Olive">b<sub>5</sub></font> being   <a href="polynom1.html#NM2" title="POLYNOM1:NM.2">Polynomial</a> of <span class="p1">(<span class="default"><font color="Olive" title="b1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b2">o2</font></span>)</span>,<font color="Olive" title="b3">L</font> holds <br> ( <font color="Olive">b<sub>5</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="polynom6.html#K2" title="POLYNOM6:func.2">Compress</a> <font color="Olive" title="b4">P</font> iff  for <font color="Olive" title="b6">b</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b2">o2</font></span>)</span>  ex <font color="Olive" title="b7">b1</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b1">o1</font> ex <font color="Olive" title="b8">b2</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b2">o2</font> ex <font color="Olive" title="b9">Q1</font> being   <a href="polynom1.html#NM2" title="POLYNOM1:NM.2">Polynomial</a> of <font color="Olive" title="b2">o2</font>,<font color="Olive" title="b3">L</font> st <br>( <font color="Olive" title="b9">Q1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">P</font> <a href="polynom1.html#K4" title="POLYNOM1:func.4">.</a> <font color="Olive" title="b7">b1</font> &amp; <font color="Olive" title="b6">b</font> <a href="pboole.html#R8" title="PBOOLE:pred.8">=</a> <font color="Olive" title="b7">b1</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b8">b2</font> &amp; <font color="Olive">b<sub>5</sub></font> <a href="polynom1.html#K4" title="POLYNOM1:func.4">.</a> <font color="Olive" title="b6">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b9">Q1</font> <a href="polynom1.html#K4" title="POLYNOM1:func.4">.</a> <font color="Olive" title="b8">b2</font> ) );<br></span>
+</div>
+<br><div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E10">Th9</font></span>: <a NAME="T9"><span class="comment"><font color="firebrick">:: POLYNOM6:9</font></span><br></a><div class="add"> for <font color="Olive" title="b1">o1</font>, <font color="Olive" title="b2">o2</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a><br>  for <font color="Olive" title="b3">b1</font>, <font color="Olive" title="b4">c1</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b1">o1</font><br>  for <font color="Olive" title="b5">b2</font>, <font color="Olive" title="b6">c2</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b2">o2</font>  st <font color="Olive" title="b3">b1</font> <a href="pre_poly.html#R3" title="PRE_POLY:pred.3">divides</a> <font color="Olive" title="b4">c1</font> &amp; <font color="Olive" title="b5">b2</font> <a href="pre_poly.html#R3" title="PRE_POLY:pred.3">divides</a> <font color="Olive" title="b6">c2</font> holds <br><font color="Olive" title="b3">b1</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b5">b2</font> <a href="pre_poly.html#R3" title="PRE_POLY:pred.3">divides</a> <font color="Olive" title="b4">c1</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b6">c2</font>
+</div>
+<div about="#PF15" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T9"></span><a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/15')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/15')" href="javascript:()" title="15"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E11">Th10</font></span>: <a NAME="T10"><span class="comment"><font color="firebrick">:: POLYNOM6:10</font></span><br></a><div class="add"> for <font color="Olive" title="b1">o1</font>, <font color="Olive" title="b2">o2</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a><br>  for <font color="Olive" title="b3">b</font> being   <a href="pre_poly.html#NM2" title="PRE_POLY:NM.2">bag</a> of <font color="Olive" title="b1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b2">o2</font><br>  for <font color="Olive" title="b4">b1</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b1">o1</font><br>  for <font color="Olive" title="b5">b2</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b2">o2</font>  st <font color="Olive" title="b3">b</font> <a href="pre_poly.html#R3" title="PRE_POLY:pred.3">divides</a> <font color="Olive" title="b4">b1</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b5">b2</font> holds <br> ex <font color="Olive" title="b6">c1</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b1">o1</font> ex <font color="Olive" title="b7">c2</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b2">o2</font> st <br>( <font color="Olive" title="b6">c1</font> <a href="pre_poly.html#R3" title="PRE_POLY:pred.3">divides</a> <font color="Olive" title="b4">b1</font> &amp; <font color="Olive" title="b7">c2</font> <a href="pre_poly.html#R3" title="PRE_POLY:pred.3">divides</a> <font color="Olive" title="b5">b2</font> &amp; <font color="Olive" title="b3">b</font> <a href="pboole.html#R6" title="PBOOLE:pred.6">=</a> <font color="Olive" title="b6">c1</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b7">c2</font> )</div>
+<div about="#PF16" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T10"></span><a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/16')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/16')" href="javascript:()" title="16"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E12">Th11</font></span>: <a NAME="T11"><span class="comment"><font color="firebrick">:: POLYNOM6:11</font></span><br></a><div class="add"> for <font color="Olive" title="b1">o1</font>, <font color="Olive" title="b2">o2</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a><br>  for <font color="Olive" title="b3">a1</font>, <font color="Olive" title="b4">b1</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b1">o1</font><br>  for <font color="Olive" title="b5">a2</font>, <font color="Olive" title="b6">b2</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b2">o2</font> holds <br> ( <font color="Olive" title="b3">a1</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b5">a2</font> <a href="pre_poly.html#R1" title="PRE_POLY:pred.1">&lt;</a> <font color="Olive" title="b4">b1</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b6">b2</font> iff ( <font color="Olive" title="b3">a1</font> <a href="pre_poly.html#R1" title="PRE_POLY:pred.1">&lt;</a> <font color="Olive" title="b4">b1</font> or ( <font color="Olive" title="b3">a1</font> <a href="pboole.html#R6" title="PBOOLE:pred.6">=</a> <font color="Olive" title="b4">b1</font> &amp; <font color="Olive" title="b5">a2</font> <a href="pre_poly.html#R1" title="PRE_POLY:pred.1">&lt;</a> <font color="Olive" title="b6">b2</font> ) ) )</div>
+<div about="#PF17" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/17')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/17')" href="javascript:()" title="17"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E13">Th12</font></span>: <a NAME="T12"><span class="comment"><font color="firebrick">:: POLYNOM6:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">o1</font>, <font color="Olive" title="b2">o2</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a><br>  for <font color="Olive" title="b3">b1</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b1">o1</font><br>  for <font color="Olive" title="b4">b2</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b2">o2</font><br>  for <font color="Olive" title="b5">G</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of <span class="p1">(<span class="default"><a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <span class="p2">(<span class="default"><font color="Olive" title="b1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b2">o2</font></span>)</span></span>)</span> <a href="finseq_2.html#K3" title="FINSEQ_2:func.3">*</a>   st  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b5">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <span class="p1">(<span class="default"><a href="pre_poly.html#K20" title="PRE_POLY:func.20">divisors</a> <font color="Olive" title="b3">b1</font></span>)</span> &amp; (  for <font color="Olive" title="b6">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b6">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <span class="p1">(<span class="default"><a href="pre_poly.html#K20" title="PRE_POLY:func.20">divisors</a> <font color="Olive" title="b3">b1</font></span>)</span> holds <br> ex <font color="Olive" title="b7">a19</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b1">o1</font> ex <font color="Olive" title="b8">Fk</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b2">o2</font></span>)</span> st <br>( <font color="Olive" title="b8">Fk</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">G</font> <a href="pre_poly.html#K9" title="PRE_POLY:func.9">/.</a> <font color="Olive" title="b6">i</font> &amp; <span class="p1">(<span class="default"><a href="pre_poly.html#K20" title="PRE_POLY:func.20">divisors</a> <font color="Olive" title="b3">b1</font></span>)</span> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b6">i</font> <a href="pboole.html#R6" title="PBOOLE:pred.6">=</a> <font color="Olive" title="b7">a19</font> &amp;  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b8">Fk</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <span class="p1">(<span class="default"><a href="pre_poly.html#K20" title="PRE_POLY:func.20">divisors</a> <font color="Olive" title="b4">b2</font></span>)</span> &amp; (  for <font color="Olive" title="b9">m</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b9">m</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b8">Fk</font> holds <br> ex <font color="Olive" title="b10">a199</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b2">o2</font> st <br>( <span class="p1">(<span class="default"><a href="pre_poly.html#K20" title="PRE_POLY:func.20">divisors</a> <font color="Olive" title="b4">b2</font></span>)</span> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b9">m</font> <a href="pboole.html#R6" title="PBOOLE:pred.6">=</a> <font color="Olive" title="b10">a199</font> &amp; <font color="Olive" title="b8">Fk</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b9">m</font> <a href="pboole.html#R6" title="PBOOLE:pred.6">=</a> <font color="Olive" title="b7">a19</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b10">a199</font> ) ) ) ) holds <br> <a href="pre_poly.html#K20" title="PRE_POLY:func.20">divisors</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">b1</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b4">b2</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="pre_poly.html#K5" title="PRE_POLY:func.5">FlattenSeq</a> <font color="Olive" title="b5">G</font>
+</div>
+<div about="#PF18" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/18')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/18')" href="javascript:()" title="18"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E14">Th13</font></span>: <a NAME="T13"><span class="comment"><font color="firebrick">:: POLYNOM6:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">o1</font>, <font color="Olive" title="b2">o2</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a><br>  for <font color="Olive" title="b3">a1</font>, <font color="Olive" title="b4">b1</font>, <font color="Olive" title="b5">c1</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b1">o1</font><br>  for <font color="Olive" title="b6">a2</font>, <font color="Olive" title="b7">b2</font>, <font color="Olive" title="b8">c2</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b2">o2</font>  st <font color="Olive" title="b5">c1</font> <a href="pboole.html#R6" title="PBOOLE:pred.6">=</a> <font color="Olive" title="b4">b1</font> <a href="pre_poly.html#K12" title="PRE_POLY:func.12">-'</a> <font color="Olive" title="b3">a1</font> &amp; <font color="Olive" title="b8">c2</font> <a href="pboole.html#R6" title="PBOOLE:pred.6">=</a> <font color="Olive" title="b7">b2</font> <a href="pre_poly.html#K12" title="PRE_POLY:func.12">-'</a> <font color="Olive" title="b6">a2</font> holds <br><span class="p1">(<span class="default"><font color="Olive" title="b4">b1</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b7">b2</font></span>)</span> <a href="pre_poly.html#K12" title="PRE_POLY:func.12">-'</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">a1</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b6">a2</font></span>)</span> <a href="pboole.html#R6" title="PBOOLE:pred.6">=</a> <font color="Olive" title="b5">c1</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b8">c2</font>
+</div>
+<div about="#PF19" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T13"></span><a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/19')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/19')" href="javascript:()" title="19"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E15">Th14</font></span>: <a NAME="T14"><span class="comment"><font color="firebrick">:: POLYNOM6:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">o1</font>, <font color="Olive" title="b2">o2</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a><br>  for <font color="Olive" title="b3">b1</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b1">o1</font><br>  for <font color="Olive" title="b4">b2</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b2">o2</font><br>  for <font color="Olive" title="b5">G</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of <span class="p1">(<span class="default">2 <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <span class="p2">(<span class="default"><a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <span class="p3">(<span class="default"><font color="Olive" title="b1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b2">o2</font></span>)</span></span>)</span></span>)</span> <a href="finseq_2.html#K3" title="FINSEQ_2:func.3">*</a>   st  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b5">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <span class="p1">(<span class="default"><a href="pre_poly.html#K21" title="PRE_POLY:func.21">decomp</a> <font color="Olive" title="b3">b1</font></span>)</span> &amp; (  for <font color="Olive" title="b6">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b6">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <span class="p1">(<span class="default"><a href="pre_poly.html#K21" title="PRE_POLY:func.21">decomp</a> <font color="Olive" title="b3">b1</font></span>)</span> holds <br> ex <font color="Olive" title="b7">a19</font>, <font color="Olive" title="b8">b19</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b1">o1</font> ex <font color="Olive" title="b9">Fk</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of 2 <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <span class="p1">(<span class="default"><a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <span class="p2">(<span class="default"><font color="Olive" title="b1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b2">o2</font></span>)</span></span>)</span> st <br>( <font color="Olive" title="b9">Fk</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">G</font> <a href="pre_poly.html#K9" title="PRE_POLY:func.9">/.</a> <font color="Olive" title="b6">i</font> &amp; <span class="p1">(<span class="default"><a href="pre_poly.html#K21" title="PRE_POLY:func.21">decomp</a> <font color="Olive" title="b3">b1</font></span>)</span> <a href="pre_poly.html#K9" title="PRE_POLY:func.9">/.</a> <font color="Olive" title="b6">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="polynom3.html#K2" title="POLYNOM3:func.2">&lt;*</a><span class="default"><font color="Olive" title="b7">a19</font>,<font color="Olive" title="b8">b19</font></span><a href="polynom3.html#K2" title="POLYNOM3:func.2">*&gt;</a></span> &amp;  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b9">Fk</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <span class="p1">(<span class="default"><a href="pre_poly.html#K21" title="PRE_POLY:func.21">decomp</a> <font color="Olive" title="b4">b2</font></span>)</span> &amp; (  for <font color="Olive" title="b10">m</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b10">m</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b9">Fk</font> holds <br> ex <font color="Olive" title="b11">a199</font>, <font color="Olive" title="b12">b199</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="pre_poly.html#K15" title="PRE_POLY:func.15">Bags</a> <font color="Olive" title="b2">o2</font> st <br>( <span class="p1">(<span class="default"><a href="pre_poly.html#K21" title="PRE_POLY:func.21">decomp</a> <font color="Olive" title="b4">b2</font></span>)</span> <a href="pre_poly.html#K9" title="PRE_POLY:func.9">/.</a> <font color="Olive" title="b10">m</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="polynom3.html#K2" title="POLYNOM3:func.2">&lt;*</a><span class="default"><font color="Olive" title="b11">a199</font>,<font color="Olive" title="b12">b199</font></span><a href="polynom3.html#K2" title="POLYNOM3:func.2">*&gt;</a></span> &amp; <font color="Olive" title="b9">Fk</font> <a href="pre_poly.html#K9" title="PRE_POLY:func.9">/.</a> <font color="Olive" title="b10">m</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="polynom3.html#K2" title="POLYNOM3:func.2">&lt;*</a><span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b7">a19</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b11">a199</font></span>)</span>,<span class="p2">(<span class="default"><font color="Olive" title="b8">b19</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b12">b199</font></span>)</span></span><a href="polynom3.html#K2" title="POLYNOM3:func.2">*&gt;</a></span> ) ) ) ) holds <br> <a href="pre_poly.html#K21" title="PRE_POLY:func.21">decomp</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">b1</font> <a href="polynom6.html#K1" title="POLYNOM6:func.1">+^</a> <font color="Olive" title="b4">b2</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="pre_poly.html#K5" title="PRE_POLY:func.5">FlattenSeq</a> <font color="Olive" title="b5">G</font>
+</div>
+<div about="#PF20" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T14"></span><a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/20')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/20')" href="javascript:()" title="20"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T15" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T15"><span class="comment"><font color="firebrick">:: POLYNOM6:15</font></span><br></a><div class="add"> for <font color="Olive" title="b1">o1</font>, <font color="Olive" title="b2">o2</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a><br>  for <font color="Olive" title="b3">L</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>   <a href="algstr_0.html#V13" title="ALGSTR_0:attr.13">right_complementable</a>   <a href="rlvect_1.html#V2" title="RLVECT_1:attr.2">Abelian</a>   <a href="rlvect_1.html#V3" title="RLVECT_1:attr.3">add-associative</a>   <a href="rlvect_1.html#V4" title="RLVECT_1:attr.4">right_zeroed</a>   <a href="group_1.html#V3" title="GROUP_1:attr.3">associative</a>   <a href="vectsp_1.html#V4" title="VECTSP_1:attr.4">well-unital</a>   <a href="vectsp_1.html#V5" title="VECTSP_1:attr.5">distributive</a>   <a href="algstr_0.html#L6" title="ALGSTR_0:struct.6">doubleLoopStr</a>  holds   <a href="polynom1.html#K12" title="POLYNOM1:func.12">Polynom-Ring</a> (<font color="Olive" title="b1">o1</font>,<span class="p1">(<span class="default"><a href="polynom1.html#K12" title="POLYNOM1:func.12">Polynom-Ring</a> (<font color="Olive" title="b2">o2</font>,<font color="Olive" title="b3">L</font>)</span>)</span>), <a href="polynom1.html#K12" title="POLYNOM1:func.12">Polynom-Ring</a> (<span class="p1">(<span class="default"><font color="Olive" title="b1">o1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b2">o2</font></span>)</span>,<font color="Olive" title="b3">L</font>) <a href="polynom6.html#NR1" title="POLYNOM6:NR.1">are_isomorphic</a> </div>
+<div about="#PF21" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/polynom6/21')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/polynom6/21')" href="javascript:()" title="21"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+</body>
+</html>

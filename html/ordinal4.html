@@ -1,0 +1,802 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ORDINAL4:  Increasing and Continuous Ordinal Sequences</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  Increasing and Continuous Ordinal Sequences</font></span><br><span class="comment"><font color="firebrick">:: by Grzegorz Bancerek</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received May 31, 1990</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 1990-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<a NAME="E1"></a><span class="lab"><font color="Green" title="E1">Lm1</font></span>: <span about="#E1" typeof="oo:Lemma">
+ <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a> 
+ </span><br><span class="kw">by</span> <span class="lab"><a class="ref" href="ordinal1.html#D11" onmouseover="rs('ordinal1/D11')" onmouseout="rh()">ORDINAL1:def 11</a></span>;<br><br><a NAME="E2"></a><span class="lab"><font color="Green" title="E2">Lm2</font></span>: <span about="#E2" typeof="oo:Lemma">
+ <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a>  is  <a href="ordinal1.html#V4" title="ORDINAL1:attr.4">limit_ordinal</a> 
+ </span><br><span class="kw">by</span> <span class="lab"><a class="ref" href="ordinal1.html#D11" onmouseover="rs('ordinal1/D11')" onmouseout="rh()">ORDINAL1:def 11</a></span>;<br><br><a NAME="E3"></a><span class="lab"><font color="Green" title="E3">Lm3</font></span>: <span about="#E3" typeof="oo:Lemma">
+1 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>
+ </span><br>;<br><br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a>;<br>
+<div about="#FC1" typeof="oo:Theorem">
+<a NAME="FC1"><span class="kw">cluster </span></a> <a href="ordinal2.html#K1" title="ORDINAL2:func.1">last</a> <font color="Maroon" title="c1">L</font><span class="kw"> -&gt; </span> <a href="ordinal1.html#V3" title="ORDINAL1:attr.3">ordinal</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:1_1"></a>
+ <a href="ordinal2.html#K1" title="ORDINAL2:func.1">last</a> <font color="Maroon" title="c1">L</font> is  <a href="ordinal1.html#V3" title="ORDINAL1:attr.3">ordinal</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T1"><span class="comment"><font color="firebrick">:: ORDINAL4:1</font></span><br></a><div class="add"> for <font color="Olive" title="b1">fi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a><br>  for <font color="Olive" title="b2">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">fi</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <font color="Olive" title="b2">A</font> holds <br>(  <a href="ordinal2.html#K1" title="ORDINAL2:func.1">last</a> <font color="Olive" title="b1">fi</font> <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b1">fi</font> &amp;  <a href="ordinal2.html#K8" title="ORDINAL2:func.8">lim</a> <font color="Olive" title="b1">fi</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ordinal2.html#K1" title="ORDINAL2:func.1">last</a> <font color="Olive" title="b1">fi</font> )</div>
+<div about="#PF2" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/2')" href="javascript:()" title="2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">fi</font>, <font color="Maroon" title="c2">psi</font> be   <a href="ordinal1.html#NM4" title="ORDINAL1:NM.4">Sequence</a>;<br><div about="#D4" typeof="oo:Definition">
+<a NAME="K1"><span class="kw">func</span> </a><font color="Maroon" title="c1">fi</font> <a href="ordinal4.html#K1" title="ORDINAL4:func.1">^</a> <font color="Maroon" title="c2">psi</font><span class="kw"> -&gt; </span>  <a href="ordinal1.html#NM4" title="ORDINAL1:NM.4">Sequence</a><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E4">Def1</font></span>: <a NAME="D1"><span class="comment"><font color="firebrick">:: ORDINAL4:def 1</font></span><br></a>(  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <span class="kw">it</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c1">fi</font></span>)</span> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <span class="p1">(<span class="default"><a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c2">psi</font></span>)</span> &amp; (  for <font color="Olive" title="b1">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c1">fi</font> holds <br><span class="kw">it</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">fi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">A</font> ) &amp; (  for <font color="Olive" title="b1">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c2">psi</font> holds <br><span class="kw">it</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c1">fi</font></span>)</span> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b1">A</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">psi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">A</font> ) );<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:3_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="ordinal1.html#NM4" title="ORDINAL1:NM.4">Sequence</a> st <br>(  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c1">fi</font></span>)</span> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <span class="p1">(<span class="default"><a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c2">psi</font></span>)</span> &amp; (  for <font color="Olive" title="b2">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b2">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c1">fi</font> holds <br><font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">fi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">A</font> ) &amp; (  for <font color="Olive" title="b2">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b2">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c2">psi</font> holds <br><font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c1">fi</font></span>)</span> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b2">A</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">psi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">A</font> ) )
+ </span><div about="#PF3_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/3_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/3_1_1')" href="javascript:()" title="3_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:3_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="ordinal1.html#NM4" title="ORDINAL1:NM.4">Sequence</a>  st  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c1">fi</font></span>)</span> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <span class="p1">(<span class="default"><a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c2">psi</font></span>)</span> &amp; (  for <font color="Olive" title="b3">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b3">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c1">fi</font> holds <br><font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">fi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">A</font> ) &amp; (  for <font color="Olive" title="b3">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b3">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c2">psi</font> holds <br><font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c1">fi</font></span>)</span> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b3">A</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">psi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">A</font> ) &amp;  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c1">fi</font></span>)</span> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <span class="p1">(<span class="default"><a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c2">psi</font></span>)</span> &amp; (  for <font color="Olive" title="b3">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b3">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c1">fi</font> holds <br><font color="Olive">b<sub>2</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">fi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">A</font> ) &amp; (  for <font color="Olive" title="b3">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b3">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c2">psi</font> holds <br><font color="Olive">b<sub>2</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c1">fi</font></span>)</span> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b3">A</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">psi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">A</font> ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF3_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/3_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/3_1_2')" href="javascript:()" title="3_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E4">Def1</font></span>   defines <a href="ordinal4.html#K1" title="ORDINAL4:func.1">^</a> <a onclick="hs(this)" href="javascript:()">ORDINAL4:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">fi</font>, <font color="Olive" title="b2">psi</font>, <font color="Olive">b<sub>3</sub></font> being   <a href="ordinal1.html#NM4" title="ORDINAL1:NM.4">Sequence</a> holds <br> ( <font color="Olive">b<sub>3</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">fi</font> <a href="ordinal4.html#K1" title="ORDINAL4:func.1">^</a> <font color="Olive" title="b2">psi</font> iff (  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive">b<sub>3</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">fi</font></span>)</span> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <span class="p1">(<span class="default"><a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b2">psi</font></span>)</span> &amp; (  for <font color="Olive" title="b4">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b4">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">fi</font> holds <br><font color="Olive">b<sub>3</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">fi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">A</font> ) &amp; (  for <font color="Olive" title="b4">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b4">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b2">psi</font> holds <br><font color="Olive">b<sub>3</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">fi</font></span>)</span> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b4">A</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">psi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">A</font> ) ) );<br></span>
+</div>
+<br><a NAME="E6"></a><span class="lab"><font color="Green" title="E5">Th2Lem</font></span>: <span about="#E6" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">fi</font>, <font color="Olive" title="b2">psi</font> being   <a href="ordinal1.html#NM4" title="ORDINAL1:NM.4">Sequence</a> holds   <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">fi</font> <a href="ordinal4.html#K1" title="ORDINAL4:func.1">^</a> <font color="Olive" title="b2">psi</font></span>)</span> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <span class="p1">(<span class="default"><a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Olive" title="b1">fi</font></span>)</span> <a href="xboole_0.html#K2" title="XBOOLE_0:func.2">\/</a> <span class="p1">(<span class="default"><a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Olive" title="b2">psi</font></span>)</span>
+ </span><br><div about="#PF4" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/4')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/4')" href="javascript:()" title="4"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E7"></a><span class="lab"><font color="Green" title="E6">Th7A</font></span>: <span about="#E7" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being   <a href="ordinal1.html#NM4" title="ORDINAL1:NM.4">Sequence</a> holds   <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Olive" title="b1">A</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="ordinal4.html#K1" title="ORDINAL4:func.1">^</a> <font color="Olive" title="b2">B</font></span>)</span>
+ </span><br><div about="#PF5" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E7"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/5')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/5')" href="javascript:()" title="5"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E8"></a><span class="lab"><font color="Green" title="E7">Th8A</font></span>: <span about="#E8" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being   <a href="ordinal1.html#NM4" title="ORDINAL1:NM.4">Sequence</a> holds   <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Olive" title="b2">B</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="ordinal4.html#K1" title="ORDINAL4:func.1">^</a> <font color="Olive" title="b2">B</font></span>)</span>
+ </span><br><div about="#PF6" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/6')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/6')" href="javascript:()" title="6"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E8">Th2</font></span>: <a NAME="T2"><span class="comment"><font color="firebrick">:: ORDINAL4:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being   <a href="ordinal1.html#NM4" title="ORDINAL1:NM.4">Sequence</a> holds   <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="ordinal4.html#K1" title="ORDINAL4:func.1">^</a> <font color="Olive" title="b2">B</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Olive" title="b1">A</font></span>)</span> <a href="xboole_0.html#K2" title="XBOOLE_0:func.2">\/</a> <span class="p1">(<span class="default"><a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Olive" title="b2">B</font></span>)</span>
+</div>
+<div about="#PF7" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/7')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/7')" href="javascript:()" title="7"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">fi</font>, <font color="Maroon" title="c2">psi</font> be   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a>;<br>
+<div about="#FC2" typeof="oo:Theorem">
+<a NAME="FC2"><span class="kw">cluster </span></a><font color="Maroon" title="c1">fi</font> <a href="ordinal4.html#K1" title="ORDINAL4:func.1">^</a> <font color="Maroon" title="c2">psi</font><span class="kw"> -&gt; </span> <a href="ordinal2.html#V1" title="ORDINAL2:attr.1">Ordinal-yielding</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:8_1"></a>
+<font color="Maroon" title="c1">fi</font> <a href="ordinal4.html#K1" title="ORDINAL4:func.1">^</a> <font color="Maroon" title="c2">psi</font> is  <a href="ordinal2.html#V1" title="ORDINAL2:attr.1">Ordinal-yielding</a> 
+ </span><div about="#PF8_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/8_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/8_1_1')" href="javascript:()" title="8_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E9">Th3</font></span>: <a NAME="T3"><span class="comment"><font color="firebrick">:: ORDINAL4:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">fi</font>, <font color="Olive" title="b2">psi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a><br>  for <font color="Olive" title="b3">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b3">A</font> <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b2">psi</font> holds <br><font color="Olive" title="b3">A</font> <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b1">fi</font> <a href="ordinal4.html#K1" title="ORDINAL4:func.1">^</a> <font color="Olive" title="b2">psi</font>
+</div>
+<div about="#PF9" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/9')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/9')" href="javascript:()" title="9"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T4"><span class="comment"><font color="firebrick">:: ORDINAL4:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">fi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a><br>  for <font color="Olive" title="b2">A</font>, <font color="Olive" title="b3">B</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b2">A</font> <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b1">fi</font> holds <br><font color="Olive" title="b3">B</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b2">A</font> <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b3">B</font> <a href="ordinal3.html#K1" title="ORDINAL3:func.1">+^</a> <font color="Olive" title="b1">fi</font>
+</div>
+<div about="#PF10" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T4"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/10')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/10')" href="javascript:()" title="10"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E12"></a><span class="lab"><font color="Green" title="E10">Lm4</font></span>: <span about="#E12" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">fi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a><br>  for <font color="Olive" title="b2">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b2">A</font> <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b1">fi</font> holds <br> <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">fi</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ </span><br><div about="#PF11" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/11')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/11')" href="javascript:()" title="11"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E11">Th5</font></span>: <a NAME="T5"><span class="comment"><font color="firebrick">:: ORDINAL4:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">fi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a><br>  for <font color="Olive" title="b2">A</font>, <font color="Olive" title="b3">B</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b2">A</font> <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b1">fi</font> holds <br><font color="Olive" title="b2">A</font> <a href="ordinal2.html#K11" title="ORDINAL2:func.11">*^</a> <font color="Olive" title="b3">B</font> <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b1">fi</font> <a href="ordinal3.html#K4" title="ORDINAL3:func.4">*^</a> <font color="Olive" title="b3">B</font>
+</div>
+<div about="#PF12" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/12')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/12')" href="javascript:()" title="12"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E12">Th6</font></span>: <a NAME="T6"><span class="comment"><font color="firebrick">:: ORDINAL4:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">fi</font>, <font color="Olive" title="b2">psi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a><br>  for <font color="Olive" title="b3">B</font>, <font color="Olive" title="b4">C</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">fi</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b2">psi</font> &amp; <font color="Olive" title="b3">B</font> <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b1">fi</font> &amp; <font color="Olive" title="b4">C</font> <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b2">psi</font> &amp; (  for <font color="Olive" title="b5">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b5">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">fi</font> holds <br><font color="Olive" title="b1">fi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">A</font> <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a> <font color="Olive" title="b2">psi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">A</font> or  for <font color="Olive" title="b5">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b5">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">fi</font> holds <br><font color="Olive" title="b1">fi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">psi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">A</font> ) holds <br><font color="Olive" title="b3">B</font> <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a> <font color="Olive" title="b4">C</font>
+</div>
+<div about="#PF13" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/13')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/13')" href="javascript:()" title="13"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T7"><span class="comment"><font color="firebrick">:: ORDINAL4:7</font></span><br></a><div class="add"> for <font color="Olive" title="b1">fi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a><br>  for <font color="Olive" title="b2">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a><br>  for <font color="Olive" title="b3">f1</font>, <font color="Olive" title="b4">f2</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a>  st  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b3">f1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">fi</font> &amp;  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">fi</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b4">f2</font> &amp; <font color="Olive" title="b2">A</font> <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b3">f1</font> &amp; <font color="Olive" title="b2">A</font> <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b4">f2</font> &amp; (  for <font color="Olive" title="b5">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b5">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">fi</font> holds <br>( <font color="Olive" title="b3">f1</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">A</font> <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a> <font color="Olive" title="b1">fi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">A</font> &amp; <font color="Olive" title="b1">fi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">A</font> <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a> <font color="Olive" title="b4">f2</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">A</font> ) ) holds <br><font color="Olive" title="b2">A</font> <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b1">fi</font>
+</div>
+<div about="#PF14" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T7"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/14')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/14')" href="javascript:()" title="14"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E13">Th8</font></span>: <a NAME="T8"><span class="comment"><font color="firebrick">:: ORDINAL4:8</font></span><br></a><div class="add"> for <font color="Olive" title="b1">fi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a>  st  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">fi</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  &amp;  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">fi</font> is  <a href="ordinal1.html#V4" title="ORDINAL1:attr.4">limit_ordinal</a>  &amp; <font color="Olive" title="b1">fi</font> is  <a href="ordinal2.html#V2" title="ORDINAL2:attr.2">increasing</a>  holds <br>(  <a href="ordinal2.html#K4" title="ORDINAL2:func.4">sup</a> <font color="Olive" title="b1">fi</font> <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b1">fi</font> &amp;  <a href="ordinal2.html#K8" title="ORDINAL2:func.8">lim</a> <font color="Olive" title="b1">fi</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ordinal2.html#K4" title="ORDINAL2:func.4">sup</a> <font color="Olive" title="b1">fi</font> )</div>
+<div about="#PF15" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/15')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/15')" href="javascript:()" title="15"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E14">Th9</font></span>: <a NAME="T9"><span class="comment"><font color="firebrick">:: ORDINAL4:9</font></span><br></a><div class="add"> for <font color="Olive" title="b1">fi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a><br>  for <font color="Olive" title="b2">A</font>, <font color="Olive" title="b3">B</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b1">fi</font> is  <a href="ordinal2.html#V2" title="ORDINAL2:attr.2">increasing</a>  &amp; <font color="Olive" title="b2">A</font> <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a> <font color="Olive" title="b3">B</font> &amp; <font color="Olive" title="b3">B</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">fi</font> holds <br><font color="Olive" title="b1">fi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">A</font> <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a> <font color="Olive" title="b1">fi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">B</font>
+</div>
+<div about="#PF16" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T9"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/16')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/16')" href="javascript:()" title="16"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E15">Th10</font></span>: <a NAME="T10"><span class="comment"><font color="firebrick">:: ORDINAL4:10</font></span><br></a><div class="add"> for <font color="Olive" title="b1">fi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a><br>  for <font color="Olive" title="b2">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b1">fi</font> is  <a href="ordinal2.html#V2" title="ORDINAL2:attr.2">increasing</a>  &amp; <font color="Olive" title="b2">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">fi</font> holds <br><font color="Olive" title="b2">A</font> <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a> <font color="Olive" title="b1">fi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">A</font>
+</div>
+<div about="#PF17" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T10"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/17')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/17')" href="javascript:()" title="17"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E16">Th11</font></span>: <a NAME="T11"><span class="comment"><font color="firebrick">:: ORDINAL4:11</font></span><br></a><div class="add"> for <font color="Olive" title="b1">phi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a><br>  for <font color="Olive" title="b2">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b1">phi</font> is  <a href="ordinal2.html#V2" title="ORDINAL2:attr.2">increasing</a>  holds <br><font color="Olive" title="b1">phi</font> <a href="relat_1.html#K8" title="RELAT_1:func.8">"</a> <font color="Olive" title="b2">A</font> is   <a href="ordinal1.html#V1" title="ORDINAL1:attr.1">epsilon-transitive</a>   <a href="ordinal1.html#V2" title="ORDINAL1:attr.2">epsilon-connected</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> </div>
+<div about="#PF18" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/18')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/18')" href="javascript:()" title="18"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E17">Th12</font></span>: <a NAME="T12"><span class="comment"><font color="firebrick">:: ORDINAL4:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">f1</font>, <font color="Olive" title="b2">f2</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a>  st <font color="Olive" title="b1">f1</font> is  <a href="ordinal2.html#V2" title="ORDINAL2:attr.2">increasing</a>  holds <br><font color="Olive" title="b2">f2</font> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <font color="Olive" title="b1">f1</font> is   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a>
+</div>
+<div about="#PF19" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/19')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/19')" href="javascript:()" title="19"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E18">Th13</font></span>: <a NAME="T13"><span class="comment"><font color="firebrick">:: ORDINAL4:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">f1</font>, <font color="Olive" title="b2">f2</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a>  st <font color="Olive" title="b1">f1</font> is  <a href="ordinal2.html#V2" title="ORDINAL2:attr.2">increasing</a>  &amp; <font color="Olive" title="b2">f2</font> is  <a href="ordinal2.html#V2" title="ORDINAL2:attr.2">increasing</a>  holds <br> ex <font color="Olive" title="b3">phi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a> st <br>( <font color="Olive" title="b3">phi</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">f1</font> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <font color="Olive" title="b2">f2</font> &amp; <font color="Olive" title="b3">phi</font> is  <a href="ordinal2.html#V2" title="ORDINAL2:attr.2">increasing</a>  )</div>
+<div about="#PF20" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T13"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/20')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/20')" href="javascript:()" title="20"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E19">Th14</font></span>: <a NAME="T14"><span class="comment"><font color="firebrick">:: ORDINAL4:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">fi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a><br>  for <font color="Olive" title="b2">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a><br>  for <font color="Olive" title="b3">f1</font>, <font color="Olive" title="b4">f2</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a>  st <font color="Olive" title="b3">f1</font> is  <a href="ordinal2.html#V2" title="ORDINAL2:attr.2">increasing</a>  &amp; <font color="Olive" title="b2">A</font> <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b4">f2</font> &amp;  <a href="ordinal2.html#K3" title="ORDINAL2:func.3">sup</a> <span class="p1">(<span class="default"><a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Olive" title="b3">f1</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b4">f2</font> &amp; <font color="Olive" title="b1">fi</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">f2</font> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <font color="Olive" title="b3">f1</font> holds <br><font color="Olive" title="b2">A</font> <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b1">fi</font>
+</div>
+<div about="#PF21" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T14"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/21')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/21')" href="javascript:()" title="21"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T15" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E20">Th15</font></span>: <a NAME="T15"><span class="comment"><font color="firebrick">:: ORDINAL4:15</font></span><br></a><div class="add"> for <font color="Olive" title="b1">phi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a><br>  for <font color="Olive" title="b2">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b1">phi</font> is  <a href="ordinal2.html#V2" title="ORDINAL2:attr.2">increasing</a>  holds <br><font color="Olive" title="b1">phi</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Olive" title="b2">A</font> is  <a href="ordinal2.html#V2" title="ORDINAL2:attr.2">increasing</a> </div>
+<div about="#PF22" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/22')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/22')" href="javascript:()" title="22"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T16" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E21">Th16</font></span>: <a NAME="T16"><span class="comment"><font color="firebrick">:: ORDINAL4:16</font></span><br></a><div class="add"> for <font color="Olive" title="b1">phi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a>  st <font color="Olive" title="b1">phi</font> is  <a href="ordinal2.html#V2" title="ORDINAL2:attr.2">increasing</a>  &amp;  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">phi</font> is  <a href="ordinal1.html#V4" title="ORDINAL1:attr.4">limit_ordinal</a>  holds <br> <a href="ordinal2.html#K4" title="ORDINAL2:func.4">sup</a> <font color="Olive" title="b1">phi</font> is  <a href="ordinal1.html#V4" title="ORDINAL1:attr.4">limit_ordinal</a> </div>
+<div about="#PF23" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T16"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/23')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/23')" href="javascript:()" title="23"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E25"></a><span class="lab"><font color="Green" title="E22">Lm5</font></span>: <span about="#E25" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">f</font>, <font color="Olive" title="b2">g</font> being   <a href="funct_1.html#NM1" title="FUNCT_1:NM.1">Function</a><br>  for <font color="Olive" title="b3">X</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Olive" title="b1">f</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b3">X</font> holds <br><span class="p1">(<span class="default"><font color="Olive" title="b2">g</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Olive" title="b3">X</font></span>)</span> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <font color="Olive" title="b1">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">g</font> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <font color="Olive" title="b1">f</font>
+ </span><br><div about="#PF24" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E25"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/24')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/24')" href="javascript:()" title="24"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T17" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T17"><span class="comment"><font color="firebrick">:: ORDINAL4:17</font></span><br></a><div class="add"> for <font color="Olive" title="b1">phi</font>, <font color="Olive" title="b2">fi</font>, <font color="Olive" title="b3">psi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a>  st <font color="Olive" title="b2">fi</font> is  <a href="ordinal2.html#V2" title="ORDINAL2:attr.2">increasing</a>  &amp; <font color="Olive" title="b2">fi</font> is  <a href="ordinal2.html#V3" title="ORDINAL2:attr.3">continuous</a>  &amp; <font color="Olive" title="b3">psi</font> is  <a href="ordinal2.html#V3" title="ORDINAL2:attr.3">continuous</a>  &amp; <font color="Olive" title="b1">phi</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">psi</font> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <font color="Olive" title="b2">fi</font> holds <br><font color="Olive" title="b1">phi</font> is  <a href="ordinal2.html#V3" title="ORDINAL2:attr.3">continuous</a> </div>
+<div about="#PF25" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T17"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/25')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/25')" href="javascript:()" title="25"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T18" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T18"><span class="comment"><font color="firebrick">:: ORDINAL4:18</font></span><br></a><div class="add"> for <font color="Olive" title="b1">fi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a><br>  for <font color="Olive" title="b2">C</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st (  for <font color="Olive" title="b3">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b3">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">fi</font> holds <br><font color="Olive" title="b1">fi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">C</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b3">A</font> ) holds <br><font color="Olive" title="b1">fi</font> is  <a href="ordinal2.html#V2" title="ORDINAL2:attr.2">increasing</a> </div>
+<div about="#PF26" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T18"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/26')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/26')" href="javascript:()" title="26"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T19" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E23">Th19</font></span>: <a NAME="T19"><span class="comment"><font color="firebrick">:: ORDINAL4:19</font></span><br></a><div class="add"> for <font color="Olive" title="b1">fi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a><br>  for <font color="Olive" title="b2">C</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b2">C</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  &amp; (  for <font color="Olive" title="b3">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b3">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">fi</font> holds <br><font color="Olive" title="b1">fi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">A</font> <a href="ordinal2.html#K11" title="ORDINAL2:func.11">*^</a> <font color="Olive" title="b2">C</font> ) holds <br><font color="Olive" title="b1">fi</font> is  <a href="ordinal2.html#V2" title="ORDINAL2:attr.2">increasing</a> </div>
+<div about="#PF27" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T19"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/27')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/27')" href="javascript:()" title="27"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T20" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E24">Th20</font></span>: <a NAME="T20"><span class="comment"><font color="firebrick">:: ORDINAL4:20</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b1">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  holds <br> <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>,<font color="Olive" title="b1">A</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> </div>
+<div about="#PF28" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T20"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/28')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/28')" href="javascript:()" title="28"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E30"></a><span class="lab"><font color="Green" title="E25">Lm6</font></span>: <span about="#E30" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b1">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  &amp; <font color="Olive" title="b1">A</font> is  <a href="ordinal1.html#V4" title="ORDINAL1:attr.4">limit_ordinal</a>  holds <br> for <font color="Olive" title="b2">fi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a>  st  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b2">fi</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">A</font> &amp; (  for <font color="Olive" title="b3">B</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b3">B</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">A</font> holds <br><font color="Olive" title="b2">fi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>,<font color="Olive" title="b3">B</font>) ) holds <br> <a href="ordinal1.html#K5" title="ORDINAL1:func.5">0</a>  <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b2">fi</font>
+ </span><br><div about="#PF29" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E30"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/29')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/29')" href="javascript:()" title="29"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E31"></a><span class="lab"><font color="Green" title="E26">Lm7</font></span>: <span about="#E31" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b1">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  holds <br> for <font color="Olive" title="b2">fi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a>  st  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b2">fi</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">A</font> &amp; (  for <font color="Olive" title="b3">B</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b3">B</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">A</font> holds <br><font color="Olive" title="b2">fi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (1,<font color="Olive" title="b3">B</font>) ) holds <br>1 <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b2">fi</font>
+ </span><br><div about="#PF30" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E31"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/30')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/30')" href="javascript:()" title="30"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E32"></a><span class="lab"><font color="Green" title="E27">Lm8</font></span>: <span about="#E32" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">C</font>, <font color="Olive" title="b2">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b2">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  &amp; <font color="Olive" title="b2">A</font> is  <a href="ordinal1.html#V4" title="ORDINAL1:attr.4">limit_ordinal</a>  holds <br> ex <font color="Olive" title="b3">fi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a> st <br>(  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b3">fi</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">A</font> &amp; (  for <font color="Olive" title="b4">B</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b4">B</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">A</font> holds <br><font color="Olive" title="b3">fi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b1">C</font>,<font color="Olive" title="b4">B</font>) ) &amp;  ex <font color="Olive" title="b4">D</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a> st <font color="Olive" title="b4">D</font> <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b3">fi</font> )
+ </span><br><div about="#PF31" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E32"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/31')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/31')" href="javascript:()" title="31"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T21" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E28">Th21</font></span>: <a NAME="T21"><span class="comment"><font color="firebrick">:: ORDINAL4:21</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">C</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b1">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  &amp; <font color="Olive" title="b1">A</font> is  <a href="ordinal1.html#V4" title="ORDINAL1:attr.4">limit_ordinal</a>  holds <br> for <font color="Olive" title="b3">fi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a>  st  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b3">fi</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">A</font> &amp; (  for <font color="Olive" title="b4">B</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b4">B</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">A</font> holds <br><font color="Olive" title="b3">fi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b2">C</font>,<font color="Olive" title="b4">B</font>) ) holds <br> <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b2">C</font>,<font color="Olive" title="b1">A</font>) <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b3">fi</font>
+</div>
+<div about="#PF32" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T21"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/32')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/32')" href="javascript:()" title="32"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T22" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E29">Th22</font></span>: <a NAME="T22"><span class="comment"><font color="firebrick">:: ORDINAL4:22</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">C</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b2">C</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  holds <br> <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b2">C</font>,<font color="Olive" title="b1">A</font>) <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> </div>
+<div about="#PF33" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T22"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/33')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/33')" href="javascript:()" title="33"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T23" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E30">Th23</font></span>: <a NAME="T23"><span class="comment"><font color="firebrick">:: ORDINAL4:23</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">C</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st 1 <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">C</font> holds <br> <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b2">C</font>,<font color="Olive" title="b1">A</font>) <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b2">C</font>,<span class="p1">(<span class="default"><a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <font color="Olive" title="b1">A</font></span>)</span>)</div>
+<div about="#PF34" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T23"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/34')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/34')" href="javascript:()" title="34"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T24" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E31">Th24</font></span>: <a NAME="T24"><span class="comment"><font color="firebrick">:: ORDINAL4:24</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font>, <font color="Olive" title="b3">C</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st 1 <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b3">C</font> &amp; <font color="Olive" title="b1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">B</font> holds <br> <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b3">C</font>,<font color="Olive" title="b1">A</font>) <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b3">C</font>,<font color="Olive" title="b2">B</font>)</div>
+<div about="#PF35" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T24"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/35')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/35')" href="javascript:()" title="35"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T25" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E32">Th25</font></span>: <a NAME="T25"><span class="comment"><font color="firebrick">:: ORDINAL4:25</font></span><br></a><div class="add"> for <font color="Olive" title="b1">fi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a><br>  for <font color="Olive" title="b2">C</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st 1 <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">C</font> &amp; (  for <font color="Olive" title="b3">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b3">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">fi</font> holds <br><font color="Olive" title="b1">fi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b2">C</font>,<font color="Olive" title="b3">A</font>) ) holds <br><font color="Olive" title="b1">fi</font> is  <a href="ordinal2.html#V2" title="ORDINAL2:attr.2">increasing</a> </div>
+<div about="#PF36" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T25"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/36')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/36')" href="javascript:()" title="36"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T26" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T26"><span class="comment"><font color="firebrick">:: ORDINAL4:26</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">C</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st 1 <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">C</font> &amp; <font color="Olive" title="b1">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  &amp; <font color="Olive" title="b1">A</font> is  <a href="ordinal1.html#V4" title="ORDINAL1:attr.4">limit_ordinal</a>  holds <br> for <font color="Olive" title="b3">fi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a>  st  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b3">fi</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">A</font> &amp; (  for <font color="Olive" title="b4">B</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b4">B</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">A</font> holds <br><font color="Olive" title="b3">fi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b2">C</font>,<font color="Olive" title="b4">B</font>) ) holds <br> <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b2">C</font>,<font color="Olive" title="b1">A</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ordinal2.html#K4" title="ORDINAL2:func.4">sup</a> <font color="Olive" title="b3">fi</font>
+</div>
+<div about="#PF37" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T26"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/37')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/37')" href="javascript:()" title="37"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T27" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T27"><span class="comment"><font color="firebrick">:: ORDINAL4:27</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font>, <font color="Olive" title="b3">C</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b3">C</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  &amp; <font color="Olive" title="b1">A</font> <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a> <font color="Olive" title="b2">B</font> holds <br> <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b3">C</font>,<font color="Olive" title="b1">A</font>) <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a>  <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b3">C</font>,<font color="Olive" title="b2">B</font>)</div>
+<div about="#PF38" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T27"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/38')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/38')" href="javascript:()" title="38"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T28" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T28"><span class="comment"><font color="firebrick">:: ORDINAL4:28</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font>, <font color="Olive" title="b3">C</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b1">A</font> <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a> <font color="Olive" title="b2">B</font> holds <br> <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b1">A</font>,<font color="Olive" title="b3">C</font>) <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a>  <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b2">B</font>,<font color="Olive" title="b3">C</font>)</div>
+<div about="#PF39" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T28"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/39')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/39')" href="javascript:()" title="39"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T29" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T29"><span class="comment"><font color="firebrick">:: ORDINAL4:29</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">C</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st 1 <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">C</font> &amp; <font color="Olive" title="b1">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  holds <br>1 <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b2">C</font>,<font color="Olive" title="b1">A</font>)</div>
+<div about="#PF40" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T29"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/40')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/40')" href="javascript:()" title="40"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T30" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E33">Th30</font></span>: <a NAME="T30"><span class="comment"><font color="firebrick">:: ORDINAL4:30</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font>, <font color="Olive" title="b3">C</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a> holds   <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b3">C</font>,<span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Olive" title="b2">B</font></span>)</span>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b3">C</font>,<font color="Olive" title="b2">B</font>)</span>)</span> <a href="ordinal2.html#K11" title="ORDINAL2:func.11">*^</a> <span class="p1">(<span class="default"><a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b3">C</font>,<font color="Olive" title="b1">A</font>)</span>)</span>
+</div>
+<div about="#PF41" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T30"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/41')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/41')" href="javascript:()" title="41"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T31" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T31"><span class="comment"><font color="firebrick">:: ORDINAL4:31</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font>, <font color="Olive" title="b3">C</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a> holds   <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<span class="p1">(<span class="default"><a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b3">C</font>,<font color="Olive" title="b1">A</font>)</span>)</span>,<font color="Olive" title="b2">B</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b3">C</font>,<span class="p1">(<span class="default"><font color="Olive" title="b2">B</font> <a href="ordinal2.html#K11" title="ORDINAL2:func.11">*^</a> <font color="Olive" title="b1">A</font></span>)</span>)</div>
+<div about="#PF42" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T31"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/42')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/42')" href="javascript:()" title="42"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T32" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T32"><span class="comment"><font color="firebrick">:: ORDINAL4:32</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">C</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st 1 <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">C</font> holds <br><font color="Olive" title="b1">A</font> <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a>  <a href="ordinal2.html#K12" title="ORDINAL2:func.12">exp</a> (<font color="Olive" title="b2">C</font>,<font color="Olive" title="b1">A</font>)</div>
+<div about="#PF43" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T32"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/43')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/43')" href="javascript:()" title="43"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: <img src="http://mws.cs.ru.nl/~mptp/WP.ico" alt="WP: "> <a href="http://en.wikipedia.org/wiki/Fixed-point_lemma_for_normal_functions" title="See Wikipedia entry for Fixed-point lemma for normal functions">Fixed-point lemma for normal functions</a><br>  
+</font></div>
+<div about="#S1" typeof="oo:Theorem"><div>
+<a NAME="S1"><span class="kw">scheme  </span><span class="comment"><font color="firebrick">:: ORDINAL4:sch 1</font></span><br></a><span class="lab"><font color="Green" title="E1">CriticalNumber</font></span>{ <font color="Maroon">F<sub>1</sub></font>(  <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>) <span class="kw">-&gt; </span>  <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a> } :<br><div class="add">
+<a NAME="E3:44"></a>
+ ex <font color="Olive" title="b1">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a> st <font color="Maroon">F<sub>1</sub></font>(<font color="Olive" title="b1">A</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">A</font>
+ </div>
+<span class="kw">provided</span><div class="add">
+<a NAME="E1:44"></a><span class="lab"><font color="Green" title="E34">A1</font></span>: 
+ for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">B</font> holds <br><font color="Maroon">F<sub>1</sub></font>(<font color="Olive" title="b1">A</font>) <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon">F<sub>1</sub></font>(<font color="Olive" title="b2">B</font>)
+ <span class="kw">and </span><br><a NAME="E2:44"></a><span class="lab"><font color="Green" title="E35">A2</font></span>: 
+ for <font color="Olive" title="b1">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b1">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  &amp; <font color="Olive" title="b1">A</font> is  <a href="ordinal1.html#V4" title="ORDINAL1:attr.4">limit_ordinal</a>  holds <br> for <font color="Olive" title="b2">phi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a>  st  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b2">phi</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">A</font> &amp; (  for <font color="Olive" title="b3">B</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b3">B</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">A</font> holds <br><font color="Olive" title="b2">phi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon">F<sub>1</sub></font>(<font color="Olive" title="b3">B</font>) ) holds <br><font color="Maroon">F<sub>1</sub></font>(<font color="Olive" title="b1">A</font>) <a href="ordinal2.html#R1" title="ORDINAL2:pred.1">is_limes_of</a> <font color="Olive" title="b2">phi</font>
+ </div>
+<div about="#PF44_1" typeof="oo:Proof">
+<span rel="oo:proves" resource="#S1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/44_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/44_1')" href="javascript:()" title="44_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div></div>
+<br>
+<a class="ref" href=".html"></a>
+
+<div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">W</font> be   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a>;<br>
+<div about="#RC1" typeof="oo:Theorem">
+<a NAME="RC1"><span class="kw">cluster </span></a> <a href="ordinal1.html#V3" title="ORDINAL1:attr.3">ordinal</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">W</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:45_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">W</font> st <font color="Olive">b<sub>1</sub></font> is  <a href="ordinal1.html#V3" title="ORDINAL1:attr.3">ordinal</a> 
+ </span><div about="#PF45_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/45_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/45_1_1')" href="javascript:()" title="45_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">W</font> be   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a>;<br><a NAME="NM1"><span class="kw">mode </span>Ordinal of <font color="Maroon" title="c1">W</font><span class="kw"> is </span></a>  <a href="ordinal1.html#V3" title="ORDINAL1:attr.3">ordinal</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">W</font>;<br><a NAME="NM2"><span class="kw">mode </span>Ordinal-Sequence of <font color="Maroon" title="c1">W</font><span class="kw"> is </span></a>  <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <span class="p1">(<span class="default"><a href="ordinal1.html#K2" title="ORDINAL1:func.2">On</a> <font color="Maroon" title="c1">W</font></span>)</span>,<span class="p1">(<span class="default"><a href="ordinal1.html#K2" title="ORDINAL1:func.2">On</a> <font color="Maroon" title="c1">W</font></span>)</span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><a NAME="E45"></a><span class="lab"><font color="Green" title="E34">Lm9</font></span>: <span about="#E45" typeof="oo:Lemma">
+ <a href="ordinal1.html#K5" title="ORDINAL1:func.5">0</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ </span><br>;<br><br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">W</font> be   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a>;<br>
+<div about="#RC2" typeof="oo:Theorem">
+<a NAME="RC2"><span class="kw">cluster </span></a> <a href="ordinal1.html#V1" title="ORDINAL1:attr.1">epsilon-transitive</a>   <a href="ordinal1.html#V2" title="ORDINAL1:attr.2">epsilon-connected</a>   <a href="ordinal1.html#V3" title="ORDINAL1:attr.3">ordinal</a>   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">W</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:47_1"></a>
+ not  for <font color="Olive">b<sub>1</sub></font> being   <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon" title="c1">W</font> holds  <font color="Olive">b<sub>1</sub></font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ </span><div about="#PF47_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/47_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/47_1_1')" href="javascript:()" title="47_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">W</font> be   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a>;<br>
+<div about="#FC3" typeof="oo:Theorem">
+<a NAME="FC3"><span class="kw">cluster </span></a> <a href="ordinal1.html#K2" title="ORDINAL1:func.2">On</a> <font color="Maroon" title="c1">W</font><span class="kw"> -&gt; </span> non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:48_1"></a>
+ not  <a href="ordinal1.html#K2" title="ORDINAL1:func.2">On</a> <font color="Maroon" title="c1">W</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="classes2.html#T51" onmouseover="rs('classes2/T51')" onmouseout="rh()">CLASSES2:51</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">W</font> be   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a>;<br>
+<div about="#CC1" typeof="oo:Theorem">
+<a NAME="CC1"><span class="kw">cluster </span></a> <a href="funct_1.html#V1" title="FUNCT_1:attr.1">Function-like</a>  <a href="funct_2.html#V1" title="FUNCT_2:attr.1">V28</a>( <a href="ordinal1.html#K2" title="ORDINAL1:func.2">On</a> <font color="Maroon" title="c1">W</font>, <a href="ordinal1.html#K2" title="ORDINAL1:func.2">On</a> <font color="Maroon" title="c1">W</font>) <span class="kw"> -&gt; </span> <a href="ordinal1.html#V5" title="ORDINAL1:attr.5">Sequence-like</a>   <a href="ordinal2.html#V1" title="ORDINAL2:attr.1">Ordinal-yielding</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"><span class="p2">(<span class="default"><a href="ordinal1.html#K2" title="ORDINAL1:func.2">On</a> <font color="Maroon" title="c1">W</font></span>)</span>,<span class="p2">(<span class="default"><a href="ordinal1.html#K2" title="ORDINAL1:func.2">On</a> <font color="Maroon" title="c1">W</font></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:49_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="ordinal4.html#NM2" title="ORDINAL4:NM.2">Ordinal-Sequence</a> of <font color="Maroon" title="c1">W</font> holds <br> ( <font color="Olive">b<sub>1</sub></font> is  <a href="ordinal1.html#V5" title="ORDINAL1:attr.5">Sequence-like</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="ordinal2.html#V1" title="ORDINAL2:attr.1">Ordinal-yielding</a>  )
+ </span><div about="#PF49_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/49_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/49_1_1')" href="javascript:()" title="49_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+<div about="#S2" typeof="oo:Theorem"><div>
+<a NAME="S2"><span class="kw">scheme  </span><span class="comment"><font color="firebrick">:: ORDINAL4:sch 2</font></span><br></a><span class="lab"><font color="Green" title="E2">UOSLambda</font></span>{ <font color="Maroon">F<sub>1</sub></font>() <span class="kw">-&gt; </span>  <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a>, <font color="Maroon">F<sub>2</sub></font>(   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ) <span class="kw">-&gt; </span>  <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon">F<sub>1</sub></font>() } :<br><div class="add">
+<a NAME="E1:50"></a>
+ ex <font color="Olive" title="b1">phi</font> being   <a href="ordinal4.html#NM2" title="ORDINAL4:NM.2">Ordinal-Sequence</a> of <font color="Maroon">F<sub>1</sub></font>() st <br> for <font color="Olive" title="b2">a</font> being   <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon">F<sub>1</sub></font>() holds  <font color="Olive" title="b1">phi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon">F<sub>2</sub></font>(<font color="Olive" title="b2">a</font>)
+ </div>
+<div about="#PF50_1" typeof="oo:Proof">
+<span rel="oo:proves" resource="#S2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/50_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/50_1')" href="javascript:()" title="50_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div></div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">W</font> be   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K2"><span class="kw">func</span> </a> <a href="ordinal4.html#K2" title="ORDINAL4:func.2">0-element_of</a> <font color="Maroon" title="c1">W</font><span class="kw"> -&gt; </span>  <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon" title="c1">W</font><span class="kw"> equals </span><a NAME="D2"><span class="comment"><font color="firebrick">:: ORDINAL4:def 2</font></span><br></a> <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  is   <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon" title="c1">W</font></span>;<br></span><div about="#PF51_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/51_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/51_1_1')" href="javascript:()" title="51_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K3"><span class="kw">func</span> </a> <a href="ordinal4.html#K3" title="ORDINAL4:func.3">1-element_of</a> <font color="Maroon" title="c1">W</font><span class="kw"> -&gt; </span>  non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon" title="c1">W</font><span class="kw"> equals </span><a NAME="D3"><span class="comment"><font color="firebrick">:: ORDINAL4:def 3</font></span><br></a>1;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br>1 is   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon" title="c1">W</font></span>;<br></span><div about="#PF51_2_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/51_2_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/51_2_1')" href="javascript:()" title="51_2_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<span class="kw">let </span><font color="Maroon" title="c2">phi</font> be   <a href="ordinal4.html#NM2" title="ORDINAL4:NM.2">Ordinal-Sequence</a> of <font color="Maroon" title="c1">W</font>;<br><span class="kw">let </span><font color="Maroon" title="c3">A1</font> be   <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon" title="c1">W</font>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a><br><span class="kw">redefine </span><a NAME="K4"><span class="kw">func</span> </a><font color="Maroon" title="c2">phi</font> <a href="ordinal4.html#K4" title="ORDINAL4:func.4">.</a> <font color="Maroon" title="c3">A1</font><span class="kw"> -&gt; </span>  <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon" title="c1">W</font>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:51_3"></a>
+<font color="Maroon" title="c2">phi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c3">A1</font> is   <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon" title="c1">W</font>
+ </span><div about="#PF51_3_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/51_3_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/51_3_1')" href="javascript:()" title="51_3_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+
+
+<div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="ordinal4.html#K2" title="ORDINAL4:func.2">0-element_of</a> <a onclick="hs(this)" href="javascript:()">ORDINAL4:def 2 : <br></a><span class="hide"> for <font color="Olive" title="b1">W</font> being   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a> holds   <a href="ordinal4.html#K2" title="ORDINAL4:func.2">0-element_of</a> <font color="Olive" title="b1">W</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> ;<br></span>
+</div>
+<br><div about="#DT3" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="ordinal4.html#K3" title="ORDINAL4:func.3">1-element_of</a> <a onclick="hs(this)" href="javascript:()">ORDINAL4:def 3 : <br></a><span class="hide"> for <font color="Olive" title="b1">W</font> being   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a> holds   <a href="ordinal4.html#K3" title="ORDINAL4:func.3">1-element_of</a> <font color="Olive" title="b1">W</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1;<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">W</font> be   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">p2</font>, <font color="Maroon" title="c3">p1</font> be   <a href="ordinal4.html#NM2" title="ORDINAL4:NM.2">Ordinal-Sequence</a> of <font color="Maroon" title="c1">W</font>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="relat_1.html#K3" title="RELAT_1:func.3">*</a><br><span class="kw">redefine </span><a NAME="K5"><span class="kw">func</span> </a><font color="Maroon" title="c3">p1</font> <a href="ordinal4.html#K5" title="ORDINAL4:func.5">*</a> <font color="Maroon" title="c2">p2</font><span class="kw"> -&gt; </span>  <a href="ordinal4.html#NM2" title="ORDINAL4:NM.2">Ordinal-Sequence</a> of <font color="Maroon" title="c1">W</font>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:52_1"></a>
+<font color="Maroon" title="c2">p2</font> <a href="relat_1.html#NK6" title="RELAT_1:NK.6">*</a> <font color="Maroon" title="c3">p1</font> is   <a href="ordinal4.html#NM2" title="ORDINAL4:NM.2">Ordinal-Sequence</a> of <font color="Maroon" title="c1">W</font>
+ </span><div about="#PF52_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/52_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/52_1_1')" href="javascript:()" title="52_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T33" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T33"><span class="comment"><font color="firebrick">:: ORDINAL4:33</font></span><br></a><div class="add"> for <font color="Olive" title="b1">W</font> being   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a> holds <br> (  <a href="ordinal4.html#K2" title="ORDINAL4:func.2">0-element_of</a> <font color="Olive" title="b1">W</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  &amp;  <a href="ordinal4.html#K3" title="ORDINAL4:func.3">1-element_of</a> <font color="Olive" title="b1">W</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 ) ;<br>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">W</font> be   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">A1</font> be   <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon" title="c1">W</font>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a><br><span class="kw">redefine </span><a NAME="K6"><span class="kw">func</span> </a> <a href="ordinal4.html#K6" title="ORDINAL4:func.6">succ</a> <font color="Maroon" title="c2">A1</font><span class="kw"> -&gt; </span>  non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon" title="c1">W</font>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:53_1"></a>
+ <a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <font color="Maroon" title="c2">A1</font> is   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon" title="c1">W</font>
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="classes2.html#T5" onmouseover="rs('classes2/T5')" onmouseout="rh()">CLASSES2:5</a></span>;<br><span class="kw">let </span><font color="Maroon" title="c3">B1</font> be   <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon" title="c1">W</font>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a><br><span class="kw">redefine </span><a NAME="K7"><span class="kw">func</span> </a><font color="Maroon" title="c2">A1</font> <a href="ordinal4.html#K7" title="ORDINAL4:func.7">+^</a> <font color="Maroon" title="c3">B1</font><span class="kw"> -&gt; </span>  <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon" title="c1">W</font>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:53_2"></a>
+<font color="Maroon" title="c2">A1</font> <a href="ordinal2.html#K10" title="ORDINAL2:func.10">+^</a> <font color="Maroon" title="c3">B1</font> is   <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon" title="c1">W</font>
+ </span><div about="#PF53_2_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/53_2_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/53_2_1')" href="javascript:()" title="53_2_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">W</font> be   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">A1</font>, <font color="Maroon" title="c3">B1</font> be   <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon" title="c1">W</font>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="ordinal2.html#K11" title="ORDINAL2:func.11">*^</a><br><span class="kw">redefine </span><a NAME="K8"><span class="kw">func</span> </a><font color="Maroon" title="c2">A1</font> <a href="ordinal4.html#K8" title="ORDINAL4:func.8">*^</a> <font color="Maroon" title="c3">B1</font><span class="kw"> -&gt; </span>  <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon" title="c1">W</font>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:54_1"></a>
+<font color="Maroon" title="c2">A1</font> <a href="ordinal2.html#K11" title="ORDINAL2:func.11">*^</a> <font color="Maroon" title="c3">B1</font> is   <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Maroon" title="c1">W</font>
+ </span><div about="#PF54_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/54_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/54_1_1')" href="javascript:()" title="54_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T34" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E35">Th34</font></span>: <a NAME="T34"><span class="comment"><font color="firebrick">:: ORDINAL4:34</font></span><br></a><div class="add"> for <font color="Olive" title="b1">W</font> being   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a><br>  for <font color="Olive" title="b2">A1</font> being   <a href="ordinal4.html#NM1" title="ORDINAL4:NM.1">Ordinal</a> of <font color="Olive" title="b1">W</font><br>  for <font color="Olive" title="b3">phi</font> being   <a href="ordinal4.html#NM2" title="ORDINAL4:NM.2">Ordinal-Sequence</a> of <font color="Olive" title="b1">W</font> holds  <font color="Olive" title="b2">A1</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b3">phi</font>
+</div>
+<div about="#PF55" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T34"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/55')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/55')" href="javascript:()" title="55"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T35" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E36">Th35</font></span>: <a NAME="T35"><span class="comment"><font color="firebrick">:: ORDINAL4:35</font></span><br></a><div class="add"> for <font color="Olive" title="b1">fi</font> being   <a href="ordinal2.html#NM1" title="ORDINAL2:NM.1">Ordinal-Sequence</a><br>  for <font color="Olive" title="b2">W</font> being   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a>  st  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">fi</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">W</font> &amp;  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Olive" title="b1">fi</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b2">W</font> holds <br> <a href="ordinal2.html#K4" title="ORDINAL2:func.4">sup</a> <font color="Olive" title="b1">fi</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">W</font>
+</div>
+<div about="#PF56" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T35"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/56')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/56')" href="javascript:()" title="56"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+<div about="#T36" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T36"><span class="comment"><font color="firebrick">:: ORDINAL4:36</font></span><br></a><div class="add"> for <font color="Olive" title="b1">W</font> being   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a><br>  for <font color="Olive" title="b2">phi</font> being   <a href="ordinal4.html#NM2" title="ORDINAL4:NM.2">Ordinal-Sequence</a> of <font color="Olive" title="b1">W</font>  st <font color="Olive" title="b2">phi</font> is  <a href="ordinal2.html#V2" title="ORDINAL2:attr.2">increasing</a>  &amp; <font color="Olive" title="b2">phi</font> is  <a href="ordinal2.html#V3" title="ORDINAL2:attr.3">continuous</a>  &amp;  <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a>  <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">W</font> holds <br> ex <font color="Olive" title="b3">A</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a> st <br>( <font color="Olive" title="b3">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b2">phi</font> &amp; <font color="Olive" title="b2">phi</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">A</font> )</div>
+<div about="#PF57" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T36"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/57')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/57')" href="javascript:()" title="57"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div about="#T37" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T37"><span class="comment"><font color="firebrick">:: ORDINAL4:37</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font>, <font color="Olive" title="b3">C</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b1">A</font> <a href="ordinal2.html#R2" title="ORDINAL2:pred.2">is_cofinal_with</a> <font color="Olive" title="b2">B</font> &amp; <font color="Olive" title="b2">B</font> <a href="ordinal2.html#R2" title="ORDINAL2:pred.2">is_cofinal_with</a> <font color="Olive" title="b3">C</font> holds <br><font color="Olive" title="b1">A</font> <a href="ordinal2.html#R2" title="ORDINAL2:pred.2">is_cofinal_with</a> <font color="Olive" title="b3">C</font>
+</div>
+<div about="#PF58" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T37"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/58')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/58')" href="javascript:()" title="58"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T38" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T38"><span class="comment"><font color="firebrick">:: ORDINAL4:38</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Olive" title="b1">A</font> <a href="ordinal2.html#R2" title="ORDINAL2:pred.2">is_cofinal_with</a> <font color="Olive" title="b2">B</font> holds <br>( <font color="Olive" title="b1">A</font> is  <a href="ordinal1.html#V4" title="ORDINAL1:attr.4">limit_ordinal</a>  iff <font color="Olive" title="b2">B</font> is  <a href="ordinal1.html#V4" title="ORDINAL1:attr.4">limit_ordinal</a>  )</div>
+<div about="#PF59" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T38"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/59')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/59')" href="javascript:()" title="59"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: from 2009.09.28, A.T.<br>  
+  
+</font></div>
+<div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">D</font> be   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">f</font>, <font color="Maroon" title="c3">g</font> be   <a href="ordinal1.html#NM5" title="ORDINAL1:NM.5">Sequence</a> of <font color="Maroon" title="c1">D</font>;<br>
+<div about="#FC4" typeof="oo:Theorem">
+<a NAME="FC4"><span class="kw">cluster </span></a><font color="Maroon" title="c2">f</font> <a href="ordinal4.html#K1" title="ORDINAL4:func.1">^</a> <font color="Maroon" title="c3">g</font><span class="kw"> -&gt; </span><font color="Maroon" title="c1">D</font> <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:60_1"></a>
+<font color="Maroon" title="c2">f</font> <a href="ordinal4.html#K1" title="ORDINAL4:func.1">^</a> <font color="Maroon" title="c3">g</font> is <font color="Maroon" title="c1">D</font> <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a> 
+ </span><div about="#PF60_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/ordinal4/60_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ordinal4/60_1_1')" href="javascript:()" title="60_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T39" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T39"><span class="comment"><font color="firebrick">:: ORDINAL4:39</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being   <a href="ordinal1.html#NM4" title="ORDINAL1:NM.4">Sequence</a> holds   <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Olive" title="b1">A</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="ordinal4.html#K1" title="ORDINAL4:func.1">^</a> <font color="Olive" title="b2">B</font></span>)</span> <span class="kw">by</span> <span class="lab"><a class="txt" href="ordinal4.html#E7"><span class="lab"><font color="Green" title="E6">Th7A</font></span></a></span>;<br>
+</div>
+</div>
+<br><div about="#T40" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T40"><span class="comment"><font color="firebrick">:: ORDINAL4:40</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being   <a href="ordinal1.html#NM4" title="ORDINAL1:NM.4">Sequence</a> holds   <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Olive" title="b2">B</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="ordinal4.html#K1" title="ORDINAL4:func.1">^</a> <font color="Olive" title="b2">B</font></span>)</span> <span class="kw">by</span> <span class="lab"><a class="txt" href="ordinal4.html#E8"><span class="lab"><font color="Green" title="E7">Th8A</font></span></a></span>;<br>
+</div>
+</div>
+<br>
+</body>
+</html>
