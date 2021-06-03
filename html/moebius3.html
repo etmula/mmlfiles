@@ -1,0 +1,1142 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>MOEBIUS3:  Sequences of Prime Reciprocals -- Preliminaries</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  Sequences of Prime Reciprocals -- Preliminaries</font></span><br><span class="comment"><font color="firebrick">:: by Adam Grabowski</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received March 27, 2018</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 2018-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+<div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC1" typeof="oo:Theorem">
+<a NAME="RC1"><span class="kw">cluster </span></a> non  <a href="zfmisc_1.html#V1" title="ZFMISC_1:attr.1">trivial</a>  <a href="ordinal1.html#V1" title="ORDINAL1:attr.1">V21</a>() <a href="ordinal1.html#V2" title="ORDINAL1:attr.2">V22</a>() <a href="ordinal1.html#V3" title="ORDINAL1:attr.3">V23</a>() <a href="ordinal1.html#V7" title="ORDINAL1:attr.7">V27</a>()  non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="xcmplx_0.html#V1" title="XCMPLX_0:attr.1">complex</a>  <a href="xreal_0.html#V1" title="XREAL_0:attr.1">V32</a>()  <a href="int_1.html#V1" title="INT_1:attr.1">integer</a>   <a href="int_1.html#V2" title="INT_1:attr.2">dim-like</a>   <a href="xxreal_0.html#V1" title="XXREAL_0:attr.1">ext-real</a>   non  <a href="xxreal_0.html#V3" title="XXREAL_0:attr.3">negative</a>   <a href="pythtrip.html#V1" title="PYTHTRIP:attr.1">square</a>   for    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:1_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <br>(  not <font color="Olive">b<sub>1</sub></font> is  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="pythtrip.html#V1" title="PYTHTRIP:attr.1">square</a>  &amp;  not <font color="Olive">b<sub>1</sub></font> is  <a href="zfmisc_1.html#V1" title="ZFMISC_1:attr.1">trivial</a>  )
+ </span><div about="#PF1_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/1_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/1_1_1')" href="javascript:()" title="1_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">Z</font> be   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">f</font> be   <a href="partfun1.html#NM1" title="PARTFUN1:NM.1">PartFunc</a> of <font color="Maroon" title="c1">Z</font>,<a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>;<br><span class="kw">let </span><font color="Maroon" title="c3">A</font> be   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>;<br>
+<div about="#FC1" typeof="oo:Theorem">
+<a NAME="FC1"><span class="kw">cluster </span></a><font color="Maroon" title="c2">f</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Maroon" title="c3">A</font><span class="kw"> -&gt; </span><font color="Maroon" title="c3">A</font> <a href="relat_1.html#V4" title="RELAT_1:attr.4">-defined</a>   for  <a href="partfun1.html#NM1" title="PARTFUN1:NM.1">PartFunc</a> of <font color="Maroon" title="c1">Z</font>,<a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:2_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="partfun1.html#NM1" title="PARTFUN1:NM.1">PartFunc</a> of <font color="Maroon" title="c1">Z</font>,<a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>  st <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">f</font> <a href="relset_1.html#K5" title="RELSET_1:func.5">|</a> <font color="Maroon" title="c3">A</font> holds <br><font color="Olive">b<sub>1</sub></font> is <font color="Maroon" title="c3">A</font> <a href="relat_1.html#V4" title="RELAT_1:attr.4">-defined</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T1"><span class="comment"><font color="firebrick">:: MOEBIUS3:1</font></span><br></a><div class="add"> for <font color="Olive" title="b1">Z</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>  st  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">Z</font> holds <br><span class="p1">(<span class="default"><a href="partfun2.html#K1" title="PARTFUN2:func.1">id</a> <font color="Olive" title="b1">Z</font></span>)</span> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <span class="p1"><a href="seq_4.html#K1" title="SEQ_4:func.1">{</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span><a href="seq_4.html#K1" title="SEQ_4:func.1">}</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="seq_4.html#K1" title="SEQ_4:func.1">{</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span><a href="seq_4.html#K1" title="SEQ_4:func.1">}</a></span>
+</div>
+<div about="#PF3" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/3')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/3')" href="javascript:()" title="3"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E1">Counter0</font></span>: <a NAME="T2"><span class="comment"><font color="firebrick">:: MOEBIUS3:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">Z</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>  st  not  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">Z</font> holds <br><span class="p1">(<span class="default"><a href="partfun2.html#K1" title="PARTFUN2:func.1">id</a> <font color="Olive" title="b1">Z</font></span>)</span> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <span class="p1"><a href="seq_4.html#K1" title="SEQ_4:func.1">{</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span><a href="seq_4.html#K1" title="SEQ_4:func.1">}</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> </div>
+<div about="#PF4" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/4')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/4')" href="javascript:()" title="4"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E2">ContCut</font></span>: <a NAME="T3"><span class="comment"><font color="firebrick">:: MOEBIUS3:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">Z</font> being   <a href="rcomp_1.html#V3" title="RCOMP_1:attr.3">open</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a><br>  for <font color="Olive" title="b2">A</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="measure5.html#V2" title="MEASURE5:attr.2">closed_interval</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>  st  not  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">Z</font> &amp; <font color="Olive" title="b2">A</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b1">Z</font> holds <br><span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="partfun2.html#K1" title="PARTFUN2:func.1">id</a> <font color="Olive" title="b1">Z</font></span>)</span> <a href="rfunct_1.html#K6" title="RFUNCT_1:func.6">^</a></span>)</span> <a href="relset_1.html#K5" title="RELSET_1:func.5">|</a> <font color="Olive" title="b2">A</font> is  <a href="fcont_1.html#V1" title="FCONT_1:attr.1">continuous</a> </div>
+<div about="#PF5" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/5')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/5')" href="javascript:()" title="5"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T4"><span class="comment"><font color="firebrick">:: MOEBIUS3:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b2">Z</font> being   <a href="rcomp_1.html#V3" title="RCOMP_1:attr.3">open</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a><br>  for <font color="Olive" title="b3">A</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="measure5.html#V2" title="MEASURE5:attr.2">closed_interval</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>  st <font color="Olive" title="b2">Z</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="limfunc1.html#K3" title="LIMFUNC1:func.3">right_open_halfline</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> &amp; <font color="Olive" title="b3">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default">1,<span class="p2">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span> holds <br> <a href="integra5.html#K2" title="INTEGRA5:func.2">integral</a> (<span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="partfun2.html#K1" title="PARTFUN2:func.1">id</a> <font color="Olive" title="b2">Z</font></span>)</span> <a href="rfunct_1.html#K6" title="RFUNCT_1:func.6">^</a></span>)</span>,<font color="Olive" title="b3">A</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <a href="taylor_1.html#K3" title="TAYLOR_1:func.3">ln</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span>
+</div>
+<div about="#PF6" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T4"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/6')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/6')" href="javascript:()" title="6"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T5"><span class="comment"><font color="firebrick">:: MOEBIUS3:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b2">Z</font> being   <a href="rcomp_1.html#V3" title="RCOMP_1:attr.3">open</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a><br>  for <font color="Olive" title="b3">A</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="measure5.html#V2" title="MEASURE5:attr.2">closed_interval</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>  st <font color="Olive" title="b2">Z</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="limfunc1.html#K3" title="LIMFUNC1:func.3">right_open_halfline</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> &amp;  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b1">n</font> &amp; <font color="Olive" title="b3">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><font color="Olive" title="b1">n</font>,<span class="p2">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span> holds <br> <a href="integra5.html#K2" title="INTEGRA5:func.2">integral</a> (<span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="partfun2.html#K1" title="PARTFUN2:func.1">id</a> <font color="Olive" title="b2">Z</font></span>)</span> <a href="rfunct_1.html#K6" title="RFUNCT_1:func.6">^</a></span>)</span>,<font color="Olive" title="b3">A</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <a href="taylor_1.html#K3" title="TAYLOR_1:func.3">ln</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <font color="Olive" title="b1">n</font></span>)</span>
+</div>
+<div about="#PF7" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/7')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/7')" href="javascript:()" title="7"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E3">MacPositive</font></span>: <a NAME="T6"><span class="comment"><font color="firebrick">:: MOEBIUS3:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">r</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>  st <font color="Olive" title="b1">x</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; <font color="Olive" title="b2">r</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br> <a href="taylor_2.html#K1" title="TAYLOR_2:func.1">Maclaurin</a> (<a href="sin_cos.html#K22" title="SIN_COS:func.22">exp_R</a>,<span class="p1"><a href="rcomp_1.html#K2" title="RCOMP_1:func.2">].</a><span class="default"><span class="p2">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <font color="Olive" title="b2">r</font></span>)</span>,<font color="Olive" title="b2">r</font></span><a href="rcomp_1.html#K2" title="RCOMP_1:func.2">.[</a></span>,<font color="Olive" title="b1">x</font>) is  <a href="partfun3.html#V1" title="PARTFUN3:attr.1">positive-yielding</a> </div>
+<div about="#PF8" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/8')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/8')" href="javascript:()" title="8"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E4">Th36</font></span>: <a NAME="T7"><span class="comment"><font color="firebrick">:: MOEBIUS3:7</font></span><br></a><div class="add"> for <font color="Olive" title="b1">f</font> being   <a href="series_1.html#V1" title="SERIES_1:attr.1">summable</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">f</font> is  <a href="partfun3.html#V1" title="PARTFUN3:attr.1">positive-yielding</a>  holds <br> <a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">f</font> <a href="nat_1.html#K7" title="NAT_1:func.7">^\</a> <span class="p2">(<span class="default"><font color="Olive" title="b2">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </div>
+<div about="#PF9" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T7"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/9')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/9')" href="javascript:()" title="9"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: n-th harmonic number<br>  
+  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K1"><span class="kw">func</span> </a> <a href="moebius3.html#K1" title="MOEBIUS3:func.1">Harmonic</a> <font color="Maroon" title="c1">n</font><span class="kw"> -&gt; </span>  <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a><span class="kw"> equals </span><a NAME="D1"><span class="comment"><font color="firebrick">:: MOEBIUS3:def 1</font></span><br></a><span class="p1">(<span class="default"><a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <a href="moebius2.html#K2" title="MOEBIUS2:func.2">invNAT</a></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c1">n</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:10_1"></a>
+<span class="p1">(<span class="default"><a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <a href="moebius2.html#K2" title="MOEBIUS2:func.2">invNAT</a></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c1">n</font> is   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="moebius3.html#K1" title="MOEBIUS3:func.1">Harmonic</a> <a onclick="hs(this)" href="javascript:()">MOEBIUS3:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds   <a href="moebius3.html#K1" title="MOEBIUS3:func.1">Harmonic</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <a href="moebius2.html#K2" title="MOEBIUS2:func.2">invNAT</a></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font>;<br></span>
+</div>
+<br><div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E5">Harm0</font></span>: <a NAME="T8"><span class="comment"><font color="firebrick">:: MOEBIUS3:8</font></span><br></a><div class="add"> <a href="moebius3.html#K1" title="MOEBIUS3:func.1">Harmonic</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </div>
+<div about="#PF11" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/11')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/11')" href="javascript:()" title="11"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E6">Harmon1</font></span>: <a NAME="T9"><span class="comment"><font color="firebrick">:: MOEBIUS3:9</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds   <a href="moebius3.html#K1" title="MOEBIUS3:func.1">Harmonic</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="moebius3.html#K1" title="MOEBIUS3:func.1">Harmonic</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p2">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span>
+</div>
+<div about="#PF12" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T9"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/12')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/12')" href="javascript:()" title="12"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E7">Harm1</font></span>: <a NAME="T10"><span class="comment"><font color="firebrick">:: MOEBIUS3:10</font></span><br></a><div class="add"> <a href="moebius3.html#K1" title="MOEBIUS3:func.1">Harmonic</a> 1 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1</div>
+<div about="#PF13" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T10"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/13')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/13')" href="javascript:()" title="13"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T11"><span class="comment"><font color="firebrick">:: MOEBIUS3:11</font></span><br></a><div class="add"> <a href="moebius3.html#K1" title="MOEBIUS3:func.1">Harmonic</a> 2 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 3 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 2</div>
+<div about="#PF14" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/14')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/14')" href="javascript:()" title="14"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E8">LogZero</font></span>: <a NAME="T12"><span class="comment"><font color="firebrick">:: MOEBIUS3:12</font></span><br></a><div class="add">
+<a href="taylor_1.html#K3" title="TAYLOR_1:func.3">ln</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> 1 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </div>
+<div about="#PF15" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/15')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/15')" href="javascript:()" title="15"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T13"><span class="comment"><font color="firebrick">:: MOEBIUS3:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">x</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>  st <font color="Olive" title="b1">x</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br><a href="sin_cos.html#K22" title="SIN_COS:func.22">exp_R</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">x</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> <font color="Olive" title="b1">x</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1</div>
+<div about="#PF16" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T13"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/16')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/16')" href="javascript:()" title="16"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E9">Diesel1</font></span>: <a NAME="T14"><span class="comment"><font color="firebrick">:: MOEBIUS3:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">x</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>  st <font color="Olive" title="b1">x</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br><a href="taylor_1.html#K3" title="TAYLOR_1:func.3">ln</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">x</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1</span>)</span> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b1">x</font>
+</div>
+<div about="#PF17" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T14"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/17')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/17')" href="javascript:()" title="17"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T15" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E10">Diesel2</font></span>: <a NAME="T15"><span class="comment"><font color="firebrick">:: MOEBIUS3:15</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br><a href="taylor_1.html#K3" title="TAYLOR_1:func.3">ln</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <font color="Olive" title="b1">n</font>
+</div>
+<div about="#PF18" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/18')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/18')" href="javascript:()" title="18"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T16" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E11">LogExp</font></span>: <a NAME="T16"><span class="comment"><font color="firebrick">:: MOEBIUS3:16</font></span><br></a><div class="add"> for <font color="Olive" title="b1">x</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> holds  <a href="taylor_1.html#K3" title="TAYLOR_1:func.3">ln</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><a href="sin_cos.html#K22" title="SIN_COS:func.22">exp_R</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">x</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">x</font>
+</div>
+<div about="#PF19" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T16"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/19')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/19')" href="javascript:()" title="19"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T17" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E12">LogMono</font></span>: <a NAME="T17"><span class="comment"><font color="firebrick">:: MOEBIUS3:17</font></span><br></a><div class="add"> for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>  st  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b1">x</font> &amp; <font color="Olive" title="b1">x</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b2">y</font> holds <br><a href="taylor_1.html#K3" title="TAYLOR_1:func.3">ln</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">x</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <a href="taylor_1.html#K3" title="TAYLOR_1:func.3">ln</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">y</font>
+</div>
+<div about="#PF20" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T17"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/20')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/20')" href="javascript:()" title="20"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T18" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T18"><span class="comment"><font color="firebrick">:: MOEBIUS3:18</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  holds <a href="taylor_1.html#K3" title="TAYLOR_1:func.3">ln</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </div>
+<div about="#PF21" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T18"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/21')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/21')" href="javascript:()" title="21"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T19" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E13">LogAdd</font></span>: <a NAME="T19"><span class="comment"><font color="firebrick">:: MOEBIUS3:19</font></span><br></a><div class="add"> for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>  st  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b1">x</font> &amp;  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b2">y</font> holds <br><a href="taylor_1.html#K3" title="TAYLOR_1:func.3">ln</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">x</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b2">y</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="taylor_1.html#K3" title="TAYLOR_1:func.3">ln</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">x</font></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><a href="taylor_1.html#K3" title="TAYLOR_1:func.3">ln</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">y</font></span>)</span>
+</div>
+<div about="#PF22" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T19"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/22')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/22')" href="javascript:()" title="22"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T20" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T20"><span class="comment"><font color="firebrick">:: MOEBIUS3:20</font></span><br></a><div class="add"> for <font color="Olive" title="b1">x</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>  ex <font color="Olive" title="b2">y</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <font color="Olive" title="b1">x</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <a href="taylor_1.html#K3" title="TAYLOR_1:func.3">ln</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><a href="taylor_1.html#K3" title="TAYLOR_1:func.3">ln</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p2">(<span class="default"><font color="Olive" title="b2">y</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span>
+</div>
+<div about="#PF23" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T20"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/23')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/23')" href="javascript:()" title="23"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T21" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E14">Diesel3</font></span>: <a NAME="T21"><span class="comment"><font color="firebrick">:: MOEBIUS3:21</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="measure5.html#V2" title="MEASURE5:attr.2">closed_interval</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a><br>  for <font color="Olive" title="b2">Z</font> being   <a href="rcomp_1.html#V3" title="RCOMP_1:attr.3">open</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a><br>  for <font color="Olive" title="b3">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b2">Z</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="limfunc1.html#K3" title="LIMFUNC1:func.3">right_open_halfline</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> &amp; <font color="Olive" title="b1">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><font color="Olive" title="b3">n</font>,<span class="p2">(<span class="default"><font color="Olive" title="b3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span> holds <br> <a href="integra5.html#K2" title="INTEGRA5:func.2">integral</a> (<span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="partfun2.html#K1" title="PARTFUN2:func.1">id</a> <font color="Olive" title="b2">Z</font></span>)</span> <a href="rfunct_1.html#K6" title="RFUNCT_1:func.6">^</a></span>)</span>,<font color="Olive" title="b1">A</font>) <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <font color="Olive" title="b3">n</font>
+</div>
+<div about="#PF24" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T21"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/24')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/24')" href="javascript:()" title="24"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T22" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T22"><span class="comment"><font color="firebrick">:: MOEBIUS3:22</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  holds <a href="taylor_1.html#K3" title="TAYLOR_1:func.3">ln</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a>  <a href="moebius3.html#K1" title="MOEBIUS3:func.1">Harmonic</a> <font color="Olive" title="b1">n</font>
+</div>
+<div about="#PF25" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T22"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/25')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/25')" href="javascript:()" title="25"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T23" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T23"><span class="comment"><font color="firebrick">:: MOEBIUS3:23</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n1</font>, <font color="Olive" title="b2">n2</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">n1</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">n2</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a>  holds <br><font color="Olive" title="b1">n1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">n2</font>
+</div>
+<div about="#PF26" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T23"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/26')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/26')" href="javascript:()" title="26"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   non  <a href="zfmisc_1.html#V1" title="ZFMISC_1:attr.1">trivial</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br>
+<div about="#FC2" typeof="oo:Theorem">
+<a NAME="FC2"><span class="kw">cluster </span></a><font color="Maroon" title="c1">n</font> <a href="square_1.html#K1" title="SQUARE_1:func.1">^2</a> <span class="kw"> -&gt; </span> non  <a href="zfmisc_1.html#V1" title="ZFMISC_1:attr.1">trivial</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:27_1"></a>
+ not <font color="Maroon" title="c1">n</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a>  is  <a href="zfmisc_1.html#V1" title="ZFMISC_1:attr.1">trivial</a> 
+ </span><div about="#PF27_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/27_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/27_1_1')" href="javascript:()" title="27_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: <img src="http://mws.cs.ru.nl/~mptp/WP.ico" alt="WP: "> <a href="http://en.wikipedia.org/wiki/Telescoping_series" title="See Wikipedia entry for Telescoping series">Telescoping series</a><br>  
+  
+</font></div>
+<div about="#T24" typeof="oo:Theorem">
+<span rel="owl:sameAs" resource="http://dbpedia.org/resource/Telescoping_series"></span><span class="kw">theorem </span><span class="lab"><font color="Green" title="E15">Telescoping</font></span>: <a NAME="T24"><span class="comment"><font color="firebrick">:: MOEBIUS3:24</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font>, <font color="Olive" title="b3">s</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>  st (  for <font color="Olive" title="b4">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive" title="b3">s</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">a</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">n</font></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">b</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">n</font></span>)</span> ) &amp; (  for <font color="Olive" title="b4">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive" title="b2">b</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">k</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">a</font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <span class="p2">(<span class="default"><font color="Olive" title="b4">k</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span> ) holds <br> for <font color="Olive" title="b4">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <span class="p1">(<span class="default"><a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <font color="Olive" title="b3">s</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">a</font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">b</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">n</font></span>)</span>
+</div>
+<div about="#PF28" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T24"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/28')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/28')" href="javascript:()" title="28"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T25" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E16">Impor3</font></span>: <a NAME="T25"><span class="comment"><font color="firebrick">:: MOEBIUS3:25</font></span><br></a><div class="add"> for <font color="Olive" title="b1">f1</font>, <font color="Olive" title="b2">f2</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b3">n</font> being   non  <a href="zfmisc_1.html#V1" title="ZFMISC_1:attr.1">trivial</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st (  for <font color="Olive" title="b4">k</font> being   non  <a href="zfmisc_1.html#V1" title="ZFMISC_1:attr.1">trivial</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b4">k</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b3">n</font> holds <br><font color="Olive" title="b1">f1</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">k</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b2">f2</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">k</font> ) holds <br> <a href="series_1.html#K7" title="SERIES_1:func.7">Sum</a> (<font color="Olive" title="b1">f1</font>,<font color="Olive" title="b3">n</font>,1) <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a>  <a href="series_1.html#K7" title="SERIES_1:func.7">Sum</a> (<font color="Olive" title="b2">f2</font>,<font color="Olive" title="b3">n</font>,1)</div>
+<div about="#PF29" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T25"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/29')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/29')" href="javascript:()" title="29"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<div about="#D17" typeof="oo:Definition">
+<a NAME="K2"><span class="kw">func</span> </a> <a href="moebius3.html#K2" title="MOEBIUS3:func.2">Reci-seq1</a> <span class="kw"> -&gt; </span>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E17">MyDef</font></span>: <a NAME="D2"><span class="comment"><font color="firebrick">:: MOEBIUS3:def 2</font></span><br></a> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <span class="kw">it</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b1">n</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p2">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 4</span>)</span></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:30_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> st <br> for <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b2">n</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p2">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 4</span>)</span></span>)</span>
+ </span><div about="#PF30_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/30_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/30_1_1')" href="javascript:()" title="30_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:30_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>  st (  for <font color="Olive" title="b3">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b3">n</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p2">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 4</span>)</span></span>)</span> ) &amp; (  for <font color="Olive" title="b3">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>2</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b3">n</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p2">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 4</span>)</span></span>)</span> ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF30_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/30_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/30_1_2')" href="javascript:()" title="30_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E17">MyDef</font></span>   defines <a href="moebius3.html#K2" title="MOEBIUS3:func.2">Reci-seq1</a> <a onclick="hs(this)" href="javascript:()">MOEBIUS3:def 2 : <br></a><span class="hide"> for <font color="Olive">b<sub>1</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> holds <br> ( <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="moebius3.html#K2" title="MOEBIUS3:func.2">Reci-seq1</a>  iff  for <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b2">n</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p2">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 4</span>)</span></span>)</span> );<br></span>
+</div>
+<br><div about="#T26" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E18">Tele1</font></span>: <a NAME="T26"><span class="comment"><font color="firebrick">:: MOEBIUS3:26</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <a href="moebius3.html#K2" title="MOEBIUS3:func.2">Reci-seq1</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p2">(<span class="default"><font color="Olive" title="b1">n</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p3">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 2</span>)</span></span>)</span></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p1">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p2">(<span class="default"><font color="Olive" title="b1">n</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p3">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 2</span>)</span></span>)</span></span>)</span>
+</div>
+<div about="#PF31" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T26"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/31')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/31')" href="javascript:()" title="31"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E29"></a><span class="lab"><font color="Green" title="E19">AlgDef</font></span>: <span about="#E29" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> holds  <span class="p1">(<span class="default"><a href="basel_1.html#K2" title="BASEL_1:func.2">rseq</a> (<a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1,<font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>)</span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b2">a</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Olive" title="b3">b</font></span>)</span>
+ </span><br><div about="#PF32" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E29"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/32')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/32')" href="javascript:()" title="32"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E30"></a><span class="lab"><font color="Green" title="E20">Tele2</font></span>: <span about="#E30" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <a href="moebius3.html#K2" title="MOEBIUS3:func.2">Reci-seq1</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="basel_1.html#K2" title="BASEL_1:func.2">rseq</a> (<a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1,1,<span class="p3">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <span class="p4">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 2</span>)</span></span>)</span>)</span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="valued_1.html#K32" title="VALUED_1:func.32">-</a> <span class="p3">(<span class="default"><a href="basel_1.html#K2" title="BASEL_1:func.2">rseq</a> (<a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1,1,<span class="p4">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 2</span>)</span>)</span>)</span></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font></span>)</span>
+ </span><br><div about="#PF33" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E30"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/33')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/33')" href="javascript:()" title="33"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T27" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T27"><span class="comment"><font color="firebrick">:: MOEBIUS3:27</font></span><br></a><div class="add"> <a href="moebius3.html#K2" title="MOEBIUS3:func.2">Reci-seq1</a>  <a href="relset_1.html#R2" title="RELSET_1:pred.2">=</a> <span class="p1">(<span class="default"><a href="basel_1.html#K2" title="BASEL_1:func.2">rseq</a> (<a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1,1,<span class="p2">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <span class="p3">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 2</span>)</span></span>)</span>)</span>)</span> <a href="series_1.html#K1" title="SERIES_1:func.1">+</a> <span class="p1">(<span class="default"><a href="valued_1.html#K32" title="VALUED_1:func.32">-</a> <span class="p2">(<span class="default"><a href="basel_1.html#K2" title="BASEL_1:func.2">rseq</a> (<a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1,1,<span class="p3">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 2</span>)</span>)</span>)</span></span>)</span> <span class="kw">by</span> <span class="lab"><a class="ref" href="seq_1.html#T7" onmouseover="rs('seq_1/T7')" onmouseout="rh()">SEQ_1:7</a>, <a class="txt" href="moebius3.html#E30"><span class="lab"><font color="Green" title="E20">Tele2</font></span></a></span>;<br>
+</div>
+</div>
+<br><div about="#T28" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T28"><span class="comment"><font color="firebrick">:: MOEBIUS3:28</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  holds <span class="p1">(<span class="default"><a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <a href="moebius3.html#K2" title="MOEBIUS3:func.2">Reci-seq1</a></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a>  <a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 2</div>
+<div about="#PF34" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T28"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/34')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/34')" href="javascript:()" title="34"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T29" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E21">Seq3</font></span>: <a NAME="T29"><span class="comment"><font color="firebrick">:: MOEBIUS3:29</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  holds  <a href="series_1.html#K7" title="SERIES_1:func.7">Sum</a> (<a href="moebius3.html#K2" title="MOEBIUS3:func.2">Reci-seq1</a>,<font color="Olive" title="b1">n</font>,1) <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 2 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 3</div>
+<div about="#PF35" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T29"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/35')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/35')" href="javascript:()" title="35"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#FC3" typeof="oo:Theorem">
+<a NAME="FC3"><span class="kw">cluster </span></a> <a href="basel_1.html#K6" title="BASEL_1:func.6">Basel-seq</a> <span class="kw"> -&gt; </span> <a href="series_1.html#V1" title="SERIES_1:attr.1">summable</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:36_1"></a>
+ <a href="basel_1.html#K6" title="BASEL_1:func.6">Basel-seq</a>  is  <a href="series_1.html#V1" title="SERIES_1:attr.1">summable</a> 
+ </span><div about="#PF36_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/36_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/36_1_1')" href="javascript:()" title="36_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T30" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T30"><span class="comment"><font color="firebrick">:: MOEBIUS3:30</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <span class="p1">(<span class="default"><a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <a href="moebius3.html#K2" title="MOEBIUS3:func.2">Reci-seq1</a></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 2</span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <span class="p2">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p3">(<span class="default"><font color="Olive" title="b1">n</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p4">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 2</span>)</span></span>)</span></span>)</span></span>)</span>
+</div>
+<div about="#PF37" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T30"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/37')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/37')" href="javascript:()" title="37"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T31" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E22">Impor2</font></span>: <a NAME="T31"><span class="comment"><font color="firebrick">:: MOEBIUS3:31</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="zfmisc_1.html#V1" title="ZFMISC_1:attr.1">trivial</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  holds  <a href="series_1.html#K7" title="SERIES_1:func.7">Sum</a> (<a href="basel_1.html#K6" title="BASEL_1:func.6">Basel-seq</a>,<font color="Olive" title="b1">n</font>,1) <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a>  <a href="series_1.html#K7" title="SERIES_1:func.7">Sum</a> (<a href="moebius3.html#K2" title="MOEBIUS3:func.2">Reci-seq1</a>,<font color="Olive" title="b1">n</font>,1)</div>
+<div about="#PF38" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T31"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/38')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/38')" href="javascript:()" title="38"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T32" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E23">Important</font></span>: <a NAME="T32"><span class="comment"><font color="firebrick">:: MOEBIUS3:32</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="zfmisc_1.html#V1" title="ZFMISC_1:attr.1">trivial</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  holds  <a href="series_1.html#K6" title="SERIES_1:func.6">Sum</a> (<a href="basel_1.html#K6" title="BASEL_1:func.6">Basel-seq</a>,<font color="Olive" title="b1">n</font>) <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 5 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 3</div>
+<div about="#PF39" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T32"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/39')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/39')" href="javascript:()" title="39"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T33" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T33"><span class="comment"><font color="firebrick">:: MOEBIUS3:33</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  holds <span class="p1">(<span class="default"><a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <a href="basel_1.html#K6" title="BASEL_1:func.6">Basel-seq</a></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 5 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 3</div>
+<div about="#PF40" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T33"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/40')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/40')" href="javascript:()" title="40"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<div about="#D24" typeof="oo:Definition">
+<a NAME="K3"><span class="kw">func</span> </a> <a href="moebius3.html#K3" title="MOEBIUS3:func.3">Reci-seq2</a> <span class="kw"> -&gt; </span>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E24">My3Def</font></span>: <a NAME="D3"><span class="comment"><font color="firebrick">:: MOEBIUS3:def 3</font></span><br></a> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <span class="kw">it</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p2">(<span class="default"><a href="newton.html#K10" title="NEWTON:func.10">primenumber</a> <font color="Olive" title="b1">n</font></span>)</span></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:41_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> st <br> for <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p2">(<span class="default"><a href="newton.html#K10" title="NEWTON:func.10">primenumber</a> <font color="Olive" title="b2">n</font></span>)</span></span>)</span>
+ </span><div about="#PF41_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/41_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/41_1_1')" href="javascript:()" title="41_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:41_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>  st (  for <font color="Olive" title="b3">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p2">(<span class="default"><a href="newton.html#K10" title="NEWTON:func.10">primenumber</a> <font color="Olive" title="b3">n</font></span>)</span></span>)</span> ) &amp; (  for <font color="Olive" title="b3">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>2</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p2">(<span class="default"><a href="newton.html#K10" title="NEWTON:func.10">primenumber</a> <font color="Olive" title="b3">n</font></span>)</span></span>)</span> ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF41_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/41_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/41_1_2')" href="javascript:()" title="41_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT3" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E24">My3Def</font></span>   defines <a href="moebius3.html#K3" title="MOEBIUS3:func.3">Reci-seq2</a> <a onclick="hs(this)" href="javascript:()">MOEBIUS3:def 3 : <br></a><span class="hide"> for <font color="Olive">b<sub>1</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> holds <br> ( <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="moebius3.html#K3" title="MOEBIUS3:func.3">Reci-seq2</a>  iff  for <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p2">(<span class="default"><a href="newton.html#K10" title="NEWTON:func.10">primenumber</a> <font color="Olive" title="b2">n</font></span>)</span></span>)</span> );<br></span>
+</div>
+<br><div about="#T34" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T34"><span class="comment"><font color="firebrick">:: MOEBIUS3:34</font></span><br></a><div class="add"> <a href="rvsum_1.html#K16" title="RVSUM_1:func.16">Sum</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K14" title="FINSEQ_1:func.14">Sgm</a> <span class="p2"><a href="seq_4.html#K1" title="SEQ_4:func.1">{</a><span class="default">1</span><a href="seq_4.html#K1" title="SEQ_4:func.1">}</a></span></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1</div>
+<div about="#PF42" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T34"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/42')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/42')" href="javascript:()" title="42"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K4"><span class="kw">func</span> </a> <a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Maroon" title="c1">n</font><span class="kw"> -&gt; </span>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a><span class="kw"> equals </span><a NAME="D4"><span class="comment"><font color="firebrick">:: MOEBIUS3:def 4</font></span><br></a><a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c1">n</font></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:43_1"></a>
+<a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c1">n</font></span>)</span> is   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT4" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <a onclick="hs(this)" href="javascript:()">MOEBIUS3:def 4 : <br></a><span class="hide"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds   <a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">n</font></span>)</span>;<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br>
+<div about="#FC4" typeof="oo:Theorem">
+<a NAME="FC4"><span class="kw">cluster </span></a> <a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Maroon" title="c1">n</font><span class="kw"> -&gt; </span> <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:44_1"></a>
+ <a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Maroon" title="c1">n</font> is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T35" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T35"><span class="comment"><font color="firebrick">:: MOEBIUS3:35</font></span><br></a><div class="add"> for <font color="Olive" title="b1">m</font>, <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">m</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b2">n</font> holds <br> <a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Olive" title="b1">m</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Olive" title="b2">n</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_1.html#T26" onmouseover="rs('xboole_1/T26')" onmouseout="rh()">XBOOLE_1:26</a>, <a class="ref" href="finseq_1.html#T5" onmouseover="rs('finseq_1/T5')" onmouseout="rh()">FINSEQ_1:5</a></span>;<br>
+</div>
+</div>
+<br><div about="#T36" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E25">PrimesSet</font></span>: <a NAME="T36"><span class="comment"><font color="firebrick">:: MOEBIUS3:36</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 is  not   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a> holds <br> <a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Olive" title="b1">n</font>
+</div>
+<div about="#PF45" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T36"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/45')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/45')" href="javascript:()" title="45"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T37" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E26">SetPrime1</font></span>: <a NAME="T37"><span class="comment"><font color="firebrick">:: MOEBIUS3:37</font></span><br></a><div class="add">(  <a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  &amp;  <a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> 1 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  )</div>
+<div about="#PF46" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T37"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/46')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/46')" href="javascript:()" title="46"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T38" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E27">PrimesSet2</font></span>: <a NAME="T38"><span class="comment"><font color="firebrick">:: MOEBIUS3:38</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 is   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a> holds <br> <a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="xboole_0.html#K2" title="XBOOLE_0:func.2">\/</a> <span class="p1"><a href="seq_4.html#K1" title="SEQ_4:func.1">{</a><span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span><a href="seq_4.html#K1" title="SEQ_4:func.1">}</a></span>
+</div>
+<div about="#PF47" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T38"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/47')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/47')" href="javascript:()" title="47"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T39" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E28">P1NotPrime</font></span>: <a NAME="T39"><span class="comment"><font color="firebrick">:: MOEBIUS3:39</font></span><br></a><div class="add"> for <font color="Olive" title="b1">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b1">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 holds <br> not <font color="Olive" title="b1">p</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 is   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>
+</div>
+<div about="#PF48" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T39"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/48')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/48')" href="javascript:()" title="48"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T40" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E29">Set2</font></span>: <a NAME="T40"><span class="comment"><font color="firebrick">:: MOEBIUS3:40</font></span><br></a><div class="add"> <a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> 2 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="seq_4.html#K1" title="SEQ_4:func.1">{</a><span class="default">2</span><a href="seq_4.html#K1" title="SEQ_4:func.1">}</a></span>
+</div>
+<div about="#PF49" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T40"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/49')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/49')" href="javascript:()" title="49"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T41" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T41"><span class="comment"><font color="firebrick">:: MOEBIUS3:41</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  holds  not <font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Olive" title="b1">n</font>
+</div>
+<div about="#PF50" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T41"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/50')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/50')" href="javascript:()" title="50"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br><div class="comment mathjax"><font color="firebrick">:: just to get an index for appropriate sequence of primes<br>  
+</font></div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K5"><span class="kw">func</span> </a> <a href="moebius3.html#K5" title="MOEBIUS3:func.5">indexp</a> <font color="Maroon" title="c1">n</font><span class="kw"> -&gt; </span>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><span class="kw"> equals </span><a NAME="D5"><span class="comment"><font color="firebrick">:: MOEBIUS3:def 5</font></span><br></a> <a href="card_1.html#K4" title="CARD_1:func.4">card</a> <span class="p1">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Maroon" title="c1">n</font></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:51_1"></a>
+ <a href="card_1.html#K4" title="CARD_1:func.4">card</a> <span class="p1">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Maroon" title="c1">n</font></span>)</span> is   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT5" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="moebius3.html#K5" title="MOEBIUS3:func.5">indexp</a> <a onclick="hs(this)" href="javascript:()">MOEBIUS3:def 5 : <br></a><span class="hide"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds   <a href="moebius3.html#K5" title="MOEBIUS3:func.5">indexp</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="card_1.html#K4" title="CARD_1:func.4">card</a> <span class="p1">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Olive" title="b1">n</font></span>)</span>;<br></span>
+</div>
+<br><div about="#T42" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E30">Krzys1</font></span>: <a NAME="T42"><span class="comment"><font color="firebrick">:: MOEBIUS3:42</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds   <a href="moebius3.html#K5" title="MOEBIUS3:func.5">indexp</a> <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b1">n</font>
+</div>
+<div about="#PF52" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T42"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/52')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/52')" href="javascript:()" title="52"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T43" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T43"><span class="comment"><font color="firebrick">:: MOEBIUS3:43</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="moebius2.html#K9" title="MOEBIUS2:func.9">TSqF</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> <span class="p2">(<span class="default"><a href="moebius2.html#K9" title="MOEBIUS2:func.9">TSqF</a> <font color="Olive" title="b1">n</font></span>)</span></span>)</span>
+</div>
+<div about="#PF53" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T43"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/53')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/53')" href="javascript:()" title="53"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T44" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E31">Skup</font></span>: <a NAME="T44"><span class="comment"><font color="firebrick">:: MOEBIUS3:44</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <span class="p1">(<span class="default"><a href="moebius2.html#K4" title="MOEBIUS2:func.4">SqF</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> 2 <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Olive" title="b1">n</font>
+</div>
+<div about="#PF54" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T44"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/54')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/54')" href="javascript:()" title="54"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T45" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E32">KeyValue</font></span>: <a NAME="T45"><span class="comment"><font color="firebrick">:: MOEBIUS3:45</font></span><br></a><div class="add"> for <font color="Olive" title="b1">m</font> being   <a href="valued_0.html#V4" title="VALUED_0:attr.4">natural-valued</a>   <a href="pre_poly.html#V2" title="PRE_POLY:attr.2">finite-support</a>  <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of  <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a> <br>  for <font color="Olive" title="b2">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st  <a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <font color="Olive" title="b1">m</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="seq_4.html#K1" title="SEQ_4:func.1">{</a><span class="default"><font color="Olive" title="b2">p</font></span><a href="seq_4.html#K1" title="SEQ_4:func.1">}</a></span> holds <br> <a href="nat_3.html#K8" title="NAT_3:func.8">Product</a> <font color="Olive" title="b1">m</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">m</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">p</font>
+</div>
+<div about="#PF55" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T45"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/55')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/55')" href="javascript:()" title="55"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T46" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E33">Cosik</font></span>: <a NAME="T46"><span class="comment"><font color="firebrick">:: MOEBIUS3:46</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <span class="p1">(<span class="default"><a href="moebius2.html#K4" title="MOEBIUS2:func.4">SqF</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> 2 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="moebius2.html#K9" title="MOEBIUS2:func.9">TSqF</a> <font color="Olive" title="b1">n</font>
+</div>
+<div about="#PF56" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T46"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/56')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/56')" href="javascript:()" title="56"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br>
+<div about="#FC5" typeof="oo:Theorem">
+<a NAME="FC5"><span class="kw">cluster </span></a><font color="Maroon" title="c1">n</font> <a href="int_1.html#K4" title="INT_1:func.4">div</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="moebius2.html#K4" title="MOEBIUS2:func.4">SqF</a> <font color="Maroon" title="c1">n</font></span>)</span> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> 2</span>)</span><span class="kw"> -&gt; </span> <a href="moebius1.html#NV2" title="MOEBIUS1:NV.2">square-free</a>   for  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:57_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">n</font> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="moebius2.html#K4" title="MOEBIUS2:func.4">SqF</a> <font color="Maroon" title="c1">n</font></span>)</span> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> 2</span>)</span> holds <br> not <font color="Olive">b<sub>1</sub></font> is  <a href="moebius1.html#V1" title="MOEBIUS1:attr.1">square-containing</a> 
+ </span><div about="#PF57_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/57_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/57_1_1')" href="javascript:()" title="57_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::: TSqF n should be revised to allow zero for an argument<br>  
+  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K6"><span class="kw">func</span> </a> <a href="moebius3.html#K6" title="MOEBIUS3:func.6">SquarefreePart</a> <font color="Maroon" title="c1">n</font><span class="kw"> -&gt; </span>  non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><span class="kw"> equals </span><a NAME="D6"><span class="comment"><font color="firebrick">:: MOEBIUS3:def 6</font></span><br></a><font color="Maroon" title="c1">n</font> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> <span class="p1">(<span class="default"><a href="moebius2.html#K9" title="MOEBIUS2:func.9">TSqF</a> <font color="Maroon" title="c1">n</font></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:58_1"></a>
+<font color="Maroon" title="c1">n</font> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> <span class="p1">(<span class="default"><a href="moebius2.html#K9" title="MOEBIUS2:func.9">TSqF</a> <font color="Maroon" title="c1">n</font></span>)</span> is   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>
+ </span><div about="#PF58_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/58_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/58_1_1')" href="javascript:()" title="58_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT6" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="moebius3.html#K6" title="MOEBIUS3:func.6">SquarefreePart</a> <a onclick="hs(this)" href="javascript:()">MOEBIUS3:def 6 : <br></a><span class="hide"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds   <a href="moebius3.html#K6" title="MOEBIUS3:func.6">SquarefreePart</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> <span class="p1">(<span class="default"><a href="moebius2.html#K9" title="MOEBIUS2:func.9">TSqF</a> <font color="Olive" title="b1">n</font></span>)</span>;<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br>
+<div about="#FC6" typeof="oo:Theorem">
+<a NAME="FC6"><span class="kw">cluster </span></a> <a href="moebius3.html#K6" title="MOEBIUS3:func.6">SquarefreePart</a> <font color="Maroon" title="c1">n</font><span class="kw"> -&gt; </span> non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="moebius1.html#NV2" title="MOEBIUS1:NV.2">square-free</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:59_1"></a>
+ not  <a href="moebius3.html#K6" title="MOEBIUS3:func.6">SquarefreePart</a> <font color="Maroon" title="c1">n</font> is  <a href="moebius1.html#V1" title="MOEBIUS1:attr.1">square-containing</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T47" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E34">Canonical</font></span>: <a NAME="T47"><span class="comment"><font color="firebrick">:: MOEBIUS3:47</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="moebius3.html#K6" title="MOEBIUS3:func.6">SquarefreePart</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="moebius2.html#K4" title="MOEBIUS2:func.4">SqF</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a></span>)</span>
+</div>
+<div about="#PF60" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T47"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/60')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/60')" href="javascript:()" title="60"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T48" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T48"><span class="comment"><font color="firebrick">:: MOEBIUS3:48</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds   <a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p1">(<span class="default"><a href="nat_3.html#NK13" title="NAT_3:NK.13">pfexp</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">n</font>
+</div>
+<div about="#PF61" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T48"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/61')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/61')" href="javascript:()" title="61"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T49" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T49"><span class="comment"><font color="firebrick">:: MOEBIUS3:49</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds   <a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p1">(<span class="default"><a href="nat_3.html#NK15" title="NAT_3:NK.15">ppf</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">n</font>
+</div>
+<div about="#PF62" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T49"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/62')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/62')" href="javascript:()" title="62"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T50" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T50"><span class="comment"><font color="firebrick">:: MOEBIUS3:50</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds   <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <span class="p1">(<span class="default"><a href="moebius3.html#K6" title="MOEBIUS3:func.6">SquarefreePart</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">n</font>
+</div>
+<div about="#PF63" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T50"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/63')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/63')" href="javascript:()" title="63"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E59"></a><span class="lab"><font color="Green" title="E35">Surprise</font></span>: <span about="#E59" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b2">m</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a>  <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a>  <a href="moebius3.html#K6" title="MOEBIUS3:func.6">SquarefreePart</a> <font color="Olive" title="b1">n</font> holds <br><font color="Olive" title="b2">m</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1
+ </span><br><div about="#PF64" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E59"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/64')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/64')" href="javascript:()" title="64"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T51" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T51"><span class="comment"><font color="firebrick">:: MOEBIUS3:51</font></span><br></a><div class="add"> for <font color="Olive" title="b1">k</font>, <font color="Olive" title="b2">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds <br> ( <font color="Olive" title="b1">k</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a>  <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a>  <a href="moebius3.html#K6" title="MOEBIUS3:func.6">SquarefreePart</a> <font color="Olive" title="b2">n</font> iff <font color="Olive" title="b1">k</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 ) <span class="kw">by</span> <span class="lab"><a class="txt" href="moebius3.html#E59"><span class="lab"><font color="Green" title="E35">Surprise</font></span></a>, <a class="ref" href="nat_d.html#T6" onmouseover="rs('nat_d/T6')" onmouseout="rh()">NAT_D:6</a></span>;<br>
+</div>
+</div>
+<br><div about="#T52" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T52"><span class="comment"><font color="firebrick">:: MOEBIUS3:52</font></span><br></a><div class="add"> for <font color="Olive" title="b1">m</font>, <font color="Olive" title="b2">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st  <a href="moebius3.html#K6" title="MOEBIUS3:func.6">SquarefreePart</a> <font color="Olive" title="b2">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="moebius3.html#K6" title="MOEBIUS3:func.6">SquarefreePart</a> <font color="Olive" title="b1">m</font> &amp;  <a href="moebius2.html#K9" title="MOEBIUS2:func.9">TSqF</a> <font color="Olive" title="b1">m</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="moebius2.html#K9" title="MOEBIUS2:func.9">TSqF</a> <font color="Olive" title="b2">n</font> holds <br><font color="Olive" title="b1">m</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">n</font>
+</div>
+<div about="#PF65" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T52"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/65')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/65')" href="javascript:()" title="65"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">A</font> be   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K7"><span class="kw">func</span> </a><font color="Maroon" title="c1">A</font> <a href="moebius3.html#K7" title="MOEBIUS3:func.7">-bag</a> <span class="kw"> -&gt; </span>  <a href="pre_poly.html#NM2" title="PRE_POLY:NM.2">bag</a> of  <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a> <span class="kw"> equals </span><a NAME="D7"><span class="comment"><font color="firebrick">:: MOEBIUS3:def 7</font></span><br></a><span class="p1">(<span class="default"><a href="pre_poly.html#K16" title="PRE_POLY:func.16">EmptyBag</a> <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a></span>)</span> <a href="funct_4.html#K1" title="FUNCT_4:func.1">+*</a> <span class="p1">(<span class="default"><a href="partfun2.html#K1" title="PARTFUN2:func.1">id</a> <font color="Maroon" title="c1">A</font></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:66_1"></a>
+<span class="p1">(<span class="default"><a href="pre_poly.html#K16" title="PRE_POLY:func.16">EmptyBag</a> <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a></span>)</span> <a href="funct_4.html#K1" title="FUNCT_4:func.1">+*</a> <span class="p1">(<span class="default"><a href="partfun2.html#K1" title="PARTFUN2:func.1">id</a> <font color="Maroon" title="c1">A</font></span>)</span> is   <a href="pre_poly.html#NM2" title="PRE_POLY:NM.2">bag</a> of  <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a> 
+ </span><div about="#PF66_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/66_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/66_1_1')" href="javascript:()" title="66_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT7" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="moebius3.html#K7" title="MOEBIUS3:func.7">-bag</a> <a onclick="hs(this)" href="javascript:()">MOEBIUS3:def 7 : <br></a><span class="hide"> for <font color="Olive" title="b1">A</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a> holds  <font color="Olive" title="b1">A</font> <a href="moebius3.html#K7" title="MOEBIUS3:func.7">-bag</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="pre_poly.html#K16" title="PRE_POLY:func.16">EmptyBag</a> <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a></span>)</span> <a href="funct_4.html#K1" title="FUNCT_4:func.1">+*</a> <span class="p1">(<span class="default"><a href="partfun2.html#K1" title="PARTFUN2:func.1">id</a> <font color="Olive" title="b1">A</font></span>)</span>;<br></span>
+</div>
+<br><div about="#T53" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E36">BagSupport</font></span>: <a NAME="T53"><span class="comment"><font color="firebrick">:: MOEBIUS3:53</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a> holds   <a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="moebius3.html#K7" title="MOEBIUS3:func.7">-bag</a></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">A</font>
+</div>
+<div about="#PF67" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T53"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/67')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/67')" href="javascript:()" title="67"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T54" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T54"><span class="comment"><font color="firebrick">:: MOEBIUS3:54</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a>  st <font color="Olive" title="b1">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  holds <br><font color="Olive" title="b1">A</font> <a href="moebius3.html#K7" title="MOEBIUS3:func.7">-bag</a>  <a href="pboole.html#R8" title="PBOOLE:pred.8">=</a>  <a href="pre_poly.html#K16" title="PRE_POLY:func.16">EmptyBag</a> <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a>
+</div>
+<div about="#PF68" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T54"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/68')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/68')" href="javascript:()" title="68"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T55" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E37">BagValue</font></span>: <a NAME="T55"><span class="comment"><font color="firebrick">:: MOEBIUS3:55</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a><br>  for <font color="Olive" title="b2">i</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>   st <font color="Olive" title="b2">i</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="moebius3.html#K7" title="MOEBIUS3:func.7">-bag</a></span>)</span> holds <br><span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="moebius3.html#K7" title="MOEBIUS3:func.7">-bag</a></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">i</font>
+</div>
+<div about="#PF69" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T55"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/69')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/69')" href="javascript:()" title="69"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T56" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T56"><span class="comment"><font color="firebrick">:: MOEBIUS3:56</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a>  st <font color="Olive" title="b1">A</font> <a href="moebius3.html#K7" title="MOEBIUS3:func.7">-bag</a>  <a href="pboole.html#R8" title="PBOOLE:pred.8">=</a> <font color="Olive" title="b2">B</font> <a href="moebius3.html#K7" title="MOEBIUS3:func.7">-bag</a>  holds <br><font color="Olive" title="b1">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">B</font>
+</div>
+<div about="#PF70" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T56"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/70')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/70')" href="javascript:()" title="70"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">A</font> be   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a>;<br>
+<div about="#FC7" typeof="oo:Theorem">
+<a NAME="FC7"><span class="kw">cluster </span></a><font color="Maroon" title="c1">A</font> <a href="moebius3.html#K7" title="MOEBIUS3:func.7">-bag</a> <span class="kw"> -&gt; </span> <a href="int_7.html#V1" title="INT_7:attr.1">prime-factorization-like</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:71_1"></a>
+<font color="Maroon" title="c1">A</font> <a href="moebius3.html#K7" title="MOEBIUS3:func.7">-bag</a>  is  <a href="int_7.html#V1" title="INT_7:attr.1">prime-factorization-like</a> 
+ </span><div about="#PF71_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/71_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/71_1_1')" href="javascript:()" title="71_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><a NAME="E67"></a><span class="lab"><font color="Green" title="E38">ProdSqF</font></span>: <span about="#E67" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">A</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a>  holds  <a href="nat_3.html#K8" title="NAT_3:func.8">Product</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="moebius3.html#K7" title="MOEBIUS3:func.7">-bag</a></span>)</span> is  <a href="moebius1.html#NV2" title="MOEBIUS1:NV.2">square-free</a> 
+ </span><br><div about="#PF72" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E67"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/72')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/72')" href="javascript:()" title="72"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">A</font> be   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a>;<br>
+<div about="#FC8" typeof="oo:Theorem">
+<a NAME="FC8"><span class="kw">cluster </span></a> <a href="nat_3.html#K7" title="NAT_3:func.7">Product</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">A</font> <a href="moebius3.html#K7" title="MOEBIUS3:func.7">-bag</a></span>)</span><span class="kw"> -&gt; </span> <a href="moebius1.html#NV2" title="MOEBIUS1:NV.2">square-free</a>   for  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:73_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="nat_3.html#K8" title="NAT_3:func.8">Product</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">A</font> <a href="moebius3.html#K7" title="MOEBIUS3:func.7">-bag</a></span>)</span> holds <br> not <font color="Olive">b<sub>1</sub></font> is  <a href="moebius1.html#V1" title="MOEBIUS1:attr.1">square-containing</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="txt" href="moebius3.html#E67"><span class="lab"><font color="Green" title="E38">ProdSqF</font></span></a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T57" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T57"><span class="comment"><font color="firebrick">:: MOEBIUS3:57</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b2">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>   st <font color="Olive" title="b2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <span class="p1">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Olive" title="b1">n</font></span>)</span> holds <br><font color="Olive" title="b2">x</font> is   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a>
+</div>
+<div about="#PF74" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T57"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/74')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/74')" href="javascript:()" title="74"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T58" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T58"><span class="comment"><font color="firebrick">:: MOEBIUS3:58</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b2">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>   st <font color="Olive" title="b2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"><span class="p2">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <span class="p3">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Olive" title="b1">n</font></span>)</span></span>)</span>,<span class="p2">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">n</font></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span> holds <br><font color="Olive" title="b2">x</font> <a href="xtuple_0.html#K1" title="XTUPLE_0:func.1">`1</a>  is   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a>
+</div>
+<div about="#PF75" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T58"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/75')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/75')" href="javascript:()" title="75"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: Later we should show the connection between sum and products of<br>  
+:: sequences with exponential function, respectively.<br>  
+  
+</font></div>
+<div about="#T59" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T59"><span class="comment"><font color="firebrick">:: MOEBIUS3:59</font></span><br></a><div class="add"> <a href="basel_1.html#K2" title="BASEL_1:func.2">rseq</a> (<a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1,1,<a href="numbers.html#K5" title="NUMBERS:func.5">0</a>) <a href="relset_1.html#R2" title="RELSET_1:pred.2">=</a>  <a href="moebius2.html#K2" title="MOEBIUS2:func.2">invNAT</a> </div>
+<div about="#PF76" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T59"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/76')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/76')" href="javascript:()" title="76"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T60" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T60"><span class="comment"><font color="firebrick">:: MOEBIUS3:60</font></span><br></a><div class="add"> <a href="moebius3.html#K5" title="MOEBIUS3:func.5">indexp</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  ;<br>
+</div>
+</div>
+<br><div about="#T61" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E39">GreaterProduct</font></span>: <a NAME="T61"><span class="comment"><font color="firebrick">:: MOEBIUS3:61</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  holds <span class="p1">(<span class="default"><a href="series_3.html#K1" title="SERIES_3:func.1">Partial_Product</a> <a href="moebius3.html#K3" title="MOEBIUS3:func.3">Reci-seq2</a></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </div>
+<div about="#PF77" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T61"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/77')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/77')" href="javascript:()" title="77"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T62" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E40">Crucial5X</font></span>: <a NAME="T62"><span class="comment"><font color="firebrick">:: MOEBIUS3:62</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <a href="taylor_1.html#K3" title="TAYLOR_1:func.3">ln</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="series_3.html#K1" title="SERIES_3:func.1">Partial_Product</a> <a href="moebius3.html#K3" title="MOEBIUS3:func.3">Reci-seq2</a></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <span class="p1">(<span class="default"><a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <a href="moebius2.html#K1" title="MOEBIUS2:func.1">ReciPrime</a></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font>
+</div>
+<div about="#PF78" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T62"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/78')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/78')" href="javascript:()" title="78"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T63" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T63"><span class="comment"><font color="firebrick">:: MOEBIUS3:63</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <a href="taylor_1.html#K3" title="TAYLOR_1:func.3">ln</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="series_3.html#K1" title="SERIES_3:func.1">Partial_Product</a> <a href="moebius3.html#K3" title="MOEBIUS3:func.3">Reci-seq2</a></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p2">(<span class="default"><a href="moebius3.html#K5" title="MOEBIUS3:func.5">indexp</a> <font color="Olive" title="b1">n</font></span>)</span></span>)</span> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <span class="p1">(<span class="default"><a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <a href="moebius2.html#K1" title="MOEBIUS2:func.1">ReciPrime</a></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font>
+</div>
+<div about="#PF79" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T63"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/79')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/79')" href="javascript:()" title="79"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<div about="#D41" typeof="oo:Definition">
+<a NAME="K8"><span class="kw">func</span> </a> <a href="moebius3.html#K8" title="MOEBIUS3:func.8">Reci-Sqf</a> <span class="kw"> -&gt; </span>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E41">MySumDef</font></span>: <a NAME="D8"><span class="comment"><font color="firebrick">:: MOEBIUS3:def 8</font></span><br></a>( <span class="kw">it</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b1">i</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <span class="kw">it</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><a href="moebius3.html#K6" title="MOEBIUS3:func.6">SquarefreePart</a> <font color="Olive" title="b1">i</font></span>)</span> ) );<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:80_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> st <br>( <font color="Olive">b<sub>1</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b2">i</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><a href="moebius3.html#K6" title="MOEBIUS3:func.6">SquarefreePart</a> <font color="Olive" title="b2">i</font></span>)</span> ) )
+ </span><div about="#PF80_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/80_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/80_1_1')" href="javascript:()" title="80_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:80_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>  st <font color="Olive">b<sub>1</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b3">i</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><a href="moebius3.html#K6" title="MOEBIUS3:func.6">SquarefreePart</a> <font color="Olive" title="b3">i</font></span>)</span> ) &amp; <font color="Olive">b<sub>2</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b3">i</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>2</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><a href="moebius3.html#K6" title="MOEBIUS3:func.6">SquarefreePart</a> <font color="Olive" title="b3">i</font></span>)</span> ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF80_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/80_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/80_1_2')" href="javascript:()" title="80_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<div about="#D42" typeof="oo:Definition">
+<a NAME="K9"><span class="kw">func</span> </a> <a href="moebius3.html#K9" title="MOEBIUS3:func.9">Reci-TSq</a> <span class="kw"> -&gt; </span>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E42">MySum2Def</font></span>: <a NAME="D9"><span class="comment"><font color="firebrick">:: MOEBIUS3:def 9</font></span><br></a>( <span class="kw">it</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b1">i</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <span class="kw">it</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><a href="moebius2.html#K9" title="MOEBIUS2:func.9">TSqF</a> <font color="Olive" title="b1">i</font></span>)</span> ) );<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:80_2"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> st <br>( <font color="Olive">b<sub>1</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b2">i</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><a href="moebius2.html#K9" title="MOEBIUS2:func.9">TSqF</a> <font color="Olive" title="b2">i</font></span>)</span> ) )
+ </span><div about="#PF80_2_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/80_2_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/80_2_1')" href="javascript:()" title="80_2_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:80_2"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>  st <font color="Olive">b<sub>1</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b3">i</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><a href="moebius2.html#K9" title="MOEBIUS2:func.9">TSqF</a> <font color="Olive" title="b3">i</font></span>)</span> ) &amp; <font color="Olive">b<sub>2</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b3">i</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>2</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><a href="moebius2.html#K9" title="MOEBIUS2:func.9">TSqF</a> <font color="Olive" title="b3">i</font></span>)</span> ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF80_2_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/80_2_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/80_2_2')" href="javascript:()" title="80_2_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+<div about="#DT8" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E41">MySumDef</font></span>   defines <a href="moebius3.html#K8" title="MOEBIUS3:func.8">Reci-Sqf</a> <a onclick="hs(this)" href="javascript:()">MOEBIUS3:def 8 : <br></a><span class="hide"> for <font color="Olive">b<sub>1</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> holds <br> ( <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="moebius3.html#K8" title="MOEBIUS3:func.8">Reci-Sqf</a>  iff ( <font color="Olive">b<sub>1</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b2">i</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><a href="moebius3.html#K6" title="MOEBIUS3:func.6">SquarefreePart</a> <font color="Olive" title="b2">i</font></span>)</span> ) ) );<br></span>
+</div>
+<br><div about="#DT9" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E42">MySum2Def</font></span>   defines <a href="moebius3.html#K9" title="MOEBIUS3:func.9">Reci-TSq</a> <a onclick="hs(this)" href="javascript:()">MOEBIUS3:def 9 : <br></a><span class="hide"> for <font color="Olive">b<sub>1</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> holds <br> ( <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="moebius3.html#K9" title="MOEBIUS3:func.9">Reci-TSq</a>  iff ( <font color="Olive">b<sub>1</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b2">i</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><a href="moebius2.html#K9" title="MOEBIUS2:func.9">TSqF</a> <font color="Olive" title="b2">i</font></span>)</span> ) ) );<br></span>
+</div>
+<br><div about="#T64" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E43">Core1</font></span>: <a NAME="T64"><span class="comment"><font color="firebrick">:: MOEBIUS3:64</font></span><br></a><div class="add"> <a href="basel_1.html#K2" title="BASEL_1:func.2">rseq</a> (<a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1,1,<a href="numbers.html#K5" title="NUMBERS:func.5">0</a>) <a href="relset_1.html#R2" title="RELSET_1:pred.2">=</a> <a href="moebius3.html#K8" title="MOEBIUS3:func.8">Reci-Sqf</a> <a href="valued_1.html#K20" title="VALUED_1:func.20">(#)</a> <a href="moebius3.html#K9" title="MOEBIUS3:func.9">Reci-TSq</a>
+</div>
+<div about="#PF81" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T64"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/81')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/81')" href="javascript:()" title="81"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div about="#T65" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E44">Seqs1</font></span>: <a NAME="T65"><span class="comment"><font color="firebrick">:: MOEBIUS3:65</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <a href="moebius3.html#K8" title="MOEBIUS3:func.8">Reci-Sqf</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </div>
+<div about="#PF82" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T65"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/82')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/82')" href="javascript:()" title="82"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T66" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E45">Seqs4</font></span>: <a NAME="T66"><span class="comment"><font color="firebrick">:: MOEBIUS3:66</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <a href="moebius3.html#K9" title="MOEBIUS3:func.9">Reci-TSq</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </div>
+<div about="#PF83" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T66"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/83')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/83')" href="javascript:()" title="83"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T67" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T67"><span class="comment"><font color="firebrick">:: MOEBIUS3:67</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <a href="basel_1.html#K6" title="BASEL_1:func.6">Basel-seq</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </div>
+<div about="#PF84" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T67"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/84')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/84')" href="javascript:()" title="84"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T68" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T68"><span class="comment"><font color="firebrick">:: MOEBIUS3:68</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <span class="p1">(<span class="default"><a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <span class="p2">(<span class="default"><a href="basel_1.html#K2" title="BASEL_1:func.2">rseq</a> (<a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1,1,<a href="numbers.html#K5" title="NUMBERS:func.5">0</a>)</span>)</span></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <a href="moebius3.html#K8" title="MOEBIUS3:func.8">Reci-Sqf</a></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <a href="moebius3.html#K9" title="MOEBIUS3:func.9">Reci-TSq</a></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font></span>)</span> <span class="kw">by</span> <span class="lab"><a class="ref" href="series_3.html#T39" onmouseover="rs('series_3/T39')" onmouseout="rh()">SERIES_3:39</a>, <a class="ref" href="moebius3.html#T65" target="_self" onmouseover="rs('moebius3/T65')" onmouseout="rh()">Seqs1</a>, <a class="ref" href="moebius3.html#T66" target="_self" onmouseover="rs('moebius3/T66')" onmouseout="rh()">Seqs4</a>, <a class="ref" href="moebius3.html#T64" target="_self" onmouseover="rs('moebius3/T64')" onmouseout="rh()">Core1</a></span>;<br>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K10"><span class="kw">func</span> </a> <a href="moebius3.html#K10" title="MOEBIUS3:func.10">Compose</a> <font color="Maroon" title="c1">n</font><span class="kw"> -&gt; </span>  <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"><span class="p2">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <span class="p3">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Maroon" title="c1">n</font></span>)</span></span>)</span>,<span class="p2">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c1">n</font></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>,<a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a><span class="kw"> means </span><a NAME="D10"><span class="comment"><font color="firebrick">:: MOEBIUS3:def 10</font></span><br></a> for <font color="Olive" title="b1">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"><span class="p2">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <span class="p3">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Maroon" title="c1">n</font></span>)</span></span>)</span>,<span class="p2">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c1">n</font></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span><br>  for <font color="Olive" title="b2">A</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a><br>  for <font color="Olive" title="b3">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b2">A</font>,<font color="Olive" title="b3">k</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> holds <br><span class="kw">it</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="nat_3.html#K8" title="NAT_3:func.8">Product</a> <span class="p2">(<span class="default">(<font color="Olive" title="b2">A</font>,1) <a href="uproots.html#K1" title="UPROOTS:func.1">-bag</a></span>)</span></span>)</span> <a href="nat_1.html#K2" title="NAT_1:func.2">*</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">k</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:85_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"><span class="p2">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <span class="p3">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Maroon" title="c1">n</font></span>)</span></span>)</span>,<span class="p2">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c1">n</font></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>,<a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> st <br> for <font color="Olive" title="b2">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"><span class="p2">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <span class="p3">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Maroon" title="c1">n</font></span>)</span></span>)</span>,<span class="p2">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c1">n</font></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span><br>  for <font color="Olive" title="b3">A</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a><br>  for <font color="Olive" title="b4">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b3">A</font>,<font color="Olive" title="b4">k</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> holds <br><font color="Olive">b<sub>1</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="nat_3.html#K8" title="NAT_3:func.8">Product</a> <span class="p2">(<span class="default">(<font color="Olive" title="b3">A</font>,1) <a href="uproots.html#K1" title="UPROOTS:func.1">-bag</a></span>)</span></span>)</span> <a href="nat_1.html#K2" title="NAT_1:func.2">*</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">k</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a></span>)</span>
+ </span><div about="#PF85_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/85_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/85_1_1')" href="javascript:()" title="85_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:85_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"><span class="p2">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <span class="p3">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Maroon" title="c1">n</font></span>)</span></span>)</span>,<span class="p2">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c1">n</font></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>,<a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  st (  for <font color="Olive" title="b3">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"><span class="p2">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <span class="p3">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Maroon" title="c1">n</font></span>)</span></span>)</span>,<span class="p2">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c1">n</font></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span><br>  for <font color="Olive" title="b4">A</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a><br>  for <font color="Olive" title="b5">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b4">A</font>,<font color="Olive" title="b5">k</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> holds <br><font color="Olive">b<sub>1</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="nat_3.html#K8" title="NAT_3:func.8">Product</a> <span class="p2">(<span class="default">(<font color="Olive" title="b4">A</font>,1) <a href="uproots.html#K1" title="UPROOTS:func.1">-bag</a></span>)</span></span>)</span> <a href="nat_1.html#K2" title="NAT_1:func.2">*</a> <span class="p1">(<span class="default"><font color="Olive" title="b5">k</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a></span>)</span> ) &amp; (  for <font color="Olive" title="b3">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"><span class="p2">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <span class="p3">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Maroon" title="c1">n</font></span>)</span></span>)</span>,<span class="p2">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c1">n</font></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span><br>  for <font color="Olive" title="b4">A</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a><br>  for <font color="Olive" title="b5">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b4">A</font>,<font color="Olive" title="b5">k</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> holds <br><font color="Olive">b<sub>2</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="nat_3.html#K8" title="NAT_3:func.8">Product</a> <span class="p2">(<span class="default">(<font color="Olive" title="b4">A</font>,1) <a href="uproots.html#K1" title="UPROOTS:func.1">-bag</a></span>)</span></span>)</span> <a href="nat_1.html#K2" title="NAT_1:func.2">*</a> <span class="p1">(<span class="default"><font color="Olive" title="b5">k</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a></span>)</span> ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF85_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/85_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/85_1_2')" href="javascript:()" title="85_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT10" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="moebius3.html#K10" title="MOEBIUS3:func.10">Compose</a> <a onclick="hs(this)" href="javascript:()">MOEBIUS3:def 10 : <br></a><span class="hide"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive">b<sub>2</sub></font> being   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"><span class="p2">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <span class="p3">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Olive" title="b1">n</font></span>)</span></span>)</span>,<span class="p2">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">n</font></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>,<a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> holds <br> ( <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="moebius3.html#K10" title="MOEBIUS3:func.10">Compose</a> <font color="Olive" title="b1">n</font> iff  for <font color="Olive" title="b3">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"><span class="p2">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <span class="p3">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Olive" title="b1">n</font></span>)</span></span>)</span>,<span class="p2">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">n</font></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span><br>  for <font color="Olive" title="b4">A</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="newton.html#K8" title="NEWTON:func.8">SetPrimes</a><br>  for <font color="Olive" title="b5">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b4">A</font>,<font color="Olive" title="b5">k</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> holds <br><font color="Olive">b<sub>2</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="nat_3.html#K8" title="NAT_3:func.8">Product</a> <span class="p2">(<span class="default">(<font color="Olive" title="b4">A</font>,1) <a href="uproots.html#K1" title="UPROOTS:func.1">-bag</a></span>)</span></span>)</span> <a href="nat_1.html#K2" title="NAT_1:func.2">*</a> <span class="p1">(<span class="default"><font color="Olive" title="b5">k</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a></span>)</span> );<br></span>
+</div>
+<br><div about="#T69" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T69"><span class="comment"><font color="firebrick">:: MOEBIUS3:69</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <span class="p1">(<span class="default"><a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <a href="basel_1.html#K6" title="BASEL_1:func.6">Basel-seq</a></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </div>
+<div about="#PF86" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T69"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/86')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/86')" href="javascript:()" title="86"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K11"><span class="kw">func</span> </a> <a href="moebius3.html#K11" title="MOEBIUS3:func.11">ReciProducts</a> <font color="Maroon" title="c1">n</font><span class="kw"> -&gt; </span>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a><span class="kw"> equals </span><a NAME="D11"><span class="comment"><font color="firebrick">:: MOEBIUS3:def 11</font></span><br></a><span class="p1"> { <span class="default"> <span class="p2">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p3">(<span class="default"><a href="rvsum_1.html#K19" title="RVSUM_1:func.19">Product</a> <span class="p4">(<span class="default"><a href="finseq_1.html#K14" title="FINSEQ_1:func.14">Sgm</a> <font color="Olive" title="b1">X</font></span>)</span></span>)</span></span>)</span> where <font color="Olive" title="b1">X</font> is   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Maroon" title="c1">n</font></span>)</span> : verum </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:87_1"></a>
+<span class="p1"> { <span class="default"> <span class="p2">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p3">(<span class="default"><a href="rvsum_1.html#K19" title="RVSUM_1:func.19">Product</a> <span class="p4">(<span class="default"><a href="finseq_1.html#K14" title="FINSEQ_1:func.14">Sgm</a> <font color="Olive" title="b1">X</font></span>)</span></span>)</span></span>)</span> where <font color="Olive" title="b1">X</font> is   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Maroon" title="c1">n</font></span>)</span> : verum </span> } </span>  is   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>
+ </span><div about="#PF87_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/87_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/87_1_1')" href="javascript:()" title="87_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT11" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="moebius3.html#K11" title="MOEBIUS3:func.11">ReciProducts</a> <a onclick="hs(this)" href="javascript:()">MOEBIUS3:def 11 : <br></a><span class="hide"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds   <a href="moebius3.html#K11" title="MOEBIUS3:func.11">ReciProducts</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p3">(<span class="default"><a href="rvsum_1.html#K19" title="RVSUM_1:func.19">Product</a> <span class="p4">(<span class="default"><a href="finseq_1.html#K14" title="FINSEQ_1:func.14">Sgm</a> <font color="Olive" title="b2">X</font></span>)</span></span>)</span></span>)</span> where <font color="Olive" title="b2">X</font> is   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Olive" title="b1">n</font></span>)</span> : verum </span> } </span> ;<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br>
+<div about="#FC9" typeof="oo:Theorem">
+<a NAME="FC9"><span class="kw">cluster </span></a> <a href="moebius3.html#K11" title="MOEBIUS3:func.11">ReciProducts</a> <font color="Maroon" title="c1">n</font><span class="kw"> -&gt; </span> <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="moebius3.html#K11" title="MOEBIUS3:func.11">ReciProducts</a> <font color="Maroon" title="c1">n</font> is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a> </span>;<br></span><div about="#PF88_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/88_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/88_1_1')" href="javascript:()" title="88_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T70" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T70"><span class="comment"><font color="firebrick">:: MOEBIUS3:70</font></span><br></a><div class="add"> <a href="moebius3.html#K11" title="MOEBIUS3:func.11">ReciProducts</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="seq_4.html#K1" title="SEQ_4:func.1">{</a><span class="default">1</span><a href="seq_4.html#K1" title="SEQ_4:func.1">}</a></span>
+</div>
+<div about="#PF89" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T70"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/89')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/89')" href="javascript:()" title="89"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T71" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T71"><span class="comment"><font color="firebrick">:: MOEBIUS3:71</font></span><br></a><div class="add"> for <font color="Olive" title="b1">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b1">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 holds <br> <a href="moebius3.html#K11" title="MOEBIUS3:func.11">ReciProducts</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">p</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="moebius3.html#K11" title="MOEBIUS3:func.11">ReciProducts</a> <font color="Olive" title="b1">p</font>
+</div>
+<div about="#PF90" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T71"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/90')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/90')" href="javascript:()" title="90"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T72" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T72"><span class="comment"><font color="firebrick">:: MOEBIUS3:72</font></span><br></a><div class="add"> for <font color="Olive" title="b1">p</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">p</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 is  not   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a> holds <br> <a href="moebius3.html#K11" title="MOEBIUS3:func.11">ReciProducts</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">p</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="moebius3.html#K11" title="MOEBIUS3:func.11">ReciProducts</a> <font color="Olive" title="b1">p</font>
+</div>
+<div about="#PF91" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T72"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/91')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/91')" href="javascript:()" title="91"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T73" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T73"><span class="comment"><font color="firebrick">:: MOEBIUS3:73</font></span><br></a><div class="add"> <a href="moebius3.html#K11" title="MOEBIUS3:func.11">ReciProducts</a> 1 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="seq_4.html#K1" title="SEQ_4:func.1">{</a><span class="default">1</span><a href="seq_4.html#K1" title="SEQ_4:func.1">}</a></span>
+</div>
+<div about="#PF92" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T73"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/92')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/92')" href="javascript:()" title="92"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T74" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T74"><span class="comment"><font color="firebrick">:: MOEBIUS3:74</font></span><br></a><div class="add"> <a href="moebius3.html#K11" title="MOEBIUS3:func.11">ReciProducts</a> 2 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="tarski.html#K2" title="TARSKI:func.2">{</a><span class="default"><span class="p2">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 2</span>)</span>,1</span><a href="tarski.html#K2" title="TARSKI:func.2">}</a></span>
+</div>
+<div about="#PF93" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T74"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/93')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/93')" href="javascript:()" title="93"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T75" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E46">ReciSubset</font></span>: <a NAME="T75"><span class="comment"><font color="firebrick">:: MOEBIUS3:75</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds   <a href="moebius3.html#K11" title="MOEBIUS3:func.11">ReciProducts</a> <font color="Olive" title="b1">n</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="moebius3.html#K11" title="MOEBIUS3:func.11">ReciProducts</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span>
+</div>
+<div about="#PF94" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T75"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/94')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/94')" href="javascript:()" title="94"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T76" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T76"><span class="comment"><font color="firebrick">:: MOEBIUS3:76</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 is   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a> holds <br> <a href="moebius3.html#K11" title="MOEBIUS3:func.11">ReciProducts</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="moebius3.html#K11" title="MOEBIUS3:func.11">ReciProducts</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="xboole_0.html#K2" title="XBOOLE_0:func.2">\/</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p3">(<span class="default"><a href="rvsum_1.html#K19" title="RVSUM_1:func.19">Product</a> <span class="p4">(<span class="default"><a href="finseq_1.html#K14" title="FINSEQ_1:func.14">Sgm</a> <font color="Olive" title="b2">X</font></span>)</span></span>)</span></span>)</span> where <font color="Olive" title="b2">X</font> is   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <span class="p2">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span> : <font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">X</font> </span> } </span> </div>
+<div about="#PF95" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T76"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/95')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/95')" href="javascript:()" title="95"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T77" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T77"><span class="comment"><font color="firebrick">:: MOEBIUS3:77</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 is   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a> holds <br> <a href="moebius3.html#K11" title="MOEBIUS3:func.11">ReciProducts</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p3">(<span class="default"><a href="rvsum_1.html#K19" title="RVSUM_1:func.19">Product</a> <span class="p4">(<span class="default"><a href="finseq_1.html#K14" title="FINSEQ_1:func.14">Sgm</a> <font color="Olive" title="b2">X</font></span>)</span></span>)</span></span>)</span> where <font color="Olive" title="b2">X</font> is   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <font color="Olive" title="b1">n</font></span>)</span> :  not <font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">X</font> </span> } </span>  <a href="xboole_0.html#K2" title="XBOOLE_0:func.2">\/</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p3">(<span class="default"><a href="rvsum_1.html#K19" title="RVSUM_1:func.19">Product</a> <span class="p4">(<span class="default"><a href="finseq_1.html#K14" title="FINSEQ_1:func.14">Sgm</a> <font color="Olive" title="b2">X</font></span>)</span></span>)</span></span>)</span> where <font color="Olive" title="b2">X</font> is   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="moebius3.html#K4" title="MOEBIUS3:func.4">SetPrimes</a> <span class="p2">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span> : <font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">X</font> </span> } </span> </div>
+<div about="#PF96" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T77"></span><a class="txt" onmouseover="tooltip.show('url','proofs/moebius3/96')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/moebius3/96')" href="javascript:()" title="96"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+</body>
+</html>

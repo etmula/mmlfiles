@@ -1,0 +1,530 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>NBVECTSP:  $n$-dimensional Binary Vector Spaces</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  $n$-dimensional Binary Vector Spaces</font></span><br><span class="comment"><font color="firebrick">:: by Kenichi Arai and Hiroyuki Okazaki</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received April 17, 2013</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 2013-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<a NAME="E1"></a><span class="lab"><font color="Green" title="E1">Lm1</font></span>: <span about="#E1" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b2">D</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b3">p</font> being    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Olive" title="b1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <font color="Olive" title="b2">D</font> holds <br> (  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> &amp; <font color="Olive" title="b3">p</font> is    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Olive" title="b2">D</font> <a href="finseq_2.html#K3" title="FINSEQ_2:func.3">*</a>  )
+ </span><br><div about="#PF1" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/1')" href="javascript:()" title="1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E2">Th1</font></span>: <a NAME="T1"><span class="comment"><font color="firebrick">:: NBVECTSP:1</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <br>  for <font color="Olive" title="b2">u1</font>, <font color="Olive" title="b3">v1</font>, <font color="Olive" title="b4">w1</font> being    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Olive" title="b1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a> holds   <a href="descip_1.html#K11" title="DESCIP_1:func.11">Op-XOR</a> (<span class="p1">(<span class="default"><a href="descip_1.html#K11" title="DESCIP_1:func.11">Op-XOR</a> (<font color="Olive" title="b2">u1</font>,<font color="Olive" title="b3">v1</font>)</span>)</span>,<font color="Olive" title="b4">w1</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="descip_1.html#K11" title="DESCIP_1:func.11">Op-XOR</a> (<font color="Olive" title="b2">u1</font>,<span class="p1">(<span class="default"><a href="descip_1.html#K11" title="DESCIP_1:func.11">Op-XOR</a> (<font color="Olive" title="b3">v1</font>,<font color="Olive" title="b4">w1</font>)</span>)</span>)</div>
+<div about="#PF2" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/2')" href="javascript:()" title="2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> ;<br><div about="#D3" typeof="oo:Definition">
+<a NAME="K1"><span class="kw">func</span> </a> <a href="nbvectsp.html#K1" title="NBVECTSP:func.1">XORB</a> <font color="Maroon" title="c1">n</font><span class="kw"> -&gt; </span>  <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a></span>)</span><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E3">Def1</font></span>: <a NAME="D1"><span class="comment"><font color="firebrick">:: NBVECTSP:def 1</font></span><br></a> for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a> holds  <span class="kw">it</span> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b1">x</font>,<font color="Olive" title="b2">y</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="descip_1.html#K11" title="DESCIP_1:func.11">Op-XOR</a> (<font color="Olive" title="b1">x</font>,<font color="Olive" title="b2">y</font>);<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:3_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a></span>)</span> st <br> for <font color="Olive" title="b2">x</font>, <font color="Olive" title="b3">y</font> being    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b2">x</font>,<font color="Olive" title="b3">y</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="descip_1.html#K11" title="DESCIP_1:func.11">Op-XOR</a> (<font color="Olive" title="b2">x</font>,<font color="Olive" title="b3">y</font>)
+ </span><div about="#PF3_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/3_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/3_1_1')" href="javascript:()" title="3_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:3_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a></span>)</span>  st (  for <font color="Olive" title="b3">x</font>, <font color="Olive" title="b4">y</font> being    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b3">x</font>,<font color="Olive" title="b4">y</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="descip_1.html#K11" title="DESCIP_1:func.11">Op-XOR</a> (<font color="Olive" title="b3">x</font>,<font color="Olive" title="b4">y</font>) ) &amp; (  for <font color="Olive" title="b3">x</font>, <font color="Olive" title="b4">y</font> being    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a> holds  <font color="Olive">b<sub>2</sub></font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b3">x</font>,<font color="Olive" title="b4">y</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="descip_1.html#K11" title="DESCIP_1:func.11">Op-XOR</a> (<font color="Olive" title="b3">x</font>,<font color="Olive" title="b4">y</font>) ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF3_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/3_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/3_1_2')" href="javascript:()" title="3_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E3">Def1</font></span>   defines <a href="nbvectsp.html#K1" title="NBVECTSP:func.1">XORB</a> <a onclick="hs(this)" href="javascript:()">NBVECTSP:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <br>  for <font color="Olive">b<sub>2</sub></font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a></span>)</span> holds <br> ( <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="nbvectsp.html#K1" title="NBVECTSP:func.1">XORB</a> <font color="Olive" title="b1">n</font> iff  for <font color="Olive" title="b3">x</font>, <font color="Olive" title="b4">y</font> being    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Olive" title="b1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a> holds  <font color="Olive">b<sub>2</sub></font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b3">x</font>,<font color="Olive" title="b4">y</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="descip_1.html#K11" title="DESCIP_1:func.11">Op-XOR</a> (<font color="Olive" title="b3">x</font>,<font color="Olive" title="b4">y</font>) );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> ;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K2"><span class="kw">func</span> </a> <a href="nbvectsp.html#K2" title="NBVECTSP:func.2">ZeroB</a> <font color="Maroon" title="c1">n</font><span class="kw"> -&gt; </span>   <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a><span class="kw"> equals </span><a NAME="D2"><span class="comment"><font color="firebrick">:: NBVECTSP:def 2</font></span><br></a><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K5" title="FINSEQ_2:func.5">|-&gt;</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K5" title="FINSEQ_2:func.5">|-&gt;</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> is    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a></span>;<br></span><div about="#PF4_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/4_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/4_1_1')" href="javascript:()" title="4_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="nbvectsp.html#K2" title="NBVECTSP:func.2">ZeroB</a> <a onclick="hs(this)" href="javascript:()">NBVECTSP:def 2 : <br></a><span class="hide"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  holds   <a href="nbvectsp.html#K2" title="NBVECTSP:func.2">ZeroB</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> <a href="finseq_2.html#K5" title="FINSEQ_2:func.5">|-&gt;</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>;<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> ;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K3"><span class="kw">func</span> </a><font color="Maroon" title="c1">n</font> <a href="nbvectsp.html#K3" title="NBVECTSP:func.3">-BinaryGroup</a> <span class="kw"> -&gt; </span>  <a href="algstr_0.html#V8" title="ALGSTR_0:attr.8">strict</a>   <a href="algstr_0.html#L2" title="ALGSTR_0:struct.2">addLoopStr</a> <span class="kw"> equals </span><a NAME="D3"><span class="comment"><font color="firebrick">:: NBVECTSP:def 3</font></span><br></a> <a href="algstr_0.html#G2" title="ALGSTR_0:aggr.2">addLoopStr</a>(# <span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a></span>)</span>,<span class="p1">(<span class="default"><a href="nbvectsp.html#K1" title="NBVECTSP:func.1">XORB</a> <font color="Maroon" title="c1">n</font></span>)</span>,<span class="p1">(<span class="default"><a href="nbvectsp.html#K2" title="NBVECTSP:func.2">ZeroB</a> <font color="Maroon" title="c1">n</font></span>)</span> #);<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="algstr_0.html#G2" title="ALGSTR_0:aggr.2">addLoopStr</a>(# <span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a></span>)</span>,<span class="p1">(<span class="default"><a href="nbvectsp.html#K1" title="NBVECTSP:func.1">XORB</a> <font color="Maroon" title="c1">n</font></span>)</span>,<span class="p1">(<span class="default"><a href="nbvectsp.html#K2" title="NBVECTSP:func.2">ZeroB</a> <font color="Maroon" title="c1">n</font></span>)</span> #) is   <a href="algstr_0.html#V8" title="ALGSTR_0:attr.8">strict</a>   <a href="algstr_0.html#L2" title="ALGSTR_0:struct.2">addLoopStr</a> </span>;<br></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT3" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="nbvectsp.html#K3" title="NBVECTSP:func.3">-BinaryGroup</a> <a onclick="hs(this)" href="javascript:()">NBVECTSP:def 3 : <br></a><span class="hide"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  holds  <font color="Olive" title="b1">n</font> <a href="nbvectsp.html#K3" title="NBVECTSP:func.3">-BinaryGroup</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="algstr_0.html#G2" title="ALGSTR_0:aggr.2">addLoopStr</a>(# <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a></span>)</span>,<span class="p1">(<span class="default"><a href="nbvectsp.html#K1" title="NBVECTSP:func.1">XORB</a> <font color="Olive" title="b1">n</font></span>)</span>,<span class="p1">(<span class="default"><a href="nbvectsp.html#K2" title="NBVECTSP:func.2">ZeroB</a> <font color="Olive" title="b1">n</font></span>)</span> #);<br></span>
+</div>
+<br><div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E4">Th2</font></span>: <a NAME="T2"><span class="comment"><font color="firebrick">:: NBVECTSP:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <br>  for <font color="Olive" title="b2">u1</font> being    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Olive" title="b1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a> holds   <a href="descip_1.html#K11" title="DESCIP_1:func.11">Op-XOR</a> (<font color="Olive" title="b2">u1</font>,<span class="p1">(<span class="default"><a href="nbvectsp.html#K2" title="NBVECTSP:func.2">ZeroB</a> <font color="Olive" title="b1">n</font></span>)</span>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">u1</font>
+</div>
+<div about="#PF6" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/6')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/6')" href="javascript:()" title="6"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E5">Th3</font></span>: <a NAME="T3"><span class="comment"><font color="firebrick">:: NBVECTSP:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <br>  for <font color="Olive" title="b2">u1</font> being    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Olive" title="b1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a> holds   <a href="descip_1.html#K11" title="DESCIP_1:func.11">Op-XOR</a> (<font color="Olive" title="b2">u1</font>,<font color="Olive" title="b2">u1</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="nbvectsp.html#K2" title="NBVECTSP:func.2">ZeroB</a> <font color="Olive" title="b1">n</font>
+</div>
+<div about="#PF7" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/7')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/7')" href="javascript:()" title="7"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> ;<br>
+<div about="#FC1" typeof="oo:Theorem">
+<a NAME="FC1"><span class="kw">cluster </span></a><font color="Maroon" title="c1">n</font> <a href="nbvectsp.html#K3" title="NBVECTSP:func.3">-BinaryGroup</a> <span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="algstr_0.html#V8" title="ALGSTR_0:attr.8">strict</a>   <a href="algstr_0.html#V13" title="ALGSTR_0:attr.13">right_complementable</a>   <a href="rlvect_1.html#V2" title="RLVECT_1:attr.2">Abelian</a>   <a href="rlvect_1.html#V3" title="RLVECT_1:attr.3">add-associative</a>   <a href="rlvect_1.html#V4" title="RLVECT_1:attr.4">right_zeroed</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:8_1"></a>
+( <font color="Maroon" title="c1">n</font> <a href="nbvectsp.html#K3" title="NBVECTSP:func.3">-BinaryGroup</a>  is  <a href="rlvect_1.html#V3" title="RLVECT_1:attr.3">add-associative</a>  &amp; <font color="Maroon" title="c1">n</font> <a href="nbvectsp.html#K3" title="NBVECTSP:func.3">-BinaryGroup</a>  is  <a href="rlvect_1.html#V4" title="RLVECT_1:attr.4">right_zeroed</a>  &amp; <font color="Maroon" title="c1">n</font> <a href="nbvectsp.html#K3" title="NBVECTSP:func.3">-BinaryGroup</a>  is  <a href="algstr_0.html#V13" title="ALGSTR_0:attr.13">right_complementable</a>  &amp; <font color="Maroon" title="c1">n</font> <a href="nbvectsp.html#K3" title="NBVECTSP:func.3">-BinaryGroup</a>  is  <a href="rlvect_1.html#V2" title="RLVECT_1:attr.2">Abelian</a>  &amp;  not <font color="Maroon" title="c1">n</font> <a href="nbvectsp.html#K3" title="NBVECTSP:func.3">-BinaryGroup</a>  is  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  )
+ </span><div about="#PF8_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/8_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/8_1_1')" href="javascript:()" title="8_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#CC1" typeof="oo:Theorem">
+<a NAME="CC1"><span class="kw">cluster </span></a> <span class="kw"> -&gt; </span> <a href="xboolean.html#V1" title="XBOOLEAN:attr.1">boolean</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <a href="bspace.html#K2" title="BSPACE:func.2">Z_2</a>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:9_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <a href="bspace.html#K2" title="BSPACE:func.2">Z_2</a> holds  <font color="Olive">b<sub>1</sub></font> is  <a href="xboolean.html#V1" title="XBOOLEAN:attr.1">boolean</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="bspace.html#T3" onmouseover="rs('bspace/T3')" onmouseout="rh()">BSPACE:3</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">u</font>, <font color="Maroon" title="c2">v</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <a href="bspace.html#K2" title="BSPACE:func.2">Z_2</a>;<br>
+<div about="#IE1" typeof="oo:Theorem">
+<a NAME="IY1"><span class="kw">identify </span></a><font color="Maroon" title="c1">u</font> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <font color="Maroon" title="c2">v</font><span class="kw"> with </span><font color="Maroon" title="c1">u</font> <a href="xboolean.html#K10" title="XBOOLEAN:func.10">'xor'</a> <font color="Maroon" title="c2">v</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">compatibility</span> </a><span class="hide"><br><a NAME="E1:10_1"></a>
+<font color="Maroon" title="c1">u</font> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <font color="Maroon" title="c2">v</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">u</font> <a href="xboolean.html#K10" title="XBOOLEAN:func.10">'xor'</a> <font color="Maroon" title="c2">v</font>
+ </span><div about="#PF10_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/10_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/10_1_1')" href="javascript:()" title="10_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+
+<div about="#IE2" typeof="oo:Theorem">
+<a NAME="IY2"><span class="kw">identify </span></a><font color="Maroon" title="c1">u</font> <a href="group_1.html#K8" title="GROUP_1:func.8">*</a> <font color="Maroon" title="c2">v</font><span class="kw"> with </span><font color="Maroon" title="c1">u</font> <a href="xboolean.html#K4" title="XBOOLEAN:func.4">'&amp;'</a> <font color="Maroon" title="c2">v</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">compatibility</span> </a><span class="hide"><br><a NAME="E1:10_2"></a>
+<font color="Maroon" title="c1">u</font> <a href="group_1.html#K8" title="GROUP_1:func.8">*</a> <font color="Maroon" title="c2">v</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">u</font> <a href="xboolean.html#K4" title="XBOOLEAN:func.4">'&amp;'</a> <font color="Maroon" title="c2">v</font>
+ </span><div about="#PF10_2_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/10_2_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/10_2_1')" href="javascript:()" title="10_2_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> ;<br><div about="#D6" typeof="oo:Definition">
+<a NAME="K4"><span class="kw">func</span> </a> <a href="nbvectsp.html#K4" title="NBVECTSP:func.4">MLTB</a> <font color="Maroon" title="c1">n</font><span class="kw"> -&gt; </span>  <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"> the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <a href="bspace.html#K2" title="BSPACE:func.2">Z_2</a>,<span class="p2">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>,<span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a></span>)</span><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E6">Def4</font></span>: <a NAME="D4"><span class="comment"><font color="firebrick">:: NBVECTSP:def 4</font></span><br></a> for <font color="Olive" title="b1">a</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a> <br>  for <font color="Olive" title="b2">x</font> being    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a><br>  for <font color="Olive" title="b3">i</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st <font color="Olive" title="b3">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c1">n</font> holds <br><span class="p1">(<span class="default"><span class="kw">it</span> <a href="binop_1.html#K1" title="BINOP_1:func.1">.</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">x</font>)</span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">a</font> <a href="xboolean.html#K4" title="XBOOLEAN:func.4">'&amp;'</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">x</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">i</font></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:11_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"> the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <a href="bspace.html#K2" title="BSPACE:func.2">Z_2</a>,<span class="p2">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>,<span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a></span>)</span> st <br> for <font color="Olive" title="b2">a</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a> <br>  for <font color="Olive" title="b3">x</font> being    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a><br>  for <font color="Olive" title="b4">i</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st <font color="Olive" title="b4">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c1">n</font> holds <br><span class="p1">(<span class="default"><font color="Olive">b<sub>1</sub></font> <a href="binop_1.html#K1" title="BINOP_1:func.1">.</a> (<font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">x</font>)</span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">a</font> <a href="xboolean.html#K4" title="XBOOLEAN:func.4">'&amp;'</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">x</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">i</font></span>)</span>
+ </span><div about="#PF11_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/11_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/11_1_1')" href="javascript:()" title="11_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:11_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"> the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <a href="bspace.html#K2" title="BSPACE:func.2">Z_2</a>,<span class="p2">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>,<span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a></span>)</span>  st (  for <font color="Olive" title="b3">a</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a> <br>  for <font color="Olive" title="b4">x</font> being    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a><br>  for <font color="Olive" title="b5">i</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st <font color="Olive" title="b5">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c1">n</font> holds <br><span class="p1">(<span class="default"><font color="Olive">b<sub>1</sub></font> <a href="binop_1.html#K1" title="BINOP_1:func.1">.</a> (<font color="Olive" title="b3">a</font>,<font color="Olive" title="b4">x</font>)</span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">a</font> <a href="xboolean.html#K4" title="XBOOLEAN:func.4">'&amp;'</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">x</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">i</font></span>)</span> ) &amp; (  for <font color="Olive" title="b3">a</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a> <br>  for <font color="Olive" title="b4">x</font> being    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a><br>  for <font color="Olive" title="b5">i</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st <font color="Olive" title="b5">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c1">n</font> holds <br><span class="p1">(<span class="default"><font color="Olive">b<sub>2</sub></font> <a href="binop_1.html#K1" title="BINOP_1:func.1">.</a> (<font color="Olive" title="b3">a</font>,<font color="Olive" title="b4">x</font>)</span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">a</font> <a href="xboolean.html#K4" title="XBOOLEAN:func.4">'&amp;'</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">x</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">i</font></span>)</span> ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF11_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/11_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/11_1_2')" href="javascript:()" title="11_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT4" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E6">Def4</font></span>   defines <a href="nbvectsp.html#K4" title="NBVECTSP:func.4">MLTB</a> <a onclick="hs(this)" href="javascript:()">NBVECTSP:def 4 : <br></a><span class="hide"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <br>  for <font color="Olive">b<sub>2</sub></font> being   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"> the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <a href="bspace.html#K2" title="BSPACE:func.2">Z_2</a>,<span class="p2">(<span class="default"><font color="Olive" title="b1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>,<span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a></span>)</span> holds <br> ( <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="nbvectsp.html#K4" title="NBVECTSP:func.4">MLTB</a> <font color="Olive" title="b1">n</font> iff  for <font color="Olive" title="b3">a</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a> <br>  for <font color="Olive" title="b4">x</font> being    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Olive" title="b1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a><br>  for <font color="Olive" title="b5">i</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st <font color="Olive" title="b5">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">n</font> holds <br><span class="p1">(<span class="default"><font color="Olive">b<sub>2</sub></font> <a href="binop_1.html#K1" title="BINOP_1:func.1">.</a> (<font color="Olive" title="b3">a</font>,<font color="Olive" title="b4">x</font>)</span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">a</font> <a href="xboolean.html#K4" title="XBOOLEAN:func.4">'&amp;'</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">x</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">i</font></span>)</span> );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> ;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K5"><span class="kw">func</span> </a><font color="Maroon" title="c1">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a> <span class="kw"> -&gt; </span>  <a href="vectsp_1.html#NM9" title="VECTSP_1:NM.9">VectSp</a> of  <a href="bspace.html#K2" title="BSPACE:func.2">Z_2</a> <span class="kw"> equals </span><a NAME="D5"><span class="comment"><font color="firebrick">:: NBVECTSP:def 5</font></span><br></a> <a href="vectsp_1.html#G1" title="VECTSP_1:aggr.1">ModuleStr</a>(# <span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a></span>)</span>,<span class="p1">(<span class="default"><a href="nbvectsp.html#K1" title="NBVECTSP:func.1">XORB</a> <font color="Maroon" title="c1">n</font></span>)</span>,<span class="p1">(<span class="default"><a href="nbvectsp.html#K2" title="NBVECTSP:func.2">ZeroB</a> <font color="Maroon" title="c1">n</font></span>)</span>,<span class="p1">(<span class="default"><a href="nbvectsp.html#K4" title="NBVECTSP:func.4">MLTB</a> <font color="Maroon" title="c1">n</font></span>)</span> #);<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="vectsp_1.html#G1" title="VECTSP_1:aggr.1">ModuleStr</a>(# <span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a></span>)</span>,<span class="p1">(<span class="default"><a href="nbvectsp.html#K1" title="NBVECTSP:func.1">XORB</a> <font color="Maroon" title="c1">n</font></span>)</span>,<span class="p1">(<span class="default"><a href="nbvectsp.html#K2" title="NBVECTSP:func.2">ZeroB</a> <font color="Maroon" title="c1">n</font></span>)</span>,<span class="p1">(<span class="default"><a href="nbvectsp.html#K4" title="NBVECTSP:func.4">MLTB</a> <font color="Maroon" title="c1">n</font></span>)</span> #) is   <a href="vectsp_1.html#NM9" title="VECTSP_1:NM.9">VectSp</a> of  <a href="bspace.html#K2" title="BSPACE:func.2">Z_2</a> </span>;<br></span><div about="#PF12_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/12_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/12_1_1')" href="javascript:()" title="12_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT5" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a> <a onclick="hs(this)" href="javascript:()">NBVECTSP:def 5 : <br></a><span class="hide"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  holds  <font color="Olive" title="b1">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="vectsp_1.html#G1" title="VECTSP_1:aggr.1">ModuleStr</a>(# <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a></span>)</span>,<span class="p1">(<span class="default"><a href="nbvectsp.html#K1" title="NBVECTSP:func.1">XORB</a> <font color="Olive" title="b1">n</font></span>)</span>,<span class="p1">(<span class="default"><a href="nbvectsp.html#K2" title="NBVECTSP:func.2">ZeroB</a> <font color="Olive" title="b1">n</font></span>)</span>,<span class="p1">(<span class="default"><a href="nbvectsp.html#K4" title="NBVECTSP:func.4">MLTB</a> <font color="Olive" title="b1">n</font></span>)</span> #);<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> ;<br>
+<div about="#FC2" typeof="oo:Theorem">
+<a NAME="FC2"><span class="kw">cluster </span></a><font color="Maroon" title="c1">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a> <span class="kw"> -&gt; </span> <a href="struct_0.html#V8" title="STRUCT_0:attr.8">finite</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:13_1"></a>
+<font color="Maroon" title="c1">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a>  is  <a href="struct_0.html#V8" title="STRUCT_0:attr.8">finite</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> ;<br>
+<div about="#CC2" typeof="oo:Theorem">
+<a NAME="CC2"><span class="kw">cluster </span></a> <span class="kw"> -&gt; </span> <a href="struct_0.html#V8" title="STRUCT_0:attr.8">finite</a>   for    <a href="vectsp_4.html#M1" title="VECTSP_4:mode.1">Subspace</a> of <font color="Maroon" title="c1">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:14_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being    <a href="vectsp_4.html#M1" title="VECTSP_4:mode.1">Subspace</a> of <font color="Maroon" title="c1">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a>  holds  <font color="Olive">b<sub>1</sub></font> is  <a href="struct_0.html#V8" title="STRUCT_0:attr.8">finite</a> 
+ </span><div about="#PF14_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/14_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/14_1_1')" href="javascript:()" title="14_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E7">Th4</font></span>: <a NAME="T4"><span class="comment"><font color="firebrick">:: NBVECTSP:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds   <a href="rlvect_1.html#K4" title="RLVECT_1:func.4">Sum</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="finseq_2.html#K5" title="FINSEQ_2:func.5">|-&gt;</a> <span class="p2">(<span class="default"><a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <a href="bspace.html#K2" title="BSPACE:func.2">Z_2</a></span>)</span></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <a href="bspace.html#K2" title="BSPACE:func.2">Z_2</a>
+</div>
+<div about="#PF15" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T4"></span><a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/15')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/15')" href="javascript:()" title="15"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E8">Th5</font></span>: <a NAME="T5"><span class="comment"><font color="firebrick">:: NBVECTSP:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">m</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <br>  for <font color="Olive" title="b2">x</font> being   <a href="struct_0.html#NM7" title="STRUCT_0:NM.7">FinSequence</a> of <a href="bspace.html#K2" title="BSPACE:func.2">Z_2</a><br>  for <font color="Olive" title="b3">v</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <a href="bspace.html#K2" title="BSPACE:func.2">Z_2</a><br>  for <font color="Olive" title="b4">j</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">m</font> &amp; <font color="Olive" title="b4">j</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">m</font> &amp; (  for <font color="Olive" title="b5">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b5">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">m</font> holds <br>( ( <font color="Olive" title="b5">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">j</font> implies <font color="Olive" title="b2">x</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">v</font> ) &amp; ( <font color="Olive" title="b5">i</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b4">j</font> implies <font color="Olive" title="b2">x</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <a href="bspace.html#K2" title="BSPACE:func.2">Z_2</a> ) ) ) holds <br> <a href="rlvect_1.html#K4" title="RLVECT_1:func.4">Sum</a> <font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">v</font>
+</div>
+<div about="#PF16" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/16')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/16')" href="javascript:()" title="16"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E9">Th6</font></span>: <a NAME="T6"><span class="comment"><font color="firebrick">:: NBVECTSP:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">m</font>, <font color="Olive" title="b2">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <br>  for <font color="Olive" title="b3">L</font> being   the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><font color="Olive">b<sub>2</sub></font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a></span>)</span> <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a><br>  for <font color="Olive" title="b4">j</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">L</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">m</font> &amp; <font color="Olive" title="b1">m</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b2">n</font> &amp; <font color="Olive" title="b4">j</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b2">n</font> holds <br> ex <font color="Olive" title="b5">x</font> being   <a href="struct_0.html#NM7" title="STRUCT_0:NM.7">FinSequence</a> of <a href="bspace.html#K2" title="BSPACE:func.2">Z_2</a> st <br>(  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b5">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">m</font> &amp; (  for <font color="Olive" title="b6">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b6">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">m</font> holds <br> ex <font color="Olive" title="b7">K</font> being    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Olive" title="b2">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a> st <br>( <font color="Olive" title="b7">K</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">L</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b6">i</font> &amp; <font color="Olive" title="b5">x</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b6">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b7">K</font> <a href="descip_1.html#K10" title="DESCIP_1:func.10">.</a> <font color="Olive" title="b4">j</font> ) ) )</div>
+<div about="#PF17" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/17')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/17')" href="javascript:()" title="17"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E10">Th7</font></span>: <a NAME="T7"><span class="comment"><font color="firebrick">:: NBVECTSP:7</font></span><br></a><div class="add"> for <font color="Olive" title="b1">m</font>, <font color="Olive" title="b2">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <br>  for <font color="Olive" title="b3">L</font> being   the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><font color="Olive">b<sub>2</sub></font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a></span>)</span> <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a><br>  for <font color="Olive" title="b4">Suml</font> being    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Olive" title="b2">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a><br>  for <font color="Olive" title="b5">j</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">L</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">m</font> &amp; <font color="Olive" title="b1">m</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b2">n</font> &amp; <font color="Olive" title="b4">Suml</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="rlvect_1.html#K4" title="RLVECT_1:func.4">Sum</a> <font color="Olive" title="b3">L</font> &amp; <font color="Olive" title="b5">j</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b2">n</font> holds <br> ex <font color="Olive" title="b6">x</font> being   <a href="struct_0.html#NM7" title="STRUCT_0:NM.7">FinSequence</a> of <a href="bspace.html#K2" title="BSPACE:func.2">Z_2</a> st <br>(  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b6">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">m</font> &amp; <font color="Olive" title="b4">Suml</font> <a href="descip_1.html#K10" title="DESCIP_1:func.10">.</a> <font color="Olive" title="b5">j</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="rlvect_1.html#K4" title="RLVECT_1:func.4">Sum</a> <font color="Olive" title="b6">x</font> &amp; (  for <font color="Olive" title="b7">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b7">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">m</font> holds <br> ex <font color="Olive" title="b8">K</font> being    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Olive" title="b2">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a> st <br>( <font color="Olive" title="b8">K</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">L</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b7">i</font> &amp; <font color="Olive" title="b6">x</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b7">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b8">K</font> <a href="descip_1.html#K10" title="DESCIP_1:func.10">.</a> <font color="Olive" title="b5">j</font> ) ) )</div>
+<div about="#PF18" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T7"></span><a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/18')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/18')" href="javascript:()" title="18"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E11">Th8</font></span>: <a NAME="T8"><span class="comment"><font color="firebrick">:: NBVECTSP:8</font></span><br></a><div class="add"> for <font color="Olive" title="b1">m</font>, <font color="Olive" title="b2">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>   st <font color="Olive" title="b1">m</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b2">n</font> holds <br> ex <font color="Olive" title="b3">A</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of <font color="Olive" title="b2">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a> st <br>(  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">m</font> &amp; <font color="Olive" title="b3">A</font> is  <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a>  &amp;  <a href="card_1.html#K4" title="CARD_1:func.4">card</a> <span class="p1">(<span class="default"><a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b3">A</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">m</font> &amp; (  for <font color="Olive" title="b4">i</font>, <font color="Olive" title="b5">j</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b4">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">m</font> &amp; <font color="Olive" title="b5">j</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b2">n</font> holds <br>( ( <font color="Olive" title="b4">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">j</font> implies <span class="p1">(<span class="default"><font color="Olive" title="b3">A</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">i</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">j</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="margrel1.html#K7" title="MARGREL1:func.7">TRUE</a>  ) &amp; ( <font color="Olive" title="b4">i</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b5">j</font> implies <span class="p1">(<span class="default"><font color="Olive" title="b3">A</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">i</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">j</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="margrel1.html#K6" title="MARGREL1:func.6">FALSE</a>  ) ) ) )</div>
+<div about="#PF19" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/19')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/19')" href="javascript:()" title="19"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E12">Th9</font></span>: <a NAME="T9"><span class="comment"><font color="firebrick">:: NBVECTSP:9</font></span><br></a><div class="add"> for <font color="Olive" title="b1">m</font>, <font color="Olive" title="b2">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <br>  for <font color="Olive" title="b3">A</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of <font color="Olive" title="b2">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a><br>  for <font color="Olive" title="b4">B</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><font color="Olive" title="b2">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a></span>)</span><br>  for <font color="Olive" title="b5">l</font> being    <a href="vectsp_6.html#M2" title="VECTSP_6:mode.2">Linear_Combination</a> of <font color="Olive" title="b4">B</font><br>  for <font color="Olive" title="b6">Suml</font> being    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Olive" title="b2">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a>  st  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b3">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">B</font> &amp; <font color="Olive" title="b1">m</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b2">n</font> &amp;  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">m</font> &amp; <font color="Olive" title="b6">Suml</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="vectsp_6.html#K4" title="VECTSP_6:func.4">Sum</a> <font color="Olive" title="b5">l</font> &amp; <font color="Olive" title="b3">A</font> is  <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a>  &amp; (  for <font color="Olive" title="b7">i</font>, <font color="Olive" title="b8">j</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b7">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b2">n</font> &amp; <font color="Olive" title="b8">j</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">m</font> holds <br>( ( <font color="Olive" title="b7">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b8">j</font> implies <span class="p1">(<span class="default"><font color="Olive" title="b3">A</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b7">i</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b8">j</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="margrel1.html#K7" title="MARGREL1:func.7">TRUE</a>  ) &amp; ( <font color="Olive" title="b7">i</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b8">j</font> implies <span class="p1">(<span class="default"><font color="Olive" title="b3">A</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b7">i</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b8">j</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="margrel1.html#K6" title="MARGREL1:func.6">FALSE</a>  ) ) ) holds <br> for <font color="Olive" title="b7">j</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b7">j</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">m</font> holds <br><font color="Olive" title="b6">Suml</font> <a href="descip_1.html#K10" title="DESCIP_1:func.10">.</a> <font color="Olive" title="b7">j</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">l</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">A</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b7">j</font></span>)</span>
+</div>
+<div about="#PF20" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T9"></span><a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/20')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/20')" href="javascript:()" title="20"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E13">Th10</font></span>: <a NAME="T10"><span class="comment"><font color="firebrick">:: NBVECTSP:10</font></span><br></a><div class="add"> for <font color="Olive" title="b1">m</font>, <font color="Olive" title="b2">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <br>  for <font color="Olive" title="b3">A</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of <font color="Olive" title="b2">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a><br>  for <font color="Olive" title="b4">B</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><font color="Olive" title="b2">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a></span>)</span>  st  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b3">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">B</font> &amp; <font color="Olive" title="b1">m</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b2">n</font> &amp;  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">m</font> &amp; <font color="Olive" title="b3">A</font> is  <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a>  &amp; (  for <font color="Olive" title="b5">i</font>, <font color="Olive" title="b6">j</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b5">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b2">n</font> &amp; <font color="Olive" title="b6">j</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">m</font> holds <br>( ( <font color="Olive" title="b5">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b6">j</font> implies <span class="p1">(<span class="default"><font color="Olive" title="b3">A</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">i</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b6">j</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="margrel1.html#K7" title="MARGREL1:func.7">TRUE</a>  ) &amp; ( <font color="Olive" title="b5">i</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b6">j</font> implies <span class="p1">(<span class="default"><font color="Olive" title="b3">A</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">i</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b6">j</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="margrel1.html#K6" title="MARGREL1:func.6">FALSE</a>  ) ) ) holds <br><font color="Olive" title="b4">B</font> is  <a href="vectsp_7.html#V1" title="VECTSP_7:attr.1">linearly-independent</a> </div>
+<div about="#PF21" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T10"></span><a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/21')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/21')" href="javascript:()" title="21"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E14">Th11</font></span>: <a NAME="T11"><span class="comment"><font color="firebrick">:: NBVECTSP:11</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <br>  for <font color="Olive" title="b2">A</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of <font color="Olive" title="b1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a><br>  for <font color="Olive" title="b3">B</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a></span>)</span><br>  for <font color="Olive" title="b4">v</font> being    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Olive" title="b1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a>  st  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b2">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">B</font> &amp;  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> &amp; <font color="Olive" title="b2">A</font> is  <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a>  holds <br> ex <font color="Olive" title="b5">l</font> being    <a href="vectsp_6.html#M2" title="VECTSP_6:mode.2">Linear_Combination</a> of <font color="Olive" title="b3">B</font> st <br> for <font color="Olive" title="b6">j</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b6">j</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">n</font> holds <br><font color="Olive" title="b4">v</font> <a href="descip_1.html#K10" title="DESCIP_1:func.10">.</a> <font color="Olive" title="b6">j</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">l</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">A</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b6">j</font></span>)</span>
+</div>
+<div about="#PF22" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/22')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/22')" href="javascript:()" title="22"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E15">Th12</font></span>: <a NAME="T12"><span class="comment"><font color="firebrick">:: NBVECTSP:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <br>  for <font color="Olive" title="b2">A</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of <font color="Olive" title="b1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a><br>  for <font color="Olive" title="b3">B</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a></span>)</span>  st  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b2">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">B</font> &amp;  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> &amp; <font color="Olive" title="b2">A</font> is  <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a>  &amp; (  for <font color="Olive" title="b4">i</font>, <font color="Olive" title="b5">j</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b4">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">n</font> &amp; <font color="Olive" title="b5">j</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">n</font> holds <br>( ( <font color="Olive" title="b4">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">j</font> implies <span class="p1">(<span class="default"><font color="Olive" title="b2">A</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">i</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">j</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="margrel1.html#K7" title="MARGREL1:func.7">TRUE</a>  ) &amp; ( <font color="Olive" title="b4">i</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b5">j</font> implies <span class="p1">(<span class="default"><font color="Olive" title="b2">A</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">i</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">j</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="margrel1.html#K6" title="MARGREL1:func.6">FALSE</a>  ) ) ) holds <br> <a href="vectsp_7.html#K1" title="VECTSP_7:func.1">Lin</a> <font color="Olive" title="b3">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="vectsp_1.html#G1" title="VECTSP_1:aggr.1">ModuleStr</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a></span>)</span>, the <a href="algstr_0.html#U1" title="ALGSTR_0:sel.1">addF</a> of <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a></span>)</span>, the <a href="struct_0.html#U2" title="STRUCT_0:sel.2">ZeroF</a> of <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a></span>)</span>, the <a href="vectsp_1.html#U1" title="VECTSP_1:sel.1">lmult</a> of <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a></span>)</span> #)</div>
+<div about="#PF23" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/23')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/23')" href="javascript:()" title="23"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E16">Th13</font></span>: <a NAME="T13"><span class="comment"><font color="firebrick">:: NBVECTSP:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>   ex <font color="Olive" title="b2">B</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a></span>)</span> st <br>( <font color="Olive" title="b2">B</font> is   <a href="vectsp_7.html#NM1" title="VECTSP_7:NM.1">Basis</a> of <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a></span>)</span> &amp;  <a href="card_1.html#K4" title="CARD_1:func.4">card</a> <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> &amp;  ex <font color="Olive" title="b3">A</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of <font color="Olive" title="b1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a> st <br>(  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> &amp; <font color="Olive" title="b3">A</font> is  <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a>  &amp;  <a href="card_1.html#K4" title="CARD_1:func.4">card</a> <span class="p1">(<span class="default"><a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b3">A</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> &amp;  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b3">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">B</font> &amp; (  for <font color="Olive" title="b4">i</font>, <font color="Olive" title="b5">j</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b4">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">n</font> &amp; <font color="Olive" title="b5">j</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">n</font> holds <br>( ( <font color="Olive" title="b4">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">j</font> implies <span class="p1">(<span class="default"><font color="Olive" title="b3">A</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">i</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">j</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="margrel1.html#K7" title="MARGREL1:func.7">TRUE</a>  ) &amp; ( <font color="Olive" title="b4">i</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b5">j</font> implies <span class="p1">(<span class="default"><font color="Olive" title="b3">A</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">i</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">j</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="margrel1.html#K6" title="MARGREL1:func.6">FALSE</a>  ) ) ) ) )</div>
+<div about="#PF24" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T13"></span><a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/24')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/24')" href="javascript:()" title="24"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E17">Th14</font></span>: <a NAME="T14"><span class="comment"><font color="firebrick">:: NBVECTSP:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  holds <br> ( <font color="Olive" title="b1">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a>  is  <a href="matrlin.html#V1" title="MATRLIN:attr.1">finite-dimensional</a>  &amp;  <a href="vectsp_9.html#K1" title="VECTSP_9:func.1">dim</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> )</div>
+<div about="#PF25" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T14"></span><a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/25')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/25')" href="javascript:()" title="25"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> ;<br>
+<div about="#FC3" typeof="oo:Theorem">
+<a NAME="FC3"><span class="kw">cluster </span></a><font color="Maroon" title="c1">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a> <span class="kw"> -&gt; </span> <a href="matrlin.html#V1" title="MATRLIN:attr.1">finite-dimensional</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:26_1"></a>
+<font color="Maroon" title="c1">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a>  is  <a href="matrlin.html#V1" title="MATRLIN:attr.1">finite-dimensional</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="nbvectsp.html#T14" target="_self" onmouseover="rs('nbvectsp/T14')" onmouseout="rh()">Th14</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T15" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T15"><span class="comment"><font color="firebrick">:: NBVECTSP:15</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <br>  for <font color="Olive" title="b2">A</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of <font color="Olive" title="b1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a><br>  for <font color="Olive" title="b3">C</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a></span>)</span>  st  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> &amp; <font color="Olive" title="b2">A</font> is  <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a>  &amp;  <a href="card_1.html#K4" title="CARD_1:func.4">card</a> <span class="p1">(<span class="default"><a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b2">A</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> &amp; (  for <font color="Olive" title="b4">i</font>, <font color="Olive" title="b5">j</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b4">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">n</font> &amp; <font color="Olive" title="b5">j</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">n</font> holds <br>( ( <font color="Olive" title="b4">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">j</font> implies <span class="p1">(<span class="default"><font color="Olive" title="b2">A</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">i</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">j</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="margrel1.html#K7" title="MARGREL1:func.7">TRUE</a>  ) &amp; ( <font color="Olive" title="b4">i</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b5">j</font> implies <span class="p1">(<span class="default"><font color="Olive" title="b2">A</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">i</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">j</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="margrel1.html#K6" title="MARGREL1:func.6">FALSE</a>  ) ) ) &amp; <font color="Olive" title="b3">C</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b2">A</font> holds <br>(  <a href="vectsp_7.html#K1" title="VECTSP_7:func.1">Lin</a> <font color="Olive" title="b3">C</font> is    <a href="vectsp_4.html#M1" title="VECTSP_4:mode.1">Subspace</a> of <font color="Olive" title="b1">n</font> <a href="nbvectsp.html#K5" title="NBVECTSP:func.5">-BinaryVectSp</a>  &amp; <font color="Olive" title="b3">C</font> is   <a href="vectsp_7.html#NM1" title="VECTSP_7:NM.1">Basis</a> of <span class="p1">(<span class="default"><a href="vectsp_7.html#K1" title="VECTSP_7:func.1">Lin</a> <font color="Olive" title="b3">C</font></span>)</span> &amp;  <a href="vectsp_9.html#K1" title="VECTSP_9:func.1">dim</a> <span class="p1">(<span class="default"><a href="vectsp_7.html#K1" title="VECTSP_7:func.1">Lin</a> <font color="Olive" title="b3">C</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="card_1.html#K4" title="CARD_1:func.4">card</a> <font color="Olive" title="b3">C</font> )</div>
+<div about="#PF27" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/nbvectsp/27')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/nbvectsp/27')" href="javascript:()" title="27"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+</body>
+</html>

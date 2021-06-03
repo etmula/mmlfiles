@@ -1,0 +1,821 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>MODCAT_1:  Category of Left Modules</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  Category of Left Modules</font></span><br><span class="comment"><font color="firebrick">:: by Micha{\l} Muzalewski</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received December 12, 1991</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 1991-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div class="comment mathjax"><font color="firebrick">::<br>  
+::  2. Domains of left modules<br>  
+::<br>  
+  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br><div about="#D1" typeof="oo:Definition">
+<a NAME="M1"><span class="kw">mode</span> </a> <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Maroon" title="c1">R</font><span class="kw"> -&gt; </span>  non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E1">Def1</font></span>: <a NAME="D1"><span class="comment"><font color="firebrick">:: MODCAT_1:def 1</font></span><br></a> for <font color="Olive" title="b1">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <span class="kw">it</span> holds  <font color="Olive" title="b1">x</font> is   <a href="vectsp_1.html#V7" title="VECTSP_1:attr.7">strict</a>  <a href="vectsp_2.html#NM5" title="VECTSP_2:NM.5">LeftMod</a> of <font color="Maroon" title="c1">R</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:1_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  st <br> for <font color="Olive" title="b2">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Olive">b<sub>1</sub></font> holds  <font color="Olive" title="b2">x</font> is   <a href="vectsp_1.html#V7" title="VECTSP_1:attr.7">strict</a>  <a href="vectsp_2.html#NM5" title="VECTSP_2:NM.5">LeftMod</a> of <font color="Maroon" title="c1">R</font>
+ </span><div about="#PF1_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/1_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/1_1_1')" href="javascript:()" title="1_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E1">Def1</font></span>   defines <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> <a onclick="hs(this)" href="javascript:()">MODCAT_1:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive">b<sub>2</sub></font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  holds <br> ( <font color="Olive">b<sub>2</sub></font> is    <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Olive" title="b1">R</font> iff  for <font color="Olive" title="b3">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Olive">b<sub>2</sub></font> holds  <font color="Olive" title="b3">x</font> is   <a href="vectsp_1.html#V7" title="VECTSP_1:attr.7">strict</a>  <a href="vectsp_2.html#NM5" title="VECTSP_2:NM.5">LeftMod</a> of <font color="Olive" title="b1">R</font> );<br></span>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">V</font> be    <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Maroon" title="c1">R</font>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a><br><span class="kw">redefine </span><a NAME="M2"><span class="kw">mode</span> </a> <a href="modcat_1.html#M2" title="MODCAT_1:mode.2">Element</a> of <font color="Maroon" title="c2">V</font><span class="kw"> -&gt; </span>  <a href="vectsp_2.html#NM5" title="VECTSP_2:NM.5">LeftMod</a> of <font color="Maroon" title="c1">R</font>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:2_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c2">V</font> holds  <font color="Olive">b<sub>1</sub></font> is   <a href="vectsp_2.html#NM5" title="VECTSP_2:NM.5">LeftMod</a> of <font color="Maroon" title="c1">R</font>
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="modcat_1.html#D1" target="_self" onmouseover="rs('modcat_1/D1')" onmouseout="rh()">Def1</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">V</font> be    <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Maroon" title="c1">R</font>;<br>
+<div about="#RC1" typeof="oo:Theorem">
+<a NAME="RC1"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="algstr_0.html#V13" title="ALGSTR_0:attr.13">right_complementable</a>  <a href="rlvect_1.html#V2" title="RLVECT_1:attr.2">V99</a>() <a href="rlvect_1.html#V3" title="RLVECT_1:attr.3">V100</a>() <a href="rlvect_1.html#V4" title="RLVECT_1:attr.4">V101</a>()  <a href="vectsp_1.html#V7" title="VECTSP_1:attr.7">strict</a>  <a href="vectsp_1.html#V8" title="VECTSP_1:attr.8">V145</a>(<font color="Maroon" title="c1">R</font>) <a href="vectsp_1.html#V9" title="VECTSP_1:attr.9">V146</a>(<font color="Maroon" title="c1">R</font>) <a href="vectsp_1.html#V10" title="VECTSP_1:attr.10">V147</a>(<font color="Maroon" title="c1">R</font>) <a href="vectsp_1.html#V11" title="VECTSP_1:attr.11">V148</a>(<font color="Maroon" title="c1">R</font>)  for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c2">V</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:3_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being    <a href="modcat_1.html#M2" title="MODCAT_1:mode.2">Element</a> of <font color="Maroon" title="c2">V</font> st <font color="Olive">b<sub>1</sub></font> is  <a href="vectsp_1.html#V7" title="VECTSP_1:attr.7">strict</a> 
+ </span><div about="#PF3_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/3_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/3_1_1')" href="javascript:()" title="3_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br><div about="#D2" typeof="oo:Definition">
+<a NAME="M3"><span class="kw">mode</span> </a> <a href="modcat_1.html#M3" title="MODCAT_1:mode.3">LModMorphism_DOMAIN</a> of <font color="Maroon" title="c1">R</font><span class="kw"> -&gt; </span>  non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E2">Def2</font></span>: <a NAME="D2"><span class="comment"><font color="firebrick">:: MODCAT_1:def 2</font></span><br></a> for <font color="Olive" title="b1">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <span class="kw">it</span> holds  <font color="Olive" title="b1">x</font> is   <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>  <a href="mod_2.html#NM1" title="MOD_2:NM.1">LModMorphism</a> of <font color="Maroon" title="c1">R</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:4_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  st <br> for <font color="Olive" title="b2">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Olive">b<sub>1</sub></font> holds  <font color="Olive" title="b2">x</font> is   <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>  <a href="mod_2.html#NM1" title="MOD_2:NM.1">LModMorphism</a> of <font color="Maroon" title="c1">R</font>
+ </span><div about="#PF4_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/4_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/4_1_1')" href="javascript:()" title="4_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E2">Def2</font></span>   defines <a href="modcat_1.html#M3" title="MODCAT_1:mode.3">LModMorphism_DOMAIN</a> <a onclick="hs(this)" href="javascript:()">MODCAT_1:def 2 : <br></a><span class="hide"> for <font color="Olive" title="b1">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive">b<sub>2</sub></font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  holds <br> ( <font color="Olive">b<sub>2</sub></font> is    <a href="modcat_1.html#M3" title="MODCAT_1:mode.3">LModMorphism_DOMAIN</a> of <font color="Olive" title="b1">R</font> iff  for <font color="Olive" title="b3">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Olive">b<sub>2</sub></font> holds  <font color="Olive" title="b3">x</font> is   <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>  <a href="mod_2.html#NM1" title="MOD_2:NM.1">LModMorphism</a> of <font color="Olive" title="b1">R</font> );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">M</font> be    <a href="modcat_1.html#M3" title="MODCAT_1:mode.3">LModMorphism_DOMAIN</a> of <font color="Maroon" title="c1">R</font>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a><br><span class="kw">redefine </span><a NAME="M4"><span class="kw">mode</span> </a> <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of <font color="Maroon" title="c2">M</font><span class="kw"> -&gt; </span>  <a href="mod_2.html#NM1" title="MOD_2:NM.1">LModMorphism</a> of <font color="Maroon" title="c1">R</font>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:5_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c2">M</font> holds  <font color="Olive">b<sub>1</sub></font> is   <a href="mod_2.html#NM1" title="MOD_2:NM.1">LModMorphism</a> of <font color="Maroon" title="c1">R</font>
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="modcat_1.html#D2" target="_self" onmouseover="rs('modcat_1/D2')" onmouseout="rh()">Def2</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">M</font> be    <a href="modcat_1.html#M3" title="MODCAT_1:mode.3">LModMorphism_DOMAIN</a> of <font color="Maroon" title="c1">R</font>;<br>
+<div about="#RC2" typeof="oo:Theorem">
+<a NAME="RC2"><span class="kw">cluster </span></a> <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>   <a href="mod_2.html#V3" title="MOD_2:attr.3">LModMorphism-like</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c2">M</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:6_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of <font color="Maroon" title="c2">M</font> st <font color="Olive">b<sub>1</sub></font> is  <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a> 
+ </span><div about="#PF6_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/6_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/6_1_1')" href="javascript:()" title="6_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E3">Th1</font></span>: <a NAME="T1"><span class="comment"><font color="firebrick">:: MODCAT_1:1</font></span><br></a><div class="add"> for <font color="Olive" title="b1">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b2">f</font> being   <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>  <a href="mod_2.html#NM1" title="MOD_2:NM.1">LModMorphism</a> of <font color="Olive" title="b1">R</font> holds  <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><font color="Olive" title="b2">f</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span> is    <a href="modcat_1.html#M3" title="MODCAT_1:mode.3">LModMorphism_DOMAIN</a> of <font color="Olive" title="b1">R</font>
+</div>
+<div about="#PF7" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/7')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/7')" href="javascript:()" title="7"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">G</font>, <font color="Maroon" title="c3">H</font> be   <a href="vectsp_2.html#NM5" title="VECTSP_2:NM.5">LeftMod</a> of <font color="Maroon" title="c1">R</font>;<br><div about="#D4" typeof="oo:Definition">
+<a NAME="M5"><span class="kw">mode</span> </a> <a href="modcat_1.html#M5" title="MODCAT_1:mode.5">LModMorphism_DOMAIN</a> of <font color="Maroon" title="c2">G</font>,<font color="Maroon" title="c3">H</font><span class="kw"> -&gt; </span>   <a href="modcat_1.html#M3" title="MODCAT_1:mode.3">LModMorphism_DOMAIN</a> of <font color="Maroon" title="c1">R</font><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E4">Def3</font></span>: <a NAME="D3"><span class="comment"><font color="firebrick">:: MODCAT_1:def 3</font></span><br></a> for <font color="Olive" title="b1">x</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of <span class="kw">it</span> holds  <font color="Olive" title="b1">x</font> is   <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>   <a href="mod_2.html#M1" title="MOD_2:mode.1">Morphism</a> of <font color="Maroon" title="c2">G</font>,<font color="Maroon" title="c3">H</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:8_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being    <a href="modcat_1.html#M3" title="MODCAT_1:mode.3">LModMorphism_DOMAIN</a> of <font color="Maroon" title="c1">R</font> st <br> for <font color="Olive" title="b2">x</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of <font color="Olive">b<sub>1</sub></font> holds  <font color="Olive" title="b2">x</font> is   <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>   <a href="mod_2.html#M1" title="MOD_2:mode.1">Morphism</a> of <font color="Maroon" title="c2">G</font>,<font color="Maroon" title="c3">H</font>
+ </span><div about="#PF8_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/8_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/8_1_1')" href="javascript:()" title="8_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+<div about="#DT3" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E4">Def3</font></span>   defines <a href="modcat_1.html#M5" title="MODCAT_1:mode.5">LModMorphism_DOMAIN</a> <a onclick="hs(this)" href="javascript:()">MODCAT_1:def 3 : <br></a><span class="hide"> for <font color="Olive" title="b1">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b2">G</font>, <font color="Olive" title="b3">H</font> being   <a href="vectsp_2.html#NM5" title="VECTSP_2:NM.5">LeftMod</a> of <font color="Olive" title="b1">R</font><br>  for <font color="Olive">b<sub>4</sub></font> being    <a href="modcat_1.html#M3" title="MODCAT_1:mode.3">LModMorphism_DOMAIN</a> of <font color="Olive" title="b1">R</font> holds <br> ( <font color="Olive">b<sub>4</sub></font> is    <a href="modcat_1.html#M5" title="MODCAT_1:mode.5">LModMorphism_DOMAIN</a> of <font color="Olive" title="b2">G</font>,<font color="Olive" title="b3">H</font> iff  for <font color="Olive" title="b5">x</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of <font color="Olive">b<sub>4</sub></font> holds  <font color="Olive" title="b5">x</font> is   <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>   <a href="mod_2.html#M1" title="MOD_2:mode.1">Morphism</a> of <font color="Olive" title="b2">G</font>,<font color="Olive" title="b3">H</font> );<br></span>
+</div>
+<br><div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E5">Th2</font></span>: <a NAME="T2"><span class="comment"><font color="firebrick">:: MODCAT_1:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">D</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b3">G</font>, <font color="Olive" title="b4">H</font> being   <a href="vectsp_2.html#NM5" title="VECTSP_2:NM.5">LeftMod</a> of <font color="Olive" title="b2">R</font> holds <br> ( <font color="Olive" title="b1">D</font> is    <a href="modcat_1.html#M5" title="MODCAT_1:mode.5">LModMorphism_DOMAIN</a> of <font color="Olive" title="b3">G</font>,<font color="Olive" title="b4">H</font> iff  for <font color="Olive" title="b5">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Olive" title="b1">D</font> holds  <font color="Olive" title="b5">x</font> is   <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>   <a href="mod_2.html#M1" title="MOD_2:mode.1">Morphism</a> of <font color="Olive" title="b3">G</font>,<font color="Olive" title="b4">H</font> )</div>
+<div about="#PF9" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/9')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/9')" href="javascript:()" title="9"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T3"><span class="comment"><font color="firebrick">:: MODCAT_1:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b2">G</font>, <font color="Olive" title="b3">H</font> being   <a href="vectsp_2.html#NM5" title="VECTSP_2:NM.5">LeftMod</a> of <font color="Olive" title="b1">R</font><br>  for <font color="Olive" title="b4">f</font> being   <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>   <a href="mod_2.html#M1" title="MOD_2:mode.1">Morphism</a> of <font color="Olive" title="b2">G</font>,<font color="Olive" title="b3">H</font> holds  <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><font color="Olive" title="b4">f</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span> is    <a href="modcat_1.html#M5" title="MODCAT_1:mode.5">LModMorphism_DOMAIN</a> of <font color="Olive" title="b2">G</font>,<font color="Olive" title="b3">H</font>
+</div>
+<div about="#PF10" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/10')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/10')" href="javascript:()" title="10"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">G</font>, <font color="Maroon" title="c3">H</font> be   <a href="vectsp_2.html#NM5" title="VECTSP_2:NM.5">LeftMod</a> of <font color="Maroon" title="c1">R</font>;<br><div about="#D6" typeof="oo:Definition">
+<a NAME="K1"><span class="kw">func</span> </a> <a href="modcat_1.html#K1" title="MODCAT_1:func.1">Morphs</a> (<font color="Maroon" title="c2">G</font>,<font color="Maroon" title="c3">H</font>)<span class="kw"> -&gt; </span>   <a href="modcat_1.html#M5" title="MODCAT_1:mode.5">LModMorphism_DOMAIN</a> of <font color="Maroon" title="c2">G</font>,<font color="Maroon" title="c3">H</font><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E6">Def4</font></span>: <a NAME="D4"><span class="comment"><font color="firebrick">:: MODCAT_1:def 4</font></span><br></a> for <font color="Olive" title="b1">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br> ( <font color="Olive" title="b1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="kw">it</span> iff <font color="Olive" title="b1">x</font> is   <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>   <a href="mod_2.html#M1" title="MOD_2:mode.1">Morphism</a> of <font color="Maroon" title="c2">G</font>,<font color="Maroon" title="c3">H</font> );<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:11_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being    <a href="modcat_1.html#M5" title="MODCAT_1:mode.5">LModMorphism_DOMAIN</a> of <font color="Maroon" title="c2">G</font>,<font color="Maroon" title="c3">H</font> st <br> for <font color="Olive" title="b2">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br> ( <font color="Olive" title="b2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Olive">b<sub>1</sub></font> iff <font color="Olive" title="b2">x</font> is   <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>   <a href="mod_2.html#M1" title="MOD_2:mode.1">Morphism</a> of <font color="Maroon" title="c2">G</font>,<font color="Maroon" title="c3">H</font> )
+ </span><div about="#PF11_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/11_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/11_1_1')" href="javascript:()" title="11_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:11_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being    <a href="modcat_1.html#M5" title="MODCAT_1:mode.5">LModMorphism_DOMAIN</a> of <font color="Maroon" title="c2">G</font>,<font color="Maroon" title="c3">H</font>  st (  for <font color="Olive" title="b3">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br> ( <font color="Olive" title="b3">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Olive">b<sub>1</sub></font> iff <font color="Olive" title="b3">x</font> is   <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>   <a href="mod_2.html#M1" title="MOD_2:mode.1">Morphism</a> of <font color="Maroon" title="c2">G</font>,<font color="Maroon" title="c3">H</font> ) ) &amp; (  for <font color="Olive" title="b3">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br> ( <font color="Olive" title="b3">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Olive">b<sub>2</sub></font> iff <font color="Olive" title="b3">x</font> is   <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>   <a href="mod_2.html#M1" title="MOD_2:mode.1">Morphism</a> of <font color="Maroon" title="c2">G</font>,<font color="Maroon" title="c3">H</font> ) ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF11_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/11_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/11_1_2')" href="javascript:()" title="11_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+<div about="#DT4" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E6">Def4</font></span>   defines <a href="modcat_1.html#K1" title="MODCAT_1:func.1">Morphs</a> <a onclick="hs(this)" href="javascript:()">MODCAT_1:def 4 : <br></a><span class="hide"> for <font color="Olive" title="b1">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b2">G</font>, <font color="Olive" title="b3">H</font> being   <a href="vectsp_2.html#NM5" title="VECTSP_2:NM.5">LeftMod</a> of <font color="Olive" title="b1">R</font><br>  for <font color="Olive">b<sub>4</sub></font> being    <a href="modcat_1.html#M5" title="MODCAT_1:mode.5">LModMorphism_DOMAIN</a> of <font color="Olive" title="b2">G</font>,<font color="Olive" title="b3">H</font> holds <br> ( <font color="Olive">b<sub>4</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K1" title="MODCAT_1:func.1">Morphs</a> (<font color="Olive" title="b2">G</font>,<font color="Olive" title="b3">H</font>) iff  for <font color="Olive" title="b5">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br> ( <font color="Olive" title="b5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Olive">b<sub>4</sub></font> iff <font color="Olive" title="b5">x</font> is   <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>   <a href="mod_2.html#M1" title="MOD_2:mode.1">Morphism</a> of <font color="Olive" title="b2">G</font>,<font color="Olive" title="b3">H</font> ) );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">G</font>, <font color="Maroon" title="c3">H</font> be   <a href="vectsp_2.html#NM5" title="VECTSP_2:NM.5">LeftMod</a> of <font color="Maroon" title="c1">R</font>;<br><span class="kw">let </span><font color="Maroon" title="c4">M</font> be    <a href="modcat_1.html#M5" title="MODCAT_1:mode.5">LModMorphism_DOMAIN</a> of <font color="Maroon" title="c2">G</font>,<font color="Maroon" title="c3">H</font>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a><br><span class="kw">redefine </span><a NAME="M6"><span class="kw">mode</span> </a> <a href="modcat_1.html#M6" title="MODCAT_1:mode.6">Element</a> of <font color="Maroon" title="c4">M</font><span class="kw"> -&gt; </span>   <a href="mod_2.html#M1" title="MOD_2:mode.1">Morphism</a> of <font color="Maroon" title="c2">G</font>,<font color="Maroon" title="c3">H</font>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:12_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c4">M</font> holds  <font color="Olive">b<sub>1</sub></font> is    <a href="mod_2.html#M1" title="MOD_2:mode.1">Morphism</a> of <font color="Maroon" title="c2">G</font>,<font color="Maroon" title="c3">H</font>
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="modcat_1.html#D3" target="_self" onmouseover="rs('modcat_1/D3')" onmouseout="rh()">Def3</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::<br>  
+::  4a. Category of left modules - objects<br>  
+::<br>  
+  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">x</font>, <font color="Maroon" title="c2">y</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ;<br><span class="kw">let </span><font color="Maroon" title="c3">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="R1"><span class="kw">pred</span> </a> <a href="modcat_1.html#R1" title="MODCAT_1:pred.1">GO</a> <font color="Maroon" title="c1">x</font>,<font color="Maroon" title="c2">y</font>,<font color="Maroon" title="c3">R</font><span class="kw"> means </span><a NAME="D5"><span class="comment"><font color="firebrick">:: MODCAT_1:def 5</font></span><br></a> ex <font color="Olive" title="b1">x1</font>, <font color="Olive" title="b2">x2</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  st <br>( <font color="Maroon" title="c1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b1">x1</font>,<font color="Olive" title="b2">x2</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> &amp;  ex <font color="Olive" title="b3">G</font> being   <a href="vectsp_1.html#V7" title="VECTSP_1:attr.7">strict</a>  <a href="vectsp_2.html#NM5" title="VECTSP_2:NM.5">LeftMod</a> of <font color="Maroon" title="c3">R</font> st <br>( <font color="Maroon" title="c2">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">G</font> &amp; <font color="Olive" title="b1">x1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="algstr_0.html#G2" title="ALGSTR_0:aggr.2">addLoopStr</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b3">G</font>, the <a href="algstr_0.html#U1" title="ALGSTR_0:sel.1">addF</a> of <font color="Olive" title="b3">G</font>, the <a href="struct_0.html#U2" title="STRUCT_0:sel.2">ZeroF</a> of <font color="Olive" title="b3">G</font> #) &amp; <font color="Olive" title="b2">x2</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="vectsp_1.html#U1" title="VECTSP_1:sel.1">lmult</a> of <font color="Olive" title="b3">G</font> ) );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT5" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="modcat_1.html#R1" title="MODCAT_1:pred.1">GO</a> <a onclick="hs(this)" href="javascript:()">MODCAT_1:def 5 : <br></a><span class="hide"> for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <br>  for <font color="Olive" title="b3">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a> holds <br> (  <a href="modcat_1.html#R1" title="MODCAT_1:pred.1">GO</a> <font color="Olive" title="b1">x</font>,<font color="Olive" title="b2">y</font>,<font color="Olive" title="b3">R</font> iff  ex <font color="Olive" title="b4">x1</font>, <font color="Olive" title="b5">x2</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  st <br>( <font color="Olive" title="b1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b4">x1</font>,<font color="Olive" title="b5">x2</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> &amp;  ex <font color="Olive" title="b6">G</font> being   <a href="vectsp_1.html#V7" title="VECTSP_1:attr.7">strict</a>  <a href="vectsp_2.html#NM5" title="VECTSP_2:NM.5">LeftMod</a> of <font color="Olive" title="b3">R</font> st <br>( <font color="Olive" title="b2">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b6">G</font> &amp; <font color="Olive" title="b4">x1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="algstr_0.html#G2" title="ALGSTR_0:aggr.2">addLoopStr</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b6">G</font>, the <a href="algstr_0.html#U1" title="ALGSTR_0:sel.1">addF</a> of <font color="Olive" title="b6">G</font>, the <a href="struct_0.html#U2" title="STRUCT_0:sel.2">ZeroF</a> of <font color="Olive" title="b6">G</font> #) &amp; <font color="Olive" title="b5">x2</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="vectsp_1.html#U1" title="VECTSP_1:sel.1">lmult</a> of <font color="Olive" title="b6">G</font> ) ) );<br></span>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E7">Th4</font></span>: <a NAME="T4"><span class="comment"><font color="firebrick">:: MODCAT_1:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b2">x</font>, <font color="Olive" title="b3">y1</font>, <font color="Olive" title="b4">y2</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>   st  <a href="modcat_1.html#R1" title="MODCAT_1:pred.1">GO</a> <font color="Olive" title="b2">x</font>,<font color="Olive" title="b3">y1</font>,<font color="Olive" title="b1">R</font> &amp;  <a href="modcat_1.html#R1" title="MODCAT_1:pred.1">GO</a> <font color="Olive" title="b2">x</font>,<font color="Olive" title="b4">y2</font>,<font color="Olive" title="b1">R</font> holds <br><font color="Olive" title="b3">y1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">y2</font>
+</div>
+<div about="#PF14" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T4"></span><a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/14')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/14')" href="javascript:()" title="14"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T5"><span class="comment"><font color="firebrick">:: MODCAT_1:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b2">UN</font> being   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a>  ex <font color="Olive" title="b3">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  st <br>( <font color="Olive" title="b3">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"> { <span class="default"> <span class="p2"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b4">G</font>,<font color="Olive" title="b5">f</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> where <font color="Olive" title="b4">G</font> is    <a href="grcat_1.html#M2" title="GRCAT_1:mode.2">Element</a> of  <a href="grcat_1.html#K17" title="GRCAT_1:func.17">GroupObjects</a> <font color="Olive" title="b2">UN</font>, <font color="Olive" title="b5">f</font> is    <a href="funct_2.html#M2" title="FUNCT_2:mode.2">Element</a> of  <a href="funct_2.html#K9" title="FUNCT_2:func.9">Funcs</a> (<span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"> the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b1">R</font>,<span class="p2"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>,<span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span>) : verum </span> } </span>  &amp;  <a href="modcat_1.html#R1" title="MODCAT_1:pred.1">GO</a> <font color="Olive" title="b3">x</font>, <a href="mod_2.html#K1" title="MOD_2:func.1">TrivialLMod</a> <font color="Olive" title="b1">R</font>,<font color="Olive" title="b1">R</font> )</div>
+<div about="#PF15" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/15')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/15')" href="javascript:()" title="15"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">UN</font> be   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br><div about="#D8" typeof="oo:Definition">
+<a NAME="K2"><span class="kw">func</span> </a> <a href="modcat_1.html#K2" title="MODCAT_1:func.2">LModObjects</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>)<span class="kw"> -&gt; </span>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E8">Def6</font></span>: <a NAME="D6"><span class="comment"><font color="firebrick">:: MODCAT_1:def 6</font></span><br></a> for <font color="Olive" title="b1">y</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br> ( <font color="Olive" title="b1">y</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="kw">it</span> iff  ex <font color="Olive" title="b2">x</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  st <br>( <font color="Olive" title="b2">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"> { <span class="default"> <span class="p2"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b3">G</font>,<font color="Olive" title="b4">f</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> where <font color="Olive" title="b3">G</font> is    <a href="grcat_1.html#M2" title="GRCAT_1:mode.2">Element</a> of  <a href="grcat_1.html#K17" title="GRCAT_1:func.17">GroupObjects</a> <font color="Maroon" title="c1">UN</font>, <font color="Olive" title="b4">f</font> is    <a href="funct_2.html#M2" title="FUNCT_2:mode.2">Element</a> of  <a href="funct_2.html#K9" title="FUNCT_2:func.9">Funcs</a> (<span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"> the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c2">R</font>, the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b3">G</font></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>, the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b3">G</font>) : verum </span> } </span>  &amp;  <a href="modcat_1.html#R1" title="MODCAT_1:pred.1">GO</a> <font color="Olive" title="b2">x</font>,<font color="Olive" title="b1">y</font>,<font color="Maroon" title="c2">R</font> ) );<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:16_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  st <br> for <font color="Olive" title="b2">y</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br> ( <font color="Olive" title="b2">y</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Olive">b<sub>1</sub></font> iff  ex <font color="Olive" title="b3">x</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  st <br>( <font color="Olive" title="b3">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"> { <span class="default"> <span class="p2"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b4">G</font>,<font color="Olive" title="b5">f</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> where <font color="Olive" title="b4">G</font> is    <a href="grcat_1.html#M2" title="GRCAT_1:mode.2">Element</a> of  <a href="grcat_1.html#K17" title="GRCAT_1:func.17">GroupObjects</a> <font color="Maroon" title="c1">UN</font>, <font color="Olive" title="b5">f</font> is    <a href="funct_2.html#M2" title="FUNCT_2:mode.2">Element</a> of  <a href="funct_2.html#K9" title="FUNCT_2:func.9">Funcs</a> (<span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"> the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c2">R</font>, the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b4">G</font></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>, the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b4">G</font>) : verum </span> } </span>  &amp;  <a href="modcat_1.html#R1" title="MODCAT_1:pred.1">GO</a> <font color="Olive" title="b3">x</font>,<font color="Olive" title="b2">y</font>,<font color="Maroon" title="c2">R</font> ) )
+ </span><div about="#PF16_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/16_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/16_1_1')" href="javascript:()" title="16_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:16_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st (  for <font color="Olive" title="b3">y</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br> ( <font color="Olive" title="b3">y</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Olive">b<sub>1</sub></font> iff  ex <font color="Olive" title="b4">x</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  st <br>( <font color="Olive" title="b4">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"> { <span class="default"> <span class="p2"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b5">G</font>,<font color="Olive" title="b6">f</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> where <font color="Olive" title="b5">G</font> is    <a href="grcat_1.html#M2" title="GRCAT_1:mode.2">Element</a> of  <a href="grcat_1.html#K17" title="GRCAT_1:func.17">GroupObjects</a> <font color="Maroon" title="c1">UN</font>, <font color="Olive" title="b6">f</font> is    <a href="funct_2.html#M2" title="FUNCT_2:mode.2">Element</a> of  <a href="funct_2.html#K9" title="FUNCT_2:func.9">Funcs</a> (<span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"> the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c2">R</font>, the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b5">G</font></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>, the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b5">G</font>) : verum </span> } </span>  &amp;  <a href="modcat_1.html#R1" title="MODCAT_1:pred.1">GO</a> <font color="Olive" title="b4">x</font>,<font color="Olive" title="b3">y</font>,<font color="Maroon" title="c2">R</font> ) ) ) &amp; (  for <font color="Olive" title="b3">y</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br> ( <font color="Olive" title="b3">y</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Olive">b<sub>2</sub></font> iff  ex <font color="Olive" title="b4">x</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  st <br>( <font color="Olive" title="b4">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"> { <span class="default"> <span class="p2"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b5">G</font>,<font color="Olive" title="b6">f</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> where <font color="Olive" title="b5">G</font> is    <a href="grcat_1.html#M2" title="GRCAT_1:mode.2">Element</a> of  <a href="grcat_1.html#K17" title="GRCAT_1:func.17">GroupObjects</a> <font color="Maroon" title="c1">UN</font>, <font color="Olive" title="b6">f</font> is    <a href="funct_2.html#M2" title="FUNCT_2:mode.2">Element</a> of  <a href="funct_2.html#K9" title="FUNCT_2:func.9">Funcs</a> (<span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"> the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c2">R</font>, the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b5">G</font></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>, the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b5">G</font>) : verum </span> } </span>  &amp;  <a href="modcat_1.html#R1" title="MODCAT_1:pred.1">GO</a> <font color="Olive" title="b4">x</font>,<font color="Olive" title="b3">y</font>,<font color="Maroon" title="c2">R</font> ) ) ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF16_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/16_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/16_1_2')" href="javascript:()" title="16_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT6" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E8">Def6</font></span>   defines <a href="modcat_1.html#K2" title="MODCAT_1:func.2">LModObjects</a> <a onclick="hs(this)" href="javascript:()">MODCAT_1:def 6 : <br></a><span class="hide"> for <font color="Olive" title="b1">UN</font> being   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a><br>  for <font color="Olive" title="b2">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive">b<sub>3</sub></font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  holds <br> ( <font color="Olive">b<sub>3</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K2" title="MODCAT_1:func.2">LModObjects</a> (<font color="Olive" title="b1">UN</font>,<font color="Olive" title="b2">R</font>) iff  for <font color="Olive" title="b4">y</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br> ( <font color="Olive" title="b4">y</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Olive">b<sub>3</sub></font> iff  ex <font color="Olive" title="b5">x</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  st <br>( <font color="Olive" title="b5">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"> { <span class="default"> <span class="p2"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b6">G</font>,<font color="Olive" title="b7">f</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> where <font color="Olive" title="b6">G</font> is    <a href="grcat_1.html#M2" title="GRCAT_1:mode.2">Element</a> of  <a href="grcat_1.html#K17" title="GRCAT_1:func.17">GroupObjects</a> <font color="Olive" title="b1">UN</font>, <font color="Olive" title="b7">f</font> is    <a href="funct_2.html#M2" title="FUNCT_2:mode.2">Element</a> of  <a href="funct_2.html#K9" title="FUNCT_2:func.9">Funcs</a> (<span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"> the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b2">R</font>, the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b6">G</font></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>, the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b6">G</font>) : verum </span> } </span>  &amp;  <a href="modcat_1.html#R1" title="MODCAT_1:pred.1">GO</a> <font color="Olive" title="b5">x</font>,<font color="Olive" title="b4">y</font>,<font color="Olive" title="b2">R</font> ) ) );<br></span>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E9">Th6</font></span>: <a NAME="T6"><span class="comment"><font color="firebrick">:: MODCAT_1:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">UN</font> being   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a><br>  for <font color="Olive" title="b2">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a> holds   <a href="mod_2.html#K1" title="MOD_2:func.1">TrivialLMod</a> <font color="Olive" title="b2">R</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="modcat_1.html#K2" title="MODCAT_1:func.2">LModObjects</a> (<font color="Olive" title="b1">UN</font>,<font color="Olive" title="b2">R</font>)</div>
+<div about="#PF17" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/17')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/17')" href="javascript:()" title="17"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">UN</font> be   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br>
+<div about="#FC1" typeof="oo:Theorem">
+<a NAME="FC1"><span class="kw">cluster </span></a> <a href="modcat_1.html#K2" title="MODCAT_1:func.2">LModObjects</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>)<span class="kw"> -&gt; </span> non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:18_1"></a>
+ not  <a href="modcat_1.html#K2" title="MODCAT_1:func.2">LModObjects</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>) is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="modcat_1.html#T6" target="_self" onmouseover="rs('modcat_1/T6')" onmouseout="rh()">Th6</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E10">Th7</font></span>: <a NAME="T7"><span class="comment"><font color="firebrick">:: MODCAT_1:7</font></span><br></a><div class="add"> for <font color="Olive" title="b1">UN</font> being   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a><br>  for <font color="Olive" title="b2">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b3">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="modcat_1.html#K2" title="MODCAT_1:func.2">LModObjects</a> (<font color="Olive" title="b1">UN</font>,<font color="Olive" title="b2">R</font>) holds  <font color="Olive" title="b3">x</font> is   <a href="vectsp_1.html#V7" title="VECTSP_1:attr.7">strict</a>  <a href="vectsp_2.html#NM5" title="VECTSP_2:NM.5">LeftMod</a> of <font color="Olive" title="b2">R</font>
+</div>
+<div about="#PF19" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T7"></span><a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/19')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/19')" href="javascript:()" title="19"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">UN</font> be   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="modcat_1.html#K2" title="MODCAT_1:func.2">LModObjects</a><br><span class="kw">redefine </span><a NAME="K3"><span class="kw">func</span> </a> <a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>)<span class="kw"> -&gt; </span>   <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Maroon" title="c2">R</font>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:20_1"></a>
+ <a href="modcat_1.html#K2" title="MODCAT_1:func.2">LModObjects</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>) is    <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Maroon" title="c2">R</font>
+ </span><div about="#PF20_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/20_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/20_1_1')" href="javascript:()" title="20_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::<br>  
+::  4b. Category of left modules - morphisms<br>  
+::<br>  
+  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">V</font> be    <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Maroon" title="c1">R</font>;<br><div about="#D11" typeof="oo:Definition">
+<a NAME="K4"><span class="kw">func</span> </a> <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font><span class="kw"> -&gt; </span>   <a href="modcat_1.html#M3" title="MODCAT_1:mode.3">LModMorphism_DOMAIN</a> of <font color="Maroon" title="c1">R</font><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E11">Def7</font></span>: <a NAME="D7"><span class="comment"><font color="firebrick">:: MODCAT_1:def 7</font></span><br></a> for <font color="Olive" title="b1">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br> ( <font color="Olive" title="b1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="kw">it</span> iff  ex <font color="Olive" title="b2">G</font>, <font color="Olive" title="b3">H</font> being   <a href="vectsp_1.html#V7" title="VECTSP_1:attr.7">strict</a>   <a href="modcat_1.html#M2" title="MODCAT_1:mode.2">Element</a> of <font color="Maroon" title="c2">V</font> st <font color="Olive" title="b1">x</font> is   <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>   <a href="mod_2.html#M1" title="MOD_2:mode.1">Morphism</a> of <font color="Olive" title="b2">G</font>,<font color="Olive" title="b3">H</font> );<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:21_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being    <a href="modcat_1.html#M3" title="MODCAT_1:mode.3">LModMorphism_DOMAIN</a> of <font color="Maroon" title="c1">R</font> st <br> for <font color="Olive" title="b2">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br> ( <font color="Olive" title="b2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Olive">b<sub>1</sub></font> iff  ex <font color="Olive" title="b3">G</font>, <font color="Olive" title="b4">H</font> being   <a href="vectsp_1.html#V7" title="VECTSP_1:attr.7">strict</a>   <a href="modcat_1.html#M2" title="MODCAT_1:mode.2">Element</a> of <font color="Maroon" title="c2">V</font> st <font color="Olive" title="b2">x</font> is   <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>   <a href="mod_2.html#M1" title="MOD_2:mode.1">Morphism</a> of <font color="Olive" title="b3">G</font>,<font color="Olive" title="b4">H</font> )
+ </span><div about="#PF21_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/21_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/21_1_1')" href="javascript:()" title="21_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:21_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being    <a href="modcat_1.html#M3" title="MODCAT_1:mode.3">LModMorphism_DOMAIN</a> of <font color="Maroon" title="c1">R</font>  st (  for <font color="Olive" title="b3">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br> ( <font color="Olive" title="b3">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Olive">b<sub>1</sub></font> iff  ex <font color="Olive" title="b4">G</font>, <font color="Olive" title="b5">H</font> being   <a href="vectsp_1.html#V7" title="VECTSP_1:attr.7">strict</a>   <a href="modcat_1.html#M2" title="MODCAT_1:mode.2">Element</a> of <font color="Maroon" title="c2">V</font> st <font color="Olive" title="b3">x</font> is   <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>   <a href="mod_2.html#M1" title="MOD_2:mode.1">Morphism</a> of <font color="Olive" title="b4">G</font>,<font color="Olive" title="b5">H</font> ) ) &amp; (  for <font color="Olive" title="b3">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br> ( <font color="Olive" title="b3">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Olive">b<sub>2</sub></font> iff  ex <font color="Olive" title="b4">G</font>, <font color="Olive" title="b5">H</font> being   <a href="vectsp_1.html#V7" title="VECTSP_1:attr.7">strict</a>   <a href="modcat_1.html#M2" title="MODCAT_1:mode.2">Element</a> of <font color="Maroon" title="c2">V</font> st <font color="Olive" title="b3">x</font> is   <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>   <a href="mod_2.html#M1" title="MOD_2:mode.1">Morphism</a> of <font color="Olive" title="b4">G</font>,<font color="Olive" title="b5">H</font> ) ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF21_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/21_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/21_1_2')" href="javascript:()" title="21_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT7" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E11">Def7</font></span>   defines <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <a onclick="hs(this)" href="javascript:()">MODCAT_1:def 7 : <br></a><span class="hide"> for <font color="Olive" title="b1">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b2">V</font> being    <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Olive" title="b1">R</font><br>  for <font color="Olive">b<sub>3</sub></font> being    <a href="modcat_1.html#M3" title="MODCAT_1:mode.3">LModMorphism_DOMAIN</a> of <font color="Olive" title="b1">R</font> holds <br> ( <font color="Olive">b<sub>3</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Olive" title="b2">V</font> iff  for <font color="Olive" title="b4">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br> ( <font color="Olive" title="b4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Olive">b<sub>3</sub></font> iff  ex <font color="Olive" title="b5">G</font>, <font color="Olive" title="b6">H</font> being   <a href="vectsp_1.html#V7" title="VECTSP_1:attr.7">strict</a>   <a href="modcat_1.html#M2" title="MODCAT_1:mode.2">Element</a> of <font color="Olive" title="b2">V</font> st <font color="Olive" title="b4">x</font> is   <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>   <a href="mod_2.html#M1" title="MOD_2:mode.1">Morphism</a> of <font color="Olive" title="b5">G</font>,<font color="Olive" title="b6">H</font> ) );<br></span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::<br>  
+::  4c. Category of left modules - dom,cod,id<br>  
+::<br>  
+  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">V</font> be    <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Maroon" title="c1">R</font>;<br><span class="kw">let </span><font color="Maroon" title="c3">F</font> be    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K5"><span class="kw">func</span> </a> <a href="modcat_1.html#K5" title="MODCAT_1:func.5">dom'</a> <font color="Maroon" title="c3">F</font><span class="kw"> -&gt; </span>   <a href="modcat_1.html#M2" title="MODCAT_1:mode.2">Element</a> of <font color="Maroon" title="c2">V</font><span class="kw"> equals </span><a NAME="D8"><span class="comment"><font color="firebrick">:: MODCAT_1:def 8</font></span><br></a> <a href="mod_2.html#K2" title="MOD_2:func.2">dom</a> <font color="Maroon" title="c3">F</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:22_1"></a>
+ <a href="mod_2.html#K2" title="MOD_2:func.2">dom</a> <font color="Maroon" title="c3">F</font> is    <a href="modcat_1.html#M2" title="MODCAT_1:mode.2">Element</a> of <font color="Maroon" title="c2">V</font>
+ </span><div about="#PF22_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/22_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/22_1_1')" href="javascript:()" title="22_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K6"><span class="kw">func</span> </a> <a href="modcat_1.html#K6" title="MODCAT_1:func.6">cod'</a> <font color="Maroon" title="c3">F</font><span class="kw"> -&gt; </span>   <a href="modcat_1.html#M2" title="MODCAT_1:mode.2">Element</a> of <font color="Maroon" title="c2">V</font><span class="kw"> equals </span><a NAME="D9"><span class="comment"><font color="firebrick">:: MODCAT_1:def 9</font></span><br></a> <a href="mod_2.html#K3" title="MOD_2:func.3">cod</a> <font color="Maroon" title="c3">F</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:22_2"></a>
+ <a href="mod_2.html#K3" title="MOD_2:func.3">cod</a> <font color="Maroon" title="c3">F</font> is    <a href="modcat_1.html#M2" title="MODCAT_1:mode.2">Element</a> of <font color="Maroon" title="c2">V</font>
+ </span><div about="#PF22_2_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/22_2_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/22_2_1')" href="javascript:()" title="22_2_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div about="#DT8" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="modcat_1.html#K5" title="MODCAT_1:func.5">dom'</a> <a onclick="hs(this)" href="javascript:()">MODCAT_1:def 8 : <br></a><span class="hide"> for <font color="Olive" title="b1">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b2">V</font> being    <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Olive" title="b1">R</font><br>  for <font color="Olive" title="b3">F</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Olive" title="b2">V</font> holds   <a href="modcat_1.html#K5" title="MODCAT_1:func.5">dom'</a> <font color="Olive" title="b3">F</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="mod_2.html#K2" title="MOD_2:func.2">dom</a> <font color="Olive" title="b3">F</font>;<br></span>
+</div>
+<br><div about="#DT9" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="modcat_1.html#K6" title="MODCAT_1:func.6">cod'</a> <a onclick="hs(this)" href="javascript:()">MODCAT_1:def 9 : <br></a><span class="hide"> for <font color="Olive" title="b1">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b2">V</font> being    <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Olive" title="b1">R</font><br>  for <font color="Olive" title="b3">F</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Olive" title="b2">V</font> holds   <a href="modcat_1.html#K6" title="MODCAT_1:func.6">cod'</a> <font color="Olive" title="b3">F</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="mod_2.html#K3" title="MOD_2:func.3">cod</a> <font color="Olive" title="b3">F</font>;<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">V</font> be    <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Maroon" title="c1">R</font>;<br><span class="kw">let </span><font color="Maroon" title="c3">G</font> be    <a href="modcat_1.html#M2" title="MODCAT_1:mode.2">Element</a> of <font color="Maroon" title="c2">V</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K7"><span class="kw">func</span> </a> <a href="modcat_1.html#K7" title="MODCAT_1:func.7">ID</a> <font color="Maroon" title="c3">G</font><span class="kw"> -&gt; </span>  <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>   <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font><span class="kw"> equals </span><a NAME="D10"><span class="comment"><font color="firebrick">:: MODCAT_1:def 10</font></span><br></a> <a href="mod_2.html#K6" title="MOD_2:func.6">ID</a> <font color="Maroon" title="c3">G</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:23_1"></a>
+ <a href="mod_2.html#K6" title="MOD_2:func.6">ID</a> <font color="Maroon" title="c3">G</font> is   <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>   <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font>
+ </span><div about="#PF23_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/23_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/23_1_1')" href="javascript:()" title="23_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+<div about="#DT10" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="modcat_1.html#K7" title="MODCAT_1:func.7">ID</a> <a onclick="hs(this)" href="javascript:()">MODCAT_1:def 10 : <br></a><span class="hide"> for <font color="Olive" title="b1">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b2">V</font> being    <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Olive" title="b1">R</font><br>  for <font color="Olive" title="b3">G</font> being    <a href="modcat_1.html#M2" title="MODCAT_1:mode.2">Element</a> of <font color="Olive" title="b2">V</font> holds   <a href="modcat_1.html#K7" title="MODCAT_1:func.7">ID</a> <font color="Olive" title="b3">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="mod_2.html#K6" title="MOD_2:func.6">ID</a> <font color="Olive" title="b3">G</font>;<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">V</font> be    <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Maroon" title="c1">R</font>;<br><div about="#D12" typeof="oo:Definition">
+<a NAME="K8"><span class="kw">func</span> </a> <a href="modcat_1.html#K8" title="MODCAT_1:func.8">dom</a> <font color="Maroon" title="c2">V</font><span class="kw"> -&gt; </span>  <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <span class="p1">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font></span>)</span>,<font color="Maroon" title="c2">V</font><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E12">Def11</font></span>: <a NAME="D11"><span class="comment"><font color="firebrick">:: MODCAT_1:def 11</font></span><br></a> for <font color="Olive" title="b1">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font> holds  <span class="kw">it</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b1">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K5" title="MODCAT_1:func.5">dom'</a> <font color="Olive" title="b1">f</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:24_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <span class="p1">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font></span>)</span>,<font color="Maroon" title="c2">V</font> st <br> for <font color="Olive" title="b2">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b2">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K5" title="MODCAT_1:func.5">dom'</a> <font color="Olive" title="b2">f</font>
+ </span><div about="#PF24_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/24_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/24_1_1')" href="javascript:()" title="24_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:24_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <span class="p1">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font></span>)</span>,<font color="Maroon" title="c2">V</font>  st (  for <font color="Olive" title="b3">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K5" title="MODCAT_1:func.5">dom'</a> <font color="Olive" title="b3">f</font> ) &amp; (  for <font color="Olive" title="b3">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font> holds  <font color="Olive">b<sub>2</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K5" title="MODCAT_1:func.5">dom'</a> <font color="Olive" title="b3">f</font> ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF24_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/24_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/24_1_2')" href="javascript:()" title="24_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<div about="#D13" typeof="oo:Definition">
+<a NAME="K9"><span class="kw">func</span> </a> <a href="modcat_1.html#K9" title="MODCAT_1:func.9">cod</a> <font color="Maroon" title="c2">V</font><span class="kw"> -&gt; </span>  <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <span class="p1">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font></span>)</span>,<font color="Maroon" title="c2">V</font><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E13">Def12</font></span>: <a NAME="D12"><span class="comment"><font color="firebrick">:: MODCAT_1:def 12</font></span><br></a> for <font color="Olive" title="b1">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font> holds  <span class="kw">it</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b1">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K6" title="MODCAT_1:func.6">cod'</a> <font color="Olive" title="b1">f</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:24_2"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <span class="p1">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font></span>)</span>,<font color="Maroon" title="c2">V</font> st <br> for <font color="Olive" title="b2">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b2">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K6" title="MODCAT_1:func.6">cod'</a> <font color="Olive" title="b2">f</font>
+ </span><div about="#PF24_2_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/24_2_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/24_2_1')" href="javascript:()" title="24_2_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:24_2"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <span class="p1">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font></span>)</span>,<font color="Maroon" title="c2">V</font>  st (  for <font color="Olive" title="b3">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K6" title="MODCAT_1:func.6">cod'</a> <font color="Olive" title="b3">f</font> ) &amp; (  for <font color="Olive" title="b3">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font> holds  <font color="Olive">b<sub>2</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K6" title="MODCAT_1:func.6">cod'</a> <font color="Olive" title="b3">f</font> ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF24_2_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/24_2_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/24_2_2')" href="javascript:()" title="24_2_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+<div about="#DT11" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E12">Def11</font></span>   defines <a href="modcat_1.html#K8" title="MODCAT_1:func.8">dom</a> <a onclick="hs(this)" href="javascript:()">MODCAT_1:def 11 : <br></a><span class="hide"> for <font color="Olive" title="b1">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b2">V</font> being    <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Olive" title="b1">R</font><br>  for <font color="Olive">b<sub>3</sub></font> being   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <span class="p1">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Olive" title="b2">V</font></span>)</span>,<font color="Olive" title="b2">V</font> holds <br> ( <font color="Olive">b<sub>3</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K8" title="MODCAT_1:func.8">dom</a> <font color="Olive" title="b2">V</font> iff  for <font color="Olive" title="b4">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Olive" title="b2">V</font> holds  <font color="Olive">b<sub>3</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b4">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K5" title="MODCAT_1:func.5">dom'</a> <font color="Olive" title="b4">f</font> );<br></span>
+</div>
+<br><div about="#DT12" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E13">Def12</font></span>   defines <a href="modcat_1.html#K9" title="MODCAT_1:func.9">cod</a> <a onclick="hs(this)" href="javascript:()">MODCAT_1:def 12 : <br></a><span class="hide"> for <font color="Olive" title="b1">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b2">V</font> being    <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Olive" title="b1">R</font><br>  for <font color="Olive">b<sub>3</sub></font> being   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <span class="p1">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Olive" title="b2">V</font></span>)</span>,<font color="Olive" title="b2">V</font> holds <br> ( <font color="Olive">b<sub>3</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K9" title="MODCAT_1:func.9">cod</a> <font color="Olive" title="b2">V</font> iff  for <font color="Olive" title="b4">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Olive" title="b2">V</font> holds  <font color="Olive">b<sub>3</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b4">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K6" title="MODCAT_1:func.6">cod'</a> <font color="Olive" title="b4">f</font> );<br></span>
+</div>
+<br><div about="#DT13" typeof="oo:Definition">:: <span class="kw">deftheorem </span>  <a onclick="hs(this)" href="javascript:()">MODCAT_1:def 13 : <br></a><span class="hide"><span class="kw">canceled; </span><br></span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::<br>  
+::  4d. Category of left modules - superposition<br>  
+::<br>  
+  
+</font></div>
+<div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E14">Th8</font></span>: <a NAME="T8"><span class="comment"><font color="firebrick">:: MODCAT_1:8</font></span><br></a><div class="add"> for <font color="Olive" title="b1">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b2">V</font> being    <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Olive" title="b1">R</font><br>  for <font color="Olive" title="b3">g</font>, <font color="Olive" title="b4">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Olive" title="b2">V</font>  st  <a href="modcat_1.html#K5" title="MODCAT_1:func.5">dom'</a> <font color="Olive" title="b3">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K6" title="MODCAT_1:func.6">cod'</a> <font color="Olive" title="b4">f</font> holds <br> ex <font color="Olive" title="b5">G1</font>, <font color="Olive" title="b6">G2</font>, <font color="Olive" title="b7">G3</font> being   <a href="vectsp_1.html#V7" title="VECTSP_1:attr.7">strict</a>   <a href="modcat_1.html#M2" title="MODCAT_1:mode.2">Element</a> of <font color="Olive" title="b2">V</font> st <br>( <font color="Olive" title="b3">g</font> is    <a href="mod_2.html#M1" title="MOD_2:mode.1">Morphism</a> of <font color="Olive" title="b6">G2</font>,<font color="Olive" title="b7">G3</font> &amp; <font color="Olive" title="b4">f</font> is    <a href="mod_2.html#M1" title="MOD_2:mode.1">Morphism</a> of <font color="Olive" title="b5">G1</font>,<font color="Olive" title="b6">G2</font> )</div>
+<div about="#PF25" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/25')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/25')" href="javascript:()" title="25"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E15">Th9</font></span>: <a NAME="T9"><span class="comment"><font color="firebrick">:: MODCAT_1:9</font></span><br></a><div class="add"> for <font color="Olive" title="b1">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b2">V</font> being    <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Olive" title="b1">R</font><br>  for <font color="Olive" title="b3">g</font>, <font color="Olive" title="b4">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Olive" title="b2">V</font>  st  <a href="modcat_1.html#K5" title="MODCAT_1:func.5">dom'</a> <font color="Olive" title="b3">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K6" title="MODCAT_1:func.6">cod'</a> <font color="Olive" title="b4">f</font> holds <br><font color="Olive" title="b3">g</font> <a href="mod_2.html#K8" title="MOD_2:func.8">*</a> <font color="Olive" title="b4">f</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Olive" title="b2">V</font>
+</div>
+<div about="#PF26" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T9"></span><a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/26')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/26')" href="javascript:()" title="26"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E16">Th10</font></span>: <a NAME="T10"><span class="comment"><font color="firebrick">:: MODCAT_1:10</font></span><br></a><div class="add"> for <font color="Olive" title="b1">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b2">V</font> being    <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Olive" title="b1">R</font><br>  for <font color="Olive" title="b3">g</font>, <font color="Olive" title="b4">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Olive" title="b2">V</font>  st  <a href="mod_2.html#K2" title="MOD_2:func.2">dom</a> <font color="Olive" title="b3">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="mod_2.html#K3" title="MOD_2:func.3">cod</a> <font color="Olive" title="b4">f</font> holds <br><font color="Olive" title="b3">g</font> <a href="mod_2.html#K8" title="MOD_2:func.8">*</a> <font color="Olive" title="b4">f</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Olive" title="b2">V</font>
+</div>
+<div about="#PF27" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T10"></span><a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/27')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/27')" href="javascript:()" title="27"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">V</font> be    <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Maroon" title="c1">R</font>;<br><div about="#D17" typeof="oo:Definition">
+<a NAME="K10"><span class="kw">func</span> </a> <a href="modcat_1.html#K10" title="MODCAT_1:func.10">comp</a> <font color="Maroon" title="c2">V</font><span class="kw"> -&gt; </span>  <a href="partfun1.html#NM1" title="PARTFUN1:NM.1">PartFunc</a> of <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"><span class="p2">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font></span>)</span>,<span class="p2">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>,<span class="p1">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font></span>)</span><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E17">Def13</font></span>: <a NAME="D14"><span class="comment"><font color="firebrick">:: MODCAT_1:def 14</font></span><br></a>( (  for <font color="Olive" title="b1">g</font>, <font color="Olive" title="b2">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font> holds <br> ( <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b1">g</font>,<font color="Olive" title="b2">f</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <span class="kw">it</span> iff  <a href="modcat_1.html#K5" title="MODCAT_1:func.5">dom'</a> <font color="Olive" title="b1">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K6" title="MODCAT_1:func.6">cod'</a> <font color="Olive" title="b2">f</font> ) ) &amp; (  for <font color="Olive" title="b1">g</font>, <font color="Olive" title="b2">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font>  st <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b1">g</font>,<font color="Olive" title="b2">f</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <span class="kw">it</span> holds <br><span class="kw">it</span> <a href="binop_1.html#K1" title="BINOP_1:func.1">.</a> (<font color="Olive" title="b1">g</font>,<font color="Olive" title="b2">f</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">g</font> <a href="mod_2.html#K8" title="MOD_2:func.8">*</a> <font color="Olive" title="b2">f</font> ) );<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:28_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="partfun1.html#NM1" title="PARTFUN1:NM.1">PartFunc</a> of <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"><span class="p2">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font></span>)</span>,<span class="p2">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>,<span class="p1">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font></span>)</span> st <br>( (  for <font color="Olive" title="b2">g</font>, <font color="Olive" title="b3">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font> holds <br> ( <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b2">g</font>,<font color="Olive" title="b3">f</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive">b<sub>1</sub></font> iff  <a href="modcat_1.html#K5" title="MODCAT_1:func.5">dom'</a> <font color="Olive" title="b2">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K6" title="MODCAT_1:func.6">cod'</a> <font color="Olive" title="b3">f</font> ) ) &amp; (  for <font color="Olive" title="b2">g</font>, <font color="Olive" title="b3">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font>  st <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b2">g</font>,<font color="Olive" title="b3">f</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive">b<sub>1</sub></font> holds <br><font color="Olive">b<sub>1</sub></font> <a href="binop_1.html#K1" title="BINOP_1:func.1">.</a> (<font color="Olive" title="b2">g</font>,<font color="Olive" title="b3">f</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">g</font> <a href="mod_2.html#K8" title="MOD_2:func.8">*</a> <font color="Olive" title="b3">f</font> ) )
+ </span><div about="#PF28_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/28_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/28_1_1')" href="javascript:()" title="28_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:28_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="partfun1.html#NM1" title="PARTFUN1:NM.1">PartFunc</a> of <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"><span class="p2">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font></span>)</span>,<span class="p2">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>,<span class="p1">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font></span>)</span>  st (  for <font color="Olive" title="b3">g</font>, <font color="Olive" title="b4">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font> holds <br> ( <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b3">g</font>,<font color="Olive" title="b4">f</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive">b<sub>1</sub></font> iff  <a href="modcat_1.html#K5" title="MODCAT_1:func.5">dom'</a> <font color="Olive" title="b3">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K6" title="MODCAT_1:func.6">cod'</a> <font color="Olive" title="b4">f</font> ) ) &amp; (  for <font color="Olive" title="b3">g</font>, <font color="Olive" title="b4">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font>  st <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b3">g</font>,<font color="Olive" title="b4">f</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive">b<sub>1</sub></font> holds <br><font color="Olive">b<sub>1</sub></font> <a href="binop_1.html#K1" title="BINOP_1:func.1">.</a> (<font color="Olive" title="b3">g</font>,<font color="Olive" title="b4">f</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">g</font> <a href="mod_2.html#K8" title="MOD_2:func.8">*</a> <font color="Olive" title="b4">f</font> ) &amp; (  for <font color="Olive" title="b3">g</font>, <font color="Olive" title="b4">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font> holds <br> ( <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b3">g</font>,<font color="Olive" title="b4">f</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive">b<sub>2</sub></font> iff  <a href="modcat_1.html#K5" title="MODCAT_1:func.5">dom'</a> <font color="Olive" title="b3">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K6" title="MODCAT_1:func.6">cod'</a> <font color="Olive" title="b4">f</font> ) ) &amp; (  for <font color="Olive" title="b3">g</font>, <font color="Olive" title="b4">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Maroon" title="c2">V</font>  st <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b3">g</font>,<font color="Olive" title="b4">f</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive">b<sub>2</sub></font> holds <br><font color="Olive">b<sub>2</sub></font> <a href="binop_1.html#K1" title="BINOP_1:func.1">.</a> (<font color="Olive" title="b3">g</font>,<font color="Olive" title="b4">f</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">g</font> <a href="mod_2.html#K8" title="MOD_2:func.8">*</a> <font color="Olive" title="b4">f</font> ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF28_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/28_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/28_1_2')" href="javascript:()" title="28_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT14" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E17">Def13</font></span>   defines <a href="modcat_1.html#K10" title="MODCAT_1:func.10">comp</a> <a onclick="hs(this)" href="javascript:()">MODCAT_1:def 14 : <br></a><span class="hide"> for <font color="Olive" title="b1">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b2">V</font> being    <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Olive" title="b1">R</font><br>  for <font color="Olive">b<sub>3</sub></font> being   <a href="partfun1.html#NM1" title="PARTFUN1:NM.1">PartFunc</a> of <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"><span class="p2">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Olive" title="b2">V</font></span>)</span>,<span class="p2">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Olive" title="b2">V</font></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>,<span class="p1">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Olive" title="b2">V</font></span>)</span> holds <br> ( <font color="Olive">b<sub>3</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K10" title="MODCAT_1:func.10">comp</a> <font color="Olive" title="b2">V</font> iff ( (  for <font color="Olive" title="b4">g</font>, <font color="Olive" title="b5">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Olive" title="b2">V</font> holds <br> ( <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b4">g</font>,<font color="Olive" title="b5">f</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive">b<sub>3</sub></font> iff  <a href="modcat_1.html#K5" title="MODCAT_1:func.5">dom'</a> <font color="Olive" title="b4">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modcat_1.html#K6" title="MODCAT_1:func.6">cod'</a> <font color="Olive" title="b5">f</font> ) ) &amp; (  for <font color="Olive" title="b4">g</font>, <font color="Olive" title="b5">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Olive" title="b2">V</font>  st <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b4">g</font>,<font color="Olive" title="b5">f</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive">b<sub>3</sub></font> holds <br><font color="Olive">b<sub>3</sub></font> <a href="binop_1.html#K1" title="BINOP_1:func.1">.</a> (<font color="Olive" title="b4">g</font>,<font color="Olive" title="b5">f</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">g</font> <a href="mod_2.html#K8" title="MOD_2:func.8">*</a> <font color="Olive" title="b5">f</font> ) ) );<br></span>
+</div>
+<br><div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E18">Th11</font></span>: <a NAME="T11"><span class="comment"><font color="firebrick">:: MODCAT_1:11</font></span><br></a><div class="add"> for <font color="Olive" title="b1">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b2">V</font> being    <a href="modcat_1.html#M1" title="MODCAT_1:mode.1">LeftMod_DOMAIN</a> of <font color="Olive" title="b1">R</font><br>  for <font color="Olive" title="b3">g</font>, <font color="Olive" title="b4">f</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <font color="Olive" title="b2">V</font> holds <br> ( <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b3">g</font>,<font color="Olive" title="b4">f</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <span class="p1">(<span class="default"><a href="modcat_1.html#K10" title="MODCAT_1:func.10">comp</a> <font color="Olive" title="b2">V</font></span>)</span> iff  <a href="mod_2.html#K2" title="MOD_2:func.2">dom</a> <font color="Olive" title="b3">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="mod_2.html#K3" title="MOD_2:func.3">cod</a> <font color="Olive" title="b4">f</font> )</div>
+<div about="#PF29" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/29')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/29')" href="javascript:()" title="29"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::<br>  
+::  4e. Definition of Category of left modules<br>  
+::<br>  
+  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">UN</font> be   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K11"><span class="kw">func</span> </a> <a href="modcat_1.html#K11" title="MODCAT_1:func.11">LModCat</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>)<span class="kw"> -&gt; </span>  <a href="cat_1.html#V1" title="CAT_1:attr.1">strict</a>   <a href="cat_1.html#L1" title="CAT_1:struct.1">CatStr</a> <span class="kw"> equals </span><a NAME="D15"><span class="comment"><font color="firebrick">:: MODCAT_1:def 15</font></span><br></a> <a href="cat_1.html#G1" title="CAT_1:aggr.1">CatStr</a>(# <span class="p1">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>)</span>)</span>,<span class="p1">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <span class="p2">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>)</span>)</span></span>)</span>,<span class="p1">(<span class="default"><a href="modcat_1.html#K8" title="MODCAT_1:func.8">dom</a> <span class="p2">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>)</span>)</span></span>)</span>,<span class="p1">(<span class="default"><a href="modcat_1.html#K9" title="MODCAT_1:func.9">cod</a> <span class="p2">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>)</span>)</span></span>)</span>,<span class="p1">(<span class="default"><a href="modcat_1.html#K10" title="MODCAT_1:func.10">comp</a> <span class="p2">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>)</span>)</span></span>)</span> #);<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:30_1"></a>
+ <a href="cat_1.html#G1" title="CAT_1:aggr.1">CatStr</a>(# <span class="p1">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>)</span>)</span>,<span class="p1">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <span class="p2">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>)</span>)</span></span>)</span>,<span class="p1">(<span class="default"><a href="modcat_1.html#K8" title="MODCAT_1:func.8">dom</a> <span class="p2">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>)</span>)</span></span>)</span>,<span class="p1">(<span class="default"><a href="modcat_1.html#K9" title="MODCAT_1:func.9">cod</a> <span class="p2">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>)</span>)</span></span>)</span>,<span class="p1">(<span class="default"><a href="modcat_1.html#K10" title="MODCAT_1:func.10">comp</a> <span class="p2">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>)</span>)</span></span>)</span> #) is   <a href="cat_1.html#V1" title="CAT_1:attr.1">strict</a>   <a href="cat_1.html#L1" title="CAT_1:struct.1">CatStr</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT15" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="modcat_1.html#K11" title="MODCAT_1:func.11">LModCat</a> <a onclick="hs(this)" href="javascript:()">MODCAT_1:def 15 : <br></a><span class="hide"> for <font color="Olive" title="b1">UN</font> being   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a><br>  for <font color="Olive" title="b2">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a> holds   <a href="modcat_1.html#K11" title="MODCAT_1:func.11">LModCat</a> (<font color="Olive" title="b1">UN</font>,<font color="Olive" title="b2">R</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="cat_1.html#G1" title="CAT_1:aggr.1">CatStr</a>(# <span class="p1">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Olive" title="b1">UN</font>,<font color="Olive" title="b2">R</font>)</span>)</span>,<span class="p1">(<span class="default"><a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <span class="p2">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Olive" title="b1">UN</font>,<font color="Olive" title="b2">R</font>)</span>)</span></span>)</span>,<span class="p1">(<span class="default"><a href="modcat_1.html#K8" title="MODCAT_1:func.8">dom</a> <span class="p2">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Olive" title="b1">UN</font>,<font color="Olive" title="b2">R</font>)</span>)</span></span>)</span>,<span class="p1">(<span class="default"><a href="modcat_1.html#K9" title="MODCAT_1:func.9">cod</a> <span class="p2">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Olive" title="b1">UN</font>,<font color="Olive" title="b2">R</font>)</span>)</span></span>)</span>,<span class="p1">(<span class="default"><a href="modcat_1.html#K10" title="MODCAT_1:func.10">comp</a> <span class="p2">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Olive" title="b1">UN</font>,<font color="Olive" title="b2">R</font>)</span>)</span></span>)</span> #);<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">UN</font> be   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br>
+<div about="#FC2" typeof="oo:Theorem">
+<a NAME="FC2"><span class="kw">cluster </span></a> <a href="modcat_1.html#K11" title="MODCAT_1:func.11">LModCat</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>)<span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   non  <a href="struct_0.html#V11" title="STRUCT_0:attr.11">void</a>   <a href="cat_1.html#V1" title="CAT_1:attr.1">strict</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:31_1"></a>
+(  not  <a href="modcat_1.html#K11" title="MODCAT_1:func.11">LModCat</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>) is  <a href="struct_0.html#V11" title="STRUCT_0:attr.11">void</a>  &amp;  not  <a href="modcat_1.html#K11" title="MODCAT_1:func.11">LModCat</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>) is  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  )
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E19">Th12</font></span>: <a NAME="T12"><span class="comment"><font color="firebrick">:: MODCAT_1:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">UN</font> being   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a><br>  for <font color="Olive" title="b2">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b3">f</font>, <font color="Olive" title="b4">g</font> being   <a href="cat_1.html#NM2" title="CAT_1:NM.2">Morphism</a> of <span class="p1">(<span class="default"><a href="modcat_1.html#K11" title="MODCAT_1:func.11">LModCat</a> (<font color="Olive" title="b1">UN</font>,<font color="Olive" title="b2">R</font>)</span>)</span> holds <br> ( <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b4">g</font>,<font color="Olive" title="b3">f</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a>  the <a href="cat_1.html#U1" title="CAT_1:sel.1">Comp</a> of <span class="p1">(<span class="default"><a href="modcat_1.html#K11" title="MODCAT_1:func.11">LModCat</a> (<font color="Olive" title="b1">UN</font>,<font color="Olive" title="b2">R</font>)</span>)</span> iff  <a href="graph_1.html#K3" title="GRAPH_1:func.3">dom</a> <font color="Olive" title="b4">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="graph_1.html#K4" title="GRAPH_1:func.4">cod</a> <font color="Olive" title="b3">f</font> )</div>
+<div about="#PF32" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/32')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/32')" href="javascript:()" title="32"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">UN</font> be   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br>
+<div about="#CC1" typeof="oo:Theorem">
+<a NAME="CC1"><span class="kw">cluster </span></a> <span class="kw"> -&gt; </span> <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <span class="p1">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>)</span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:33_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <span class="p1">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>)</span>)</span> holds  <font color="Olive">b<sub>1</sub></font> is  <a href="mod_2.html#V2" title="MOD_2:attr.2">strict</a> 
+ </span><div about="#PF33_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/33_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/33_1_1')" href="javascript:()" title="33_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T13"><span class="comment"><font color="firebrick">:: MODCAT_1:13</font></span><br></a><div class="add"><span class="kw">canceled; </span></div>
+</div>
+<br><div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T14"><span class="comment"><font color="firebrick">:: MODCAT_1:14</font></span><br></a><div class="add"><span class="kw">canceled; </span></div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::$CT 2<br>  
+  
+</font></div>
+<div about="#T15" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E20">Th13</font></span>: <a NAME="T15"><span class="comment"><font color="firebrick">:: MODCAT_1:15</font></span><br></a><div class="add"> for <font color="Olive" title="b1">UN</font> being   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a><br>  for <font color="Olive" title="b2">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="cat_1.html#NM2" title="CAT_1:NM.2">Morphism</a> of <span class="p1">(<span class="default"><a href="modcat_1.html#K11" title="MODCAT_1:func.11">LModCat</a> (<font color="Olive" title="b1">UN</font>,<font color="Olive" title="b2">R</font>)</span>)</span><br>  for <font color="Olive" title="b4">f9</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <span class="p1">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Olive" title="b1">UN</font>,<font color="Olive" title="b2">R</font>)</span>)</span>  st <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">f9</font> holds <br>(  <a href="graph_1.html#K3" title="GRAPH_1:func.3">dom</a> <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="mod_2.html#K2" title="MOD_2:func.2">dom</a> <font color="Olive" title="b4">f9</font> &amp;  <a href="graph_1.html#K4" title="GRAPH_1:func.4">cod</a> <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="mod_2.html#K3" title="MOD_2:func.3">cod</a> <font color="Olive" title="b4">f9</font> )</div>
+<div about="#PF36" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/36')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/36')" href="javascript:()" title="36"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T16" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E21">Th14</font></span>: <a NAME="T16"><span class="comment"><font color="firebrick">:: MODCAT_1:16</font></span><br></a><div class="add"> for <font color="Olive" title="b1">UN</font> being   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a><br>  for <font color="Olive" title="b2">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b3">f</font>, <font color="Olive" title="b4">g</font> being   <a href="cat_1.html#NM2" title="CAT_1:NM.2">Morphism</a> of <span class="p1">(<span class="default"><a href="modcat_1.html#K11" title="MODCAT_1:func.11">LModCat</a> (<font color="Olive" title="b1">UN</font>,<font color="Olive" title="b2">R</font>)</span>)</span><br>  for <font color="Olive" title="b5">f9</font>, <font color="Olive" title="b6">g9</font> being    <a href="modcat_1.html#M4" title="MODCAT_1:mode.4">Element</a> of  <a href="modcat_1.html#K4" title="MODCAT_1:func.4">Morphs</a> <span class="p1">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Olive" title="b1">UN</font>,<font color="Olive" title="b2">R</font>)</span>)</span>  st <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">f9</font> &amp; <font color="Olive" title="b4">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b6">g9</font> holds <br>( (  <a href="graph_1.html#K3" title="GRAPH_1:func.3">dom</a> <font color="Olive" title="b4">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="graph_1.html#K4" title="GRAPH_1:func.4">cod</a> <font color="Olive" title="b3">f</font> implies  <a href="mod_2.html#K2" title="MOD_2:func.2">dom</a> <font color="Olive" title="b6">g9</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="mod_2.html#K3" title="MOD_2:func.3">cod</a> <font color="Olive" title="b5">f9</font> ) &amp; (  <a href="mod_2.html#K2" title="MOD_2:func.2">dom</a> <font color="Olive" title="b6">g9</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="mod_2.html#K3" title="MOD_2:func.3">cod</a> <font color="Olive" title="b5">f9</font> implies  <a href="graph_1.html#K3" title="GRAPH_1:func.3">dom</a> <font color="Olive" title="b4">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="graph_1.html#K4" title="GRAPH_1:func.4">cod</a> <font color="Olive" title="b3">f</font> ) &amp; (  <a href="graph_1.html#K3" title="GRAPH_1:func.3">dom</a> <font color="Olive" title="b4">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="graph_1.html#K4" title="GRAPH_1:func.4">cod</a> <font color="Olive" title="b3">f</font> implies <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b6">g9</font>,<font color="Olive" title="b5">f9</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <span class="p1">(<span class="default"><a href="modcat_1.html#K10" title="MODCAT_1:func.10">comp</a> <span class="p2">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Olive" title="b1">UN</font>,<font color="Olive" title="b2">R</font>)</span>)</span></span>)</span> ) &amp; ( <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Olive" title="b6">g9</font>,<font color="Olive" title="b5">f9</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <span class="p1">(<span class="default"><a href="modcat_1.html#K10" title="MODCAT_1:func.10">comp</a> <span class="p2">(<span class="default"><a href="modcat_1.html#K3" title="MODCAT_1:func.3">LModObjects</a> (<font color="Olive" title="b1">UN</font>,<font color="Olive" title="b2">R</font>)</span>)</span></span>)</span> implies  <a href="graph_1.html#K3" title="GRAPH_1:func.3">dom</a> <font color="Olive" title="b4">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="graph_1.html#K4" title="GRAPH_1:func.4">cod</a> <font color="Olive" title="b3">f</font> ) &amp; (  <a href="graph_1.html#K3" title="GRAPH_1:func.3">dom</a> <font color="Olive" title="b4">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="graph_1.html#K4" title="GRAPH_1:func.4">cod</a> <font color="Olive" title="b3">f</font> implies <font color="Olive" title="b4">g</font> <a href="cat_1.html#K1" title="CAT_1:func.1">(*)</a> <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b6">g9</font> <a href="mod_2.html#K8" title="MOD_2:func.8">*</a> <font color="Olive" title="b5">f9</font> ) &amp; (  <a href="graph_1.html#K3" title="GRAPH_1:func.3">dom</a> <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="graph_1.html#K3" title="GRAPH_1:func.3">dom</a> <font color="Olive" title="b4">g</font> implies  <a href="mod_2.html#K2" title="MOD_2:func.2">dom</a> <font color="Olive" title="b5">f9</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="mod_2.html#K2" title="MOD_2:func.2">dom</a> <font color="Olive" title="b6">g9</font> ) &amp; (  <a href="mod_2.html#K2" title="MOD_2:func.2">dom</a> <font color="Olive" title="b5">f9</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="mod_2.html#K2" title="MOD_2:func.2">dom</a> <font color="Olive" title="b6">g9</font> implies  <a href="graph_1.html#K3" title="GRAPH_1:func.3">dom</a> <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="graph_1.html#K3" title="GRAPH_1:func.3">dom</a> <font color="Olive" title="b4">g</font> ) &amp; (  <a href="graph_1.html#K4" title="GRAPH_1:func.4">cod</a> <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="graph_1.html#K4" title="GRAPH_1:func.4">cod</a> <font color="Olive" title="b4">g</font> implies  <a href="mod_2.html#K3" title="MOD_2:func.3">cod</a> <font color="Olive" title="b5">f9</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="mod_2.html#K3" title="MOD_2:func.3">cod</a> <font color="Olive" title="b6">g9</font> ) &amp; (  <a href="mod_2.html#K3" title="MOD_2:func.3">cod</a> <font color="Olive" title="b5">f9</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="mod_2.html#K3" title="MOD_2:func.3">cod</a> <font color="Olive" title="b6">g9</font> implies  <a href="graph_1.html#K4" title="GRAPH_1:func.4">cod</a> <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="graph_1.html#K4" title="GRAPH_1:func.4">cod</a> <font color="Olive" title="b4">g</font> ) )</div>
+<div about="#PF37" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T16"></span><a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/37')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/37')" href="javascript:()" title="37"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E32"></a><span class="lab"><font color="Green" title="E22">Lm1</font></span>: <span about="#E32" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">UN</font> being   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a><br>  for <font color="Olive" title="b2">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b3">f</font>, <font color="Olive" title="b4">g</font> being   <a href="cat_1.html#NM2" title="CAT_1:NM.2">Morphism</a> of <span class="p1">(<span class="default"><a href="modcat_1.html#K11" title="MODCAT_1:func.11">LModCat</a> (<font color="Olive" title="b1">UN</font>,<font color="Olive" title="b2">R</font>)</span>)</span>  st  <a href="graph_1.html#K3" title="GRAPH_1:func.3">dom</a> <font color="Olive" title="b4">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="graph_1.html#K4" title="GRAPH_1:func.4">cod</a> <font color="Olive" title="b3">f</font> holds <br>(  <a href="graph_1.html#K3" title="GRAPH_1:func.3">dom</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">g</font> <a href="cat_1.html#K1" title="CAT_1:func.1">(*)</a> <font color="Olive" title="b3">f</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="graph_1.html#K3" title="GRAPH_1:func.3">dom</a> <font color="Olive" title="b3">f</font> &amp;  <a href="graph_1.html#K4" title="GRAPH_1:func.4">cod</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">g</font> <a href="cat_1.html#K1" title="CAT_1:func.1">(*)</a> <font color="Olive" title="b3">f</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="graph_1.html#K4" title="GRAPH_1:func.4">cod</a> <font color="Olive" title="b4">g</font> )
+ </span><br><div about="#PF38" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E32"></span><a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/38')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/38')" href="javascript:()" title="38"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E33"></a><span class="lab"><font color="Green" title="E23">Lm2</font></span>: <span about="#E33" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">UN</font> being   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a><br>  for <font color="Olive" title="b2">R</font> being   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a><br>  for <font color="Olive" title="b3">f</font>, <font color="Olive" title="b4">g</font>, <font color="Olive" title="b5">h</font> being   <a href="cat_1.html#NM2" title="CAT_1:NM.2">Morphism</a> of <span class="p1">(<span class="default"><a href="modcat_1.html#K11" title="MODCAT_1:func.11">LModCat</a> (<font color="Olive" title="b1">UN</font>,<font color="Olive" title="b2">R</font>)</span>)</span>  st  <a href="graph_1.html#K3" title="GRAPH_1:func.3">dom</a> <font color="Olive" title="b5">h</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="graph_1.html#K4" title="GRAPH_1:func.4">cod</a> <font color="Olive" title="b4">g</font> &amp;  <a href="graph_1.html#K3" title="GRAPH_1:func.3">dom</a> <font color="Olive" title="b4">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="graph_1.html#K4" title="GRAPH_1:func.4">cod</a> <font color="Olive" title="b3">f</font> holds <br><font color="Olive" title="b5">h</font> <a href="cat_1.html#K1" title="CAT_1:func.1">(*)</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">g</font> <a href="cat_1.html#K1" title="CAT_1:func.1">(*)</a> <font color="Olive" title="b3">f</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b5">h</font> <a href="cat_1.html#K1" title="CAT_1:func.1">(*)</a> <font color="Olive" title="b4">g</font></span>)</span> <a href="cat_1.html#K1" title="CAT_1:func.1">(*)</a> <font color="Olive" title="b3">f</font>
+ </span><br><div about="#PF39" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E33"></span><a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/39')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/39')" href="javascript:()" title="39"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">UN</font> be   <a href="classes2.html#NM1" title="CLASSES2:NM.1">Universe</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>;<br>
+<div about="#FC3" typeof="oo:Theorem">
+<a NAME="FC3"><span class="kw">cluster </span></a> <a href="modcat_1.html#K11" title="MODCAT_1:func.11">LModCat</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>)<span class="kw"> -&gt; </span> <a href="cat_1.html#V1" title="CAT_1:attr.1">strict</a>   <a href="cat_1.html#V2" title="CAT_1:attr.2">Category-like</a>   <a href="cat_1.html#V3" title="CAT_1:attr.3">transitive</a>   <a href="cat_1.html#V4" title="CAT_1:attr.4">associative</a>   <a href="cat_1.html#V5" title="CAT_1:attr.5">reflexive</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:40_1"></a>
+(  <a href="modcat_1.html#K11" title="MODCAT_1:func.11">LModCat</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>) is  <a href="cat_1.html#V2" title="CAT_1:attr.2">Category-like</a>  &amp;  <a href="modcat_1.html#K11" title="MODCAT_1:func.11">LModCat</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>) is  <a href="cat_1.html#V3" title="CAT_1:attr.3">transitive</a>  &amp;  <a href="modcat_1.html#K11" title="MODCAT_1:func.11">LModCat</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>) is  <a href="cat_1.html#V4" title="CAT_1:attr.4">associative</a>  &amp;  <a href="modcat_1.html#K11" title="MODCAT_1:func.11">LModCat</a> (<font color="Maroon" title="c1">UN</font>,<font color="Maroon" title="c2">R</font>) is  <a href="cat_1.html#V5" title="CAT_1:attr.5">reflexive</a>  )
+ </span><div about="#PF40_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/modcat_1/40_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/modcat_1/40_1_1')" href="javascript:()" title="40_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+</body>
+</html>
