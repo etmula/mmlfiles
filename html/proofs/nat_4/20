@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">defpred </span><font color="Maroon">S<sub>1</sub></font>[  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>] <span class="kw">means </span> for <font color="Olive" title="b1">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st $1 <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b1">p</font> holds <br/> not <font color="Olive" title="b1">p</font> <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> $1 <a href="newton.html#K7" title="NEWTON:func.7">!</a> ;<br/>
+<span class="kw">let </span><font color="Maroon" title="c1">p</font> be   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c1">p</font> holds <br/> not <font color="Maroon" title="c1">p</font> <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Olive" title="b1">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c2">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">n</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c1">p</font> implies  not <font color="Maroon" title="c1">p</font> <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Maroon" title="c2">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a>  )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:20"/><span class="lab"><font color="Green" title="E20">A1</font></span>: 
+<font color="Maroon" title="c2">n</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c1">p</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not <font color="Maroon" title="c1">p</font> <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Maroon" title="c2">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a> </span><br/>
+
+<a NAME="E2:20"/><span class="lab"><font color="Green" title="E21">A2</font></span>: 
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">n</font>] holds <br/><font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1]
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="20_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">n</font>] implies <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1] )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:20_1"/><span class="lab"><font color="Green" title="E22">A3</font></span>: 
+<font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">n</font>]
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1]</span><br/>
+
+<a NAME="E2:20_1"/>
+ for <font color="Olive" title="b1">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b1">p</font> holds <br/> not <font color="Olive" title="b1">p</font> <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="newton.html#K7" title="NEWTON:func.7">!</a> 
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="20_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">p</font> be   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c4">p</font> implies  not <font color="Maroon" title="c4">p</font> <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="newton.html#K7" title="NEWTON:func.7">!</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:20_1_1"/><span class="lab"><font color="Green" title="E23">A4</font></span>: 
+<font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c4">p</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not <font color="Maroon" title="c4">p</font> <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="newton.html#K7" title="NEWTON:func.7">!</a> </span><br/>
+
+<span class="kw">assume </span><a NAME="E2:20_1_1"/>
+<font color="Maroon" title="c4">p</font> <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="newton.html#K7" title="NEWTON:func.7">!</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E3:20_1_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E24">A5</font></span>: 
+<font color="Maroon" title="c4">p</font> <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span> <a href="nat_1.html#K2" title="NAT_1:func.2">*</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="newton.html#T15" onmouseover="rs('newton/T15')" onmouseout="rh()">NEWTON:15</a></span>;<br/>
+<a NAME="E4:20_1_1"/>
+<font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xreal_1.html#T6" onmouseover="rs('xreal_1/T6')" onmouseout="rh()">XREAL_1:6</a></span>;<br/>
+<a NAME="E5:20_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c3">n</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c4">p</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:20_1_1"><span class="lab"><font color="Green" title="E23">A4</font></span></a>, <a class="ref" href="xxreal_0.html#T2" onmouseover="rs('xxreal_0/T2')" onmouseout="rh()">XXREAL_0:2</a></span>;<br/>
+<a NAME="E6:20_1_1"/><span class="kw">then </span>
+ not <font color="Maroon" title="c4">p</font> <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Maroon" title="c3">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:20_1"><span class="lab"><font color="Green" title="E22">A3</font></span></a></span>;<br/>
+<a NAME="E7:20_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c4">p</font> <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:20_1_1"><span class="lab"><font color="Green" title="E24">A5</font></span></a>, <a class="ref" href="newton.html#T80" onmouseover="rs('newton/T80')" onmouseout="rh()">NEWTON:80</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E8:20_1_1"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:20_1_1"><span class="lab"><font color="Green" title="E23">A4</font></span></a>, <a class="ref" href="nat_d.html#T7" onmouseover="rs('nat_d/T7')" onmouseout="rh()">NAT_D:7</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E3:20_1"/>
+<font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1]
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E3:20"/><span class="lab"><font color="Green" title="E22">A6</font></span>: 
+<font color="Maroon">S<sub>1</sub></font>[ <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> ]
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_d.html#T7" onmouseover="rs('nat_d/T7')" onmouseout="rh()">NAT_D:7</a>, <a class="ref" href="newton.html#T12" onmouseover="rs('newton/T12')" onmouseout="rh()">NEWTON:12</a>, <a class="ref" href="int_2.html#D4" onmouseover="rs('int_2/D4')" onmouseout="rh()">INT_2:def 4</a></span>;<br/>
+<a NAME="E4:20"/>
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">n</font>]
+ 
+<span class="kw">from</span> <span class="lab"><a class="ref" href="nat_1.html#S2" onmouseover="rs('nat_1/S2')" onmouseout="rh()">NAT_1:sch 2</a>(<a class="txt" href="#E3:20"><span class="lab"><font color="Green" title="E22">A6</font></span></a>, <a class="txt" href="#E2:20"><span class="lab"><font color="Green" title="E21">A2</font></span></a>);<br/></span>
+<span class="kw">hence </span><a NAME="E5:20"/>
+ not <font color="Maroon" title="c1">p</font> <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Maroon" title="c2">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:20"><span class="lab"><font color="Green" title="E20">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

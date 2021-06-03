@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">a</font> be   non  <a href="zfmisc_1.html#V1" title="ZFMISC_1:attr.1">trivial</a>   <a href="ordinal1.html#V7" title="ORDINAL1:attr.7">natural</a>   <a href="ordinal1.html#NM2" title="ORDINAL1:NM.2">number</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#V7" title="ORDINAL1:attr.7">natural</a>   <a href="ordinal1.html#NM2" title="ORDINAL1:NM.2">number</a>   st <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> <font color="Olive" title="b2">m</font> holds <br/><font color="Maroon" title="c1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> <font color="Maroon" title="c1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Olive" title="b2">m</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">n</font>, <font color="Maroon" title="c3">m</font> be   <a href="ordinal1.html#V7" title="ORDINAL1:attr.7">natural</a>   <a href="ordinal1.html#NM2" title="ORDINAL1:NM.2">number</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">n</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> <font color="Maroon" title="c3">m</font> implies <font color="Maroon" title="c1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c2">n</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> <font color="Maroon" title="c1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c3">m</font> )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:9"/><span class="lab"><font color="Green" title="E5">A1</font></span>: 
+<font color="Maroon" title="c2">n</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> <font color="Maroon" title="c3">m</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c2">n</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> <font color="Maroon" title="c1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c3">m</font></span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c4">k</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><span class="kw"> such that </span><br/><a NAME="E3:9"/><span class="lab"><font color="Green" title="E6">A2</font></span>: 
+<font color="Maroon" title="c2">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">m</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Maroon" title="c4">k</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="nat_1.html#T10" onmouseover="rs('nat_1/T10')" onmouseout="rh()">NAT_1:10</a></span>;<br/>
+<a NAME="E4:9"/>
+<font color="Maroon" title="c4">k</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:9"><span class="lab"><font color="Green" title="E5">A1</font></span></a>, <a class="txt" href="#E3:9"><span class="lab"><font color="Green" title="E6">A2</font></span></a></span>;<br/>
+<a NAME="E5:9"/><span class="kw">then </span>
+<font color="Maroon" title="c4">k</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1 <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xreal_1.html#T6" onmouseover="rs('xreal_1/T6')" onmouseout="rh()">XREAL_1:6</a></span>;<br/>
+<a NAME="E6:9"/><span class="kw">then </span>
+<font color="Maroon" title="c4">k</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_1.html#T13" onmouseover="rs('nat_1/T13')" onmouseout="rh()">NAT_1:13</a></span>;<br/>
+<a NAME="E7:9"/><span class="kw">then </span>
+<font color="Maroon" title="c1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c4">k</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> <font color="Maroon" title="c1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_6.html#T1" target="_self" onmouseover="rs('nat_6/T1')" onmouseout="rh()">Th1</a></span>;<br/>
+<a NAME="E8:9"/><span class="kw">then </span><span class="lab"><font color="Green" title="E7">A3</font></span>: 
+<font color="Maroon" title="c1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c4">k</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> <font color="Maroon" title="c1">a</font>
+ 
+;<br/>
+<a NAME="E9:9"/>
+<font color="Maroon" title="c1">a</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 2
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_2.html#T29" onmouseover="rs('nat_2/T29')" onmouseout="rh()">NAT_2:29</a></span>;<br/>
+<a NAME="E10:9"/><span class="kw">then </span>
+<font color="Maroon" title="c1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c4">k</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1 <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E8:9"><span class="lab"><font color="Green" title="E7">A3</font></span></a>, <a class="ref" href="xxreal_0.html#T2" onmouseover="rs('xxreal_0/T2')" onmouseout="rh()">XXREAL_0:2</a></span>;<br/>
+<a NAME="E11:9"/><span class="kw">then </span>
+<font color="Maroon" title="c1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c4">k</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_1.html#T13" onmouseover="rs('nat_1/T13')" onmouseout="rh()">NAT_1:13</a></span>;<br/>
+<a NAME="E12:9"/><span class="kw">then </span>
+1 <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c3">m</font></span>)</span> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c4">k</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c3">m</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xreal_1.html#T68" onmouseover="rs('xreal_1/T68')" onmouseout="rh()">XREAL_1:68</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E13:9"/>
+<font color="Maroon" title="c1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c2">n</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> <font color="Maroon" title="c1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c3">m</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:9"><span class="lab"><font color="Green" title="E6">A2</font></span></a>, <a class="ref" href="newton.html#T8" onmouseover="rs('newton/T8')" onmouseout="rh()">NEWTON:8</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

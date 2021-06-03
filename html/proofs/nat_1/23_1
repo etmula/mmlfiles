@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">defpred </span><font color="Maroon">S<sub>1</sub></font>[  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>] <span class="kw">means </span> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Maroon">P<sub>1</sub></font>[<font color="Olive" title="b1">n</font>] holds <br/><font color="Olive" title="b1">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> $1;<br/>
+<a NAME="E1:23_1"/><span class="lab"><font color="Green" title="E10">A3</font></span>: 
+ ex <font color="Olive" title="b1">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">k</font>]
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:23"><span class="lab"><font color="Green" title="E8">A1</font></span></a></span>;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c1">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><span class="kw"> such that </span><br/><a NAME="E3:23_1"/><span class="lab"><font color="Green" title="E11">A4</font></span>: 
+<font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c1">k</font>]
+ <span class="kw">and </span><br/><a NAME="E4:23_1"/><span class="lab"><font color="Green" title="E12">A5</font></span>: 
+ for <font color="Olive" title="b1">m</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">m</font>] holds <br/><font color="Maroon" title="c1">k</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b1">m</font>
+ <span class="kw">from</span> <span class="lab"><a class="ref" href="nat_1.html#S5" target="_self" onmouseover="rs('nat_1/S5')" onmouseout="rh()">NAT_1:sch 5</a>(<a class="txt" href="#E1:23_1"><span class="lab"><font color="Green" title="E10">A3</font></span></a>);<br/></span>
+<span class="kw">take </span>
+<font color="Maroon" title="c1">k</font>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon">P<sub>1</sub></font>[<font color="Maroon" title="c1">k</font>] &amp; (  for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Maroon">P<sub>1</sub></font>[<font color="Olive" title="b1">n</font>] holds <br/><font color="Olive" title="b1">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">k</font> ) )</span><br/>
+
+<span class="kw">thus </span><a NAME="E5:23_1"/>
+<font color="Maroon">P<sub>1</sub></font>[<font color="Maroon" title="c1">k</font>]
+  <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Maroon">P<sub>1</sub></font>[<font color="Olive" title="b1">n</font>] holds <br/><font color="Olive" title="b1">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">k</font></span><div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="23_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">consider </span><font color="Maroon" title="c2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><span class="kw"> such that </span><br/><a NAME="E2:23_1_1"/><span class="lab"><font color="Green" title="E13">A6</font></span>: 
+<font color="Maroon">P<sub>1</sub></font>[<font color="Maroon" title="c2">n</font>]
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:23"><span class="lab"><font color="Green" title="E9">A2</font></span></a></span>;<br/>
+<a NAME="E3:23_1_1"/><span class="lab"><font color="Green" title="E14">A7</font></span>: 
+<font color="Maroon" title="c2">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">k</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:23_1"><span class="lab"><font color="Green" title="E11">A4</font></span></a>, <a class="txt" href="#E2:23_1_1"><span class="lab"><font color="Green" title="E13">A6</font></span></a></span>;<br/>
+<span class="kw">assume </span><a NAME="E4:23_1_1"/><span class="lab"><font color="Green" title="E15">A8</font></span>: 
+<font color="Maroon">P<sub>1</sub></font>[<font color="Maroon" title="c1">k</font>]
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E5:23_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c2">n</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c1">k</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:23_1_1"><span class="lab"><font color="Green" title="E13">A6</font></span></a></span>;<br/>
+<a NAME="E6:23_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c1">k</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:23_1_1"><span class="lab"><font color="Green" title="E14">A7</font></span></a>, <a class="ref" href="nat_1.html#T2" target="_self" onmouseover="rs('nat_1/T2')" onmouseout="rh()">Th2</a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c3">m</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><span class="kw"> such that </span><br/><a NAME="E8:23_1_1"/><span class="lab"><font color="Green" title="E16">A9</font></span>: 
+<font color="Maroon" title="c1">k</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">m</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="nat_1.html#T6" target="_self" onmouseover="rs('nat_1/T6')" onmouseout="rh()">Th6</a></span>;<br/>
+<a NAME="E9:23_1_1"/><span class="lab"><font color="Green" title="E17">A10</font></span>: 
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Maroon">P<sub>1</sub></font>[<font color="Olive" title="b1">n</font>] holds <br/><font color="Olive" title="b1">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c3">m</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:23_1"><span class="lab"><font color="Green" title="E11">A4</font></span></a>, <a class="txt" href="#E4:23_1_1"><span class="lab"><font color="Green" title="E15">A8</font></span></a>, <a class="txt" href="#E8:23_1_1"><span class="lab"><font color="Green" title="E16">A9</font></span></a>, <a class="ref" href="nat_1.html#T8" target="_self" onmouseover="rs('nat_1/T8')" onmouseout="rh()">Th8</a></span>;<br/>
+<a NAME="E10:23_1_1"/>
+<span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <font color="Maroon" title="c3">m</font></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Maroon" title="c3">m</font></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <font color="Maroon" title="c3">m</font></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">m</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span>
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E11:23_1_1"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:23_1"><span class="lab"><font color="Green" title="E12">A5</font></span></a>, <a class="txt" href="#E8:23_1_1"><span class="lab"><font color="Green" title="E16">A9</font></span></a>, <a class="txt" href="#E9:23_1_1"><span class="lab"><font color="Green" title="E17">A10</font></span></a>, <a class="ref" href="xreal_1.html#T6" onmouseover="rs('xreal_1/T6')" onmouseout="rh()">XREAL_1:6</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+
+<span class="kw">thus </span><a NAME="E6:23_1"/>
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Maroon">P<sub>1</sub></font>[<font color="Olive" title="b1">n</font>] holds <br/><font color="Olive" title="b1">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">k</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:23_1"><span class="lab"><font color="Green" title="E11">A4</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">n</font>, <font color="Maroon" title="c2">m</font>, <font color="Maroon" title="c3">n1</font>, <font color="Maroon" title="c4">m1</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">n1</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="moebius1.html#K3" title="MOEBIUS1:func.3">NatDivisors</a> <font color="Maroon" title="c1">n</font> &amp; <font color="Maroon" title="c4">m1</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="moebius1.html#K3" title="MOEBIUS1:func.3">NatDivisors</a> <font color="Maroon" title="c2">m</font> &amp; <font color="Maroon" title="c1">n</font>,<font color="Maroon" title="c2">m</font> <a href="int_2.html#R1" title="INT_2:pred.1">are_coprime</a>  implies <font color="Maroon" title="c3">n1</font>,<font color="Maroon" title="c4">m1</font> <a href="int_2.html#R1" title="INT_2:pred.1">are_coprime</a>  )</span><br/>
+
+
+
+
+
+
+
+<a NAME="E1:16"/><span class="lab"><font color="Green" title="E18">A1</font></span>: 
+<font color="Maroon" title="c3">n1</font> <a href="nat_d.html#K6" title="NAT_D:func.6">gcd</a> <font color="Maroon" title="c4">m1</font> <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Maroon" title="c4">m1</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="int_2.html#D2" onmouseover="rs('int_2/D2')" onmouseout="rh()">INT_2:def 2</a></span>;<br/>
+<span class="kw">assume </span><a NAME="E2:16"/>
+<font color="Maroon" title="c3">n1</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="moebius1.html#K3" title="MOEBIUS1:func.3">NatDivisors</a> <font color="Maroon" title="c1">n</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c4">m1</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="moebius1.html#K3" title="MOEBIUS1:func.3">NatDivisors</a> <font color="Maroon" title="c2">m</font> or  not <font color="Maroon" title="c1">n</font>,<font color="Maroon" title="c2">m</font> <a href="int_2.html#R1" title="INT_2:pred.1">are_coprime</a>  or <font color="Maroon" title="c3">n1</font>,<font color="Maroon" title="c4">m1</font> <a href="int_2.html#R1" title="INT_2:pred.1">are_coprime</a>  )</span><br/>
+
+<a NAME="E3:16"/><span class="kw">then </span><span class="lab"><font color="Green" title="E19">A2</font></span>: 
+<font color="Maroon" title="c3">n1</font> <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Maroon" title="c1">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="moebius1.html#T39" onmouseover="rs('moebius1/T39')" onmouseout="rh()">MOEBIUS1:39</a></span>;<br/>
+<a NAME="E4:16"/>
+<font color="Maroon" title="c3">n1</font> <a href="nat_d.html#K6" title="NAT_D:func.6">gcd</a> <font color="Maroon" title="c4">m1</font> <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Maroon" title="c3">n1</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="int_2.html#D2" onmouseover="rs('int_2/D2')" onmouseout="rh()">INT_2:def 2</a></span>;<br/>
+<a NAME="E5:16"/><span class="kw">then </span><span class="lab"><font color="Green" title="E20">A3</font></span>: 
+<font color="Maroon" title="c3">n1</font> <a href="nat_d.html#K6" title="NAT_D:func.6">gcd</a> <font color="Maroon" title="c4">m1</font> <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Maroon" title="c1">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:16"><span class="lab"><font color="Green" title="E19">A2</font></span></a>, <a class="ref" href="int_2.html#T9" onmouseover="rs('int_2/T9')" onmouseout="rh()">INT_2:9</a></span>;<br/>
+<span class="kw">assume </span><a NAME="E6:16"/><span class="lab"><font color="Green" title="E21">A4</font></span>: 
+<font color="Maroon" title="c4">m1</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="moebius1.html#K3" title="MOEBIUS1:func.3">NatDivisors</a> <font color="Maroon" title="c2">m</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c1">n</font>,<font color="Maroon" title="c2">m</font> <a href="int_2.html#R1" title="INT_2:pred.1">are_coprime</a>  or <font color="Maroon" title="c3">n1</font>,<font color="Maroon" title="c4">m1</font> <a href="int_2.html#R1" title="INT_2:pred.1">are_coprime</a>  )</span><br/>
+
+<a NAME="E7:16"/><span class="kw">then </span>
+<font color="Maroon" title="c4">m1</font> <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Maroon" title="c2">m</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="moebius1.html#T39" onmouseover="rs('moebius1/T39')" onmouseout="rh()">MOEBIUS1:39</a></span>;<br/>
+<a NAME="E8:16"/><span class="kw">then </span><span class="lab"><font color="Green" title="E22">A5</font></span>: 
+<font color="Maroon" title="c3">n1</font> <a href="nat_d.html#K6" title="NAT_D:func.6">gcd</a> <font color="Maroon" title="c4">m1</font> <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Maroon" title="c2">m</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:16"><span class="lab"><font color="Green" title="E18">A1</font></span></a>, <a class="ref" href="int_2.html#T9" onmouseover="rs('int_2/T9')" onmouseout="rh()">INT_2:9</a></span>;<br/>
+<a NAME="E9:16"/>
+ <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c4">m1</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:16"><span class="lab"><font color="Green" title="E21">A4</font></span></a>, <a class="ref" href="moebius1.html#T39" onmouseover="rs('moebius1/T39')" onmouseout="rh()">MOEBIUS1:39</a></span>;<br/>
+<a NAME="E10:16"/><span class="kw">then </span>
+<font color="Maroon" title="c3">n1</font> <a href="nat_d.html#K6" title="NAT_D:func.6">gcd</a> <font color="Maroon" title="c4">m1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="int_2.html#T5" onmouseover="rs('int_2/T5')" onmouseout="rh()">INT_2:5</a></span>;<br/>
+<a NAME="E11:16"/><span class="kw">then </span>
+<span class="p1">(<span class="default"><font color="Maroon" title="c3">n1</font> <a href="nat_d.html#K6" title="NAT_D:func.6">gcd</a> <font color="Maroon" title="c4">m1</font></span>)</span> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xreal_1.html#T8" onmouseover="rs('xreal_1/T8')" onmouseout="rh()">XREAL_1:8</a></span>;<br/>
+<a NAME="E12:16"/><span class="kw">then </span><span class="lab"><font color="Green" title="E23">A6</font></span>: 
+<font color="Maroon" title="c3">n1</font> <a href="nat_d.html#K6" title="NAT_D:func.6">gcd</a> <font color="Maroon" title="c4">m1</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_1.html#T13" onmouseover="rs('nat_1/T13')" onmouseout="rh()">NAT_1:13</a></span>;<br/>
+<span class="kw">assume </span><a NAME="E13:16"/><span class="lab"><font color="Green" title="E24">A7</font></span>: 
+<font color="Maroon" title="c1">n</font>,<font color="Maroon" title="c2">m</font> <a href="int_2.html#R1" title="INT_2:pred.1">are_coprime</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">n1</font>,<font color="Maroon" title="c4">m1</font> <a href="int_2.html#R1" title="INT_2:pred.1">are_coprime</a> </span><br/>
+
+<span class="kw">assume </span><a NAME="E14:16"/>
+ not <font color="Maroon" title="c3">n1</font>,<font color="Maroon" title="c4">m1</font> <a href="int_2.html#R1" title="INT_2:pred.1">are_coprime</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E15:16"/><span class="kw">then </span><span class="lab"><font color="Green" title="E25">A8</font></span>: 
+<font color="Maroon" title="c3">n1</font> <a href="nat_d.html#K6" title="NAT_D:func.6">gcd</a> <font color="Maroon" title="c4">m1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="int_2.html#D3" onmouseover="rs('int_2/D3')" onmouseout="rh()">INT_2:def 3</a></span>;<br/>
+<a NAME="E16:16"/>
+<font color="Maroon" title="c1">n</font> <a href="nat_d.html#K6" title="NAT_D:func.6">gcd</a> <font color="Maroon" title="c2">m</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E13:16"><span class="lab"><font color="Green" title="E24">A7</font></span></a>, <a class="ref" href="int_2.html#D3" onmouseover="rs('int_2/D3')" onmouseout="rh()">INT_2:def 3</a></span>;<br/>
+<a NAME="E17:16"/><span class="kw">then </span>
+<font color="Maroon" title="c3">n1</font> <a href="nat_d.html#K6" title="NAT_D:func.6">gcd</a> <font color="Maroon" title="c4">m1</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">n</font> <a href="nat_d.html#K6" title="NAT_D:func.6">gcd</a> <font color="Maroon" title="c2">m</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:16"><span class="lab"><font color="Green" title="E20">A3</font></span></a>, <a class="txt" href="#E8:16"><span class="lab"><font color="Green" title="E22">A5</font></span></a>, <a class="ref" href="int_2.html#T22" onmouseover="rs('int_2/T22')" onmouseout="rh()">INT_2:22</a>, <a class="ref" href="int_2.html#T27" onmouseover="rs('int_2/T27')" onmouseout="rh()">INT_2:27</a></span>;<br/>
+<a NAME="E18:16"/><span class="kw">then </span>
+<font color="Maroon" title="c1">n</font> <a href="nat_d.html#K6" title="NAT_D:func.6">gcd</a> <font color="Maroon" title="c2">m</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E15:16"><span class="lab"><font color="Green" title="E25">A8</font></span></a>, <a class="txt" href="#E12:16"><span class="lab"><font color="Green" title="E23">A6</font></span></a>, <a class="ref" href="xxreal_0.html#T1" onmouseover="rs('xxreal_0/T1')" onmouseout="rh()">XXREAL_0:1</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E19:16"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E13:16"><span class="lab"><font color="Green" title="E24">A7</font></span></a>, <a class="ref" href="int_2.html#D3" onmouseover="rs('int_2/D3')" onmouseout="rh()">INT_2:def 3</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
