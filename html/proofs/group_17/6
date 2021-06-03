@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">h</font> be   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">q</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st  not <font color="Olive" title="b1">q</font>,<font color="Maroon" title="c1">h</font> <a href="int_2.html#R1" title="INT_2:pred.1">are_coprime</a>  holds <br/><font color="Olive" title="b1">q</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Maroon" title="c1">h</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">q</font> be   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c2">q</font>,<font color="Maroon" title="c1">h</font> <a href="int_2.html#R1" title="INT_2:pred.1">are_coprime</a>  implies <font color="Maroon" title="c2">q</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Maroon" title="c1">h</font> )</span><br/>
+
+
+
+<span class="kw">set </span><font color="Maroon" title="c3">pq</font> =  <a href="nat_3.html#K13" title="NAT_3:func.13">prime_factorization</a> <font color="Maroon" title="c2">q</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c4">ph</font> =  <a href="nat_3.html#K13" title="NAT_3:func.13">prime_factorization</a> <font color="Maroon" title="c1">h</font>;<br/>
+<a NAME="E1:6"/><span class="lab"><font color="Green" title="E7">A1</font></span>: 
+<font color="Maroon" title="c2">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="nat_3.html#K8" title="NAT_3:func.8">Product</a> <span class="p1">(<span class="default"><a href="nat_3.html#K13" title="NAT_3:func.13">prime_factorization</a> <font color="Maroon" title="c2">q</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_3.html#T61" onmouseover="rs('nat_3/T61')" onmouseout="rh()">NAT_3:61</a></span>;<br/>
+<a NAME="E2:6"/><span class="lab"><font color="Green" title="E8">A2</font></span>: 
+<font color="Maroon" title="c1">h</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="nat_3.html#K8" title="NAT_3:func.8">Product</a> <span class="p1">(<span class="default"><a href="nat_3.html#K13" title="NAT_3:func.13">prime_factorization</a> <font color="Maroon" title="c1">h</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_3.html#T61" onmouseover="rs('nat_3/T61')" onmouseout="rh()">NAT_3:61</a></span>;<br/>
+<span class="kw">assume </span><a NAME="E3:6"/>
+ not <font color="Maroon" title="c2">q</font>,<font color="Maroon" title="c1">h</font> <a href="int_2.html#R1" title="INT_2:pred.1">are_coprime</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">q</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Maroon" title="c1">h</font></span><br/>
+
+<a NAME="E4:6"/><span class="kw">then </span>
+<span class="p1">(<span class="default"><a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p2">(<span class="default"><a href="nat_3.html#K13" title="NAT_3:func.13">prime_factorization</a> <font color="Maroon" title="c2">q</font></span>)</span></span>)</span> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p2">(<span class="default"><a href="nat_3.html#K13" title="NAT_3:func.13">prime_factorization</a> <font color="Maroon" title="c1">h</font></span>)</span></span>)</span> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_0.html#D7" onmouseover="rs('xboole_0/D7')" onmouseout="rh()">XBOOLE_0:def 7</a>, <a class="ref" href="int_7.html#T12" onmouseover="rs('int_7/T12')" onmouseout="rh()">INT_7:12</a>, <a class="txt" href="#E1:6"><span class="lab"><font color="Green" title="E7">A1</font></span></a>, <a class="txt" href="#E2:6"><span class="lab"><font color="Green" title="E8">A2</font></span></a></span>;<br/>
+<a NAME="E5:6"/><span class="kw">then </span>
+<span class="p1">(<span class="default"><a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p2">(<span class="default"><a href="nat_3.html#NK13" title="NAT_3:NK.13">pfexp</a> <font color="Maroon" title="c2">q</font></span>)</span></span>)</span> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p2">(<span class="default"><a href="nat_3.html#K13" title="NAT_3:func.13">prime_factorization</a> <font color="Maroon" title="c1">h</font></span>)</span></span>)</span> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_3.html#D9" onmouseover="rs('nat_3/D9')" onmouseout="rh()">NAT_3:def 9</a></span>;<br/>
+<a NAME="E6:6"/><span class="kw">then </span>
+<span class="p1">(<span class="default"><a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p2">(<span class="default"><a href="nat_3.html#NK13" title="NAT_3:NK.13">pfexp</a> <font color="Maroon" title="c2">q</font></span>)</span></span>)</span> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p2">(<span class="default"><a href="nat_3.html#NK13" title="NAT_3:NK.13">pfexp</a> <font color="Maroon" title="c1">h</font></span>)</span></span>)</span> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_3.html#D9" onmouseover="rs('nat_3/D9')" onmouseout="rh()">NAT_3:def 9</a></span>;<br/>
+<a NAME="E7:6"/><span class="kw">then </span>
+<span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><font color="Maroon" title="c2">q</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p2">(<span class="default"><a href="nat_3.html#NK13" title="NAT_3:NK.13">pfexp</a> <font color="Maroon" title="c1">h</font></span>)</span></span>)</span> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_3.html#T43" onmouseover="rs('nat_3/T43')" onmouseout="rh()">NAT_3:43</a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c5">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E9:6"/><span class="lab"><font color="Green" title="E9">A3</font></span>: 
+<font color="Maroon" title="c5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><font color="Maroon" title="c2">q</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p2">(<span class="default"><a href="nat_3.html#NK13" title="NAT_3:NK.13">pfexp</a> <font color="Maroon" title="c1">h</font></span>)</span></span>)</span>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_0.html#D1" onmouseover="rs('xboole_0/D1')" onmouseout="rh()">XBOOLE_0:def 1</a></span>;<br/>
+<a NAME="E10:6"/><span class="lab"><font color="Green" title="E10">A4</font></span>: 
+( <font color="Maroon" title="c5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><font color="Maroon" title="c2">q</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span> &amp; <font color="Maroon" title="c5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p1">(<span class="default"><a href="nat_3.html#NK13" title="NAT_3:NK.13">pfexp</a> <font color="Maroon" title="c1">h</font></span>)</span> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E9:6"><span class="lab"><font color="Green" title="E9">A3</font></span></a>, <a class="ref" href="xboole_0.html#D4" onmouseover="rs('xboole_0/D4')" onmouseout="rh()">XBOOLE_0:def 4</a></span>;<br/>
+<a NAME="E11:6"/>
+<font color="Maroon" title="c5">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">q</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E10:6"><span class="lab"><font color="Green" title="E10">A4</font></span></a>, <a class="ref" href="tarski.html#D1" onmouseover="rs('tarski/D1')" onmouseout="rh()">TARSKI:def 1</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E12:6"/>
+<font color="Maroon" title="c2">q</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Maroon" title="c1">h</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="nat_3.html#T36" onmouseover="rs('nat_3/T36')" onmouseout="rh()">NAT_3:36</a>, <a class="txt" href="#E10:6"><span class="lab"><font color="Green" title="E10">A4</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
