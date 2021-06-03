@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">X</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="metric_1.html#NM1" title="METRIC_1:NM.1">MetrSpace</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">S</font> being   <a href="struct_0.html#NM9" title="STRUCT_0:NM.9">sequence</a> of <font color="Maroon" title="c1">X</font>  st <font color="Olive" title="b1">S</font> is  <a href="tbsp_1.html#V2" title="TBSP_1:attr.2">convergent</a>  holds <br/><font color="Olive" title="b1">S</font> is  <a href="metric_6.html#V1" title="METRIC_6:attr.1">bounded</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c2">S</font> be   <a href="struct_0.html#NM9" title="STRUCT_0:NM.9">sequence</a> of <font color="Maroon" title="c1">X</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">S</font> is  <a href="tbsp_1.html#V2" title="TBSP_1:attr.2">convergent</a>  implies <font color="Maroon" title="c2">S</font> is  <a href="metric_6.html#V1" title="METRIC_6:attr.1">bounded</a>  )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:30"/>
+<font color="Maroon" title="c2">S</font> is  <a href="tbsp_1.html#V2" title="TBSP_1:attr.2">convergent</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">S</font> is  <a href="metric_6.html#V1" title="METRIC_6:attr.1">bounded</a> </span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c3">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">X</font><span class="kw"> such that </span><br/><a NAME="E3:30"/><span class="lab"><font color="Green" title="E21">A1</font></span>: 
+<font color="Maroon" title="c2">S</font> <a href="metric_6.html#R1" title="METRIC_6:pred.1">is_convergent_in_metrspace_to</a> <font color="Maroon" title="c3">x</font>
+ <span class="kw">and </span><br/><a NAME="E4:30"/>
+ <a href="tbsp_1.html#K1" title="TBSP_1:func.1">lim</a> <font color="Maroon" title="c2">S</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">x</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="metric_6.html#T13" target="_self" onmouseover="rs('metric_6/T13')" onmouseout="rh()">Th13</a></span>;<br/>
+<a NAME="E5:30"/>
+ <a href="metric_6.html#K2" title="METRIC_6:func.2">dist_to_point</a> (<font color="Maroon" title="c2">S</font>,<font color="Maroon" title="c3">x</font>) is  <a href="comseq_2.html#V2" title="COMSEQ_2:attr.2">convergent</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:30"><span class="lab"><font color="Green" title="E21">A1</font></span></a>, <a class="ref" href="metric_6.html#T14" target="_self" onmouseover="rs('metric_6/T14')" onmouseout="rh()">Th14</a></span>;<br/>
+<a NAME="E6:30"/><span class="kw">then </span>
+ <a href="metric_6.html#K2" title="METRIC_6:func.2">dist_to_point</a> (<font color="Maroon" title="c2">S</font>,<font color="Maroon" title="c3">x</font>) is  <a href="comseq_2.html#V1" title="COMSEQ_2:attr.1">bounded</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="seq_2.html#T13" onmouseover="rs('seq_2/T13')" onmouseout="rh()">SEQ_2:13</a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c4">r</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a><span class="kw"> such that </span><br/><a NAME="E8:30"/><span class="lab"><font color="Green" title="E22">A2</font></span>: 
+ <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c4">r</font>
+ <span class="kw">and </span><br/><a NAME="E9:30"/><span class="lab"><font color="Green" title="E23">A3</font></span>: 
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  holds <span class="p1"><a href="complex1.html#K9" title="COMPLEX1:func.9">|.</a><span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="metric_6.html#K2" title="METRIC_6:func.2">dist_to_point</a> (<font color="Maroon" title="c2">S</font>,<font color="Maroon" title="c3">x</font>)</span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b1">n</font></span>)</span></span><a href="complex1.html#K9" title="COMPLEX1:func.9">.|</a></span> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c4">r</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="seq_2.html#T3" onmouseover="rs('seq_2/T3')" onmouseout="rh()">SEQ_2:3</a></span>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c5">r</font> = <font color="Maroon" title="c4">r</font> as   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> ;<br/>
+<a NAME="E11:30"/>
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Maroon" title="c2">S</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b1">n</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="metric_1.html#K8" title="METRIC_1:func.8">Ball</a> (<font color="Maroon" title="c3">x</font>,<font color="Maroon" title="c5">r</font>)
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="30_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c6">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">S</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Maroon" title="c6">n</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="metric_1.html#K8" title="METRIC_1:func.8">Ball</a> (<font color="Maroon" title="c3">x</font>,<font color="Maroon" title="c5">r</font>)</span><br/>
+
+<a NAME="E1:30_1"/><span class="lab"><font color="Green" title="E24">A4</font></span>: 
+<span class="p1">(<span class="default"><a href="metric_6.html#K2" title="METRIC_6:func.2">dist_to_point</a> (<font color="Maroon" title="c2">S</font>,<font color="Maroon" title="c3">x</font>)</span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Maroon" title="c6">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="metric_1.html#K3" title="METRIC_1:func.3">dist</a> (<span class="p1">(<span class="default"><font color="Maroon" title="c2">S</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Maroon" title="c6">n</font></span>)</span>,<font color="Maroon" title="c3">x</font>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="metric_6.html#D6" target="_self" onmouseover="rs('metric_6/D6')" onmouseout="rh()">Def6</a></span>;<br/>
+<a NAME="E2:30_1"/><span class="kw">then </span>
+ <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <span class="p1">(<span class="default"><a href="metric_6.html#K2" title="METRIC_6:func.2">dist_to_point</a> (<font color="Maroon" title="c2">S</font>,<font color="Maroon" title="c3">x</font>)</span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Maroon" title="c6">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="metric_1.html#T5" onmouseover="rs('metric_1/T5')" onmouseout="rh()">METRIC_1:5</a></span>;<br/>
+<a NAME="E3:30_1"/><span class="kw">then </span>
+<span class="p1"><a href="complex1.html#K9" title="COMPLEX1:func.9">|.</a><span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="metric_6.html#K2" title="METRIC_6:func.2">dist_to_point</a> (<font color="Maroon" title="c2">S</font>,<font color="Maroon" title="c3">x</font>)</span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Maroon" title="c6">n</font></span>)</span></span><a href="complex1.html#K9" title="COMPLEX1:func.9">.|</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="metric_6.html#K2" title="METRIC_6:func.2">dist_to_point</a> (<font color="Maroon" title="c2">S</font>,<font color="Maroon" title="c3">x</font>)</span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Maroon" title="c6">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="absvalue.html#D1" onmouseover="rs('absvalue/D1')" onmouseout="rh()">ABSVALUE:def 1</a></span>;<br/>
+<a NAME="E4:30_1"/><span class="kw">then </span>
+ <a href="metric_1.html#K3" title="METRIC_1:func.3">dist</a> (<span class="p1">(<span class="default"><font color="Maroon" title="c2">S</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Maroon" title="c6">n</font></span>)</span>,<font color="Maroon" title="c3">x</font>) <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c5">r</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E9:30"><span class="lab"><font color="Green" title="E23">A3</font></span></a>, <a class="txt" href="#E1:30_1"><span class="lab"><font color="Green" title="E24">A4</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:30_1"/>
+<font color="Maroon" title="c2">S</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Maroon" title="c6">n</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="metric_1.html#K8" title="METRIC_1:func.8">Ball</a> (<font color="Maroon" title="c3">x</font>,<font color="Maroon" title="c5">r</font>)
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="metric_1.html#T11" onmouseover="rs('metric_1/T11')" onmouseout="rh()">METRIC_1:11</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E12:30"/>
+<font color="Maroon" title="c2">S</font> is  <a href="metric_6.html#V1" title="METRIC_6:attr.1">bounded</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E8:30"><span class="lab"><font color="Green" title="E22">A2</font></span></a>, <a class="ref" href="metric_6.html#T8" target="_self" onmouseover="rs('metric_6/T8')" onmouseout="rh()">Th8</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
