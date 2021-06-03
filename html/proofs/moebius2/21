@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<a NAME="E1:21"/><span class="lab"><font color="Green" title="E16">A1</font></span>: 
+<span class="p1"><a href="enumset1.html#K3" title="ENUMSET1:func.3">{</a><span class="default">2,3,5,7,11</span><a href="enumset1.html#K3" title="ENUMSET1:func.3">}</a></span> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> 
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="21_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">x</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="tarski.html#D3" onmouseover="rs('tarski/D3')" onmouseout="rh()">TARSKI:def 3</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"><a href="enumset1.html#K3" title="ENUMSET1:func.3">{</a><span class="default">2,3,5,7,11</span><a href="enumset1.html#K3" title="ENUMSET1:func.3">}</a></span> or <font color="Maroon" title="c1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:21_1"/>
+<font color="Maroon" title="c1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"><a href="enumset1.html#K3" title="ENUMSET1:func.3">{</a><span class="default">2,3,5,7,11</span><a href="enumset1.html#K3" title="ENUMSET1:func.3">}</a></span>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> </span><br/>
+
+<a NAME="E2:21_1"/><span class="kw">then </span>
+( <font color="Maroon" title="c1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 2 or <font color="Maroon" title="c1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 3 or <font color="Maroon" title="c1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 5 or <font color="Maroon" title="c1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 7 or <font color="Maroon" title="c1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 11 )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="enumset1.html#D3" onmouseover="rs('enumset1/D3')" onmouseout="rh()">ENUMSET1:def 3</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E3:21_1"/>
+<font color="Maroon" title="c1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E2:21"/>
+ for <font color="Olive" title="b1">q</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds <br/> ( <font color="Olive" title="b1">q</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"><a href="enumset1.html#K3" title="ENUMSET1:func.3">{</a><span class="default">2,3,5,7,11</span><a href="enumset1.html#K3" title="ENUMSET1:func.3">}</a></span> iff ( <font color="Olive" title="b1">q</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 13 &amp; <font color="Olive" title="b1">q</font> is  <a href="int_2.html#V1" title="INT_2:attr.1">prime</a>  ) )
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="21_2"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">q</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">q</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"><a href="enumset1.html#K3" title="ENUMSET1:func.3">{</a><span class="default">2,3,5,7,11</span><a href="enumset1.html#K3" title="ENUMSET1:func.3">}</a></span> iff ( <font color="Maroon" title="c1">q</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 13 &amp; <font color="Maroon" title="c1">q</font> is  <a href="int_2.html#V1" title="INT_2:attr.1">prime</a>  ) )</span><br/>
+
+<div><span class="kw">hereby </span> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">q</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 13 &amp; <font color="Maroon" title="c1">q</font> is  <a href="int_2.html#V1" title="INT_2:attr.1">prime</a>  implies <font color="Maroon" title="c1">q</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"><a href="enumset1.html#K3" title="ENUMSET1:func.3">{</a><span class="default">2,3,5,7,11</span><a href="enumset1.html#K3" title="ENUMSET1:func.3">}</a></span> )</span>
+<div class="add"><span class="kw">assume </span><a NAME="E1:21_2_1"/>
+<font color="Maroon" title="c1">q</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"><a href="enumset1.html#K3" title="ENUMSET1:func.3">{</a><span class="default">2,3,5,7,11</span><a href="enumset1.html#K3" title="ENUMSET1:func.3">}</a></span>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">q</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 13 &amp; <font color="Maroon" title="c1">q</font> is  <a href="int_2.html#V1" title="INT_2:attr.1">prime</a>  )</span><br/><a NAME="E2:21_2_1"/><span class="kw">then </span>
+( <font color="Maroon" title="c1">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 2 or <font color="Maroon" title="c1">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 3 or <font color="Maroon" title="c1">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 5 or <font color="Maroon" title="c1">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 7 or <font color="Maroon" title="c1">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 11 )
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="enumset1.html#D3" onmouseover="rs('enumset1/D3')" onmouseout="rh()">ENUMSET1:def 3</a></span>;<br/><span class="kw">hence </span><a NAME="E3:21_2_1"/>
+( <font color="Maroon" title="c1">q</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 13 &amp; <font color="Maroon" title="c1">q</font> is  <a href="int_2.html#V1" title="INT_2:attr.1">prime</a>  )
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="int_2.html#T28" onmouseover="rs('int_2/T28')" onmouseout="rh()">INT_2:28</a>, <a class="ref" href="pepin.html#T41" onmouseover="rs('pepin/T41')" onmouseout="rh()">PEPIN:41</a>, <a class="ref" href="pepin.html#T59" onmouseover="rs('pepin/T59')" onmouseout="rh()">PEPIN:59</a>, <a class="ref" href="nat_4.html#T26" onmouseover="rs('nat_4/T26')" onmouseout="rh()">NAT_4:26</a>, <a class="ref" href="nat_4.html#T27" onmouseover="rs('nat_4/T27')" onmouseout="rh()">NAT_4:27</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/></div>
+<span class="kw">end;</span></div>
+
+<span class="kw">assume </span><a NAME="E2:21_2"/><span class="lab"><font color="Green" title="E17">Z</font></span>: 
+( <font color="Maroon" title="c1">q</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 13 &amp; <font color="Maroon" title="c1">q</font> is  <a href="int_2.html#V1" title="INT_2:attr.1">prime</a>  )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">q</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"><a href="enumset1.html#K3" title="ENUMSET1:func.3">{</a><span class="default">2,3,5,7,11</span><a href="enumset1.html#K3" title="ENUMSET1:func.3">}</a></span></span><br/>
+
+<a NAME="E3:21_2"/><span class="kw">then </span>
+<font color="Maroon" title="c1">q</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 12 <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1
+ 
+;<br/>
+<a NAME="E4:21_2"/><span class="kw">then </span>
+<font color="Maroon" title="c1">q</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> 12
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_1.html#T13" onmouseover="rs('nat_1/T13')" onmouseout="rh()">NAT_1:13</a></span>;<br/>
+<a NAME="E5:21_2"/><span class="kw">then </span>
+ not  not <font color="Maroon" title="c1">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp;  ...  &amp;  not <font color="Maroon" title="c1">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 12
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E6:21_2"/>
+<font color="Maroon" title="c1">q</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"><a href="enumset1.html#K3" title="ENUMSET1:func.3">{</a><span class="default">2,3,5,7,11</span><a href="enumset1.html#K3" title="ENUMSET1:func.3">}</a></span>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="enumset1.html#D3" onmouseover="rs('enumset1/D3')" onmouseout="rh()">ENUMSET1:def 3</a>, <a class="txt" href="#E2:21_2"><span class="lab"><font color="Green" title="E17">Z</font></span></a>, <a class="ref" href="int_2.html#T29" onmouseover="rs('int_2/T29')" onmouseout="rh()">INT_2:29</a>, <a class="txt" href="moebius2.html#E13"><span class="lab"><font color="Green" title="E8">lem6</font></span></a>, <a class="txt" href="moebius2.html#E14"><span class="lab"><font color="Green" title="E9">lem8</font></span></a>, <a class="txt" href="moebius2.html#E15"><span class="lab"><font color="Green" title="E10">lem9</font></span></a>, <a class="txt" href="moebius2.html#E17"><span class="lab"><font color="Green" title="E12">lem12</font></span></a>, <a class="txt" href="moebius2.html#E16"><span class="lab"><font color="Green" title="E11">lem10</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E3:21"/>
+ <a href="newton.html#K9" title="NEWTON:func.9">SetPrimenumber</a> 13 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="enumset1.html#K3" title="ENUMSET1:func.3">{</a><span class="default">2,3,5,7,11</span><a href="enumset1.html#K3" title="ENUMSET1:func.3">}</a></span>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:21"><span class="lab"><font color="Green" title="E16">A1</font></span></a>, <a class="ref" href="newton.html#D7" onmouseover="rs('newton/D7')" onmouseout="rh()">NEWTON:def 7</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

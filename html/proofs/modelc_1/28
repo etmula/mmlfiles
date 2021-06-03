@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">G</font>, <font color="Maroon" title="c2">G1</font>, <font color="Maroon" title="c3">H</font>, <font color="Maroon" title="c4">H1</font> be   <a href="modelc_1.html#NM1" title="MODELC_1:NM.1">CTL-formula</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">H</font> <a href="modelc_1.html#K11" title="MODELC_1:func.11">EU</a> <font color="Maroon" title="c1">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">H1</font> <a href="modelc_1.html#K11" title="MODELC_1:func.11">EU</a> <font color="Maroon" title="c2">G1</font> implies ( <font color="Maroon" title="c3">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">H1</font> &amp; <font color="Maroon" title="c1">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">G1</font> ) )</span><br/>
+
+
+
+
+
+
+
+<span class="kw">assume </span><a NAME="E1:28"/><span class="lab"><font color="Green" title="E23">A1</font></span>: 
+<font color="Maroon" title="c3">H</font> <a href="modelc_1.html#K11" title="MODELC_1:func.11">EU</a> <font color="Maroon" title="c1">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">H1</font> <a href="modelc_1.html#K11" title="MODELC_1:func.11">EU</a> <font color="Maroon" title="c2">G1</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">H1</font> &amp; <font color="Maroon" title="c1">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">G1</font> )</span><br/>
+
+<a NAME="E2:28"/><span class="lab"><font color="Green" title="E24">A2</font></span>: 
+<span class="p1">(<span class="default"><span class="p2"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default">4</span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <font color="Maroon" title="c4">H1</font></span>)</span> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <font color="Maroon" title="c2">G1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default">4</span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <span class="p1">(<span class="default"><font color="Maroon" title="c4">H1</font> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <font color="Maroon" title="c2">G1</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_1.html#T32" onmouseover="rs('finseq_1/T32')" onmouseout="rh()">FINSEQ_1:32</a></span>;<br/>
+<a NAME="E3:28"/>
+<span class="p1">(<span class="default"><span class="p2"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default">4</span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <font color="Maroon" title="c3">H</font></span>)</span> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <font color="Maroon" title="c1">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default">4</span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">H</font> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <font color="Maroon" title="c1">G</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_1.html#T32" onmouseover="rs('finseq_1/T32')" onmouseout="rh()">FINSEQ_1:32</a></span>;<br/>
+<a NAME="E4:28"/><span class="kw">then </span><span class="lab"><font color="Green" title="E25">A3</font></span>: 
+<font color="Maroon" title="c3">H</font> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <font color="Maroon" title="c1">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">H1</font> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <font color="Maroon" title="c2">G1</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:28"><span class="lab"><font color="Green" title="E23">A1</font></span></a>, <a class="txt" href="#E2:28"><span class="lab"><font color="Green" title="E24">A2</font></span></a>, <a class="ref" href="finseq_1.html#T33" onmouseover="rs('finseq_1/T33')" onmouseout="rh()">FINSEQ_1:33</a></span>;<br/>
+<a NAME="E5:28"/><span class="kw">then </span><span class="lab"><font color="Green" title="E26">A4</font></span>: 
+(  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c4">H1</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c3">H</font> implies  ex <font color="Olive" title="b1">sq</font> being   <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> st <font color="Maroon" title="c3">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">H1</font> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <font color="Olive" title="b1">sq</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_1.html#T47" onmouseover="rs('finseq_1/T47')" onmouseout="rh()">FINSEQ_1:47</a></span>;<br/>
+<a NAME="E6:28"/><span class="lab"><font color="Green" title="E27">A5</font></span>: 
+(  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c3">H</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c4">H1</font> implies  ex <font color="Olive" title="b1">sq</font> being   <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> st <font color="Maroon" title="c4">H1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">H</font> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <font color="Olive" title="b1">sq</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:28"><span class="lab"><font color="Green" title="E25">A3</font></span></a>, <a class="ref" href="finseq_1.html#T47" onmouseover="rs('finseq_1/T47')" onmouseout="rh()">FINSEQ_1:47</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:28"/>
+<font color="Maroon" title="c3">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">H1</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:28"><span class="lab"><font color="Green" title="E26">A4</font></span></a>, <a class="txt" href="modelc_1.html#E33"><span class="lab"><font color="Green" title="E20">Lm11</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">G1</font></span><br/>
+
+<a NAME="E8:28"/>
+(  ex <font color="Olive" title="b1">sq</font> being   <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> st <font color="Maroon" title="c4">H1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">H</font> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <font color="Olive" title="b1">sq</font> implies <font color="Maroon" title="c4">H1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">H</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="modelc_1.html#E33"><span class="lab"><font color="Green" title="E20">Lm11</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E9:28"/>
+<font color="Maroon" title="c1">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">G1</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:28"><span class="lab"><font color="Green" title="E23">A1</font></span></a>, <a class="txt" href="#E5:28"><span class="lab"><font color="Green" title="E26">A4</font></span></a>, <a class="txt" href="#E6:28"><span class="lab"><font color="Green" title="E27">A5</font></span></a>, <a class="txt" href="modelc_1.html#E33"><span class="lab"><font color="Green" title="E20">Lm11</font></span></a>, <a class="ref" href="finseq_1.html#T33" onmouseover="rs('finseq_1/T33')" onmouseout="rh()">FINSEQ_1:33</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

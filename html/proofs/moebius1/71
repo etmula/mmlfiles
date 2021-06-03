@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="moebius1.html#K6" title="MOEBIUS1:func.6">Radical</a> <font color="Maroon" title="c1">n</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </span><br/>
+
+<span class="kw">assume </span><a NAME="E1:71"/>
+ <a href="moebius1.html#K6" title="MOEBIUS1:func.6">Radical</a> <font color="Maroon" title="c1">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E2:71"/><span class="kw">then </span>
+ <a href="nat_3.html#K8" title="NAT_3:func.8">Product</a> <span class="p1">(<span class="default"><a href="moebius1.html#K5" title="MOEBIUS1:func.5">PFactors</a> <font color="Maroon" title="c1">n</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ 
+;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c2">f</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K2" title="NUMBERS:func.2">COMPLEX</a> <span class="kw"> such that </span><br/><a NAME="E4:71"/><span class="lab"><font color="Green" title="E46">A1</font></span>: 
+ <a href="rvsum_1.html#K20" title="RVSUM_1:func.20">Product</a> <font color="Maroon" title="c2">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ <span class="kw">and </span><br/><a NAME="E5:71"/><span class="lab"><font color="Green" title="E47">A2</font></span>: 
+<font color="Maroon" title="c2">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="moebius1.html#K5" title="MOEBIUS1:func.5">PFactors</a> <font color="Maroon" title="c1">n</font></span>)</span> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K20" title="FINSEQ_1:func.20">canFS</a> <span class="p2">(<span class="default"><a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p3">(<span class="default"><a href="moebius1.html#K5" title="MOEBIUS1:func.5">PFactors</a> <font color="Maroon" title="c1">n</font></span>)</span></span>)</span></span>)</span>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="nat_3.html#D5" onmouseover="rs('nat_3/D5')" onmouseout="rh()">NAT_3:def 5</a></span>;<br/>
+<a NAME="E6:71"/>
+ for <font color="Olive" title="b1">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  holds <br/>(  not <font color="Olive" title="b1">k</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Maroon" title="c2">f</font> or  not <font color="Maroon" title="c2">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">k</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  )
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="71_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">given </span><font color="Maroon" title="c3">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><span class="kw"> such that </span><a NAME="E2:71_1"/><span class="lab"><font color="Green" title="E48">A3</font></span>: 
+<font color="Maroon" title="c3">k</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Maroon" title="c2">f</font>
+ <span class="kw">and </span><br/><a NAME="E3:71_1"/><span class="lab"><font color="Green" title="E49">A4</font></span>: 
+<font color="Maroon" title="c2">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c3">k</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E4:71_1"/>
+<font color="Maroon" title="c3">k</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K20" title="FINSEQ_1:func.20">canFS</a> <span class="p2">(<span class="default"><a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p3">(<span class="default"><a href="moebius1.html#K5" title="MOEBIUS1:func.5">PFactors</a> <font color="Maroon" title="c1">n</font></span>)</span></span>)</span></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:71"><span class="lab"><font color="Green" title="E47">A2</font></span></a>, <a class="txt" href="#E2:71_1"><span class="lab"><font color="Green" title="E48">A3</font></span></a>, <a class="ref" href="funct_1.html#T11" onmouseover="rs('funct_1/T11')" onmouseout="rh()">FUNCT_1:11</a></span>;<br/>
+<a NAME="E5:71_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E50">A5</font></span>: 
+(  <a href="rvsum_1.html#K1" title="RVSUM_1:func.1">rng</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K20" title="FINSEQ_1:func.20">canFS</a> <span class="p2">(<span class="default"><a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p3">(<span class="default"><a href="moebius1.html#K5" title="MOEBIUS1:func.5">PFactors</a> <font color="Maroon" title="c1">n</font></span>)</span></span>)</span></span>)</span> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p1">(<span class="default"><a href="moebius1.html#K5" title="MOEBIUS1:func.5">PFactors</a> <font color="Maroon" title="c1">n</font></span>)</span> &amp; <span class="p1">(<span class="default"><a href="finseq_1.html#K20" title="FINSEQ_1:func.20">canFS</a> <span class="p2">(<span class="default"><a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p3">(<span class="default"><a href="moebius1.html#K5" title="MOEBIUS1:func.5">PFactors</a> <font color="Maroon" title="c1">n</font></span>)</span></span>)</span></span>)</span> <a href="recdef_1.html#K1" title="RECDEF_1:func.1">.</a> <font color="Maroon" title="c3">k</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="rvsum_1.html#K1" title="RVSUM_1:func.1">rng</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K20" title="FINSEQ_1:func.20">canFS</a> <span class="p2">(<span class="default"><a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p3">(<span class="default"><a href="moebius1.html#K5" title="MOEBIUS1:func.5">PFactors</a> <font color="Maroon" title="c1">n</font></span>)</span></span>)</span></span>)</span> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_1.html#D4" onmouseover="rs('finseq_1/D4')" onmouseout="rh()">FINSEQ_1:def 4</a>, <a class="ref" href="funct_1.html#T3" onmouseover="rs('funct_1/T3')" onmouseout="rh()">FUNCT_1:3</a></span>;<br/>
+<a NAME="E6:71_1"/><span class="kw">then </span>
+<span class="p1">(<span class="default"><a href="finseq_1.html#K20" title="FINSEQ_1:func.20">canFS</a> <span class="p2">(<span class="default"><a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p3">(<span class="default"><a href="moebius1.html#K5" title="MOEBIUS1:func.5">PFactors</a> <font color="Maroon" title="c1">n</font></span>)</span></span>)</span></span>)</span> <a href="recdef_1.html#K1" title="RECDEF_1:func.1">.</a> <font color="Maroon" title="c3">k</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p1">(<span class="default"><a href="moebius1.html#K5" title="MOEBIUS1:func.5">PFactors</a> <font color="Maroon" title="c1">n</font></span>)</span>
+ 
+;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c4">p</font> = <span class="p1">(<span class="default"><a href="finseq_1.html#K20" title="FINSEQ_1:func.20">canFS</a> <span class="p2">(<span class="default"><a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p3">(<span class="default"><a href="moebius1.html#K5" title="MOEBIUS1:func.5">PFactors</a> <font color="Maroon" title="c1">n</font></span>)</span></span>)</span></span>)</span> <a href="recdef_1.html#K1" title="RECDEF_1:func.1">.</a> <font color="Maroon" title="c3">k</font> as   <a href="int_2.html#V1" title="INT_2:attr.1">prime</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <span class="kw">by</span> <span class="lab"><a class="ref" href="newton.html#D6" onmouseover="rs('newton/D6')" onmouseout="rh()">NEWTON:def 6</a></span>;<br/>
+<a NAME="E8:71_1"/>
+<font color="Maroon" title="c4">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p1">(<span class="default"><a href="moebius1.html#K5" title="MOEBIUS1:func.5">PFactors</a> <font color="Maroon" title="c1">n</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:71_1"><span class="lab"><font color="Green" title="E50">A5</font></span></a></span>;<br/>
+<a NAME="E9:71_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E51">A6</font></span>: 
+<font color="Maroon" title="c4">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="pre_poly.html#K22" title="PRE_POLY:func.22">support</a> <span class="p1">(<span class="default"><a href="nat_3.html#NK13" title="NAT_3:NK.13">pfexp</a> <font color="Maroon" title="c1">n</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="moebius1.html#D6" target="_self" onmouseover="rs('moebius1/D6')" onmouseout="rh()">Def6</a></span>;<br/>
+<font color="Maroon" title="c2">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c3">k</font> = 
+<span class="p1">(<span class="default"><a href="moebius1.html#K5" title="MOEBIUS1:func.5">PFactors</a> <font color="Maroon" title="c1">n</font></span>)</span> <a href="recdef_1.html#K1" title="RECDEF_1:func.1">.</a> <font color="Maroon" title="c4">p</font>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:71"><span class="lab"><font color="Green" title="E47">A2</font></span></a>, <a class="txt" href="#E2:71_1"><span class="lab"><font color="Green" title="E48">A3</font></span></a>, <a class="ref" href="funct_1.html#T12" onmouseover="rs('funct_1/T12')" onmouseout="rh()">FUNCT_1:12</a></span>
+<br/>.= 
+<font color="Maroon" title="c4">p</font>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E9:71_1"><span class="lab"><font color="Green" title="E51">A6</font></span></a>, <a class="ref" href="moebius1.html#D6" target="_self" onmouseover="rs('moebius1/D6')" onmouseout="rh()">Def6</a></span>
+;<br/>
+<span class="kw">hence </span><a NAME="E11:71_1"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:71_1"><span class="lab"><font color="Green" title="E49">A4</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E7:71"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:71"><span class="lab"><font color="Green" title="E46">A1</font></span></a>, <a class="ref" href="rvsum_1.html#T103" onmouseover="rs('rvsum_1/T103')" onmouseout="rh()">RVSUM_1:103</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

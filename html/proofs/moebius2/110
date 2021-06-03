@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="moebius1.html#NV2" title="MOEBIUS1:NV.2">square-free</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <font color="Maroon" title="c1">n</font> is  <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a> </span><br/>
+
+<span class="kw">set </span><font color="Maroon" title="c2">L</font> =  <a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <font color="Maroon" title="c1">n</font>;<br/>
+<a NAME="E1:110"/>
+ <a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <font color="Maroon" title="c1">n</font> is  <a href="lattices.html#V16" title="LATTICES:attr.16">complemented</a> 
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="110_1"><span class="kw">proof </span></a><div class="add">
+
+<a NAME="E1:110_1"/>
+ for <font color="Olive" title="b1">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <span class="p1">(<span class="default"><a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <font color="Maroon" title="c1">n</font></span>)</span>  ex <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <span class="p1">(<span class="default"><a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <font color="Maroon" title="c1">n</font></span>)</span> st <font color="Olive" title="b2">a</font> <a href="lattices.html#R2" title="LATTICES:pred.2">is_a_complement_of</a> <font color="Olive" title="b1">b</font>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="110_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">b</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <span class="p1">(<span class="default"><a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <font color="Maroon" title="c1">n</font></span>)</span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  ex <font color="Olive" title="b1">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <span class="p1">(<span class="default"><a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <font color="Maroon" title="c1">n</font></span>)</span> st <font color="Olive" title="b1">a</font> <a href="lattices.html#R2" title="LATTICES:pred.2">is_a_complement_of</a> <font color="Maroon" title="c3">b</font></span><br/>
+
+<a NAME="E1:110_1_1"/>
+<font color="Maroon" title="c3">b</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <font color="Maroon" title="c1">n</font></span>)</span>
+ 
+;<br/>
+<a NAME="E2:110_1_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E60">aa</font></span>: 
+<font color="Maroon" title="c3">b</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="moebius1.html#K3" title="MOEBIUS1:func.3">NatDivisors</a> <font color="Maroon" title="c1">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="moebius2.html#D10" target="_self" onmouseover="rs('moebius2/D10')" onmouseout="rh()">DivLat</a></span>;<br/>
+<a NAME="E3:110_1_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E61">A1</font></span>: 
+<font color="Maroon" title="c1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">b</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> <font color="Maroon" title="c3">b</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_d.html#T3" onmouseover="rs('nat_d/T3')" onmouseout="rh()">NAT_D:3</a>, <a class="ref" href="moebius1.html#T39" onmouseover="rs('moebius1/T39')" onmouseout="rh()">MOEBIUS1:39</a></span>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c4">a</font> = <font color="Maroon" title="c1">n</font> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> <font color="Maroon" title="c3">b</font>;<br/>
+<a NAME="E4:110_1_1"/>
+<font color="Maroon" title="c1">n</font> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> <font color="Maroon" title="c3">b</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="moebius2.html#T6" target="_self" onmouseover="rs('moebius2/T6')" onmouseout="rh()">DivNonZero</a>, <a class="txt" href="#E2:110_1_1"><span class="lab"><font color="Green" title="E60">aa</font></span></a>, <a class="ref" href="moebius1.html#T39" onmouseover="rs('moebius1/T39')" onmouseout="rh()">MOEBIUS1:39</a></span>;<br/>
+<a NAME="E5:110_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c1">n</font> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> <font color="Maroon" title="c3">b</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="moebius1.html#K3" title="MOEBIUS1:func.3">NatDivisors</a> <font color="Maroon" title="c1">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="moebius1.html#T39" onmouseover="rs('moebius1/T39')" onmouseout="rh()">MOEBIUS1:39</a>, <a class="txt" href="#E3:110_1_1"><span class="lab"><font color="Green" title="E61">A1</font></span></a>, <a class="ref" href="nat_d.html#D3" onmouseover="rs('nat_d/D3')" onmouseout="rh()">NAT_D:def 3</a></span>;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c5">a</font> = <font color="Maroon" title="c1">n</font> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> <font color="Maroon" title="c3">b</font> as   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <span class="p1">(<span class="default"><a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <font color="Maroon" title="c1">n</font></span>)</span> <span class="kw">by</span> <span class="lab"><a class="ref" href="moebius2.html#D10" target="_self" onmouseover="rs('moebius2/D10')" onmouseout="rh()">DivLat</a></span>;<br/>
+<span class="kw">take </span>
+<font color="Maroon" title="c5">a</font>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c5">a</font> <a href="lattices.html#R2" title="LATTICES:pred.2">is_a_complement_of</a> <font color="Maroon" title="c3">b</font></span><br/>
+
+<span class="kw">reconsider </span><font color="Maroon" title="c6">aa</font> = <font color="Maroon" title="c5">a</font>, <font color="Maroon" title="c7">bb</font> = <font color="Maroon" title="c3">b</font> as   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <span class="kw">by</span> <span class="lab"><a class="ref" href="moebius2.html#T6" target="_self" onmouseover="rs('moebius2/T6')" onmouseout="rh()">DivNonZero</a>, <a class="txt" href="#E2:110_1_1"><span class="lab"><font color="Green" title="E60">aa</font></span></a>, <a class="ref" href="moebius1.html#T39" onmouseover="rs('moebius1/T39')" onmouseout="rh()">MOEBIUS1:39</a></span>;<br/>
+<a NAME="E8:110_1_1"/><span class="lab"><font color="Green" title="E62">S1</font></span>: 
+<font color="Maroon" title="c6">aa</font>,<font color="Maroon" title="c7">bb</font> <a href="int_2.html#R1" title="INT_2:pred.1">are_coprime</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:110_1_1"><span class="lab"><font color="Green" title="E60">aa</font></span></a>, <a class="ref" href="moebius1.html#T39" onmouseover="rs('moebius1/T39')" onmouseout="rh()">MOEBIUS1:39</a>, <a class="ref" href="moebius2.html#T55" target="_self" onmouseover="rs('moebius2/T55')" onmouseout="rh()">DivRelPrime</a></span>;<br/>
+<a NAME="E9:110_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c5">a</font> <a href="nat_d.html#K5" title="NAT_D:func.5">lcm</a> <font color="Maroon" title="c3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:110_1_1"><span class="lab"><font color="Green" title="E61">A1</font></span></a>, <a class="ref" href="moebius2.html#T7" target="_self" onmouseover="rs('moebius2/T7')" onmouseout="rh()">INT615</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E10:110_1_1"/>
+<font color="Maroon" title="c5">a</font> <a href="lattices.html#R2" title="LATTICES:pred.2">is_a_complement_of</a> <font color="Maroon" title="c3">b</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E8:110_1_1"><span class="lab"><font color="Green" title="E62">S1</font></span></a>, <a class="ref" href="moebius2.html#T64" target="_self" onmouseover="rs('moebius2/T64')" onmouseout="rh()">TopBot</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E2:110_1"/>
+ <a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <font color="Maroon" title="c1">n</font> is  <a href="lattices.html#V16" title="LATTICES:attr.16">complemented</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E2:110"/>
+ <a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <font color="Maroon" title="c1">n</font> is  <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

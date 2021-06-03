@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">H</font> be   <a href="modelc_2.html#NM1" title="MODELC_2:NM.1">LTL-formula</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">H</font> is  <a href="modelc_2.html#V2" title="MODELC_2:attr.2">atomic</a>  implies  <a href="modelc_3.html#K1" title="MODELC_3:func.1">Subformulae</a> <font color="Maroon" title="c1">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><font color="Maroon" title="c1">H</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:43"/>
+<font color="Maroon" title="c1">H</font> is  <a href="modelc_2.html#V2" title="MODELC_2:attr.2">atomic</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="modelc_3.html#K1" title="MODELC_3:func.1">Subformulae</a> <font color="Maroon" title="c1">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><font color="Maroon" title="c1">H</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span></span><br/>
+
+<a NAME="E2:43"/><span class="kw">then </span>
+ ex <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <font color="Maroon" title="c1">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="modelc_2.html#K2" title="MODELC_2:func.2">atom.</a> <font color="Olive" title="b1">n</font>
+ 
+;<br/>
+<a NAME="E3:43"/><span class="kw">then </span><span class="lab"><font color="Green" title="E31">A1</font></span>: 
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_1.html#T40" onmouseover="rs('finseq_1/T40')" onmouseout="rh()">FINSEQ_1:40</a></span>;<br/>
+<a NAME="E4:43"/><span class="lab"><font color="Green" title="E32">A2</font></span>: 
+ for <font color="Olive" title="b1">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>   st <font color="Olive" title="b1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="modelc_3.html#K1" title="MODELC_3:func.1">Subformulae</a> <font color="Maroon" title="c1">H</font> holds <br/><font color="Olive" title="b1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><font color="Maroon" title="c1">H</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="43_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c2">x</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="modelc_3.html#K1" title="MODELC_3:func.1">Subformulae</a> <font color="Maroon" title="c1">H</font> implies <font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><font color="Maroon" title="c1">H</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:43_1"/>
+<font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="modelc_3.html#K1" title="MODELC_3:func.1">Subformulae</a> <font color="Maroon" title="c1">H</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><font color="Maroon" title="c1">H</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span></span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c3">G</font> being   <a href="modelc_2.html#NM1" title="MODELC_2:NM.1">LTL-formula</a><span class="kw"> such that </span><br/><a NAME="E3:43_1"/><span class="lab"><font color="Green" title="E33">A3</font></span>: 
+<font color="Maroon" title="c3">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">x</font>
+ <span class="kw">and </span><br/><a NAME="E4:43_1"/><span class="lab"><font color="Green" title="E34">A4</font></span>: 
+<font color="Maroon" title="c3">G</font> <a href="modelc_2.html#R2" title="MODELC_2:pred.2">is_subformula_of</a> <font color="Maroon" title="c1">H</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="modelc_2.html#D24" onmouseover="rs('modelc_2/D24')" onmouseout="rh()">MODELC_2:def 24</a></span>;<br/>
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="43_1_1"><span class="kw">now </span> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not <font color="Maroon" title="c3">G</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c1">H</font></span></a><div class="add"><span class="kw">assume </span><a NAME="E1:43_1_1"/>
+<font color="Maroon" title="c3">G</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c1">H</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/><a NAME="E2:43_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c3">G</font> <a href="modelc_2.html#R3" title="MODELC_2:pred.3">is_proper_subformula_of</a> <font color="Maroon" title="c1">H</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:43_1"><span class="lab"><font color="Green" title="E34">A4</font></span></a></span>;<br/><a NAME="E3:43_1_1"/><span class="kw">then </span>
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c3">G</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 1
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:43"><span class="lab"><font color="Green" title="E31">A1</font></span></a>, <a class="ref" href="modelc_2.html#T32" onmouseover="rs('modelc_2/T32')" onmouseout="rh()">MODELC_2:32</a></span>;<br/><span class="kw">hence </span><a NAME="E4:43_1_1"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="modelc_2.html#T3" onmouseover="rs('modelc_2/T3')" onmouseout="rh()">MODELC_2:3</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/></div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E6:43_1"/>
+<font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><font color="Maroon" title="c1">H</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:43_1"><span class="lab"><font color="Green" title="E33">A3</font></span></a>, <a class="ref" href="tarski.html#D1" onmouseover="rs('tarski/D1')" onmouseout="rh()">TARSKI:def 1</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E5:43"/>
+ for <font color="Olive" title="b1">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>   st <font color="Olive" title="b1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><font color="Maroon" title="c1">H</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span> holds <br/><font color="Olive" title="b1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="modelc_3.html#K1" title="MODELC_3:func.1">Subformulae</a> <font color="Maroon" title="c1">H</font>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="43_2"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c2">x</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><font color="Maroon" title="c1">H</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span> implies <font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="modelc_3.html#K1" title="MODELC_3:func.1">Subformulae</a> <font color="Maroon" title="c1">H</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:43_2"/>
+<font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><font color="Maroon" title="c1">H</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="modelc_3.html#K1" title="MODELC_3:func.1">Subformulae</a> <font color="Maroon" title="c1">H</font></span><br/>
+
+<a NAME="E2:43_2"/><span class="kw">then </span>
+<font color="Maroon" title="c2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">H</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="tarski.html#D1" onmouseover="rs('tarski/D1')" onmouseout="rh()">TARSKI:def 1</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E3:43_2"/>
+<font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="modelc_3.html#K1" title="MODELC_3:func.1">Subformulae</a> <font color="Maroon" title="c1">H</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="modelc_2.html#T45" onmouseover="rs('modelc_2/T45')" onmouseout="rh()">MODELC_2:45</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E6:43"/>
+ <a href="modelc_3.html#K1" title="MODELC_3:func.1">Subformulae</a> <font color="Maroon" title="c1">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><font color="Maroon" title="c1">H</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:43"><span class="lab"><font color="Green" title="E32">A2</font></span></a>, <a class="ref" href="tarski.html#T2" onmouseover="rs('tarski/T2')" onmouseout="rh()">TARSKI:2</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
