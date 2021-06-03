@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">Al</font> be    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">Al2</font> being  <font color="Maroon" title="c1">Al</font> <a href="qc_trans.html#V1" title="QC_TRANS:attr.1">-expanding</a>   <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> <br/>  for <font color="Olive" title="b2">p</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font> holds  <font color="Olive" title="b2">p</font> is    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al2</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">Al2</font> be  <font color="Maroon" title="c1">Al</font> <a href="qc_trans.html#V1" title="QC_TRANS:attr.1">-expanding</a>   <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">p</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font> holds  <font color="Olive" title="b1">p</font> is    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c2">Al2</font></span><br/>
+
+
+
+<span class="kw">defpred </span><font color="Maroon">S<sub>1</sub></font>[   <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font>] <span class="kw">means </span>$1 is    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c2">Al2</font>;<br/>
+<a NAME="E1:13"/><span class="lab"><font color="Green" title="E9">A1</font></span>: 
+<font color="Maroon">S<sub>1</sub></font>[ <a href="cqc_lang.html#K5" title="CQC_LANG:func.5">VERUM</a> <font color="Maroon" title="c1">Al</font>]
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="13_1"><span class="kw">proof </span></a><div class="add">
+
+<a NAME="E1:13_1"/>
+ <a href="cqc_lang.html#K5" title="CQC_LANG:func.5">VERUM</a> <font color="Maroon" title="c1">Al</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="cqc_lang.html#K5" title="CQC_LANG:func.5">VERUM</a> <font color="Maroon" title="c2">Al2</font>
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E2:13_1"/>
+<font color="Maroon">S<sub>1</sub></font>[ <a href="cqc_lang.html#K5" title="CQC_LANG:func.5">VERUM</a> <font color="Maroon" title="c1">Al</font>]
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E2:13"/><span class="lab"><font color="Green" title="E10">A2</font></span>: 
+ for <font color="Olive" title="b1">k</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br/>  for <font color="Olive" title="b2">P</font> being   <a href="qc_lang1.html#NM8" title="QC_LANG1:NM.8">QC-pred_symbol</a> of <font color="Olive" title="b1">k</font>,<font color="Maroon" title="c1">Al</font><br/>  for <font color="Olive" title="b3">l</font> being   <a href="cqc_lang.html#NM2" title="CQC_LANG:NM.2">CQC-variable_list</a> of <font color="Olive" title="b1">k</font>,<font color="Maroon" title="c1">Al</font> holds  <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b2">P</font> <a href="cqc_lang.html#K4" title="CQC_LANG:func.4">!</a> <font color="Olive" title="b3">l</font>]
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="13_2"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">k</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">P</font> being   <a href="qc_lang1.html#NM8" title="QC_LANG1:NM.8">QC-pred_symbol</a> of <font color="Maroon" title="c3">k</font>,<font color="Maroon" title="c1">Al</font><br/>  for <font color="Olive" title="b2">l</font> being   <a href="cqc_lang.html#NM2" title="CQC_LANG:NM.2">CQC-variable_list</a> of <font color="Maroon" title="c3">k</font>,<font color="Maroon" title="c1">Al</font> holds  <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">P</font> <a href="cqc_lang.html#K4" title="CQC_LANG:func.4">!</a> <font color="Olive" title="b2">l</font>]</span><br/><span class="kw">let </span><font color="Maroon" title="c4">P</font> be   <a href="qc_lang1.html#NM8" title="QC_LANG1:NM.8">QC-pred_symbol</a> of <font color="Maroon" title="c3">k</font>,<font color="Maroon" title="c1">Al</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">l</font> being   <a href="cqc_lang.html#NM2" title="CQC_LANG:NM.2">CQC-variable_list</a> of <font color="Maroon" title="c3">k</font>,<font color="Maroon" title="c1">Al</font> holds  <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c4">P</font> <a href="cqc_lang.html#K4" title="CQC_LANG:func.4">!</a> <font color="Olive" title="b1">l</font>]</span><br/><span class="kw">let </span><font color="Maroon" title="c5">l</font> be   <a href="cqc_lang.html#NM2" title="CQC_LANG:NM.2">CQC-variable_list</a> of <font color="Maroon" title="c3">k</font>,<font color="Maroon" title="c1">Al</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c4">P</font> <a href="cqc_lang.html#K4" title="CQC_LANG:func.4">!</a> <font color="Maroon" title="c5">l</font>]</span><br/>
+
+
+
+
+
+<a NAME="E1:13_2"/><span class="lab"><font color="Green" title="E11">A3</font></span>: 
+ <a href="qc_lang1.html#K7" title="QC_LANG1:func.7">the_arity_of</a> <font color="Maroon" title="c4">P</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c5">l</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="qc_trans.html#T1" target="_self" onmouseover="rs('qc_trans/T1')" onmouseout="rh()">Th1</a></span>;<br/>
+<a NAME="E2:13_2"/>
+( <font color="Maroon" title="c4">P</font> is   <a href="qc_lang1.html#NM8" title="QC_LANG1:NM.8">QC-pred_symbol</a> of <font color="Maroon" title="c3">k</font>,<font color="Maroon" title="c2">Al2</font> &amp; <font color="Maroon" title="c5">l</font> is   <a href="cqc_lang.html#NM2" title="CQC_LANG:NM.2">CQC-variable_list</a> of <font color="Maroon" title="c3">k</font>,<font color="Maroon" title="c2">Al2</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="qc_trans.html#T5" target="_self" onmouseover="rs('qc_trans/T5')" onmouseout="rh()">Th5</a>, <a class="ref" href="qc_trans.html#T6" target="_self" onmouseover="rs('qc_trans/T6')" onmouseout="rh()">Th6</a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c6">P2</font> being   <a href="qc_lang1.html#NM8" title="QC_LANG1:NM.8">QC-pred_symbol</a> of <font color="Maroon" title="c3">k</font>,<font color="Maroon" title="c2">Al2</font>, <font color="Maroon" title="c7">l2</font> being   <a href="cqc_lang.html#NM2" title="CQC_LANG:NM.2">CQC-variable_list</a> of <font color="Maroon" title="c3">k</font>,<font color="Maroon" title="c2">Al2</font><span class="kw"> such that </span><br/><a NAME="E4:13_2"/><span class="lab"><font color="Green" title="E12">A4</font></span>: 
+( <font color="Maroon" title="c4">P</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c6">P2</font> &amp; <font color="Maroon" title="c5">l</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c7">l2</font> )
+ ;<br/>
+<a NAME="E5:13_2"/>
+ <a href="qc_lang1.html#K7" title="QC_LANG1:func.7">the_arity_of</a> <font color="Maroon" title="c6">P2</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c7">l2</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="qc_trans.html#T1" target="_self" onmouseover="rs('qc_trans/T1')" onmouseout="rh()">Th1</a></span>;<br/>
+<a NAME="E6:13_2"/><span class="kw">then </span>
+<font color="Maroon" title="c6">P2</font> <a href="cqc_lang.html#K4" title="CQC_LANG:func.4">!</a> <font color="Maroon" title="c7">l2</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><font color="Maroon" title="c6">P2</font></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <font color="Maroon" title="c7">l2</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="qc_lang1.html#D12" onmouseover="rs('qc_lang1/D12')" onmouseout="rh()">QC_LANG1:def 12</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:13_2"/>
+<font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c4">P</font> <a href="cqc_lang.html#K4" title="CQC_LANG:func.4">!</a> <font color="Maroon" title="c5">l</font>]
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:13_2"><span class="lab"><font color="Green" title="E11">A3</font></span></a>, <a class="txt" href="#E4:13_2"><span class="lab"><font color="Green" title="E12">A4</font></span></a>, <a class="ref" href="qc_lang1.html#D12" onmouseover="rs('qc_lang1/D12')" onmouseout="rh()">QC_LANG1:def 12</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E3:13"/><span class="lab"><font color="Green" title="E11">A5</font></span>: 
+ for <font color="Olive" title="b1">p</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font>  st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">p</font>] holds <br/><font color="Maroon">S<sub>1</sub></font>[ <a href="cqc_lang.html#K6" title="CQC_LANG:func.6">'not'</a> <font color="Olive" title="b1">p</font>]
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="13_3"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">p</font> be    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">p</font>] implies <font color="Maroon">S<sub>1</sub></font>[ <a href="cqc_lang.html#K6" title="CQC_LANG:func.6">'not'</a> <font color="Maroon" title="c3">p</font>] )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:13_3"/>
+<font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">p</font>]
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon">S<sub>1</sub></font>[ <a href="cqc_lang.html#K6" title="CQC_LANG:func.6">'not'</a> <font color="Maroon" title="c3">p</font>]</span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c4">q</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c2">Al2</font><span class="kw"> such that </span><br/><a NAME="E3:13_3"/><span class="lab"><font color="Green" title="E12">A6</font></span>: 
+<font color="Maroon" title="c3">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">q</font>
+ ;<br/>
+<a NAME="E4:13_3"/>
+ <a href="cqc_lang.html#K6" title="CQC_LANG:func.6">'not'</a> <font color="Maroon" title="c3">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="cqc_lang.html#K6" title="CQC_LANG:func.6">'not'</a> <font color="Maroon" title="c4">q</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:13_3"><span class="lab"><font color="Green" title="E12">A6</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:13_3"/>
+<font color="Maroon">S<sub>1</sub></font>[ <a href="cqc_lang.html#K6" title="CQC_LANG:func.6">'not'</a> <font color="Maroon" title="c3">p</font>]
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E4:13"/><span class="lab"><font color="Green" title="E12">A7</font></span>: 
+ for <font color="Olive" title="b1">p</font>, <font color="Olive" title="b2">q</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font>  st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">p</font>] &amp; <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b2">q</font>] holds <br/><font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">p</font> <a href="cqc_lang.html#K7" title="CQC_LANG:func.7">'&amp;'</a> <font color="Olive" title="b2">q</font>]
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="13_4"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">p</font>, <font color="Maroon" title="c4">q</font> be    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">p</font>] &amp; <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c4">q</font>] implies <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">p</font> <a href="cqc_lang.html#K7" title="CQC_LANG:func.7">'&amp;'</a> <font color="Maroon" title="c4">q</font>] )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:13_4"/>
+( <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">p</font>] &amp; <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c4">q</font>] )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">p</font> <a href="cqc_lang.html#K7" title="CQC_LANG:func.7">'&amp;'</a> <font color="Maroon" title="c4">q</font>]</span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c5">t</font>, <font color="Maroon" title="c6">u</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c2">Al2</font><span class="kw"> such that </span><br/><a NAME="E3:13_4"/><span class="lab"><font color="Green" title="E13">A8</font></span>: 
+( <font color="Maroon" title="c3">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c5">t</font> &amp; <font color="Maroon" title="c4">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c6">u</font> )
+ ;<br/>
+<a NAME="E4:13_4"/>
+<font color="Maroon" title="c3">p</font> <a href="cqc_lang.html#K7" title="CQC_LANG:func.7">'&amp;'</a> <font color="Maroon" title="c4">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c5">t</font> <a href="cqc_lang.html#K7" title="CQC_LANG:func.7">'&amp;'</a> <font color="Maroon" title="c6">u</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:13_4"><span class="lab"><font color="Green" title="E13">A8</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:13_4"/>
+<font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">p</font> <a href="cqc_lang.html#K7" title="CQC_LANG:func.7">'&amp;'</a> <font color="Maroon" title="c4">q</font>]
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E5:13"/><span class="lab"><font color="Green" title="E13">A9</font></span>: 
+ for <font color="Olive" title="b1">p</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font><br/>  for <font color="Olive" title="b2">x</font> being   <a href="qc_lang1.html#NM5" title="QC_LANG1:NM.5">bound_QC-variable</a> of <font color="Maroon" title="c1">Al</font>  st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">p</font>] holds <br/><font color="Maroon">S<sub>1</sub></font>[ <a href="cqc_lang.html#K11" title="CQC_LANG:func.11">All</a> (<font color="Olive" title="b2">x</font>,<font color="Olive" title="b1">p</font>)]
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="13_5"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">p</font> be    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">x</font> being   <a href="qc_lang1.html#NM5" title="QC_LANG1:NM.5">bound_QC-variable</a> of <font color="Maroon" title="c1">Al</font>  st <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">p</font>] holds <br/><font color="Maroon">S<sub>1</sub></font>[ <a href="cqc_lang.html#K11" title="CQC_LANG:func.11">All</a> (<font color="Olive" title="b1">x</font>,<font color="Maroon" title="c3">p</font>)]</span><br/><span class="kw">let </span><font color="Maroon" title="c4">x</font> be   <a href="qc_lang1.html#NM5" title="QC_LANG1:NM.5">bound_QC-variable</a> of <font color="Maroon" title="c1">Al</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">p</font>] implies <font color="Maroon">S<sub>1</sub></font>[ <a href="cqc_lang.html#K11" title="CQC_LANG:func.11">All</a> (<font color="Maroon" title="c4">x</font>,<font color="Maroon" title="c3">p</font>)] )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:13_5"/>
+<font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">p</font>]
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon">S<sub>1</sub></font>[ <a href="cqc_lang.html#K11" title="CQC_LANG:func.11">All</a> (<font color="Maroon" title="c4">x</font>,<font color="Maroon" title="c3">p</font>)]</span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c5">q</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c2">Al2</font><span class="kw"> such that </span><br/><a NAME="E3:13_5"/><span class="lab"><font color="Green" title="E14">A10</font></span>: 
+<font color="Maroon" title="c3">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c5">q</font>
+ ;<br/>
+<a NAME="E4:13_5"/>
+<font color="Maroon" title="c4">x</font> is   <a href="qc_lang1.html#NM5" title="QC_LANG1:NM.5">bound_QC-variable</a> of <font color="Maroon" title="c2">Al2</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="qc_trans.html#T4" target="_self" onmouseover="rs('qc_trans/T4')" onmouseout="rh()">Th4</a>, <a class="ref" href="tarski.html#D3" onmouseover="rs('tarski/D3')" onmouseout="rh()">TARSKI:def 3</a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c6">y</font> being   <a href="qc_lang1.html#NM5" title="QC_LANG1:NM.5">bound_QC-variable</a> of <font color="Maroon" title="c2">Al2</font><span class="kw"> such that </span><br/><a NAME="E6:13_5"/><span class="lab"><font color="Green" title="E15">A11</font></span>: 
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c6">y</font>
+ ;<br/>
+<a NAME="E7:13_5"/>
+ <a href="cqc_lang.html#K11" title="CQC_LANG:func.11">All</a> (<font color="Maroon" title="c4">x</font>,<font color="Maroon" title="c3">p</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="cqc_lang.html#K11" title="CQC_LANG:func.11">All</a> (<font color="Maroon" title="c6">y</font>,<font color="Maroon" title="c5">q</font>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:13_5"><span class="lab"><font color="Green" title="E14">A10</font></span></a>, <a class="txt" href="#E6:13_5"><span class="lab"><font color="Green" title="E15">A11</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E8:13_5"/>
+<font color="Maroon">S<sub>1</sub></font>[ <a href="cqc_lang.html#K11" title="CQC_LANG:func.11">All</a> (<font color="Maroon" title="c4">x</font>,<font color="Maroon" title="c3">p</font>)]
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E6:13"/><span class="lab"><font color="Green" title="E14">A12</font></span>: 
+ for <font color="Olive" title="b1">r</font>, <font color="Olive" title="b2">s</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font><br/>  for <font color="Olive" title="b3">x</font> being   <a href="qc_lang1.html#NM5" title="QC_LANG1:NM.5">bound_QC-variable</a> of <font color="Maroon" title="c1">Al</font><br/>  for <font color="Olive" title="b4">k</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br/>  for <font color="Olive" title="b5">l</font> being   <a href="cqc_lang.html#NM2" title="CQC_LANG:NM.2">CQC-variable_list</a> of <font color="Olive" title="b4">k</font>,<font color="Maroon" title="c1">Al</font><br/>  for <font color="Olive" title="b6">P</font> being   <a href="qc_lang1.html#NM8" title="QC_LANG1:NM.8">QC-pred_symbol</a> of <font color="Olive" title="b4">k</font>,<font color="Maroon" title="c1">Al</font> holds <br/> ( <font color="Maroon">S<sub>1</sub></font>[ <a href="cqc_lang.html#K5" title="CQC_LANG:func.5">VERUM</a> <font color="Maroon" title="c1">Al</font>] &amp; <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b6">P</font> <a href="cqc_lang.html#K4" title="CQC_LANG:func.4">!</a> <font color="Olive" title="b5">l</font>] &amp; ( <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">r</font>] implies <font color="Maroon">S<sub>1</sub></font>[ <a href="cqc_lang.html#K6" title="CQC_LANG:func.6">'not'</a> <font color="Olive" title="b1">r</font>] ) &amp; ( <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">r</font>] &amp; <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b2">s</font>] implies <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">r</font> <a href="cqc_lang.html#K7" title="CQC_LANG:func.7">'&amp;'</a> <font color="Olive" title="b2">s</font>] ) &amp; ( <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">r</font>] implies <font color="Maroon">S<sub>1</sub></font>[ <a href="cqc_lang.html#K11" title="CQC_LANG:func.11">All</a> (<font color="Olive" title="b3">x</font>,<font color="Olive" title="b1">r</font>)] ) )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:13"><span class="lab"><font color="Green" title="E9">A1</font></span></a>, <a class="txt" href="#E2:13"><span class="lab"><font color="Green" title="E10">A2</font></span></a>, <a class="txt" href="#E3:13"><span class="lab"><font color="Green" title="E11">A5</font></span></a>, <a class="txt" href="#E4:13"><span class="lab"><font color="Green" title="E12">A7</font></span></a>, <a class="txt" href="#E5:13"><span class="lab"><font color="Green" title="E13">A9</font></span></a></span>;<br/>
+<a NAME="E7:13"/>
+ for <font color="Olive" title="b1">p</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font> holds  <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">p</font>]
+ 
+<span class="kw">from</span> <span class="lab"><a class="ref" href="cqc_lang.html#S1" onmouseover="rs('cqc_lang/S1')" onmouseout="rh()">CQC_LANG:sch 1</a>(<a class="txt" href="#E6:13"><span class="lab"><font color="Green" title="E14">A12</font></span></a>);<br/></span>
+<span class="kw">hence </span><a NAME="E8:13"/>
+ for <font color="Olive" title="b1">p</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font> holds  <font color="Olive" title="b1">p</font> is    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c2">Al2</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
