@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">defpred </span><font color="Maroon">S<sub>1</sub></font>[  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>] <span class="kw">means </span><font color="Maroon">P<sub>1</sub></font>[<font color="Maroon">F<sub>1</sub></font>() <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> $1];<br/>
+<span class="kw">consider </span><font color="Maroon" title="c1">i1</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><span class="kw"> such that </span><br/><a NAME="E2:30_1"/><span class="lab"><font color="Green" title="E19">A3</font></span>: 
+<font color="Maroon">P<sub>1</sub></font>[<font color="Maroon" title="c1">i1</font>]
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:30"><span class="lab"><font color="Green" title="E18">A2</font></span></a></span>;<br/>
+<a NAME="E3:30_1"/>
+ ex <font color="Olive" title="b1">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <font color="Maroon" title="c1">i1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon">F<sub>1</sub></font>() <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Olive" title="b1">k</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:30"><span class="lab"><font color="Green" title="E17">A1</font></span></a>, <a class="txt" href="#E2:30_1"><span class="lab"><font color="Green" title="E19">A3</font></span></a>, <a class="txt" href="int_1.html#E18"><span class="lab"><font color="Green" title="E16">Lm6</font></span></a></span>;<br/>
+<a NAME="E4:30_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E20">A4</font></span>: 
+ ex <font color="Olive" title="b1">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">k</font>]
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:30_1"><span class="lab"><font color="Green" title="E19">A3</font></span></a></span>;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c2">l</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><span class="kw"> such that </span><br/><a NAME="E6:30_1"/><span class="lab"><font color="Green" title="E21">A5</font></span>: 
+( <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c2">l</font>] &amp; (  for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">n</font>] holds <br/><font color="Maroon" title="c2">l</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b1">n</font> ) )
+ <span class="kw">from</span> <span class="lab"><a class="ref" href="nat_1.html#S5" onmouseover="rs('nat_1/S5')" onmouseout="rh()">NAT_1:sch 5</a>(<a class="txt" href="#E4:30_1"><span class="lab"><font color="Green" title="E20">A4</font></span></a>);<br/></span>
+<span class="kw">take </span><font color="Maroon" title="c3">i0</font> = <font color="Maroon">F<sub>1</sub></font>() <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Maroon" title="c2">l</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon">P<sub>1</sub></font>[<font color="Maroon" title="c3">i0</font>] &amp; (  for <font color="Olive" title="b1">i1</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>  st <font color="Maroon">P<sub>1</sub></font>[<font color="Olive" title="b1">i1</font>] holds <br/><font color="Olive" title="b1">i1</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c3">i0</font> ) )</span><br/>
+
+<a NAME="E7:30_1"/>
+ for <font color="Olive" title="b1">i1</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>  st <font color="Maroon">P<sub>1</sub></font>[<font color="Olive" title="b1">i1</font>] holds <br/><font color="Olive" title="b1">i1</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c3">i0</font>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="30_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">i1</font> be   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon">P<sub>1</sub></font>[<font color="Maroon" title="c4">i1</font>] implies <font color="Maroon" title="c4">i1</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c3">i0</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:30_1_1"/><span class="lab"><font color="Green" title="E22">A6</font></span>: 
+<font color="Maroon">P<sub>1</sub></font>[<font color="Maroon" title="c4">i1</font>]
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c4">i1</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c3">i0</font></span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c5">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><span class="kw"> such that </span><br/><a NAME="E3:30_1_1"/><span class="lab"><font color="Green" title="E23">A7</font></span>: 
+<font color="Maroon">F<sub>1</sub></font>() <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Maroon" title="c5">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">i1</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:30"><span class="lab"><font color="Green" title="E17">A1</font></span></a>, <a class="txt" href="int_1.html#E18"><span class="lab"><font color="Green" title="E16">Lm6</font></span></a></span>;<br/>
+<a NAME="E4:30_1_1"/>
+<font color="Maroon" title="c2">l</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c5">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:30_1"><span class="lab"><font color="Green" title="E21">A5</font></span></a>, <a class="txt" href="#E1:30_1_1"><span class="lab"><font color="Green" title="E22">A6</font></span></a>, <a class="txt" href="#E3:30_1_1"><span class="lab"><font color="Green" title="E23">A7</font></span></a></span>;<br/>
+<a NAME="E5:30_1_1"/><span class="kw">then </span>
+<span class="p1">(<span class="default"><font color="Maroon">F<sub>1</sub></font>() <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p2">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <font color="Maroon" title="c3">i0</font></span>)</span></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Maroon">F<sub>1</sub></font>() <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <span class="p1">(<span class="default"><font color="Maroon">F<sub>1</sub></font>() <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Maroon" title="c4">i1</font></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Maroon">F<sub>1</sub></font>()
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:30_1_1"><span class="lab"><font color="Green" title="E23">A7</font></span></a>, <a class="ref" href="xreal_1.html#T9" onmouseover="rs('xreal_1/T9')" onmouseout="rh()">XREAL_1:9</a></span>;<br/>
+<a NAME="E6:30_1_1"/><span class="kw">then </span>
+ <a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <font color="Maroon" title="c3">i0</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <span class="p1">(<span class="default"><font color="Maroon">F<sub>1</sub></font>() <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p2">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <font color="Maroon" title="c4">i1</font></span>)</span></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Maroon">F<sub>1</sub></font>()
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E7:30_1_1"/>
+<font color="Maroon" title="c4">i1</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c3">i0</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="xreal_1.html#T24" onmouseover="rs('xreal_1/T24')" onmouseout="rh()">XREAL_1:24</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E8:30_1"/>
+( <font color="Maroon">P<sub>1</sub></font>[<font color="Maroon" title="c3">i0</font>] &amp; (  for <font color="Olive" title="b1">i1</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>  st <font color="Maroon">P<sub>1</sub></font>[<font color="Olive" title="b1">i1</font>] holds <br/><font color="Olive" title="b1">i1</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c3">i0</font> ) )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:30_1"><span class="lab"><font color="Green" title="E21">A5</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
