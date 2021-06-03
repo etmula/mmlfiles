@@ -1,0 +1,552 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>MFOLD_1:  The Definition of Topological Manifolds</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  The Definition of Topological Manifolds</font></span><br><span class="comment"><font color="firebrick">:: by Marco Riccardi</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received August 17, 2010</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 2010-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">x</font>, <font color="Maroon" title="c2">y</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ;<br>
+<div about="#FC1" typeof="oo:Theorem">
+<a NAME="FC1"><span class="kw">cluster </span></a><span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><span class="p2"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Maroon" title="c1">x</font>,<font color="Maroon" title="c2">y</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span><span class="kw"> -&gt; </span> <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><span class="p2"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Maroon" title="c1">x</font>,<font color="Maroon" title="c2">y</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span> is  <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a> </span>;<br></span><div about="#PF1_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/1_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/1_1_1')" href="javascript:()" title="1_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+<div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T1"><span class="comment"><font color="firebrick">:: MFOLD_1:1</font></span><br></a><div class="add"><span class="kw">canceled; </span></div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::$CT<br>  
+  
+</font></div>
+<div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E1">Th2</font></span>: <a NAME="T2"><span class="comment"><font color="firebrick">:: MFOLD_1:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b2">X</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="pre_topc.html#M1" title="PRE_TOPC:mode.1">SubSpace</a> of  <a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b2">X</font>,<a href="topmetr.html#K3" title="TOPMETR:func.3">R^1</a>  st <font color="Olive" title="b3">f</font> is  <a href="pre_topc.html#V5" title="PRE_TOPC:attr.5">continuous</a>  holds <br> ex <font color="Olive" title="b4">g</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b2">X</font>,<span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span> st <br>( (  for <font color="Olive" title="b5">a</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b2">X</font><br>  for <font color="Olive" title="b6">b</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span><br>  for <font color="Olive" title="b7">r</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>  st <font color="Olive" title="b5">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b6">b</font> &amp; <font color="Olive" title="b3">f</font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b5">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b7">r</font> holds <br><font color="Olive" title="b4">g</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b6">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b7">r</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b6">b</font> ) &amp; <font color="Olive" title="b4">g</font> is  <a href="pre_topc.html#V5" title="PRE_TOPC:attr.5">continuous</a>  )</div>
+<div about="#PF3" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/3')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/3')" href="javascript:()" title="3"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">S</font> be   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c1">n</font></span>)</span>;<br><div about="#D2" typeof="oo:Definition">
+<a NAME="V1"><span class="kw">attr</span> </a><font color="Maroon" title="c2">S</font> is  <a href="mfold_1.html#V1" title="MFOLD_1:attr.1">ball</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E2">Def1</font></span>: <a NAME="D1"><span class="comment"><font color="firebrick">:: MFOLD_1:def 1</font></span><br></a> ex <font color="Olive" title="b1">p</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c1">n</font></span>)</span> ex <font color="Olive" title="b2">r</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> st <font color="Maroon" title="c2">S</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="topreal9.html#K1" title="TOPREAL9:func.1">Ball</a> (<font color="Olive" title="b1">p</font>,<font color="Olive" title="b2">r</font>);<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E2">Def1</font></span>   defines <a href="mfold_1.html#V1" title="MFOLD_1:attr.1">ball</a> <a onclick="hs(this)" href="javascript:()">MFOLD_1:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b2">S</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span> holds <br> ( <font color="Olive" title="b2">S</font> is  <a href="mfold_1.html#V1" title="MFOLD_1:attr.1">ball</a>  iff  ex <font color="Olive" title="b3">p</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span> ex <font color="Olive" title="b4">r</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> st <font color="Olive" title="b2">S</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="topreal9.html#K1" title="TOPREAL9:func.1">Ball</a> (<font color="Olive" title="b3">p</font>,<font color="Olive" title="b4">r</font>) );<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>;<br>
+<div about="#RC1" typeof="oo:Theorem">
+<a NAME="RC1"><span class="kw">cluster </span></a> <a href="funct_1.html#V4" title="FUNCT_1:attr.4">functional</a>   <a href="mfold_1.html#V1" title="MFOLD_1:attr.1">ball</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c1">n</font></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br> ex <font color="Olive">b<sub>1</sub></font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c1">n</font></span>)</span> st <font color="Olive">b<sub>1</sub></font> is  <a href="mfold_1.html#V1" title="MFOLD_1:attr.1">ball</a> </span>;<br></span><div about="#PF5_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/5_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/5_1_1')" href="javascript:()" title="5_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+
+<div about="#CC1" typeof="oo:Theorem">
+<a NAME="CC1"><span class="kw">cluster </span></a> <a href="mfold_1.html#V1" title="MFOLD_1:attr.1">ball</a>  <span class="kw"> -&gt; </span> <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c1">n</font></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> for <font color="Olive">b<sub>1</sub></font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c1">n</font></span>)</span>  st <font color="Olive">b<sub>1</sub></font> is  <a href="mfold_1.html#V1" title="MFOLD_1:attr.1">ball</a>  holds <br><font color="Olive">b<sub>1</sub></font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a> </span>;<br></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>;<br>
+<div about="#RC2" typeof="oo:Theorem">
+<a NAME="RC2"><span class="kw">cluster </span></a> non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="funct_1.html#V4" title="FUNCT_1:attr.4">functional</a>   <a href="mfold_1.html#V1" title="MFOLD_1:attr.1">ball</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c1">n</font></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br> ex <font color="Olive">b<sub>1</sub></font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c1">n</font></span>)</span> st <br>(  not <font color="Olive">b<sub>1</sub></font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="mfold_1.html#V1" title="MFOLD_1:attr.1">ball</a>  )</span>;<br></span><div about="#PF6_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/6_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/6_1_1')" href="javascript:()" title="6_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+<div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E3">Th3</font></span>: <a NAME="T3"><span class="comment"><font color="firebrick">:: MFOLD_1:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span><br>  for <font color="Olive" title="b3">S</font> being   <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span>  st <font color="Olive" title="b2">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b3">S</font> holds <br> ex <font color="Olive" title="b4">B</font> being   <a href="mfold_1.html#V1" title="MFOLD_1:attr.1">ball</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span> st <br>( <font color="Olive" title="b4">B</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b3">S</font> &amp; <font color="Olive" title="b2">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b4">B</font> )</div>
+<div about="#PF7" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/7')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/7')" href="javascript:()" title="7"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add"></div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span>  <a onclick="hs(this)" href="javascript:()">MFOLD_1:def 2 : <br></a><span class="hide"><span class="kw">canceled; </span><br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K1"><span class="kw">func</span> </a> <a href="mfold_1.html#K1" title="MFOLD_1:func.1">Tunit_ball</a> <font color="Maroon" title="c1">n</font><span class="kw"> -&gt; </span>   <a href="pre_topc.html#M1" title="PRE_TOPC:mode.1">SubSpace</a> of  <a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c1">n</font><span class="kw"> equals </span><a NAME="D3"><span class="comment"><font color="firebrick">:: MFOLD_1:def 3</font></span><br></a> <a href="mfold_0.html#K1" title="MFOLD_0:func.1">Tball</a> (<span class="p1">(<span class="default"><a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p2">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c1">n</font></span>)</span></span>)</span>,1);<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="mfold_0.html#K1" title="MFOLD_0:func.1">Tball</a> (<span class="p1">(<span class="default"><a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p2">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c1">n</font></span>)</span></span>)</span>,1) is    <a href="pre_topc.html#M1" title="PRE_TOPC:mode.1">SubSpace</a> of  <a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c1">n</font></span>;<br></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT3" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="mfold_1.html#K1" title="MFOLD_1:func.1">Tunit_ball</a> <a onclick="hs(this)" href="javascript:()">MFOLD_1:def 3 : <br></a><span class="hide"> for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a> holds   <a href="mfold_1.html#K1" title="MFOLD_1:func.1">Tunit_ball</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="mfold_0.html#K1" title="MFOLD_0:func.1">Tball</a> (<span class="p1">(<span class="default"><a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p2">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span></span>)</span>,1);<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>;<br>
+<div about="#FC2" typeof="oo:Theorem">
+<a NAME="FC2"><span class="kw">cluster </span></a> <a href="mfold_1.html#K1" title="MFOLD_1:func.1">Tunit_ball</a> <font color="Maroon" title="c1">n</font><span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> not  <a href="mfold_1.html#K1" title="MFOLD_1:func.1">Tunit_ball</a> <font color="Maroon" title="c1">n</font> is  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a> </span>;<br></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T4"><span class="comment"><font color="firebrick">:: MFOLD_1:4</font></span><br></a><div class="add"><span class="kw">canceled; </span></div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::$CT<br>  
+  
+</font></div>
+<div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E4">Th5</font></span>: <a NAME="T5"><span class="comment"><font color="firebrick">:: MFOLD_1:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span>  st <font color="Olive" title="b1">n</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; <font color="Olive" title="b2">p</font> is   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="mfold_1.html#K1" title="MFOLD_1:func.1">Tunit_ball</a> <font color="Olive" title="b1">n</font></span>)</span> holds <br><span class="p1"><a href="euclid.html#K12" title="EUCLID:func.12">|.</a><span class="default"><font color="Olive" title="b2">p</font></span><a href="euclid.html#K12" title="EUCLID:func.12">.|</a></span> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 1</div>
+<div about="#PF12" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/12')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/12')" href="javascript:()" title="12"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E5">Th6</font></span>: <a NAME="T6"><span class="comment"><font color="firebrick">:: MFOLD_1:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b2">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <span class="p1">(<span class="default"><a href="mfold_1.html#K1" title="MFOLD_1:func.1">Tunit_ball</a> <font color="Olive" title="b1">n</font></span>)</span>,<span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span>  st <font color="Olive" title="b1">n</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b3">a</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="mfold_1.html#K1" title="MFOLD_1:func.1">Tunit_ball</a> <font color="Olive" title="b1">n</font></span>)</span><br>  for <font color="Olive" title="b4">b</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span>  st <font color="Olive" title="b3">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">b</font> holds <br><font color="Olive" title="b2">f</font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p2">(<span class="default">1 <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p3">(<span class="default"><span class="p4"><a href="euclid.html#K12" title="EUCLID:func.12">|.</a><span class="default"><font color="Olive" title="b4">b</font></span><a href="euclid.html#K12" title="EUCLID:func.12">.|</a></span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p4"><a href="euclid.html#K12" title="EUCLID:func.12">|.</a><span class="default"><font color="Olive" title="b4">b</font></span><a href="euclid.html#K12" title="EUCLID:func.12">.|</a></span></span>)</span></span>)</span></span>)</span> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b4">b</font> ) holds <br><font color="Olive" title="b2">f</font> is  <a href="tops_2.html#V3" title="TOPS_2:attr.3">being_homeomorphism</a> </div>
+<div about="#PF13" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/13')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/13')" href="javascript:()" title="13"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: like TOPREALB:19<br>  
+</font></div>
+<div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T7"><span class="comment"><font color="firebrick">:: MFOLD_1:7</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span><br>  for <font color="Olive" title="b3">r</font> being   <a href="xxreal_0.html#V2" title="XXREAL_0:attr.2">positive</a>  <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a><br>  for <font color="Olive" title="b4">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <span class="p1">(<span class="default"><a href="mfold_1.html#K1" title="MFOLD_1:func.1">Tunit_ball</a> <font color="Olive" title="b1">n</font></span>)</span>,<span class="p1">(<span class="default"><a href="mfold_0.html#K1" title="MFOLD_0:func.1">Tball</a> (<font color="Olive" title="b2">p</font>,<font color="Olive" title="b3">r</font>)</span>)</span>  st <font color="Olive" title="b1">n</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b5">a</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="mfold_1.html#K1" title="MFOLD_1:func.1">Tunit_ball</a> <font color="Olive" title="b1">n</font></span>)</span><br>  for <font color="Olive" title="b6">b</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span>  st <font color="Olive" title="b5">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b6">b</font> holds <br><font color="Olive" title="b4">f</font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b5">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">r</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b6">b</font></span>)</span> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <font color="Olive" title="b2">p</font> ) holds <br><font color="Olive" title="b4">f</font> is  <a href="tops_2.html#V3" title="TOPS_2:attr.3">being_homeomorphism</a> </div>
+<div about="#PF14" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T7"></span><a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/14')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/14')" href="javascript:()" title="14"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E6">Th8</font></span>: <a NAME="T8"><span class="comment"><font color="firebrick">:: MFOLD_1:8</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a> holds   <a href="mfold_1.html#K1" title="MFOLD_1:func.1">Tunit_ball</a> <font color="Olive" title="b1">n</font>, <a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font> <a href="borsuk_3.html#R2" title="BORSUK_3:pred.2">are_homeomorphic</a> </div>
+<div about="#PF15" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/15')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/15')" href="javascript:()" title="15"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+<div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T9"><span class="comment"><font color="firebrick">:: MFOLD_1:9</font></span><br></a><div class="add"><span class="kw">canceled; </span></div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::$CT<br>  
+  
+</font></div>
+<div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E7">Th10</font></span>: <a NAME="T10"><span class="comment"><font color="firebrick">:: MFOLD_1:10</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b2">B</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="mfold_1.html#V1" title="MFOLD_1:attr.1">ball</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span> holds  <font color="Olive" title="b2">B</font>, <a href="struct_0.html#K2" title="STRUCT_0:func.2">[#]</a> <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="metrizts.html#R1" title="METRIZTS:pred.1">are_homeomorphic</a> </div>
+<div about="#PF17" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T10"></span><a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/17')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/17')" href="javascript:()" title="17"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E8">Th11</font></span>: <a NAME="T11"><span class="comment"><font color="firebrick">:: MFOLD_1:11</font></span><br></a><div class="add"> for <font color="Olive" title="b1">M</font>, <font color="Olive" title="b2">N</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">p</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">M</font><br>  for <font color="Olive" title="b4">U</font> being    <a href="connsp_2.html#M1" title="CONNSP_2:mode.1">a_neighborhood</a> of <font color="Olive" title="b3">p</font><br>  for <font color="Olive" title="b5">B</font> being   <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b2">N</font>  st <font color="Olive" title="b4">U</font>,<font color="Olive" title="b5">B</font> <a href="metrizts.html#R1" title="METRIZTS:pred.1">are_homeomorphic</a>  holds <br> ex <font color="Olive" title="b6">V</font> being   <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">M</font> ex <font color="Olive" title="b7">S</font> being   <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b2">N</font> st <br>( <font color="Olive" title="b6">V</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b4">U</font> &amp; <font color="Olive" title="b3">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b6">V</font> &amp; <font color="Olive" title="b6">V</font>,<font color="Olive" title="b7">S</font> <a href="metrizts.html#R1" title="METRIZTS:pred.1">are_homeomorphic</a>  )</div>
+<div about="#PF18" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/18')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/18')" href="javascript:()" title="18"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+<a NAME="E15"></a><span class="lab"><font color="Green" title="E9">Lm1</font></span>: <span about="#E15" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b2">M</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>  st (  for <font color="Olive" title="b3">p</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b2">M</font>  ex <font color="Olive" title="b4">U</font> being    <a href="connsp_2.html#M1" title="CONNSP_2:mode.1">a_neighborhood</a> of <font color="Olive" title="b3">p</font> ex <font color="Olive" title="b5">S</font> being   <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span> st <font color="Olive" title="b4">U</font>,<font color="Olive" title="b5">S</font> <a href="metrizts.html#R1" title="METRIZTS:pred.1">are_homeomorphic</a>  ) holds <br> for <font color="Olive" title="b3">p</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b2">M</font>  ex <font color="Olive" title="b4">U</font> being    <a href="connsp_2.html#M1" title="CONNSP_2:mode.1">a_neighborhood</a> of <font color="Olive" title="b3">p</font> ex <font color="Olive" title="b5">B</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="mfold_1.html#V1" title="MFOLD_1:attr.1">ball</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span> st <font color="Olive" title="b4">U</font>,<font color="Olive" title="b5">B</font> <a href="metrizts.html#R1" title="METRIZTS:pred.1">are_homeomorphic</a> 
+ </span><br><div about="#PF19" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/19')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/19')" href="javascript:()" title="19"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E10">Def4</font></span>: <a NAME="T12"><span class="comment"><font color="firebrick">:: MFOLD_1:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b2">M</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds <br> ( ( <font color="Olive" title="b2">M</font> is <font color="Olive" title="b1">n</font> <a href="mfold_0.html#V2" title="MFOLD_0:attr.2">-locally_euclidean</a>  &amp; <font color="Olive" title="b2">M</font> is  <a href="mfold_0.html#V3" title="MFOLD_0:attr.3">without_boundary</a>  ) iff  for <font color="Olive" title="b3">p</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b2">M</font>  ex <font color="Olive" title="b4">U</font> being    <a href="connsp_2.html#M1" title="CONNSP_2:mode.1">a_neighborhood</a> of <font color="Olive" title="b3">p</font> ex <font color="Olive" title="b5">S</font> being   <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span> st <font color="Olive" title="b4">U</font>,<font color="Olive" title="b5">S</font> <a href="metrizts.html#R1" title="METRIZTS:pred.1">are_homeomorphic</a>  )</div>
+<div about="#PF20" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/20')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/20')" href="javascript:()" title="20"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>;<br>
+<div about="#FC3" typeof="oo:Theorem">
+<a NAME="FC3"><span class="kw">cluster </span></a> <a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c1">n</font><span class="kw"> -&gt; </span><font color="Maroon" title="c1">n</font> <a href="mfold_0.html#V2" title="MFOLD_0:attr.2">-locally_euclidean</a>   <a href="mfold_0.html#V3" title="MFOLD_0:attr.3">without_boundary</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:21_1"></a>
+(  <a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c1">n</font> is  <a href="mfold_0.html#V3" title="MFOLD_0:attr.3">without_boundary</a>  &amp;  <a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c1">n</font> is <font color="Maroon" title="c1">n</font> <a href="mfold_0.html#V2" title="MFOLD_0:attr.2">-locally_euclidean</a>  )
+ </span><div about="#PF21_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/21_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/21_1_1')" href="javascript:()" title="21_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: Lemma 2.13a<br>  
+</font></div>
+<div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T13"><span class="comment"><font color="firebrick">:: MFOLD_1:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b2">M</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds <br> ( ( <font color="Olive" title="b2">M</font> is  <a href="mfold_0.html#V3" title="MFOLD_0:attr.3">without_boundary</a>  &amp; <font color="Olive" title="b2">M</font> is <font color="Olive" title="b1">n</font> <a href="mfold_0.html#V2" title="MFOLD_0:attr.2">-locally_euclidean</a>  ) iff  for <font color="Olive" title="b3">p</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b2">M</font>  ex <font color="Olive" title="b4">U</font> being    <a href="connsp_2.html#M1" title="CONNSP_2:mode.1">a_neighborhood</a> of <font color="Olive" title="b3">p</font> ex <font color="Olive" title="b5">B</font> being   <a href="mfold_1.html#V1" title="MFOLD_1:attr.1">ball</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span> st <font color="Olive" title="b4">U</font>,<font color="Olive" title="b5">B</font> <a href="metrizts.html#R1" title="METRIZTS:pred.1">are_homeomorphic</a>  )</div>
+<div about="#PF22" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T13"></span><a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/22')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/22')" href="javascript:()" title="22"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: Lemma 2.13b<br>  
+</font></div>
+<div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E11">Th13</font></span>: <a NAME="T14"><span class="comment"><font color="firebrick">:: MFOLD_1:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b2">M</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds <br> ( ( <font color="Olive" title="b2">M</font> is  <a href="mfold_0.html#V3" title="MFOLD_0:attr.3">without_boundary</a>  &amp; <font color="Olive" title="b2">M</font> is <font color="Olive" title="b1">n</font> <a href="mfold_0.html#V2" title="MFOLD_0:attr.2">-locally_euclidean</a>  ) iff  for <font color="Olive" title="b3">p</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b2">M</font>  ex <font color="Olive" title="b4">U</font> being    <a href="connsp_2.html#M1" title="CONNSP_2:mode.1">a_neighborhood</a> of <font color="Olive" title="b3">p</font> st <font color="Olive" title="b4">U</font>, <a href="struct_0.html#K2" title="STRUCT_0:func.2">[#]</a> <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="metrizts.html#R1" title="METRIZTS:pred.1">are_homeomorphic</a>  )</div>
+<div about="#PF23" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T14"></span><a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/23')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/23')" href="javascript:()" title="23"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#CC2" typeof="oo:Theorem">
+<a NAME="CC2"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="pre_topc.html#V2" title="PRE_TOPC:attr.2">TopSpace-like</a>   <a href="mfold_0.html#V1" title="MFOLD_0:attr.1">locally_euclidean</a>   <a href="mfold_0.html#V3" title="MFOLD_0:attr.3">without_boundary</a>  <span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="frechet.html#V1" title="FRECHET:attr.1">first-countable</a>   for    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> for <font color="Olive">b<sub>1</sub></font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>  st <font color="Olive">b<sub>1</sub></font> is  <a href="mfold_0.html#V3" title="MFOLD_0:attr.3">without_boundary</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="mfold_0.html#V1" title="MFOLD_0:attr.1">locally_euclidean</a>  holds <br><font color="Olive">b<sub>1</sub></font> is  <a href="frechet.html#V1" title="FRECHET:attr.1">first-countable</a> </span>;<br></span><div about="#PF24_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/24_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/24_1_1')" href="javascript:()" title="24_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><span class="kw">set </span><font color="Maroon" title="c1">T</font> = <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span> <a href="pre_topc.html#K1" title="PRE_TOPC:func.1">|</a> <span class="p1">(<span class="default"><a href="struct_0.html#K2" title="STRUCT_0:func.2">[#]</a> <span class="p2">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span></span>)</span>;<br><br><a NAME="E19"></a><span class="lab"><font color="Green" title="E12">Lm2</font></span>: <span about="#E19" typeof="oo:Lemma">
+<span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span> <a href="pre_topc.html#K1" title="PRE_TOPC:func.1">|</a> <span class="p1">(<span class="default"><a href="struct_0.html#K2" title="STRUCT_0:func.2">[#]</a> <span class="p2">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="pre_topc.html#G1" title="PRE_TOPC:aggr.1">TopStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span>, the <a href="pre_topc.html#U1" title="PRE_TOPC:sel.1">topology</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span> #)
+ </span><br><span class="kw">by</span> <span class="lab"><a class="ref" href="tsep_1.html#T93" onmouseover="rs('tsep_1/T93')" onmouseout="rh()">TSEP_1:93</a></span>;<br><br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#CC3" typeof="oo:Theorem">
+<a NAME="CC3"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="pre_topc.html#V2" title="PRE_TOPC:attr.2">TopSpace-like</a>   <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="mfold_0.html#V2" title="MFOLD_0:attr.2">-locally_euclidean</a>  <span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="tdlat_3.html#V1" title="TDLAT_3:attr.1">discrete</a>   for    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:25_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>  st <font color="Olive">b<sub>1</sub></font> is  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="mfold_0.html#V2" title="MFOLD_0:attr.2">-locally_euclidean</a>  holds <br><font color="Olive">b<sub>1</sub></font> is  <a href="tdlat_3.html#V1" title="TDLAT_3:attr.1">discrete</a> 
+ </span><div about="#PF25_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/25_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/25_1_1')" href="javascript:()" title="25_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+
+<div about="#CC4" typeof="oo:Theorem">
+<a NAME="CC4"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="pre_topc.html#V2" title="PRE_TOPC:attr.2">TopSpace-like</a>   <a href="tdlat_3.html#V1" title="TDLAT_3:attr.1">discrete</a>  <span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="mfold_0.html#V2" title="MFOLD_0:attr.2">-locally_euclidean</a>   for    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:25_2"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>  st <font color="Olive">b<sub>1</sub></font> is  <a href="tdlat_3.html#V1" title="TDLAT_3:attr.1">discrete</a>  holds <br><font color="Olive">b<sub>1</sub></font> is  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="mfold_0.html#V2" title="MFOLD_0:attr.2">-locally_euclidean</a> 
+ </span><div about="#PF25_2_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/25_2_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/25_2_1')" href="javascript:()" title="25_2_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c2">n</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>;<br><span class="kw">let </span><font color="Maroon" title="c3">M</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V2"><span class="kw">attr</span> </a><font color="Maroon" title="c2">M</font> is <font color="Maroon" title="c1">n</font> <a href="mfold_1.html#V2" title="MFOLD_1:attr.2">-manifold</a> <span class="kw"> means </span><a NAME="D4"><span class="comment"><font color="firebrick">:: MFOLD_1:def 4</font></span><br></a>( <font color="Maroon" title="c2">M</font> is  <a href="waybel23.html#V5" title="WAYBEL23:attr.5">second-countable</a>  &amp; <font color="Maroon" title="c2">M</font> is  <a href="compts_1.html#NV4" title="COMPTS_1:NV.4">Hausdorff</a>  &amp; <font color="Maroon" title="c2">M</font> is <font color="Maroon" title="c1">n</font> <a href="mfold_0.html#V2" title="MFOLD_0:attr.2">-locally_euclidean</a>  );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT4" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="mfold_1.html#V2" title="MFOLD_1:attr.2">-manifold</a> <a onclick="hs(this)" href="javascript:()">MFOLD_1:def 4 : <br></a><span class="hide"> for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b2">M</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds <br> ( <font color="Olive" title="b2">M</font> is <font color="Olive" title="b1">n</font> <a href="mfold_1.html#V2" title="MFOLD_1:attr.2">-manifold</a>  iff ( <font color="Olive" title="b2">M</font> is  <a href="waybel23.html#V5" title="WAYBEL23:attr.5">second-countable</a>  &amp; <font color="Olive" title="b2">M</font> is  <a href="compts_1.html#NV4" title="COMPTS_1:NV.4">Hausdorff</a>  &amp; <font color="Olive" title="b2">M</font> is <font color="Olive" title="b1">n</font> <a href="mfold_0.html#V2" title="MFOLD_0:attr.2">-locally_euclidean</a>  ) );<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c2">n</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>;<br>
+<div about="#RC3" typeof="oo:Theorem">
+<a NAME="RC3"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="pre_topc.html#V2" title="PRE_TOPC:attr.2">TopSpace-like</a>   <a href="mfold_0.html#V3" title="MFOLD_0:attr.3">without_boundary</a>  <font color="Maroon" title="c1">n</font> <a href="mfold_1.html#V2" title="MFOLD_1:attr.2">-manifold</a>   for    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:27_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> st <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="mfold_0.html#V3" title="MFOLD_0:attr.3">without_boundary</a>  &amp; <font color="Olive">b<sub>1</sub></font> is <font color="Maroon" title="c2">n</font> <a href="mfold_1.html#V2" title="MFOLD_1:attr.2">-manifold</a>  )
+ </span><div about="#PF27_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/27_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/27_1_1')" href="javascript:()" title="27_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#CC5" typeof="oo:Theorem">
+<a NAME="CC5"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="pre_topc.html#V2" title="PRE_TOPC:attr.2">TopSpace-like</a>   <a href="waybel23.html#V5" title="WAYBEL23:attr.5">second-countable</a>   <a href="tdlat_3.html#V1" title="TDLAT_3:attr.1">discrete</a>  <span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="compts_1.html#NV4" title="COMPTS_1:NV.4">Hausdorff</a>   <a href="waybel23.html#V5" title="WAYBEL23:attr.5">second-countable</a>   <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="mfold_0.html#V2" title="MFOLD_0:attr.2">-locally_euclidean</a>   for    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:28_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>  st <font color="Olive">b<sub>1</sub></font> is  <a href="waybel23.html#V5" title="WAYBEL23:attr.5">second-countable</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="tdlat_3.html#V1" title="TDLAT_3:attr.1">discrete</a>  holds <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="mfold_0.html#V2" title="MFOLD_0:attr.2">-locally_euclidean</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="waybel23.html#V5" title="WAYBEL23:attr.5">second-countable</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="compts_1.html#NV4" title="COMPTS_1:NV.4">Hausdorff</a>  )
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c2">n</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>;<br>
+<div about="#CC6" typeof="oo:Theorem">
+<a NAME="CC6"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="pre_topc.html#V2" title="PRE_TOPC:attr.2">TopSpace-like</a>  <font color="Maroon" title="c1">n</font> <a href="mfold_1.html#V2" title="MFOLD_1:attr.2">-manifold</a>  <span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="compts_1.html#NV4" title="COMPTS_1:NV.4">Hausdorff</a>   <a href="waybel23.html#V5" title="WAYBEL23:attr.5">second-countable</a>  <font color="Maroon" title="c1">n</font> <a href="mfold_0.html#V2" title="MFOLD_0:attr.2">-locally_euclidean</a>   for    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> for <font color="Olive">b<sub>1</sub></font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>  st <font color="Olive">b<sub>1</sub></font> is <font color="Maroon" title="c2">n</font> <a href="mfold_1.html#V2" title="MFOLD_1:attr.2">-manifold</a>  holds <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="waybel23.html#V5" title="WAYBEL23:attr.5">second-countable</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="compts_1.html#NV4" title="COMPTS_1:NV.4">Hausdorff</a>  &amp; <font color="Olive">b<sub>1</sub></font> is <font color="Maroon" title="c2">n</font> <a href="mfold_0.html#V2" title="MFOLD_0:attr.2">-locally_euclidean</a>  )</span>;<br></span>;<br>
+
+<div about="#CC7" typeof="oo:Theorem">
+<a NAME="CC7"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="pre_topc.html#V2" title="PRE_TOPC:attr.2">TopSpace-like</a>   <a href="compts_1.html#NV4" title="COMPTS_1:NV.4">Hausdorff</a>   <a href="waybel23.html#V5" title="WAYBEL23:attr.5">second-countable</a>  <font color="Maroon" title="c1">n</font> <a href="mfold_0.html#V2" title="MFOLD_0:attr.2">-locally_euclidean</a>  <span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <font color="Maroon" title="c1">n</font> <a href="mfold_1.html#V2" title="MFOLD_1:attr.2">-manifold</a>   for    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> for <font color="Olive">b<sub>1</sub></font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>  st <font color="Olive">b<sub>1</sub></font> is  <a href="waybel23.html#V5" title="WAYBEL23:attr.5">second-countable</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="compts_1.html#NV4" title="COMPTS_1:NV.4">Hausdorff</a>  &amp; <font color="Olive">b<sub>1</sub></font> is <font color="Maroon" title="c2">n</font> <a href="mfold_0.html#V2" title="MFOLD_0:attr.2">-locally_euclidean</a>  holds <br><font color="Olive">b<sub>1</sub></font> is <font color="Maroon" title="c2">n</font> <a href="mfold_1.html#V2" title="MFOLD_1:attr.2">-manifold</a> </span>;<br></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: Lemma 2.16<br>  
+</font></div>
+<div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c2">n</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>;<br><span class="kw">let </span><font color="Maroon" title="c3">M</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="mfold_0.html#V3" title="MFOLD_0:attr.3">without_boundary</a>  <font color="Maroon" title="c2">n</font> <a href="mfold_1.html#V2" title="MFOLD_1:attr.2">-manifold</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>;<br>
+<div about="#CC8" typeof="oo:Theorem">
+<a NAME="CC8"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="tsep_1.html#V1" title="TSEP_1:attr.1">open</a>  <span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="mfold_0.html#V3" title="MFOLD_0:attr.3">without_boundary</a>  <font color="Maroon" title="c1">n</font> <a href="mfold_1.html#V2" title="MFOLD_1:attr.2">-manifold</a>   for    <a href="pre_topc.html#M1" title="PRE_TOPC:mode.1">SubSpace</a> of <font color="Maroon" title="c2">M</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> for <font color="Olive">b<sub>1</sub></font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="pre_topc.html#M1" title="PRE_TOPC:mode.1">SubSpace</a> of <font color="Maroon" title="c3">M</font>  st <font color="Olive">b<sub>1</sub></font> is  <a href="tsep_1.html#V1" title="TSEP_1:attr.1">open</a>  holds <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="mfold_0.html#V3" title="MFOLD_0:attr.3">without_boundary</a>  &amp; <font color="Olive">b<sub>1</sub></font> is <font color="Maroon" title="c2">n</font> <a href="mfold_1.html#V2" title="MFOLD_1:attr.2">-manifold</a>  )</span>;<br></span><div about="#PF30_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/mfold_1/30_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/mfold_1/30_1_1')" href="javascript:()" title="30_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+</body>
+</html>

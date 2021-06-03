@@ -1,0 +1,550 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>HENMODEL:  Equivalences of Inconsistency and {H}enkin Models</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  Equivalences of Inconsistency and {H}enkin Models</font></span><br><span class="comment"><font color="firebrick">:: by Patrick Braselmann and Peter Koepke</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received September 25, 2004</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 2004-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+<div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E1">Th1</font></span>: <a NAME="T1"><span class="comment"><font color="firebrick">:: HENMODEL:1</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b2">A</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">A</font>  st  ex <font color="Olive" title="b4">m</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st  <a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <font color="Olive" title="b4">m</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> &amp;  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">A</font> &amp; (  for <font color="Olive" title="b4">n</font>, <font color="Olive" title="b5">m</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b5">m</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive" title="b3">f</font> &amp; <font color="Olive" title="b4">n</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive" title="b3">f</font> &amp; <font color="Olive" title="b4">n</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b5">m</font> holds <br><font color="Olive" title="b3">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">n</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b3">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">m</font> ) holds <br><font color="Olive" title="b3">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><a href="tarski.html#K3" title="TARSKI:func.3">union</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <span class="p1">(<span class="default"><a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b3">f</font></span>)</span>
+</div>
+<div about="#PF1" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/1')" href="javascript:()" title="1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E2">Th2</font></span>: <a NAME="T2"><span class="comment"><font color="firebrick">:: HENMODEL:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> holds <br> (  <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <font color="Olive" title="b1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">A</font> &amp; (  for <font color="Olive" title="b2">a</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   holds <br>(  not <font color="Olive" title="b2">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">A</font> or <font color="Olive" title="b2">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <font color="Olive" title="b1">A</font> or <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <font color="Olive" title="b1">A</font> ) ) )</div>
+<div about="#PF2" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/2')" href="javascript:()" title="2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+<div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E3">Th3</font></span>: <a NAME="T3"><span class="comment"><font color="firebrick">:: HENMODEL:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">C</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">f</font> being   <a href="nat_1.html#NM2" title="NAT_1:NM.2">sequence</a> of <font color="Olive" title="b1">C</font><br>  for <font color="Olive" title="b3">X</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st (  for <font color="Olive" title="b4">n</font>, <font color="Olive" title="b5">m</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b5">m</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive" title="b2">f</font> &amp; <font color="Olive" title="b4">n</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive" title="b2">f</font> &amp; <font color="Olive" title="b4">n</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b5">m</font> holds <br><font color="Olive" title="b2">f</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b4">n</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b2">f</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b5">m</font> ) &amp; <font color="Olive" title="b3">X</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <span class="p1">(<span class="default"><a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b2">f</font></span>)</span> holds <br> ex <font color="Olive" title="b4">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <font color="Olive" title="b3">X</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b2">f</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b4">k</font>
+</div>
+<div about="#PF3" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/3')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/3')" href="javascript:()" title="3"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">Al</font> be    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">X</font> be   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font></span>)</span>;<br><span class="kw">let </span><font color="Maroon" title="c3">p</font> be    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="R1"><span class="kw">pred</span> </a><font color="Maroon" title="c2">X</font> <a href="henmodel.html#R1" title="HENMODEL:pred.1">|-</a> <font color="Maroon" title="c3">p</font><span class="kw"> means </span><a NAME="D1"><span class="comment"><font color="firebrick">:: HENMODEL:def 1</font></span><br></a> ex <font color="Olive" title="b1">f</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font> st <br>(  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b1">f</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c2">X</font> &amp;  <a href="calcul_1.html#R4" title="CALCUL_1:pred.4">|-</a> <font color="Olive" title="b1">f</font> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><font color="Maroon" title="c3">p</font></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="henmodel.html#R1" title="HENMODEL:pred.1">|-</a> <a onclick="hs(this)" href="javascript:()">HENMODEL:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">Al</font> being    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> <br>  for <font color="Olive" title="b2">X</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font></span>)</span><br>  for <font color="Olive" title="b3">p</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font> holds <br> ( <font color="Olive" title="b2">X</font> <a href="henmodel.html#R1" title="HENMODEL:pred.1">|-</a> <font color="Olive" title="b3">p</font> iff  ex <font color="Olive" title="b4">f</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font> st <br>(  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b4">f</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b2">X</font> &amp;  <a href="calcul_1.html#R4" title="CALCUL_1:pred.4">|-</a> <font color="Olive" title="b4">f</font> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><font color="Olive" title="b3">p</font></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> ) );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">Al</font> be    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">X</font> be   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font></span>)</span>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V1"><span class="kw">attr</span> </a><font color="Maroon" title="c2">X</font> is  <a href="henmodel.html#V1" title="HENMODEL:attr.1">Consistent</a> <span class="kw"> means </span><a NAME="D2"><span class="comment"><font color="firebrick">:: HENMODEL:def 2</font></span><br></a> for <font color="Olive" title="b1">p</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font>  holds <br>(  not <font color="Maroon" title="c2">X</font> <a href="henmodel.html#R1" title="HENMODEL:pred.1">|-</a> <font color="Olive" title="b1">p</font> or  not <font color="Maroon" title="c2">X</font> <a href="henmodel.html#R1" title="HENMODEL:pred.1">|-</a>  <a href="cqc_lang.html#K6" title="CQC_LANG:func.6">'not'</a> <font color="Olive" title="b1">p</font> );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="henmodel.html#V1" title="HENMODEL:attr.1">Consistent</a> <a onclick="hs(this)" href="javascript:()">HENMODEL:def 2 : <br></a><span class="hide"> for <font color="Olive" title="b1">Al</font> being    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> <br>  for <font color="Olive" title="b2">X</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font></span>)</span> holds <br> ( <font color="Olive" title="b2">X</font> is  <a href="henmodel.html#V1" title="HENMODEL:attr.1">Consistent</a>  iff  for <font color="Olive" title="b3">p</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font>  holds <br>(  not <font color="Olive" title="b2">X</font> <a href="henmodel.html#R1" title="HENMODEL:pred.1">|-</a> <font color="Olive" title="b3">p</font> or  not <font color="Olive" title="b2">X</font> <a href="henmodel.html#R1" title="HENMODEL:pred.1">|-</a>  <a href="cqc_lang.html#K6" title="CQC_LANG:func.6">'not'</a> <font color="Olive" title="b3">p</font> ) );<br></span>
+</div>
+<br><div>
+<span class="kw">notation</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">Al</font> be    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">X</font> be   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font></span>)</span>;<br><a NAME="NV2"><span class="kw">antonym </span> <a href="henmodel.html#V1" title="HENMODEL:attr.1">Inconsistent</a> <font color="Maroon" title="c2">X</font></a><span class="kw"> for </span> <a href="henmodel.html#V1" title="HENMODEL:attr.1">Consistent</a> ;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">Al</font> be    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">f</font> be    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V2"><span class="kw">attr</span> </a><font color="Maroon" title="c2">f</font> is  <a href="henmodel.html#V2" title="HENMODEL:attr.2">Consistent</a> <span class="kw"> means </span><a NAME="D3"><span class="comment"><font color="firebrick">:: HENMODEL:def 3</font></span><br></a> for <font color="Olive" title="b1">p</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font>  holds <br>(  not  <a href="calcul_1.html#R4" title="CALCUL_1:pred.4">|-</a> <font color="Maroon" title="c2">f</font> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><font color="Olive" title="b1">p</font></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> or  not  <a href="calcul_1.html#R4" title="CALCUL_1:pred.4">|-</a> <font color="Maroon" title="c2">f</font> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><span class="p2">(<span class="default"><a href="cqc_lang.html#K6" title="CQC_LANG:func.6">'not'</a> <font color="Olive" title="b1">p</font></span>)</span></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT3" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="henmodel.html#V2" title="HENMODEL:attr.2">Consistent</a> <a onclick="hs(this)" href="javascript:()">HENMODEL:def 3 : <br></a><span class="hide"> for <font color="Olive" title="b1">Al</font> being    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> <br>  for <font color="Olive" title="b2">f</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font> holds <br> ( <font color="Olive" title="b2">f</font> is  <a href="henmodel.html#V2" title="HENMODEL:attr.2">Consistent</a>  iff  for <font color="Olive" title="b3">p</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font>  holds <br>(  not  <a href="calcul_1.html#R4" title="CALCUL_1:pred.4">|-</a> <font color="Olive" title="b2">f</font> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><font color="Olive" title="b3">p</font></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> or  not  <a href="calcul_1.html#R4" title="CALCUL_1:pred.4">|-</a> <font color="Olive" title="b2">f</font> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><span class="p2">(<span class="default"><a href="cqc_lang.html#K6" title="CQC_LANG:func.6">'not'</a> <font color="Olive" title="b3">p</font></span>)</span></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> ) );<br></span>
+</div>
+<br><div>
+<span class="kw">notation</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">Al</font> be    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">f</font> be    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font>;<br><a NAME="NV4"><span class="kw">antonym </span> <a href="henmodel.html#V2" title="HENMODEL:attr.2">Inconsistent</a> <font color="Maroon" title="c2">f</font></a><span class="kw"> for </span> <a href="henmodel.html#V2" title="HENMODEL:attr.2">Consistent</a> ;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E4">Th4</font></span>: <a NAME="T4"><span class="comment"><font color="firebrick">:: HENMODEL:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">Al</font> being    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> <br>  for <font color="Olive" title="b2">X</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font></span>)</span><br>  for <font color="Olive" title="b3">g</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font>  st <font color="Olive" title="b2">X</font> is  <a href="henmodel.html#V1" title="HENMODEL:attr.1">Consistent</a>  &amp;  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b3">g</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b2">X</font> holds <br><font color="Olive" title="b3">g</font> is  <a href="henmodel.html#V2" title="HENMODEL:attr.2">Consistent</a> </div>
+<div about="#PF9" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T4"></span><a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/9')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/9')" href="javascript:()" title="9"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E5">Th5</font></span>: <a NAME="T5"><span class="comment"><font color="firebrick">:: HENMODEL:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">Al</font> being    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> <br>  for <font color="Olive" title="b2">p</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font><br>  for <font color="Olive" title="b3">f</font>, <font color="Olive" title="b4">g</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font>  st  <a href="calcul_1.html#R4" title="CALCUL_1:pred.4">|-</a> <font color="Olive" title="b3">f</font> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><font color="Olive" title="b2">p</font></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> holds <br> <a href="calcul_1.html#R4" title="CALCUL_1:pred.4">|-</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">f</font> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <font color="Olive" title="b4">g</font></span>)</span> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><font color="Olive" title="b2">p</font></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span>
+</div>
+<div about="#PF10" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/10')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/10')" href="javascript:()" title="10"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E6">Th6</font></span>: <a NAME="T6"><span class="comment"><font color="firebrick">:: HENMODEL:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">Al</font> being    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> <br>  for <font color="Olive" title="b2">X</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font></span>)</span> holds <br> ( <font color="Olive" title="b2">X</font> is  <a href="henmodel.html#NV2" title="HENMODEL:NV.2">Inconsistent</a>  iff  for <font color="Olive" title="b3">p</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font> holds  <font color="Olive" title="b2">X</font> <a href="henmodel.html#R1" title="HENMODEL:pred.1">|-</a> <font color="Olive" title="b3">p</font> )</div>
+<div about="#PF11" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/11')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/11')" href="javascript:()" title="11"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E7">Th7</font></span>: <a NAME="T7"><span class="comment"><font color="firebrick">:: HENMODEL:7</font></span><br></a><div class="add"> for <font color="Olive" title="b1">Al</font> being    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> <br>  for <font color="Olive" title="b2">X</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font></span>)</span>  st <font color="Olive" title="b2">X</font> is  <a href="henmodel.html#NV2" title="HENMODEL:NV.2">Inconsistent</a>  holds <br> ex <font color="Olive" title="b3">Y</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font></span>)</span> st <br>( <font color="Olive" title="b3">Y</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b2">X</font> &amp; <font color="Olive" title="b3">Y</font> is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  &amp; <font color="Olive" title="b3">Y</font> is  <a href="henmodel.html#NV2" title="HENMODEL:NV.2">Inconsistent</a>  )</div>
+<div about="#PF12" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T7"></span><a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/12')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/12')" href="javascript:()" title="12"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E11"></a><span class="lab"><font color="Green" title="E8">Lm1</font></span>: <span about="#E11" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">f</font>, <font color="Olive" title="b2">g</font> being   <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> holds   <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <span class="p2">(<span class="default"><font color="Olive" title="b1">f</font> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <font color="Olive" title="b2">g</font></span>)</span></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <span class="p2">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">f</font></span>)</span></span>)</span> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <span class="p1">(<span class="default"><a href="calcul_2.html#K2" title="CALCUL_2:func.2">seq</a> (<span class="p2">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">f</font></span>)</span>,<span class="p2">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">g</font></span>)</span>)</span>)</span>
+ </span><br><div about="#PF13" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/13')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/13')" href="javascript:()" title="13"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T8"><span class="comment"><font color="firebrick">:: HENMODEL:8</font></span><br></a><div class="add"> for <font color="Olive" title="b1">Al</font> being    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> <br>  for <font color="Olive" title="b2">X</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font></span>)</span><br>  for <font color="Olive" title="b3">p</font>, <font color="Olive" title="b4">q</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font>  st <font color="Olive" title="b2">X</font> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><font color="Olive" title="b3">p</font></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> <a href="henmodel.html#R1" title="HENMODEL:pred.1">|-</a> <font color="Olive" title="b4">q</font> holds <br> ex <font color="Olive" title="b5">g</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font> st <br>(  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b5">g</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b2">X</font> &amp;  <a href="calcul_1.html#R4" title="CALCUL_1:pred.4">|-</a> <span class="p1">(<span class="default"><font color="Olive" title="b5">g</font> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <span class="p2"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><font color="Olive" title="b3">p</font></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span></span>)</span> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><font color="Olive" title="b4">q</font></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> )</div>
+<div about="#PF14" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/14')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/14')" href="javascript:()" title="14"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T9"><span class="comment"><font color="firebrick">:: HENMODEL:9</font></span><br></a><div class="add"> for <font color="Olive" title="b1">Al</font> being    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> <br>  for <font color="Olive" title="b2">X</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font></span>)</span><br>  for <font color="Olive" title="b3">p</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font> holds <br> ( <font color="Olive" title="b2">X</font> <a href="henmodel.html#R1" title="HENMODEL:pred.1">|-</a> <font color="Olive" title="b3">p</font> iff <font color="Olive" title="b2">X</font> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><span class="p2">(<span class="default"><a href="cqc_lang.html#K6" title="CQC_LANG:func.6">'not'</a> <font color="Olive" title="b3">p</font></span>)</span></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> is  <a href="henmodel.html#NV2" title="HENMODEL:NV.2">Inconsistent</a>  )</div>
+<div about="#PF15" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T9"></span><a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/15')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/15')" href="javascript:()" title="15"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T10"><span class="comment"><font color="firebrick">:: HENMODEL:10</font></span><br></a><div class="add"> for <font color="Olive" title="b1">Al</font> being    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> <br>  for <font color="Olive" title="b2">X</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font></span>)</span><br>  for <font color="Olive" title="b3">p</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font> holds <br> ( <font color="Olive" title="b2">X</font> <a href="henmodel.html#R1" title="HENMODEL:pred.1">|-</a>  <a href="cqc_lang.html#K6" title="CQC_LANG:func.6">'not'</a> <font color="Olive" title="b3">p</font> iff <font color="Olive" title="b2">X</font> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><font color="Olive" title="b3">p</font></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> is  <a href="henmodel.html#NV2" title="HENMODEL:NV.2">Inconsistent</a>  )</div>
+<div about="#PF16" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T10"></span><a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/16')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/16')" href="javascript:()" title="16"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T11"><span class="comment"><font color="firebrick">:: HENMODEL:11</font></span><br></a><div class="add"> for <font color="Olive" title="b1">Al</font> being    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> <br>  for <font color="Olive" title="b2">f</font> being   <a href="nat_1.html#NM2" title="NAT_1:NM.2">sequence</a> of <span class="p1">(<span class="default"><a href="setfam_1.html#K9" title="SETFAM_1:func.9">bool</a> <span class="p2">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font></span>)</span></span>)</span>  st (  for <font color="Olive" title="b3">n</font>, <font color="Olive" title="b4">m</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b4">m</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive" title="b2">f</font> &amp; <font color="Olive" title="b3">n</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive" title="b2">f</font> &amp; <font color="Olive" title="b3">n</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b4">m</font> holds <br>( <font color="Olive" title="b2">f</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">n</font> is  <a href="henmodel.html#V1" title="HENMODEL:attr.1">Consistent</a>  &amp; <font color="Olive" title="b2">f</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">n</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b2">f</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b4">m</font> ) ) holds <br> <a href="setfam_1.html#K5" title="SETFAM_1:func.5">union</a> <span class="p1">(<span class="default"><a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b2">f</font></span>)</span> is  <a href="henmodel.html#V1" title="HENMODEL:attr.1">Consistent</a> </div>
+<div about="#PF17" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/17')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/17')" href="javascript:()" title="17"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+<div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E9">Th12</font></span>: <a NAME="T12"><span class="comment"><font color="firebrick">:: HENMODEL:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">Al</font> being    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> <br>  for <font color="Olive" title="b2">X</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font></span>)</span><br>  for <font color="Olive" title="b3">A</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st <font color="Olive" title="b2">X</font> is  <a href="henmodel.html#NV2" title="HENMODEL:NV.2">Inconsistent</a>  holds <br> for <font color="Olive" title="b4">J</font> being    <a href="valuat_1.html#M1" title="VALUAT_1:mode.1">interpretation</a> of <font color="Olive" title="b1">Al</font>,<font color="Olive" title="b3">A</font><br>  for <font color="Olive" title="b5">v</font> being    <a href="funct_2.html#M2" title="FUNCT_2:mode.2">Element</a> of  <a href="valuat_1.html#K2" title="VALUAT_1:func.2">Valuations_in</a> (<font color="Olive" title="b1">Al</font>,<font color="Olive" title="b3">A</font>)  holds  not <font color="Olive" title="b4">J</font>,<font color="Olive" title="b5">v</font> <a href="calcul_1.html#R6" title="CALCUL_1:pred.6">|=</a> <font color="Olive" title="b2">X</font>
+</div>
+<div about="#PF18" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/18')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/18')" href="javascript:()" title="18"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E10">Th13</font></span>: <a NAME="T13"><span class="comment"><font color="firebrick">:: HENMODEL:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">Al</font> being    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a>  holds  <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><span class="p2">(<span class="default"><a href="cqc_lang.html#K5" title="CQC_LANG:func.5">VERUM</a> <font color="Olive" title="b1">Al</font></span>)</span></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> is  <a href="henmodel.html#V1" title="HENMODEL:attr.1">Consistent</a> </div>
+<div about="#PF19" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T13"></span><a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/19')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/19')" href="javascript:()" title="19"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">Al</font> be    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> ;<br>
+<div about="#RC1" typeof="oo:Theorem">
+<a NAME="RC1"><span class="kw">cluster </span></a> <a href="henmodel.html#V1" title="HENMODEL:attr.1">Consistent</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:20_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font></span>)</span> st <font color="Olive">b<sub>1</sub></font> is  <a href="henmodel.html#V1" title="HENMODEL:attr.1">Consistent</a> 
+ </span><div about="#PF20_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/20_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/20_1_1')" href="javascript:()" title="20_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">Al</font> be    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> ;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K1"><span class="kw">func</span> </a> <a href="henmodel.html#K1" title="HENMODEL:func.1">HCar</a> <font color="Maroon" title="c1">Al</font><span class="kw"> -&gt; </span>  non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <span class="kw"> equals </span><a NAME="D4"><span class="comment"><font color="firebrick">:: HENMODEL:def 4</font></span><br></a> <a href="qc_lang1.html#K3" title="QC_LANG1:func.3">bound_QC-variables</a> <font color="Maroon" title="c1">Al</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:21_1"></a>
+ <a href="qc_lang1.html#K3" title="QC_LANG1:func.3">bound_QC-variables</a> <font color="Maroon" title="c1">Al</font> is   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT4" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="henmodel.html#K1" title="HENMODEL:func.1">HCar</a> <a onclick="hs(this)" href="javascript:()">HENMODEL:def 4 : <br></a><span class="hide"> for <font color="Olive" title="b1">Al</font> being    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a>  holds   <a href="henmodel.html#K1" title="HENMODEL:func.1">HCar</a> <font color="Olive" title="b1">Al</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="qc_lang1.html#K3" title="QC_LANG1:func.3">bound_QC-variables</a> <font color="Olive" title="b1">Al</font>;<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">Al</font> be    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">P</font> be    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="qc_lang1.html#K6" title="QC_LANG1:func.6">QC-pred_symbols</a> <font color="Maroon" title="c1">Al</font>;<br><span class="kw">let </span><font color="Maroon" title="c3">ll</font> be   <a href="cqc_lang.html#NM2" title="CQC_LANG:NM.2">CQC-variable_list</a> of  <a href="qc_lang1.html#K7" title="QC_LANG1:func.7">the_arity_of</a> <font color="Maroon" title="c2">P</font>,<font color="Maroon" title="c1">Al</font>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="qc_lang1.html#K10" title="QC_LANG1:func.10">!</a><br><span class="kw">redefine </span><a NAME="K2"><span class="kw">func</span> </a><font color="Maroon" title="c2">P</font> <a href="henmodel.html#K2" title="HENMODEL:func.2">!</a> <font color="Maroon" title="c3">ll</font><span class="kw"> -&gt; </span>   <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:22_1"></a>
+<font color="Maroon" title="c2">P</font> <a href="qc_lang1.html#K10" title="QC_LANG1:func.10">!</a> <font color="Maroon" title="c3">ll</font> is    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font>
+ </span><div about="#PF22_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/22_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/22_1_1')" href="javascript:()" title="22_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">Al</font> be    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">CX</font> be   <a href="henmodel.html#V1" title="HENMODEL:attr.1">Consistent</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font></span>)</span>;<br><div about="#D11" typeof="oo:Definition">
+<a NAME="M1"><span class="kw">mode</span> </a> <a href="henmodel.html#M1" title="HENMODEL:mode.1">Henkin_interpretation</a> of <font color="Maroon" title="c2">CX</font><span class="kw"> -&gt; </span>   <a href="valuat_1.html#M1" title="VALUAT_1:mode.1">interpretation</a> of <font color="Maroon" title="c1">Al</font>, <a href="henmodel.html#K1" title="HENMODEL:func.1">HCar</a> <font color="Maroon" title="c1">Al</font><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E11">Def5</font></span>: <a NAME="D5"><span class="comment"><font color="firebrick">:: HENMODEL:def 5</font></span><br></a> for <font color="Olive" title="b1">P</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="qc_lang1.html#K6" title="QC_LANG1:func.6">QC-pred_symbols</a> <font color="Maroon" title="c1">Al</font><br>  for <font color="Olive" title="b2">r</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="margrel1.html#K2" title="MARGREL1:func.2">relations_on</a> <span class="p1">(<span class="default"><a href="henmodel.html#K1" title="HENMODEL:func.1">HCar</a> <font color="Maroon" title="c1">Al</font></span>)</span>  st <span class="kw">it</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b1">P</font> <a href="margrel1.html#R1" title="MARGREL1:pred.1">=</a> <font color="Olive" title="b2">r</font> holds <br> for <font color="Olive" title="b3">a</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  holds <br> ( <font color="Olive" title="b3">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">r</font> iff  ex <font color="Olive" title="b4">ll</font> being   <a href="cqc_lang.html#NM2" title="CQC_LANG:NM.2">CQC-variable_list</a> of  <a href="qc_lang1.html#K7" title="QC_LANG1:func.7">the_arity_of</a> <font color="Olive" title="b1">P</font>,<font color="Maroon" title="c1">Al</font> st <br>( <font color="Olive" title="b3">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">ll</font> &amp; <font color="Maroon" title="c2">CX</font> <a href="henmodel.html#R1" title="HENMODEL:pred.1">|-</a> <font color="Olive" title="b1">P</font> <a href="henmodel.html#K2" title="HENMODEL:func.2">!</a> <font color="Olive" title="b4">ll</font> ) );<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:23_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being    <a href="valuat_1.html#M1" title="VALUAT_1:mode.1">interpretation</a> of <font color="Maroon" title="c1">Al</font>, <a href="henmodel.html#K1" title="HENMODEL:func.1">HCar</a> <font color="Maroon" title="c1">Al</font> st <br> for <font color="Olive" title="b2">P</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="qc_lang1.html#K6" title="QC_LANG1:func.6">QC-pred_symbols</a> <font color="Maroon" title="c1">Al</font><br>  for <font color="Olive" title="b3">r</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="margrel1.html#K2" title="MARGREL1:func.2">relations_on</a> <span class="p1">(<span class="default"><a href="henmodel.html#K1" title="HENMODEL:func.1">HCar</a> <font color="Maroon" title="c1">Al</font></span>)</span>  st <font color="Olive">b<sub>1</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b2">P</font> <a href="margrel1.html#R1" title="MARGREL1:pred.1">=</a> <font color="Olive" title="b3">r</font> holds <br> for <font color="Olive" title="b4">a</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  holds <br> ( <font color="Olive" title="b4">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b3">r</font> iff  ex <font color="Olive" title="b5">ll</font> being   <a href="cqc_lang.html#NM2" title="CQC_LANG:NM.2">CQC-variable_list</a> of  <a href="qc_lang1.html#K7" title="QC_LANG1:func.7">the_arity_of</a> <font color="Olive" title="b2">P</font>,<font color="Maroon" title="c1">Al</font> st <br>( <font color="Olive" title="b4">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">ll</font> &amp; <font color="Maroon" title="c2">CX</font> <a href="henmodel.html#R1" title="HENMODEL:pred.1">|-</a> <font color="Olive" title="b2">P</font> <a href="henmodel.html#K2" title="HENMODEL:func.2">!</a> <font color="Olive" title="b5">ll</font> ) )
+ </span><div about="#PF23_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/23_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/23_1_1')" href="javascript:()" title="23_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT5" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E11">Def5</font></span>   defines <a href="henmodel.html#M1" title="HENMODEL:mode.1">Henkin_interpretation</a> <a onclick="hs(this)" href="javascript:()">HENMODEL:def 5 : <br></a><span class="hide"> for <font color="Olive" title="b1">Al</font> being    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> <br>  for <font color="Olive" title="b2">CX</font> being   <a href="henmodel.html#V1" title="HENMODEL:attr.1">Consistent</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font></span>)</span><br>  for <font color="Olive">b<sub>3</sub></font> being    <a href="valuat_1.html#M1" title="VALUAT_1:mode.1">interpretation</a> of <font color="Olive" title="b1">Al</font>, <a href="henmodel.html#K1" title="HENMODEL:func.1">HCar</a> <font color="Olive" title="b1">Al</font> holds <br> ( <font color="Olive">b<sub>3</sub></font> is    <a href="henmodel.html#M1" title="HENMODEL:mode.1">Henkin_interpretation</a> of <font color="Olive" title="b2">CX</font> iff  for <font color="Olive" title="b4">P</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="qc_lang1.html#K6" title="QC_LANG1:func.6">QC-pred_symbols</a> <font color="Olive" title="b1">Al</font><br>  for <font color="Olive" title="b5">r</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="margrel1.html#K2" title="MARGREL1:func.2">relations_on</a> <span class="p1">(<span class="default"><a href="henmodel.html#K1" title="HENMODEL:func.1">HCar</a> <font color="Olive" title="b1">Al</font></span>)</span>  st <font color="Olive">b<sub>3</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b4">P</font> <a href="margrel1.html#R1" title="MARGREL1:pred.1">=</a> <font color="Olive" title="b5">r</font> holds <br> for <font color="Olive" title="b6">a</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  holds <br> ( <font color="Olive" title="b6">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b5">r</font> iff  ex <font color="Olive" title="b7">ll</font> being   <a href="cqc_lang.html#NM2" title="CQC_LANG:NM.2">CQC-variable_list</a> of  <a href="qc_lang1.html#K7" title="QC_LANG1:func.7">the_arity_of</a> <font color="Olive" title="b4">P</font>,<font color="Olive" title="b1">Al</font> st <br>( <font color="Olive" title="b6">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b7">ll</font> &amp; <font color="Olive" title="b2">CX</font> <a href="henmodel.html#R1" title="HENMODEL:pred.1">|-</a> <font color="Olive" title="b4">P</font> <a href="henmodel.html#K2" title="HENMODEL:func.2">!</a> <font color="Olive" title="b7">ll</font> ) ) );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">Al</font> be    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> ;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K3"><span class="kw">func</span> </a> <a href="henmodel.html#K3" title="HENMODEL:func.3">valH</a> <font color="Maroon" title="c1">Al</font><span class="kw"> -&gt; </span>   <a href="funct_2.html#M2" title="FUNCT_2:mode.2">Element</a> of  <a href="valuat_1.html#K2" title="VALUAT_1:func.2">Valuations_in</a> (<font color="Maroon" title="c1">Al</font>,<span class="p1">(<span class="default"><a href="henmodel.html#K1" title="HENMODEL:func.1">HCar</a> <font color="Maroon" title="c1">Al</font></span>)</span>)<span class="kw"> equals </span><a NAME="D6"><span class="comment"><font color="firebrick">:: HENMODEL:def 6</font></span><br></a> <a href="cqc_sim1.html#K11" title="CQC_SIM1:func.11">id</a> <span class="p1">(<span class="default"><a href="qc_lang1.html#K3" title="QC_LANG1:func.3">bound_QC-variables</a> <font color="Maroon" title="c1">Al</font></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:24_1"></a>
+ <a href="cqc_sim1.html#K11" title="CQC_SIM1:func.11">id</a> <span class="p1">(<span class="default"><a href="qc_lang1.html#K3" title="QC_LANG1:func.3">bound_QC-variables</a> <font color="Maroon" title="c1">Al</font></span>)</span> is    <a href="funct_2.html#M2" title="FUNCT_2:mode.2">Element</a> of  <a href="valuat_1.html#K2" title="VALUAT_1:func.2">Valuations_in</a> (<font color="Maroon" title="c1">Al</font>,<span class="p1">(<span class="default"><a href="henmodel.html#K1" title="HENMODEL:func.1">HCar</a> <font color="Maroon" title="c1">Al</font></span>)</span>)
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="valuat_1.html#D1" onmouseover="rs('valuat_1/D1')" onmouseout="rh()">VALUAT_1:def 1</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT6" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="henmodel.html#K3" title="HENMODEL:func.3">valH</a> <a onclick="hs(this)" href="javascript:()">HENMODEL:def 6 : <br></a><span class="hide"> for <font color="Olive" title="b1">Al</font> being    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a>  holds   <a href="henmodel.html#K3" title="HENMODEL:func.3">valH</a> <font color="Olive" title="b1">Al</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="cqc_sim1.html#K11" title="CQC_SIM1:func.11">id</a> <span class="p1">(<span class="default"><a href="qc_lang1.html#K3" title="QC_LANG1:func.3">bound_QC-variables</a> <font color="Olive" title="b1">Al</font></span>)</span>;<br></span>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+<div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E12">Th14</font></span>: <a NAME="T14"><span class="comment"><font color="firebrick">:: HENMODEL:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">Al</font> being    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> <br>  for <font color="Olive" title="b2">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b3">ll</font> being   <a href="cqc_lang.html#NM2" title="CQC_LANG:NM.2">CQC-variable_list</a> of <font color="Olive" title="b2">k</font>,<font color="Olive" title="b1">Al</font> holds  <span class="p1">(<span class="default"><a href="henmodel.html#K3" title="HENMODEL:func.3">valH</a> <font color="Olive" title="b1">Al</font></span>)</span> <a href="valuat_1.html#K4" title="VALUAT_1:func.4">*'</a> <font color="Olive" title="b3">ll</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">ll</font>
+</div>
+<div about="#PF25" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T14"></span><a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/25')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/25')" href="javascript:()" title="25"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T15" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E13">Th15</font></span>: <a NAME="T15"><span class="comment"><font color="firebrick">:: HENMODEL:15</font></span><br></a><div class="add"> for <font color="Olive" title="b1">Al</font> being    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> <br>  for <font color="Olive" title="b2">f</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font> holds   <a href="calcul_1.html#R4" title="CALCUL_1:pred.4">|-</a> <font color="Olive" title="b2">f</font> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><span class="p2">(<span class="default"><a href="cqc_lang.html#K5" title="CQC_LANG:func.5">VERUM</a> <font color="Olive" title="b1">Al</font></span>)</span></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span>
+</div>
+<div about="#PF26" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/26')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/26')" href="javascript:()" title="26"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T16" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T16"><span class="comment"><font color="firebrick">:: HENMODEL:16</font></span><br></a><div class="add"> for <font color="Olive" title="b1">Al</font> being    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> <br>  for <font color="Olive" title="b2">CX</font> being   <a href="henmodel.html#V1" title="HENMODEL:attr.1">Consistent</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font></span>)</span><br>  for <font color="Olive" title="b3">JH</font> being    <a href="henmodel.html#M1" title="HENMODEL:mode.1">Henkin_interpretation</a> of <font color="Olive" title="b2">CX</font> holds <br> ( <font color="Olive" title="b3">JH</font>, <a href="henmodel.html#K3" title="HENMODEL:func.3">valH</a> <font color="Olive" title="b1">Al</font> <a href="valuat_1.html#R1" title="VALUAT_1:pred.1">|=</a>  <a href="cqc_lang.html#K5" title="CQC_LANG:func.5">VERUM</a> <font color="Olive" title="b1">Al</font> iff <font color="Olive" title="b2">CX</font> <a href="henmodel.html#R1" title="HENMODEL:pred.1">|-</a>  <a href="cqc_lang.html#K5" title="CQC_LANG:func.5">VERUM</a> <font color="Olive" title="b1">Al</font> )</div>
+<div about="#PF27" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T16"></span><a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/27')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/27')" href="javascript:()" title="27"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T17" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T17"><span class="comment"><font color="firebrick">:: HENMODEL:17</font></span><br></a><div class="add"> for <font color="Olive" title="b1">Al</font> being    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> <br>  for <font color="Olive" title="b2">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b3">P</font> being   <a href="qc_lang1.html#NM8" title="QC_LANG1:NM.8">QC-pred_symbol</a> of <font color="Olive" title="b2">k</font>,<font color="Olive" title="b1">Al</font><br>  for <font color="Olive" title="b4">ll</font> being   <a href="cqc_lang.html#NM2" title="CQC_LANG:NM.2">CQC-variable_list</a> of <font color="Olive" title="b2">k</font>,<font color="Olive" title="b1">Al</font><br>  for <font color="Olive" title="b5">CX</font> being   <a href="henmodel.html#V1" title="HENMODEL:attr.1">Consistent</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Olive" title="b1">Al</font></span>)</span><br>  for <font color="Olive" title="b6">JH</font> being    <a href="henmodel.html#M1" title="HENMODEL:mode.1">Henkin_interpretation</a> of <font color="Olive" title="b5">CX</font> holds <br> ( <font color="Olive" title="b6">JH</font>, <a href="henmodel.html#K3" title="HENMODEL:func.3">valH</a> <font color="Olive" title="b1">Al</font> <a href="valuat_1.html#R1" title="VALUAT_1:pred.1">|=</a> <font color="Olive" title="b3">P</font> <a href="cqc_lang.html#K4" title="CQC_LANG:func.4">!</a> <font color="Olive" title="b4">ll</font> iff <font color="Olive" title="b5">CX</font> <a href="henmodel.html#R1" title="HENMODEL:pred.1">|-</a> <font color="Olive" title="b3">P</font> <a href="cqc_lang.html#K4" title="CQC_LANG:func.4">!</a> <font color="Olive" title="b4">ll</font> )</div>
+<div about="#PF28" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T17"></span><a class="txt" onmouseover="tooltip.show('url','proofs/henmodel/28')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/henmodel/28')" href="javascript:()" title="28"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+</body>
+</html>
