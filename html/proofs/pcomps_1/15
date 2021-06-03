@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">T</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">FX</font> being   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font> holds  <font color="Olive" title="b1">FX</font> <a href="setfam_1.html#R1" title="SETFAM_1:pred.1">is_finer_than</a>  <a href="pcomps_1.html#K1" title="PCOMPS_1:func.1">clf</a> <font color="Olive" title="b1">FX</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">FX</font> be   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">FX</font> <a href="setfam_1.html#R1" title="SETFAM_1:pred.1">is_finer_than</a>  <a href="pcomps_1.html#K1" title="PCOMPS_1:func.1">clf</a> <font color="Maroon" title="c2">FX</font></span><br/>
+
+
+
+<span class="kw">set </span><font color="Maroon" title="c3">GX</font> =  <a href="pcomps_1.html#K1" title="PCOMPS_1:func.1">clf</a> <font color="Maroon" title="c2">FX</font>;<br/>
+<a NAME="E1:15"/>
+ for <font color="Olive" title="b1">X</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st <font color="Olive" title="b1">X</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">FX</font> holds <br/> ex <font color="Olive" title="b2">Y</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  st <br/>( <font color="Olive" title="b2">Y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="pcomps_1.html#K1" title="PCOMPS_1:func.1">clf</a> <font color="Maroon" title="c2">FX</font> &amp; <font color="Olive" title="b1">X</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b2">Y</font> )
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="15_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">X</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c4">X</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">FX</font> implies  ex <font color="Olive" title="b1">Y</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  st <br/>( <font color="Olive" title="b1">Y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="pcomps_1.html#K1" title="PCOMPS_1:func.1">clf</a> <font color="Maroon" title="c2">FX</font> &amp; <font color="Maroon" title="c4">X</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b1">Y</font> ) )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:15_1"/><span class="lab"><font color="Green" title="E14">A1</font></span>: 
+<font color="Maroon" title="c4">X</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">FX</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  ex <font color="Olive" title="b1">Y</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  st <br/>( <font color="Olive" title="b1">Y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="pcomps_1.html#K1" title="PCOMPS_1:func.1">clf</a> <font color="Maroon" title="c2">FX</font> &amp; <font color="Maroon" title="c4">X</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b1">Y</font> )</span><br/>
+
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c5">X</font> = <font color="Maroon" title="c4">X</font> as   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> ;<br/>
+<span class="kw">thus </span><a NAME="E3:15_1"/>
+ ex <font color="Olive" title="b1">Y</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  st <br/>( <font color="Olive" title="b1">Y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="pcomps_1.html#K1" title="PCOMPS_1:func.1">clf</a> <font color="Maroon" title="c2">FX</font> &amp; <font color="Maroon" title="c4">X</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b1">Y</font> )
+  <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="15_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">reconsider </span><font color="Maroon" title="c6">Y</font> =  <a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c5">X</font> as    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  ;<br/>
+<span class="kw">take </span>
+<font color="Maroon" title="c6">Y</font>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c6">Y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="pcomps_1.html#K1" title="PCOMPS_1:func.1">clf</a> <font color="Maroon" title="c2">FX</font> &amp; <font color="Maroon" title="c4">X</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c6">Y</font> )</span><br/>
+
+<span class="kw">thus </span><a NAME="E2:15_1_1"/>
+<font color="Maroon" title="c6">Y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="pcomps_1.html#K1" title="PCOMPS_1:func.1">clf</a> <font color="Maroon" title="c2">FX</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:15_1"><span class="lab"><font color="Green" title="E14">A1</font></span></a>, <a class="ref" href="pcomps_1.html#D2" target="_self" onmouseover="rs('pcomps_1/D2')" onmouseout="rh()">Def2</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c4">X</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c6">Y</font></span><br/>
+
+<span class="kw">thus </span><a NAME="E3:15_1_1"/>
+<font color="Maroon" title="c4">X</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c6">Y</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="pre_topc.html#T18" onmouseover="rs('pre_topc/T18')" onmouseout="rh()">PRE_TOPC:18</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E2:15"/>
+<font color="Maroon" title="c2">FX</font> <a href="setfam_1.html#R1" title="SETFAM_1:pred.1">is_finer_than</a>  <a href="pcomps_1.html#K1" title="PCOMPS_1:func.1">clf</a> <font color="Maroon" title="c2">FX</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="setfam_1.html#D2" onmouseover="rs('setfam_1/D2')" onmouseout="rh()">SETFAM_1:def 2</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
