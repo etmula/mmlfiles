@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">set </span><font color="Maroon" title="c3">d</font> =  <a href="fomodel2.html#K29" title="FOMODEL2:func.29">Depth</a> <font color="Maroon" title="c2">phi</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c4">L</font> =  <a href="fomodel1.html#K16" title="FOMODEL1:func.16">LettersOf</a> <font color="Maroon" title="c1">S</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c5">h</font> =  <a href="fomodel2.html#K37" title="FOMODEL2:func.37">head</a> <font color="Maroon" title="c2">phi</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c6">t</font> =  <a href="fomodel2.html#K38" title="FOMODEL2:func.38">tail</a> <font color="Maroon" title="c2">phi</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c7">F</font> = <font color="Maroon" title="c1">S</font> <a href="fomodel1.html#K22" title="FOMODEL1:func.22">-firstChar</a> ;<br/>
+<span class="kw">set </span><font color="Maroon" title="c8">FF</font> =  <a href="fomodel2.html#K30" title="FOMODEL2:func.30">AllFormulasOf</a> <font color="Maroon" title="c1">S</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c9">SS</font> =  <a href="fomodel1.html#K1" title="FOMODEL1:func.1">AllSymbolsOf</a> <font color="Maroon" title="c1">S</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c10">s</font> = <span class="p1">(<span class="default"><font color="Maroon" title="c1">S</font> <a href="fomodel1.html#K22" title="FOMODEL1:func.22">-firstChar</a></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Maroon" title="c2">phi</font>;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c11">m</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><span class="kw"> such that </span><br/><a NAME="E2:168_1_1"/><span class="lab"><font color="Green" title="E73">A1</font></span>: 
+ <a href="fomodel2.html#K29" title="FOMODEL2:func.29">Depth</a> <font color="Maroon" title="c2">phi</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c11">m</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="nat_1.html#T6" onmouseover="rs('nat_1/T6')" onmouseout="rh()">NAT_1:6</a></span>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c12">Phim</font> = <font color="Maroon" title="c1">S</font> <a href="fomodel2.html#K24" title="FOMODEL2:func.24">-formulasOfMaxDepth</a> <font color="Maroon" title="c11">m</font>;<br/>
+<a NAME="E3:168_1_1"/>
+<font color="Maroon" title="c2">phi</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c11">m</font> <a href="fomodel2.html#K33" title="FOMODEL2:func.33">-ExFormulasOf</a> <font color="Maroon" title="c1">S</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:168_1_1"><span class="lab"><font color="Green" title="E73">A1</font></span></a>, <a class="txt" href="fomodel2.html#E74"><span class="lab"><font color="Green" title="E56">Lm27</font></span></a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c13">ll</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="fomodel1.html#K16" title="FOMODEL1:func.16">LettersOf</a> <font color="Maroon" title="c1">S</font>, <font color="Maroon" title="c14">phim</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of <font color="Maroon" title="c1">S</font> <a href="fomodel2.html#K24" title="FOMODEL2:func.24">-formulasOfMaxDepth</a> <font color="Maroon" title="c11">m</font><span class="kw"> such that </span><br/><a NAME="E5:168_1_1"/><span class="lab"><font color="Green" title="E74">A2</font></span>: 
+<font color="Maroon" title="c2">phi</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="fomodel1.html#K43" title="FOMODEL1:func.43">&lt;*</a><span class="default"><font color="Maroon" title="c13">ll</font></span><a href="fomodel1.html#K43" title="FOMODEL1:func.43">*&gt;</a></span> <a href="fomodel1.html#K42" title="FOMODEL1:func.42">^</a> <font color="Maroon" title="c14">phim</font>
+ ;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c15">phimm</font> = <font color="Maroon" title="c14">phim</font> as  <font color="Maroon" title="c11">m</font> <a href="fomodel2.html#V3" title="FOMODEL2:attr.3">-wff</a>  <a href="fomodel1.html#NM3" title="FOMODEL1:NM.3">string</a> of <font color="Maroon" title="c1">S</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="fomodel2.html#D24" target="_self" onmouseover="rs('fomodel2/D24')" onmouseout="rh()">Def23</a></span>;<br/>
+<a NAME="E7:168_1_1"/>
+<font color="Maroon" title="c2">phi</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2"><a href="fomodel1.html#K43" title="FOMODEL1:func.43">&lt;*</a><span class="default"><font color="Maroon" title="c13">ll</font></span><a href="fomodel1.html#K43" title="FOMODEL1:func.43">*&gt;</a></span> <a href="fomodel1.html#K42" title="FOMODEL1:func.42">^</a> <font color="Maroon" title="c15">phimm</font></span>)</span> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:168_1_1"><span class="lab"><font color="Green" title="E74">A2</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E8:168_1_1"/>
+ for <font color="Olive">b<sub>1</sub></font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="fomodel2.html#K38" title="FOMODEL2:func.38">tail</a> <font color="Maroon" title="c2">phi</font> holds <br/><font color="Olive">b<sub>1</sub></font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="fomodel2.html#T23" target="_self" onmouseover="rs('fomodel2/T23')" onmouseout="rh()">Th23</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

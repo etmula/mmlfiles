@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">G</font>, <font color="Maroon" title="c2">H</font> be   <a href="glib_000.html#V2" title="GLIB_000:attr.2">finite</a>  <a href="glib_000.html#NM2" title="GLIB_000:NM.2">_Graph</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">g</font> being    <a href="chord.html#M3" title="CHORD:mode.3">VertexScheme</a> of <font color="Maroon" title="c1">G</font>  st <font color="Maroon" title="c1">G</font> <a href="glib_000.html#R5" title="GLIB_000:pred.5">==</a> <font color="Maroon" title="c2">H</font> holds <br/><font color="Olive" title="b1">g</font> is    <a href="chord.html#M3" title="CHORD:mode.3">VertexScheme</a> of <font color="Maroon" title="c2">H</font></span><br/><span class="kw">let </span><font color="Maroon" title="c3">g</font> be    <a href="chord.html#M3" title="CHORD:mode.3">VertexScheme</a> of <font color="Maroon" title="c1">G</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">G</font> <a href="glib_000.html#R5" title="GLIB_000:pred.5">==</a> <font color="Maroon" title="c2">H</font> implies <font color="Maroon" title="c3">g</font> is    <a href="chord.html#M3" title="CHORD:mode.3">VertexScheme</a> of <font color="Maroon" title="c2">H</font> )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:121"/><span class="lab"><font color="Green" title="E91">A1</font></span>: 
+<font color="Maroon" title="c1">G</font> <a href="glib_000.html#R5" title="GLIB_000:pred.5">==</a> <font color="Maroon" title="c2">H</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">g</font> is    <a href="chord.html#M3" title="CHORD:mode.3">VertexScheme</a> of <font color="Maroon" title="c2">H</font></span><br/>
+
+<a NAME="E2:121"/>
+ <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c3">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="glib_000.html#K6" title="GLIB_000:func.6">the_Vertices_of</a> <font color="Maroon" title="c1">G</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="chord.html#D12" target="_self" onmouseover="rs('chord/D12')" onmouseout="rh()">Def12</a></span>;<br/>
+<a NAME="E3:121"/><span class="kw">then </span><span class="lab"><font color="Green" title="E92">A2</font></span>: 
+ <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c3">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="glib_000.html#K6" title="GLIB_000:func.6">the_Vertices_of</a> <font color="Maroon" title="c2">H</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:121"><span class="lab"><font color="Green" title="E91">A1</font></span></a></span>;<br/>
+<a NAME="E4:121"/><span class="lab"><font color="Green" title="E93">A3</font></span>: 
+<font color="Maroon" title="c3">g</font> is  <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="chord.html#D12" target="_self" onmouseover="rs('chord/D12')" onmouseout="rh()">Def12</a></span>;<br/>
+<a NAME="E5:121"/>
+<font color="Maroon" title="c3">g</font> is    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="glib_000.html#K6" title="GLIB_000:func.6">the_Vertices_of</a> <font color="Maroon" title="c2">H</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:121"><span class="lab"><font color="Green" title="E91">A1</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E6:121"/>
+<font color="Maroon" title="c3">g</font> is    <a href="chord.html#M3" title="CHORD:mode.3">VertexScheme</a> of <font color="Maroon" title="c2">H</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:121"><span class="lab"><font color="Green" title="E93">A3</font></span></a>, <a class="txt" href="#E3:121"><span class="lab"><font color="Green" title="E92">A2</font></span></a>, <a class="ref" href="chord.html#D12" target="_self" onmouseover="rs('chord/D12')" onmouseout="rh()">Def12</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

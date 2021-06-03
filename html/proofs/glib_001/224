@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be   <a href="glib_000.html#NM2" title="GLIB_000:NM.2">_Graph</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">e</font>, <font color="Olive" title="b2">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>   st <font color="Olive" title="b1">e</font> <a href="glib_000.html#R1" title="GLIB_000:pred.1">Joins</a> <font color="Olive" title="b2">x</font>,<font color="Olive" title="b2">x</font>,<font color="Maroon" title="c1">G</font> holds <br/><font color="Maroon" title="c1">G</font> <a href="glib_001.html#K2" title="GLIB_001:func.2">.walkOf</a> (<font color="Olive" title="b2">x</font>,<font color="Olive" title="b1">e</font>,<font color="Olive" title="b2">x</font>) is  <a href="glib_001.html#V8" title="GLIB_001:attr.8">Cycle-like</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c2">e</font>, <font color="Maroon" title="c3">x</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">e</font> <a href="glib_000.html#R1" title="GLIB_000:pred.1">Joins</a> <font color="Maroon" title="c3">x</font>,<font color="Maroon" title="c3">x</font>,<font color="Maroon" title="c1">G</font> implies <font color="Maroon" title="c1">G</font> <a href="glib_001.html#K2" title="GLIB_001:func.2">.walkOf</a> (<font color="Maroon" title="c3">x</font>,<font color="Maroon" title="c2">e</font>,<font color="Maroon" title="c3">x</font>) is  <a href="glib_001.html#V8" title="GLIB_001:attr.8">Cycle-like</a>  )</span><br/>
+
+
+
+<span class="kw">set </span><font color="Maroon" title="c4">W</font> = <font color="Maroon" title="c1">G</font> <a href="glib_001.html#K2" title="GLIB_001:func.2">.walkOf</a> (<font color="Maroon" title="c3">x</font>,<font color="Maroon" title="c2">e</font>,<font color="Maroon" title="c3">x</font>);<br/>
+<span class="kw">assume </span><a NAME="E1:224"/>
+<font color="Maroon" title="c2">e</font> <a href="glib_000.html#R1" title="GLIB_000:pred.1">Joins</a> <font color="Maroon" title="c3">x</font>,<font color="Maroon" title="c3">x</font>,<font color="Maroon" title="c1">G</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">G</font> <a href="glib_001.html#K2" title="GLIB_001:func.2">.walkOf</a> (<font color="Maroon" title="c3">x</font>,<font color="Maroon" title="c2">e</font>,<font color="Maroon" title="c3">x</font>) is  <a href="glib_001.html#V8" title="GLIB_001:attr.8">Cycle-like</a> </span><br/>
+
+<a NAME="E2:224"/><span class="kw">then </span>
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">G</font> <a href="glib_001.html#K2" title="GLIB_001:func.2">.walkOf</a> (<font color="Maroon" title="c3">x</font>,<font color="Maroon" title="c2">e</font>,<font color="Maroon" title="c3">x</font>)</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 3
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="glib_001.html#T14" target="_self" onmouseover="rs('glib_001/T14')" onmouseout="rh()">Th13</a></span>;<br/>
+<a NAME="E3:224"/><span class="kw">then </span>
+ not <font color="Maroon" title="c1">G</font> <a href="glib_001.html#K2" title="GLIB_001:func.2">.walkOf</a> (<font color="Maroon" title="c3">x</font>,<font color="Maroon" title="c2">e</font>,<font color="Maroon" title="c3">x</font>) is  <a href="glib_001.html#V3" title="GLIB_001:attr.3">trivial</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="glib_001.html#E91"><span class="lab"><font color="Green" title="E78">Lm54</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E4:224"/>
+<font color="Maroon" title="c1">G</font> <a href="glib_001.html#K2" title="GLIB_001:func.2">.walkOf</a> (<font color="Maroon" title="c3">x</font>,<font color="Maroon" title="c2">e</font>,<font color="Maroon" title="c3">x</font>) is  <a href="glib_001.html#V8" title="GLIB_001:attr.8">Cycle-like</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

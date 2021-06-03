@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">x</font> be    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a> <a href="finseq_2.html#K3" title="FINSEQ_2:func.3">*</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <a href="binari_6.html#K2" title="BINARI_6:func.2">Nat2BL</a> implies 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">x</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:32"/>
+<font color="Maroon" title="c1">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <a href="binari_6.html#K2" title="BINARI_6:func.2">Nat2BL</a>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">x</font></span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c2">L</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <span class="kw"> such that </span><br/><a NAME="E3:32"/><span class="lab"><font color="Green" title="E30">H5</font></span>: 
+<font color="Maroon" title="c1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <a href="binari_6.html#K2" title="BINARI_6:func.2">Nat2BL</a> <a href="binari_6.html#K6" title="BINARI_6:func.6">.</a> <font color="Maroon" title="c2">L</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="funct_2.html#T113" onmouseover="rs('funct_2/T113')" onmouseout="rh()">FUNCT_2:113</a></span>;<br/>
+<a NAME="E4:32"/>
+<font color="Maroon" title="c1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="binari_6.html#K1" title="BINARI_6:func.1">LenBSeq</a> <font color="Maroon" title="c2">L</font></span>)</span> <a href="binari_3.html#K1" title="BINARI_3:func.1">-BinarySequence</a> <font color="Maroon" title="c2">L</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="binari_6.html#D2" target="_self" onmouseover="rs('binari_6/D2')" onmouseout="rh()">Def2</a>, <a class="txt" href="#E3:32"><span class="lab"><font color="Green" title="E30">H5</font></span></a></span>;<br/>
+<a NAME="E5:32"/><span class="kw">then </span>
+ <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">x</font>
+ 
+;<br/>
+<a NAME="E6:32"/><span class="kw">then </span>
+ <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">x</font>
+ 
+;<br/>
+<a NAME="E7:32"/><span class="kw">then </span>
+1 <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">x</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_1.html#T13" onmouseover="rs('nat_1/T13')" onmouseout="rh()">NAT_1:13</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E8:32"/>
+1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">x</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">T</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( (  for <font color="Olive" title="b1">S</font> being   <a href="struct_0.html#NM9" title="STRUCT_0:NM.9">sequence</a> of <font color="Maroon" title="c1">T</font><br/>  for <font color="Olive" title="b2">x1</font>, <font color="Olive" title="b3">x2</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Maroon" title="c1">T</font>  st <font color="Olive" title="b2">x1</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="frechet.html#K2" title="FRECHET:func.2">Lim</a> <font color="Olive" title="b1">S</font> &amp; <font color="Olive" title="b3">x2</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="frechet.html#K2" title="FRECHET:func.2">Lim</a> <font color="Olive" title="b1">S</font> holds <br/><font color="Olive" title="b2">x1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">x2</font> ) implies <font color="Maroon" title="c1">T</font> is  <a href="pre_topc.html#V7" title="PRE_TOPC:attr.7">T_1</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:8"/><span class="lab"><font color="Green" title="E8">A1</font></span>: 
+ for <font color="Olive" title="b1">S</font> being   <a href="struct_0.html#NM9" title="STRUCT_0:NM.9">sequence</a> of <font color="Maroon" title="c1">T</font><br/>  for <font color="Olive" title="b2">x1</font>, <font color="Olive" title="b3">x2</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Maroon" title="c1">T</font>  st <font color="Olive" title="b2">x1</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="frechet.html#K2" title="FRECHET:func.2">Lim</a> <font color="Olive" title="b1">S</font> &amp; <font color="Olive" title="b3">x2</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="frechet.html#K2" title="FRECHET:func.2">Lim</a> <font color="Olive" title="b1">S</font> holds <br/><font color="Olive" title="b2">x1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">x2</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">T</font> is  <a href="pre_topc.html#V7" title="PRE_TOPC:attr.7">T_1</a> </span><br/>
+
+<span class="kw">assume </span><a NAME="E2:8"/>
+ not <font color="Maroon" title="c1">T</font> is  <a href="pre_topc.html#V7" title="PRE_TOPC:attr.7">T_1</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c2">x1</font>, <font color="Maroon" title="c3">x2</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Maroon" title="c1">T</font>, <font color="Maroon" title="c4">S</font> being   <a href="struct_0.html#NM9" title="STRUCT_0:NM.9">sequence</a> of <font color="Maroon" title="c1">T</font><span class="kw"> such that </span><br/><a NAME="E4:8"/><span class="lab"><font color="Green" title="E9">A2</font></span>: 
+<font color="Maroon" title="c4">S</font> <a href="funct_2.html#R2" title="FUNCT_2:pred.2">=</a> <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <a href="funcop_1.html#K8" title="FUNCOP_1:func.8">--&gt;</a> <font color="Maroon" title="c2">x1</font>
+ <span class="kw">and </span><br/><a NAME="E5:8"/><span class="lab"><font color="Green" title="E10">A3</font></span>: 
+<font color="Maroon" title="c2">x1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c3">x2</font>
+ <span class="kw">and </span><br/><a NAME="E6:8"/><span class="lab"><font color="Green" title="E11">A4</font></span>: 
+<font color="Maroon" title="c4">S</font> <a href="frechet.html#R1" title="FRECHET:pred.1">is_convergent_to</a> <font color="Maroon" title="c3">x2</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="frechet2.html#E3"><span class="lab"><font color="Green" title="E3">Lm3</font></span></a></span>;<br/>
+<a NAME="E7:8"/>
+<font color="Maroon" title="c4">S</font> <a href="frechet.html#R1" title="FRECHET:pred.1">is_convergent_to</a> <font color="Maroon" title="c2">x1</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:8"><span class="lab"><font color="Green" title="E9">A2</font></span></a>, <a class="ref" href="frechet.html#T22" onmouseover="rs('frechet/T22')" onmouseout="rh()">FRECHET:22</a></span>;<br/>
+<a NAME="E8:8"/><span class="kw">then </span><span class="lab"><font color="Green" title="E12">A5</font></span>: 
+<font color="Maroon" title="c2">x1</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="frechet.html#K2" title="FRECHET:func.2">Lim</a> <font color="Maroon" title="c4">S</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="frechet.html#D5" onmouseover="rs('frechet/D5')" onmouseout="rh()">FRECHET:def 5</a></span>;<br/>
+<a NAME="E9:8"/>
+<font color="Maroon" title="c3">x2</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="frechet.html#K2" title="FRECHET:func.2">Lim</a> <font color="Maroon" title="c4">S</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:8"><span class="lab"><font color="Green" title="E11">A4</font></span></a>, <a class="ref" href="frechet.html#D5" onmouseover="rs('frechet/D5')" onmouseout="rh()">FRECHET:def 5</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E10:8"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:8"><span class="lab"><font color="Green" title="E8">A1</font></span></a>, <a class="txt" href="#E5:8"><span class="lab"><font color="Green" title="E10">A3</font></span></a>, <a class="txt" href="#E8:8"><span class="lab"><font color="Green" title="E12">A5</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

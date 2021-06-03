@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">set </span><font color="Maroon" title="c3">X</font> =  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> ;<br/>
+<a NAME="E1:59_1_1"/>
+<font color="Maroon" title="c1">n</font> <a href="comput_1.html#K3" title="COMPUT_1:func.3">const</a> <font color="Maroon" title="c2">m</font> is  <a href="comput_1.html#V2" title="COMPUT_1:attr.2">len-total</a> 
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="59_1_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">x</font>, <font color="Maroon" title="c5">y</font> be    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="comput_1.html#D2" target="_self" onmouseover="rs('comput_1/D2')" onmouseout="rh()">COMPUT_1:def 2</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c4">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c5">y</font> &amp; <font color="Maroon" title="c4">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="comput_1.html#K3" title="COMPUT_1:func.3">const</a> <font color="Maroon" title="c2">m</font></span>)</span> implies <font color="Maroon" title="c5">y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="comput_1.html#K3" title="COMPUT_1:func.3">const</a> <font color="Maroon" title="c2">m</font></span>)</span> )</span><br/>
+
+<span class="kw">assume </span><span class="kw">that </span><br/><a NAME="E1:59_1_1_1"/><span class="lab"><font color="Green" title="E32">A2</font></span>: 
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c4">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c5">y</font>
+ <span class="kw">and </span><br/><a NAME="E2:59_1_1_1"/><span class="lab"><font color="Green" title="E33">A3</font></span>: 
+<font color="Maroon" title="c4">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="comput_1.html#K3" title="COMPUT_1:func.3">const</a> <font color="Maroon" title="c2">m</font></span>)</span>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c5">y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="comput_1.html#K3" title="COMPUT_1:func.3">const</a> <font color="Maroon" title="c2">m</font></span>)</span></span><br/>
+
+<a NAME="E3:59_1_1_1"/>
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c4">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:59_1_1_1"><span class="lab"><font color="Green" title="E33">A3</font></span></a>, <a class="ref" href="card_1.html#D7" onmouseover="rs('card_1/D7')" onmouseout="rh()">CARD_1:def 7</a></span>;<br/>
+<a NAME="E4:59_1_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c5">y</font> is    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:59_1_1_1"><span class="lab"><font color="Green" title="E32">A2</font></span></a>, <a class="ref" href="finseq_2.html#T92" onmouseover="rs('finseq_2/T92')" onmouseout="rh()">FINSEQ_2:92</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:59_1_1_1"/>
+<font color="Maroon" title="c5">y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="comput_1.html#K3" title="COMPUT_1:func.3">const</a> <font color="Maroon" title="c2">m</font></span>)</span>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E2:59_1_1"/>
+( <font color="Maroon" title="c1">n</font> <a href="comput_1.html#K3" title="COMPUT_1:func.3">const</a> <font color="Maroon" title="c2">m</font> is  <a href="comput_1.html#V2" title="COMPUT_1:attr.2">len-total</a>  &amp;  not <font color="Maroon" title="c1">n</font> <a href="comput_1.html#K3" title="COMPUT_1:func.3">const</a> <font color="Maroon" title="c2">m</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">X</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">A</font> being   <a href="setfam_1.html#NM1" title="SETFAM_1:NM.1">Subset-Family</a> of <font color="Maroon" title="c1">X</font> holds  <font color="Olive" title="b1">A</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="cantor_1.html#K2" title="CANTOR_1:func.2">FinMeetCl</a> <font color="Olive" title="b1">A</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">A</font> be   <a href="setfam_1.html#NM1" title="SETFAM_1:NM.1">Subset-Family</a> of <font color="Maroon" title="c1">X</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">A</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="cantor_1.html#K2" title="CANTOR_1:func.2">FinMeetCl</a> <font color="Maroon" title="c2">A</font></span><br/><span class="kw">let </span><font color="Maroon" title="c3">x</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="tarski.html#D3" onmouseover="rs('tarski/D3')" onmouseout="rh()">TARSKI:def 3</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c3">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c2">A</font> or <font color="Maroon" title="c3">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="cantor_1.html#K2" title="CANTOR_1:func.2">FinMeetCl</a> <font color="Maroon" title="c2">A</font> )</span><br/>
+
+
+
+
+
+<span class="kw">assume </span><a NAME="E1:8"/><span class="lab"><font color="Green" title="E6">A1</font></span>: 
+<font color="Maroon" title="c3">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c2">A</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="cantor_1.html#K2" title="CANTOR_1:func.2">FinMeetCl</a> <font color="Maroon" title="c2">A</font></span><br/>
+
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c4">x9</font> = <font color="Maroon" title="c3">x</font> as   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <font color="Maroon" title="c1">X</font> ;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c5">s</font> = <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><font color="Maroon" title="c4">x9</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span> as   <a href="setfam_1.html#NM1" title="SETFAM_1:NM.1">Subset-Family</a> of <font color="Maroon" title="c1">X</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="subset_1.html#T41" onmouseover="rs('subset_1/T41')" onmouseout="rh()">SUBSET_1:41</a></span>;<br/>
+<a NAME="E4:8"/>
+<font color="Maroon" title="c3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="setfam_1.html#K6" title="SETFAM_1:func.6">meet</a> <font color="Maroon" title="c5">s</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="setfam_1.html#T10" onmouseover="rs('setfam_1/T10')" onmouseout="rh()">SETFAM_1:10</a></span>;<br/>
+<a NAME="E5:8"/><span class="kw">then </span><span class="lab"><font color="Green" title="E7">A2</font></span>: 
+<font color="Maroon" title="c3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="setfam_1.html#K8" title="SETFAM_1:func.8">Intersect</a> <font color="Maroon" title="c5">s</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="setfam_1.html#D9" onmouseover="rs('setfam_1/D9')" onmouseout="rh()">SETFAM_1:def 9</a></span>;<br/>
+<a NAME="E6:8"/>
+<font color="Maroon" title="c5">s</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c2">A</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:8"><span class="lab"><font color="Green" title="E6">A1</font></span></a>, <a class="ref" href="zfmisc_1.html#T31" onmouseover="rs('zfmisc_1/T31')" onmouseout="rh()">ZFMISC_1:31</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:8"/>
+<font color="Maroon" title="c3">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="cantor_1.html#K2" title="CANTOR_1:func.2">FinMeetCl</a> <font color="Maroon" title="c2">A</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:8"><span class="lab"><font color="Green" title="E7">A2</font></span></a>, <a class="ref" href="cantor_1.html#D3" target="_self" onmouseover="rs('cantor_1/D3')" onmouseout="rh()">Def3</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

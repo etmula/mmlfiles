@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">defpred </span><font color="Maroon">S<sub>1</sub></font>[   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ] <span class="kw">means </span>( $1 <a href="glib_005.html#R3" title="GLIB_005:pred.3">is_forward_edge_wrt</a> <font color="Maroon" title="c3">VL</font> or $1 <a href="glib_005.html#R4" title="GLIB_005:pred.4">is_backward_edge_wrt</a> <font color="Maroon" title="c3">VL</font> );<br/>
+<span class="kw">consider </span><font color="Maroon" title="c4">IT</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="glib_000.html#K7" title="GLIB_000:func.7">the_Edges_of</a> <font color="Maroon" title="c1">G</font></span>)</span><span class="kw"> such that </span><br/><a NAME="E2:20_1_1"/><span class="lab"><font color="Green" title="E13">A1</font></span>: 
+ for <font color="Olive" title="b1">e</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  holds <br/> ( <font color="Olive" title="b1">e</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c4">IT</font> iff ( <font color="Olive" title="b1">e</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="glib_000.html#K7" title="GLIB_000:func.7">the_Edges_of</a> <font color="Maroon" title="c1">G</font> &amp; <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">e</font>] ) )
+ <span class="kw">from</span> <span class="lab"><a class="ref" href="subset_1.html#S1" onmouseover="rs('subset_1/S1')" onmouseout="rh()">SUBSET_1:sch 1</a>();<br/></span>
+<span class="kw">take </span>
+<font color="Maroon" title="c4">IT</font>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">e</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  holds <br/> ( <font color="Olive" title="b1">e</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c4">IT</font> iff ( <font color="Olive" title="b1">e</font> <a href="glib_005.html#R3" title="GLIB_005:pred.3">is_forward_edge_wrt</a> <font color="Maroon" title="c3">VL</font> or <font color="Olive" title="b1">e</font> <a href="glib_005.html#R4" title="GLIB_005:pred.4">is_backward_edge_wrt</a> <font color="Maroon" title="c3">VL</font> ) )</span><br/>
+
+<span class="kw">let </span><font color="Maroon" title="c5">e</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c5">e</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c4">IT</font> iff ( <font color="Maroon" title="c5">e</font> <a href="glib_005.html#R3" title="GLIB_005:pred.3">is_forward_edge_wrt</a> <font color="Maroon" title="c3">VL</font> or <font color="Maroon" title="c5">e</font> <a href="glib_005.html#R4" title="GLIB_005:pred.4">is_backward_edge_wrt</a> <font color="Maroon" title="c3">VL</font> ) )</span><br/>
+
+<span class="kw">thus </span><a NAME="E3:20_1_1"/>
+( <font color="Maroon" title="c5">e</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c4">IT</font> implies <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c5">e</font>] )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:20_1_1"><span class="lab"><font color="Green" title="E13">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( ( <font color="Maroon" title="c5">e</font> <a href="glib_005.html#R3" title="GLIB_005:pred.3">is_forward_edge_wrt</a> <font color="Maroon" title="c3">VL</font> or <font color="Maroon" title="c5">e</font> <a href="glib_005.html#R4" title="GLIB_005:pred.4">is_backward_edge_wrt</a> <font color="Maroon" title="c3">VL</font> ) implies <font color="Maroon" title="c5">e</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c4">IT</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E4:20_1_1"/><span class="lab"><font color="Green" title="E14">A2</font></span>: 
+<font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c5">e</font>]
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c5">e</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c4">IT</font></span><br/>
+
+<a NAME="E5:20_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c5">e</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="glib_000.html#K7" title="GLIB_000:func.7">the_Edges_of</a> <font color="Maroon" title="c1">G</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="glib_005.html#D6" target="_self" onmouseover="rs('glib_005/D6')" onmouseout="rh()">Def6</a>, <a class="ref" href="glib_005.html#D7" target="_self" onmouseover="rs('glib_005/D7')" onmouseout="rh()">Def7</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E6:20_1_1"/>
+<font color="Maroon" title="c5">e</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c4">IT</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:20_1_1"><span class="lab"><font color="Green" title="E13">A1</font></span></a>, <a class="txt" href="#E4:20_1_1"><span class="lab"><font color="Green" title="E14">A2</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

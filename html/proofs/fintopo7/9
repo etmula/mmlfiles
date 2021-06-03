@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">ET</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="fintopo2.html#V1" title="FINTOPO2:attr.1">strict</a>   <a href="fintopo2.html#L1" title="FINTOPO2:struct.1">FMT_Space_Str</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">ET</font> is  <a href="fintopo2.html#V2" title="FINTOPO2:attr.2">Fo_filled</a>  &amp; (  for <font color="Olive" title="b1">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">ET</font>  holds  not  <a href="fintopo2.html#K6" title="FINTOPO2:func.6">U_FMT</a> <font color="Olive" title="b1">x</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  ) implies <font color="Maroon" title="c1">ET</font> is  <a href="fintopo7.html#V3" title="FINTOPO7:attr.3">U_FMT_with_point</a>  )</span><br/>
+
+<span class="kw">assume </span><span class="kw">that </span><br/><a NAME="E1:9"/><span class="lab"><font color="Green" title="E10">A1</font></span>: 
+<font color="Maroon" title="c1">ET</font> is  <a href="fintopo2.html#V2" title="FINTOPO2:attr.2">Fo_filled</a> 
+ <span class="kw">and </span><br/><a NAME="E2:9"/><span class="lab"><font color="Green" title="E11">A2</font></span>: 
+ for <font color="Olive" title="b1">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">ET</font>  holds  not  <a href="fintopo2.html#K6" title="FINTOPO2:func.6">U_FMT</a> <font color="Olive" title="b1">x</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">ET</font> is  <a href="fintopo7.html#V3" title="FINTOPO7:attr.3">U_FMT_with_point</a> </span><br/>
+
+<a NAME="E3:9"/>
+ for <font color="Olive" title="b1">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">ET</font><br/>  for <font color="Olive" title="b2">V</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="fintopo2.html#K6" title="FINTOPO2:func.6">U_FMT</a> <font color="Olive" title="b1">x</font> holds  <font color="Olive" title="b1">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">V</font>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="9_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c2">x</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">ET</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">V</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="fintopo2.html#K6" title="FINTOPO2:func.6">U_FMT</a> <font color="Maroon" title="c2">x</font> holds  <font color="Maroon" title="c2">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">V</font></span><br/><span class="kw">let </span><font color="Maroon" title="c3">V</font> be    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="fintopo2.html#K6" title="FINTOPO2:func.6">U_FMT</a> <font color="Maroon" title="c2">x</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c3">V</font></span><br/>
+
+
+
+<a NAME="E1:9_1"/>
+ not  <a href="fintopo2.html#K6" title="FINTOPO2:func.6">U_FMT</a> <font color="Maroon" title="c2">x</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:9"><span class="lab"><font color="Green" title="E11">A2</font></span></a></span>;<br/>
+<a NAME="E2:9_1"/><span class="kw">then </span>
+<font color="Maroon" title="c3">V</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="fintopo2.html#K6" title="FINTOPO2:func.6">U_FMT</a> <font color="Maroon" title="c2">x</font>
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E3:9_1"/>
+<font color="Maroon" title="c2">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c3">V</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:9"><span class="lab"><font color="Green" title="E10">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E4:9"/>
+<font color="Maroon" title="c1">ET</font> is  <a href="fintopo7.html#V3" title="FINTOPO7:attr.3">U_FMT_with_point</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

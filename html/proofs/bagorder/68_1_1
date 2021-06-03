@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">set </span><font color="Maroon" title="c3">IR</font> =  the <a href="orders_2.html#U1" title="ORDERS_2:sel.1">InternalRel</a> of <font color="Maroon" title="c1">R</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c4">CR</font> =  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">R</font>;<br/>
+<a NAME="E1:68_1_1"/>
+ the <a href="orders_2.html#U1" title="ORDERS_2:sel.1">InternalRel</a> of <font color="Maroon" title="c1">R</font> <a href="wellord1.html#R1" title="WELLORD1:pred.1">is_well_founded_in</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">R</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:68"><span class="lab"><font color="Green" title="E38">A1</font></span></a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c5">a0</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E3:68_1_1"/><span class="lab"><font color="Green" title="E40">A3</font></span>: 
+<font color="Maroon" title="c5">a0</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c2">C</font>
+ <span class="kw">and </span><br/><a NAME="E4:68_1_1"/><span class="lab"><font color="Green" title="E41">A4</font></span>: 
+ the <a href="orders_2.html#U1" title="ORDERS_2:sel.1">InternalRel</a> of <font color="Maroon" title="c1">R</font> <a href="wellord1.html#K1" title="WELLORD1:func.1">-Seg</a> <font color="Maroon" title="c5">a0</font> <a href="xboole_0.html#R1" title="XBOOLE_0:pred.1">misses</a> <font color="Maroon" title="c2">C</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:68"><span class="lab"><font color="Green" title="E39">A2</font></span></a>, <a class="ref" href="wellord1.html#D3" onmouseover="rs('wellord1/D3')" onmouseout="rh()">WELLORD1:def 3</a></span>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c6">a0</font> = <font color="Maroon" title="c5">a0</font> as   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">R</font> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:68"><span class="lab"><font color="Green" title="E39">A2</font></span></a>, <a class="txt" href="#E3:68_1_1"><span class="lab"><font color="Green" title="E40">A3</font></span></a></span>;<br/>
+<span class="kw">take </span>
+<font color="Maroon" title="c6">a0</font>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c6">a0</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">C</font> &amp; <font color="Maroon" title="c6">a0</font> <a href="waybel_4.html#R4" title="WAYBEL_4:pred.4">is_minimal_wrt</a> <font color="Maroon" title="c2">C</font>, the <a href="orders_2.html#U1" title="ORDERS_2:sel.1">InternalRel</a> of <font color="Maroon" title="c1">R</font> )</span><br/>
+
+<span class="kw">thus </span><a NAME="E6:68_1_1"/>
+<font color="Maroon" title="c6">a0</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">C</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:68_1_1"><span class="lab"><font color="Green" title="E40">A3</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c6">a0</font> <a href="waybel_4.html#R4" title="WAYBEL_4:pred.4">is_minimal_wrt</a> <font color="Maroon" title="c2">C</font>, the <a href="orders_2.html#U1" title="ORDERS_2:sel.1">InternalRel</a> of <font color="Maroon" title="c1">R</font></span><br/>
+
+<span class="kw">thus </span><a NAME="E7:68_1_1"/>
+<font color="Maroon" title="c6">a0</font> <a href="waybel_4.html#R4" title="WAYBEL_4:pred.4">is_minimal_wrt</a> <font color="Maroon" title="c2">C</font>, the <a href="orders_2.html#U1" title="ORDERS_2:sel.1">InternalRel</a> of <font color="Maroon" title="c1">R</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:68_1_1"><span class="lab"><font color="Green" title="E40">A3</font></span></a>, <a class="txt" href="#E4:68_1_1"><span class="lab"><font color="Green" title="E41">A4</font></span></a>, <a class="ref" href="dickson.html#T6" onmouseover="rs('dickson/T6')" onmouseout="rh()">DICKSON:6</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

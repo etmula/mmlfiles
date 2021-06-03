@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be   <a href="glib_002.html#V1" title="GLIB_002:attr.1">connected</a>  <a href="glib_000.html#NM2" title="GLIB_000:NM.2">_Graph</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">v</font> being   <a href="glib_000.html#NM10" title="GLIB_000:NM.10">Vertex</a> of <font color="Maroon" title="c1">G</font><br/>  for <font color="Olive" title="b2">G2</font> being   <a href="glib_000.html#NM6" title="GLIB_000:NM.6">removeVertex</a> of <font color="Maroon" title="c1">G</font>,<font color="Olive" title="b1">v</font>  st  not <font color="Olive" title="b1">v</font> is  <a href="glib_002.html#V5" title="GLIB_002:attr.5">cut-vertex</a>  holds <br/><font color="Olive" title="b2">G2</font> is  <a href="glib_002.html#V1" title="GLIB_002:attr.1">connected</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c2">v</font> be   <a href="glib_000.html#NM10" title="GLIB_000:NM.10">Vertex</a> of <font color="Maroon" title="c1">G</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">G2</font> being   <a href="glib_000.html#NM6" title="GLIB_000:NM.6">removeVertex</a> of <font color="Maroon" title="c1">G</font>,<font color="Maroon" title="c2">v</font>  st  not <font color="Maroon" title="c2">v</font> is  <a href="glib_002.html#V5" title="GLIB_002:attr.5">cut-vertex</a>  holds <br/><font color="Olive" title="b1">G2</font> is  <a href="glib_002.html#V1" title="GLIB_002:attr.1">connected</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c3">G2</font> be   <a href="glib_000.html#NM6" title="GLIB_000:NM.6">removeVertex</a> of <font color="Maroon" title="c1">G</font>,<font color="Maroon" title="c2">v</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c2">v</font> is  <a href="glib_002.html#V5" title="GLIB_002:attr.5">cut-vertex</a>  implies <font color="Maroon" title="c3">G2</font> is  <a href="glib_002.html#V1" title="GLIB_002:attr.1">connected</a>  )</span><br/>
+
+
+
+
+
+<span class="kw">assume </span><a NAME="E1:46"/><span class="lab"><font color="Green" title="E27">A1</font></span>: 
+ not <font color="Maroon" title="c2">v</font> is  <a href="glib_002.html#V5" title="GLIB_002:attr.5">cut-vertex</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">G2</font> is  <a href="glib_002.html#V1" title="GLIB_002:attr.1">connected</a> </span><br/>
+
+<a NAME="E2:46"/>
+<font color="Maroon" title="c1">G</font> <a href="glib_002.html#K4" title="GLIB_002:func.4">.numComponents()</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="glib_002.html#E29"><span class="lab"><font color="Green" title="E24">Lm18</font></span></a></span>;<br/>
+<a NAME="E3:46"/><span class="kw">then </span>
+<font color="Maroon" title="c3">G2</font> <a href="glib_002.html#K4" title="GLIB_002:func.4">.numComponents()</a>  <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a>  <a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:46"><span class="lab"><font color="Green" title="E27">A1</font></span></a>, <a class="txt" href="glib_002.html#E30"><span class="lab"><font color="Green" title="E25">Lm19</font></span></a></span>;<br/>
+<a NAME="E4:46"/><span class="kw">then </span>
+<font color="Maroon" title="c3">G2</font> <a href="glib_002.html#K4" title="GLIB_002:func.4">.numComponents()</a>  <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> <a href="xboole_0.html#K2" title="XBOOLE_0:func.2">\/</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span>
+ 
+;<br/>
+<span class="kw">then </span><font color="Maroon" title="c3">G2</font> <a href="glib_002.html#K4" title="GLIB_002:func.4">.numComponents()</a>  = 
+<a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> <a href="xboole_0.html#K2" title="XBOOLE_0:func.2">\/</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zfmisc_1.html#T33" onmouseover="rs('zfmisc_1/T33')" onmouseout="rh()">ZFMISC_1:33</a></span>
+<br/>.= 
+ <a href="ordinal1.html#K1" title="ORDINAL1:func.1">succ</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>
+
+<br/>.= 
+1
+
+;<br/>
+<span class="kw">hence </span><a NAME="E6:46"/>
+<font color="Maroon" title="c3">G2</font> is  <a href="glib_002.html#V1" title="GLIB_002:attr.1">connected</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="glib_002.html#E29"><span class="lab"><font color="Green" title="E24">Lm18</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">A</font> be   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c1">A</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  &amp; <font color="Maroon" title="c1">A</font> is  <a href="ordinal1.html#V4" title="ORDINAL1:attr.4">limit_ordinal</a>  implies <font color="Maroon" title="c1">A</font> is  <a href="finset_1.html#NV2" title="FINSET_1:NV.2">infinite</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:2_1_1"/><span class="lab"><font color="Green" title="E1">A1</font></span>: 
+(  not <font color="Maroon" title="c1">A</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  &amp; <font color="Maroon" title="c1">A</font> is  <a href="ordinal1.html#V4" title="ORDINAL1:attr.4">limit_ordinal</a>  )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">A</font> is  <a href="finset_1.html#NV2" title="FINSET_1:NV.2">infinite</a> </span><br/>
+
+<span class="kw">assume </span><a NAME="E2:2_1_1"/>
+<font color="Maroon" title="c1">A</font> is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E3:2_1_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E2">A2</font></span>: 
+<font color="Maroon" title="c1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="card_1.html#T61" onmouseover="rs('card_1/T61')" onmouseout="rh()">CARD_1:61</a></span>;<br/>
+<a NAME="E4:2_1_1"/>
+ <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c1">A</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:2_1_1"><span class="lab"><font color="Green" title="E1">A1</font></span></a>, <a class="ref" href="ordinal1.html#T16" onmouseover="rs('ordinal1/T16')" onmouseout="rh()">ORDINAL1:16</a>, <a class="ref" href="xboole_1.html#T3" onmouseover="rs('xboole_1/T3')" onmouseout="rh()">XBOOLE_1:3</a></span>;<br/>
+<a NAME="E5:2_1_1"/><span class="kw">then </span>
+ <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a>  <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a> <font color="Maroon" title="c1">A</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:2_1_1"><span class="lab"><font color="Green" title="E1">A1</font></span></a>, <a class="ref" href="ordinal1.html#D11" onmouseover="rs('ordinal1/D11')" onmouseout="rh()">ORDINAL1:def 11</a></span>;<br/>
+<a NAME="E6:2_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c1">A</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:2_1_1"><span class="lab"><font color="Green" title="E2">A2</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:2_1_1"/>
+contradiction
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

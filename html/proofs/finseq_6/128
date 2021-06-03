@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">f</font> be   <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font> implies  <a href="finseq_6.html#K2" title="FINSEQ_6:func.2">mid</a> (<font color="Maroon" title="c1">f</font>,1,<span class="p1">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font></span>)</span>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">f</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:128"/><span class="lab"><font color="Green" title="E101">A1</font></span>: 
+1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="finseq_6.html#K2" title="FINSEQ_6:func.2">mid</a> (<font color="Maroon" title="c1">f</font>,1,<span class="p1">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font></span>)</span>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">f</font></span><br/>
+
+<span class="kw">then </span> <a href="finseq_6.html#K2" title="FINSEQ_6:func.2">mid</a> (<font color="Maroon" title="c1">f</font>,1,<span class="p1">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font></span>)</span>) = 
+<span class="p1">(<span class="default"><font color="Maroon" title="c1">f</font> <a href="rfinseq.html#K1" title="RFINSEQ:func.1">/^</a> <span class="p2">(<span class="default">1 <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span></span>)</span> <a href="finseq_1.html#K16" title="FINSEQ_1:func.16">|</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font></span>)</span> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_6.html#D3" target="_self" onmouseover="rs('finseq_6/D3')" onmouseout="rh()">Def3</a></span>
+<br/>.= 
+<span class="p1">(<span class="default"><font color="Maroon" title="c1">f</font> <a href="rfinseq.html#K1" title="RFINSEQ:func.1">/^</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span> <a href="finseq_1.html#K16" title="FINSEQ_1:func.16">|</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font></span>)</span> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xreal_1.html#T232" onmouseover="rs('xreal_1/T232')" onmouseout="rh()">XREAL_1:232</a></span>
+<br/>.= 
+<font color="Maroon" title="c1">f</font> <a href="finseq_1.html#K16" title="FINSEQ_1:func.16">|</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font></span>)</span> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span>
+
+<br/>.= 
+<font color="Maroon" title="c1">f</font> <a href="finseq_1.html#K16" title="FINSEQ_1:func.16">|</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:128"><span class="lab"><font color="Green" title="E101">A1</font></span></a>, <a class="ref" href="xreal_1.html#T235" onmouseover="rs('xreal_1/T235')" onmouseout="rh()">XREAL_1:235</a></span>
+<br/>.= 
+<font color="Maroon" title="c1">f</font>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_1.html#T58" onmouseover="rs('finseq_1/T58')" onmouseout="rh()">FINSEQ_1:58</a></span>
+;<br/>
+<span class="kw">hence </span><a NAME="E3:128"/>
+ <a href="finseq_6.html#K2" title="FINSEQ_6:func.2">mid</a> (<font color="Maroon" title="c1">f</font>,1,<span class="p1">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font></span>)</span>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">f</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

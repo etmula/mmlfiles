@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">f</font> be   <a href="funct_1.html#NM1" title="FUNCT_1:NM.1">Function</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">f</font> is  <a href="finseq_1.html#V1" title="FINSEQ_1:attr.1">FinSequence-like</a>  implies <font color="Maroon" title="c1">f</font> is 1 <a href="exchsort.html#V2" title="EXCHSORT:attr.2">-based</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:13_2_1"/>
+<font color="Maroon" title="c1">f</font> is  <a href="finseq_1.html#V1" title="FINSEQ_1:attr.1">FinSequence-like</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">f</font> is 1 <a href="exchsort.html#V2" title="EXCHSORT:attr.2">-based</a> </span><br/>
+
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c2">g</font> = <font color="Maroon" title="c1">f</font> as   <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> ;<br/>
+<span class="kw">let </span><font color="Maroon" title="c3">b</font> be   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="exchsort.html#D2" target="_self" onmouseover="rs('exchsort/D2')" onmouseout="rh()">EXCHSORT:def 2</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">b</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="xtuple_0.html#K9" title="XTUPLE_0:func.9">proj1</a> <font color="Maroon" title="c1">f</font> implies ( 1 <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="xtuple_0.html#K9" title="XTUPLE_0:func.9">proj1</a> <font color="Maroon" title="c1">f</font> &amp; 1 <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a> <font color="Maroon" title="c3">b</font> ) )</span><br/>
+
+<span class="kw">assume </span><a NAME="E3:13_2_1"/>
+<font color="Maroon" title="c3">b</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c1">f</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( 1 <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="xtuple_0.html#K9" title="XTUPLE_0:func.9">proj1</a> <font color="Maroon" title="c1">f</font> &amp; 1 <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a> <font color="Maroon" title="c3">b</font> )</span><br/>
+
+<a NAME="E4:13_2_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E9">A1</font></span>: 
+<font color="Maroon" title="c3">b</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Maroon" title="c2">g</font>
+ 
+;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c4">bb</font> = <font color="Maroon" title="c3">b</font> as   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> ;<br/>
+<a NAME="E6:13_2_1"/><span class="lab"><font color="Green" title="E10">A2</font></span>: 
+( 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c4">bb</font> &amp; <font color="Maroon" title="c4">bb</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c2">g</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:13_2_1"><span class="lab"><font color="Green" title="E9">A1</font></span></a>, <a class="ref" href="finseq_3.html#T25" onmouseover="rs('finseq_3/T25')" onmouseout="rh()">FINSEQ_3:25</a></span>;<br/>
+<a NAME="E7:13_2_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E11">A3</font></span>: 
+1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c2">g</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xxreal_0.html#T2" onmouseover="rs('xxreal_0/T2')" onmouseout="rh()">XXREAL_0:2</a></span>;<br/>
+<span class="kw">thus </span><a NAME="E8:13_2_1"/>
+1 <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="xtuple_0.html#K9" title="XTUPLE_0:func.9">proj1</a> <font color="Maroon" title="c1">f</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_3.html#T25" onmouseover="rs('finseq_3/T25')" onmouseout="rh()">FINSEQ_3:25</a>, <a class="txt" href="#E7:13_2_1"><span class="lab"><font color="Green" title="E11">A3</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> 1 <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a> <font color="Maroon" title="c3">b</font></span><br/>
+
+<a NAME="E9:13_2_1"/>
+ <a href="card_1.html#K5" title="CARD_1:func.5">Segm</a> 1 <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="card_1.html#K5" title="CARD_1:func.5">Segm</a> <font color="Maroon" title="c4">bb</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:13_2_1"><span class="lab"><font color="Green" title="E10">A2</font></span></a>, <a class="ref" href="nat_1.html#T39" onmouseover="rs('nat_1/T39')" onmouseout="rh()">NAT_1:39</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E10:13_2_1"/>
+1 <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a> <font color="Maroon" title="c3">b</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

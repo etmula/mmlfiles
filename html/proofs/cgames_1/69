@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">g</font> be   <a href="cgames_1.html#NM1" title="CGAMES_1:NM.1">ConwayGame</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="cgames_1.html#K8" title="CGAMES_1:func.8">the_Options_of</a> <font color="Maroon" title="c1">g</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="cgames_1.html#K11" title="CGAMES_1:func.11">the_proper_Tree_of</a> <font color="Maroon" title="c1">g</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">x</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="tarski.html#D3" onmouseover="rs('tarski/D3')" onmouseout="rh()">TARSKI:def 3</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="cgames_1.html#K8" title="CGAMES_1:func.8">the_Options_of</a> <font color="Maroon" title="c1">g</font> or <font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="cgames_1.html#K11" title="CGAMES_1:func.11">the_proper_Tree_of</a> <font color="Maroon" title="c1">g</font> )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:69"/><span class="lab"><font color="Green" title="E42">A1</font></span>: 
+<font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="cgames_1.html#K8" title="CGAMES_1:func.8">the_Options_of</a> <font color="Maroon" title="c1">g</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="cgames_1.html#K11" title="CGAMES_1:func.11">the_proper_Tree_of</a> <font color="Maroon" title="c1">g</font></span><br/>
+
+<span class="kw">reconsider </span><font color="Maroon" title="c3">gO</font> = <font color="Maroon" title="c2">x</font> as   <a href="cgames_1.html#NM1" title="CGAMES_1:NM.1">ConwayGame</a> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:69"><span class="lab"><font color="Green" title="E42">A1</font></span></a>, <a class="ref" href="cgames_1.html#T17" target="_self" onmouseover="rs('cgames_1/T17')" onmouseout="rh()">Th17</a></span>;<br/>
+<a NAME="E3:69"/>
+<font color="Maroon" title="c3">gO</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="cgames_1.html#K10" title="CGAMES_1:func.10">the_Tree_of</a> <font color="Maroon" title="c3">gO</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="cgames_1.html#T24" target="_self" onmouseover="rs('cgames_1/T24')" onmouseout="rh()">Th24</a></span>;<br/>
+<a NAME="E4:69"/><span class="kw">then </span>
+<font color="Maroon" title="c3">gO</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="cgames_1.html#K10" title="CGAMES_1:func.10">the_Tree_of</a> <font color="Maroon" title="c1">g</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:69"><span class="lab"><font color="Green" title="E42">A1</font></span></a>, <a class="ref" href="cgames_1.html#T27" target="_self" onmouseover="rs('cgames_1/T27')" onmouseout="rh()">Th27</a></span>;<br/>
+<a NAME="E5:69"/><span class="kw">then </span>
+( <font color="Maroon" title="c3">gO</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">g</font> or <font color="Maroon" title="c3">gO</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="cgames_1.html#K11" title="CGAMES_1:func.11">the_proper_Tree_of</a> <font color="Maroon" title="c1">g</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zfmisc_1.html#T56" onmouseover="rs('zfmisc_1/T56')" onmouseout="rh()">ZFMISC_1:56</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E6:69"/>
+<font color="Maroon" title="c2">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="cgames_1.html#K11" title="CGAMES_1:func.11">the_proper_Tree_of</a> <font color="Maroon" title="c1">g</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:69"><span class="lab"><font color="Green" title="E42">A1</font></span></a>, <a class="ref" href="cgames_1.html#T16" target="_self" onmouseover="rs('cgames_1/T16')" onmouseout="rh()">Th16</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

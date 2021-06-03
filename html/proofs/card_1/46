@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">x</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a>  implies <font color="Maroon" title="c1">x</font> is  <a href="card_1.html#V1" title="CARD_1:attr.1">cardinal</a>  )</span><br/>
+
+<span class="kw">assume </span><span class="kw">that </span><br/><a NAME="E1:46"/><span class="lab"><font color="Green" title="E32">A1</font></span>: 
+<font color="Maroon" title="c1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a> 
+ <span class="kw">and </span><br/><a NAME="E2:46"/><span class="lab"><font color="Green" title="E33">A2</font></span>: 
+ for <font color="Olive" title="b1">B</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a>  st <font color="Maroon" title="c1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">B</font> holds <br/> ex <font color="Olive" title="b2">C</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a> st <br/>( <font color="Olive" title="b2">C</font>,<font color="Olive" title="b1">B</font> <a href="wellord2.html#R2" title="WELLORD2:pred.2">are_equipotent</a>  &amp;  not <font color="Olive" title="b1">B</font> <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a> <font color="Olive" title="b2">C</font> )
+ ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="card_1.html#D1" target="_self" onmouseover="rs('card_1/D1')" onmouseout="rh()">CARD_1:def 1</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">reconsider </span><font color="Maroon" title="c2">A</font> = <font color="Maroon" title="c1">x</font> as   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:46"><span class="lab"><font color="Green" title="E32">A1</font></span></a></span>;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c3">B</font> being   <a href="ordinal1.html#NM3" title="ORDINAL1:NM.3">Ordinal</a><span class="kw"> such that </span><br/><a NAME="E5:46"/><span class="lab"><font color="Green" title="E34">A3</font></span>: 
+<font color="Maroon" title="c3">B</font>,<font color="Maroon" title="c2">A</font> <a href="wellord2.html#R2" title="WELLORD2:pred.2">are_equipotent</a> 
+ <span class="kw">and </span><br/><a NAME="E6:46"/><span class="lab"><font color="Green" title="E35">A4</font></span>: 
+ not <font color="Maroon" title="c2">A</font> <a href="ordinal1.html#R1" title="ORDINAL1:pred.1">c=</a> <font color="Maroon" title="c3">B</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:46"><span class="lab"><font color="Green" title="E33">A2</font></span></a></span>;<br/>
+<a NAME="E7:46"/>
+<font color="Maroon" title="c3">B</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">A</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:46"><span class="lab"><font color="Green" title="E35">A4</font></span></a>, <a class="ref" href="ordinal1.html#T16" onmouseover="rs('ordinal1/T16')" onmouseout="rh()">ORDINAL1:16</a></span>;<br/>
+<a NAME="E8:46"/><span class="kw">then </span>
+<font color="Maroon" title="c3">B</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:46"><span class="lab"><font color="Green" title="E32">A1</font></span></a>, <a class="ref" href="ordinal1.html#T10" onmouseover="rs('ordinal1/T10')" onmouseout="rh()">ORDINAL1:10</a></span>;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c4">n</font> = <font color="Maroon" title="c2">A</font>, <font color="Maroon" title="c5">m</font> = <font color="Maroon" title="c3">B</font> as   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:46"><span class="lab"><font color="Green" title="E32">A1</font></span></a></span>;<br/>
+<a NAME="E10:46"/>
+<font color="Maroon" title="c4">n</font>,<font color="Maroon" title="c5">m</font> <a href="wellord2.html#R2" title="WELLORD2:pred.2">are_equipotent</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:46"><span class="lab"><font color="Green" title="E34">A3</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E11:46"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:46"><span class="lab"><font color="Green" title="E35">A4</font></span></a>, <a class="txt" href="card_1.html#E43"><span class="lab"><font color="Green" title="E30">Lm2</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

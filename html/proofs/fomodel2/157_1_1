@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">set </span><font color="Maroon" title="c2">E</font> =  <a href="fomodel2.html#K31" title="FOMODEL2:func.31">TheEqSymbOf</a> <font color="Maroon" title="c1">S</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c3">R</font> =  <a href="fomodel1.html#K4" title="FOMODEL1:func.4">RelSymbolsOf</a> <font color="Maroon" title="c1">S</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c4">O</font> =  <a href="fomodel1.html#K37" title="FOMODEL1:func.37">OwnSymbolsOf</a> <font color="Maroon" title="c1">S</font>;<br/>
+<a NAME="E1:157_1_1"/>
+ <a href="fomodel2.html#K31" title="FOMODEL2:func.31">TheEqSymbOf</a> <font color="Maroon" title="c1">S</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><span class="p2">(<span class="default"><a href="fomodel2.html#K31" title="FOMODEL2:func.31">TheEqSymbOf</a> <font color="Maroon" title="c1">S</font></span>)</span></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="tarski.html#D1" onmouseover="rs('tarski/D1')" onmouseout="rh()">TARSKI:def 1</a></span>;<br/>
+<a NAME="E2:157_1_1"/><span class="kw">then </span>
+ <a href="fomodel2.html#K31" title="FOMODEL2:func.31">TheEqSymbOf</a> <font color="Maroon" title="c1">S</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1">(<span class="default"><a href="fomodel1.html#K4" title="FOMODEL1:func.4">RelSymbolsOf</a> <font color="Maroon" title="c1">S</font></span>)</span> <a href="subset_1.html#K6" title="SUBSET_1:func.6">\</a> <span class="p1">(<span class="default"><a href="fomodel1.html#K37" title="FOMODEL1:func.37">OwnSymbolsOf</a> <font color="Maroon" title="c1">S</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="fomodel1.html#T1" onmouseover="rs('fomodel1/T1')" onmouseout="rh()">FOMODEL1:1</a></span>;<br/>
+<a NAME="E3:157_1_1"/><span class="kw">then </span>
+ not  <a href="fomodel2.html#K31" title="FOMODEL2:func.31">TheEqSymbOf</a> <font color="Maroon" title="c1">S</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="fomodel1.html#K37" title="FOMODEL1:func.37">OwnSymbolsOf</a> <font color="Maroon" title="c1">S</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_0.html#D5" onmouseover="rs('xboole_0/D5')" onmouseout="rh()">XBOOLE_0:def 5</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E4:157_1_1"/>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="fomodel1.html#NM1" title="FOMODEL1:NM.1">Element</a> of <font color="Maroon" title="c1">S</font>  st <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="fomodel2.html#K31" title="FOMODEL2:func.31">TheEqSymbOf</a> <font color="Maroon" title="c1">S</font> holds <br/> not <font color="Olive">b<sub>1</sub></font> is  <a href="fomodel1.html#V9" title="FOMODEL1:attr.9">own</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

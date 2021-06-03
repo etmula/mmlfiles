@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">FT</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="orders_2.html#L1" title="ORDERS_2:struct.1">RelStr</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Maroon" title="c1">FT</font> holds  <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><font color="Olive" title="b1">x</font></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> is  <a href="fin_topo.html#V4" title="FIN_TOPO:attr.4">connected</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c2">x</font> be   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Maroon" title="c1">FT</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><font color="Maroon" title="c2">x</font></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> is  <a href="fin_topo.html#V4" title="FIN_TOPO:attr.4">connected</a> </span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:33"/>
+ not <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><font color="Maroon" title="c2">x</font></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> is  <a href="fin_topo.html#V4" title="FIN_TOPO:attr.4">connected</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c3">P</font>, <font color="Maroon" title="c4">Q</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">FT</font><span class="kw"> such that </span><br/><a NAME="E3:33"/><span class="lab"><font color="Green" title="E14">A1</font></span>: 
+<span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><font color="Maroon" title="c2">x</font></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">P</font> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <font color="Maroon" title="c4">Q</font>
+ <span class="kw">and </span><br/><a NAME="E4:33"/><span class="lab"><font color="Green" title="E15">A2</font></span>: 
+<font color="Maroon" title="c3">P</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ <span class="kw">and </span><br/><a NAME="E5:33"/><span class="lab"><font color="Green" title="E16">A3</font></span>: 
+<font color="Maroon" title="c4">Q</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ <span class="kw">and </span><br/><a NAME="E6:33"/><span class="lab"><font color="Green" title="E17">A4</font></span>: 
+<font color="Maroon" title="c3">P</font> <a href="xboole_0.html#R1" title="XBOOLE_0:pred.1">misses</a> <font color="Maroon" title="c4">Q</font>
+ <span class="kw">and </span><br/><a NAME="E7:33"/>
+(  not <font color="Maroon" title="c3">P</font> <a href="fin_topo.html#K9" title="FIN_TOPO:func.9">^b</a>  <a href="xboole_0.html#NR5" title="XBOOLE_0:NR.5">meets</a> <font color="Maroon" title="c4">Q</font> or  not <font color="Maroon" title="c3">P</font> <a href="xboole_0.html#NR5" title="XBOOLE_0:NR.5">meets</a> <font color="Maroon" title="c4">Q</font> <a href="fin_topo.html#K9" title="FIN_TOPO:func.9">^b</a>  )
+ ;<br/>
+<a NAME="E8:33"/>
+<font color="Maroon" title="c3">P</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c4">Q</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:33"><span class="lab"><font color="Green" title="E15">A2</font></span></a>, <a class="txt" href="#E6:33"><span class="lab"><font color="Green" title="E17">A4</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E9:33"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:33"><span class="lab"><font color="Green" title="E14">A1</font></span></a>, <a class="txt" href="#E4:33"><span class="lab"><font color="Green" title="E15">A2</font></span></a>, <a class="txt" href="#E5:33"><span class="lab"><font color="Green" title="E16">A3</font></span></a>, <a class="ref" href="zfmisc_1.html#T38" onmouseover="rs('zfmisc_1/T38')" onmouseout="rh()">ZFMISC_1:38</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">x</font> be    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a> <a href="finseq_2.html#K3" title="FINSEQ_2:func.3">*</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies  <a href="binari_6.html#K7" title="BINARI_6:func.7">ExAbsval</a> <font color="Maroon" title="c1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  )</span><br/>
+
+<span class="kw">consider </span><font color="Maroon" title="c2">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>, <font color="Maroon" title="c3">y</font> being   <a href="finseq_2.html#NM3" title="FINSEQ_2:NM.3">Tuple</a> of <font color="Maroon" title="c2">n</font>, <a href="margrel1.html#K5" title="MARGREL1:func.5">BOOLEAN</a> <span class="kw"> such that </span><br/><a NAME="E2:40"/><span class="lab"><font color="Green" title="E36">y</font></span>: 
+( <font color="Maroon" title="c3">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">x</font> &amp;  <a href="binari_6.html#K7" title="BINARI_6:func.7">ExAbsval</a> <font color="Maroon" title="c1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="binarith.html#K6" title="BINARITH:func.6">Absval</a> <font color="Maroon" title="c3">y</font> )
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="binari_6.html#D6" target="_self" onmouseover="rs('binari_6/D6')" onmouseout="rh()">Def100</a></span>;<br/>
+<span class="kw">assume </span><a NAME="E3:40"/>
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="binari_6.html#K7" title="BINARI_6:func.7">ExAbsval</a> <font color="Maroon" title="c1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </span><br/>
+
+<a NAME="E4:40"/><span class="kw">then </span>
+<font color="Maroon" title="c2">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:40"><span class="lab"><font color="Green" title="E36">y</font></span></a></span>;<br/>
+<a NAME="E5:40"/><span class="kw">then </span><span class="lab"><font color="Green" title="E37">lb</font></span>: 
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <span class="p1">(<span class="default"><a href="binarith.html#K5" title="BINARITH:func.5">Binary</a> <font color="Maroon" title="c3">y</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ 
+;<br/>
+<span class="kw">thus </span> <a href="binari_6.html#K7" title="BINARI_6:func.7">ExAbsval</a> <font color="Maroon" title="c1">x</font> = 
+ <a href="binarith.html#K6" title="BINARITH:func.6">Absval</a> <font color="Maroon" title="c3">y</font>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:40"><span class="lab"><font color="Green" title="E36">y</font></span></a></span>
+<br/>.= 
+<a href="binop_2.html#K23" title="BINOP_2:func.23">addnat</a> <a href="finsop_1.html#K1" title="FINSOP_1:func.1">$$</a> <span class="p1">(<span class="default"><a href="binarith.html#K5" title="BINARITH:func.5">Binary</a> <font color="Maroon" title="c3">y</font></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="binarith.html#D4" onmouseover="rs('binarith/D4')" onmouseout="rh()">BINARITH:def 4</a></span>
+<br/>.= 
+ <a href="binop_1.html#K3" title="BINOP_1:func.3">the_unity_wrt</a> <a href="binop_2.html#K23" title="BINOP_2:func.23">addnat</a>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:40"><span class="lab"><font color="Green" title="E37">lb</font></span></a>, <a class="ref" href="finsop_1.html#D1" onmouseover="rs('finsop_1/D1')" onmouseout="rh()">FINSOP_1:def 1</a></span>
+<br/>.= 
+ <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="binop_2.html#T5" onmouseover="rs('binop_2/T5')" onmouseout="rh()">BINOP_2:5</a></span>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

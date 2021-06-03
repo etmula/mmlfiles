@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">G1</font>, <font color="Maroon" title="c2">G2</font> be   <a href="glib_000.html#NM2" title="GLIB_000:NM.2">_Graph</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">G1</font> <a href="glib_000.html#R5" title="GLIB_000:pred.5">==</a> <font color="Maroon" title="c2">G2</font> &amp; <font color="Maroon" title="c1">G1</font> is  <a href="glib_002.html#V2" title="GLIB_002:attr.2">acyclic</a>  implies <font color="Maroon" title="c2">G2</font> is  <a href="glib_002.html#V2" title="GLIB_002:attr.2">acyclic</a>  )</span><br/>
+
+
+
+<span class="kw">assume </span><span class="kw">that </span><br/><a NAME="E1:84"/><span class="lab"><font color="Green" title="E43">A1</font></span>: 
+<font color="Maroon" title="c1">G1</font> <a href="glib_000.html#R5" title="GLIB_000:pred.5">==</a> <font color="Maroon" title="c2">G2</font>
+ <span class="kw">and </span><br/><a NAME="E2:84"/><span class="lab"><font color="Green" title="E44">A2</font></span>: 
+<font color="Maroon" title="c1">G1</font> is  <a href="glib_002.html#V2" title="GLIB_002:attr.2">acyclic</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">G2</font> is  <a href="glib_002.html#V2" title="GLIB_002:attr.2">acyclic</a> </span><br/>
+
+<span class="kw">reconsider </span><font color="Maroon" title="c3">G19</font> = <font color="Maroon" title="c1">G1</font> as   <a href="glib_002.html#V2" title="GLIB_002:attr.2">acyclic</a>  <a href="glib_000.html#NM2" title="GLIB_000:NM.2">_Graph</a> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:84"><span class="lab"><font color="Green" title="E44">A2</font></span></a></span>;<br/>
+<a NAME="E4:84"/>
+<font color="Maroon" title="c2">G2</font> is    <a href="glib_000.html#M1" title="GLIB_000:mode.1">Subgraph</a> of <font color="Maroon" title="c3">G19</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:84"><span class="lab"><font color="Green" title="E43">A1</font></span></a>, <a class="ref" href="glib_000.html#T87" onmouseover="rs('glib_000/T87')" onmouseout="rh()">GLIB_000:87</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:84"/>
+<font color="Maroon" title="c2">G2</font> is  <a href="glib_002.html#V2" title="GLIB_002:attr.2">acyclic</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

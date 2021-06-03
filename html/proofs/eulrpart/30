@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">p1</font>, <font color="Olive" title="b2">p2</font> being   <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a>   <a href="eulrpart.html#M1" title="EULRPART:mode.1">a_partition</a> of <font color="Maroon" title="c1">n</font>  st  <a href="eulrpart.html#K1" title="EULRPART:func.1">Euler_transformation</a> <font color="Olive" title="b1">p1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="eulrpart.html#K1" title="EULRPART:func.1">Euler_transformation</a> <font color="Olive" title="b2">p2</font> holds <br/><font color="Olive" title="b1">p1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">p2</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">p1</font>, <font color="Maroon" title="c3">p2</font> be   <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a>   <a href="eulrpart.html#M1" title="EULRPART:mode.1">a_partition</a> of <font color="Maroon" title="c1">n</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="eulrpart.html#K1" title="EULRPART:func.1">Euler_transformation</a> <font color="Maroon" title="c2">p1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="eulrpart.html#K1" title="EULRPART:func.1">Euler_transformation</a> <font color="Maroon" title="c3">p2</font> implies <font color="Maroon" title="c2">p1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">p2</font> )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:30"/>
+ <a href="eulrpart.html#K1" title="EULRPART:func.1">Euler_transformation</a> <font color="Maroon" title="c2">p1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="eulrpart.html#K1" title="EULRPART:func.1">Euler_transformation</a> <font color="Maroon" title="c3">p2</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">p1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">p2</font></span><br/>
+
+<a NAME="E2:30"/><span class="kw">then </span><span class="lab"><font color="Green" title="E23">A1</font></span>: 
+ <a href="rvsum_1.html#K1" title="RVSUM_1:func.1">rng</a> <font color="Maroon" title="c2">p1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="rvsum_1.html#K1" title="RVSUM_1:func.1">rng</a> <font color="Maroon" title="c3">p2</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="eulrpart.html#E22"><span class="lab"><font color="Green" title="E21">Lm4</font></span></a></span>;<br/>
+<a NAME="E3:30"/><span class="kw">then </span>
+( <font color="Maroon" title="c2">p1</font> is    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>  &amp; <font color="Maroon" title="c3">p2</font> is    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>  )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_1.html#D4" onmouseover="rs('finseq_1/D4')" onmouseout="rh()">FINSEQ_1:def 4</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E4:30"/>
+<font color="Maroon" title="c2">p1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">p2</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="integra3.html#T6" onmouseover="rs('integra3/T6')" onmouseout="rh()">INTEGRA3:6</a>, <a class="txt" href="#E2:30"><span class="lab"><font color="Green" title="E23">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

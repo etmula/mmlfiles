@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be   <a href="glib_000.html#NM2" title="GLIB_000:NM.2">_Graph</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">W</font> being    <a href="glib_001.html#M3" title="GLIB_001:mode.3">Walk</a> of <font color="Maroon" title="c1">G</font> holds <br/> (  not <font color="Olive" title="b1">W</font> is  <a href="glib_001.html#V3" title="GLIB_001:attr.3">trivial</a>  iff  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">W</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> 1 )</span><br/><span class="kw">let </span><font color="Maroon" title="c2">W</font> be    <a href="glib_001.html#M3" title="GLIB_001:mode.3">Walk</a> of <font color="Maroon" title="c1">G</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c2">W</font> is  <a href="glib_001.html#V3" title="GLIB_001:attr.3">trivial</a>  iff  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c2">W</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> 1 )</span><br/>
+
+
+
+<a NAME="E1:88"/><span class="lab"><font color="Green" title="E80">A1</font></span>: 
+1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c2">W</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="abian.html#T12" onmouseover="rs('abian/T12')" onmouseout="rh()">ABIAN:12</a></span>;<br/>
+<span class="kw">thus </span><a NAME="E2:88"/>
+(  not <font color="Maroon" title="c2">W</font> is  <a href="glib_001.html#V3" title="GLIB_001:attr.3">trivial</a>  implies  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c2">W</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> 1 )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="glib_001.html#E91"><span class="lab"><font color="Green" title="E78">Lm54</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c2">W</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> 1 implies  not <font color="Maroon" title="c2">W</font> is  <a href="glib_001.html#V3" title="GLIB_001:attr.3">trivial</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E3:88"/>
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c2">W</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> 1
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not <font color="Maroon" title="c2">W</font> is  <a href="glib_001.html#V3" title="GLIB_001:attr.3">trivial</a> </span><br/>
+
+<a NAME="E4:88"/><span class="kw">then </span>
+1 <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c2">W</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:88"><span class="lab"><font color="Green" title="E80">A1</font></span></a>, <a class="ref" href="xxreal_0.html#T1" onmouseover="rs('xxreal_0/T1')" onmouseout="rh()">XXREAL_0:1</a></span>;<br/>
+<a NAME="E5:88"/><span class="kw">then </span>
+1 <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c2">W</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_1.html#T13" onmouseover="rs('nat_1/T13')" onmouseout="rh()">NAT_1:13</a></span>;<br/>
+<a NAME="E6:88"/><span class="kw">then </span>
+2 <a href="nat_1.html#K2" title="NAT_1:func.2">*</a> 1 <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c2">W</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xxreal_0.html#T1" onmouseover="rs('xxreal_0/T1')" onmouseout="rh()">XXREAL_0:1</a></span>;<br/>
+<a NAME="E7:88"/><span class="kw">then </span>
+<span class="p1">(<span class="default">2 <a href="nat_1.html#K2" title="NAT_1:func.2">*</a> 1</span>)</span> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c2">W</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_1.html#T13" onmouseover="rs('nat_1/T13')" onmouseout="rh()">NAT_1:13</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E8:88"/>
+ not <font color="Maroon" title="c2">W</font> is  <a href="glib_001.html#V3" title="GLIB_001:attr.3">trivial</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="glib_001.html#E91"><span class="lab"><font color="Green" title="E78">Lm54</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

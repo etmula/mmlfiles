@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">set </span><font color="Maroon" title="c5">G</font> =  <a href="glib_000.html#K12" title="GLIB_000:func.12">createGraph</a> (<font color="Maroon" title="c1">V</font>,<font color="Maroon" title="c2">E</font>,<font color="Maroon" title="c3">S</font>,<font color="Maroon" title="c4">T</font>);<br/>
+<a NAME="E1:26_1_1"/>
+ <a href="glib_000.html#K7" title="GLIB_000:func.7">the_Edges_of</a> <span class="p1">(<span class="default"><a href="glib_000.html#K12" title="GLIB_000:func.12">createGraph</a> (<font color="Maroon" title="c1">V</font>,<font color="Maroon" title="c2">E</font>,<font color="Maroon" title="c3">S</font>,<font color="Maroon" title="c4">T</font>)</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">E</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_4.html#T76" onmouseover="rs('finseq_4/T76')" onmouseout="rh()">FINSEQ_4:76</a></span>;<br/>
+<a NAME="E2:26_1_1"/><span class="kw">then </span>
+ for <font color="Olive" title="b1">e1</font>, <font color="Olive" title="b2">e2</font>, <font color="Olive" title="b3">v1</font>, <font color="Olive" title="b4">v2</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>   st <font color="Olive" title="b1">e1</font> <a href="glib_000.html#R1" title="GLIB_000:pred.1">Joins</a> <font color="Olive" title="b3">v1</font>,<font color="Olive" title="b4">v2</font>, <a href="glib_000.html#K12" title="GLIB_000:func.12">createGraph</a> (<font color="Maroon" title="c1">V</font>,<font color="Maroon" title="c2">E</font>,<font color="Maroon" title="c3">S</font>,<font color="Maroon" title="c4">T</font>) &amp; <font color="Olive" title="b2">e2</font> <a href="glib_000.html#R1" title="GLIB_000:pred.1">Joins</a> <font color="Olive" title="b3">v1</font>,<font color="Olive" title="b4">v2</font>, <a href="glib_000.html#K12" title="GLIB_000:func.12">createGraph</a> (<font color="Maroon" title="c1">V</font>,<font color="Maroon" title="c2">E</font>,<font color="Maroon" title="c3">S</font>,<font color="Maroon" title="c4">T</font>) holds <br/><font color="Olive" title="b1">e1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">e2</font>
+ 
+;<br/>
+<a NAME="E3:26_1_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E8">A1</font></span>: 
+ <a href="glib_000.html#K12" title="GLIB_000:func.12">createGraph</a> (<font color="Maroon" title="c1">V</font>,<font color="Maroon" title="c2">E</font>,<font color="Maroon" title="c3">S</font>,<font color="Maroon" title="c4">T</font>) is  <a href="glib_000.html#V5" title="GLIB_000:attr.5">non-multi</a> 
+ 
+;<br/>
+<a NAME="E4:26_1_1"/>
+ for <font color="Olive" title="b1">e</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>   holds <br/>(  not <font color="Olive" title="b1">e</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="glib_000.html#K7" title="GLIB_000:func.7">the_Edges_of</a> <span class="p1">(<span class="default"><a href="glib_000.html#K12" title="GLIB_000:func.12">createGraph</a> (<font color="Maroon" title="c1">V</font>,<font color="Maroon" title="c2">E</font>,<font color="Maroon" title="c3">S</font>,<font color="Maroon" title="c4">T</font>)</span>)</span> or  not <span class="p1">(<span class="default"><a href="glib_000.html#K10" title="GLIB_000:func.10">the_Source_of</a> <span class="p2">(<span class="default"><a href="glib_000.html#K12" title="GLIB_000:func.12">createGraph</a> (<font color="Maroon" title="c1">V</font>,<font color="Maroon" title="c2">E</font>,<font color="Maroon" title="c3">S</font>,<font color="Maroon" title="c4">T</font>)</span>)</span></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">e</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="glib_000.html#K11" title="GLIB_000:func.11">the_Target_of</a> <span class="p2">(<span class="default"><a href="glib_000.html#K12" title="GLIB_000:func.12">createGraph</a> (<font color="Maroon" title="c1">V</font>,<font color="Maroon" title="c2">E</font>,<font color="Maroon" title="c3">S</font>,<font color="Maroon" title="c4">T</font>)</span>)</span></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">e</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_4.html#T76" onmouseover="rs('finseq_4/T76')" onmouseout="rh()">FINSEQ_4:76</a></span>;<br/>
+<a NAME="E5:26_1_1"/><span class="kw">then </span>
+ <a href="glib_000.html#K12" title="GLIB_000:func.12">createGraph</a> (<font color="Maroon" title="c1">V</font>,<font color="Maroon" title="c2">E</font>,<font color="Maroon" title="c3">S</font>,<font color="Maroon" title="c4">T</font>) is  <a href="glib_000.html#V3" title="GLIB_000:attr.3">loopless</a> 
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E6:26_1_1"/>
+ <a href="glib_000.html#K12" title="GLIB_000:func.12">createGraph</a> (<font color="Maroon" title="c1">V</font>,<font color="Maroon" title="c2">E</font>,<font color="Maroon" title="c3">S</font>,<font color="Maroon" title="c4">T</font>) is  <a href="glib_000.html#V7" title="GLIB_000:attr.7">simple</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:26_1_1"><span class="lab"><font color="Green" title="E8">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

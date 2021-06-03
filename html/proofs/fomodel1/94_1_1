@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">set </span><font color="Maroon" title="c2">L</font> =  <a href="fomodel1.html#K16" title="FOMODEL1:func.16">LettersOf</a> <font color="Maroon" title="c1">S</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c3">P</font> =  <a href="fomodel1.html#K3" title="FOMODEL1:func.3">OpSymbolsOf</a> <font color="Maroon" title="c1">S</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c4">T</font> =  <a href="fomodel1.html#K5" title="FOMODEL1:func.5">TermSymbolsOf</a> <font color="Maroon" title="c1">S</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c5">f</font> =  the <a href="fomodel1.html#U1" title="FOMODEL1:sel.1">adicity</a> of <font color="Maroon" title="c1">S</font>;<br/>
+<span class="kw">let </span><font color="Maroon" title="c6">s</font> be   <a href="fomodel1.html#V8" title="FOMODEL1:attr.8">termal</a>  <a href="fomodel1.html#NM1" title="FOMODEL1:NM.1">Element</a> of <font color="Maroon" title="c1">S</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c6">s</font> is  <a href="fomodel1.html#V4" title="FOMODEL1:attr.4">literal</a>  implies <font color="Maroon" title="c6">s</font> is  <a href="fomodel1.html#V6" title="FOMODEL1:attr.6">operational</a>  )</span><br/>
+
+<a NAME="E1:94_1_1"/><span class="lab"><font color="Green" title="E31">A1</font></span>: 
+<font color="Maroon" title="c6">s</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="fomodel1.html#K5" title="FOMODEL1:func.5">TermSymbolsOf</a> <font color="Maroon" title="c1">S</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="fomodel1.html#D18" target="_self" onmouseover="rs('fomodel1/D18')" onmouseout="rh()">Def18</a></span>;<br/>
+<span class="kw">assume </span><a NAME="E2:94_1_1"/>
+ not <font color="Maroon" title="c6">s</font> is  <a href="fomodel1.html#V4" title="FOMODEL1:attr.4">literal</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c6">s</font> is  <a href="fomodel1.html#V6" title="FOMODEL1:attr.6">operational</a> </span><br/>
+
+<a NAME="E3:94_1_1"/><span class="kw">then </span>
+ not <font color="Maroon" title="c6">s</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="fomodel1.html#K16" title="FOMODEL1:func.16">LettersOf</a> <font color="Maroon" title="c1">S</font>
+ 
+;<br/>
+<a NAME="E4:94_1_1"/><span class="kw">then </span>
+( <font color="Maroon" title="c6">s</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1">(<span class="default"><a href="fomodel1.html#K5" title="FOMODEL1:func.5">TermSymbolsOf</a> <font color="Maroon" title="c1">S</font></span>)</span> <a href="subset_1.html#K6" title="SUBSET_1:func.6">\</a> <span class="p1">(<span class="default"><a href="fomodel1.html#K16" title="FOMODEL1:func.16">LettersOf</a> <font color="Maroon" title="c1">S</font></span>)</span> &amp; <span class="p1">(<span class="default"><a href="fomodel1.html#K5" title="FOMODEL1:func.5">TermSymbolsOf</a> <font color="Maroon" title="c1">S</font></span>)</span> <a href="subset_1.html#K6" title="SUBSET_1:func.6">\</a> <span class="p1">(<span class="default"><a href="fomodel1.html#K16" title="FOMODEL1:func.16">LettersOf</a> <font color="Maroon" title="c1">S</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="fomodel1.html#K3" title="FOMODEL1:func.3">OpSymbolsOf</a> <font color="Maroon" title="c1">S</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="funct_1.html#T69" onmouseover="rs('funct_1/T69')" onmouseout="rh()">FUNCT_1:69</a>, <a class="txt" href="#E1:94_1_1"><span class="lab"><font color="Green" title="E31">A1</font></span></a>, <a class="ref" href="xboole_0.html#D5" onmouseover="rs('xboole_0/D5')" onmouseout="rh()">XBOOLE_0:def 5</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:94_1_1"/>
+<font color="Maroon" title="c6">s</font> is  <a href="fomodel1.html#V6" title="FOMODEL1:attr.6">operational</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

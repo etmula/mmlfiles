@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">Al</font> be    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">T</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font></span>)</span> holds <br/> ( <font color="Olive" title="b1">T</font> is  <a href="cqc_the1.html#V1" title="CQC_THE1:attr.1">being_a_theory</a>  iff  <a href="cqc_the1.html#K1" title="CQC_THE1:func.1">Cn</a> <font color="Olive" title="b1">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">T</font> )</span><br/><span class="kw">let </span><font color="Maroon" title="c2">T</font> be   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font></span>)</span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">T</font> is  <a href="cqc_the1.html#V1" title="CQC_THE1:attr.1">being_a_theory</a>  iff  <a href="cqc_the1.html#K1" title="CQC_THE1:func.1">Cn</a> <font color="Maroon" title="c2">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">T</font> )</span><br/>
+
+
+
+<span class="kw">thus </span><a NAME="E1:20"/>
+( <font color="Maroon" title="c2">T</font> is  <a href="cqc_the1.html#V1" title="CQC_THE1:attr.1">being_a_theory</a>  implies  <a href="cqc_the1.html#K1" title="CQC_THE1:func.1">Cn</a> <font color="Maroon" title="c2">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">T</font> )
+  <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="cqc_the1.html#K1" title="CQC_THE1:func.1">Cn</a> <font color="Maroon" title="c2">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">T</font> implies <font color="Maroon" title="c2">T</font> is  <a href="cqc_the1.html#V1" title="CQC_THE1:attr.1">being_a_theory</a>  )</span><div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="20_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><a NAME="E1:20_1"/><span class="lab"><font color="Green" title="E17">A1</font></span>: 
+<font color="Maroon" title="c2">T</font> is  <a href="cqc_the1.html#V1" title="CQC_THE1:attr.1">being_a_theory</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="cqc_the1.html#K1" title="CQC_THE1:func.1">Cn</a> <font color="Maroon" title="c2">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">T</font></span><br/>
+
+<a NAME="E2:20_1"/><span class="lab"><font color="Green" title="E18">A2</font></span>: 
+<font color="Maroon" title="c2">T</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="cqc_the1.html#K1" title="CQC_THE1:func.1">Cn</a> <font color="Maroon" title="c2">T</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="cqc_the1.html#T17" target="_self" onmouseover="rs('cqc_the1/T17')" onmouseout="rh()">Th13</a></span>;<br/>
+<a NAME="E3:20_1"/>
+ <a href="cqc_the1.html#K1" title="CQC_THE1:func.1">Cn</a> <font color="Maroon" title="c2">T</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c2">T</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:20_1"><span class="lab"><font color="Green" title="E17">A1</font></span></a>, <a class="ref" href="cqc_the1.html#D2" target="_self" onmouseover="rs('cqc_the1/D2')" onmouseout="rh()">Def2</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E4:20_1"/>
+ <a href="cqc_the1.html#K1" title="CQC_THE1:func.1">Cn</a> <font color="Maroon" title="c2">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">T</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:20_1"><span class="lab"><font color="Green" title="E18">A2</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+
+<span class="kw">thus </span><a NAME="E2:20"/>
+(  <a href="cqc_the1.html#K1" title="CQC_THE1:func.1">Cn</a> <font color="Maroon" title="c2">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">T</font> implies <font color="Maroon" title="c2">T</font> is  <a href="cqc_the1.html#V1" title="CQC_THE1:attr.1">being_a_theory</a>  )
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="cqc_the1.html#T15" target="_self" onmouseover="rs('cqc_the1/T15')" onmouseout="rh()">Th11</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

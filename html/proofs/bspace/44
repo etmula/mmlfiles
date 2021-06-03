@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">X</font> be   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="vectsp_7.html#K1" title="VECTSP_7:func.1">Lin</a> <span class="p1">(<span class="default"><a href="bspace.html#K9" title="BSPACE:func.9">singletons</a> <font color="Maroon" title="c1">X</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="bspace.html#K7" title="BSPACE:func.7">bspace</a> <font color="Maroon" title="c1">X</font></span><br/>
+
+<span class="kw">set </span><font color="Maroon" title="c2">V</font> =  <a href="bspace.html#K7" title="BSPACE:func.7">bspace</a> <font color="Maroon" title="c1">X</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c3">S</font> =  <a href="bspace.html#K9" title="BSPACE:func.9">singletons</a> <font color="Maroon" title="c1">X</font>;<br/>
+<a NAME="E1:44"/>
+ for <font color="Olive" title="b1">v</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <span class="p1">(<span class="default"><a href="bspace.html#K7" title="BSPACE:func.7">bspace</a> <font color="Maroon" title="c1">X</font></span>)</span> holds  <font color="Olive" title="b1">v</font> <a href="struct_0.html#R1" title="STRUCT_0:pred.1">in</a>  <a href="vectsp_7.html#K1" title="VECTSP_7:func.1">Lin</a> <span class="p1">(<span class="default"><a href="bspace.html#K9" title="BSPACE:func.9">singletons</a> <font color="Maroon" title="c1">X</font></span>)</span>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="44_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">v</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <span class="p1">(<span class="default"><a href="bspace.html#K7" title="BSPACE:func.7">bspace</a> <font color="Maroon" title="c1">X</font></span>)</span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c4">v</font> <a href="struct_0.html#R1" title="STRUCT_0:pred.1">in</a>  <a href="vectsp_7.html#K1" title="VECTSP_7:func.1">Lin</a> <span class="p1">(<span class="default"><a href="bspace.html#K9" title="BSPACE:func.9">singletons</a> <font color="Maroon" title="c1">X</font></span>)</span></span><br/>
+
+<span class="kw">reconsider </span><font color="Maroon" title="c5">f</font> = <font color="Maroon" title="c4">v</font> as   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <font color="Maroon" title="c1">X</font> ;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c6">A</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <span class="kw"> such that </span><br/><a NAME="E3:44_1"/><span class="lab"><font color="Green" title="E33">A1</font></span>: 
+<font color="Maroon" title="c6">A</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c1">X</font>
+ <span class="kw">and </span><br/><a NAME="E4:44_1"/><span class="lab"><font color="Green" title="E34">A2</font></span>: 
+<font color="Maroon" title="c5">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c6">A</font>
+ ;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c7">A</font> = <font color="Maroon" title="c6">A</font> as   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <font color="Maroon" title="c1">X</font> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:44_1"><span class="lab"><font color="Green" title="E33">A1</font></span></a></span>;<br/>
+<a NAME="E6:44_1"/>
+ ex <font color="Olive" title="b1">l</font> being    <a href="vectsp_6.html#M2" title="VECTSP_6:mode.2">Linear_Combination</a> of  <a href="bspace.html#K9" title="BSPACE:func.9">singletons</a> <font color="Maroon" title="c1">X</font> st  <a href="vectsp_6.html#K4" title="VECTSP_6:func.4">Sum</a> <font color="Olive" title="b1">l</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c7">A</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="bspace.html#T38" target="_self" onmouseover="rs('bspace/T38')" onmouseout="rh()">Th38</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:44_1"/>
+<font color="Maroon" title="c4">v</font> <a href="struct_0.html#R1" title="STRUCT_0:pred.1">in</a>  <a href="vectsp_7.html#K1" title="VECTSP_7:func.1">Lin</a> <span class="p1">(<span class="default"><a href="bspace.html#K9" title="BSPACE:func.9">singletons</a> <font color="Maroon" title="c1">X</font></span>)</span>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:44_1"><span class="lab"><font color="Green" title="E34">A2</font></span></a>, <a class="ref" href="vectsp_7.html#T7" onmouseover="rs('vectsp_7/T7')" onmouseout="rh()">VECTSP_7:7</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E2:44"/>
+ <a href="vectsp_7.html#K1" title="VECTSP_7:func.1">Lin</a> <span class="p1">(<span class="default"><a href="bspace.html#K9" title="BSPACE:func.9">singletons</a> <font color="Maroon" title="c1">X</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="bspace.html#K7" title="BSPACE:func.7">bspace</a> <font color="Maroon" title="c1">X</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="vectsp_4.html#T32" onmouseover="rs('vectsp_4/T32')" onmouseout="rh()">VECTSP_4:32</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

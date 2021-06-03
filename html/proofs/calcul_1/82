@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">Al</font> be    <a href="qc_lang1.html#M1" title="QC_LANG1:mode.1">QC-alphabet</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">f</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font>  holds <br/> not  for <font color="Olive" title="b2">x</font> being   <a href="qc_lang1.html#NM5" title="QC_LANG1:NM.5">bound_QC-variable</a> of <font color="Maroon" title="c1">Al</font> holds  <font color="Olive" title="b2">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="calcul_1.html#K3" title="CALCUL_1:func.3">still_not-bound_in</a> <font color="Olive" title="b1">f</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">f</font> be    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="cqc_lang.html#K3" title="CQC_LANG:func.3">CQC-WFF</a> <font color="Maroon" title="c1">Al</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not  for <font color="Olive" title="b1">x</font> being   <a href="qc_lang1.html#NM5" title="QC_LANG1:NM.5">bound_QC-variable</a> of <font color="Maroon" title="c1">Al</font> holds  <font color="Olive" title="b1">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="calcul_1.html#K3" title="CALCUL_1:func.3">still_not-bound_in</a> <font color="Maroon" title="c2">f</font></span><br/>
+
+
+
+<a NAME="E1:82"/>
+ <a href="calcul_1.html#K3" title="CALCUL_1:func.3">still_not-bound_in</a> <font color="Maroon" title="c2">f</font> is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="calcul_1.html#T63" target="_self" onmouseover="rs('calcul_1/T63')" onmouseout="rh()">Th62</a></span>;<br/>
+<a NAME="E2:82"/><span class="kw">then </span>
+ <a href="calcul_1.html#K3" title="CALCUL_1:func.3">still_not-bound_in</a> <font color="Maroon" title="c2">f</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="qc_lang1.html#K3" title="QC_LANG1:func.3">bound_QC-variables</a> <font color="Maroon" title="c1">Al</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="calcul_1.html#T64" target="_self" onmouseover="rs('calcul_1/T64')" onmouseout="rh()">Th63</a></span>;<br/>
+<a NAME="E3:82"/><span class="kw">then </span>
+ not  for <font color="Olive" title="b1">b</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br/> ( <font color="Olive" title="b1">b</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="calcul_1.html#K3" title="CALCUL_1:func.3">still_not-bound_in</a> <font color="Maroon" title="c2">f</font> iff <font color="Olive" title="b1">b</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="qc_lang1.html#K3" title="QC_LANG1:func.3">bound_QC-variables</a> <font color="Maroon" title="c1">Al</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="tarski.html#T2" onmouseover="rs('tarski/T2')" onmouseout="rh()">TARSKI:2</a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c3">b</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E5:82"/><span class="lab"><font color="Green" title="E66">A1</font></span>: 
+ not <font color="Maroon" title="c3">b</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="calcul_1.html#K3" title="CALCUL_1:func.3">still_not-bound_in</a> <font color="Maroon" title="c2">f</font>
+ <span class="kw">and </span><br/><a NAME="E6:82"/><span class="lab"><font color="Green" title="E67">A2</font></span>: 
+<font color="Maroon" title="c3">b</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="qc_lang1.html#K3" title="QC_LANG1:func.3">bound_QC-variables</a> <font color="Maroon" title="c1">Al</font>
+ ;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c4">x</font> = <font color="Maroon" title="c3">b</font> as   <a href="qc_lang1.html#NM5" title="QC_LANG1:NM.5">bound_QC-variable</a> of <font color="Maroon" title="c1">Al</font> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:82"><span class="lab"><font color="Green" title="E67">A2</font></span></a></span>;<br/>
+<span class="kw">take </span>
+<font color="Maroon" title="c4">x</font>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not <font color="Maroon" title="c4">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="calcul_1.html#K3" title="CALCUL_1:func.3">still_not-bound_in</a> <font color="Maroon" title="c2">f</font></span><br/>
+
+<span class="kw">thus </span><a NAME="E8:82"/>
+ not <font color="Maroon" title="c4">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="calcul_1.html#K3" title="CALCUL_1:func.3">still_not-bound_in</a> <font color="Maroon" title="c2">f</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:82"><span class="lab"><font color="Green" title="E66">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

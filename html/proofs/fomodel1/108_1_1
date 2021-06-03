@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">set </span><font color="Maroon" title="c3">w</font> = <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><font color="Maroon" title="c2">l</font></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c4">L</font> =  <a href="fomodel1.html#K16" title="FOMODEL1:func.16">LettersOf</a> <font color="Maroon" title="c1">S</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c5">AT</font> =  <a href="fomodel1.html#K26" title="FOMODEL1:func.26">AtomicTermsOf</a> <font color="Maroon" title="c1">S</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c6">T</font> = <font color="Maroon" title="c1">S</font> <a href="fomodel1.html#K28" title="FOMODEL1:func.28">-termsOfMaxDepth</a> ;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c7">ll</font> = <font color="Maroon" title="c2">l</font> as    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="fomodel1.html#K16" title="FOMODEL1:func.16">LettersOf</a> <font color="Maroon" title="c1">S</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="fomodel1.html#D14" target="_self" onmouseover="rs('fomodel1/D14')" onmouseout="rh()">Def14</a></span>;<br/>
+<a NAME="E2:108_1_1"/>
+<span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><font color="Maroon" title="c2">l</font></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><font color="Maroon" title="c7">ll</font></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span>
+ 
+;<br/>
+<a NAME="E3:108_1_1"/><span class="kw">then </span>
+<span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><font color="Maroon" title="c2">l</font></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="fomodel1.html#K26" title="FOMODEL1:func.26">AtomicTermsOf</a> <font color="Maroon" title="c1">S</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_2.html#T98" onmouseover="rs('finseq_2/T98')" onmouseout="rh()">FINSEQ_2:98</a></span>;<br/>
+<a NAME="E4:108_1_1"/><span class="kw">then </span>
+<span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><font color="Maroon" title="c2">l</font></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">S</font> <a href="fomodel1.html#K28" title="FOMODEL1:func.28">-termsOfMaxDepth</a></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="fomodel1.html#D30" target="_self" onmouseover="rs('fomodel1/D30')" onmouseout="rh()">Def30</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:108_1_1"/>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="fomodel1.html#NM3" title="FOMODEL1:NM.3">string</a> of <font color="Maroon" title="c1">S</font>  st <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><font color="Maroon" title="c2">l</font></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> holds <br/><font color="Olive">b<sub>1</sub></font> is  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="fomodel1.html#V14" title="FOMODEL1:attr.14">-termal</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

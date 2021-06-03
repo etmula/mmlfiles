@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">set </span><font color="Maroon" title="c6">d</font> =  <a href="fomodel2.html#K29" title="FOMODEL2:func.29">Depth</a> <font color="Maroon" title="c5">phi</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c7">TT</font> =  <a href="fomodel1.html#K35" title="FOMODEL1:func.35">AllTermsOf</a> <font color="Maroon" title="c2">S</font>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c8">tt</font> = <font color="Maroon" title="c4">t</font> as    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="fomodel1.html#K35" title="FOMODEL1:func.35">AllTermsOf</a> <font color="Maroon" title="c2">S</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="fomodel1.html#D32" onmouseover="rs('fomodel1/D32')" onmouseout="rh()">FOMODEL1:def 32</a></span>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c9">psi</font> = (<font color="Maroon" title="c3">l</font>,<font color="Maroon" title="c8">tt</font>) <a href="fomodel3.html#K37" title="FOMODEL3:func.37">SubstIn</a> <font color="Maroon" title="c5">phi</font>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c10">k</font> = <font color="Maroon" title="c1">m</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p1">(<span class="default"><a href="fomodel2.html#K29" title="FOMODEL2:func.29">Depth</a> <font color="Maroon" title="c5">phi</font></span>)</span> as   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> ;<br/>
+<a NAME="E3:150_1_1"/>
+ <a href="fomodel2.html#K29" title="FOMODEL2:func.29">Depth</a> <span class="p1">(<span class="default">(<font color="Maroon" title="c3">l</font>,<font color="Maroon" title="c8">tt</font>) <a href="fomodel3.html#K37" title="FOMODEL3:func.37">SubstIn</a> <font color="Maroon" title="c5">phi</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="fomodel2.html#K29" title="FOMODEL2:func.29">Depth</a> <font color="Maroon" title="c5">phi</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="fomodel3.html#T10" target="_self" onmouseover="rs('fomodel3/T10')" onmouseout="rh()">Th10</a></span>;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c11">psii</font> = (<font color="Maroon" title="c3">l</font>,<font color="Maroon" title="c8">tt</font>) <a href="fomodel3.html#K37" title="FOMODEL3:func.37">SubstIn</a> <font color="Maroon" title="c5">phi</font> as   <a href="fomodel2.html#K29" title="FOMODEL2:func.29">Depth</a> <font color="Maroon" title="c5">phi</font> <a href="fomodel2.html#V3" title="FOMODEL2:attr.3">-wff</a>  <a href="fomodel1.html#NM3" title="FOMODEL1:NM.3">string</a> of <font color="Maroon" title="c2">S</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="fomodel2.html#D31" onmouseover="rs('fomodel2/D31')" onmouseout="rh()">FOMODEL2:def 31</a></span>;<br/>
+<a NAME="E5:150_1_1"/>
+<font color="Maroon" title="c11">psii</font> is <span class="p1">(<span class="default"><a href="fomodel2.html#K29" title="FOMODEL2:func.29">Depth</a> <font color="Maroon" title="c5">phi</font></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Maroon" title="c10">k</font></span>)</span> <a href="fomodel2.html#V3" title="FOMODEL2:attr.3">-wff</a> 
+ 
+;<br/>
+<a NAME="E6:150_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c11">psii</font> is <span class="p1">(<span class="default"><a href="fomodel2.html#K29" title="FOMODEL2:func.29">Depth</a> <font color="Maroon" title="c5">phi</font></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Maroon" title="c10">k</font> <a href="fomodel2.html#V3" title="FOMODEL2:attr.3">-wff</a> 
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E7:150_1_1"/>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="fomodel1.html#NM3" title="FOMODEL1:NM.3">string</a> of <font color="Maroon" title="c2">S</font>  st <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> (<font color="Maroon" title="c3">l</font>,<font color="Maroon" title="c4">t</font>) <a href="fomodel3.html#K37" title="FOMODEL3:func.37">SubstIn</a> <font color="Maroon" title="c5">phi</font> holds <br/><font color="Olive">b<sub>1</sub></font> is <font color="Maroon" title="c1">m</font> <a href="fomodel2.html#V3" title="FOMODEL2:attr.3">-wff</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

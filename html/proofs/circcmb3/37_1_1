@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c2">A</font> be   <a href="msualg_1.html#V4" title="MSUALG_1:attr.4">non-empty</a>  <a href="circuit1.html#NM1" title="CIRCUIT1:NM.1">Circuit</a> of <font color="Maroon" title="c1">S</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">A</font> is  <a href="circcmb3.html#V5" title="CIRCCMB3:attr.5">one-gate</a>  implies <font color="Maroon" title="c2">A</font> is  <a href="circcmb3.html#V3" title="CIRCCMB3:attr.3">with_stabilization-limit</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:37_1_1"/><span class="lab"><font color="Green" title="E19">A1</font></span>: 
+<font color="Maroon" title="c2">A</font> is  <a href="circcmb3.html#V5" title="CIRCCMB3:attr.5">one-gate</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">A</font> is  <a href="circcmb3.html#V3" title="CIRCCMB3:attr.3">with_stabilization-limit</a> </span><br/>
+
+<a NAME="E2:37_1_1"/><span class="kw">then </span>
+ ex <font color="Olive" title="b1">X</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  ex <font color="Olive" title="b2">n</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  ex <font color="Olive" title="b3">p</font> being   <a href="circcomb.html#NM2" title="CIRCCOMB:NM.2">FinSeqLen</a> of <font color="Olive" title="b2">n</font> ex <font color="Olive" title="b4">f</font> being   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <span class="p1">(<span class="default"><font color="Olive" title="b2">n</font> <a href="finseq_2.html#K4" title="FINSEQ_2:func.4">-tuples_on</a> <font color="Olive" title="b1">X</font></span>)</span>,<font color="Olive" title="b1">X</font> st <br/>( <font color="Maroon" title="c1">S</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="circcomb.html#K5" title="CIRCCOMB:func.5">1GateCircStr</a> (<font color="Olive" title="b3">p</font>,<font color="Olive" title="b4">f</font>) &amp; <font color="Maroon" title="c2">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="circcomb.html#K7" title="CIRCCOMB:func.7">1GateCircuit</a> (<font color="Olive" title="b3">p</font>,<font color="Olive" title="b4">f</font>) )
+ 
+;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c3">S1</font> = <font color="Maroon" title="c1">S</font> as   <a href="circcmb3.html#V4" title="CIRCCMB3:attr.4">one-gate</a>   <a href="msualg_1.html#L1" title="MSUALG_1:struct.1">ManySortedSign</a>  ;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c4">A1</font> = <font color="Maroon" title="c2">A</font> as   <a href="circcmb3.html#V5" title="CIRCCMB3:attr.5">one-gate</a>  <a href="circuit1.html#NM1" title="CIRCUIT1:NM.1">Circuit</a> of <font color="Maroon" title="c3">S1</font> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:37_1_1"><span class="lab"><font color="Green" title="E19">A1</font></span></a></span>;<br/>
+<span class="kw">take </span>
+1
+; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="circcmb3.html#D3" target="_self" onmouseover="rs('circcmb3/D3')" onmouseout="rh()">CIRCCMB3:def 3</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">s</font> being   <a href="circuit1.html#NM3" title="CIRCUIT1:NM.3">State</a> of <font color="Maroon" title="c2">A</font> holds   <a href="facirc_1.html#K5" title="FACIRC_1:func.5">Following</a> (<font color="Olive" title="b1">s</font>,1) is  <a href="circuit2.html#V1" title="CIRCUIT2:attr.1">stable</a> </span><br/>
+
+<span class="kw">let </span><font color="Maroon" title="c5">s</font> be   <a href="circuit1.html#NM3" title="CIRCUIT1:NM.3">State</a> of <font color="Maroon" title="c2">A</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="facirc_1.html#K5" title="FACIRC_1:func.5">Following</a> (<font color="Maroon" title="c5">s</font>,1) is  <a href="circuit2.html#V1" title="CIRCUIT2:attr.1">stable</a> </span><br/>
+
+<span class="kw">reconsider </span><font color="Maroon" title="c6">s1</font> = <font color="Maroon" title="c5">s</font> as   <a href="circuit1.html#NM3" title="CIRCUIT1:NM.3">State</a> of <font color="Maroon" title="c4">A1</font> ;<br/>
+<a NAME="E6:37_1_1"/>
+ <a href="circuit2.html#K6" title="CIRCUIT2:func.6">Following</a> <font color="Maroon" title="c6">s1</font> is  <a href="circuit2.html#V1" title="CIRCUIT2:attr.1">stable</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="circcmb3.html#T19" target="_self" onmouseover="rs('circcmb3/T19')" onmouseout="rh()">Th19</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:37_1_1"/>
+ <a href="facirc_1.html#K5" title="FACIRC_1:func.5">Following</a> (<font color="Maroon" title="c5">s</font>,1) is  <a href="circuit2.html#V1" title="CIRCUIT2:attr.1">stable</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="facirc_1.html#T14" onmouseover="rs('facirc_1/T14')" onmouseout="rh()">FACIRC_1:14</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

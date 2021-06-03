@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<a NAME="E1:37_1_1"/>
+ <a href="compos_1.html#K2" title="COMPOS_1:func.2">halt</a> <font color="Maroon" title="c2">S</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c3">P</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="compos_1.html#D11" onmouseover="rs('compos_1/D11')" onmouseout="rh()">COMPOS_1:def 11</a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c4">i</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E3:37_1_1"/><span class="lab"><font color="Green" title="E15">A1</font></span>: 
+<font color="Maroon" title="c4">i</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c3">P</font>
+ <span class="kw">and </span><br/><a NAME="E4:37_1_1"/><span class="lab"><font color="Green" title="E16">A2</font></span>: 
+<font color="Maroon" title="c3">P</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="compos_1.html#K2" title="COMPOS_1:func.2">halt</a> <font color="Maroon" title="c2">S</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="funct_1.html#D3" onmouseover="rs('funct_1/D3')" onmouseout="rh()">FUNCT_1:def 3</a></span>;<br/>
+<a NAME="E5:37_1_1"/>
+ <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c3">P</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="relat_1.html#D18" onmouseover="rs('relat_1/D18')" onmouseout="rh()">RELAT_1:def 18</a></span>;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c5">i</font> = <font color="Maroon" title="c4">i</font> as   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:37_1_1"><span class="lab"><font color="Green" title="E15">A1</font></span></a></span>;<br/>
+<span class="kw">take </span><font color="Maroon" title="c6">p</font> =  <a href="memstr_0.html#K7" title="MEMSTR_0:func.7">Start-At</a> (<font color="Maroon" title="c5">i</font>,<font color="Maroon" title="c2">S</font>); <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c6">p</font> is <font color="Maroon" title="c3">P</font> <a href="extpro_1.html#V4" title="EXTPRO_1:attr.4">-autonomic</a>  &amp; <font color="Maroon" title="c6">p</font> is <font color="Maroon" title="c3">P</font> <a href="extpro_1.html#V5" title="EXTPRO_1:attr.5">-halted</a>  &amp;  not <font color="Maroon" title="c6">p</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  )</span><br/>
+
+<a NAME="E7:37_1_1"/>
+<font color="Maroon" title="c5">i</font> <a href="funcop_1.html#K17" title="FUNCOP_1:func.17">.--&gt;</a> <span class="p1">(<span class="default"><a href="compos_1.html#K2" title="COMPOS_1:func.2">halt</a> <font color="Maroon" title="c2">S</font></span>)</span> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c3">P</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:37_1_1"><span class="lab"><font color="Green" title="E15">A1</font></span></a>, <a class="txt" href="#E4:37_1_1"><span class="lab"><font color="Green" title="E16">A2</font></span></a>, <a class="ref" href="funct_4.html#T85" onmouseover="rs('funct_4/T85')" onmouseout="rh()">FUNCT_4:85</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E8:37_1_1"/>
+( <font color="Maroon" title="c6">p</font> is <font color="Maroon" title="c3">P</font> <a href="extpro_1.html#V4" title="EXTPRO_1:attr.4">-autonomic</a>  &amp; <font color="Maroon" title="c6">p</font> is <font color="Maroon" title="c3">P</font> <a href="extpro_1.html#V5" title="EXTPRO_1:attr.5">-halted</a>  &amp;  not <font color="Maroon" title="c6">p</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  )
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="extpro_1.html#T10" target="_self" onmouseover="rs('extpro_1/T10')" onmouseout="rh()">Th10</a>, <a class="ref" href="extpro_1.html#T12" target="_self" onmouseover="rs('extpro_1/T12')" onmouseout="rh()">Th12</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

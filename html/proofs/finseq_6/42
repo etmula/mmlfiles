@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">x</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">f</font> being   <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a>  st <font color="Olive" title="b1">f</font> <a href="finseq_4.html#R2" title="FINSEQ_4:pred.2">just_once_values</a> <font color="Maroon" title="c1">x</font> holds <br/> <a href="finseq_5.html#K3" title="FINSEQ_5:func.3">Rev</a> <font color="Olive" title="b1">f</font> <a href="finseq_4.html#R2" title="FINSEQ_4:pred.2">just_once_values</a> <font color="Maroon" title="c1">x</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">f</font> be   <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">f</font> <a href="finseq_4.html#R2" title="FINSEQ_4:pred.2">just_once_values</a> <font color="Maroon" title="c1">x</font> implies  <a href="finseq_5.html#K3" title="FINSEQ_5:func.3">Rev</a> <font color="Maroon" title="c2">f</font> <a href="finseq_4.html#R2" title="FINSEQ_4:pred.2">just_once_values</a> <font color="Maroon" title="c1">x</font> )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:42"/><span class="lab"><font color="Green" title="E36">A1</font></span>: 
+<font color="Maroon" title="c2">f</font> <a href="finseq_4.html#R2" title="FINSEQ_4:pred.2">just_once_values</a> <font color="Maroon" title="c1">x</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="finseq_5.html#K3" title="FINSEQ_5:func.3">Rev</a> <font color="Maroon" title="c2">f</font> <a href="finseq_4.html#R2" title="FINSEQ_4:pred.2">just_once_values</a> <font color="Maroon" title="c1">x</font></span><br/>
+
+<a NAME="E2:42"/><span class="kw">then </span><span class="lab"><font color="Green" title="E37">A2</font></span>: 
+<font color="Maroon" title="c1">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c2">f</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_4.html#T5" onmouseover="rs('finseq_4/T5')" onmouseout="rh()">FINSEQ_4:5</a></span>;<br/>
+<a NAME="E3:42"/><span class="kw">then </span>
+ not <font color="Maroon" title="c1">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><font color="Maroon" title="c2">f</font> <a href="finseq_4.html#K5" title="FINSEQ_4:func.5">-|</a> <font color="Maroon" title="c1">x</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_4.html#T37" onmouseover="rs('finseq_4/T37')" onmouseout="rh()">FINSEQ_4:37</a></span>;<br/>
+<a NAME="E4:42"/><span class="kw">then </span>
+ not <font color="Maroon" title="c1">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><a href="finseq_5.html#K3" title="FINSEQ_5:func.3">Rev</a> <span class="p2">(<span class="default"><font color="Maroon" title="c2">f</font> <a href="finseq_4.html#K5" title="FINSEQ_4:func.5">-|</a> <font color="Maroon" title="c1">x</font></span>)</span></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_5.html#T57" onmouseover="rs('finseq_5/T57')" onmouseout="rh()">FINSEQ_5:57</a></span>;<br/>
+<a NAME="E5:42"/><span class="kw">then </span><span class="lab"><font color="Green" title="E38">A3</font></span>: 
+ not <font color="Maroon" title="c1">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="finseq_5.html#K3" title="FINSEQ_5:func.3">Rev</a> <font color="Maroon" title="c2">f</font></span>)</span> <a href="finseq_4.html#K6" title="FINSEQ_4:func.6">|--</a> <font color="Maroon" title="c1">x</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:42"><span class="lab"><font color="Green" title="E36">A1</font></span></a>, <a class="ref" href="finseq_6.html#T38" target="_self" onmouseover="rs('finseq_6/T38')" onmouseout="rh()">Th38</a></span>;<br/>
+<a NAME="E6:42"/>
+<font color="Maroon" title="c1">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><a href="finseq_5.html#K3" title="FINSEQ_5:func.3">Rev</a> <font color="Maroon" title="c2">f</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:42"><span class="lab"><font color="Green" title="E37">A2</font></span></a>, <a class="ref" href="finseq_5.html#T57" onmouseover="rs('finseq_5/T57')" onmouseout="rh()">FINSEQ_5:57</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:42"/>
+ <a href="finseq_5.html#K3" title="FINSEQ_5:func.3">Rev</a> <font color="Maroon" title="c2">f</font> <a href="finseq_4.html#R2" title="FINSEQ_4:pred.2">just_once_values</a> <font color="Maroon" title="c1">x</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:42"><span class="lab"><font color="Green" title="E38">A3</font></span></a>, <a class="ref" href="finseq_4.html#T45" onmouseover="rs('finseq_4/T45')" onmouseout="rh()">FINSEQ_4:45</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
