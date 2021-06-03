@@ -1,0 +1,670 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>EUCLMETR:  Fundamental Types of Metric Affine Spaces</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  Fundamental Types of Metric Affine Spaces</font></span><br><span class="comment"><font color="firebrick">:: by Henryk Oryszczyszyn and Krzysztof Pra\.zmowski</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received April 17, 1991</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 1991-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IT</font> be   <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V1"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="euclmetr.html#V1" title="EUCLMETR:attr.1">Euclidean</a> <span class="kw"> means </span><a NAME="D1"><span class="comment"><font color="firebrick">:: EUCLMETR:def 1</font></span><br></a> for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font>, <font color="Olive" title="b3">c</font>, <font color="Olive" title="b4">d</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">IT</font>  st <font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b3">c</font>,<font color="Olive" title="b4">d</font> &amp; <font color="Olive" title="b2">b</font>,<font color="Olive" title="b3">c</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b1">a</font>,<font color="Olive" title="b4">d</font> holds <br><font color="Olive" title="b2">b</font>,<font color="Olive" title="b4">d</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b1">a</font>,<font color="Olive" title="b3">c</font>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="euclmetr.html#V1" title="EUCLMETR:attr.1">Euclidean</a> <a onclick="hs(this)" href="javascript:()">EUCLMETR:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a> holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="euclmetr.html#V1" title="EUCLMETR:attr.1">Euclidean</a>  iff  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">d</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">IT</font>  st <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font> &amp; <font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b2">a</font>,<font color="Olive" title="b5">d</font> holds <br><font color="Olive" title="b3">b</font>,<font color="Olive" title="b5">d</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font> );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IT</font> be   <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a>;<br><div about="#D1" typeof="oo:Definition">
+<a NAME="V2"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="euclmetr.html#V2" title="EUCLMETR:attr.2">Pappian</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E1">Def2</font></span>: <a NAME="D2"><span class="comment"><font color="firebrick">:: EUCLMETR:def 2</font></span><br></a> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">IT</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">IT</font> #) is  <a href="aff_2.html#V2" title="AFF_2:attr.2">Pappian</a> ;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E1">Def2</font></span>   defines <a href="euclmetr.html#V2" title="EUCLMETR:attr.2">Pappian</a> <a onclick="hs(this)" href="javascript:()">EUCLMETR:def 2 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a> holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="euclmetr.html#V2" title="EUCLMETR:attr.2">Pappian</a>  iff  <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b1">IT</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Olive" title="b1">IT</font> #) is  <a href="aff_2.html#V2" title="AFF_2:attr.2">Pappian</a>  );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IT</font> be   <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a>;<br><div about="#D2" typeof="oo:Definition">
+<a NAME="V3"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="euclmetr.html#V3" title="EUCLMETR:attr.3">Desarguesian</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E2">Def3</font></span>: <a NAME="D3"><span class="comment"><font color="firebrick">:: EUCLMETR:def 3</font></span><br></a> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">IT</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">IT</font> #) is  <a href="aff_2.html#V4" title="AFF_2:attr.4">Desarguesian</a> ;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT3" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E2">Def3</font></span>   defines <a href="euclmetr.html#V3" title="EUCLMETR:attr.3">Desarguesian</a> <a onclick="hs(this)" href="javascript:()">EUCLMETR:def 3 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a> holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="euclmetr.html#V3" title="EUCLMETR:attr.3">Desarguesian</a>  iff  <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b1">IT</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Olive" title="b1">IT</font> #) is  <a href="aff_2.html#V4" title="AFF_2:attr.4">Desarguesian</a>  );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IT</font> be   <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a>;<br><div about="#D3" typeof="oo:Definition">
+<a NAME="V4"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="euclmetr.html#V4" title="EUCLMETR:attr.4">Fanoian</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E3">Def4</font></span>: <a NAME="D4"><span class="comment"><font color="firebrick">:: EUCLMETR:def 4</font></span><br></a> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">IT</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">IT</font> #) is  <a href="translac.html#V1" title="TRANSLAC:attr.1">Fanoian</a> ;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT4" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E3">Def4</font></span>   defines <a href="euclmetr.html#V4" title="EUCLMETR:attr.4">Fanoian</a> <a onclick="hs(this)" href="javascript:()">EUCLMETR:def 4 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a> holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="euclmetr.html#V4" title="EUCLMETR:attr.4">Fanoian</a>  iff  <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b1">IT</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Olive" title="b1">IT</font> #) is  <a href="translac.html#V1" title="TRANSLAC:attr.1">Fanoian</a>  );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IT</font> be   <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a>;<br><div about="#D4" typeof="oo:Definition">
+<a NAME="V5"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="euclmetr.html#V5" title="EUCLMETR:attr.5">Moufangian</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E4">Def5</font></span>: <a NAME="D5"><span class="comment"><font color="firebrick">:: EUCLMETR:def 5</font></span><br></a> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">IT</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">IT</font> #) is  <a href="aff_2.html#V7" title="AFF_2:attr.7">Moufangian</a> ;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT5" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E4">Def5</font></span>   defines <a href="euclmetr.html#V5" title="EUCLMETR:attr.5">Moufangian</a> <a onclick="hs(this)" href="javascript:()">EUCLMETR:def 5 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a> holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="euclmetr.html#V5" title="EUCLMETR:attr.5">Moufangian</a>  iff  <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b1">IT</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Olive" title="b1">IT</font> #) is  <a href="aff_2.html#V7" title="AFF_2:attr.7">Moufangian</a>  );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IT</font> be   <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a>;<br><div about="#D5" typeof="oo:Definition">
+<a NAME="V6"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="euclmetr.html#V6" title="EUCLMETR:attr.6">translation</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E5">Def6</font></span>: <a NAME="D6"><span class="comment"><font color="firebrick">:: EUCLMETR:def 6</font></span><br></a> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">IT</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">IT</font> #) is  <a href="aff_2.html#V11" title="AFF_2:attr.11">translational</a> ;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT6" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E5">Def6</font></span>   defines <a href="euclmetr.html#V6" title="EUCLMETR:attr.6">translation</a> <a onclick="hs(this)" href="javascript:()">EUCLMETR:def 6 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a> holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="euclmetr.html#V6" title="EUCLMETR:attr.6">translation</a>  iff  <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b1">IT</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Olive" title="b1">IT</font> #) is  <a href="aff_2.html#V11" title="AFF_2:attr.11">translational</a>  );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IT</font> be   <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V7"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="euclmetr.html#V7" title="EUCLMETR:attr.7">Homogeneous</a> <span class="kw"> means </span><a NAME="D7"><span class="comment"><font color="firebrick">:: EUCLMETR:def 7</font></span><br></a> for <font color="Olive" title="b1">o</font>, <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">a1</font>, <font color="Olive" title="b4">b</font>, <font color="Olive" title="b5">b1</font>, <font color="Olive" title="b6">c</font>, <font color="Olive" title="b7">c1</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">IT</font>  st <font color="Olive" title="b1">o</font>,<font color="Olive" title="b2">a</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b1">o</font>,<font color="Olive" title="b3">a1</font> &amp; <font color="Olive" title="b1">o</font>,<font color="Olive" title="b4">b</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b1">o</font>,<font color="Olive" title="b5">b1</font> &amp; <font color="Olive" title="b1">o</font>,<font color="Olive" title="b6">c</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b1">o</font>,<font color="Olive" title="b7">c1</font> &amp; <font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">b</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b3">a1</font>,<font color="Olive" title="b5">b1</font> &amp; <font color="Olive" title="b2">a</font>,<font color="Olive" title="b6">c</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b3">a1</font>,<font color="Olive" title="b7">c1</font> &amp;  not <font color="Olive" title="b1">o</font>,<font color="Olive" title="b6">c</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b1">o</font>,<font color="Olive" title="b2">a</font> &amp;  not <font color="Olive" title="b1">o</font>,<font color="Olive" title="b2">a</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b1">o</font>,<font color="Olive" title="b4">b</font> holds <br><font color="Olive" title="b4">b</font>,<font color="Olive" title="b6">c</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b5">b1</font>,<font color="Olive" title="b7">c1</font>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT7" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="euclmetr.html#V7" title="EUCLMETR:attr.7">Homogeneous</a> <a onclick="hs(this)" href="javascript:()">EUCLMETR:def 7 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a> holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="euclmetr.html#V7" title="EUCLMETR:attr.7">Homogeneous</a>  iff  for <font color="Olive" title="b2">o</font>, <font color="Olive" title="b3">a</font>, <font color="Olive" title="b4">a1</font>, <font color="Olive" title="b5">b</font>, <font color="Olive" title="b6">b1</font>, <font color="Olive" title="b7">c</font>, <font color="Olive" title="b8">c1</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">IT</font>  st <font color="Olive" title="b2">o</font>,<font color="Olive" title="b3">a</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b4">a1</font> &amp; <font color="Olive" title="b2">o</font>,<font color="Olive" title="b5">b</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b6">b1</font> &amp; <font color="Olive" title="b2">o</font>,<font color="Olive" title="b7">c</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b8">c1</font> &amp; <font color="Olive" title="b3">a</font>,<font color="Olive" title="b5">b</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b4">a1</font>,<font color="Olive" title="b6">b1</font> &amp; <font color="Olive" title="b3">a</font>,<font color="Olive" title="b7">c</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b4">a1</font>,<font color="Olive" title="b8">c1</font> &amp;  not <font color="Olive" title="b2">o</font>,<font color="Olive" title="b7">c</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b3">a</font> &amp;  not <font color="Olive" title="b2">o</font>,<font color="Olive" title="b3">a</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b5">b</font> holds <br><font color="Olive" title="b5">b</font>,<font color="Olive" title="b7">c</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b6">b1</font>,<font color="Olive" title="b8">c1</font> );<br></span>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+<div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E6">Th1</font></span>: <a NAME="T1"><span class="comment"><font color="firebrick">:: EUCLMETR:1</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MP</font> being   <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">MP</font>  st  not  <a href="analmetr.html#R5" title="ANALMETR:pred.5">LIN</a> <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> holds <br>( <font color="Olive" title="b2">a</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b3">b</font> &amp; <font color="Olive" title="b3">b</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b4">c</font> &amp; <font color="Olive" title="b2">a</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b4">c</font> )</div>
+<div about="#PF8" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/8')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/8')" href="javascript:()" title="8"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E7">Th2</font></span>: <a NAME="T2"><span class="comment"><font color="firebrick">:: EUCLMETR:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">d</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">MS</font><br>  for <font color="Olive" title="b6">K</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b1">MS</font>  st <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font> <a href="analmetr.html#R6" title="ANALMETR:pred.6">_|_</a> <font color="Olive" title="b6">K</font> &amp; <font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font> <a href="analmetr.html#R6" title="ANALMETR:pred.6">_|_</a> <font color="Olive" title="b6">K</font> holds <br>( <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font> &amp; <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b5">d</font>,<font color="Olive" title="b4">c</font> )</div>
+<div about="#PF9" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/9')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/9')" href="javascript:()" title="9"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T3"><span class="comment"><font color="firebrick">:: EUCLMETR:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">MS</font><br>  for <font color="Olive" title="b4">A</font>, <font color="Olive" title="b5">K</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b1">MS</font>  st <font color="Olive" title="b2">a</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b3">b</font> &amp; ( <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font> <a href="analmetr.html#R6" title="ANALMETR:pred.6">_|_</a> <font color="Olive" title="b5">K</font> or <font color="Olive" title="b3">b</font>,<font color="Olive" title="b2">a</font> <a href="analmetr.html#R6" title="ANALMETR:pred.6">_|_</a> <font color="Olive" title="b5">K</font> ) &amp; <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font> <a href="analmetr.html#R6" title="ANALMETR:pred.6">_|_</a> <font color="Olive" title="b4">A</font> holds <br><font color="Olive" title="b5">K</font> <a href="analmetr.html#R9" title="ANALMETR:pred.9">//</a> <font color="Olive" title="b4">A</font>
+</div>
+<div about="#PF10" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/10')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/10')" href="javascript:()" title="10"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E8">Th4</font></span>: <a NAME="T4"><span class="comment"><font color="firebrick">:: EUCLMETR:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MP</font> being   <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a><br>  for <font color="Olive" title="b2">x</font>, <font color="Olive" title="b3">y</font>, <font color="Olive" title="b4">z</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">MP</font>  st  <a href="analmetr.html#R5" title="ANALMETR:pred.5">LIN</a> <font color="Olive" title="b2">x</font>,<font color="Olive" title="b3">y</font>,<font color="Olive" title="b4">z</font> holds <br>(  <a href="analmetr.html#R5" title="ANALMETR:pred.5">LIN</a> <font color="Olive" title="b2">x</font>,<font color="Olive" title="b4">z</font>,<font color="Olive" title="b3">y</font> &amp;  <a href="analmetr.html#R5" title="ANALMETR:pred.5">LIN</a> <font color="Olive" title="b3">y</font>,<font color="Olive" title="b2">x</font>,<font color="Olive" title="b4">z</font> &amp;  <a href="analmetr.html#R5" title="ANALMETR:pred.5">LIN</a> <font color="Olive" title="b3">y</font>,<font color="Olive" title="b4">z</font>,<font color="Olive" title="b2">x</font> &amp;  <a href="analmetr.html#R5" title="ANALMETR:pred.5">LIN</a> <font color="Olive" title="b4">z</font>,<font color="Olive" title="b2">x</font>,<font color="Olive" title="b3">y</font> &amp;  <a href="analmetr.html#R5" title="ANALMETR:pred.5">LIN</a> <font color="Olive" title="b4">z</font>,<font color="Olive" title="b3">y</font>,<font color="Olive" title="b2">x</font> )</div>
+<div about="#PF11" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T4"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/11')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/11')" href="javascript:()" title="11"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E9">Th5</font></span>: <a NAME="T5"><span class="comment"><font color="firebrick">:: EUCLMETR:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">MS</font>  st  not  <a href="analmetr.html#R5" title="ANALMETR:pred.5">LIN</a> <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> holds <br> ex <font color="Olive" title="b5">d</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">MS</font> st <br>( <font color="Olive" title="b5">d</font>,<font color="Olive" title="b2">a</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> &amp; <font color="Olive" title="b5">d</font>,<font color="Olive" title="b3">b</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font> )</div>
+<div about="#PF12" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/12')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/12')" href="javascript:()" title="12"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E10">Th6</font></span>: <a NAME="T6"><span class="comment"><font color="firebrick">:: EUCLMETR:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">d1</font>, <font color="Olive" title="b6">d2</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">MS</font>  st  not  <a href="analmetr.html#R5" title="ANALMETR:pred.5">LIN</a> <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> &amp; <font color="Olive" title="b5">d1</font>,<font color="Olive" title="b2">a</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> &amp; <font color="Olive" title="b5">d1</font>,<font color="Olive" title="b3">b</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font> &amp; <font color="Olive" title="b6">d2</font>,<font color="Olive" title="b2">a</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> &amp; <font color="Olive" title="b6">d2</font>,<font color="Olive" title="b3">b</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b2">a</font>,<font color="Olive" title="b4">c</font> holds <br><font color="Olive" title="b5">d1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b6">d2</font>
+</div>
+<div about="#PF13" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/13')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/13')" href="javascript:()" title="13"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E11">Th7</font></span>: <a NAME="T7"><span class="comment"><font color="firebrick">:: EUCLMETR:7</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font>, <font color="Olive" title="b5">d</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">MS</font>  st <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b4">c</font>,<font color="Olive" title="b5">d</font> &amp; <font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b2">a</font>,<font color="Olive" title="b5">d</font> &amp;  <a href="analmetr.html#R5" title="ANALMETR:pred.5">LIN</a> <font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font>,<font color="Olive" title="b4">c</font> &amp;  not <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">c</font> &amp;  not <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">b</font> holds <br><font color="Olive" title="b3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">c</font>
+</div>
+<div about="#PF14" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T7"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/14')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/14')" href="javascript:()" title="14"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E12">Th8</font></span>: <a NAME="T8"><span class="comment"><font color="firebrick">:: EUCLMETR:8</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a> holds <br> ( <font color="Olive" title="b1">MS</font> is  <a href="euclmetr.html#V1" title="EUCLMETR:attr.1">Euclidean</a>  iff <font color="Olive" title="b1">MS</font> is  <a href="conaffm.html#V3" title="CONAFFM:attr.3">satisfying_3H</a>  )</div>
+<div about="#PF15" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/15')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/15')" href="javascript:()" title="15"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E13">Th9</font></span>: <a NAME="T9"><span class="comment"><font color="firebrick">:: EUCLMETR:9</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a> holds <br> ( <font color="Olive" title="b1">MS</font> is  <a href="euclmetr.html#V7" title="EUCLMETR:attr.7">Homogeneous</a>  iff <font color="Olive" title="b1">MS</font> is  <a href="conaffm.html#V4" title="CONAFFM:attr.4">satisfying_ODES</a>  ) <span class="kw">by</span> <span class="lab"><a class="ref" href="conaffm.html#D4" onmouseover="rs('conaffm/D4')" onmouseout="rh()">CONAFFM:def 4</a></span>;<br>
+</div>
+</div>
+<br><a NAME="E17"></a><span class="lab"><font color="Green" title="E14">Lm1</font></span>: <span about="#E17" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a> holds <br> ( <font color="Olive" title="b1">MS</font> is  <a href="conmetr.html#V2" title="CONMETR:attr.2">satisfying_PAP</a>  iff  <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Olive" title="b1">MS</font> #) is  <a href="aff_2.html#V2" title="AFF_2:attr.2">Pappian</a>  )
+ </span><br><div about="#PF16" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E17"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/16')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/16')" href="javascript:()" title="16"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E15">Th10</font></span>: <a NAME="T10"><span class="comment"><font color="firebrick">:: EUCLMETR:10</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a> holds <br> ( <font color="Olive" title="b1">MS</font> is  <a href="euclmetr.html#V2" title="EUCLMETR:attr.2">Pappian</a>  iff <font color="Olive" title="b1">MS</font> is  <a href="conmetr.html#V2" title="CONMETR:attr.2">satisfying_PAP</a>  ) <span class="kw">by</span> <span class="lab"><a class="txt" href="euclmetr.html#E17"><span class="lab"><font color="Green" title="E14">Lm1</font></span></a></span>;<br>
+</div>
+</div>
+<br><a NAME="E19"></a><span class="lab"><font color="Green" title="E16">Lm2</font></span>: <span about="#E19" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a> holds <br> ( <font color="Olive" title="b1">MS</font> is  <a href="conaffm.html#V1" title="CONAFFM:attr.1">satisfying_DES</a>  iff  <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Olive" title="b1">MS</font> #) is  <a href="aff_2.html#V4" title="AFF_2:attr.4">Desarguesian</a>  )
+ </span><br><div about="#PF17" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E19"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/17')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/17')" href="javascript:()" title="17"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E17">Th11</font></span>: <a NAME="T11"><span class="comment"><font color="firebrick">:: EUCLMETR:11</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a> holds <br> ( <font color="Olive" title="b1">MS</font> is  <a href="euclmetr.html#V3" title="EUCLMETR:attr.3">Desarguesian</a>  iff <font color="Olive" title="b1">MS</font> is  <a href="conaffm.html#V1" title="CONAFFM:attr.1">satisfying_DES</a>  ) <span class="kw">by</span> <span class="lab"><a class="txt" href="euclmetr.html#E19"><span class="lab"><font color="Green" title="E16">Lm2</font></span></a></span>;<br>
+</div>
+</div>
+<br><div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T12"><span class="comment"><font color="firebrick">:: EUCLMETR:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a> holds <br> ( <font color="Olive" title="b1">MS</font> is  <a href="euclmetr.html#V5" title="EUCLMETR:attr.5">Moufangian</a>  iff <font color="Olive" title="b1">MS</font> is  <a href="conmetr.html#V5" title="CONMETR:attr.5">satisfying_TDES</a>  )</div>
+<div about="#PF18" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/18')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/18')" href="javascript:()" title="18"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E22"></a><span class="lab"><font color="Green" title="E18">Lm3</font></span>: <span about="#E22" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a> holds <br> ( <font color="Olive" title="b1">MS</font> is  <a href="conmetr.html#V8" title="CONMETR:attr.8">satisfying_des</a>  iff  <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Olive" title="b1">MS</font> #) is  <a href="aff_2.html#V11" title="AFF_2:attr.11">translational</a>  )
+ </span><br><div about="#PF19" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E22"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/19')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/19')" href="javascript:()" title="19"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T13"><span class="comment"><font color="firebrick">:: EUCLMETR:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a> holds <br> ( <font color="Olive" title="b1">MS</font> is  <a href="euclmetr.html#V6" title="EUCLMETR:attr.6">translation</a>  iff <font color="Olive" title="b1">MS</font> is  <a href="conmetr.html#V8" title="CONMETR:attr.8">satisfying_des</a>  ) <span class="kw">by</span> <span class="lab"><a class="txt" href="euclmetr.html#E22"><span class="lab"><font color="Green" title="E18">Lm3</font></span></a></span>;<br>
+</div>
+</div>
+<br><div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E19">Th14</font></span>: <a NAME="T14"><span class="comment"><font color="firebrick">:: EUCLMETR:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a>  st <font color="Olive" title="b1">MS</font> is  <a href="euclmetr.html#V7" title="EUCLMETR:attr.7">Homogeneous</a>  holds <br><font color="Olive" title="b1">MS</font> is  <a href="euclmetr.html#V3" title="EUCLMETR:attr.3">Desarguesian</a> </div>
+<div about="#PF20" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T14"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/20')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/20')" href="javascript:()" title="20"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T15" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E20">Th15</font></span>: <a NAME="T15"><span class="comment"><font color="firebrick">:: EUCLMETR:15</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a>  st <font color="Olive" title="b1">MS</font> is  <a href="euclmetr.html#V1" title="EUCLMETR:attr.1">Euclidean</a>  &amp; <font color="Olive" title="b1">MS</font> is  <a href="euclmetr.html#V3" title="EUCLMETR:attr.3">Desarguesian</a>  holds <br><font color="Olive" title="b1">MS</font> is  <a href="euclmetr.html#V2" title="EUCLMETR:attr.2">Pappian</a> </div>
+<div about="#PF21" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/21')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/21')" href="javascript:()" title="21"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div about="#T16" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E21">Th16</font></span>: <a NAME="T16"><span class="comment"><font color="firebrick">:: EUCLMETR:16</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a><br>  for <font color="Olive" title="b2">o</font>, <font color="Olive" title="b3">c</font>, <font color="Olive" title="b4">c1</font>, <font color="Olive" title="b5">a</font>, <font color="Olive" title="b6">a1</font>, <font color="Olive" title="b7">a2</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">MS</font>  st  not  <a href="analmetr.html#R5" title="ANALMETR:pred.5">LIN</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b3">c</font>,<font color="Olive" title="b5">a</font> &amp; <font color="Olive" title="b2">o</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b4">c1</font> &amp; <font color="Olive" title="b2">o</font>,<font color="Olive" title="b3">c</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b4">c1</font> &amp; <font color="Olive" title="b2">o</font>,<font color="Olive" title="b5">a</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b6">a1</font> &amp; <font color="Olive" title="b2">o</font>,<font color="Olive" title="b5">a</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b7">a2</font> &amp; <font color="Olive" title="b3">c</font>,<font color="Olive" title="b5">a</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b4">c1</font>,<font color="Olive" title="b6">a1</font> &amp; <font color="Olive" title="b3">c</font>,<font color="Olive" title="b5">a</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b4">c1</font>,<font color="Olive" title="b7">a2</font> holds <br><font color="Olive" title="b6">a1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b7">a2</font>
+</div>
+<div about="#PF22" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T16"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/22')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/22')" href="javascript:()" title="22"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T17" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T17"><span class="comment"><font color="firebrick">:: EUCLMETR:17</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a><br>  for <font color="Olive" title="b2">o</font>, <font color="Olive" title="b3">c</font>, <font color="Olive" title="b4">c1</font>, <font color="Olive" title="b5">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">MS</font>  st  not  <a href="analmetr.html#R5" title="ANALMETR:pred.5">LIN</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b3">c</font>,<font color="Olive" title="b5">a</font> holds <br> ex <font color="Olive" title="b6">a1</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">MS</font> st <br>( <font color="Olive" title="b2">o</font>,<font color="Olive" title="b5">a</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b6">a1</font> &amp; <font color="Olive" title="b3">c</font>,<font color="Olive" title="b5">a</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b4">c1</font>,<font color="Olive" title="b6">a1</font> )</div>
+<div about="#PF23" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T17"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/23')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/23')" href="javascript:()" title="23"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E28"></a><span class="lab"><font color="Green" title="E22">Lm4</font></span>: <span about="#E28" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b2">u</font>, <font color="Olive" title="b3">v</font>, <font color="Olive" title="b4">y</font> being   <a href="rlvect_1.html#NM1" title="RLVECT_1:NM.1">VECTOR</a> of <font color="Olive" title="b1">V</font> holds <br> ( <span class="p1">(<span class="default"><font color="Olive" title="b2">u</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b4">y</font></span>)</span> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">v</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b4">y</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">u</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b3">v</font> &amp; <span class="p1">(<span class="default"><font color="Olive" title="b2">u</font> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <font color="Olive" title="b4">y</font></span>)</span> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">v</font> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <font color="Olive" title="b4">y</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">u</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b3">v</font> )
+ </span><br><div about="#PF24" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E28"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/24')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/24')" href="javascript:()" title="24"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E29"></a><span class="lab"><font color="Green" title="E23">Lm5</font></span>: <span about="#E29" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b2">w</font>, <font color="Olive" title="b3">y</font> being   <a href="rlvect_1.html#NM1" title="RLVECT_1:NM.1">VECTOR</a> of <font color="Olive" title="b1">V</font>  st  <a href="analmetr.html#R1" title="ANALMETR:pred.1">Gen</a> <font color="Olive" title="b2">w</font>,<font color="Olive" title="b3">y</font> holds <br> for <font color="Olive" title="b4">a</font>, <font color="Olive" title="b5">b</font>, <font color="Olive" title="b6">c</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> holds <br> (  <a href="geomtrap.html#K4" title="GEOMTRAP:func.4">PProJ</a> (<font color="Olive" title="b2">w</font>,<font color="Olive" title="b3">y</font>,<span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b4">a</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b2">w</font></span>)</span> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <span class="p2">(<span class="default"><font color="Olive" title="b5">b</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b3">y</font></span>)</span></span>)</span>,<span class="p1">(<span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><font color="Olive" title="b6">c</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b5">b</font></span>)</span> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b2">w</font></span>)</span> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <span class="p4">(<span class="default"><font color="Olive" title="b6">c</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b4">a</font></span>)</span></span>)</span> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b3">y</font></span>)</span></span>)</span>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; <span class="p1">(<span class="default"><font color="Olive" title="b4">a</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b2">w</font></span>)</span> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <span class="p1">(<span class="default"><font color="Olive" title="b5">b</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b3">y</font></span>)</span>,<span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b6">c</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b5">b</font></span>)</span> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b2">w</font></span>)</span> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <span class="p3">(<span class="default"><font color="Olive" title="b6">c</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b4">a</font></span>)</span></span>)</span> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b3">y</font></span>)</span> <a href="analmetr.html#R2" title="ANALMETR:pred.2">are_Ort_wrt</a> <font color="Olive" title="b2">w</font>,<font color="Olive" title="b3">y</font> )
+ </span><br><div about="#PF25" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E29"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/25')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/25')" href="javascript:()" title="25"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T18" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E24">Th18</font></span>: <a NAME="T18"><span class="comment"><font color="firebrick">:: EUCLMETR:18</font></span><br></a><div class="add"> for <font color="Olive" title="b1">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b2">w</font>, <font color="Olive" title="b3">y</font>, <font color="Olive" title="b4">u</font>, <font color="Olive" title="b5">v</font> being   <a href="rlvect_1.html#NM1" title="RLVECT_1:NM.1">VECTOR</a> of <font color="Olive" title="b1">V</font><br>  for <font color="Olive" title="b6">a</font>, <font color="Olive" title="b7">b</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>  st  <a href="analmetr.html#R1" title="ANALMETR:pred.1">Gen</a> <font color="Olive" title="b2">w</font>,<font color="Olive" title="b3">y</font> &amp;  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Olive" title="b1">V</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b4">u</font> &amp;  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Olive" title="b1">V</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b5">v</font> &amp; <font color="Olive" title="b4">u</font>,<font color="Olive" title="b5">v</font> <a href="analmetr.html#R2" title="ANALMETR:pred.2">are_Ort_wrt</a> <font color="Olive" title="b2">w</font>,<font color="Olive" title="b3">y</font> &amp; <font color="Olive" title="b4">u</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b6">a</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b2">w</font></span>)</span> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <span class="p1">(<span class="default"><font color="Olive" title="b7">b</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b3">y</font></span>)</span> holds <br> ex <font color="Olive" title="b8">c</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> st <br>( <font color="Olive" title="b8">c</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; <font color="Olive" title="b5">v</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b8">c</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b7">b</font></span>)</span> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b2">w</font></span>)</span> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <span class="p3">(<span class="default"><font color="Olive" title="b8">c</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b6">a</font></span>)</span></span>)</span> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b3">y</font></span>)</span> )</div>
+<div about="#PF26" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T18"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/26')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/26')" href="javascript:()" title="26"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T19" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E25">Th19</font></span>: <a NAME="T19"><span class="comment"><font color="firebrick">:: EUCLMETR:19</font></span><br></a><div class="add"> for <font color="Olive" title="b1">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b2">w</font>, <font color="Olive" title="b3">y</font>, <font color="Olive" title="b4">u</font>, <font color="Olive" title="b5">v</font> being   <a href="rlvect_1.html#NM1" title="RLVECT_1:NM.1">VECTOR</a> of <font color="Olive" title="b1">V</font>  st  <a href="analmetr.html#R1" title="ANALMETR:pred.1">Gen</a> <font color="Olive" title="b2">w</font>,<font color="Olive" title="b3">y</font> &amp;  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Olive" title="b1">V</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b4">u</font> &amp;  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Olive" title="b1">V</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b5">v</font> &amp; <font color="Olive" title="b4">u</font>,<font color="Olive" title="b5">v</font> <a href="analmetr.html#R2" title="ANALMETR:pred.2">are_Ort_wrt</a> <font color="Olive" title="b2">w</font>,<font color="Olive" title="b3">y</font> holds <br> ex <font color="Olive" title="b6">c</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> st <br> for <font color="Olive" title="b7">a</font>, <font color="Olive" title="b8">b</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> holds <br> ( <span class="p1">(<span class="default"><font color="Olive" title="b7">a</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b2">w</font></span>)</span> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <span class="p1">(<span class="default"><font color="Olive" title="b8">b</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b3">y</font></span>)</span>,<span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b6">c</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b8">b</font></span>)</span> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b2">w</font></span>)</span> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <span class="p3">(<span class="default"><font color="Olive" title="b6">c</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b7">a</font></span>)</span></span>)</span> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b3">y</font></span>)</span> <a href="analmetr.html#R2" title="ANALMETR:pred.2">are_Ort_wrt</a> <font color="Olive" title="b2">w</font>,<font color="Olive" title="b3">y</font> &amp; <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b7">a</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b2">w</font></span>)</span> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <span class="p2">(<span class="default"><font color="Olive" title="b8">b</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b3">y</font></span>)</span></span>)</span> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b4">u</font>,<span class="p1">(<span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><font color="Olive" title="b6">c</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b8">b</font></span>)</span> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b2">w</font></span>)</span> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <span class="p4">(<span class="default"><font color="Olive" title="b6">c</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b7">a</font></span>)</span></span>)</span> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b3">y</font></span>)</span></span>)</span> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b5">v</font> <a href="analmetr.html#R2" title="ANALMETR:pred.2">are_Ort_wrt</a> <font color="Olive" title="b2">w</font>,<font color="Olive" title="b3">y</font> )</div>
+<div about="#PF27" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T19"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/27')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/27')" href="javascript:()" title="27"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E32"></a><span class="lab"><font color="Green" title="E26">Lm6</font></span>: <span about="#E32" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b2">w</font>, <font color="Olive" title="b3">y</font> being   <a href="rlvect_1.html#NM1" title="RLVECT_1:NM.1">VECTOR</a> of <font color="Olive" title="b1">V</font><br>  for <font color="Olive" title="b4">a</font>, <font color="Olive" title="b5">b</font>, <font color="Olive" title="b6">c</font>, <font color="Olive" title="b7">d</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> holds  <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b4">a</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b2">w</font></span>)</span> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <span class="p2">(<span class="default"><font color="Olive" title="b5">b</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b3">y</font></span>)</span></span>)</span> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b6">c</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b2">w</font></span>)</span> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <span class="p2">(<span class="default"><font color="Olive" title="b7">d</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b3">y</font></span>)</span></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b4">a</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Olive" title="b6">c</font></span>)</span> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b2">w</font></span>)</span> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b5">b</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Olive" title="b7">d</font></span>)</span> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b3">y</font></span>)</span>
+ </span><br><div about="#PF28" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E32"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/28')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/28')" href="javascript:()" title="28"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E33"></a><span class="lab"><font color="Green" title="E27">Lm7</font></span>: <span about="#E33" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b2">w</font>, <font color="Olive" title="b3">y</font> being   <a href="rlvect_1.html#NM1" title="RLVECT_1:NM.1">VECTOR</a> of <font color="Olive" title="b1">V</font>  st  <a href="analmetr.html#R1" title="ANALMETR:pred.1">Gen</a> <font color="Olive" title="b2">w</font>,<font color="Olive" title="b3">y</font> holds <br> for <font color="Olive" title="b4">a</font>, <font color="Olive" title="b5">b</font>, <font color="Olive" title="b6">c</font>, <font color="Olive" title="b7">d</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>  st <span class="p1">(<span class="default"><font color="Olive" title="b4">a</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b2">w</font></span>)</span> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <span class="p1">(<span class="default"><font color="Olive" title="b6">c</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b3">y</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b5">b</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b2">w</font></span>)</span> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <span class="p1">(<span class="default"><font color="Olive" title="b7">d</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b3">y</font></span>)</span> holds <br>( <font color="Olive" title="b4">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">b</font> &amp; <font color="Olive" title="b6">c</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b7">d</font> )
+ </span><br><div about="#PF29" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E33"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/29')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/29')" href="javascript:()" title="29"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T20" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E28">Th20</font></span>: <a NAME="T20"><span class="comment"><font color="firebrick">:: EUCLMETR:20</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a><br>  for <font color="Olive" title="b2">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b3">w</font>, <font color="Olive" title="b4">y</font> being   <a href="rlvect_1.html#NM1" title="RLVECT_1:NM.1">VECTOR</a> of <font color="Olive" title="b2">V</font>  st  <a href="analmetr.html#R1" title="ANALMETR:pred.1">Gen</a> <font color="Olive" title="b3">w</font>,<font color="Olive" title="b4">y</font> &amp; <font color="Olive" title="b1">MS</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="analmetr.html#K2" title="ANALMETR:func.2">AMSpace</a> (<font color="Olive" title="b2">V</font>,<font color="Olive" title="b3">w</font>,<font color="Olive" title="b4">y</font>) holds <br><font color="Olive" title="b1">MS</font> is  <a href="conaffm.html#V5" title="CONAFFM:attr.5">satisfying_LIN</a> </div>
+<div about="#PF30" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T20"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/30')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/30')" href="javascript:()" title="30"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T21" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E29">Th21</font></span>: <a NAME="T21"><span class="comment"><font color="firebrick">:: EUCLMETR:21</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a><br>  for <font color="Olive" title="b2">o</font>, <font color="Olive" title="b3">a</font>, <font color="Olive" title="b4">a1</font>, <font color="Olive" title="b5">b</font>, <font color="Olive" title="b6">b1</font>, <font color="Olive" title="b7">c</font>, <font color="Olive" title="b8">c1</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">MS</font>  st <font color="Olive" title="b2">o</font>,<font color="Olive" title="b5">b</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b6">b1</font> &amp; <font color="Olive" title="b2">o</font>,<font color="Olive" title="b7">c</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b8">c1</font> &amp; <font color="Olive" title="b3">a</font>,<font color="Olive" title="b5">b</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b4">a1</font>,<font color="Olive" title="b6">b1</font> &amp; <font color="Olive" title="b3">a</font>,<font color="Olive" title="b7">c</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b4">a1</font>,<font color="Olive" title="b8">c1</font> &amp;  not <font color="Olive" title="b2">o</font>,<font color="Olive" title="b7">c</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b3">a</font> &amp;  not <font color="Olive" title="b2">o</font>,<font color="Olive" title="b3">a</font> <a href="analoaf.html#R2" title="ANALOAF:pred.2">//</a> <font color="Olive" title="b2">o</font>,<font color="Olive" title="b5">b</font> &amp; <font color="Olive" title="b2">o</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">a1</font> holds <br><font color="Olive" title="b5">b</font>,<font color="Olive" title="b7">c</font> <a href="analmetr.html#R4" title="ANALMETR:pred.4">_|_</a> <font color="Olive" title="b6">b1</font>,<font color="Olive" title="b8">c1</font>
+</div>
+<div about="#PF31" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T21"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/31')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/31')" href="javascript:()" title="31"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T22" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E30">Th22</font></span>: <a NAME="T22"><span class="comment"><font color="firebrick">:: EUCLMETR:22</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a><br>  for <font color="Olive" title="b2">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b3">w</font>, <font color="Olive" title="b4">y</font> being   <a href="rlvect_1.html#NM1" title="RLVECT_1:NM.1">VECTOR</a> of <font color="Olive" title="b2">V</font>  st  <a href="analmetr.html#R1" title="ANALMETR:pred.1">Gen</a> <font color="Olive" title="b3">w</font>,<font color="Olive" title="b4">y</font> &amp; <font color="Olive" title="b1">MS</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="analmetr.html#K2" title="ANALMETR:func.2">AMSpace</a> (<font color="Olive" title="b2">V</font>,<font color="Olive" title="b3">w</font>,<font color="Olive" title="b4">y</font>) holds <br><font color="Olive" title="b1">MS</font> is  <a href="euclmetr.html#V7" title="EUCLMETR:attr.7">Homogeneous</a> </div>
+<div about="#PF32" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T22"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/32')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/32')" href="javascript:()" title="32"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC1" typeof="oo:Theorem">
+<a NAME="RC1"><span class="kw">cluster </span></a><a href="struct_0.html#V2" title="STRUCT_0:attr.2">V44</a>()  <a href="analmetr.html#V3" title="ANALMETR:attr.3">OrtAfSp-like</a>   <a href="analmetr.html#V4" title="ANALMETR:attr.4">OrtAfPl-like</a>   <a href="euclmetr.html#V1" title="EUCLMETR:attr.1">Euclidean</a>   <a href="euclmetr.html#V2" title="EUCLMETR:attr.2">Pappian</a>   <a href="euclmetr.html#V3" title="EUCLMETR:attr.3">Desarguesian</a>   <a href="euclmetr.html#V4" title="EUCLMETR:attr.4">Fanoian</a>   <a href="euclmetr.html#V5" title="EUCLMETR:attr.5">Moufangian</a>   <a href="euclmetr.html#V6" title="EUCLMETR:attr.6">translation</a>   <a href="euclmetr.html#V7" title="EUCLMETR:attr.7">Homogeneous</a>   for    <a href="analmetr.html#L2" title="ANALMETR:struct.2">ParOrtStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:33_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a> st <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="euclmetr.html#V1" title="EUCLMETR:attr.1">Euclidean</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="euclmetr.html#V2" title="EUCLMETR:attr.2">Pappian</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="euclmetr.html#V3" title="EUCLMETR:attr.3">Desarguesian</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="euclmetr.html#V7" title="EUCLMETR:attr.7">Homogeneous</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="euclmetr.html#V6" title="EUCLMETR:attr.6">translation</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="euclmetr.html#V4" title="EUCLMETR:attr.4">Fanoian</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="euclmetr.html#V5" title="EUCLMETR:attr.5">Moufangian</a>  )
+ </span><div about="#PF33_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/33_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/33_1_1')" href="javascript:()" title="33_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC2" typeof="oo:Theorem">
+<a NAME="RC2"><span class="kw">cluster </span></a><a href="struct_0.html#V2" title="STRUCT_0:attr.2">V44</a>()  <a href="analmetr.html#V3" title="ANALMETR:attr.3">OrtAfSp-like</a>   <a href="euclmetr.html#V1" title="EUCLMETR:attr.1">Euclidean</a>   <a href="euclmetr.html#V2" title="EUCLMETR:attr.2">Pappian</a>   <a href="euclmetr.html#V3" title="EUCLMETR:attr.3">Desarguesian</a>   <a href="euclmetr.html#V4" title="EUCLMETR:attr.4">Fanoian</a>   <a href="euclmetr.html#V5" title="EUCLMETR:attr.5">Moufangian</a>   <a href="euclmetr.html#V6" title="EUCLMETR:attr.6">translation</a>   <a href="euclmetr.html#V7" title="EUCLMETR:attr.7">Homogeneous</a>   for    <a href="analmetr.html#L2" title="ANALMETR:struct.2">ParOrtStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:34_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a> st <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="euclmetr.html#V1" title="EUCLMETR:attr.1">Euclidean</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="euclmetr.html#V2" title="EUCLMETR:attr.2">Pappian</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="euclmetr.html#V3" title="EUCLMETR:attr.3">Desarguesian</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="euclmetr.html#V7" title="EUCLMETR:attr.7">Homogeneous</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="euclmetr.html#V6" title="EUCLMETR:attr.6">translation</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="euclmetr.html#V4" title="EUCLMETR:attr.4">Fanoian</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="euclmetr.html#V5" title="EUCLMETR:attr.5">Moufangian</a>  )
+ </span><div about="#PF34_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/34_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/34_1_1')" href="javascript:()" title="34_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T23" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T23"><span class="comment"><font color="firebrick">:: EUCLMETR:23</font></span><br></a><div class="add"> for <font color="Olive" title="b1">MS</font> being   <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a><br>  for <font color="Olive" title="b2">V</font> being   <a href="rlvect_1.html#NM2" title="RLVECT_1:NM.2">RealLinearSpace</a><br>  for <font color="Olive" title="b3">w</font>, <font color="Olive" title="b4">y</font> being   <a href="rlvect_1.html#NM1" title="RLVECT_1:NM.1">VECTOR</a> of <font color="Olive" title="b2">V</font>  st  <a href="analmetr.html#R1" title="ANALMETR:pred.1">Gen</a> <font color="Olive" title="b3">w</font>,<font color="Olive" title="b4">y</font> &amp; <font color="Olive" title="b1">MS</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="analmetr.html#K2" title="ANALMETR:func.2">AMSpace</a> (<font color="Olive" title="b2">V</font>,<font color="Olive" title="b3">w</font>,<font color="Olive" title="b4">y</font>) holds <br><font color="Olive" title="b1">MS</font> is   <a href="euclmetr.html#V1" title="EUCLMETR:attr.1">Euclidean</a>   <a href="euclmetr.html#V2" title="EUCLMETR:attr.2">Pappian</a>   <a href="euclmetr.html#V3" title="EUCLMETR:attr.3">Desarguesian</a>   <a href="euclmetr.html#V4" title="EUCLMETR:attr.4">Fanoian</a>   <a href="euclmetr.html#V5" title="EUCLMETR:attr.5">Moufangian</a>   <a href="euclmetr.html#V6" title="EUCLMETR:attr.6">translation</a>   <a href="euclmetr.html#V7" title="EUCLMETR:attr.7">Homogeneous</a>  <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a>
+</div>
+<div about="#PF35" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T23"></span><a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/35')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/35')" href="javascript:()" title="35"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">MS</font> be   <a href="euclmetr.html#V2" title="EUCLMETR:attr.2">Pappian</a>  <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a>;<br>
+<div about="#FC1" typeof="oo:Theorem">
+<a NAME="FC1"><span class="kw">cluster </span></a> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #)<span class="kw"> -&gt; </span> <a href="aff_2.html#V2" title="AFF_2:attr.2">Pappian</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #) is  <a href="aff_2.html#V2" title="AFF_2:attr.2">Pappian</a> </span>;<br></span><span class="kw">by</span> <span class="lab"><a class="ref" href="euclmetr.html#D2" target="_self" onmouseover="rs('euclmetr/D2')" onmouseout="rh()">Def2</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">MS</font> be   <a href="euclmetr.html#V3" title="EUCLMETR:attr.3">Desarguesian</a>  <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a>;<br>
+<div about="#FC2" typeof="oo:Theorem">
+<a NAME="FC2"><span class="kw">cluster </span></a> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #)<span class="kw"> -&gt; </span> <a href="aff_2.html#V4" title="AFF_2:attr.4">Desarguesian</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #) is  <a href="aff_2.html#V4" title="AFF_2:attr.4">Desarguesian</a> </span>;<br></span><span class="kw">by</span> <span class="lab"><a class="ref" href="euclmetr.html#D3" target="_self" onmouseover="rs('euclmetr/D3')" onmouseout="rh()">Def3</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">MS</font> be   <a href="euclmetr.html#V5" title="EUCLMETR:attr.5">Moufangian</a>  <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a>;<br>
+<div about="#FC3" typeof="oo:Theorem">
+<a NAME="FC3"><span class="kw">cluster </span></a> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #)<span class="kw"> -&gt; </span> <a href="aff_2.html#V7" title="AFF_2:attr.7">Moufangian</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #) is  <a href="aff_2.html#V7" title="AFF_2:attr.7">Moufangian</a> </span>;<br></span><span class="kw">by</span> <span class="lab"><a class="ref" href="euclmetr.html#D5" target="_self" onmouseover="rs('euclmetr/D5')" onmouseout="rh()">Def5</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">MS</font> be   <a href="euclmetr.html#V6" title="EUCLMETR:attr.6">translation</a>  <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a>;<br>
+<div about="#FC4" typeof="oo:Theorem">
+<a NAME="FC4"><span class="kw">cluster </span></a> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #)<span class="kw"> -&gt; </span> <a href="aff_2.html#V11" title="AFF_2:attr.11">translational</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #) is  <a href="aff_2.html#V11" title="AFF_2:attr.11">translational</a> </span>;<br></span><span class="kw">by</span> <span class="lab"><a class="ref" href="euclmetr.html#D6" target="_self" onmouseover="rs('euclmetr/D6')" onmouseout="rh()">Def6</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">MS</font> be   <a href="euclmetr.html#V4" title="EUCLMETR:attr.4">Fanoian</a>  <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a>;<br>
+<div about="#FC5" typeof="oo:Theorem">
+<a NAME="FC5"><span class="kw">cluster </span></a> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #)<span class="kw"> -&gt; </span> <a href="translac.html#V1" title="TRANSLAC:attr.1">Fanoian</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #) is  <a href="translac.html#V1" title="TRANSLAC:attr.1">Fanoian</a> </span>;<br></span><span class="kw">by</span> <span class="lab"><a class="ref" href="euclmetr.html#D4" target="_self" onmouseover="rs('euclmetr/D4')" onmouseout="rh()">Def4</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">MS</font> be   <a href="euclmetr.html#V7" title="EUCLMETR:attr.7">Homogeneous</a>  <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a>;<br>
+<div about="#FC6" typeof="oo:Theorem">
+<a NAME="FC6"><span class="kw">cluster </span></a> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #)<span class="kw"> -&gt; </span> <a href="aff_2.html#V4" title="AFF_2:attr.4">Desarguesian</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #) is  <a href="aff_2.html#V4" title="AFF_2:attr.4">Desarguesian</a> </span>;<br></span><div about="#PF41_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/41_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/41_1_1')" href="javascript:()" title="41_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">MS</font> be   <a href="euclmetr.html#V1" title="EUCLMETR:attr.1">Euclidean</a>   <a href="euclmetr.html#V3" title="EUCLMETR:attr.3">Desarguesian</a>  <a href="analmetr.html#NM2" title="ANALMETR:NM.2">OrtAfPl</a>;<br>
+<div about="#FC7" typeof="oo:Theorem">
+<a NAME="FC7"><span class="kw">cluster </span></a> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #)<span class="kw"> -&gt; </span> <a href="aff_2.html#V2" title="AFF_2:attr.2">Pappian</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #) is  <a href="aff_2.html#V2" title="AFF_2:attr.2">Pappian</a> </span>;<br></span><div about="#PF42_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/euclmetr/42_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/euclmetr/42_1_1')" href="javascript:()" title="42_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">MS</font> be   <a href="euclmetr.html#V2" title="EUCLMETR:attr.2">Pappian</a>  <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a>;<br>
+<div about="#FC8" typeof="oo:Theorem">
+<a NAME="FC8"><span class="kw">cluster </span></a> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #)<span class="kw"> -&gt; </span> <a href="aff_2.html#V2" title="AFF_2:attr.2">Pappian</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #) is  <a href="aff_2.html#V2" title="AFF_2:attr.2">Pappian</a> </span>;<br></span><span class="kw">by</span> <span class="lab"><a class="ref" href="euclmetr.html#D2" target="_self" onmouseover="rs('euclmetr/D2')" onmouseout="rh()">Def2</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">MS</font> be   <a href="euclmetr.html#V3" title="EUCLMETR:attr.3">Desarguesian</a>  <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a>;<br>
+<div about="#FC9" typeof="oo:Theorem">
+<a NAME="FC9"><span class="kw">cluster </span></a> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #)<span class="kw"> -&gt; </span> <a href="aff_2.html#V4" title="AFF_2:attr.4">Desarguesian</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #) is  <a href="aff_2.html#V4" title="AFF_2:attr.4">Desarguesian</a> </span>;<br></span><span class="kw">by</span> <span class="lab"><a class="ref" href="euclmetr.html#D3" target="_self" onmouseover="rs('euclmetr/D3')" onmouseout="rh()">Def3</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">MS</font> be   <a href="euclmetr.html#V5" title="EUCLMETR:attr.5">Moufangian</a>  <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a>;<br>
+<div about="#FC10" typeof="oo:Theorem">
+<a NAME="FC10"><span class="kw">cluster </span></a> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #)<span class="kw"> -&gt; </span> <a href="aff_2.html#V7" title="AFF_2:attr.7">Moufangian</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #) is  <a href="aff_2.html#V7" title="AFF_2:attr.7">Moufangian</a> </span>;<br></span><span class="kw">by</span> <span class="lab"><a class="ref" href="euclmetr.html#D5" target="_self" onmouseover="rs('euclmetr/D5')" onmouseout="rh()">Def5</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">MS</font> be   <a href="euclmetr.html#V6" title="EUCLMETR:attr.6">translation</a>  <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a>;<br>
+<div about="#FC11" typeof="oo:Theorem">
+<a NAME="FC11"><span class="kw">cluster </span></a> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #)<span class="kw"> -&gt; </span> <a href="aff_2.html#V11" title="AFF_2:attr.11">translational</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #) is  <a href="aff_2.html#V11" title="AFF_2:attr.11">translational</a> </span>;<br></span><span class="kw">by</span> <span class="lab"><a class="ref" href="euclmetr.html#D6" target="_self" onmouseover="rs('euclmetr/D6')" onmouseout="rh()">Def6</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">MS</font> be   <a href="euclmetr.html#V4" title="EUCLMETR:attr.4">Fanoian</a>  <a href="analmetr.html#NM1" title="ANALMETR:NM.1">OrtAfSp</a>;<br>
+<div about="#FC12" typeof="oo:Theorem">
+<a NAME="FC12"><span class="kw">cluster </span></a> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #)<span class="kw"> -&gt; </span> <a href="translac.html#V1" title="TRANSLAC:attr.1">Fanoian</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="analoaf.html#G1" title="ANALOAF:aggr.1">AffinStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">MS</font>, the <a href="analoaf.html#U1" title="ANALOAF:sel.1">CONGR</a> of <font color="Maroon" title="c1">MS</font> #) is  <a href="translac.html#V1" title="TRANSLAC:attr.1">Fanoian</a> </span>;<br></span><span class="kw">by</span> <span class="lab"><a class="ref" href="euclmetr.html#D4" target="_self" onmouseover="rs('euclmetr/D4')" onmouseout="rh()">Def4</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+</body>
+</html>

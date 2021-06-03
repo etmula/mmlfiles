@@ -1,0 +1,550 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>DUALSP02:  Bidual Spaces and Reflexivity of Real Normed Spaces</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  Bidual Spaces and Reflexivity of Real Normed Spaces</font></span><br><span class="comment"><font color="firebrick">:: by Keiko Narita , Noboru Endou and Yasunari Shidama</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received November 29, 2014</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 2014-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br><div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E1">Th63</font></span>: <a NAME="T1"><span class="comment"><font color="firebrick">:: DUALSP02:1</font></span><br></a><div class="add"> for <font color="Olive" title="b1">V</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive" title="b2">X</font> being    <a href="dualsp01.html#M1" title="DUALSP01:mode.1">SubRealNormSpace</a> of <font color="Olive" title="b1">V</font><br>  for <font color="Olive" title="b3">x0</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">V</font><br>  for <font color="Olive" title="b4">d</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>  st  ex <font color="Olive" title="b5">Z</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> st <br>( <font color="Olive" title="b5">Z</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <span class="p2"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><span class="p3">(<span class="default"><font color="Olive" title="b6">x</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b3">x0</font></span>)</span></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span> where <font color="Olive" title="b6">x</font> is   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">V</font> : <font color="Olive" title="b6">x</font> <a href="struct_0.html#R1" title="STRUCT_0:pred.1">in</a> <font color="Olive" title="b2">X</font> </span> } </span>  &amp; <font color="Olive" title="b4">d</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="seq_4.html#K3" title="SEQ_4:func.3">lower_bound</a> <font color="Olive" title="b5">Z</font> &amp;  <a href="seq_4.html#K3" title="SEQ_4:func.3">lower_bound</a> <font color="Olive" title="b5">Z</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  ) holds <br>(  not <font color="Olive" title="b3">x0</font> <a href="struct_0.html#R1" title="STRUCT_0:pred.1">in</a> <font color="Olive" title="b2">X</font> &amp;  ex <font color="Olive" title="b5">G</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">V</font></span>)</span> st <br>( (  for <font color="Olive" title="b6">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">V</font>  st <font color="Olive" title="b6">x</font> <a href="struct_0.html#R1" title="STRUCT_0:pred.1">in</a> <font color="Olive" title="b2">X</font> holds <br><span class="p1">(<span class="default"><a href="dualsp01.html#K14" title="DUALSP01:func.14">Bound2Lipschitz</a> (<font color="Olive" title="b5">G</font>,<font color="Olive" title="b1">V</font>)</span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b6">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  ) &amp; <span class="p1">(<span class="default"><a href="dualsp01.html#K14" title="DUALSP01:func.14">Bound2Lipschitz</a> (<font color="Olive" title="b5">G</font>,<font color="Olive" title="b1">V</font>)</span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">x0</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 &amp; <span class="p1"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><font color="Olive" title="b5">G</font></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <font color="Olive" title="b4">d</font> ) )</div>
+<div about="#PF1" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/1')" href="javascript:()" title="1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E2">Lm64</font></span>: <a NAME="T2"><span class="comment"><font color="firebrick">:: DUALSP02:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">V</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive" title="b2">Y</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">V</font><br>  for <font color="Olive" title="b3">x0</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">V</font>  st <font color="Olive" title="b2">Y</font> is  <a href="rlsub_1.html#V1" title="RLSUB_1:attr.1">linearly-closed</a>  &amp; <font color="Olive" title="b2">Y</font> is  <a href="nfcont_1.html#V2" title="NFCONT_1:attr.2">closed</a>  &amp;  not <font color="Olive" title="b3">x0</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">Y</font> holds <br> ex <font color="Olive" title="b4">G</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">V</font></span>)</span> st <br>( (  for <font color="Olive" title="b5">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">V</font>  st <font color="Olive" title="b5">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">Y</font> holds <br><span class="p1">(<span class="default"><a href="dualsp01.html#K14" title="DUALSP01:func.14">Bound2Lipschitz</a> (<font color="Olive" title="b4">G</font>,<font color="Olive" title="b1">V</font>)</span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b5">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  ) &amp; <span class="p1">(<span class="default"><a href="dualsp01.html#K14" title="DUALSP01:func.14">Bound2Lipschitz</a> (<font color="Olive" title="b4">G</font>,<font color="Olive" title="b1">V</font>)</span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">x0</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 )</div>
+<div about="#PF2" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/2')" href="javascript:()" title="2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E3">Lm65a</font></span>: <a NAME="T3"><span class="comment"><font color="firebrick">:: DUALSP02:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">V</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive" title="b2">x0</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">V</font>  st <font color="Olive" title="b2">x0</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Olive" title="b1">V</font> holds <br> ex <font color="Olive" title="b3">G</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">V</font></span>)</span> st <br>( <span class="p1">(<span class="default"><a href="dualsp01.html#K14" title="DUALSP01:func.14">Bound2Lipschitz</a> (<font color="Olive" title="b3">G</font>,<font color="Olive" title="b1">V</font>)</span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b2">x0</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 &amp; <span class="p1"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><font color="Olive" title="b3">G</font></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><font color="Olive" title="b2">x0</font></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span> )</div>
+<div about="#PF3" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/3')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/3')" href="javascript:()" title="3"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E4">Lm65</font></span>: <a NAME="T4"><span class="comment"><font color="firebrick">:: DUALSP02:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">V</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive" title="b2">x0</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">V</font>  st <font color="Olive" title="b2">x0</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Olive" title="b1">V</font> holds <br> ex <font color="Olive" title="b3">F</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">V</font></span>)</span> st <br>( <span class="p1"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><font color="Olive" title="b3">F</font></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 &amp; <span class="p1">(<span class="default"><a href="dualsp01.html#K14" title="DUALSP01:func.14">Bound2Lipschitz</a> (<font color="Olive" title="b3">F</font>,<font color="Olive" title="b1">V</font>)</span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b2">x0</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><font color="Olive" title="b2">x0</font></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span> )</div>
+<div about="#PF4" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T4"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/4')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/4')" href="javascript:()" title="4"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E5">Lm65A</font></span>: <a NAME="T5"><span class="comment"><font color="firebrick">:: DUALSP02:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">V</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a>  st  not <font color="Olive" title="b1">V</font> is  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  holds <br> ex <font color="Olive" title="b2">F</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">V</font></span>)</span> st <span class="p1"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><font color="Olive" title="b2">F</font></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1</div>
+<div about="#PF5" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/5')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/5')" href="javascript:()" title="5"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E6">Lm65A1</font></span>: <a NAME="T6"><span class="comment"><font color="firebrick">:: DUALSP02:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">V</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a>  st  not <font color="Olive" title="b1">V</font> is  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  holds <br> not  <a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">V</font> is  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a> </div>
+<div about="#PF6" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/6')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/6')" href="javascript:()" title="6"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E7">Th71</font></span>: <a NAME="T7"><span class="comment"><font color="firebrick">:: DUALSP02:7</font></span><br></a><div class="add"> for <font color="Olive" title="b1">V</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive" title="b2">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">V</font>  st  not <font color="Olive" title="b1">V</font> is  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  holds <br>(  ex <font color="Olive" title="b3">X</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> st <br>( <font color="Olive" title="b3">X</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <span class="p2"><a href="complex1.html#K9" title="COMPLEX1:func.9">|.</a><span class="default"><span class="p3">(<span class="default"><span class="p4">(<span class="default"><a href="dualsp01.html#K14" title="DUALSP01:func.14">Bound2Lipschitz</a> (<font color="Olive" title="b4">F</font>,<font color="Olive" title="b1">V</font>)</span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b2">x</font></span>)</span></span><a href="complex1.html#K9" title="COMPLEX1:func.9">.|</a></span> where <font color="Olive" title="b4">F</font> is   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">V</font></span>)</span> : <span class="p1"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><font color="Olive" title="b4">F</font></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 </span> } </span>  &amp; <span class="p1"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><font color="Olive" title="b2">x</font></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="seq_4.html#K2" title="SEQ_4:func.2">upper_bound</a> <font color="Olive" title="b3">X</font> ) &amp;  ex <font color="Olive" title="b3">Y</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> st <br>( <font color="Olive" title="b3">Y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <span class="p2"><a href="complex1.html#K9" title="COMPLEX1:func.9">|.</a><span class="default"><span class="p3">(<span class="default"><span class="p4">(<span class="default"><a href="dualsp01.html#K14" title="DUALSP01:func.14">Bound2Lipschitz</a> (<font color="Olive" title="b4">F</font>,<font color="Olive" title="b1">V</font>)</span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b2">x</font></span>)</span></span><a href="complex1.html#K9" title="COMPLEX1:func.9">.|</a></span> where <font color="Olive" title="b4">F</font> is   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">V</font></span>)</span> : <span class="p1"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><font color="Olive" title="b4">F</font></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> 1 </span> } </span>  &amp; <span class="p1"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><font color="Olive" title="b2">x</font></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="seq_4.html#K2" title="SEQ_4:func.2">upper_bound</a> <font color="Olive" title="b3">Y</font> ) )</div>
+<div about="#PF7" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T7"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/7')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/7')" href="javascript:()" title="7"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E8">Lm72</font></span>: <a NAME="T8"><span class="comment"><font color="firebrick">:: DUALSP02:8</font></span><br></a><div class="add"> for <font color="Olive" title="b1">V</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive" title="b2">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">V</font>  st (  for <font color="Olive" title="b3">f</font> being   <a href="dualsp01.html#V1" title="DUALSP01:attr.1">Lipschitzian</a>  <a href="hahnban.html#NM3" title="HAHNBAN:NM.3">linear-Functional</a> of <font color="Olive" title="b1">V</font> holds  <font color="Olive" title="b3">f</font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  ) holds <br><font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Olive" title="b1">V</font>
+</div>
+<div about="#PF8" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/8')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/8')" href="javascript:()" title="8"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">X</font> be   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">x</font> be   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Maroon" title="c1">X</font>;<br><div about="#D9" typeof="oo:Definition">
+<a NAME="K1"><span class="kw">func</span> </a> <a href="dualsp02.html#K1" title="DUALSP02:func.1">BiDual</a> <font color="Maroon" title="c2">x</font><span class="kw"> -&gt; </span>  <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <span class="p2">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Maroon" title="c1">X</font></span>)</span></span>)</span><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E9">Def1</font></span>: <a NAME="D1"><span class="comment"><font color="firebrick">:: DUALSP02:def 1</font></span><br></a> for <font color="Olive" title="b1">f</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Maroon" title="c1">X</font></span>)</span> holds  <span class="kw">it</span> <a href="dualsp01.html#K18" title="DUALSP01:func.18">.</a> <font color="Olive" title="b1">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">f</font> <a href="dualsp01.html#K18" title="DUALSP01:func.18">.</a> <font color="Maroon" title="c2">x</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:9_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <span class="p2">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Maroon" title="c1">X</font></span>)</span></span>)</span> st <br> for <font color="Olive" title="b2">f</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Maroon" title="c1">X</font></span>)</span> holds  <font color="Olive">b<sub>1</sub></font> <a href="dualsp01.html#K18" title="DUALSP01:func.18">.</a> <font color="Olive" title="b2">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">f</font> <a href="dualsp01.html#K18" title="DUALSP01:func.18">.</a> <font color="Maroon" title="c2">x</font>
+ </span><div about="#PF9_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/9_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/9_1_1')" href="javascript:()" title="9_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:9_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <span class="p2">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Maroon" title="c1">X</font></span>)</span></span>)</span>  st (  for <font color="Olive" title="b3">f</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Maroon" title="c1">X</font></span>)</span> holds  <font color="Olive">b<sub>1</sub></font> <a href="dualsp01.html#K18" title="DUALSP01:func.18">.</a> <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">f</font> <a href="dualsp01.html#K18" title="DUALSP01:func.18">.</a> <font color="Maroon" title="c2">x</font> ) &amp; (  for <font color="Olive" title="b3">f</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Maroon" title="c1">X</font></span>)</span> holds  <font color="Olive">b<sub>2</sub></font> <a href="dualsp01.html#K18" title="DUALSP01:func.18">.</a> <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">f</font> <a href="dualsp01.html#K18" title="DUALSP01:func.18">.</a> <font color="Maroon" title="c2">x</font> ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF9_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/9_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/9_1_2')" href="javascript:()" title="9_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E9">Def1</font></span>   defines <a href="dualsp02.html#K1" title="DUALSP02:func.1">BiDual</a> <a onclick="hs(this)" href="javascript:()">DUALSP02:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">X</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive" title="b2">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">X</font><br>  for <font color="Olive">b<sub>3</sub></font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <span class="p2">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font></span>)</span></span>)</span> holds <br> ( <font color="Olive">b<sub>3</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="dualsp02.html#K1" title="DUALSP02:func.1">BiDual</a> <font color="Olive" title="b2">x</font> iff  for <font color="Olive" title="b4">f</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font></span>)</span> holds  <font color="Olive">b<sub>3</sub></font> <a href="dualsp01.html#K18" title="DUALSP01:func.18">.</a> <font color="Olive" title="b4">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">f</font> <a href="dualsp01.html#K18" title="DUALSP01:func.18">.</a> <font color="Olive" title="b2">x</font> );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">X</font> be   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a>;<br><div about="#D10" typeof="oo:Definition">
+<a NAME="K2"><span class="kw">func</span> </a> <a href="dualsp02.html#K2" title="DUALSP02:func.2">BidualFunc</a> <font color="Maroon" title="c1">X</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Maroon" title="c1">X</font>,<span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <span class="p2">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Maroon" title="c1">X</font></span>)</span></span>)</span><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E10">Def2</font></span>: <a NAME="D2"><span class="comment"><font color="firebrick">:: DUALSP02:def 2</font></span><br></a> for <font color="Olive" title="b1">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Maroon" title="c1">X</font> holds  <span class="kw">it</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="dualsp02.html#K1" title="DUALSP02:func.1">BiDual</a> <font color="Olive" title="b1">x</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:10_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Maroon" title="c1">X</font>,<span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <span class="p2">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Maroon" title="c1">X</font></span>)</span></span>)</span> st <br> for <font color="Olive" title="b2">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Maroon" title="c1">X</font> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="dualsp02.html#K1" title="DUALSP02:func.1">BiDual</a> <font color="Olive" title="b2">x</font>
+ </span><div about="#PF10_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/10_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/10_1_1')" href="javascript:()" title="10_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:10_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Maroon" title="c1">X</font>,<span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <span class="p2">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Maroon" title="c1">X</font></span>)</span></span>)</span>  st (  for <font color="Olive" title="b3">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Maroon" title="c1">X</font> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="dualsp02.html#K1" title="DUALSP02:func.1">BiDual</a> <font color="Olive" title="b3">x</font> ) &amp; (  for <font color="Olive" title="b3">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Maroon" title="c1">X</font> holds  <font color="Olive">b<sub>2</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="dualsp02.html#K1" title="DUALSP02:func.1">BiDual</a> <font color="Olive" title="b3">x</font> ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF10_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/10_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/10_1_2')" href="javascript:()" title="10_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E10">Def2</font></span>   defines <a href="dualsp02.html#K2" title="DUALSP02:func.2">BidualFunc</a> <a onclick="hs(this)" href="javascript:()">DUALSP02:def 2 : <br></a><span class="hide"> for <font color="Olive" title="b1">X</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive">b<sub>2</sub></font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <span class="p2">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font></span>)</span></span>)</span> holds <br> ( <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="dualsp02.html#K2" title="DUALSP02:func.2">BidualFunc</a> <font color="Olive" title="b1">X</font> iff  for <font color="Olive" title="b3">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">X</font> holds  <font color="Olive">b<sub>2</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="dualsp02.html#K1" title="DUALSP02:func.1">BiDual</a> <font color="Olive" title="b3">x</font> );<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">X</font> be   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a>;<br>
+<div about="#FC1" typeof="oo:Theorem">
+<a NAME="FC1"><span class="kw">cluster </span></a> <a href="dualsp02.html#K2" title="DUALSP02:func.2">BidualFunc</a> <font color="Maroon" title="c1">X</font><span class="kw"> -&gt; </span> <a href="vectsp_1.html#V13" title="VECTSP_1:attr.13">additive</a>   <a href="lopban_1.html#V1" title="LOPBAN_1:attr.1">homogeneous</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:11_1"></a>
+(  <a href="dualsp02.html#K2" title="DUALSP02:func.2">BidualFunc</a> <font color="Maroon" title="c1">X</font> is  <a href="vectsp_1.html#V13" title="VECTSP_1:attr.13">additive</a>  &amp;  <a href="dualsp02.html#K2" title="DUALSP02:func.2">BidualFunc</a> <font color="Maroon" title="c1">X</font> is  <a href="lopban_1.html#V1" title="LOPBAN_1:attr.1">homogeneous</a>  )
+ </span><div about="#PF11_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/11_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/11_1_1')" href="javascript:()" title="11_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">X</font> be   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a>;<br>
+<div about="#FC2" typeof="oo:Theorem">
+<a NAME="FC2"><span class="kw">cluster </span></a> <a href="dualsp02.html#K2" title="DUALSP02:func.2">BidualFunc</a> <font color="Maroon" title="c1">X</font><span class="kw"> -&gt; </span> <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:12_1"></a>
+ <a href="dualsp02.html#K2" title="DUALSP02:func.2">BidualFunc</a> <font color="Maroon" title="c1">X</font> is  <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a> 
+ </span><div about="#PF12_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/12_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/12_1_1')" href="javascript:()" title="12_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><a NAME="E11"></a><span class="lab"><font color="Green" title="E11">LMNORM</font></span>: <span about="#E11" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">X</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive" title="b2">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">X</font>  st  not <font color="Olive" title="b1">X</font> is  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  holds <br><span class="p1"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><font color="Olive" title="b2">x</font></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="dualsp02.html#K2" title="DUALSP02:func.2">BidualFunc</a> <font color="Olive" title="b1">X</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b2">x</font></span>)</span></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span>
+ </span><br><div about="#PF13" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/13')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/13')" href="javascript:()" title="13"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T9"><span class="comment"><font color="firebrick">:: DUALSP02:9</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a>  st  not <font color="Olive" title="b1">X</font> is  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  holds <br>(  <a href="dualsp02.html#K2" title="DUALSP02:func.2">BidualFunc</a> <font color="Olive" title="b1">X</font> is   <a href="lopban_1.html#NM1" title="LOPBAN_1:NM.1">LinearOperator</a> of <font color="Olive" title="b1">X</font>,<span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <span class="p2">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font></span>)</span></span>)</span> &amp; (  for <font color="Olive" title="b2">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">X</font> holds  <span class="p1"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><font color="Olive" title="b2">x</font></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="dualsp02.html#K2" title="DUALSP02:func.2">BidualFunc</a> <font color="Olive" title="b1">X</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b2">x</font></span>)</span></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span> ) ) <span class="kw">by</span> <span class="lab"><a class="txt" href="dualsp02.html#E11"><span class="lab"><font color="Green" title="E11">LMNORM</font></span></a></span>;<br>
+</div>
+</div>
+<br><div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E12">IMDDX</font></span>: <a NAME="T10"><span class="comment"><font color="firebrick">:: DUALSP02:10</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a>  st  not <font color="Olive" title="b1">X</font> is  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  holds <br> ex <font color="Olive" title="b2">DuX</font> being    <a href="dualsp01.html#M1" title="DUALSP01:mode.1">SubRealNormSpace</a> of  <a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font></span>)</span> ex <font color="Olive" title="b3">L</font> being   <a href="lopban_1.html#V2" title="LOPBAN_1:attr.2">Lipschitzian</a>  <a href="lopban_1.html#NM1" title="LOPBAN_1:NM.1">LinearOperator</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">DuX</font> st <br>( <font color="Olive" title="b3">L</font> is  <a href="funct_2.html#V3" title="FUNCT_2:attr.3">bijective</a>  &amp; <font color="Olive" title="b2">DuX</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="normsp_3.html#K8" title="NORMSP_3:func.8">Im</a> <span class="p1">(<span class="default"><a href="dualsp02.html#K2" title="DUALSP02:func.2">BidualFunc</a> <font color="Olive" title="b1">X</font></span>)</span> &amp; (  for <font color="Olive" title="b4">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">X</font> holds  <font color="Olive" title="b3">L</font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b4">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="dualsp02.html#K1" title="DUALSP02:func.1">BiDual</a> <font color="Olive" title="b4">x</font> ) &amp; (  for <font color="Olive" title="b4">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">X</font> holds  <span class="p1"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><font color="Olive" title="b4">x</font></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b3">L</font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b4">x</font></span>)</span></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span> ) )</div>
+<div about="#PF14" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T10"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/14')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/14')" href="javascript:()" title="14"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K3"><span class="kw">func</span> </a> <a href="dualsp02.html#K3" title="DUALSP02:func.3">RNS_Real</a> <span class="kw"> -&gt; </span>  <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><span class="kw"> equals </span><a NAME="D3"><span class="comment"><font color="firebrick">:: DUALSP02:def 3</font></span><br></a> <a href="normsp_1.html#G1" title="NORMSP_1:aggr.1">NORMSTR</a>(# <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>,<span class="p1">(<span class="default"><a href="subset_1.html#K10" title="SUBSET_1:func.10">In</a> (<a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,<a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>)</span>)</span>,<a href="binop_2.html#K9" title="BINOP_2:func.9">addreal</a>,<a href="binop_2.html#K11" title="BINOP_2:func.11">multreal</a>,<a href="euclid.html#K2" title="EUCLID:func.2">absreal</a> #);<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:15_1"></a>
+ <a href="normsp_1.html#G1" title="NORMSP_1:aggr.1">NORMSTR</a>(# <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>,<span class="p1">(<span class="default"><a href="subset_1.html#K10" title="SUBSET_1:func.10">In</a> (<a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,<a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>)</span>)</span>,<a href="binop_2.html#K9" title="BINOP_2:func.9">addreal</a>,<a href="binop_2.html#K11" title="BINOP_2:func.11">multreal</a>,<a href="euclid.html#K2" title="EUCLID:func.2">absreal</a> #) is   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a>
+ </span><div about="#PF15_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/15_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/15_1_1')" href="javascript:()" title="15_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT3" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="dualsp02.html#K3" title="DUALSP02:func.3">RNS_Real</a> <a onclick="hs(this)" href="javascript:()">DUALSP02:def 3 : <br></a><span class="hide"> <a href="dualsp02.html#K3" title="DUALSP02:func.3">RNS_Real</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="normsp_1.html#G1" title="NORMSP_1:aggr.1">NORMSTR</a>(# <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>,<span class="p1">(<span class="default"><a href="subset_1.html#K10" title="SUBSET_1:func.10">In</a> (<a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,<a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>)</span>)</span>,<a href="binop_2.html#K9" title="BINOP_2:func.9">addreal</a>,<a href="binop_2.html#K11" title="BINOP_2:func.11">multreal</a>,<a href="euclid.html#K2" title="EUCLID:func.2">absreal</a> #);<br></span>
+</div>
+<br><div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T11"><span class="comment"><font color="firebrick">:: DUALSP02:11</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive" title="b2">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> <br>  for <font color="Olive" title="b3">v</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <a href="dualsp02.html#K3" title="DUALSP02:func.3">RNS_Real</a>  st <font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">v</font> holds <br> <a href="real_1.html#K1" title="REAL_1:func.1">-</a> <font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="algstr_0.html#K4" title="ALGSTR_0:func.4">-</a> <font color="Olive" title="b3">v</font>
+</div>
+<div about="#PF16" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/16')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/16')" href="javascript:()" title="16"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E13">LMN6</font></span>: <a NAME="T12"><span class="comment"><font color="firebrick">:: DUALSP02:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive" title="b2">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br> ( <font color="Olive" title="b2">x</font> is   <a href="hahnban.html#V2" title="HAHNBAN:attr.2">additive</a>   <a href="hahnban.html#V3" title="HAHNBAN:attr.3">homogeneous</a>  <a href="struct_0.html#NM4" title="STRUCT_0:NM.4">Function</a> of <font color="Olive" title="b1">X</font>,<a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> iff <font color="Olive" title="b2">x</font> is   <a href="vectsp_1.html#V13" title="VECTSP_1:attr.13">additive</a>   <a href="lopban_1.html#V1" title="LOPBAN_1:attr.1">homogeneous</a>  <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<a href="dualsp02.html#K3" title="DUALSP02:func.3">RNS_Real</a> )</div>
+<div about="#PF17" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/17')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/17')" href="javascript:()" title="17"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E14">LMN7</font></span>: <a NAME="T13"><span class="comment"><font color="firebrick">:: DUALSP02:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive" title="b2">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br> ( <font color="Olive" title="b2">x</font> is   <a href="hahnban.html#V2" title="HAHNBAN:attr.2">additive</a>   <a href="hahnban.html#V3" title="HAHNBAN:attr.3">homogeneous</a>   <a href="dualsp01.html#V1" title="DUALSP01:attr.1">Lipschitzian</a>  <a href="struct_0.html#NM4" title="STRUCT_0:NM.4">Function</a> of <font color="Olive" title="b1">X</font>,<a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> iff <font color="Olive" title="b2">x</font> is   <a href="vectsp_1.html#V13" title="VECTSP_1:attr.13">additive</a>   <a href="lopban_1.html#V1" title="LOPBAN_1:attr.1">homogeneous</a>   <a href="lopban_1.html#V2" title="LOPBAN_1:attr.2">Lipschitzian</a>  <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<a href="dualsp02.html#K3" title="DUALSP02:func.3">RNS_Real</a> )</div>
+<div about="#PF18" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T13"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/18')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/18')" href="javascript:()" title="18"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E15">Th75A</font></span>: <a NAME="T14"><span class="comment"><font color="firebrick">:: DUALSP02:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a> holds   the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><a href="lopban_1.html#K16" title="LOPBAN_1:func.16">R_NormSpace_of_BoundedLinearOperators</a> (<font color="Olive" title="b1">X</font>,<a href="dualsp02.html#K3" title="DUALSP02:func.3">RNS_Real</a>)</span>)</span>
+</div>
+<div about="#PF19" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T14"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/19')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/19')" href="javascript:()" title="19"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T15" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T15"><span class="comment"><font color="firebrick">:: DUALSP02:15</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive" title="b2">x</font>, <font color="Olive" title="b3">y</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font></span>)</span><br>  for <font color="Olive" title="b4">v</font>, <font color="Olive" title="b5">w</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="lopban_1.html#K16" title="LOPBAN_1:func.16">R_NormSpace_of_BoundedLinearOperators</a> (<font color="Olive" title="b1">X</font>,<a href="dualsp02.html#K3" title="DUALSP02:func.3">RNS_Real</a>)</span>)</span>  st <font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">v</font> &amp; <font color="Olive" title="b3">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">w</font> holds <br><font color="Olive" title="b2">x</font> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <font color="Olive" title="b3">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">v</font> <a href="rlvect_1.html#K3" title="RLVECT_1:func.3">+</a> <font color="Olive" title="b5">w</font>
+</div>
+<div about="#PF20" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/20')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/20')" href="javascript:()" title="20"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T16" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E16">LMN9</font></span>: <a NAME="T16"><span class="comment"><font color="firebrick">:: DUALSP02:16</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive" title="b2">a</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> <br>  for <font color="Olive" title="b3">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font></span>)</span><br>  for <font color="Olive" title="b4">v</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="lopban_1.html#K16" title="LOPBAN_1:func.16">R_NormSpace_of_BoundedLinearOperators</a> (<font color="Olive" title="b1">X</font>,<a href="dualsp02.html#K3" title="DUALSP02:func.3">RNS_Real</a>)</span>)</span>  st <font color="Olive" title="b3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">v</font> holds <br><font color="Olive" title="b2">a</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">a</font> <a href="rlvect_1.html#K1" title="RLVECT_1:func.1">*</a> <font color="Olive" title="b4">v</font>
+</div>
+<div about="#PF21" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T16"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/21')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/21')" href="javascript:()" title="21"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T17" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T17"><span class="comment"><font color="firebrick">:: DUALSP02:17</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive" title="b2">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font></span>)</span><br>  for <font color="Olive" title="b3">v</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="lopban_1.html#K16" title="LOPBAN_1:func.16">R_NormSpace_of_BoundedLinearOperators</a> (<font color="Olive" title="b1">X</font>,<a href="dualsp02.html#K3" title="DUALSP02:func.3">RNS_Real</a>)</span>)</span>  st <font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">v</font> holds <br> <a href="algstr_0.html#K4" title="ALGSTR_0:func.4">-</a> <font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="algstr_0.html#K4" title="ALGSTR_0:func.4">-</a> <font color="Olive" title="b3">v</font>
+</div>
+<div about="#PF22" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T17"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/22')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/22')" href="javascript:()" title="22"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T18" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E17">LMN11</font></span>: <a NAME="T18"><span class="comment"><font color="firebrick">:: DUALSP02:18</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive" title="b2">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font></span>)</span><br>  for <font color="Olive" title="b3">v</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="lopban_1.html#K16" title="LOPBAN_1:func.16">R_NormSpace_of_BoundedLinearOperators</a> (<font color="Olive" title="b1">X</font>,<a href="dualsp02.html#K3" title="DUALSP02:func.3">RNS_Real</a>)</span>)</span>  st <font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">v</font> holds <br><span class="p1"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><font color="Olive" title="b2">x</font></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><font color="Olive" title="b3">v</font></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span>
+</div>
+<div about="#PF23" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T18"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/23')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/23')" href="javascript:()" title="23"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T19" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E18">Th75</font></span>: <a NAME="T19"><span class="comment"><font color="firebrick">:: DUALSP02:19</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive" title="b2">L</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">X</font>  st  not <font color="Olive" title="b1">X</font> is  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  &amp; (  for <font color="Olive" title="b3">f</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font></span>)</span>  ex <font color="Olive" title="b4">Kf</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> st <br>(  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b4">Kf</font> &amp; (  for <font color="Olive" title="b5">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">X</font>  st <font color="Olive" title="b5">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">L</font> holds <br><span class="p1"><a href="complex1.html#K9" title="COMPLEX1:func.9">|.</a><span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b3">f</font> <a href="dualsp01.html#K18" title="DUALSP01:func.18">.</a> <font color="Olive" title="b5">x</font></span>)</span></span><a href="complex1.html#K9" title="COMPLEX1:func.9">.|</a></span> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b4">Kf</font> ) ) ) holds <br> ex <font color="Olive" title="b3">M</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> st <br>(  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b3">M</font> &amp; (  for <font color="Olive" title="b4">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">X</font>  st <font color="Olive" title="b4">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">L</font> holds <br><span class="p1"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><font color="Olive" title="b4">x</font></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b3">M</font> ) )</div>
+<div about="#PF24" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T19"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/24')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/24')" href="javascript:()" title="24"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T20" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T20"><span class="comment"><font color="firebrick">:: DUALSP02:20</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive" title="b2">L</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">X</font>  st  not <font color="Olive" title="b1">X</font> is  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  &amp; (  for <font color="Olive" title="b3">f</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font></span>)</span>  ex <font color="Olive" title="b4">Y1</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> st <br>( <font color="Olive" title="b4">Y1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <span class="p2"><a href="complex1.html#K9" title="COMPLEX1:func.9">|.</a><span class="default"><span class="p3">(<span class="default"><font color="Olive" title="b3">f</font> <a href="dualsp01.html#K18" title="DUALSP01:func.18">.</a> <font color="Olive" title="b5">x</font></span>)</span></span><a href="complex1.html#K9" title="COMPLEX1:func.9">.|</a></span> where <font color="Olive" title="b5">x</font> is   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">X</font> : <font color="Olive" title="b5">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">L</font> </span> } </span>  &amp;  <a href="xxreal_2.html#K1" title="XXREAL_2:func.1">sup</a> <font color="Olive" title="b4">Y1</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a>  <a href="xxreal_0.html#K1" title="XXREAL_0:func.1">+infty</a>  ) ) holds <br> ex <font color="Olive" title="b3">Y</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> st <br>( <font color="Olive" title="b3">Y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <span class="p2"><a href="normsp_0.html#K2" title="NORMSP_0:func.2">||.</a><span class="default"><font color="Olive" title="b4">x</font></span><a href="normsp_0.html#K2" title="NORMSP_0:func.2">.||</a></span> where <font color="Olive" title="b4">x</font> is   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">X</font> : <font color="Olive" title="b4">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">L</font> </span> } </span>  &amp;  <a href="xxreal_2.html#K1" title="XXREAL_2:func.1">sup</a> <font color="Olive" title="b3">Y</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a>  <a href="xxreal_0.html#K1" title="XXREAL_0:func.1">+infty</a>  )</div>
+<div about="#PF25" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T20"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/25')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/25')" href="javascript:()" title="25"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">X</font> be   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V1"><span class="kw">attr</span> </a><font color="Maroon" title="c1">X</font> is  <a href="dualsp02.html#V1" title="DUALSP02:attr.1">Reflexive</a> <span class="kw"> means </span><a NAME="D4"><span class="comment"><font color="firebrick">:: DUALSP02:def 4</font></span><br></a> <a href="dualsp02.html#K2" title="DUALSP02:func.2">BidualFunc</a> <font color="Maroon" title="c1">X</font> is  <a href="funct_2.html#V2" title="FUNCT_2:attr.2">onto</a> ;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT4" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="dualsp02.html#V1" title="DUALSP02:attr.1">Reflexive</a> <a onclick="hs(this)" href="javascript:()">DUALSP02:def 4 : <br></a><span class="hide"> for <font color="Olive" title="b1">X</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a> holds <br> ( <font color="Olive" title="b1">X</font> is  <a href="dualsp02.html#V1" title="DUALSP02:attr.1">Reflexive</a>  iff  <a href="dualsp02.html#K2" title="DUALSP02:func.2">BidualFunc</a> <font color="Olive" title="b1">X</font> is  <a href="funct_2.html#V2" title="FUNCT_2:attr.2">onto</a>  );<br></span>
+</div>
+<br><div about="#T21" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E19">REFF1</font></span>: <a NAME="T21"><span class="comment"><font color="firebrick">:: DUALSP02:21</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a> holds <br> ( <font color="Olive" title="b1">X</font> is  <a href="dualsp02.html#V1" title="DUALSP02:attr.1">Reflexive</a>  iff  for <font color="Olive" title="b2">f</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <span class="p2">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font></span>)</span></span>)</span>  ex <font color="Olive" title="b3">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Olive" title="b1">X</font> st <br> for <font color="Olive" title="b4">g</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font></span>)</span> holds  <font color="Olive" title="b2">f</font> <a href="dualsp01.html#K18" title="DUALSP01:func.18">.</a> <font color="Olive" title="b4">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">g</font> <a href="dualsp01.html#K18" title="DUALSP01:func.18">.</a> <font color="Olive" title="b3">x</font> )</div>
+<div about="#PF27" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T21"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/27')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/27')" href="javascript:()" title="27"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T22" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T22"><span class="comment"><font color="firebrick">:: DUALSP02:22</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a> holds <br> ( <font color="Olive" title="b1">X</font> is  <a href="dualsp02.html#V1" title="DUALSP02:attr.1">Reflexive</a>  iff  <a href="normsp_3.html#K8" title="NORMSP_3:func.8">Im</a> <span class="p1">(<span class="default"><a href="dualsp02.html#K2" title="DUALSP02:func.2">BidualFunc</a> <font color="Olive" title="b1">X</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font></span>)</span> )</div>
+<div about="#PF28" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T22"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/28')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/28')" href="javascript:()" title="28"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T23" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T23"><span class="comment"><font color="firebrick">:: DUALSP02:23</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a>  st  not <font color="Olive" title="b1">X</font> is  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  &amp; <font color="Olive" title="b1">X</font> is  <a href="dualsp02.html#V1" title="DUALSP02:attr.1">Reflexive</a>  holds <br><font color="Olive" title="b1">X</font> is   <a href="lopban_1.html#NM2" title="LOPBAN_1:NM.2">RealBanachSpace</a>
+</div>
+<div about="#PF29" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T23"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/29')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/29')" href="javascript:()" title="29"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T24" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E20">Th76</font></span>: <a NAME="T24"><span class="comment"><font color="firebrick">:: DUALSP02:24</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="lopban_1.html#NM2" title="LOPBAN_1:NM.2">RealBanachSpace</a><br>  for <font color="Olive" title="b2">M</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">X</font>  st <font color="Olive" title="b1">X</font> is  <a href="dualsp02.html#V1" title="DUALSP02:attr.1">Reflexive</a>  &amp; <font color="Olive" title="b2">M</font> is  <a href="rlsub_1.html#V1" title="RLSUB_1:attr.1">linearly-closed</a>  &amp; <font color="Olive" title="b2">M</font> is  <a href="nfcont_1.html#V2" title="NFCONT_1:attr.2">closed</a>  holds <br> <a href="normsp_3.html#K4" title="NORMSP_3:func.4">NLin</a> <font color="Olive" title="b2">M</font> is  <a href="dualsp02.html#V1" title="DUALSP02:attr.1">Reflexive</a> </div>
+<div about="#PF30" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T24"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/30')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/30')" href="javascript:()" title="30"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T25" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E21">NISOM08</font></span>: <a NAME="T25"><span class="comment"><font color="firebrick">:: DUALSP02:25</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive" title="b3">L</font> being   <a href="lopban_1.html#V2" title="LOPBAN_1:attr.2">Lipschitzian</a>  <a href="lopban_1.html#NM1" title="LOPBAN_1:NM.1">LinearOperator</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font><br>  for <font color="Olive" title="b4">y</font> being   <a href="dualsp01.html#V1" title="DUALSP01:attr.1">Lipschitzian</a>  <a href="hahnban.html#NM3" title="HAHNBAN:NM.3">linear-Functional</a> of <font color="Olive" title="b2">Y</font> holds  <font color="Olive" title="b4">y</font> <a href="partfun1.html#K1" title="PARTFUN1:func.1">*</a> <font color="Olive" title="b3">L</font> is   <a href="dualsp01.html#V1" title="DUALSP01:attr.1">Lipschitzian</a>  <a href="hahnban.html#NM3" title="HAHNBAN:NM.3">linear-Functional</a> of <font color="Olive" title="b1">X</font>
+</div>
+<div about="#PF31" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T25"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/31')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/31')" href="javascript:()" title="31"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T26" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E22">NISOM09</font></span>: <a NAME="T26"><span class="comment"><font color="firebrick">:: DUALSP02:26</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive" title="b3">L</font> being   <a href="lopban_1.html#V2" title="LOPBAN_1:attr.2">Lipschitzian</a>  <a href="lopban_1.html#NM1" title="LOPBAN_1:NM.1">LinearOperator</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font>  st <font color="Olive" title="b3">L</font> is  <a href="normsp_3.html#V4" title="NORMSP_3:attr.4">isomorphism</a>  holds <br> ex <font color="Olive" title="b4">T</font> being   <a href="lopban_1.html#V2" title="LOPBAN_1:attr.2">Lipschitzian</a>  <a href="lopban_1.html#NM1" title="LOPBAN_1:NM.1">LinearOperator</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font></span>)</span>,<span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b2">Y</font></span>)</span> st <br>( <font color="Olive" title="b4">T</font> is  <a href="normsp_3.html#V4" title="NORMSP_3:attr.4">isomorphism</a>  &amp; (  for <font color="Olive" title="b5">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font></span>)</span> holds  <font color="Olive" title="b4">T</font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b5">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">x</font> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">L</font> <a href="funct_1.html#K2" title="FUNCT_1:func.2">"</a></span>)</span> ) )</div>
+<div about="#PF32" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T26"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/32')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/32')" href="javascript:()" title="32"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E32"></a><span class="lab"><font color="Green" title="E23">NISOM11</font></span>: <span about="#E32" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a>  st  ex <font color="Olive" title="b3">L</font> being   <a href="lopban_1.html#V2" title="LOPBAN_1:attr.2">Lipschitzian</a>  <a href="lopban_1.html#NM1" title="LOPBAN_1:NM.1">LinearOperator</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> st <font color="Olive" title="b3">L</font> is  <a href="normsp_3.html#V4" title="NORMSP_3:attr.4">isomorphism</a>  &amp; <font color="Olive" title="b1">X</font> is  <a href="dualsp02.html#V1" title="DUALSP02:attr.1">Reflexive</a>  holds <br><font color="Olive" title="b2">Y</font> is  <a href="dualsp02.html#V1" title="DUALSP02:attr.1">Reflexive</a> 
+ </span><br><div about="#PF33" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E32"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/33')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/33')" href="javascript:()" title="33"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T27" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T27"><span class="comment"><font color="firebrick">:: DUALSP02:27</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a><br>  for <font color="Olive" title="b3">L</font> being   <a href="lopban_1.html#V2" title="LOPBAN_1:attr.2">Lipschitzian</a>  <a href="lopban_1.html#NM1" title="LOPBAN_1:NM.1">LinearOperator</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font><br>  for <font color="Olive" title="b4">T</font> being   <a href="lopban_1.html#V2" title="LOPBAN_1:attr.2">Lipschitzian</a>  <a href="lopban_1.html#NM1" title="LOPBAN_1:NM.1">LinearOperator</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font></span>)</span>,<span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b2">Y</font></span>)</span>  st <font color="Olive" title="b3">L</font> is  <a href="normsp_3.html#V4" title="NORMSP_3:attr.4">isomorphism</a>  &amp; <font color="Olive" title="b4">T</font> is  <a href="normsp_3.html#V4" title="NORMSP_3:attr.4">isomorphism</a>  &amp; (  for <font color="Olive" title="b5">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font></span>)</span> holds  <font color="Olive" title="b4">T</font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b5">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">x</font> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">L</font> <a href="funct_1.html#K2" title="FUNCT_1:func.2">"</a></span>)</span> ) holds <br> ex <font color="Olive" title="b5">S</font> being   <a href="lopban_1.html#V2" title="LOPBAN_1:attr.2">Lipschitzian</a>  <a href="lopban_1.html#NM1" title="LOPBAN_1:NM.1">LinearOperator</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b2">Y</font></span>)</span>,<span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font></span>)</span> st <br>( <font color="Olive" title="b5">S</font> is  <a href="normsp_3.html#V4" title="NORMSP_3:attr.4">isomorphism</a>  &amp; <font color="Olive" title="b5">S</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">T</font> <a href="funct_1.html#K2" title="FUNCT_1:func.2">"</a>  &amp; (  for <font color="Olive" title="b6">y</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b2">Y</font></span>)</span> holds  <font color="Olive" title="b5">S</font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b6">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b6">y</font> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <font color="Olive" title="b3">L</font> ) )</div>
+<div about="#PF34" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T27"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/34')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/34')" href="javascript:()" title="34"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T28" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E24">NISOM12</font></span>: <a NAME="T28"><span class="comment"><font color="firebrick">:: DUALSP02:28</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a>  st  ex <font color="Olive" title="b3">L</font> being   <a href="lopban_1.html#V2" title="LOPBAN_1:attr.2">Lipschitzian</a>  <a href="lopban_1.html#NM1" title="LOPBAN_1:NM.1">LinearOperator</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> st <font color="Olive" title="b3">L</font> is  <a href="normsp_3.html#V4" title="NORMSP_3:attr.4">isomorphism</a>  holds <br>( <font color="Olive" title="b1">X</font> is  <a href="dualsp02.html#V1" title="DUALSP02:attr.1">Reflexive</a>  iff <font color="Olive" title="b2">Y</font> is  <a href="dualsp02.html#V1" title="DUALSP02:attr.1">Reflexive</a>  )</div>
+<div about="#PF35" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T28"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/35')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/35')" href="javascript:()" title="35"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T29" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E25">Th74A</font></span>: <a NAME="T29"><span class="comment"><font color="firebrick">:: DUALSP02:29</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="normsp_1.html#NM1" title="NORMSP_1:NM.1">RealNormSpace</a>  st  not <font color="Olive" title="b1">X</font> is  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  holds <br> ex <font color="Olive" title="b2">L</font> being   <a href="lopban_1.html#V2" title="LOPBAN_1:attr.2">Lipschitzian</a>  <a href="lopban_1.html#NM1" title="LOPBAN_1:NM.1">LinearOperator</a> of <font color="Olive" title="b1">X</font>,<span class="p1">(<span class="default"><a href="normsp_3.html#K8" title="NORMSP_3:func.8">Im</a> <span class="p2">(<span class="default"><a href="dualsp02.html#K2" title="DUALSP02:func.2">BidualFunc</a> <font color="Olive" title="b1">X</font></span>)</span></span>)</span> st <font color="Olive" title="b2">L</font> is  <a href="normsp_3.html#V4" title="NORMSP_3:attr.4">isomorphism</a> </div>
+<div about="#PF36" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T29"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/36')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/36')" href="javascript:()" title="36"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E36"></a><span class="lab"><font color="Green" title="E26">Lm77R</font></span>: <span about="#E36" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">X</font> being   <a href="lopban_1.html#NM2" title="LOPBAN_1:NM.2">RealBanachSpace</a>  st  not <font color="Olive" title="b1">X</font> is  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  &amp; <font color="Olive" title="b1">X</font> is  <a href="dualsp02.html#V1" title="DUALSP02:attr.1">Reflexive</a>  holds <br> <a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font> is  <a href="dualsp02.html#V1" title="DUALSP02:attr.1">Reflexive</a> 
+ </span><br><div about="#PF37" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E36"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/37')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/37')" href="javascript:()" title="37"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T30" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T30"><span class="comment"><font color="firebrick">:: DUALSP02:30</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="lopban_1.html#NM2" title="LOPBAN_1:NM.2">RealBanachSpace</a>  st  not <font color="Olive" title="b1">X</font> is  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  holds <br>( <font color="Olive" title="b1">X</font> is  <a href="dualsp02.html#V1" title="DUALSP02:attr.1">Reflexive</a>  iff  <a href="dualsp01.html#K17" title="DUALSP01:func.17">DualSp</a> <font color="Olive" title="b1">X</font> is  <a href="dualsp02.html#V1" title="DUALSP02:attr.1">Reflexive</a>  )</div>
+<div about="#PF38" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T30"></span><a class="txt" onmouseover="tooltip.show('url','proofs/dualsp02/38')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/dualsp02/38')" href="javascript:()" title="38"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+</body>
+</html>

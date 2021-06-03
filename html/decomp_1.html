@@ -1,0 +1,954 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>DECOMP_1:  On the Decomposition of the Continuity</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  On the Decomposition of the Continuity</font></span><br><span class="comment"><font color="firebrick">:: by Marian Przemski</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received December 12, 1994</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 1994-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">T</font> be    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> ;<br><div about="#D1" typeof="oo:Definition">
+<a NAME="M1"><span class="kw">mode</span> </a> <a href="decomp_1.html#M1" title="DECOMP_1:mode.1">alpha-set</a> of <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E1">Def1</font></span>: <a NAME="D1"><span class="comment"><font color="firebrick">:: DECOMP_1:def 1</font></span><br></a><span class="kw">it</span> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <span class="p1">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <span class="p2">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <span class="kw">it</span></span>)</span></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:1_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> st <font color="Olive">b<sub>1</sub></font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <span class="p1">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <span class="p2">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Olive">b<sub>1</sub></font></span>)</span></span>)</span>
+ </span><div about="#PF1_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/1_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/1_1_1')" href="javascript:()" title="1_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<span class="kw">let </span><font color="Maroon" title="c2">IT</font> be   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V1"><span class="kw">attr</span> </a><font color="Maroon" title="c2">IT</font> is  <a href="decomp_1.html#V1" title="DECOMP_1:attr.1">semi-open</a> <span class="kw"> means </span><a NAME="D2"><span class="comment"><font color="firebrick">:: DECOMP_1:def 2</font></span><br></a><font color="Maroon" title="c2">IT</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <span class="p1">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Maroon" title="c2">IT</font></span>)</span>;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V2"><span class="kw">attr</span> </a><font color="Maroon" title="c2">IT</font> is  <a href="decomp_1.html#V2" title="DECOMP_1:attr.2">pre-open</a> <span class="kw"> means </span><a NAME="D3"><span class="comment"><font color="firebrick">:: DECOMP_1:def 3</font></span><br></a><font color="Maroon" title="c2">IT</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <span class="p1">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c2">IT</font></span>)</span>;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V3"><span class="kw">attr</span> </a><font color="Maroon" title="c2">IT</font> is  <a href="decomp_1.html#V3" title="DECOMP_1:attr.3">pre-semi-open</a> <span class="kw"> means </span><a NAME="D4"><span class="comment"><font color="firebrick">:: DECOMP_1:def 4</font></span><br></a><font color="Maroon" title="c2">IT</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <span class="p1">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <span class="p2">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c2">IT</font></span>)</span></span>)</span>;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V4"><span class="kw">attr</span> </a><font color="Maroon" title="c2">IT</font> is  <a href="decomp_1.html#V4" title="DECOMP_1:attr.4">semi-pre-open</a> <span class="kw"> means </span><a NAME="D5"><span class="comment"><font color="firebrick">:: DECOMP_1:def 5</font></span><br></a><font color="Maroon" title="c2">IT</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <span class="p1">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <span class="p2">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Maroon" title="c2">IT</font></span>)</span></span>)</span> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <span class="p1">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <span class="p2">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c2">IT</font></span>)</span></span>)</span>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E1">Def1</font></span>   defines <a href="decomp_1.html#M1" title="DECOMP_1:mode.1">alpha-set</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> <br>  for <font color="Olive">b<sub>2</sub></font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> holds <br> ( <font color="Olive">b<sub>2</sub></font> is    <a href="decomp_1.html#M1" title="DECOMP_1:mode.1">alpha-set</a> of <font color="Olive" title="b1">T</font> iff <font color="Olive">b<sub>2</sub></font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <span class="p1">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <span class="p2">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Olive">b<sub>2</sub></font></span>)</span></span>)</span> );<br></span>
+</div>
+<br><div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#V1" title="DECOMP_1:attr.1">semi-open</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 2 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> <br>  for <font color="Olive" title="b2">IT</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> holds <br> ( <font color="Olive" title="b2">IT</font> is  <a href="decomp_1.html#V1" title="DECOMP_1:attr.1">semi-open</a>  iff <font color="Olive" title="b2">IT</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <span class="p1">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Olive" title="b2">IT</font></span>)</span> );<br></span>
+</div>
+<br><div about="#DT3" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#V2" title="DECOMP_1:attr.2">pre-open</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 3 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> <br>  for <font color="Olive" title="b2">IT</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> holds <br> ( <font color="Olive" title="b2">IT</font> is  <a href="decomp_1.html#V2" title="DECOMP_1:attr.2">pre-open</a>  iff <font color="Olive" title="b2">IT</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <span class="p1">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Olive" title="b2">IT</font></span>)</span> );<br></span>
+</div>
+<br><div about="#DT4" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#V3" title="DECOMP_1:attr.3">pre-semi-open</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 4 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> <br>  for <font color="Olive" title="b2">IT</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> holds <br> ( <font color="Olive" title="b2">IT</font> is  <a href="decomp_1.html#V3" title="DECOMP_1:attr.3">pre-semi-open</a>  iff <font color="Olive" title="b2">IT</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <span class="p1">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <span class="p2">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Olive" title="b2">IT</font></span>)</span></span>)</span> );<br></span>
+</div>
+<br><div about="#DT5" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#V4" title="DECOMP_1:attr.4">semi-pre-open</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 5 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> <br>  for <font color="Olive" title="b2">IT</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> holds <br> ( <font color="Olive" title="b2">IT</font> is  <a href="decomp_1.html#V4" title="DECOMP_1:attr.4">semi-pre-open</a>  iff <font color="Olive" title="b2">IT</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <span class="p1">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <span class="p2">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Olive" title="b2">IT</font></span>)</span></span>)</span> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <span class="p1">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <span class="p2">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Olive" title="b2">IT</font></span>)</span></span>)</span> );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">T</font> be    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">B</font> be   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K1"><span class="kw">func</span> </a> <a href="decomp_1.html#K1" title="DECOMP_1:func.1">sInt</a> <font color="Maroon" title="c2">B</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D6"><span class="comment"><font color="firebrick">:: DECOMP_1:def 6</font></span><br></a><font color="Maroon" title="c2">B</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <span class="p2">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Maroon" title="c2">B</font></span>)</span></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:2_1"></a>
+<font color="Maroon" title="c2">B</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <span class="p2">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Maroon" title="c2">B</font></span>)</span></span>)</span> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font>
+ </span>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K2"><span class="kw">func</span> </a> <a href="decomp_1.html#K2" title="DECOMP_1:func.2">pInt</a> <font color="Maroon" title="c2">B</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D7"><span class="comment"><font color="firebrick">:: DECOMP_1:def 7</font></span><br></a><font color="Maroon" title="c2">B</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <span class="p2">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c2">B</font></span>)</span></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:2_2"></a>
+<font color="Maroon" title="c2">B</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <span class="p2">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c2">B</font></span>)</span></span>)</span> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font>
+ </span>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K3"><span class="kw">func</span> </a> <a href="decomp_1.html#K3" title="DECOMP_1:func.3">alphaInt</a> <font color="Maroon" title="c2">B</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D8"><span class="comment"><font color="firebrick">:: DECOMP_1:def 8</font></span><br></a><font color="Maroon" title="c2">B</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <span class="p2">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <span class="p3">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Maroon" title="c2">B</font></span>)</span></span>)</span></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:2_3"></a>
+<font color="Maroon" title="c2">B</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <span class="p2">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <span class="p3">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Maroon" title="c2">B</font></span>)</span></span>)</span></span>)</span> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font>
+ </span>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K4"><span class="kw">func</span> </a> <a href="decomp_1.html#K4" title="DECOMP_1:func.4">psInt</a> <font color="Maroon" title="c2">B</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D9"><span class="comment"><font color="firebrick">:: DECOMP_1:def 9</font></span><br></a><font color="Maroon" title="c2">B</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <span class="p2">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <span class="p3">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c2">B</font></span>)</span></span>)</span></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:2_4"></a>
+<font color="Maroon" title="c2">B</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <span class="p2">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <span class="p3">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Maroon" title="c2">B</font></span>)</span></span>)</span></span>)</span> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font>
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div about="#DT6" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#K1" title="DECOMP_1:func.1">sInt</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 6 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> <br>  for <font color="Olive" title="b2">B</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> holds   <a href="decomp_1.html#K1" title="DECOMP_1:func.1">sInt</a> <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">B</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <span class="p2">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Olive" title="b2">B</font></span>)</span></span>)</span>;<br></span>
+</div>
+<br><div about="#DT7" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#K2" title="DECOMP_1:func.2">pInt</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 7 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> <br>  for <font color="Olive" title="b2">B</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> holds   <a href="decomp_1.html#K2" title="DECOMP_1:func.2">pInt</a> <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">B</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <span class="p2">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Olive" title="b2">B</font></span>)</span></span>)</span>;<br></span>
+</div>
+<br><div about="#DT8" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#K3" title="DECOMP_1:func.3">alphaInt</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 8 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> <br>  for <font color="Olive" title="b2">B</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> holds   <a href="decomp_1.html#K3" title="DECOMP_1:func.3">alphaInt</a> <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">B</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <span class="p2">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <span class="p3">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Olive" title="b2">B</font></span>)</span></span>)</span></span>)</span>;<br></span>
+</div>
+<br><div about="#DT9" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#K4" title="DECOMP_1:func.4">psInt</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 9 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> <br>  for <font color="Olive" title="b2">B</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> holds   <a href="decomp_1.html#K4" title="DECOMP_1:func.4">psInt</a> <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">B</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <span class="p2">(<span class="default"><a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <span class="p3">(<span class="default"><a href="pre_topc.html#K2" title="PRE_TOPC:func.2">Cl</a> <font color="Olive" title="b2">B</font></span>)</span></span>)</span></span>)</span>;<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">T</font> be    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">B</font> be   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K5"><span class="kw">func</span> </a> <a href="decomp_1.html#K5" title="DECOMP_1:func.5">spInt</a> <font color="Maroon" title="c2">B</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D10"><span class="comment"><font color="firebrick">:: DECOMP_1:def 10</font></span><br></a><span class="p1">(<span class="default"><a href="decomp_1.html#K1" title="DECOMP_1:func.1">sInt</a> <font color="Maroon" title="c2">B</font></span>)</span> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <span class="p1">(<span class="default"><a href="decomp_1.html#K2" title="DECOMP_1:func.2">pInt</a> <font color="Maroon" title="c2">B</font></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:3_1"></a>
+<span class="p1">(<span class="default"><a href="decomp_1.html#K1" title="DECOMP_1:func.1">sInt</a> <font color="Maroon" title="c2">B</font></span>)</span> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <span class="p1">(<span class="default"><a href="decomp_1.html#K2" title="DECOMP_1:func.2">pInt</a> <font color="Maroon" title="c2">B</font></span>)</span> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font>
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT10" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#K5" title="DECOMP_1:func.5">spInt</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 10 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> <br>  for <font color="Olive" title="b2">B</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> holds   <a href="decomp_1.html#K5" title="DECOMP_1:func.5">spInt</a> <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="decomp_1.html#K1" title="DECOMP_1:func.1">sInt</a> <font color="Olive" title="b2">B</font></span>)</span> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <span class="p1">(<span class="default"><a href="decomp_1.html#K2" title="DECOMP_1:func.2">pInt</a> <font color="Olive" title="b2">B</font></span>)</span>;<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">T</font> be   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K6"><span class="kw">func</span> </a><font color="Maroon" title="c1">T</font> <a href="decomp_1.html#K6" title="DECOMP_1:func.6">^alpha</a> <span class="kw"> -&gt; </span>  <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D11"><span class="comment"><font color="firebrick">:: DECOMP_1:def 11</font></span><br></a><span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> : <font color="Olive" title="b1">B</font> is    <a href="decomp_1.html#M1" title="DECOMP_1:mode.1">alpha-set</a> of <font color="Maroon" title="c1">T</font> </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:4_1"></a>
+<span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> : <font color="Olive" title="b1">B</font> is    <a href="decomp_1.html#M1" title="DECOMP_1:mode.1">alpha-set</a> of <font color="Maroon" title="c1">T</font> </span> } </span>  is   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font>
+ </span><div about="#PF4_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/4_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/4_1_1')" href="javascript:()" title="4_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K7"><span class="kw">func</span> </a> <a href="decomp_1.html#K7" title="DECOMP_1:func.7">SO</a> <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D12"><span class="comment"><font color="firebrick">:: DECOMP_1:def 12</font></span><br></a><span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> : <font color="Olive" title="b1">B</font> is  <a href="decomp_1.html#V1" title="DECOMP_1:attr.1">semi-open</a>  </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:4_2"></a>
+<span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> : <font color="Olive" title="b1">B</font> is  <a href="decomp_1.html#V1" title="DECOMP_1:attr.1">semi-open</a>  </span> } </span>  is   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font>
+ </span><div about="#PF4_2_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/4_2_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/4_2_1')" href="javascript:()" title="4_2_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K8"><span class="kw">func</span> </a> <a href="decomp_1.html#K8" title="DECOMP_1:func.8">PO</a> <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D13"><span class="comment"><font color="firebrick">:: DECOMP_1:def 13</font></span><br></a><span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> : <font color="Olive" title="b1">B</font> is  <a href="decomp_1.html#V2" title="DECOMP_1:attr.2">pre-open</a>  </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:4_3"></a>
+<span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> : <font color="Olive" title="b1">B</font> is  <a href="decomp_1.html#V2" title="DECOMP_1:attr.2">pre-open</a>  </span> } </span>  is   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font>
+ </span><div about="#PF4_3_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/4_3_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/4_3_1')" href="javascript:()" title="4_3_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K9"><span class="kw">func</span> </a> <a href="decomp_1.html#K9" title="DECOMP_1:func.9">SPO</a> <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D14"><span class="comment"><font color="firebrick">:: DECOMP_1:def 14</font></span><br></a><span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> : <font color="Olive" title="b1">B</font> is  <a href="decomp_1.html#V4" title="DECOMP_1:attr.4">semi-pre-open</a>  </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:4_4"></a>
+<span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> : <font color="Olive" title="b1">B</font> is  <a href="decomp_1.html#V4" title="DECOMP_1:attr.4">semi-pre-open</a>  </span> } </span>  is   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font>
+ </span><div about="#PF4_4_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/4_4_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/4_4_1')" href="javascript:()" title="4_4_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K10"><span class="kw">func</span> </a> <a href="decomp_1.html#K10" title="DECOMP_1:func.10">PSO</a> <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D15"><span class="comment"><font color="firebrick">:: DECOMP_1:def 15</font></span><br></a><span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> : <font color="Olive" title="b1">B</font> is  <a href="decomp_1.html#V3" title="DECOMP_1:attr.3">pre-semi-open</a>  </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:4_5"></a>
+<span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> : <font color="Olive" title="b1">B</font> is  <a href="decomp_1.html#V3" title="DECOMP_1:attr.3">pre-semi-open</a>  </span> } </span>  is   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font>
+ </span><div about="#PF4_5_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/4_5_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/4_5_1')" href="javascript:()" title="4_5_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K11"><span class="kw">func</span> </a> <a href="decomp_1.html#K11" title="DECOMP_1:func.11">D(c,alpha)</a> <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D16"><span class="comment"><font color="firebrick">:: DECOMP_1:def 16</font></span><br></a><span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> :  <a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Olive" title="b1">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K3" title="DECOMP_1:func.3">alphaInt</a> <font color="Olive" title="b1">B</font> </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:4_6"></a>
+<span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> :  <a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Olive" title="b1">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K3" title="DECOMP_1:func.3">alphaInt</a> <font color="Olive" title="b1">B</font> </span> } </span>  is   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font>
+ </span><div about="#PF4_6_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/4_6_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/4_6_1')" href="javascript:()" title="4_6_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K12"><span class="kw">func</span> </a> <a href="decomp_1.html#K12" title="DECOMP_1:func.12">D(c,p)</a> <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D17"><span class="comment"><font color="firebrick">:: DECOMP_1:def 17</font></span><br></a><span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> :  <a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Olive" title="b1">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K2" title="DECOMP_1:func.2">pInt</a> <font color="Olive" title="b1">B</font> </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:4_7"></a>
+<span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> :  <a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Olive" title="b1">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K2" title="DECOMP_1:func.2">pInt</a> <font color="Olive" title="b1">B</font> </span> } </span>  is   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font>
+ </span><div about="#PF4_7_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/4_7_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/4_7_1')" href="javascript:()" title="4_7_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K13"><span class="kw">func</span> </a> <a href="decomp_1.html#K13" title="DECOMP_1:func.13">D(c,s)</a> <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D18"><span class="comment"><font color="firebrick">:: DECOMP_1:def 18</font></span><br></a><span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> :  <a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Olive" title="b1">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K1" title="DECOMP_1:func.1">sInt</a> <font color="Olive" title="b1">B</font> </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:4_8"></a>
+<span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> :  <a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Olive" title="b1">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K1" title="DECOMP_1:func.1">sInt</a> <font color="Olive" title="b1">B</font> </span> } </span>  is   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font>
+ </span><div about="#PF4_8_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/4_8_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/4_8_1')" href="javascript:()" title="4_8_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K14"><span class="kw">func</span> </a> <a href="decomp_1.html#K14" title="DECOMP_1:func.14">D(c,ps)</a> <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D19"><span class="comment"><font color="firebrick">:: DECOMP_1:def 19</font></span><br></a><span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> :  <a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Olive" title="b1">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K4" title="DECOMP_1:func.4">psInt</a> <font color="Olive" title="b1">B</font> </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:4_9"></a>
+<span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> :  <a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Olive" title="b1">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K4" title="DECOMP_1:func.4">psInt</a> <font color="Olive" title="b1">B</font> </span> } </span>  is   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font>
+ </span><div about="#PF4_9_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/4_9_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/4_9_1')" href="javascript:()" title="4_9_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K15"><span class="kw">func</span> </a> <a href="decomp_1.html#K15" title="DECOMP_1:func.15">D(alpha,p)</a> <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D20"><span class="comment"><font color="firebrick">:: DECOMP_1:def 20</font></span><br></a><span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> :  <a href="decomp_1.html#K3" title="DECOMP_1:func.3">alphaInt</a> <font color="Olive" title="b1">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K2" title="DECOMP_1:func.2">pInt</a> <font color="Olive" title="b1">B</font> </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:4_10"></a>
+<span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> :  <a href="decomp_1.html#K3" title="DECOMP_1:func.3">alphaInt</a> <font color="Olive" title="b1">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K2" title="DECOMP_1:func.2">pInt</a> <font color="Olive" title="b1">B</font> </span> } </span>  is   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font>
+ </span><div about="#PF4_10_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/4_10_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/4_10_1')" href="javascript:()" title="4_10_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K16"><span class="kw">func</span> </a> <a href="decomp_1.html#K16" title="DECOMP_1:func.16">D(alpha,s)</a> <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D21"><span class="comment"><font color="firebrick">:: DECOMP_1:def 21</font></span><br></a><span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> :  <a href="decomp_1.html#K3" title="DECOMP_1:func.3">alphaInt</a> <font color="Olive" title="b1">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K1" title="DECOMP_1:func.1">sInt</a> <font color="Olive" title="b1">B</font> </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:4_11"></a>
+<span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> :  <a href="decomp_1.html#K3" title="DECOMP_1:func.3">alphaInt</a> <font color="Olive" title="b1">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K1" title="DECOMP_1:func.1">sInt</a> <font color="Olive" title="b1">B</font> </span> } </span>  is   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font>
+ </span><div about="#PF4_11_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/4_11_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/4_11_1')" href="javascript:()" title="4_11_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K17"><span class="kw">func</span> </a> <a href="decomp_1.html#K17" title="DECOMP_1:func.17">D(alpha,ps)</a> <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D22"><span class="comment"><font color="firebrick">:: DECOMP_1:def 22</font></span><br></a><span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> :  <a href="decomp_1.html#K3" title="DECOMP_1:func.3">alphaInt</a> <font color="Olive" title="b1">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K4" title="DECOMP_1:func.4">psInt</a> <font color="Olive" title="b1">B</font> </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:4_12"></a>
+<span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> :  <a href="decomp_1.html#K3" title="DECOMP_1:func.3">alphaInt</a> <font color="Olive" title="b1">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K4" title="DECOMP_1:func.4">psInt</a> <font color="Olive" title="b1">B</font> </span> } </span>  is   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font>
+ </span><div about="#PF4_12_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/4_12_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/4_12_1')" href="javascript:()" title="4_12_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K18"><span class="kw">func</span> </a> <a href="decomp_1.html#K18" title="DECOMP_1:func.18">D(p,sp)</a> <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D23"><span class="comment"><font color="firebrick">:: DECOMP_1:def 23</font></span><br></a><span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> :  <a href="decomp_1.html#K2" title="DECOMP_1:func.2">pInt</a> <font color="Olive" title="b1">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K5" title="DECOMP_1:func.5">spInt</a> <font color="Olive" title="b1">B</font> </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:4_13"></a>
+<span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> :  <a href="decomp_1.html#K2" title="DECOMP_1:func.2">pInt</a> <font color="Olive" title="b1">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K5" title="DECOMP_1:func.5">spInt</a> <font color="Olive" title="b1">B</font> </span> } </span>  is   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font>
+ </span><div about="#PF4_13_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/4_13_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/4_13_1')" href="javascript:()" title="4_13_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K19"><span class="kw">func</span> </a> <a href="decomp_1.html#K19" title="DECOMP_1:func.19">D(p,ps)</a> <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D24"><span class="comment"><font color="firebrick">:: DECOMP_1:def 24</font></span><br></a><span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> :  <a href="decomp_1.html#K2" title="DECOMP_1:func.2">pInt</a> <font color="Olive" title="b1">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K4" title="DECOMP_1:func.4">psInt</a> <font color="Olive" title="b1">B</font> </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:4_14"></a>
+<span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> :  <a href="decomp_1.html#K2" title="DECOMP_1:func.2">pInt</a> <font color="Olive" title="b1">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K4" title="DECOMP_1:func.4">psInt</a> <font color="Olive" title="b1">B</font> </span> } </span>  is   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font>
+ </span><div about="#PF4_14_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/4_14_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/4_14_1')" href="javascript:()" title="4_14_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K20"><span class="kw">func</span> </a> <a href="decomp_1.html#K20" title="DECOMP_1:func.20">D(sp,ps)</a> <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D25"><span class="comment"><font color="firebrick">:: DECOMP_1:def 25</font></span><br></a><span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> :  <a href="decomp_1.html#K5" title="DECOMP_1:func.5">spInt</a> <font color="Olive" title="b1">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K4" title="DECOMP_1:func.4">psInt</a> <font color="Olive" title="b1">B</font> </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:4_15"></a>
+<span class="p1"> { <span class="default"> <font color="Olive" title="b1">B</font> where <font color="Olive" title="b1">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> :  <a href="decomp_1.html#K5" title="DECOMP_1:func.5">spInt</a> <font color="Olive" title="b1">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K4" title="DECOMP_1:func.4">psInt</a> <font color="Olive" title="b1">B</font> </span> } </span>  is   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font>
+ </span><div about="#PF4_15_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/4_15_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/4_15_1')" href="javascript:()" title="4_15_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div about="#DT11" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#K6" title="DECOMP_1:func.6">^alpha</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 11 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds  <font color="Olive" title="b1">T</font> <a href="decomp_1.html#K6" title="DECOMP_1:func.6">^alpha</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">B</font> where <font color="Olive" title="b2">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> : <font color="Olive" title="b2">B</font> is    <a href="decomp_1.html#M1" title="DECOMP_1:mode.1">alpha-set</a> of <font color="Olive" title="b1">T</font> </span> } </span> ;<br></span>
+</div>
+<br><div about="#DT12" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#K7" title="DECOMP_1:func.7">SO</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 12 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   <a href="decomp_1.html#K7" title="DECOMP_1:func.7">SO</a> <font color="Olive" title="b1">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">B</font> where <font color="Olive" title="b2">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> : <font color="Olive" title="b2">B</font> is  <a href="decomp_1.html#V1" title="DECOMP_1:attr.1">semi-open</a>  </span> } </span> ;<br></span>
+</div>
+<br><div about="#DT13" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#K8" title="DECOMP_1:func.8">PO</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 13 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   <a href="decomp_1.html#K8" title="DECOMP_1:func.8">PO</a> <font color="Olive" title="b1">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">B</font> where <font color="Olive" title="b2">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> : <font color="Olive" title="b2">B</font> is  <a href="decomp_1.html#V2" title="DECOMP_1:attr.2">pre-open</a>  </span> } </span> ;<br></span>
+</div>
+<br><div about="#DT14" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#K9" title="DECOMP_1:func.9">SPO</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 14 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   <a href="decomp_1.html#K9" title="DECOMP_1:func.9">SPO</a> <font color="Olive" title="b1">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">B</font> where <font color="Olive" title="b2">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> : <font color="Olive" title="b2">B</font> is  <a href="decomp_1.html#V4" title="DECOMP_1:attr.4">semi-pre-open</a>  </span> } </span> ;<br></span>
+</div>
+<br><div about="#DT15" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#K10" title="DECOMP_1:func.10">PSO</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 15 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   <a href="decomp_1.html#K10" title="DECOMP_1:func.10">PSO</a> <font color="Olive" title="b1">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">B</font> where <font color="Olive" title="b2">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> : <font color="Olive" title="b2">B</font> is  <a href="decomp_1.html#V3" title="DECOMP_1:attr.3">pre-semi-open</a>  </span> } </span> ;<br></span>
+</div>
+<br><div about="#DT16" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#K11" title="DECOMP_1:func.11">D(c,alpha)</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 16 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   <a href="decomp_1.html#K11" title="DECOMP_1:func.11">D(c,alpha)</a> <font color="Olive" title="b1">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">B</font> where <font color="Olive" title="b2">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> :  <a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K3" title="DECOMP_1:func.3">alphaInt</a> <font color="Olive" title="b2">B</font> </span> } </span> ;<br></span>
+</div>
+<br><div about="#DT17" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#K12" title="DECOMP_1:func.12">D(c,p)</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 17 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   <a href="decomp_1.html#K12" title="DECOMP_1:func.12">D(c,p)</a> <font color="Olive" title="b1">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">B</font> where <font color="Olive" title="b2">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> :  <a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K2" title="DECOMP_1:func.2">pInt</a> <font color="Olive" title="b2">B</font> </span> } </span> ;<br></span>
+</div>
+<br><div about="#DT18" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#K13" title="DECOMP_1:func.13">D(c,s)</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 18 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   <a href="decomp_1.html#K13" title="DECOMP_1:func.13">D(c,s)</a> <font color="Olive" title="b1">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">B</font> where <font color="Olive" title="b2">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> :  <a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K1" title="DECOMP_1:func.1">sInt</a> <font color="Olive" title="b2">B</font> </span> } </span> ;<br></span>
+</div>
+<br><div about="#DT19" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#K14" title="DECOMP_1:func.14">D(c,ps)</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 19 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   <a href="decomp_1.html#K14" title="DECOMP_1:func.14">D(c,ps)</a> <font color="Olive" title="b1">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">B</font> where <font color="Olive" title="b2">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> :  <a href="tops_1.html#K1" title="TOPS_1:func.1">Int</a> <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K4" title="DECOMP_1:func.4">psInt</a> <font color="Olive" title="b2">B</font> </span> } </span> ;<br></span>
+</div>
+<br><div about="#DT20" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#K15" title="DECOMP_1:func.15">D(alpha,p)</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 20 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   <a href="decomp_1.html#K15" title="DECOMP_1:func.15">D(alpha,p)</a> <font color="Olive" title="b1">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">B</font> where <font color="Olive" title="b2">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> :  <a href="decomp_1.html#K3" title="DECOMP_1:func.3">alphaInt</a> <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K2" title="DECOMP_1:func.2">pInt</a> <font color="Olive" title="b2">B</font> </span> } </span> ;<br></span>
+</div>
+<br><div about="#DT21" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#K16" title="DECOMP_1:func.16">D(alpha,s)</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 21 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   <a href="decomp_1.html#K16" title="DECOMP_1:func.16">D(alpha,s)</a> <font color="Olive" title="b1">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">B</font> where <font color="Olive" title="b2">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> :  <a href="decomp_1.html#K3" title="DECOMP_1:func.3">alphaInt</a> <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K1" title="DECOMP_1:func.1">sInt</a> <font color="Olive" title="b2">B</font> </span> } </span> ;<br></span>
+</div>
+<br><div about="#DT22" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#K17" title="DECOMP_1:func.17">D(alpha,ps)</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 22 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   <a href="decomp_1.html#K17" title="DECOMP_1:func.17">D(alpha,ps)</a> <font color="Olive" title="b1">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">B</font> where <font color="Olive" title="b2">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> :  <a href="decomp_1.html#K3" title="DECOMP_1:func.3">alphaInt</a> <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K4" title="DECOMP_1:func.4">psInt</a> <font color="Olive" title="b2">B</font> </span> } </span> ;<br></span>
+</div>
+<br><div about="#DT23" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#K18" title="DECOMP_1:func.18">D(p,sp)</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 23 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   <a href="decomp_1.html#K18" title="DECOMP_1:func.18">D(p,sp)</a> <font color="Olive" title="b1">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">B</font> where <font color="Olive" title="b2">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> :  <a href="decomp_1.html#K2" title="DECOMP_1:func.2">pInt</a> <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K5" title="DECOMP_1:func.5">spInt</a> <font color="Olive" title="b2">B</font> </span> } </span> ;<br></span>
+</div>
+<br><div about="#DT24" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#K19" title="DECOMP_1:func.19">D(p,ps)</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 24 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   <a href="decomp_1.html#K19" title="DECOMP_1:func.19">D(p,ps)</a> <font color="Olive" title="b1">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">B</font> where <font color="Olive" title="b2">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> :  <a href="decomp_1.html#K2" title="DECOMP_1:func.2">pInt</a> <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K4" title="DECOMP_1:func.4">psInt</a> <font color="Olive" title="b2">B</font> </span> } </span> ;<br></span>
+</div>
+<br><div about="#DT25" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#K20" title="DECOMP_1:func.20">D(sp,ps)</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 25 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   <a href="decomp_1.html#K20" title="DECOMP_1:func.20">D(sp,ps)</a> <font color="Olive" title="b1">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">B</font> where <font color="Olive" title="b2">B</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> :  <a href="decomp_1.html#K5" title="DECOMP_1:func.5">spInt</a> <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K4" title="DECOMP_1:func.4">psInt</a> <font color="Olive" title="b2">B</font> </span> } </span> ;<br></span>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+<div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E2">Th1</font></span>: <a NAME="T1"><span class="comment"><font color="firebrick">:: DECOMP_1:1</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b2">B</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> holds <br> (  <a href="decomp_1.html#K3" title="DECOMP_1:func.3">alphaInt</a> <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K2" title="DECOMP_1:func.2">pInt</a> <font color="Olive" title="b2">B</font> iff  <a href="decomp_1.html#K1" title="DECOMP_1:func.1">sInt</a> <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K4" title="DECOMP_1:func.4">psInt</a> <font color="Olive" title="b2">B</font> )</div>
+<div about="#PF5" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/5')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/5')" href="javascript:()" title="5"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E3">Th2</font></span>: <a NAME="T2"><span class="comment"><font color="firebrick">:: DECOMP_1:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b2">B</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> holds <br> ( <font color="Olive" title="b2">B</font> is    <a href="decomp_1.html#M1" title="DECOMP_1:mode.1">alpha-set</a> of <font color="Olive" title="b1">T</font> iff <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K3" title="DECOMP_1:func.3">alphaInt</a> <font color="Olive" title="b2">B</font> ) <span class="kw">by</span> <span class="lab"><a class="ref" href="decomp_1.html#D1" target="_self" onmouseover="rs('decomp_1/D1')" onmouseout="rh()">Def1</a>, <a class="ref" href="xboole_1.html#T17" onmouseover="rs('xboole_1/T17')" onmouseout="rh()">XBOOLE_1:17</a>, <a class="ref" href="xboole_1.html#T28" onmouseover="rs('xboole_1/T28')" onmouseout="rh()">XBOOLE_1:28</a></span>;<br>
+</div>
+</div>
+<br><div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E4">Th3</font></span>: <a NAME="T3"><span class="comment"><font color="firebrick">:: DECOMP_1:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b2">B</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> holds <br> ( <font color="Olive" title="b2">B</font> is  <a href="decomp_1.html#V1" title="DECOMP_1:attr.1">semi-open</a>  iff <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K1" title="DECOMP_1:func.1">sInt</a> <font color="Olive" title="b2">B</font> ) <span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_1.html#T17" onmouseover="rs('xboole_1/T17')" onmouseout="rh()">XBOOLE_1:17</a>, <a class="ref" href="xboole_1.html#T28" onmouseover="rs('xboole_1/T28')" onmouseout="rh()">XBOOLE_1:28</a></span>;<br>
+</div>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E5">Th4</font></span>: <a NAME="T4"><span class="comment"><font color="firebrick">:: DECOMP_1:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b2">B</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> holds <br> ( <font color="Olive" title="b2">B</font> is  <a href="decomp_1.html#V2" title="DECOMP_1:attr.2">pre-open</a>  iff <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K2" title="DECOMP_1:func.2">pInt</a> <font color="Olive" title="b2">B</font> ) <span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_1.html#T17" onmouseover="rs('xboole_1/T17')" onmouseout="rh()">XBOOLE_1:17</a>, <a class="ref" href="xboole_1.html#T28" onmouseover="rs('xboole_1/T28')" onmouseout="rh()">XBOOLE_1:28</a></span>;<br>
+</div>
+</div>
+<br><div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E6">Th5</font></span>: <a NAME="T5"><span class="comment"><font color="firebrick">:: DECOMP_1:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b2">B</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> holds <br> ( <font color="Olive" title="b2">B</font> is  <a href="decomp_1.html#V3" title="DECOMP_1:attr.3">pre-semi-open</a>  iff <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K4" title="DECOMP_1:func.4">psInt</a> <font color="Olive" title="b2">B</font> ) <span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_1.html#T17" onmouseover="rs('xboole_1/T17')" onmouseout="rh()">XBOOLE_1:17</a>, <a class="ref" href="xboole_1.html#T28" onmouseover="rs('xboole_1/T28')" onmouseout="rh()">XBOOLE_1:28</a></span>;<br>
+</div>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E7">Th6</font></span>: <a NAME="T6"><span class="comment"><font color="firebrick">:: DECOMP_1:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b2">B</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> holds <br> ( <font color="Olive" title="b2">B</font> is  <a href="decomp_1.html#V4" title="DECOMP_1:attr.4">semi-pre-open</a>  iff <font color="Olive" title="b2">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K5" title="DECOMP_1:func.5">spInt</a> <font color="Olive" title="b2">B</font> )</div>
+<div about="#PF6" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/6')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/6')" href="javascript:()" title="6"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E8">Th7</font></span>: <a NAME="T7"><span class="comment"><font color="firebrick">:: DECOMP_1:7</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds  <span class="p1">(<span class="default"><font color="Olive" title="b1">T</font> <a href="decomp_1.html#K6" title="DECOMP_1:func.6">^alpha</a></span>)</span> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="decomp_1.html#K11" title="DECOMP_1:func.11">D(c,alpha)</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="pre_topc.html#U1" title="PRE_TOPC:sel.1">topology</a> of <font color="Olive" title="b1">T</font>
+</div>
+<div about="#PF7" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T7"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/7')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/7')" href="javascript:()" title="7"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E9">Th8</font></span>: <a NAME="T8"><span class="comment"><font color="firebrick">:: DECOMP_1:8</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds  <span class="p1">(<span class="default"><a href="decomp_1.html#K7" title="DECOMP_1:func.7">SO</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="decomp_1.html#K13" title="DECOMP_1:func.13">D(c,s)</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="pre_topc.html#U1" title="PRE_TOPC:sel.1">topology</a> of <font color="Olive" title="b1">T</font>
+</div>
+<div about="#PF8" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/8')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/8')" href="javascript:()" title="8"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E10">Th9</font></span>: <a NAME="T9"><span class="comment"><font color="firebrick">:: DECOMP_1:9</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds  <span class="p1">(<span class="default"><a href="decomp_1.html#K8" title="DECOMP_1:func.8">PO</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="decomp_1.html#K12" title="DECOMP_1:func.12">D(c,p)</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="pre_topc.html#U1" title="PRE_TOPC:sel.1">topology</a> of <font color="Olive" title="b1">T</font>
+</div>
+<div about="#PF9" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T9"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/9')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/9')" href="javascript:()" title="9"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E11">Th10</font></span>: <a NAME="T10"><span class="comment"><font color="firebrick">:: DECOMP_1:10</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds  <span class="p1">(<span class="default"><a href="decomp_1.html#K10" title="DECOMP_1:func.10">PSO</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="decomp_1.html#K14" title="DECOMP_1:func.14">D(c,ps)</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="pre_topc.html#U1" title="PRE_TOPC:sel.1">topology</a> of <font color="Olive" title="b1">T</font>
+</div>
+<div about="#PF10" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T10"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/10')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/10')" href="javascript:()" title="10"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E12">Th11</font></span>: <a NAME="T11"><span class="comment"><font color="firebrick">:: DECOMP_1:11</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds  <span class="p1">(<span class="default"><a href="decomp_1.html#K8" title="DECOMP_1:func.8">PO</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="decomp_1.html#K15" title="DECOMP_1:func.15">D(alpha,p)</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">T</font> <a href="decomp_1.html#K6" title="DECOMP_1:func.6">^alpha</a> </div>
+<div about="#PF11" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/11')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/11')" href="javascript:()" title="11"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E13">Th12</font></span>: <a NAME="T12"><span class="comment"><font color="firebrick">:: DECOMP_1:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds  <span class="p1">(<span class="default"><a href="decomp_1.html#K7" title="DECOMP_1:func.7">SO</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="decomp_1.html#K16" title="DECOMP_1:func.16">D(alpha,s)</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">T</font> <a href="decomp_1.html#K6" title="DECOMP_1:func.6">^alpha</a> </div>
+<div about="#PF12" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/12')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/12')" href="javascript:()" title="12"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E14">Th13</font></span>: <a NAME="T13"><span class="comment"><font color="firebrick">:: DECOMP_1:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds  <span class="p1">(<span class="default"><a href="decomp_1.html#K10" title="DECOMP_1:func.10">PSO</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="decomp_1.html#K17" title="DECOMP_1:func.17">D(alpha,ps)</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">T</font> <a href="decomp_1.html#K6" title="DECOMP_1:func.6">^alpha</a> </div>
+<div about="#PF13" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T13"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/13')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/13')" href="javascript:()" title="13"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E15">Th14</font></span>: <a NAME="T14"><span class="comment"><font color="firebrick">:: DECOMP_1:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds  <span class="p1">(<span class="default"><a href="decomp_1.html#K9" title="DECOMP_1:func.9">SPO</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="decomp_1.html#K18" title="DECOMP_1:func.18">D(p,sp)</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K8" title="DECOMP_1:func.8">PO</a> <font color="Olive" title="b1">T</font>
+</div>
+<div about="#PF14" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T14"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/14')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/14')" href="javascript:()" title="14"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T15" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E16">Th15</font></span>: <a NAME="T15"><span class="comment"><font color="firebrick">:: DECOMP_1:15</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds  <span class="p1">(<span class="default"><a href="decomp_1.html#K10" title="DECOMP_1:func.10">PSO</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="decomp_1.html#K19" title="DECOMP_1:func.19">D(p,ps)</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K8" title="DECOMP_1:func.8">PO</a> <font color="Olive" title="b1">T</font>
+</div>
+<div about="#PF15" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/15')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/15')" href="javascript:()" title="15"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T16" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E17">Th16</font></span>: <a NAME="T16"><span class="comment"><font color="firebrick">:: DECOMP_1:16</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds  <span class="p1">(<span class="default"><a href="decomp_1.html#K10" title="DECOMP_1:func.10">PSO</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="decomp_1.html#K15" title="DECOMP_1:func.15">D(alpha,p)</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K7" title="DECOMP_1:func.7">SO</a> <font color="Olive" title="b1">T</font>
+</div>
+<div about="#PF16" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T16"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/16')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/16')" href="javascript:()" title="16"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T17" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E18">Th17</font></span>: <a NAME="T17"><span class="comment"><font color="firebrick">:: DECOMP_1:17</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds  <span class="p1">(<span class="default"><a href="decomp_1.html#K10" title="DECOMP_1:func.10">PSO</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="decomp_1.html#K20" title="DECOMP_1:func.20">D(sp,ps)</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="decomp_1.html#K9" title="DECOMP_1:func.9">SPO</a> <font color="Olive" title="b1">T</font>
+</div>
+<div about="#PF17" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T17"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/17')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/17')" href="javascript:()" title="17"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">X</font>, <font color="Maroon" title="c2">Y</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>;<br><span class="kw">let </span><font color="Maroon" title="c3">f</font> be   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Maroon" title="c1">X</font>,<font color="Maroon" title="c2">Y</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V5"><span class="kw">attr</span> </a><font color="Maroon" title="c3">f</font> is  <a href="decomp_1.html#V5" title="DECOMP_1:attr.5">s-continuous</a> <span class="kw"> means </span><a NAME="D26"><span class="comment"><font color="firebrick">:: DECOMP_1:def 26</font></span><br></a> for <font color="Olive" title="b1">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c2">Y</font>  st <font color="Olive" title="b1">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Maroon" title="c3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b1">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K7" title="DECOMP_1:func.7">SO</a> <font color="Maroon" title="c1">X</font>;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V6"><span class="kw">attr</span> </a><font color="Maroon" title="c3">f</font> is  <a href="decomp_1.html#V6" title="DECOMP_1:attr.6">p-continuous</a> <span class="kw"> means </span><a NAME="D27"><span class="comment"><font color="firebrick">:: DECOMP_1:def 27</font></span><br></a> for <font color="Olive" title="b1">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c2">Y</font>  st <font color="Olive" title="b1">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Maroon" title="c3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b1">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K8" title="DECOMP_1:func.8">PO</a> <font color="Maroon" title="c1">X</font>;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V7"><span class="kw">attr</span> </a><font color="Maroon" title="c3">f</font> is  <a href="decomp_1.html#V7" title="DECOMP_1:attr.7">alpha-continuous</a> <span class="kw"> means </span><a NAME="D28"><span class="comment"><font color="firebrick">:: DECOMP_1:def 28</font></span><br></a> for <font color="Olive" title="b1">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c2">Y</font>  st <font color="Olive" title="b1">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Maroon" title="c3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b1">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c1">X</font> <a href="decomp_1.html#K6" title="DECOMP_1:func.6">^alpha</a> ;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V8"><span class="kw">attr</span> </a><font color="Maroon" title="c3">f</font> is  <a href="decomp_1.html#V8" title="DECOMP_1:attr.8">ps-continuous</a> <span class="kw"> means </span><a NAME="D29"><span class="comment"><font color="firebrick">:: DECOMP_1:def 29</font></span><br></a> for <font color="Olive" title="b1">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c2">Y</font>  st <font color="Olive" title="b1">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Maroon" title="c3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b1">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K10" title="DECOMP_1:func.10">PSO</a> <font color="Maroon" title="c1">X</font>;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V9"><span class="kw">attr</span> </a><font color="Maroon" title="c3">f</font> is  <a href="decomp_1.html#V9" title="DECOMP_1:attr.9">sp-continuous</a> <span class="kw"> means </span><a NAME="D30"><span class="comment"><font color="firebrick">:: DECOMP_1:def 30</font></span><br></a> for <font color="Olive" title="b1">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c2">Y</font>  st <font color="Olive" title="b1">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Maroon" title="c3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b1">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K9" title="DECOMP_1:func.9">SPO</a> <font color="Maroon" title="c1">X</font>;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V10"><span class="kw">attr</span> </a><font color="Maroon" title="c3">f</font> is  <a href="decomp_1.html#V10" title="DECOMP_1:attr.10">(c,alpha)-continuous</a> <span class="kw"> means </span><a NAME="D31"><span class="comment"><font color="firebrick">:: DECOMP_1:def 31</font></span><br></a> for <font color="Olive" title="b1">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c2">Y</font>  st <font color="Olive" title="b1">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Maroon" title="c3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b1">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K11" title="DECOMP_1:func.11">D(c,alpha)</a> <font color="Maroon" title="c1">X</font>;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V11"><span class="kw">attr</span> </a><font color="Maroon" title="c3">f</font> is  <a href="decomp_1.html#V11" title="DECOMP_1:attr.11">(c,s)-continuous</a> <span class="kw"> means </span><a NAME="D32"><span class="comment"><font color="firebrick">:: DECOMP_1:def 32</font></span><br></a> for <font color="Olive" title="b1">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c2">Y</font>  st <font color="Olive" title="b1">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Maroon" title="c3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b1">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K13" title="DECOMP_1:func.13">D(c,s)</a> <font color="Maroon" title="c1">X</font>;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V12"><span class="kw">attr</span> </a><font color="Maroon" title="c3">f</font> is  <a href="decomp_1.html#V12" title="DECOMP_1:attr.12">(c,p)-continuous</a> <span class="kw"> means </span><a NAME="D33"><span class="comment"><font color="firebrick">:: DECOMP_1:def 33</font></span><br></a> for <font color="Olive" title="b1">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c2">Y</font>  st <font color="Olive" title="b1">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Maroon" title="c3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b1">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K12" title="DECOMP_1:func.12">D(c,p)</a> <font color="Maroon" title="c1">X</font>;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V13"><span class="kw">attr</span> </a><font color="Maroon" title="c3">f</font> is  <a href="decomp_1.html#V13" title="DECOMP_1:attr.13">(c,ps)-continuous</a> <span class="kw"> means </span><a NAME="D34"><span class="comment"><font color="firebrick">:: DECOMP_1:def 34</font></span><br></a> for <font color="Olive" title="b1">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c2">Y</font>  st <font color="Olive" title="b1">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Maroon" title="c3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b1">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K14" title="DECOMP_1:func.14">D(c,ps)</a> <font color="Maroon" title="c1">X</font>;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V14"><span class="kw">attr</span> </a><font color="Maroon" title="c3">f</font> is  <a href="decomp_1.html#V14" title="DECOMP_1:attr.14">(alpha,p)-continuous</a> <span class="kw"> means </span><a NAME="D35"><span class="comment"><font color="firebrick">:: DECOMP_1:def 35</font></span><br></a> for <font color="Olive" title="b1">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c2">Y</font>  st <font color="Olive" title="b1">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Maroon" title="c3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b1">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K15" title="DECOMP_1:func.15">D(alpha,p)</a> <font color="Maroon" title="c1">X</font>;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V15"><span class="kw">attr</span> </a><font color="Maroon" title="c3">f</font> is  <a href="decomp_1.html#V15" title="DECOMP_1:attr.15">(alpha,s)-continuous</a> <span class="kw"> means </span><a NAME="D36"><span class="comment"><font color="firebrick">:: DECOMP_1:def 36</font></span><br></a> for <font color="Olive" title="b1">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c2">Y</font>  st <font color="Olive" title="b1">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Maroon" title="c3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b1">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K16" title="DECOMP_1:func.16">D(alpha,s)</a> <font color="Maroon" title="c1">X</font>;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V16"><span class="kw">attr</span> </a><font color="Maroon" title="c3">f</font> is  <a href="decomp_1.html#V16" title="DECOMP_1:attr.16">(alpha,ps)-continuous</a> <span class="kw"> means </span><a NAME="D37"><span class="comment"><font color="firebrick">:: DECOMP_1:def 37</font></span><br></a> for <font color="Olive" title="b1">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c2">Y</font>  st <font color="Olive" title="b1">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Maroon" title="c3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b1">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K17" title="DECOMP_1:func.17">D(alpha,ps)</a> <font color="Maroon" title="c1">X</font>;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V17"><span class="kw">attr</span> </a><font color="Maroon" title="c3">f</font> is  <a href="decomp_1.html#V17" title="DECOMP_1:attr.17">(p,ps)-continuous</a> <span class="kw"> means </span><a NAME="D38"><span class="comment"><font color="firebrick">:: DECOMP_1:def 38</font></span><br></a> for <font color="Olive" title="b1">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c2">Y</font>  st <font color="Olive" title="b1">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Maroon" title="c3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b1">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K19" title="DECOMP_1:func.19">D(p,ps)</a> <font color="Maroon" title="c1">X</font>;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V18"><span class="kw">attr</span> </a><font color="Maroon" title="c3">f</font> is  <a href="decomp_1.html#V18" title="DECOMP_1:attr.18">(p,sp)-continuous</a> <span class="kw"> means </span><a NAME="D39"><span class="comment"><font color="firebrick">:: DECOMP_1:def 39</font></span><br></a> for <font color="Olive" title="b1">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c2">Y</font>  st <font color="Olive" title="b1">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Maroon" title="c3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b1">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K18" title="DECOMP_1:func.18">D(p,sp)</a> <font color="Maroon" title="c1">X</font>;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V19"><span class="kw">attr</span> </a><font color="Maroon" title="c3">f</font> is  <a href="decomp_1.html#V19" title="DECOMP_1:attr.19">(sp,ps)-continuous</a> <span class="kw"> means </span><a NAME="D40"><span class="comment"><font color="firebrick">:: DECOMP_1:def 40</font></span><br></a> for <font color="Olive" title="b1">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c2">Y</font>  st <font color="Olive" title="b1">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Maroon" title="c3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b1">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K20" title="DECOMP_1:func.20">D(sp,ps)</a> <font color="Maroon" title="c1">X</font>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div about="#DT26" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#V5" title="DECOMP_1:attr.5">s-continuous</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 26 : <br></a><span class="hide"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V5" title="DECOMP_1:attr.5">s-continuous</a>  iff  for <font color="Olive" title="b4">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b2">Y</font>  st <font color="Olive" title="b4">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Olive" title="b3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b4">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K7" title="DECOMP_1:func.7">SO</a> <font color="Olive" title="b1">X</font> );<br></span>
+</div>
+<br><div about="#DT27" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#V6" title="DECOMP_1:attr.6">p-continuous</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 27 : <br></a><span class="hide"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V6" title="DECOMP_1:attr.6">p-continuous</a>  iff  for <font color="Olive" title="b4">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b2">Y</font>  st <font color="Olive" title="b4">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Olive" title="b3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b4">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K8" title="DECOMP_1:func.8">PO</a> <font color="Olive" title="b1">X</font> );<br></span>
+</div>
+<br><div about="#DT28" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#V7" title="DECOMP_1:attr.7">alpha-continuous</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 28 : <br></a><span class="hide"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V7" title="DECOMP_1:attr.7">alpha-continuous</a>  iff  for <font color="Olive" title="b4">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b2">Y</font>  st <font color="Olive" title="b4">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Olive" title="b3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b4">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">X</font> <a href="decomp_1.html#K6" title="DECOMP_1:func.6">^alpha</a>  );<br></span>
+</div>
+<br><div about="#DT29" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#V8" title="DECOMP_1:attr.8">ps-continuous</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 29 : <br></a><span class="hide"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V8" title="DECOMP_1:attr.8">ps-continuous</a>  iff  for <font color="Olive" title="b4">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b2">Y</font>  st <font color="Olive" title="b4">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Olive" title="b3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b4">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K10" title="DECOMP_1:func.10">PSO</a> <font color="Olive" title="b1">X</font> );<br></span>
+</div>
+<br><div about="#DT30" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#V9" title="DECOMP_1:attr.9">sp-continuous</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 30 : <br></a><span class="hide"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V9" title="DECOMP_1:attr.9">sp-continuous</a>  iff  for <font color="Olive" title="b4">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b2">Y</font>  st <font color="Olive" title="b4">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Olive" title="b3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b4">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K9" title="DECOMP_1:func.9">SPO</a> <font color="Olive" title="b1">X</font> );<br></span>
+</div>
+<br><div about="#DT31" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#V10" title="DECOMP_1:attr.10">(c,alpha)-continuous</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 31 : <br></a><span class="hide"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V10" title="DECOMP_1:attr.10">(c,alpha)-continuous</a>  iff  for <font color="Olive" title="b4">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b2">Y</font>  st <font color="Olive" title="b4">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Olive" title="b3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b4">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K11" title="DECOMP_1:func.11">D(c,alpha)</a> <font color="Olive" title="b1">X</font> );<br></span>
+</div>
+<br><div about="#DT32" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#V11" title="DECOMP_1:attr.11">(c,s)-continuous</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 32 : <br></a><span class="hide"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V11" title="DECOMP_1:attr.11">(c,s)-continuous</a>  iff  for <font color="Olive" title="b4">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b2">Y</font>  st <font color="Olive" title="b4">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Olive" title="b3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b4">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K13" title="DECOMP_1:func.13">D(c,s)</a> <font color="Olive" title="b1">X</font> );<br></span>
+</div>
+<br><div about="#DT33" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#V12" title="DECOMP_1:attr.12">(c,p)-continuous</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 33 : <br></a><span class="hide"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V12" title="DECOMP_1:attr.12">(c,p)-continuous</a>  iff  for <font color="Olive" title="b4">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b2">Y</font>  st <font color="Olive" title="b4">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Olive" title="b3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b4">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K12" title="DECOMP_1:func.12">D(c,p)</a> <font color="Olive" title="b1">X</font> );<br></span>
+</div>
+<br><div about="#DT34" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#V13" title="DECOMP_1:attr.13">(c,ps)-continuous</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 34 : <br></a><span class="hide"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V13" title="DECOMP_1:attr.13">(c,ps)-continuous</a>  iff  for <font color="Olive" title="b4">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b2">Y</font>  st <font color="Olive" title="b4">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Olive" title="b3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b4">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K14" title="DECOMP_1:func.14">D(c,ps)</a> <font color="Olive" title="b1">X</font> );<br></span>
+</div>
+<br><div about="#DT35" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#V14" title="DECOMP_1:attr.14">(alpha,p)-continuous</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 35 : <br></a><span class="hide"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V14" title="DECOMP_1:attr.14">(alpha,p)-continuous</a>  iff  for <font color="Olive" title="b4">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b2">Y</font>  st <font color="Olive" title="b4">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Olive" title="b3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b4">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K15" title="DECOMP_1:func.15">D(alpha,p)</a> <font color="Olive" title="b1">X</font> );<br></span>
+</div>
+<br><div about="#DT36" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#V15" title="DECOMP_1:attr.15">(alpha,s)-continuous</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 36 : <br></a><span class="hide"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V15" title="DECOMP_1:attr.15">(alpha,s)-continuous</a>  iff  for <font color="Olive" title="b4">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b2">Y</font>  st <font color="Olive" title="b4">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Olive" title="b3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b4">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K16" title="DECOMP_1:func.16">D(alpha,s)</a> <font color="Olive" title="b1">X</font> );<br></span>
+</div>
+<br><div about="#DT37" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#V16" title="DECOMP_1:attr.16">(alpha,ps)-continuous</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 37 : <br></a><span class="hide"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V16" title="DECOMP_1:attr.16">(alpha,ps)-continuous</a>  iff  for <font color="Olive" title="b4">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b2">Y</font>  st <font color="Olive" title="b4">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Olive" title="b3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b4">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K17" title="DECOMP_1:func.17">D(alpha,ps)</a> <font color="Olive" title="b1">X</font> );<br></span>
+</div>
+<br><div about="#DT38" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#V17" title="DECOMP_1:attr.17">(p,ps)-continuous</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 38 : <br></a><span class="hide"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V17" title="DECOMP_1:attr.17">(p,ps)-continuous</a>  iff  for <font color="Olive" title="b4">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b2">Y</font>  st <font color="Olive" title="b4">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Olive" title="b3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b4">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K19" title="DECOMP_1:func.19">D(p,ps)</a> <font color="Olive" title="b1">X</font> );<br></span>
+</div>
+<br><div about="#DT39" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#V18" title="DECOMP_1:attr.18">(p,sp)-continuous</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 39 : <br></a><span class="hide"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V18" title="DECOMP_1:attr.18">(p,sp)-continuous</a>  iff  for <font color="Olive" title="b4">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b2">Y</font>  st <font color="Olive" title="b4">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Olive" title="b3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b4">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K18" title="DECOMP_1:func.18">D(p,sp)</a> <font color="Olive" title="b1">X</font> );<br></span>
+</div>
+<br><div about="#DT40" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="decomp_1.html#V19" title="DECOMP_1:attr.19">(sp,ps)-continuous</a> <a onclick="hs(this)" href="javascript:()">DECOMP_1:def 40 : <br></a><span class="hide"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V19" title="DECOMP_1:attr.19">(sp,ps)-continuous</a>  iff  for <font color="Olive" title="b4">G</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b2">Y</font>  st <font color="Olive" title="b4">G</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  holds <br><font color="Olive" title="b3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Olive" title="b4">G</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="decomp_1.html#K20" title="DECOMP_1:func.20">D(sp,ps)</a> <font color="Olive" title="b1">X</font> );<br></span>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+<div about="#T18" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T18"><span class="comment"><font color="firebrick">:: DECOMP_1:18</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V7" title="DECOMP_1:attr.7">alpha-continuous</a>  iff ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V6" title="DECOMP_1:attr.6">p-continuous</a>  &amp; <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V14" title="DECOMP_1:attr.14">(alpha,p)-continuous</a>  ) )</div>
+<div about="#PF19" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T18"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/19')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/19')" href="javascript:()" title="19"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T19" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T19"><span class="comment"><font color="firebrick">:: DECOMP_1:19</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V7" title="DECOMP_1:attr.7">alpha-continuous</a>  iff ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V5" title="DECOMP_1:attr.5">s-continuous</a>  &amp; <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V15" title="DECOMP_1:attr.15">(alpha,s)-continuous</a>  ) )</div>
+<div about="#PF20" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T19"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/20')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/20')" href="javascript:()" title="20"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T20" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T20"><span class="comment"><font color="firebrick">:: DECOMP_1:20</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V7" title="DECOMP_1:attr.7">alpha-continuous</a>  iff ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V8" title="DECOMP_1:attr.8">ps-continuous</a>  &amp; <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V16" title="DECOMP_1:attr.16">(alpha,ps)-continuous</a>  ) )</div>
+<div about="#PF21" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T20"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/21')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/21')" href="javascript:()" title="21"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T21" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T21"><span class="comment"><font color="firebrick">:: DECOMP_1:21</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V6" title="DECOMP_1:attr.6">p-continuous</a>  iff ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V9" title="DECOMP_1:attr.9">sp-continuous</a>  &amp; <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V18" title="DECOMP_1:attr.18">(p,sp)-continuous</a>  ) )</div>
+<div about="#PF22" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T21"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/22')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/22')" href="javascript:()" title="22"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T22" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T22"><span class="comment"><font color="firebrick">:: DECOMP_1:22</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V6" title="DECOMP_1:attr.6">p-continuous</a>  iff ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V8" title="DECOMP_1:attr.8">ps-continuous</a>  &amp; <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V17" title="DECOMP_1:attr.17">(p,ps)-continuous</a>  ) )</div>
+<div about="#PF23" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T22"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/23')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/23')" href="javascript:()" title="23"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T23" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T23"><span class="comment"><font color="firebrick">:: DECOMP_1:23</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V5" title="DECOMP_1:attr.5">s-continuous</a>  iff ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V8" title="DECOMP_1:attr.8">ps-continuous</a>  &amp; <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V14" title="DECOMP_1:attr.14">(alpha,p)-continuous</a>  ) )</div>
+<div about="#PF24" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T23"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/24')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/24')" href="javascript:()" title="24"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T24" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T24"><span class="comment"><font color="firebrick">:: DECOMP_1:24</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V9" title="DECOMP_1:attr.9">sp-continuous</a>  iff ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V8" title="DECOMP_1:attr.8">ps-continuous</a>  &amp; <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V19" title="DECOMP_1:attr.19">(sp,ps)-continuous</a>  ) )</div>
+<div about="#PF25" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T24"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/25')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/25')" href="javascript:()" title="25"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T25" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T25"><span class="comment"><font color="firebrick">:: DECOMP_1:25</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="pre_topc.html#V5" title="PRE_TOPC:attr.5">continuous</a>  iff ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V7" title="DECOMP_1:attr.7">alpha-continuous</a>  &amp; <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V10" title="DECOMP_1:attr.10">(c,alpha)-continuous</a>  ) )</div>
+<div about="#PF26" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T25"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/26')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/26')" href="javascript:()" title="26"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T26" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T26"><span class="comment"><font color="firebrick">:: DECOMP_1:26</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="pre_topc.html#V5" title="PRE_TOPC:attr.5">continuous</a>  iff ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V5" title="DECOMP_1:attr.5">s-continuous</a>  &amp; <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V11" title="DECOMP_1:attr.11">(c,s)-continuous</a>  ) )</div>
+<div about="#PF27" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T26"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/27')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/27')" href="javascript:()" title="27"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T27" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T27"><span class="comment"><font color="firebrick">:: DECOMP_1:27</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="pre_topc.html#V5" title="PRE_TOPC:attr.5">continuous</a>  iff ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V6" title="DECOMP_1:attr.6">p-continuous</a>  &amp; <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V12" title="DECOMP_1:attr.12">(c,p)-continuous</a>  ) )</div>
+<div about="#PF28" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T27"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/28')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/28')" href="javascript:()" title="28"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T28" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T28"><span class="comment"><font color="firebrick">:: DECOMP_1:28</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b3">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Olive" title="b2">Y</font> holds <br> ( <font color="Olive" title="b3">f</font> is  <a href="pre_topc.html#V5" title="PRE_TOPC:attr.5">continuous</a>  iff ( <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V8" title="DECOMP_1:attr.8">ps-continuous</a>  &amp; <font color="Olive" title="b3">f</font> is  <a href="decomp_1.html#V13" title="DECOMP_1:attr.13">(c,ps)-continuous</a>  ) )</div>
+<div about="#PF29" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T28"></span><a class="txt" onmouseover="tooltip.show('url','proofs/decomp_1/29')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/decomp_1/29')" href="javascript:()" title="29"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+</body>
+</html>
