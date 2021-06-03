@@ -1,0 +1,648 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>FUZIMPL2:  Fundamental Properties of Fuzzy Implications</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  Fundamental Properties of Fuzzy Implications</font></span><br><span class="comment"><font color="firebrick">:: by Adam Grabowski</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received September 29, 2018</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 2018-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br><div>
+<span class="kw">notation</span><div class="add">
+<a NAME="NK1"><span class="kw">synonym </span> <a href="fuzimpl1.html#K6" title="FUZIMPL1:func.6">I_LK</a> </a><span class="kw"> for </span> <a href="fuzimpl1.html#K6" title="FUZIMPL1:func.6">Lukasiewicz_implication</a> ;<br><a NAME="NK2"><span class="kw">synonym </span> <a href="fuzimpl1.html#K8" title="FUZIMPL1:func.8">I_GD</a> </a><span class="kw"> for </span> <a href="fuzimpl1.html#K8" title="FUZIMPL1:func.8">Goedel_implication</a> ;<br><a NAME="NK3"><span class="kw">synonym </span> <a href="fuzimpl1.html#K9" title="FUZIMPL1:func.9">I_RC</a> </a><span class="kw"> for </span> <a href="fuzimpl1.html#K9" title="FUZIMPL1:func.9">Reichenbach_implication</a> ;<br><a NAME="NK4"><span class="kw">synonym </span> <a href="fuzimpl1.html#K10" title="FUZIMPL1:func.10">I_KD</a> </a><span class="kw"> for </span> <a href="fuzimpl1.html#K10" title="FUZIMPL1:func.10">Kleene-Dienes_implication</a> ;<br><a NAME="NK5"><span class="kw">synonym </span> <a href="fuzimpl1.html#K11" title="FUZIMPL1:func.11">I_GG</a> </a><span class="kw"> for </span> <a href="fuzimpl1.html#K11" title="FUZIMPL1:func.11">Goguen_implication</a> ;<br><a NAME="NK6"><span class="kw">synonym </span> <a href="fuzimpl1.html#K12" title="FUZIMPL1:func.12">I_RS</a> </a><span class="kw"> for </span> <a href="fuzimpl1.html#K12" title="FUZIMPL1:func.12">Rescher_implication</a> ;<br><a NAME="NK7"><span class="kw">synonym </span> <a href="fuzimpl1.html#K13" title="FUZIMPL1:func.13">I_YG</a> </a><span class="kw"> for </span> <a href="fuzimpl1.html#K13" title="FUZIMPL1:func.13">Yager_implication</a> ;<br><a NAME="NK8"><span class="kw">synonym </span> <a href="fuzimpl1.html#K14" title="FUZIMPL1:func.14">I_WB</a> </a><span class="kw"> for </span> <a href="fuzimpl1.html#K14" title="FUZIMPL1:func.14">Weber_implication</a> ;<br><a NAME="NK9"><span class="kw">synonym </span> <a href="fuzimpl1.html#K15" title="FUZIMPL1:func.15">I_FD</a> </a><span class="kw"> for </span> <a href="fuzimpl1.html#K15" title="FUZIMPL1:func.15">Fodor_implication</a> ;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<a NAME="E1"></a><span class="lab"><font color="Green" title="E1">Lemma00</font></span>: <span about="#E1" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span> holds  <span class="p1">(<span class="default"><font color="Olive" title="b1">x</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b2">y</font></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default">1 <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Olive" title="b1">x</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> 1</span>)</span> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><font color="Olive" title="b2">y</font>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>
+ </span><br><div about="#PF2" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/2')" href="javascript:()" title="2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E2"></a><span class="lab"><font color="Green" title="E2">LemmaHalf</font></span>: <span about="#E2" typeof="oo:Lemma">
+<span class="p1">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 2</span>)</span> <a href="power.html#K2" title="POWER:func.2">to_power</a> <span class="p1">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 2</span>)</span> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> 1
+ </span><br><div about="#PF3" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/3')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/3')" href="javascript:()" title="3"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T1"><span class="comment"><font color="firebrick">:: FUZIMPL2:1</font></span><br></a><div class="add"> <a href="taylor_1.html#K4" title="TAYLOR_1:func.4">#R</a> 1 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="fcont_1.html#K1" title="FCONT_1:func.1">AffineMap</a> (1,<a href="numbers.html#K5" title="NUMBERS:func.5">0</a>)</span>)</span> <a href="partfun1.html#K2" title="PARTFUN1:func.2">|</a> <span class="p1">(<span class="default"><a href="limfunc1.html#K3" title="LIMFUNC1:func.3">right_open_halfline</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span>
+</div>
+<div about="#PF4" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/4')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/4')" href="javascript:()" title="4"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E3">LemmaAffine</font></span>: <a NAME="T2"><span class="comment"><font color="firebrick">:: FUZIMPL2:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> holds <br> (  <a href="fcont_1.html#K1" title="FCONT_1:func.1">AffineMap</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font>) <a href="fdiff_1.html#R2" title="FDIFF_1:pred.2">is_differentiable_on</a>  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>  &amp; (  for <font color="Olive" title="b3">x</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> holds   <a href="fdiff_1.html#K1" title="FDIFF_1:func.1">diff</a> (<span class="p1">(<span class="default"><a href="fcont_1.html#K1" title="FCONT_1:func.1">AffineMap</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font>)</span>)</span>,<font color="Olive" title="b3">x</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">a</font> ) )</div>
+<div about="#PF5" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/5')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/5')" href="javascript:()" title="5"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T3"><span class="comment"><font color="firebrick">:: FUZIMPL2:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>  st  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b1">x</font> &amp; <font color="Olive" title="b1">x</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 1 &amp;  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b2">y</font> &amp; <font color="Olive" title="b2">y</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 1 holds <br><span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="taylor_1.html#K4" title="TAYLOR_1:func.4">#R</a> <font color="Olive" title="b1">x</font></span>)</span> <a href="valued_1.html#K3" title="VALUED_1:func.3">+</a> <span class="p2">(<span class="default"><a href="fcont_1.html#K1" title="FCONT_1:func.1">AffineMap</a> (<span class="p3">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <font color="Olive" title="b1">x</font></span>)</span>,<span class="p3">(<span class="default"><font color="Olive" title="b1">x</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1</span>)</span>)</span>)</span></span>)</span> <a href="partfun1.html#K2" title="PARTFUN1:func.2">|</a> <span class="p1"><a href="rcomp_1.html#K2" title="RCOMP_1:func.2">].</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K2" title="RCOMP_1:func.2">.[</a></span> is  <a href="valued_0.html#V5" title="VALUED_0:attr.5">increasing</a> </div>
+<div about="#PF6" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/6')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/6')" href="javascript:()" title="6"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T4"><span class="comment"><font color="firebrick">:: FUZIMPL2:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">x</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span><br>  for <font color="Olive" title="b2">u</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>  st <font color="Olive" title="b2">u</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"><a href="rcomp_1.html#K4" title="RCOMP_1:func.4">].</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K4" title="RCOMP_1:func.4">.]</a></span> holds <br><span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="taylor_1.html#K4" title="TAYLOR_1:func.4">#R</a> <font color="Olive" title="b1">x</font></span>)</span> <a href="valued_1.html#K3" title="VALUED_1:func.3">+</a> <span class="p2">(<span class="default"><a href="fcont_1.html#K1" title="FCONT_1:func.1">AffineMap</a> (<span class="p3">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <font color="Olive" title="b1">x</font></span>)</span>,<span class="p3">(<span class="default"><font color="Olive" title="b1">x</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1</span>)</span>)</span>)</span></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">u</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><font color="Olive" title="b2">u</font> <a href="power.html#K2" title="POWER:func.2">to_power</a> <font color="Olive" title="b1">x</font></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1</span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Olive" title="b1">x</font></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">x</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b2">u</font></span>)</span>
+</div>
+<div about="#PF7" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T4"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/7')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/7')" href="javascript:()" title="7"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E4">Lemma01</font></span>: <a NAME="T5"><span class="comment"><font color="firebrick">:: FUZIMPL2:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span> holds <br> ( ( <font color="Olive" title="b1">x</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b2">y</font> implies <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b1">x</font>,<font color="Olive" title="b2">y</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 ) &amp; ( <font color="Olive" title="b1">x</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> <font color="Olive" title="b2">y</font> implies <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b1">x</font>,<font color="Olive" title="b2">y</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default">1 <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Olive" title="b1">x</font></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Olive" title="b2">y</font> ) )</div>
+<div about="#PF8" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/8')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/8')" href="javascript:()" title="8"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T6"><span class="comment"><font color="firebrick">:: FUZIMPL2:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span> holds <br> ( ( <font color="Olive" title="b1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies <a href="fuzimpl2.html#NK5" title="FUZIMPL2:NK.5">I_GG</a> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b1">x</font>,<font color="Olive" title="b2">y</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 ) &amp; ( <font color="Olive" title="b1">x</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies <a href="fuzimpl2.html#NK5" title="FUZIMPL2:NK.5">I_GG</a> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b1">x</font>,<font color="Olive" title="b2">y</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xxreal_0.html#K3" title="XXREAL_0:func.3">min</a> (1,<span class="p1">(<span class="default"><font color="Olive" title="b2">y</font> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <font color="Olive" title="b1">x</font></span>)</span>) ) )</div>
+<div about="#PF9" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/9')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/9')" href="javascript:()" title="9"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E9"></a><span class="lab"><font color="Green" title="E5">Lemma03</font></span>: <span about="#E9" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span> holds   <a href="xxreal_0.html#K4" title="XXREAL_0:func.4">max</a> (<span class="p1">(<span class="default">1 <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Olive" title="b1">x</font></span>)</span>,<font color="Olive" title="b2">y</font>) <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>
+ </span><br><div about="#PF10" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E9"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/10')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/10')" href="javascript:()" title="10"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E10"></a><span class="lab"><font color="Green" title="E6">Lemma11</font></span>: <span about="#E10" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>  st <font color="Olive" title="b1">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br><font color="Olive" title="b2">y</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b2">y</font> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <font color="Olive" title="b1">x</font>
+ </span><br><div about="#PF11" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E10"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/11')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/11')" href="javascript:()" title="11"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E11"></a><span class="lab"><font color="Green" title="E7">Lemacik1</font></span>: <span about="#E11" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>  st <font color="Olive" title="b1">x</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> <font color="Olive" title="b2">y</font> holds <br><span class="p1">(<span class="default">1 <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Olive" title="b1">x</font></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Olive" title="b2">y</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> <font color="Olive" title="b2">y</font> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <font color="Olive" title="b1">x</font>
+ </span><br><div about="#PF12" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/12')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/12')" href="javascript:()" title="12"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E12"></a><span class="lab"><font color="Green" title="E8">Lemma111</font></span>: <span about="#E12" typeof="oo:Lemma">
+ <a href="fuzimpl2.html#NK4" title="FUZIMPL2:NK.4">I_KD</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK3" title="FUZIMPL2:NK.3">I_RC</a> 
+ </span><br><div about="#PF13" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/13')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/13')" href="javascript:()" title="13"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E13"></a><span class="lab"><font color="Green" title="E9">Lemma112</font></span>: <span about="#E13" typeof="oo:Lemma">
+ <a href="fuzimpl2.html#NK3" title="FUZIMPL2:NK.3">I_RC</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a> 
+ </span><br><div about="#PF14" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E13"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/14')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/14')" href="javascript:()" title="14"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E14"></a><span class="lab"><font color="Green" title="E10">Lemma113</font></span>: <span about="#E14" typeof="oo:Lemma">
+ <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK8" title="FUZIMPL2:NK.8">I_WB</a> 
+ </span><br><div about="#PF15" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E14"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/15')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/15')" href="javascript:()" title="15"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T7"><span class="comment"><font color="firebrick">:: FUZIMPL2:7</font></span><br></a><div class="add">(  <a href="fuzimpl2.html#NK4" title="FUZIMPL2:NK.4">I_KD</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK3" title="FUZIMPL2:NK.3">I_RC</a>  &amp;  <a href="fuzimpl2.html#NK3" title="FUZIMPL2:NK.3">I_RC</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a>  &amp;  <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK8" title="FUZIMPL2:NK.8">I_WB</a>  ) <span class="kw">by</span> <span class="lab"><a class="txt" href="fuzimpl2.html#E12"><span class="lab"><font color="Green" title="E8">Lemma111</font></span></a>, <a class="txt" href="fuzimpl2.html#E13"><span class="lab"><font color="Green" title="E9">Lemma112</font></span></a>, <a class="txt" href="fuzimpl2.html#E14"><span class="lab"><font color="Green" title="E10">Lemma113</font></span></a></span>;<br>
+</div>
+</div>
+<br><a NAME="E16"></a><span class="lab"><font color="Green" title="E11">Lemma121</font></span>: <span about="#E16" typeof="oo:Lemma">
+ <a href="fuzimpl2.html#NK6" title="FUZIMPL2:NK.6">I_RS</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK2" title="FUZIMPL2:NK.2">I_GD</a> 
+ </span><br><div about="#PF16" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E16"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/16')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/16')" href="javascript:()" title="16"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E17"></a><span class="lab"><font color="Green" title="E12">Lemma122</font></span>: <span about="#E17" typeof="oo:Lemma">
+ <a href="fuzimpl2.html#NK2" title="FUZIMPL2:NK.2">I_GD</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK5" title="FUZIMPL2:NK.5">I_GG</a> 
+ </span><br><div about="#PF17" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E17"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/17')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/17')" href="javascript:()" title="17"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E18"></a><span class="lab"><font color="Green" title="E13">Lemma123</font></span>: <span about="#E18" typeof="oo:Lemma">
+ <a href="fuzimpl2.html#NK5" title="FUZIMPL2:NK.5">I_GG</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a> 
+ </span><br><div about="#PF18" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E18"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/18')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/18')" href="javascript:()" title="18"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T8"><span class="comment"><font color="firebrick">:: FUZIMPL2:8</font></span><br></a><div class="add">(  <a href="fuzimpl2.html#NK6" title="FUZIMPL2:NK.6">I_RS</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK2" title="FUZIMPL2:NK.2">I_GD</a>  &amp;  <a href="fuzimpl2.html#NK2" title="FUZIMPL2:NK.2">I_GD</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK5" title="FUZIMPL2:NK.5">I_GG</a>  &amp;  <a href="fuzimpl2.html#NK5" title="FUZIMPL2:NK.5">I_GG</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a>  &amp;  <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK8" title="FUZIMPL2:NK.8">I_WB</a>  ) <span class="kw">by</span> <span class="lab"><a class="txt" href="fuzimpl2.html#E16"><span class="lab"><font color="Green" title="E11">Lemma121</font></span></a>, <a class="txt" href="fuzimpl2.html#E17"><span class="lab"><font color="Green" title="E12">Lemma122</font></span></a>, <a class="txt" href="fuzimpl2.html#E18"><span class="lab"><font color="Green" title="E13">Lemma123</font></span></a>, <a class="txt" href="fuzimpl2.html#E14"><span class="lab"><font color="Green" title="E10">Lemma113</font></span></a></span>;<br>
+</div>
+</div>
+<br><a NAME="E20"></a><span class="lab"><font color="Green" title="E14">Lemma132</font></span>: <span about="#E20" typeof="oo:Lemma">
+ <a href="fuzimpl2.html#NK3" title="FUZIMPL2:NK.3">I_RC</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a> 
+ </span><br><div about="#PF19" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E20"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/19')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/19')" href="javascript:()" title="19"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T9"><span class="comment"><font color="firebrick">:: FUZIMPL2:9</font></span><br></a><div class="add">(  <a href="fuzimpl2.html#NK3" title="FUZIMPL2:NK.3">I_RC</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a>  &amp;  <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK8" title="FUZIMPL2:NK.8">I_WB</a>  ) <span class="kw">by</span> <span class="lab"><a class="txt" href="fuzimpl2.html#E20"><span class="lab"><font color="Green" title="E14">Lemma132</font></span></a>, <a class="txt" href="fuzimpl2.html#E14"><span class="lab"><font color="Green" title="E10">Lemma113</font></span></a></span>;<br>
+</div>
+</div>
+<br><a NAME="E22"></a><span class="lab"><font color="Green" title="E15">Lemma141</font></span>: <span about="#E22" typeof="oo:Lemma">
+ <a href="fuzimpl2.html#NK4" title="FUZIMPL2:NK.4">I_KD</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK9" title="FUZIMPL2:NK.9">I_FD</a> 
+ </span><br><div about="#PF20" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E22"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/20')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/20')" href="javascript:()" title="20"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E23"></a><span class="lab"><font color="Green" title="E16">Lemma142</font></span>: <span about="#E23" typeof="oo:Lemma">
+ <a href="fuzimpl2.html#NK9" title="FUZIMPL2:NK.9">I_FD</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a> 
+ </span><br><div about="#PF21" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E23"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/21')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/21')" href="javascript:()" title="21"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T10"><span class="comment"><font color="firebrick">:: FUZIMPL2:10</font></span><br></a><div class="add">(  <a href="fuzimpl2.html#NK4" title="FUZIMPL2:NK.4">I_KD</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK9" title="FUZIMPL2:NK.9">I_FD</a>  &amp;  <a href="fuzimpl2.html#NK9" title="FUZIMPL2:NK.9">I_FD</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a>  &amp;  <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK8" title="FUZIMPL2:NK.8">I_WB</a>  ) <span class="kw">by</span> <span class="lab"><a class="txt" href="fuzimpl2.html#E22"><span class="lab"><font color="Green" title="E15">Lemma141</font></span></a>, <a class="txt" href="fuzimpl2.html#E23"><span class="lab"><font color="Green" title="E16">Lemma142</font></span></a>, <a class="txt" href="fuzimpl2.html#E14"><span class="lab"><font color="Green" title="E10">Lemma113</font></span></a></span>;<br>
+</div>
+</div>
+<br><a NAME="E25"></a><span class="lab"><font color="Green" title="E17">Lemma151</font></span>: <span about="#E25" typeof="oo:Lemma">
+ <a href="fuzimpl2.html#NK6" title="FUZIMPL2:NK.6">I_RS</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK2" title="FUZIMPL2:NK.2">I_GD</a> 
+ </span><br><div about="#PF22" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E25"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/22')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/22')" href="javascript:()" title="22"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E26"></a><span class="lab"><font color="Green" title="E18">Lemma152</font></span>: <span about="#E26" typeof="oo:Lemma">
+ <a href="fuzimpl2.html#NK2" title="FUZIMPL2:NK.2">I_GD</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK9" title="FUZIMPL2:NK.9">I_FD</a> 
+ </span><br><div about="#PF23" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E26"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/23')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/23')" href="javascript:()" title="23"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E27"></a><span class="lab"><font color="Green" title="E19">Lemma153</font></span>: <span about="#E27" typeof="oo:Lemma">
+ <a href="fuzimpl2.html#NK9" title="FUZIMPL2:NK.9">I_FD</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a> 
+ </span><br><div about="#PF24" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E27"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/24')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/24')" href="javascript:()" title="24"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T11"><span class="comment"><font color="firebrick">:: FUZIMPL2:11</font></span><br></a><div class="add">(  <a href="fuzimpl2.html#NK6" title="FUZIMPL2:NK.6">I_RS</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK2" title="FUZIMPL2:NK.2">I_GD</a>  &amp;  <a href="fuzimpl2.html#NK2" title="FUZIMPL2:NK.2">I_GD</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK9" title="FUZIMPL2:NK.9">I_FD</a>  &amp;  <a href="fuzimpl2.html#NK9" title="FUZIMPL2:NK.9">I_FD</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a>  &amp;  <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a>  <a href="fuznorm1.html#R1" title="FUZNORM1:pred.1">&lt;=</a>  <a href="fuzimpl2.html#NK8" title="FUZIMPL2:NK.8">I_WB</a>  ) <span class="kw">by</span> <span class="lab"><a class="txt" href="fuzimpl2.html#E25"><span class="lab"><font color="Green" title="E17">Lemma151</font></span></a>, <a class="txt" href="fuzimpl2.html#E26"><span class="lab"><font color="Green" title="E18">Lemma152</font></span></a>, <a class="txt" href="fuzimpl2.html#E27"><span class="lab"><font color="Green" title="E19">Lemma153</font></span></a>, <a class="txt" href="fuzimpl2.html#E14"><span class="lab"><font color="Green" title="E10">Lemma113</font></span></a></span>;<br>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">I</font> be   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V1"><span class="kw">attr</span> </a><font color="Maroon" title="c1">I</font> is  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a> <span class="kw"> means </span><a NAME="D1"><span class="comment"><font color="firebrick">:: FUZIMPL2:def 1</font></span><br></a> for <font color="Olive" title="b1">y</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span> holds  <font color="Maroon" title="c1">I</font> <a href="binop_1.html#K1" title="BINOP_1:func.1">.</a> (1,<font color="Olive" title="b1">y</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">y</font>;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V2"><span class="kw">attr</span> </a><font color="Maroon" title="c1">I</font> is  <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a> <span class="kw"> means </span><a NAME="D2"><span class="comment"><font color="firebrick">:: FUZIMPL2:def 2</font></span><br></a> for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font>, <font color="Olive" title="b3">z</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span> holds  <font color="Maroon" title="c1">I</font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b1">x</font>,<span class="p1">(<span class="default"><font color="Maroon" title="c1">I</font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b2">y</font>,<font color="Olive" title="b3">z</font>)</span>)</span>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">I</font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b2">y</font>,<span class="p1">(<span class="default"><font color="Maroon" title="c1">I</font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b1">x</font>,<font color="Olive" title="b3">z</font>)</span>)</span>);<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V3"><span class="kw">attr</span> </a><font color="Maroon" title="c1">I</font> is  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a> <span class="kw"> means </span><a NAME="D3"><span class="comment"><font color="firebrick">:: FUZIMPL2:def 3</font></span><br></a> for <font color="Olive" title="b1">x</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span> holds  <font color="Maroon" title="c1">I</font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b1">x</font>,<font color="Olive" title="b1">x</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V4"><span class="kw">attr</span> </a><font color="Maroon" title="c1">I</font> is  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a> <span class="kw"> means </span><a NAME="D4"><span class="comment"><font color="firebrick">:: FUZIMPL2:def 4</font></span><br></a> for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span> holds <br> ( <font color="Maroon" title="c1">I</font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b1">x</font>,<font color="Olive" title="b2">y</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 iff <font color="Olive" title="b1">x</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b2">y</font> );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a> <a onclick="hs(this)" href="javascript:()">FUZIMPL2:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">I</font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span> holds <br> ( <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>  iff  for <font color="Olive" title="b2">y</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span> holds  <font color="Olive" title="b1">I</font> <a href="binop_1.html#K1" title="BINOP_1:func.1">.</a> (1,<font color="Olive" title="b2">y</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">y</font> );<br></span>
+</div>
+<br><div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a> <a onclick="hs(this)" href="javascript:()">FUZIMPL2:def 2 : <br></a><span class="hide"> for <font color="Olive" title="b1">I</font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span> holds <br> ( <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>  iff  for <font color="Olive" title="b2">x</font>, <font color="Olive" title="b3">y</font>, <font color="Olive" title="b4">z</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span> holds  <font color="Olive" title="b1">I</font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b2">x</font>,<span class="p1">(<span class="default"><font color="Olive" title="b1">I</font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b3">y</font>,<font color="Olive" title="b4">z</font>)</span>)</span>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">I</font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b3">y</font>,<span class="p1">(<span class="default"><font color="Olive" title="b1">I</font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b2">x</font>,<font color="Olive" title="b4">z</font>)</span>)</span>) );<br></span>
+</div>
+<br><div about="#DT3" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a> <a onclick="hs(this)" href="javascript:()">FUZIMPL2:def 3 : <br></a><span class="hide"> for <font color="Olive" title="b1">I</font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span> holds <br> ( <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>  iff  for <font color="Olive" title="b2">x</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span> holds  <font color="Olive" title="b1">I</font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b2">x</font>,<font color="Olive" title="b2">x</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 );<br></span>
+</div>
+<br><div about="#DT4" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a> <a onclick="hs(this)" href="javascript:()">FUZIMPL2:def 4 : <br></a><span class="hide"> for <font color="Olive" title="b1">I</font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span> holds <br> ( <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  iff  for <font color="Olive" title="b2">x</font>, <font color="Olive" title="b3">y</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span> holds <br> ( <font color="Olive" title="b1">I</font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b2">x</font>,<font color="Olive" title="b3">y</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 iff <font color="Olive" title="b2">x</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b3">y</font> ) );<br></span>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+<div>
+<span class="kw">notation</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">I</font> be   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>;<br><a NAME="NV5"><span class="kw">synonym </span> <a href="fuzimpl1.html#V6" title="FUZIMPL1:attr.6">satisfying_(NC)</a> <font color="Maroon" title="c1">I</font></a><span class="kw"> for </span> <a href="fuzimpl1.html#V6" title="FUZIMPL1:attr.6">01-dominant</a> ;<br><a NAME="NV6"><span class="kw">synonym </span> <a href="fuzimpl1.html#V1" title="FUZIMPL1:attr.1">satisfying_(I1)</a> <font color="Maroon" title="c1">I</font></a><span class="kw"> for </span> <a href="fuzimpl1.html#V1" title="FUZIMPL1:attr.1">decreasing_on_1st</a> ;<br><a NAME="NV7"><span class="kw">synonym </span> <a href="fuzimpl1.html#V2" title="FUZIMPL1:attr.2">satisfying_(I2)</a> <font color="Maroon" title="c1">I</font></a><span class="kw"> for </span> <a href="fuzimpl1.html#V2" title="FUZIMPL1:attr.2">increasing_on_2nd</a> ;<br><a NAME="NV8"><span class="kw">synonym </span> <a href="fuzimpl1.html#V3" title="FUZIMPL1:attr.3">satisfying_(I3)</a> <font color="Maroon" title="c1">I</font></a><span class="kw"> for </span> <a href="fuzimpl1.html#V3" title="FUZIMPL1:attr.3">00-dominant</a> ;<br><a NAME="NV9"><span class="kw">synonym </span> <a href="fuzimpl1.html#V4" title="FUZIMPL1:attr.4">satisfying_(I4)</a> <font color="Maroon" title="c1">I</font></a><span class="kw"> for </span> <a href="fuzimpl1.html#V4" title="FUZIMPL1:attr.4">11-dominant</a> ;<br><a NAME="NV10"><span class="kw">synonym </span> <a href="fuzimpl1.html#V5" title="FUZIMPL1:attr.5">satisfying_(I5)</a> <font color="Maroon" title="c1">I</font></a><span class="kw"> for </span> <a href="fuzimpl1.html#V5" title="FUZIMPL1:attr.5">10-weak</a> ;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E20">LemmaXA</font></span>: <a NAME="T12"><span class="comment"><font color="firebrick">:: FUZIMPL2:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">I</font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>  st <font color="Olive" title="b1">I</font> is  <a href="fuzimpl1.html#V9" title="FUZIMPL1:attr.9">satisfying_(LB)</a>  holds <br>( <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#NV8" title="FUZIMPL2:NV.8">satisfying_(I3)</a>  &amp; <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#NV5" title="FUZIMPL2:NV.5">satisfying_(NC)</a>  )</div>
+<div about="#PF27" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/27')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/27')" href="javascript:()" title="27"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#CC1" typeof="oo:Theorem">
+<a NAME="CC1"><span class="kw">cluster </span></a> <a href="funct_1.html#V1" title="FUNCT_1:attr.1">Function-like</a>  <a href="funct_2.html#V1" title="FUNCT_2:attr.1">V29</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K17</a>(<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>,<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>),<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>)  <a href="fuzimpl1.html#V9" title="FUZIMPL1:attr.9">satisfying_(LB)</a>  <span class="kw"> -&gt; </span> <a href="fuzimpl2.html#NV8" title="FUZIMPL2:NV.8">satisfying_(I3)</a>   <a href="fuzimpl2.html#NV5" title="FUZIMPL2:NV.5">satisfying_(NC)</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">K16</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K17</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K17</a>(<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>,<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>),<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>));<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:28_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>  st <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl1.html#V9" title="FUZIMPL1:attr.9">satisfying_(LB)</a>  holds <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl2.html#NV8" title="FUZIMPL2:NV.8">satisfying_(I3)</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl2.html#NV5" title="FUZIMPL2:NV.5">satisfying_(NC)</a>  )
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="fuzimpl2.html#T12" target="_self" onmouseover="rs('fuzimpl2/T12')" onmouseout="rh()">LemmaXA</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E21">LemmaVA</font></span>: <a NAME="T13"><span class="comment"><font color="firebrick">:: FUZIMPL2:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">I</font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>  st <font color="Olive" title="b1">I</font> is  <a href="fuzimpl1.html#V10" title="FUZIMPL1:attr.10">satisfying_(RB)</a>  holds <br>( <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#NV9" title="FUZIMPL2:NV.9">satisfying_(I4)</a>  &amp; <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#NV5" title="FUZIMPL2:NV.5">satisfying_(NC)</a>  )</div>
+<div about="#PF29" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T13"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/29')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/29')" href="javascript:()" title="29"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#CC2" typeof="oo:Theorem">
+<a NAME="CC2"><span class="kw">cluster </span></a> <a href="funct_1.html#V1" title="FUNCT_1:attr.1">Function-like</a>  <a href="funct_2.html#V1" title="FUNCT_2:attr.1">V29</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K17</a>(<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>,<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>),<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>)  <a href="fuzimpl1.html#V10" title="FUZIMPL1:attr.10">satisfying_(RB)</a>  <span class="kw"> -&gt; </span> <a href="fuzimpl2.html#NV9" title="FUZIMPL2:NV.9">satisfying_(I4)</a>   <a href="fuzimpl2.html#NV5" title="FUZIMPL2:NV.5">satisfying_(NC)</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">K16</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K17</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K17</a>(<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>,<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>),<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>));<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:30_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>  st <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl1.html#V10" title="FUZIMPL1:attr.10">satisfying_(RB)</a>  holds <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl2.html#NV9" title="FUZIMPL2:NV.9">satisfying_(I4)</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl2.html#NV5" title="FUZIMPL2:NV.5">satisfying_(NC)</a>  )
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="fuzimpl2.html#T13" target="_self" onmouseover="rs('fuzimpl2/T13')" onmouseout="rh()">LemmaVA</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E22">LemmaWA</font></span>: <a NAME="T14"><span class="comment"><font color="firebrick">:: FUZIMPL2:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">I</font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>  st <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>  holds <br>( <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#NV9" title="FUZIMPL2:NV.9">satisfying_(I4)</a>  &amp; <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#NV10" title="FUZIMPL2:NV.10">satisfying_(I5)</a>  )</div>
+<div about="#PF31" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T14"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/31')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/31')" href="javascript:()" title="31"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#CC3" typeof="oo:Theorem">
+<a NAME="CC3"><span class="kw">cluster </span></a> <a href="funct_1.html#V1" title="FUNCT_1:attr.1">Function-like</a>  <a href="funct_2.html#V1" title="FUNCT_2:attr.1">V29</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K17</a>(<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>,<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>),<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>)  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>  <span class="kw"> -&gt; </span> <a href="fuzimpl2.html#NV9" title="FUZIMPL2:NV.9">satisfying_(I4)</a>   <a href="fuzimpl2.html#NV10" title="FUZIMPL2:NV.10">satisfying_(I5)</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">K16</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K17</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K17</a>(<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>,<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>),<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>));<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:32_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>  st <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>  holds <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl2.html#NV9" title="FUZIMPL2:NV.9">satisfying_(I4)</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl2.html#NV10" title="FUZIMPL2:NV.10">satisfying_(I5)</a>  )
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="fuzimpl2.html#T14" target="_self" onmouseover="rs('fuzimpl2/T14')" onmouseout="rh()">LemmaWA</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T15" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E23">LemmaZA</font></span>: <a NAME="T15"><span class="comment"><font color="firebrick">:: FUZIMPL2:15</font></span><br></a><div class="add"> for <font color="Olive" title="b1">I</font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>  st <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>  holds <br>( <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#NV8" title="FUZIMPL2:NV.8">satisfying_(I3)</a>  &amp; <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#NV9" title="FUZIMPL2:NV.9">satisfying_(I4)</a>  )</div>
+<div about="#PF33" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/33')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/33')" href="javascript:()" title="33"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#CC4" typeof="oo:Theorem">
+<a NAME="CC4"><span class="kw">cluster </span></a> <a href="funct_1.html#V1" title="FUNCT_1:attr.1">Function-like</a>  <a href="funct_2.html#V1" title="FUNCT_2:attr.1">V29</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K17</a>(<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>,<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>),<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>)  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>  <span class="kw"> -&gt; </span> <a href="fuzimpl2.html#NV8" title="FUZIMPL2:NV.8">satisfying_(I3)</a>   <a href="fuzimpl2.html#NV9" title="FUZIMPL2:NV.9">satisfying_(I4)</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">K16</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K17</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K17</a>(<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>,<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>),<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>));<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:34_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>  st <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>  holds <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl2.html#NV8" title="FUZIMPL2:NV.8">satisfying_(I3)</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl2.html#NV9" title="FUZIMPL2:NV.9">satisfying_(I4)</a>  )
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="fuzimpl2.html#T15" target="_self" onmouseover="rs('fuzimpl2/T15')" onmouseout="rh()">LemmaZA</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T16" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E24">LemmaAA</font></span>: <a NAME="T16"><span class="comment"><font color="firebrick">:: FUZIMPL2:16</font></span><br></a><div class="add"> for <font color="Olive" title="b1">I</font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>  st <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  holds <br>( <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#NV8" title="FUZIMPL2:NV.8">satisfying_(I3)</a>  &amp; <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#NV9" title="FUZIMPL2:NV.9">satisfying_(I4)</a>  &amp; <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#NV5" title="FUZIMPL2:NV.5">satisfying_(NC)</a>  &amp; <font color="Olive" title="b1">I</font> is  <a href="fuzimpl1.html#V9" title="FUZIMPL1:attr.9">satisfying_(LB)</a>  &amp; <font color="Olive" title="b1">I</font> is  <a href="fuzimpl1.html#V10" title="FUZIMPL1:attr.10">satisfying_(RB)</a>  &amp; <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>  )</div>
+<div about="#PF35" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T16"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/35')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/35')" href="javascript:()" title="35"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#CC5" typeof="oo:Theorem">
+<a NAME="CC5"><span class="kw">cluster </span></a> <a href="funct_1.html#V1" title="FUNCT_1:attr.1">Function-like</a>  <a href="funct_2.html#V1" title="FUNCT_2:attr.1">V29</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K17</a>(<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>,<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>),<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>)  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  <span class="kw"> -&gt; </span> <a href="fuzimpl2.html#NV8" title="FUZIMPL2:NV.8">satisfying_(I3)</a>   <a href="fuzimpl2.html#NV9" title="FUZIMPL2:NV.9">satisfying_(I4)</a>   <a href="fuzimpl2.html#NV5" title="FUZIMPL2:NV.5">satisfying_(NC)</a>   <a href="fuzimpl1.html#V9" title="FUZIMPL1:attr.9">satisfying_(LB)</a>   <a href="fuzimpl1.html#V10" title="FUZIMPL1:attr.10">satisfying_(RB)</a>   <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">K16</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K17</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K17</a>(<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>,<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>),<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>));<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:36_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>  st <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  holds <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl2.html#NV8" title="FUZIMPL2:NV.8">satisfying_(I3)</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl2.html#NV9" title="FUZIMPL2:NV.9">satisfying_(I4)</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl2.html#NV5" title="FUZIMPL2:NV.5">satisfying_(NC)</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl1.html#V9" title="FUZIMPL1:attr.9">satisfying_(LB)</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl1.html#V10" title="FUZIMPL1:attr.10">satisfying_(RB)</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>  )
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="fuzimpl2.html#T16" target="_self" onmouseover="rs('fuzimpl2/T16')" onmouseout="rh()">LemmaAA</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T17" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E25">LemmaAB</font></span>: <a NAME="T17"><span class="comment"><font color="firebrick">:: FUZIMPL2:17</font></span><br></a><div class="add"> for <font color="Olive" title="b1">I</font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>  st <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>  &amp; <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  holds <br>( <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#NV6" title="FUZIMPL2:NV.6">satisfying_(I1)</a>  &amp; <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#NV8" title="FUZIMPL2:NV.8">satisfying_(I3)</a>  &amp; <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#NV9" title="FUZIMPL2:NV.9">satisfying_(I4)</a>  &amp; <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#NV10" title="FUZIMPL2:NV.10">satisfying_(I5)</a>  &amp; <font color="Olive" title="b1">I</font> is  <a href="fuzimpl1.html#V9" title="FUZIMPL1:attr.9">satisfying_(LB)</a>  &amp; <font color="Olive" title="b1">I</font> is  <a href="fuzimpl1.html#V10" title="FUZIMPL1:attr.10">satisfying_(RB)</a>  &amp; <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#NV5" title="FUZIMPL2:NV.5">satisfying_(NC)</a>  &amp; <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>  &amp; <font color="Olive" title="b1">I</font> is  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>  )</div>
+<div about="#PF37" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T17"></span><a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/37')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/37')" href="javascript:()" title="37"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#CC6" typeof="oo:Theorem">
+<a NAME="CC6"><span class="kw">cluster </span></a> <a href="funct_1.html#V1" title="FUNCT_1:attr.1">Function-like</a>  <a href="funct_2.html#V1" title="FUNCT_2:attr.1">V29</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K17</a>(<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>,<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>),<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>)  <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>   <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  <span class="kw"> -&gt; </span> <a href="fuzimpl2.html#NV6" title="FUZIMPL2:NV.6">satisfying_(I1)</a>   <a href="fuzimpl2.html#NV10" title="FUZIMPL2:NV.10">satisfying_(I5)</a>   <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">K16</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K17</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K17</a>(<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>,<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>),<span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>));<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:38_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1"><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">[.</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,1</span><a href="rcomp_1.html#K1" title="RCOMP_1:func.1">.]</a></span>  st <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  holds <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl2.html#NV6" title="FUZIMPL2:NV.6">satisfying_(I1)</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl2.html#NV10" title="FUZIMPL2:NV.10">satisfying_(I5)</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>  )
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="fuzimpl2.html#T17" target="_self" onmouseover="rs('fuzimpl2/T17')" onmouseout="rh()">LemmaAB</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#FC1" typeof="oo:Theorem">
+<a NAME="FC1"><span class="kw">cluster </span></a> <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a> <span class="kw"> -&gt; </span> <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>   <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>   <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>   <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:39_1"></a>
+(  <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a>  is  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>  &amp;  <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a>  is  <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>  &amp;  <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a>  is  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>  &amp;  <a href="fuzimpl2.html#NK1" title="FUZIMPL2:NK.1">I_LK</a>  is  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  )
+ </span><div about="#PF39_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/39_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/39_1_1')" href="javascript:()" title="39_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+
+<div about="#FC2" typeof="oo:Theorem">
+<a NAME="FC2"><span class="kw">cluster </span></a> <a href="fuzimpl2.html#NK2" title="FUZIMPL2:NK.2">I_GD</a> <span class="kw"> -&gt; </span> <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>   <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>   <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>   <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:39_2"></a>
+(  <a href="fuzimpl2.html#NK2" title="FUZIMPL2:NK.2">I_GD</a>  is  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>  &amp;  <a href="fuzimpl2.html#NK2" title="FUZIMPL2:NK.2">I_GD</a>  is  <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>  &amp;  <a href="fuzimpl2.html#NK2" title="FUZIMPL2:NK.2">I_GD</a>  is  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>  &amp;  <a href="fuzimpl2.html#NK2" title="FUZIMPL2:NK.2">I_GD</a>  is  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  )
+ </span><div about="#PF39_2_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/39_2_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/39_2_1')" href="javascript:()" title="39_2_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+
+<div about="#FC3" typeof="oo:Theorem">
+<a NAME="FC3"><span class="kw">cluster </span></a> <a href="fuzimpl2.html#NK3" title="FUZIMPL2:NK.3">I_RC</a> <span class="kw"> -&gt; </span> <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>   <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>   non  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>   non  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:39_3"></a>
+(  <a href="fuzimpl2.html#NK3" title="FUZIMPL2:NK.3">I_RC</a>  is  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>  &amp;  <a href="fuzimpl2.html#NK3" title="FUZIMPL2:NK.3">I_RC</a>  is  <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>  &amp;  not  <a href="fuzimpl2.html#NK3" title="FUZIMPL2:NK.3">I_RC</a>  is  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>  &amp;  not  <a href="fuzimpl2.html#NK3" title="FUZIMPL2:NK.3">I_RC</a>  is  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  )
+ </span><div about="#PF39_3_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/39_3_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/39_3_1')" href="javascript:()" title="39_3_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+
+<div about="#FC4" typeof="oo:Theorem">
+<a NAME="FC4"><span class="kw">cluster </span></a> <a href="fuzimpl2.html#NK4" title="FUZIMPL2:NK.4">I_KD</a> <span class="kw"> -&gt; </span> <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>   <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>   non  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>   non  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:39_4"></a>
+(  <a href="fuzimpl2.html#NK4" title="FUZIMPL2:NK.4">I_KD</a>  is  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>  &amp;  <a href="fuzimpl2.html#NK4" title="FUZIMPL2:NK.4">I_KD</a>  is  <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>  &amp;  not  <a href="fuzimpl2.html#NK4" title="FUZIMPL2:NK.4">I_KD</a>  is  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>  &amp;  not  <a href="fuzimpl2.html#NK4" title="FUZIMPL2:NK.4">I_KD</a>  is  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  )
+ </span><div about="#PF39_4_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/39_4_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/39_4_1')" href="javascript:()" title="39_4_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+
+<div about="#FC5" typeof="oo:Theorem">
+<a NAME="FC5"><span class="kw">cluster </span></a> <a href="fuzimpl2.html#NK5" title="FUZIMPL2:NK.5">I_GG</a> <span class="kw"> -&gt; </span> <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>   <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>   <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>   <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:39_5"></a>
+(  <a href="fuzimpl2.html#NK5" title="FUZIMPL2:NK.5">I_GG</a>  is  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>  &amp;  <a href="fuzimpl2.html#NK5" title="FUZIMPL2:NK.5">I_GG</a>  is  <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>  &amp;  <a href="fuzimpl2.html#NK5" title="FUZIMPL2:NK.5">I_GG</a>  is  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>  &amp;  <a href="fuzimpl2.html#NK5" title="FUZIMPL2:NK.5">I_GG</a>  is  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  )
+ </span><div about="#PF39_5_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/39_5_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/39_5_1')" href="javascript:()" title="39_5_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+
+<div about="#FC6" typeof="oo:Theorem">
+<a NAME="FC6"><span class="kw">cluster </span></a> <a href="fuzimpl2.html#NK6" title="FUZIMPL2:NK.6">I_RS</a> <span class="kw"> -&gt; </span> non  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>   non  <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>   <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>   <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:39_6"></a>
+(  not  <a href="fuzimpl2.html#NK6" title="FUZIMPL2:NK.6">I_RS</a>  is  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>  &amp;  not  <a href="fuzimpl2.html#NK6" title="FUZIMPL2:NK.6">I_RS</a>  is  <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>  &amp;  <a href="fuzimpl2.html#NK6" title="FUZIMPL2:NK.6">I_RS</a>  is  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>  &amp;  <a href="fuzimpl2.html#NK6" title="FUZIMPL2:NK.6">I_RS</a>  is  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  )
+ </span><div about="#PF39_6_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/39_6_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/39_6_1')" href="javascript:()" title="39_6_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+
+<div about="#FC7" typeof="oo:Theorem">
+<a NAME="FC7"><span class="kw">cluster </span></a> <a href="fuzimpl2.html#NK7" title="FUZIMPL2:NK.7">I_YG</a> <span class="kw"> -&gt; </span> <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>   <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>   non  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>   non  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:39_7"></a>
+(  <a href="fuzimpl2.html#NK7" title="FUZIMPL2:NK.7">I_YG</a>  is  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>  &amp;  <a href="fuzimpl2.html#NK7" title="FUZIMPL2:NK.7">I_YG</a>  is  <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>  &amp;  not  <a href="fuzimpl2.html#NK7" title="FUZIMPL2:NK.7">I_YG</a>  is  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>  &amp;  not  <a href="fuzimpl2.html#NK7" title="FUZIMPL2:NK.7">I_YG</a>  is  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  )
+ </span><div about="#PF39_7_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/39_7_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/39_7_1')" href="javascript:()" title="39_7_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+
+<div about="#FC8" typeof="oo:Theorem">
+<a NAME="FC8"><span class="kw">cluster </span></a> <a href="fuzimpl2.html#NK8" title="FUZIMPL2:NK.8">I_WB</a> <span class="kw"> -&gt; </span> <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>   <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>   <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>   non  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:39_8"></a>
+(  <a href="fuzimpl2.html#NK8" title="FUZIMPL2:NK.8">I_WB</a>  is  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>  &amp;  <a href="fuzimpl2.html#NK8" title="FUZIMPL2:NK.8">I_WB</a>  is  <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>  &amp;  <a href="fuzimpl2.html#NK8" title="FUZIMPL2:NK.8">I_WB</a>  is  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>  &amp;  not  <a href="fuzimpl2.html#NK8" title="FUZIMPL2:NK.8">I_WB</a>  is  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  )
+ </span><div about="#PF39_8_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/39_8_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/39_8_1')" href="javascript:()" title="39_8_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+
+<div about="#FC9" typeof="oo:Theorem">
+<a NAME="FC9"><span class="kw">cluster </span></a> <a href="fuzimpl2.html#NK9" title="FUZIMPL2:NK.9">I_FD</a> <span class="kw"> -&gt; </span> <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>   <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>   <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>   <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:39_9"></a>
+(  <a href="fuzimpl2.html#NK9" title="FUZIMPL2:NK.9">I_FD</a>  is  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>  &amp;  <a href="fuzimpl2.html#NK9" title="FUZIMPL2:NK.9">I_FD</a>  is  <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>  &amp;  <a href="fuzimpl2.html#NK9" title="FUZIMPL2:NK.9">I_FD</a>  is  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>  &amp;  <a href="fuzimpl2.html#NK9" title="FUZIMPL2:NK.9">I_FD</a>  is  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  )
+ </span><div about="#PF39_9_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/39_9_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/39_9_1')" href="javascript:()" title="39_9_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#FC10" typeof="oo:Theorem">
+<a NAME="FC10"><span class="kw">cluster </span></a> <a href="fuzimpl1.html#K16" title="FUZIMPL1:func.16">I_{0}</a> <span class="kw"> -&gt; </span> non  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>   <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>   non  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>   non  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:40_1"></a>
+(  not  <a href="fuzimpl1.html#K16" title="FUZIMPL1:func.16">I_{0}</a>  is  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>  &amp;  <a href="fuzimpl1.html#K16" title="FUZIMPL1:func.16">I_{0}</a>  is  <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>  &amp;  not  <a href="fuzimpl1.html#K16" title="FUZIMPL1:func.16">I_{0}</a>  is  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>  &amp;  not  <a href="fuzimpl1.html#K16" title="FUZIMPL1:func.16">I_{0}</a>  is  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  )
+ </span><div about="#PF40_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/40_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/40_1_1')" href="javascript:()" title="40_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+
+<div about="#FC11" typeof="oo:Theorem">
+<a NAME="FC11"><span class="kw">cluster </span></a> <a href="fuzimpl1.html#K17" title="FUZIMPL1:func.17">I_{1}</a> <span class="kw"> -&gt; </span> non  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>   <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>   <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>   non  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:40_2"></a>
+(  not  <a href="fuzimpl1.html#K17" title="FUZIMPL1:func.17">I_{1}</a>  is  <a href="fuzimpl2.html#V1" title="FUZIMPL2:attr.1">satisfying_(NP)</a>  &amp;  <a href="fuzimpl1.html#K17" title="FUZIMPL1:func.17">I_{1}</a>  is  <a href="fuzimpl2.html#V2" title="FUZIMPL2:attr.2">satisfying_(EP)</a>  &amp;  <a href="fuzimpl1.html#K17" title="FUZIMPL1:func.17">I_{1}</a>  is  <a href="fuzimpl2.html#V3" title="FUZIMPL2:attr.3">satisfying_(IP)</a>  &amp;  not  <a href="fuzimpl1.html#K17" title="FUZIMPL1:func.17">I_{1}</a>  is  <a href="fuzimpl2.html#V4" title="FUZIMPL2:attr.4">satisfying_(OP)</a>  )
+ </span><div about="#PF40_2_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/fuzimpl2/40_2_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/fuzimpl2/40_2_1')" href="javascript:()" title="40_2_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+</body>
+</html>
