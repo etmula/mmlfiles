@@ -1,0 +1,1301 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LATSTONE:  Stone Lattices</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  Stone Lattices</font></span><br><span class="comment"><font color="firebrick">:: by Adam Grabowski</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received October 22, 2015</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 2015-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br><div class="comment mathjax"><font color="firebrick">:: The main aim of this article is to provide a formal counterpart<br>  
+:: for the paper of Jouni J\"arvinen "Lattice theory for rough sets",<br>  
+:: in Transactions of Rough Sets, VI, LNCS vol. 4374, pp. 400--498, 2007.<br>  
+:: The corresponding items are marked by the acronym LTRS. We deal<br>  
+:: with Section 4.3, page 423--426.<br>  
+  
+</font></div>
+<div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E1">ThA</font></span>: <a NAME="T1"><span class="comment"><font color="firebrick">:: LATSTONE:1</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">S</font> being    <a href="nat_lat.html#M2" title="NAT_LAT:mode.2">Sublattice</a> of <font color="Olive" title="b1">L</font> holds  <font color="Olive" title="b2">S</font> is  <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a> </div>
+<div about="#PF1" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/1')" href="javascript:()" title="1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+<div about="#CC1" typeof="oo:Theorem">
+<a NAME="CC1"><span class="kw">cluster </span></a> <span class="kw"> -&gt; </span> <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>   for    <a href="filter_2.html#NM2" title="FILTER_2:NM.2">Sublattice</a> of <font color="Maroon" title="c1">L</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:2_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being    <a href="nat_lat.html#M2" title="NAT_LAT:mode.2">Sublattice</a> of <font color="Maroon" title="c1">L</font> holds  <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="latstone.html#T1" target="_self" onmouseover="rs('latstone/T1')" onmouseout="rh()">ThA</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L1</font>, <font color="Maroon" title="c2">L2</font> be   <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+<div about="#FC1" typeof="oo:Theorem">
+<a NAME="FC1"><span class="kw">cluster </span></a><span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">L1</font>,<font color="Maroon" title="c2">L2</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span><span class="kw"> -&gt; </span> <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:3_1"></a>
+<span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">L1</font>,<font color="Maroon" title="c2">L2</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span> is  <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="filter_1.html#T41" onmouseover="rs('filter_1/T41')" onmouseout="rh()">FILTER_1:41</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E2">ThB</font></span>: <a NAME="T2"><span class="comment"><font color="firebrick">:: LATSTONE:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">I</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="lattice4.html#NM2" title="LATTICE4:NM.2">ClosedSubset</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b1">L</font> is  <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>  &amp;  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">I</font> holds <br>(  <a href="filter_2.html#K10" title="FILTER_2:func.10">latt</a> (<font color="Olive" title="b1">L</font>,<font color="Olive" title="b2">I</font>) is  <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>  &amp;  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <span class="p1">(<span class="default"><a href="filter_2.html#K10" title="FILTER_2:func.10">latt</a> (<font color="Olive" title="b1">L</font>,<font color="Olive" title="b2">I</font>)</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font> )</div>
+<div about="#PF4" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/4')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/4')" href="javascript:()" title="4"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E3">ThC</font></span>: <a NAME="T3"><span class="comment"><font color="firebrick">:: LATSTONE:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">I</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="lattice4.html#NM2" title="LATTICE4:NM.2">ClosedSubset</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b1">L</font> is  <a href="lattices.html#V14" title="LATTICES:attr.14">upper-bounded</a>  &amp;  <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">L</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">I</font> holds <br>(  <a href="filter_2.html#K10" title="FILTER_2:func.10">latt</a> (<font color="Olive" title="b1">L</font>,<font color="Olive" title="b2">I</font>) is  <a href="lattices.html#V14" title="LATTICES:attr.14">upper-bounded</a>  &amp;  <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <span class="p1">(<span class="default"><a href="filter_2.html#K10" title="FILTER_2:func.10">latt</a> (<font color="Olive" title="b1">L</font>,<font color="Olive" title="b2">I</font>)</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">L</font> )</div>
+<div about="#PF5" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/5')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/5')" href="javascript:()" title="5"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: <img src="http://mws.cs.ru.nl/~mptp/WP.ico" alt="WP: "> <a href="http://en.wikipedia.org/wiki/Pseudocomplement" title="See Wikipedia entry for Pseudocomplement">Pseudocomplement</a><br>  
+  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">a</font>, <font color="Maroon" title="c3">b</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="R1"><span class="kw">pred</span> </a><font color="Maroon" title="c2">a</font> <a href="latstone.html#R1" title="LATSTONE:pred.1">is_a_pseudocomplement_of</a> <font color="Maroon" title="c3">b</font><span class="kw"> means </span><a NAME="D1"><span class="comment"><font color="firebrick">:: LATSTONE:def 1</font></span><br></a>( <font color="Maroon" title="c2">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Maroon" title="c3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Maroon" title="c1">L</font> &amp; (  for <font color="Olive" title="b1">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>  st <font color="Maroon" title="c3">b</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Maroon" title="c1">L</font> holds <br><font color="Olive" title="b1">x</font> <a href="lattices.html#R1" title="LATTICES:pred.1">[=</a> <font color="Maroon" title="c2">a</font> ) );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="latstone.html#R1" title="LATSTONE:pred.1">is_a_pseudocomplement_of</a> <a onclick="hs(this)" href="javascript:()">LATSTONE:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">L</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> <br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds <br> ( <font color="Olive" title="b2">a</font> <a href="latstone.html#R1" title="LATSTONE:pred.1">is_a_pseudocomplement_of</a> <font color="Olive" title="b3">b</font> iff ( <font color="Olive" title="b2">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font> &amp; (  for <font color="Olive" title="b4">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b3">b</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b4">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font> holds <br><font color="Olive" title="b4">x</font> <a href="lattices.html#R1" title="LATTICES:pred.1">[=</a> <font color="Olive" title="b2">a</font> ) ) );<br></span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: p. 122 6.1 Definition from Gratzer<br>  
+  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br><div class="comment mathjax"><font color="firebrick">:: p. 122 6.1 Definition from Gratzer<br>  
+  
+</font></div>
+<div about="#D4" typeof="oo:Definition">
+<a NAME="V1"><span class="kw">attr</span> </a><font color="Maroon" title="c1">L</font> is  <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E4">def2</font></span>: <a NAME="D2"><span class="comment"><font color="firebrick">:: LATSTONE:def 2</font></span><br></a> for <font color="Olive" title="b1">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>  ex <font color="Olive" title="b2">y</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> st <font color="Olive" title="b2">y</font> <a href="latstone.html#R1" title="LATSTONE:pred.1">is_a_pseudocomplement_of</a> <font color="Olive" title="b1">x</font>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E4">def2</font></span>   defines <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a> <a onclick="hs(this)" href="javascript:()">LATSTONE:def 2 : <br></a><span class="hide"> for <font color="Olive" title="b1">L</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a>  holds <br> ( <font color="Olive" title="b1">L</font> is  <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  iff  for <font color="Olive" title="b2">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  ex <font color="Olive" title="b3">y</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> st <font color="Olive" title="b3">y</font> <a href="latstone.html#R1" title="LATSTONE:pred.1">is_a_pseudocomplement_of</a> <font color="Olive" title="b2">x</font> );<br></span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: LTRS: Example 43(a)<br>  
+  
+</font></div>
+<div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E5">Th1</font></span>: <a NAME="T4"><span class="comment"><font color="firebrick">:: LATSTONE:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds  <font color="Olive" title="b1">L</font> is  <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a> </div>
+<div about="#PF8" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T4"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/8')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/8')" href="javascript:()" title="8"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#CC2" typeof="oo:Theorem">
+<a NAME="CC2"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <span class="kw"> -&gt; </span> <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:9_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>  st <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  holds <br><font color="Olive">b<sub>1</sub></font> is  <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="latstone.html#T4" target="_self" onmouseover="rs('latstone/T4')" onmouseout="rh()">Th1</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC1" typeof="oo:Theorem">
+<a NAME="RC1"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>   <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a>   <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>   <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a>   <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>   <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>   <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>   <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:10_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> st <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>  )
+ </span><div about="#PF10_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/10_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/10_1_1')" href="javascript:()" title="10_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: Pseudocomplements are unique<br>  
+  
+</font></div>
+<div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E6">Th2</font></span>: <a NAME="T5"><span class="comment"><font color="firebrick">:: LATSTONE:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b2">a</font> <a href="latstone.html#R1" title="LATSTONE:pred.1">is_a_pseudocomplement_of</a> <font color="Olive" title="b4">x</font> &amp; <font color="Olive" title="b3">b</font> <a href="latstone.html#R1" title="LATSTONE:pred.1">is_a_pseudocomplement_of</a> <font color="Olive" title="b4">x</font> holds <br><font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">b</font>
+</div>
+<div about="#PF11" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/11')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/11')" href="javascript:()" title="11"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: The unique pseudocomplement<br>  
+  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">x</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>;<br><span class="kw">assume </span><a NAME="E1:12"></a><span class="lab"><font color="Green" title="E7">A1</font></span>: 
+<font color="Maroon" title="c1">L</font> is   <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>
+ ;<br><div about="#D7" typeof="oo:Definition">
+<a NAME="K1"><span class="kw">func</span> </a><font color="Maroon" title="c2">x</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a> <span class="kw"> -&gt; </span>  <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E7">def3</font></span>: <a NAME="D3"><span class="comment"><font color="firebrick">:: LATSTONE:def 3</font></span><br></a><span class="kw">it</span> <a href="latstone.html#R1" title="LATSTONE:pred.1">is_a_pseudocomplement_of</a> <font color="Maroon" title="c2">x</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:12_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> st <font color="Olive">b<sub>1</sub></font> <a href="latstone.html#R1" title="LATSTONE:pred.1">is_a_pseudocomplement_of</a> <font color="Maroon" title="c2">x</font>
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="latstone.html#D2" target="_self" onmouseover="rs('latstone/D2')" onmouseout="rh()">def2</a>, <a class="txt" href="#E1:12"><span class="lab"><font color="Green" title="E7">A1</font></span></a></span>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:12_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>  st <font color="Olive">b<sub>1</sub></font> <a href="latstone.html#R1" title="LATSTONE:pred.1">is_a_pseudocomplement_of</a> <font color="Maroon" title="c2">x</font> &amp; <font color="Olive">b<sub>2</sub></font> <a href="latstone.html#R1" title="LATSTONE:pred.1">is_a_pseudocomplement_of</a> <font color="Maroon" title="c2">x</font> holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:12"><span class="lab"><font color="Green" title="E7">A1</font></span></a>, <a class="ref" href="latstone.html#T5" target="_self" onmouseover="rs('latstone/T5')" onmouseout="rh()">Th2</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+<div about="#DT3" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E7">def3</font></span>   defines <a href="latstone.html#K1" title="LATSTONE:func.1">*</a> <a onclick="hs(this)" href="javascript:()">LATSTONE:def 3 : <br></a><span class="hide"> for <font color="Olive" title="b1">L</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> <br>  for <font color="Olive" title="b2">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b1">L</font> is   <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds <br> for <font color="Olive">b<sub>3</sub></font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds <br> ( <font color="Olive">b<sub>3</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">x</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a>  iff <font color="Olive">b<sub>3</sub></font> <a href="latstone.html#R1" title="LATSTONE:pred.1">is_a_pseudocomplement_of</a> <font color="Olive" title="b2">x</font> );<br></span>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E8">ThD</font></span>: <a NAME="T6"><span class="comment"><font color="firebrick">:: LATSTONE:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <span class="p1">(<span class="default"><font color="Olive" title="b2">x</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a></span>)</span> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font>
+</div>
+<div about="#PF13" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/13')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/13')" href="javascript:()" title="13"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+<div class="comment mathjax"><font color="firebrick">:: LTRS: Lemma 42(a)<br>  
+  
+</font></div>
+<div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E9">Th5</font></span>: <a NAME="T7"><span class="comment"><font color="firebrick">:: LATSTONE:7</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <font color="Olive" title="b2">a</font> <a href="lattices.html#R3" title="LATTICES:pred.3">[=</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a></span>)</span> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a> </div>
+<div about="#PF14" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T7"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/14')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/14')" href="javascript:()" title="14"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: LTRS: Lemma 42(b)<br>  
+  
+</font></div>
+<div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E10">Th6</font></span>: <a NAME="T8"><span class="comment"><font color="firebrick">:: LATSTONE:8</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b2">a</font> <a href="lattices.html#R3" title="LATTICES:pred.3">[=</a> <font color="Olive" title="b3">b</font> holds <br><font color="Olive" title="b3">b</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a>  <a href="lattices.html#R3" title="LATTICES:pred.3">[=</a> <font color="Olive" title="b2">a</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a> </div>
+<div about="#PF15" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/15')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/15')" href="javascript:()" title="15"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: LTRS: Lemma 42(c)<br>  
+  
+</font></div>
+<div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E11">Th7</font></span>: <a NAME="T9"><span class="comment"><font color="firebrick">:: LATSTONE:9</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <font color="Olive" title="b2">a</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b2">a</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a></span>)</span> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a></span>)</span> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a> </div>
+<div about="#PF16" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T9"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/16')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/16')" href="javascript:()" title="16"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: LTRS: Example 43(c)<br>  
+</font></div>
+<div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E12">Th11</font></span>: <a NAME="T10"><span class="comment"><font color="firebrick">:: LATSTONE:10</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds  <span class="p1">(<span class="default"><a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font></span>)</span> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">L</font>
+</div>
+<div about="#PF17" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T10"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/17')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/17')" href="javascript:()" title="17"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: LTRS: Example 43(c)<br>  
+</font></div>
+<div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E13">Th11a</font></span>: <a NAME="T11"><span class="comment"><font color="firebrick">:: LATSTONE:11</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds  <span class="p1">(<span class="default"><a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">L</font></span>)</span> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font>
+</div>
+<div about="#PF18" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/18')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/18')" href="javascript:()" title="18"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: Pseudocomplements are precisely complements in complemented lattices.<br>  
+:: A complement (if exists) is always a pseudocomplement.<br>  
+  
+:: LTRS: Example 43(a)<br>  
+</font></div>
+<div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E14">ThE</font></span>: <a NAME="T12"><span class="comment"><font color="firebrick">:: LATSTONE:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <font color="Olive" title="b2">x</font> <a href="lattices.html#K7" title="LATTICES:func.7">`</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">x</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a> </div>
+<div about="#PF19" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/19')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/19')" href="javascript:()" title="19"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: Connection between pseudocomplements and the functor from LATTICEA<br>  
+  
+</font></div>
+<div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E15">ThF</font></span>: <a NAME="T13"><span class="comment"><font color="firebrick">:: LATSTONE:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">x</font>, <font color="Olive" title="b3">y</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b3">y</font> <a href="latstone.html#R1" title="LATSTONE:pred.1">is_a_pseudocomplement_of</a> <font color="Olive" title="b2">x</font> holds <br><font color="Olive" title="b3">y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="latticea.html#K6" title="LATTICEA:func.6">PseudoComplements</a> <font color="Olive" title="b2">x</font>
+</div>
+<div about="#PF20" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T13"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/20')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/20')" href="javascript:()" title="20"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T14"><span class="comment"><font color="firebrick">:: LATSTONE:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <font color="Olive" title="b2">x</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a>  <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="latticea.html#K6" title="LATTICEA:func.6">PseudoComplements</a> <font color="Olive" title="b2">x</font>
+</div>
+<div about="#PF21" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T14"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/21')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/21')" href="javascript:()" title="21"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K2"><span class="kw">func</span> </a> <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <font color="Maroon" title="c1">L</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">L</font><span class="kw"> equals </span><a NAME="D4"><span class="comment"><font color="firebrick">:: LATSTONE:def 4</font></span><br></a><span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><font color="Olive" title="b1">a</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a></span>)</span> where <font color="Olive" title="b1">a</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> : verum </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:22_1"></a>
+<span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><font color="Olive" title="b1">a</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a></span>)</span> where <font color="Olive" title="b1">a</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> : verum </span> } </span>  is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">L</font>
+ </span><div about="#PF22_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/22_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/22_1_1')" href="javascript:()" title="22_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT4" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <a onclick="hs(this)" href="javascript:()">LATSTONE:def 4 : <br></a><span class="hide"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds   <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <font color="Olive" title="b1">L</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><font color="Olive" title="b2">a</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a></span>)</span> where <font color="Olive" title="b2">a</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> : verum </span> } </span> ;<br></span>
+</div>
+<br><div about="#T15" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T15"><span class="comment"><font color="firebrick">:: LATSTONE:15</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds   <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <font color="Olive" title="b1">L</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">a</font> where <font color="Olive" title="b2">a</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> : <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a></span>)</span> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">a</font> </span> } </span> </div>
+<div about="#PF23" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/23')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/23')" href="javascript:()" title="23"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: LTRS: Lemma 44(a), p. 424<br>  
+  
+</font></div>
+<div about="#T16" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E16">Th13</font></span>: <a NAME="T16"><span class="comment"><font color="firebrick">:: LATSTONE:16</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds <br> ( <font color="Olive" title="b2">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <font color="Olive" title="b1">L</font> iff <span class="p1">(<span class="default"><font color="Olive" title="b2">x</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a></span>)</span> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">x</font> )</div>
+<div about="#PF24" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T16"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/24')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/24')" href="javascript:()" title="24"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+<div about="#FC2" typeof="oo:Theorem">
+<a NAME="FC2"><span class="kw">cluster </span></a> <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <font color="Maroon" title="c1">L</font><span class="kw"> -&gt; </span> non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:25_1"></a>
+ not  <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <font color="Maroon" title="c1">L</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ </span><div about="#PF25_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/25_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/25_1_1')" href="javascript:()" title="25_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T17" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T17"><span class="comment"><font color="firebrick">:: LATSTONE:17</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>   <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b2">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <font color="Olive" title="b1">L</font> &amp; <font color="Olive" title="b3">b</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <font color="Olive" title="b1">L</font> holds <br><font color="Olive" title="b2">a</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b3">b</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <font color="Olive" title="b1">L</font>
+</div>
+<div about="#PF26" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T17"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/26')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/26')" href="javascript:()" title="26"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br><div about="#D17" typeof="oo:Definition">
+<a NAME="V2"><span class="kw">attr</span> </a><font color="Maroon" title="c1">L</font> is  <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E17">SatStone</font></span>: <a NAME="D5"><span class="comment"><font color="firebrick">:: LATSTONE:def 5</font></span><br></a> for <font color="Olive" title="b1">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> holds  <span class="p1">(<span class="default"><font color="Olive" title="b1">x</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a></span>)</span> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b1">x</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a></span>)</span> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Maroon" title="c1">L</font>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT5" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E17">SatStone</font></span>   defines <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a> <a onclick="hs(this)" href="javascript:()">LATSTONE:def 5 : <br></a><span class="hide"> for <font color="Olive" title="b1">L</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a>  holds <br> ( <font color="Olive" title="b1">L</font> is  <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a>  iff  for <font color="Olive" title="b2">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <span class="p1">(<span class="default"><font color="Olive" title="b2">x</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a></span>)</span> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b2">x</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a></span>)</span> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">L</font> );<br></span>
+</div>
+<br><div about="#T18" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E18">Th4</font></span>: <a NAME="T18"><span class="comment"><font color="firebrick">:: LATSTONE:18</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds  <font color="Olive" title="b1">L</font> is  <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a> </div>
+<div about="#PF28" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T18"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/28')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/28')" href="javascript:()" title="28"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#CC3" typeof="oo:Theorem">
+<a NAME="CC3"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <span class="kw"> -&gt; </span> <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:29_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>  st <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  holds <br><font color="Olive">b<sub>1</sub></font> is  <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="latstone.html#T18" target="_self" onmouseover="rs('latstone/T18')" onmouseout="rh()">Th4</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC2" typeof="oo:Theorem">
+<a NAME="RC2"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>   <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a>   <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>   <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a>   <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>   <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>   <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>   <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:30_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> st <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  )
+ </span><div about="#PF30_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/30_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/30_1_1')" href="javascript:()" title="30_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: LTRS: Lemma 44(b), p. 424<br>  
+  
+</font></div>
+<div about="#T19" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E19">Th12</font></span>: <a NAME="T19"><span class="comment"><font color="firebrick">:: LATSTONE:19</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>   <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds <br> ( <font color="Olive" title="b1">L</font> is  <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a>  iff  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b3">b</font></span>)</span> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a></span>)</span> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">b</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a></span>)</span> )</div>
+<div about="#PF31" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T19"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/31')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/31')" href="javascript:()" title="31"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: <img src="http://mws.cs.ru.nl/~mptp/WP.ico" alt="WP: "> <a href="http://en.wikipedia.org/wiki/Stone_algebra" title="See Wikipedia entry for Stone algebra">Stone algebra</a><br>  
+  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V3"><span class="kw">attr</span> </a><font color="Maroon" title="c1">L</font> is  <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a> <span class="kw"> means </span><a NAME="D6"><span class="comment"><font color="firebrick">:: LATSTONE:def 6</font></span><br></a>( <font color="Maroon" title="c1">L</font> is  <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  &amp; <font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>  &amp; <font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>  &amp; <font color="Maroon" title="c1">L</font> is  <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a>  );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT6" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a> <a onclick="hs(this)" href="javascript:()">LATSTONE:def 6 : <br></a><span class="hide"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds <br> ( <font color="Olive" title="b1">L</font> is  <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  iff ( <font color="Olive" title="b1">L</font> is  <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  &amp; <font color="Olive" title="b1">L</font> is  <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>  &amp; <font color="Olive" title="b1">L</font> is  <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>  &amp; <font color="Olive" title="b1">L</font> is  <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a>  ) );<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#CC4" typeof="oo:Theorem">
+<a NAME="CC4"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <span class="kw"> -&gt; </span> <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>   <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>   <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:33_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>  st <font color="Olive">b<sub>1</sub></font> is  <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  holds <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a>  )
+ </span>;<br>
+
+<div about="#CC5" typeof="oo:Theorem">
+<a NAME="CC5"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>   <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>   <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>   <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a>  <span class="kw"> -&gt; </span> <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:33_2"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>  st <font color="Olive">b<sub>1</sub></font> is  <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a>  holds <br><font color="Olive">b<sub>1</sub></font> is  <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: LTRS:<br>  
+  
+</font></div>
+<div about="#T20" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T20"><span class="comment"><font color="firebrick">:: LATSTONE:20</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>   <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds <br> ( <font color="Olive" title="b1">L</font> is  <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a>  iff  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b2">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <font color="Olive" title="b1">L</font> &amp; <font color="Olive" title="b3">b</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <font color="Olive" title="b1">L</font> holds <br><font color="Olive" title="b2">a</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b3">b</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <font color="Olive" title="b1">L</font> )</div>
+<div about="#PF34" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T20"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/34')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/34')" href="javascript:()" title="34"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+<div class="comment mathjax"><font color="firebrick">:: LTRS: Proposition 45<br>  
+  
+</font></div>
+<div about="#T21" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E20">Lm1</font></span>: <a NAME="T21"><span class="comment"><font color="firebrick">:: LATSTONE:21</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds <br> (  <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">L</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <font color="Olive" title="b1">L</font> &amp;  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <font color="Olive" title="b1">L</font> )</div>
+<div about="#PF35" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T21"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/35')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/35')" href="javascript:()" title="35"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">a</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V4"><span class="kw">attr</span> </a><font color="Maroon" title="c2">a</font> is  <a href="latstone.html#V4" title="LATSTONE:attr.4">skeletal</a> <span class="kw"> means </span><a NAME="D7"><span class="comment"><font color="firebrick">:: LATSTONE:def 7</font></span><br></a><font color="Maroon" title="c2">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <font color="Maroon" title="c1">L</font>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT7" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="latstone.html#V4" title="LATSTONE:attr.4">skeletal</a> <a onclick="hs(this)" href="javascript:()">LATSTONE:def 7 : <br></a><span class="hide"> for <font color="Olive" title="b1">L</font> being   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds <br> ( <font color="Olive" title="b2">a</font> is  <a href="latstone.html#V4" title="LATSTONE:attr.4">skeletal</a>  iff <font color="Olive" title="b2">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <font color="Olive" title="b1">L</font> );<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+<div about="#FC3" typeof="oo:Theorem">
+<a NAME="FC3"><span class="kw">cluster </span></a> <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Maroon" title="c1">L</font><span class="kw"> -&gt; </span> <a href="latstone.html#V4" title="LATSTONE:attr.4">skeletal</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:37_1"></a>
+ <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Maroon" title="c1">L</font> is  <a href="latstone.html#V4" title="LATSTONE:attr.4">skeletal</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="latstone.html#T21" target="_self" onmouseover="rs('latstone/T21')" onmouseout="rh()">Lm1</a></span>;<br>
+
+<div about="#FC4" typeof="oo:Theorem">
+<a NAME="FC4"><span class="kw">cluster </span></a> <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Maroon" title="c1">L</font><span class="kw"> -&gt; </span> <a href="latstone.html#V4" title="LATSTONE:attr.4">skeletal</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:37_2"></a>
+ <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Maroon" title="c1">L</font> is  <a href="latstone.html#V4" title="LATSTONE:attr.4">skeletal</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="latstone.html#T21" target="_self" onmouseover="rs('latstone/T21')" onmouseout="rh()">Lm1</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: LTRS: Proposition 45<br>  
+  
+</font></div>
+<div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+<div about="#FC5" typeof="oo:Theorem">
+<a NAME="FC5"><span class="kw">cluster </span></a> <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <font color="Maroon" title="c1">L</font><span class="kw"> -&gt; </span> <a href="lattices.html#V20" title="LATTICES:attr.20">meet-closed</a>   <a href="lattices.html#V21" title="LATTICES:attr.21">join-closed</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:38_1"></a>
+(  <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V21" title="LATTICES:attr.21">join-closed</a>  &amp;  <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V20" title="LATTICES:attr.20">meet-closed</a>  )
+ </span><div about="#PF38_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/38_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/38_1_1')" href="javascript:()" title="38_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a><br><span class="kw">redefine </span><a NAME="K3"><span class="kw">func</span> </a> <a href="latstone.html#K3" title="LATSTONE:func.3">Skeleton</a> <font color="Maroon" title="c1">L</font><span class="kw"> -&gt; </span>  <a href="lattice4.html#NM2" title="LATTICE4:NM.2">ClosedSubset</a> of <font color="Maroon" title="c1">L</font>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:39_1"></a>
+ <a href="latstone.html#K2" title="LATSTONE:func.2">Skeleton</a> <font color="Maroon" title="c1">L</font> is   <a href="lattice4.html#NM2" title="LATTICE4:NM.2">ClosedSubset</a> of <font color="Maroon" title="c1">L</font>
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: Skeleton equipped with the lattice structure<br>  
+  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K4"><span class="kw">func</span> </a> <a href="latstone.html#K4" title="LATSTONE:func.4">SkelLatt</a> <font color="Maroon" title="c1">L</font><span class="kw"> -&gt; </span>   <a href="nat_lat.html#M2" title="NAT_LAT:mode.2">Sublattice</a> of <font color="Maroon" title="c1">L</font><span class="kw"> equals </span><a NAME="D8"><span class="comment"><font color="firebrick">:: LATSTONE:def 8</font></span><br></a> <a href="filter_2.html#K10" title="FILTER_2:func.10">latt</a> (<font color="Maroon" title="c1">L</font>,<span class="p1">(<span class="default"><a href="latstone.html#K3" title="LATSTONE:func.3">Skeleton</a> <font color="Maroon" title="c1">L</font></span>)</span>);<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:40_1"></a>
+ <a href="filter_2.html#K10" title="FILTER_2:func.10">latt</a> (<font color="Maroon" title="c1">L</font>,<span class="p1">(<span class="default"><a href="latstone.html#K3" title="LATSTONE:func.3">Skeleton</a> <font color="Maroon" title="c1">L</font></span>)</span>) is    <a href="nat_lat.html#M2" title="NAT_LAT:mode.2">Sublattice</a> of <font color="Maroon" title="c1">L</font>
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT8" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="latstone.html#K4" title="LATSTONE:func.4">SkelLatt</a> <a onclick="hs(this)" href="javascript:()">LATSTONE:def 8 : <br></a><span class="hide"> for <font color="Olive" title="b1">L</font> being   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds   <a href="latstone.html#K4" title="LATSTONE:func.4">SkelLatt</a> <font color="Olive" title="b1">L</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="filter_2.html#K10" title="FILTER_2:func.10">latt</a> (<font color="Olive" title="b1">L</font>,<span class="p1">(<span class="default"><a href="latstone.html#K3" title="LATSTONE:func.3">Skeleton</a> <font color="Olive" title="b1">L</font></span>)</span>);<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+<div about="#FC6" typeof="oo:Theorem">
+<a NAME="FC6"><span class="kw">cluster </span></a> <a href="latstone.html#K4" title="LATSTONE:func.4">SkelLatt</a> <font color="Maroon" title="c1">L</font><span class="kw"> -&gt; </span> <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:41_1"></a>
+ <a href="latstone.html#K4" title="LATSTONE:func.4">SkelLatt</a> <font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T22" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T22"><span class="comment"><font color="firebrick">:: LATSTONE:22</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds <br> (  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <span class="p1">(<span class="default"><a href="latstone.html#K4" title="LATSTONE:func.4">SkelLatt</a> <font color="Olive" title="b1">L</font></span>)</span> &amp;  <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">L</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <span class="p1">(<span class="default"><a href="latstone.html#K4" title="LATSTONE:func.4">SkelLatt</a> <font color="Olive" title="b1">L</font></span>)</span> )</div>
+<div about="#PF42" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T22"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/42')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/42')" href="javascript:()" title="42"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E31"></a><span class="lab"><font color="Green" title="E21">LattIsComplemented</font></span>: <span about="#E31" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">L</font> being   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds   <a href="filter_2.html#K10" title="FILTER_2:func.10">latt</a> (<font color="Olive" title="b1">L</font>,<span class="p1">(<span class="default"><a href="latstone.html#K3" title="LATSTONE:func.3">Skeleton</a> <font color="Olive" title="b1">L</font></span>)</span>) is  <a href="lattices.html#V16" title="LATTICES:attr.16">complemented</a> 
+ </span><br><div about="#PF43" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E31"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/43')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/43')" href="javascript:()" title="43"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: LTRS: Proposition 45<br>  
+  
+</font></div>
+<div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+<div about="#FC7" typeof="oo:Theorem">
+<a NAME="FC7"><span class="kw">cluster </span></a> <a href="latstone.html#K4" title="LATSTONE:func.4">SkelLatt</a> <font color="Maroon" title="c1">L</font><span class="kw"> -&gt; </span> <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:44_1"></a>
+ <a href="latstone.html#K4" title="LATSTONE:func.4">SkelLatt</a> <font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a> 
+ </span><div about="#PF44_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/44_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/44_1_1')" href="javascript:()" title="44_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K5"><span class="kw">func</span> </a> <a href="latstone.html#K5" title="LATSTONE:func.5">DenseElements</a> <font color="Maroon" title="c1">L</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">L</font><span class="kw"> equals </span><a NAME="D9"><span class="comment"><font color="firebrick">:: LATSTONE:def 9</font></span><br></a><span class="p1"> { <span class="default"> <font color="Olive" title="b1">a</font> where <font color="Olive" title="b1">a</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> : <font color="Olive" title="b1">a</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Maroon" title="c1">L</font> </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:45_1"></a>
+<span class="p1"> { <span class="default"> <font color="Olive" title="b1">a</font> where <font color="Olive" title="b1">a</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> : <font color="Olive" title="b1">a</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Maroon" title="c1">L</font> </span> } </span>  is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">L</font>
+ </span><div about="#PF45_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/45_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/45_1_1')" href="javascript:()" title="45_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT9" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="latstone.html#K5" title="LATSTONE:func.5">DenseElements</a> <a onclick="hs(this)" href="javascript:()">LATSTONE:def 9 : <br></a><span class="hide"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds   <a href="latstone.html#K5" title="LATSTONE:func.5">DenseElements</a> <font color="Olive" title="b1">L</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">a</font> where <font color="Olive" title="b2">a</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> : <font color="Olive" title="b2">a</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font> </span> } </span> ;<br></span>
+</div>
+<br><div about="#T23" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E22">TopIsDense</font></span>: <a NAME="T23"><span class="comment"><font color="firebrick">:: LATSTONE:23</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds   <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">L</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="latstone.html#K5" title="LATSTONE:func.5">DenseElements</a> <font color="Olive" title="b1">L</font>
+</div>
+<div about="#PF46" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T23"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/46')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/46')" href="javascript:()" title="46"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+<div about="#FC8" typeof="oo:Theorem">
+<a NAME="FC8"><span class="kw">cluster </span></a> <a href="latstone.html#K5" title="LATSTONE:func.5">DenseElements</a> <font color="Maroon" title="c1">L</font><span class="kw"> -&gt; </span> non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:47_1"></a>
+ not  <a href="latstone.html#K5" title="LATSTONE:func.5">DenseElements</a> <font color="Maroon" title="c1">L</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="latstone.html#T23" target="_self" onmouseover="rs('latstone/T23')" onmouseout="rh()">TopIsDense</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">a</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V5"><span class="kw">attr</span> </a><font color="Maroon" title="c2">a</font> is  <a href="latstone.html#V5" title="LATSTONE:attr.5">dense</a> <span class="kw"> means </span><a NAME="D10"><span class="comment"><font color="firebrick">:: LATSTONE:def 10</font></span><br></a><font color="Maroon" title="c2">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="latstone.html#K5" title="LATSTONE:func.5">DenseElements</a> <font color="Maroon" title="c1">L</font>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT10" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="latstone.html#V5" title="LATSTONE:attr.5">dense</a> <a onclick="hs(this)" href="javascript:()">LATSTONE:def 10 : <br></a><span class="hide"> for <font color="Olive" title="b1">L</font> being   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds <br> ( <font color="Olive" title="b2">a</font> is  <a href="latstone.html#V5" title="LATSTONE:attr.5">dense</a>  iff <font color="Olive" title="b2">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="latstone.html#K5" title="LATSTONE:func.5">DenseElements</a> <font color="Olive" title="b1">L</font> );<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+<div about="#FC9" typeof="oo:Theorem">
+<a NAME="FC9"><span class="kw">cluster </span></a> <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Maroon" title="c1">L</font><span class="kw"> -&gt; </span> <a href="latstone.html#V5" title="LATSTONE:attr.5">dense</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:49_1"></a>
+ <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Maroon" title="c1">L</font> is  <a href="latstone.html#V5" title="LATSTONE:attr.5">dense</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="latstone.html#T23" target="_self" onmouseover="rs('latstone/T23')" onmouseout="rh()">TopIsDense</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T24" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E23">DenseIsBot</font></span>: <a NAME="T24"><span class="comment"><font color="firebrick">:: LATSTONE:24</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b2">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="latstone.html#K5" title="LATSTONE:func.5">DenseElements</a> <font color="Olive" title="b1">L</font> holds <br><font color="Olive" title="b2">x</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font>
+</div>
+<div about="#PF50" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T24"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/50')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/50')" href="javascript:()" title="50"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+<div about="#FC10" typeof="oo:Theorem">
+<a NAME="FC10"><span class="kw">cluster </span></a> <a href="latstone.html#K5" title="LATSTONE:func.5">DenseElements</a> <font color="Maroon" title="c1">L</font><span class="kw"> -&gt; </span> <a href="lattices.html#V20" title="LATTICES:attr.20">meet-closed</a>   <a href="lattices.html#V21" title="LATTICES:attr.21">join-closed</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:51_1"></a>
+(  <a href="latstone.html#K5" title="LATSTONE:func.5">DenseElements</a> <font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V21" title="LATTICES:attr.21">join-closed</a>  &amp;  <a href="latstone.html#K5" title="LATSTONE:func.5">DenseElements</a> <font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V20" title="LATTICES:attr.20">meet-closed</a>  )
+ </span><div about="#PF51_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/51_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/51_1_1')" href="javascript:()" title="51_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="latstone.html#K5" title="LATSTONE:func.5">DenseElements</a><br><span class="kw">redefine </span><a NAME="K6"><span class="kw">func</span> </a> <a href="latstone.html#K6" title="LATSTONE:func.6">DenseElements</a> <font color="Maroon" title="c1">L</font><span class="kw"> -&gt; </span>  <a href="lattice4.html#NM2" title="LATTICE4:NM.2">ClosedSubset</a> of <font color="Maroon" title="c1">L</font>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:52_1"></a>
+ <a href="latstone.html#K5" title="LATSTONE:func.5">DenseElements</a> <font color="Maroon" title="c1">L</font> is   <a href="lattice4.html#NM2" title="LATTICE4:NM.2">ClosedSubset</a> of <font color="Maroon" title="c1">L</font>
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: Set of dense elements equipped with the lattice structure<br>  
+  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K7"><span class="kw">func</span> </a> <a href="latstone.html#K7" title="LATSTONE:func.7">DenseLatt</a> <font color="Maroon" title="c1">L</font><span class="kw"> -&gt; </span>   <a href="nat_lat.html#M2" title="NAT_LAT:mode.2">Sublattice</a> of <font color="Maroon" title="c1">L</font><span class="kw"> equals </span><a NAME="D11"><span class="comment"><font color="firebrick">:: LATSTONE:def 11</font></span><br></a> <a href="filter_2.html#K10" title="FILTER_2:func.10">latt</a> (<font color="Maroon" title="c1">L</font>,<span class="p1">(<span class="default"><a href="latstone.html#K6" title="LATSTONE:func.6">DenseElements</a> <font color="Maroon" title="c1">L</font></span>)</span>);<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:53_1"></a>
+ <a href="filter_2.html#K10" title="FILTER_2:func.10">latt</a> (<font color="Maroon" title="c1">L</font>,<span class="p1">(<span class="default"><a href="latstone.html#K6" title="LATSTONE:func.6">DenseElements</a> <font color="Maroon" title="c1">L</font></span>)</span>) is    <a href="nat_lat.html#M2" title="NAT_LAT:mode.2">Sublattice</a> of <font color="Maroon" title="c1">L</font>
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT11" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="latstone.html#K7" title="LATSTONE:func.7">DenseLatt</a> <a onclick="hs(this)" href="javascript:()">LATSTONE:def 11 : <br></a><span class="hide"> for <font color="Olive" title="b1">L</font> being   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds   <a href="latstone.html#K7" title="LATSTONE:func.7">DenseLatt</a> <font color="Olive" title="b1">L</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="filter_2.html#K10" title="FILTER_2:func.10">latt</a> (<font color="Olive" title="b1">L</font>,<span class="p1">(<span class="default"><a href="latstone.html#K6" title="LATSTONE:func.6">DenseElements</a> <font color="Olive" title="b1">L</font></span>)</span>);<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+<div about="#FC11" typeof="oo:Theorem">
+<a NAME="FC11"><span class="kw">cluster </span></a> <a href="latstone.html#K7" title="LATSTONE:func.7">DenseLatt</a> <font color="Maroon" title="c1">L</font><span class="kw"> -&gt; </span> <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:54_1"></a>
+ <a href="latstone.html#K7" title="LATSTONE:func.7">DenseLatt</a> <font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: Meet-decomposition of elements of a lattice in terms<br>  
+:: of skeletal and dense elements<br>  
+  
+</font></div>
+<div about="#T25" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T25"><span class="comment"><font color="firebrick">:: LATSTONE:25</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  ex <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> st <br>( <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">b</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b4">c</font> &amp; <font color="Olive" title="b3">b</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="latstone.html#K3" title="LATSTONE:func.3">Skeleton</a> <font color="Olive" title="b1">L</font> &amp; <font color="Olive" title="b4">c</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="latstone.html#K6" title="LATSTONE:func.6">DenseElements</a> <font color="Olive" title="b1">L</font> )</div>
+<div about="#PF55" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T25"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/55')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/55')" href="javascript:()" title="55"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T26" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T26"><span class="comment"><font color="firebrick">:: LATSTONE:26</font></span><br></a><div class="add"> for <font color="Olive" title="b1">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a> holds   <a href="moebius1.html#K3" title="MOEBIUS1:func.3">NatDivisors</a> <font color="Olive" title="b1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="tarski.html#K2" title="TARSKI:func.2">{</a><span class="default">1,<font color="Olive" title="b1">p</font></span><a href="tarski.html#K2" title="TARSKI:func.2">}</a></span>
+</div>
+<div about="#PF56" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T26"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/56')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/56')" href="javascript:()" title="56"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T27" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E24">DivisorsSquare</font></span>: <a NAME="T27"><span class="comment"><font color="firebrick">:: LATSTONE:27</font></span><br></a><div class="add"> for <font color="Olive" title="b1">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a> holds   <a href="moebius1.html#K3" title="MOEBIUS1:func.3">NatDivisors</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">p</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b1">p</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="enumset1.html#K1" title="ENUMSET1:func.1">{</a><span class="default">1,<font color="Olive" title="b1">p</font>,<span class="p2">(<span class="default"><font color="Olive" title="b1">p</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b1">p</font></span>)</span></span><a href="enumset1.html#K1" title="ENUMSET1:func.1">}</a></span>
+</div>
+<div about="#PF57" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T27"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/57')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/57')" href="javascript:()" title="57"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br>
+<div about="#FC12" typeof="oo:Theorem">
+<a NAME="FC12"><span class="kw">cluster </span></a> <a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <font color="Maroon" title="c1">n</font><span class="kw"> -&gt; </span> <a href="struct_0.html#V8" title="STRUCT_0:attr.8">finite</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:58_1"></a>
+ <a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <font color="Maroon" title="c1">n</font> is  <a href="struct_0.html#V8" title="STRUCT_0:attr.8">finite</a> 
+ </span><div about="#PF58_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/58_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/58_1_1')" href="javascript:()" title="58_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC3" typeof="oo:Theorem">
+<a NAME="RC3"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>   <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a>   <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>   <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a>   <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>   <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>   <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>   <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>   <a href="lattices.html#V12" title="LATTICES:attr.12">modular</a>   <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>   <a href="lattices.html#V14" title="LATTICES:attr.14">upper-bounded</a>   <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>   <a href="lattices.html#V16" title="LATTICES:attr.16">complemented</a>   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>   <a href="lattice3.html#V4" title="LATTICE3:attr.4">complete</a>   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>   <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a>   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:59_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> st <font color="Olive">b<sub>1</sub></font> is  <a href="lattice3.html#V4" title="LATTICE3:attr.4">complete</a> 
+ </span><div about="#PF59_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/59_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/59_1_1')" href="javascript:()" title="59_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">p</font> be   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>;<br>
+<div about="#FC13" typeof="oo:Theorem">
+<a NAME="FC13"><span class="kw">cluster </span></a> <a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <font color="Maroon" title="c1">p</font><span class="kw"> -&gt; </span> <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:60_1"></a>
+ <a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <font color="Maroon" title="c1">p</font> is  <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a> 
+ </span><div about="#PF60_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/60_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/60_1_1')" href="javascript:()" title="60_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: Hence it is pseudocomplemented, and Stone<br>  
+  
+</font></div>
+<div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">p</font> be   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>;<br>
+<div about="#FC14" typeof="oo:Theorem">
+<a NAME="FC14"><span class="kw">cluster </span></a> <a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">p</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Maroon" title="c1">p</font></span>)</span><span class="kw"> -&gt; </span> <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:61_1"></a>
+ <a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">p</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Maroon" title="c1">p</font></span>)</span> is  <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a> 
+ </span><div about="#PF61_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/61_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/61_1_1')" href="javascript:()" title="61_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T28" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E25">PsCompl</font></span>: <a NAME="T28"><span class="comment"><font color="firebrick">:: LATSTONE:28</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a><br>  for <font color="Olive" title="b3">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b1">L</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">p</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b2">p</font></span>)</span> &amp; <font color="Olive" title="b3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">p</font> holds <br><font color="Olive" title="b3">x</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font>
+</div>
+<div about="#PF62" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T28"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/62')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/62')" href="javascript:()" title="62"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: The example of a lattice which is Stone but not Boolean<br>  
+  
+</font></div>
+<div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">p</font> be   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>;<br>
+<div about="#FC15" typeof="oo:Theorem">
+<a NAME="FC15"><span class="kw">cluster </span></a> <a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">p</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Maroon" title="c1">p</font></span>)</span><span class="kw"> -&gt; </span> <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:63_1"></a>
+ <a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">p</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Maroon" title="c1">p</font></span>)</span> is  <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a> 
+ </span><div about="#PF63_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/63_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/63_1_1')" href="javascript:()" title="63_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">p</font> be   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>;<br>
+<div about="#FC16" typeof="oo:Theorem">
+<a NAME="FC16"><span class="kw">cluster </span></a> <a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">p</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Maroon" title="c1">p</font></span>)</span><span class="kw"> -&gt; </span> non  <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:64_1"></a>
+(  not  <a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">p</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Maroon" title="c1">p</font></span>)</span> is  <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  &amp;  <a href="moebius2.html#K10" title="MOEBIUS2:func.10">Divisors_Lattice</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">p</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Maroon" title="c1">p</font></span>)</span> is  <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  )
+ </span><div about="#PF64_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/64_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/64_1_1')" href="javascript:()" title="64_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC4" typeof="oo:Theorem">
+<a NAME="RC4"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>   <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a>   <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>   <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a>   <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>   <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>   <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>   non  <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:65_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> st <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  &amp;  not <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  )
+ </span><div about="#PF65_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/65_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/65_1_1')" href="javascript:()" title="65_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div about="#T29" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E26">ProductPsCompl</font></span>: <a NAME="T29"><span class="comment"><font color="firebrick">:: LATSTONE:29</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L1</font>, <font color="Olive" title="b2">L2</font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b3">p1</font>, <font color="Olive" title="b4">q1</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L1</font><br>  for <font color="Olive" title="b5">p2</font>, <font color="Olive" title="b6">q2</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b2">L2</font>  st <font color="Olive" title="b1">L1</font> is   <a href="lattices.html#NM6" title="LATTICES:NM.6">01_Lattice</a> &amp; <font color="Olive" title="b2">L2</font> is   <a href="lattices.html#NM6" title="LATTICES:NM.6">01_Lattice</a> holds <br>( ( <font color="Olive" title="b3">p1</font> <a href="latstone.html#R1" title="LATSTONE:pred.1">is_a_pseudocomplement_of</a> <font color="Olive" title="b4">q1</font> &amp; <font color="Olive" title="b5">p2</font> <a href="latstone.html#R1" title="LATSTONE:pred.1">is_a_pseudocomplement_of</a> <font color="Olive" title="b6">q2</font> ) iff <span class="p1"><a href="filter_1.html#K9" title="FILTER_1:func.9">[</a><span class="default"><font color="Olive" title="b3">p1</font>,<font color="Olive" title="b5">p2</font></span><a href="filter_1.html#K9" title="FILTER_1:func.9">]</a></span> <a href="latstone.html#R1" title="LATSTONE:pred.1">is_a_pseudocomplement_of</a> <span class="p1"><a href="filter_1.html#K9" title="FILTER_1:func.9">[</a><span class="default"><font color="Olive" title="b4">q1</font>,<font color="Olive" title="b6">q2</font></span><a href="filter_1.html#K9" title="FILTER_1:func.9">]</a></span> )</div>
+<div about="#PF66" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T29"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/66')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/66')" href="javascript:()" title="66"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T30" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E27">PsComplProduct</font></span>: <a NAME="T30"><span class="comment"><font color="firebrick">:: LATSTONE:30</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L1</font>, <font color="Olive" title="b2">L2</font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>  st <font color="Olive" title="b1">L1</font> is   <a href="lattices.html#NM6" title="LATTICES:NM.6">01_Lattice</a> &amp; <font color="Olive" title="b2">L2</font> is   <a href="lattices.html#NM6" title="LATTICES:NM.6">01_Lattice</a> holds <br>( ( <font color="Olive" title="b1">L1</font> is  <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  &amp; <font color="Olive" title="b2">L2</font> is  <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  ) iff <span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Olive" title="b1">L1</font>,<font color="Olive" title="b2">L2</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span> is  <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  )</div>
+<div about="#PF67" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T30"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/67')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/67')" href="javascript:()" title="67"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L1</font>, <font color="Maroon" title="c2">L2</font> be   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM6" title="LATTICES:NM.6">01_Lattice</a>;<br>
+<div about="#FC17" typeof="oo:Theorem">
+<a NAME="FC17"><span class="kw">cluster </span></a><span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">L1</font>,<font color="Maroon" title="c2">L2</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span><span class="kw"> -&gt; </span> <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:68_1"></a>
+<span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">L1</font>,<font color="Maroon" title="c2">L2</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span> is  <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="latstone.html#T30" target="_self" onmouseover="rs('latstone/T30')" onmouseout="rh()">PsComplProduct</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T31" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E28">ProductPCompl</font></span>: <a NAME="T31"><span class="comment"><font color="firebrick">:: LATSTONE:31</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L1</font>, <font color="Olive" title="b2">L2</font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b3">p1</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L1</font><br>  for <font color="Olive" title="b4">p2</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b2">L2</font>  st <font color="Olive" title="b1">L1</font> is   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM6" title="LATTICES:NM.6">01_Lattice</a> &amp; <font color="Olive" title="b2">L2</font> is   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  <a href="lattices.html#NM6" title="LATTICES:NM.6">01_Lattice</a> holds <br><span class="p1"><a href="filter_1.html#K9" title="FILTER_1:func.9">[</a><span class="default"><font color="Olive" title="b3">p1</font>,<font color="Olive" title="b4">p2</font></span><a href="filter_1.html#K9" title="FILTER_1:func.9">]</a></span> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="filter_1.html#K9" title="FILTER_1:func.9">[</a><span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b3">p1</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a></span>)</span>,<span class="p2">(<span class="default"><font color="Olive" title="b4">p2</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a></span>)</span></span><a href="filter_1.html#K9" title="FILTER_1:func.9">]</a></span>
+</div>
+<div about="#PF69" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T31"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/69')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/69')" href="javascript:()" title="69"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div about="#T32" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E29">ProductIsSStone</font></span>: <a NAME="T32"><span class="comment"><font color="firebrick">:: LATSTONE:32</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L1</font>, <font color="Olive" title="b2">L2</font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>  st <font color="Olive" title="b1">L1</font> is   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>   <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a>  <a href="lattices.html#NM6" title="LATTICES:NM.6">01_Lattice</a> &amp; <font color="Olive" title="b2">L2</font> is   <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>   <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a>  <a href="lattices.html#NM6" title="LATTICES:NM.6">01_Lattice</a> holds <br><span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Olive" title="b1">L1</font>,<font color="Olive" title="b2">L2</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span> is  <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a> </div>
+<div about="#PF70" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T32"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/70')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/70')" href="javascript:()" title="70"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T33" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T33"><span class="comment"><font color="firebrick">:: LATSTONE:33</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L1</font>, <font color="Olive" title="b2">L2</font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>  st <font color="Olive" title="b1">L1</font> is  <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  &amp; <font color="Olive" title="b2">L2</font> is  <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  holds <br><span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Olive" title="b1">L1</font>,<font color="Olive" title="b2">L2</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span> is  <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <span class="kw">by</span> <span class="lab"><a class="ref" href="latstone.html#T32" target="_self" onmouseover="rs('latstone/T32')" onmouseout="rh()">ProductIsSStone</a>, <a class="ref" href="filter_1.html#T38" onmouseover="rs('filter_1/T38')" onmouseout="rh()">FILTER_1:38</a></span>;<br>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L1</font>, <font color="Maroon" title="c2">L2</font> be   <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+<div about="#FC18" typeof="oo:Theorem">
+<a NAME="FC18"><span class="kw">cluster </span></a><span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">L1</font>,<font color="Maroon" title="c2">L2</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span><span class="kw"> -&gt; </span> <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:71_1"></a>
+<span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">L1</font>,<font color="Maroon" title="c2">L2</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span> is  <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="latstone.html#T32" target="_self" onmouseover="rs('latstone/T32')" onmouseout="rh()">ProductIsSStone</a>, <a class="ref" href="filter_1.html#T38" onmouseover="rs('filter_1/T38')" onmouseout="rh()">FILTER_1:38</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+<div class="comment mathjax"><font color="firebrick">:: LTRS: Lemma 46 - definition<br>  
+  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">B</font> be   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K8"><span class="kw">func</span> </a><font color="Maroon" title="c1">B</font> <a href="latstone.html#K8" title="LATSTONE:func.8">squared</a> <span class="kw"> -&gt; </span>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">B</font>,<font color="Maroon" title="c1">B</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span><span class="kw"> equals </span><a NAME="D12"><span class="comment"><font color="firebrick">:: LATSTONE:def 12</font></span><br></a><span class="p1"> { <span class="default"> <span class="p2"><a href="filter_1.html#K9" title="FILTER_1:func.9">[</a><span class="default"><font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font></span><a href="filter_1.html#K9" title="FILTER_1:func.9">]</a></span> where <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">B</font> : <font color="Olive" title="b1">a</font> <a href="lattices.html#R3" title="LATTICES:pred.3">[=</a> <font color="Olive" title="b2">b</font> </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:72_1"></a>
+<span class="p1"> { <span class="default"> <span class="p2"><a href="filter_1.html#K9" title="FILTER_1:func.9">[</a><span class="default"><font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font></span><a href="filter_1.html#K9" title="FILTER_1:func.9">]</a></span> where <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">B</font> : <font color="Olive" title="b1">a</font> <a href="lattices.html#R3" title="LATTICES:pred.3">[=</a> <font color="Olive" title="b2">b</font> </span> } </span>  is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">B</font>,<font color="Maroon" title="c1">B</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span>
+ </span><div about="#PF72_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/72_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/72_1_1')" href="javascript:()" title="72_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT12" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="latstone.html#K8" title="LATSTONE:func.8">squared</a> <a onclick="hs(this)" href="javascript:()">LATSTONE:def 12 : <br></a><span class="hide"> for <font color="Olive" title="b1">B</font> being   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds  <font color="Olive" title="b1">B</font> <a href="latstone.html#K8" title="LATSTONE:func.8">squared</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <span class="p2"><a href="filter_1.html#K9" title="FILTER_1:func.9">[</a><span class="default"><font color="Olive" title="b2">a</font>,<font color="Olive" title="b3">b</font></span><a href="filter_1.html#K9" title="FILTER_1:func.9">]</a></span> where <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">B</font> : <font color="Olive" title="b2">a</font> <a href="lattices.html#R3" title="LATTICES:pred.3">[=</a> <font color="Olive" title="b3">b</font> </span> } </span> ;<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">B</font> be   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+<div about="#FC19" typeof="oo:Theorem">
+<a NAME="FC19"><span class="kw">cluster </span></a><font color="Maroon" title="c1">B</font> <a href="latstone.html#K8" title="LATSTONE:func.8">squared</a> <span class="kw"> -&gt; </span> non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:73_1"></a>
+ not <font color="Maroon" title="c1">B</font> <a href="latstone.html#K8" title="LATSTONE:func.8">squared</a>  is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ </span><div about="#PF73_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/73_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/73_1_1')" href="javascript:()" title="73_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">B</font> be   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+<div about="#FC20" typeof="oo:Theorem">
+<a NAME="FC20"><span class="kw">cluster </span></a><font color="Maroon" title="c1">B</font> <a href="latstone.html#K8" title="LATSTONE:func.8">squared</a> <span class="kw"> -&gt; </span> <a href="lattices.html#V20" title="LATTICES:attr.20">meet-closed</a>   <a href="lattices.html#V21" title="LATTICES:attr.21">join-closed</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:74_1"></a>
+( <font color="Maroon" title="c1">B</font> <a href="latstone.html#K8" title="LATSTONE:func.8">squared</a>  is  <a href="lattices.html#V21" title="LATTICES:attr.21">join-closed</a>  &amp; <font color="Maroon" title="c1">B</font> <a href="latstone.html#K8" title="LATSTONE:func.8">squared</a>  is  <a href="lattices.html#V20" title="LATTICES:attr.20">meet-closed</a>  )
+ </span><div about="#PF74_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/74_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/74_1_1')" href="javascript:()" title="74_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">B</font> be   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="latstone.html#K8" title="LATSTONE:func.8">squared</a><br><span class="kw">redefine </span><a NAME="K9"><span class="kw">func</span> </a><font color="Maroon" title="c1">B</font> <a href="latstone.html#K9" title="LATSTONE:func.9">squared</a> <span class="kw"> -&gt; </span>  non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="lattice4.html#NM2" title="LATTICE4:NM.2">ClosedSubset</a> of <span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">B</font>,<font color="Maroon" title="c1">B</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:75_1"></a>
+<font color="Maroon" title="c1">B</font> <a href="latstone.html#K8" title="LATSTONE:func.8">squared</a>  is   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="lattice4.html#NM2" title="LATTICE4:NM.2">ClosedSubset</a> of <span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">B</font>,<font color="Maroon" title="c1">B</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span>
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">B</font> be   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K10"><span class="kw">func</span> </a><font color="Maroon" title="c1">B</font> <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a> <span class="kw"> -&gt; </span>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><span class="kw"> equals </span><a NAME="D13"><span class="comment"><font color="firebrick">:: LATSTONE:def 13</font></span><br></a> <a href="filter_2.html#K10" title="FILTER_2:func.10">latt</a> (<span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">B</font>,<font color="Maroon" title="c1">B</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span>,<span class="p1">(<span class="default"><font color="Maroon" title="c1">B</font> <a href="latstone.html#K9" title="LATSTONE:func.9">squared</a></span>)</span>);<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:76_1"></a>
+ <a href="filter_2.html#K10" title="FILTER_2:func.10">latt</a> (<span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">B</font>,<font color="Maroon" title="c1">B</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span>,<span class="p1">(<span class="default"><font color="Maroon" title="c1">B</font> <a href="latstone.html#K9" title="LATSTONE:func.9">squared</a></span>)</span>) is   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT13" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a> <a onclick="hs(this)" href="javascript:()">LATSTONE:def 13 : <br></a><span class="hide"> for <font color="Olive" title="b1">B</font> being   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds  <font color="Olive" title="b1">B</font> <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="filter_2.html#K10" title="FILTER_2:func.10">latt</a> (<span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Olive" title="b1">B</font>,<font color="Olive" title="b1">B</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span>,<span class="p1">(<span class="default"><font color="Olive" title="b1">B</font> <a href="latstone.html#K9" title="LATSTONE:func.9">squared</a></span>)</span>);<br></span>
+</div>
+<br><div about="#T34" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E30">SquaredCarrier</font></span>: <a NAME="T34"><span class="comment"><font color="firebrick">:: LATSTONE:34</font></span><br></a><div class="add"> for <font color="Olive" title="b1">B</font> being   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds   the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><font color="Olive" title="b1">B</font> <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">B</font> <a href="latstone.html#K9" title="LATSTONE:func.9">squared</a> </div>
+<div about="#PF77" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T34"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/77')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/77')" href="javascript:()" title="77"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T35" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T35"><span class="comment"><font color="firebrick">:: LATSTONE:35</font></span><br></a><div class="add"> for <font color="Olive" title="b1">B</font> being   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds  <span class="p1"><a href="filter_1.html#K9" title="FILTER_1:func.9">[</a><span class="default"><span class="p2">(<span class="default"><a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">B</font></span>)</span>,<span class="p2">(<span class="default"><a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">B</font></span>)</span></span><a href="filter_1.html#K9" title="FILTER_1:func.9">]</a></span> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><font color="Olive" title="b1">B</font> <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a></span>)</span>
+</div>
+<div about="#PF78" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T35"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/78')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/78')" href="javascript:()" title="78"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T36" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T36"><span class="comment"><font color="firebrick">:: LATSTONE:36</font></span><br></a><div class="add"> for <font color="Olive" title="b1">B</font> being   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds  <span class="p1"><a href="filter_1.html#K9" title="FILTER_1:func.9">[</a><span class="default"><span class="p2">(<span class="default"><a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">B</font></span>)</span>,<span class="p2">(<span class="default"><a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">B</font></span>)</span></span><a href="filter_1.html#K9" title="FILTER_1:func.9">]</a></span> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><font color="Olive" title="b1">B</font> <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a></span>)</span>
+</div>
+<div about="#PF79" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T36"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/79')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/79')" href="javascript:()" title="79"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">B</font> be   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+<div about="#FC21" typeof="oo:Theorem">
+<a NAME="FC21"><span class="kw">cluster </span></a><font color="Maroon" title="c1">B</font> <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a> <span class="kw"> -&gt; </span> <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:80_1"></a>
+<font color="Maroon" title="c1">B</font> <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a>  is  <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a> 
+ </span><div about="#PF80_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/80_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/80_1_1')" href="javascript:()" title="80_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+
+<div about="#FC22" typeof="oo:Theorem">
+<a NAME="FC22"><span class="kw">cluster </span></a><font color="Maroon" title="c1">B</font> <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a> <span class="kw"> -&gt; </span> <a href="lattices.html#V14" title="LATTICES:attr.14">upper-bounded</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:80_2"></a>
+<font color="Maroon" title="c1">B</font> <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a>  is  <a href="lattices.html#V14" title="LATTICES:attr.14">upper-bounded</a> 
+ </span><div about="#PF80_2_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/80_2_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/80_2_1')" href="javascript:()" title="80_2_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T37" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E31">SquaredBottom</font></span>: <a NAME="T37"><span class="comment"><font color="firebrick">:: LATSTONE:37</font></span><br></a><div class="add"> for <font color="Olive" title="b1">B</font> being   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds   <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">B</font> <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="filter_1.html#K9" title="FILTER_1:func.9">[</a><span class="default"><span class="p2">(<span class="default"><a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">B</font></span>)</span>,<span class="p2">(<span class="default"><a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">B</font></span>)</span></span><a href="filter_1.html#K9" title="FILTER_1:func.9">]</a></span>
+</div>
+<div about="#PF81" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T37"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/81')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/81')" href="javascript:()" title="81"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T38" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E32">SquaredTop</font></span>: <a NAME="T38"><span class="comment"><font color="firebrick">:: LATSTONE:38</font></span><br></a><div class="add"> for <font color="Olive" title="b1">B</font> being   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds   <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">B</font> <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="filter_1.html#K9" title="FILTER_1:func.9">[</a><span class="default"><span class="p2">(<span class="default"><a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">B</font></span>)</span>,<span class="p2">(<span class="default"><a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">B</font></span>)</span></span><a href="filter_1.html#K9" title="FILTER_1:func.9">]</a></span>
+</div>
+<div about="#PF82" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T38"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/82')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/82')" href="javascript:()" title="82"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">B</font> be   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+<div about="#FC23" typeof="oo:Theorem">
+<a NAME="FC23"><span class="kw">cluster </span></a><font color="Maroon" title="c1">B</font> <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a> <span class="kw"> -&gt; </span> <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:83_1"></a>
+<font color="Maroon" title="c1">B</font> <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a>  is  <a href="latstone.html#V1" title="LATSTONE:attr.1">pseudocomplemented</a> 
+ </span><div about="#PF83_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/83_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/83_1_1')" href="javascript:()" title="83_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T39" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E33">PseudoInSquared</font></span>: <a NAME="T39"><span class="comment"><font color="firebrick">:: LATSTONE:39</font></span><br></a><div class="add"> for <font color="Olive" title="b1">B</font> being   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">L</font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b3">x1</font>, <font color="Olive" title="b4">x2</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">B</font><br>  for <font color="Olive" title="b5">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b2">L</font>  st <font color="Olive" title="b2">L</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">B</font> <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a>  &amp; <font color="Olive" title="b5">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="filter_1.html#K9" title="FILTER_1:func.9">[</a><span class="default"><font color="Olive" title="b3">x1</font>,<font color="Olive" title="b4">x2</font></span><a href="filter_1.html#K9" title="FILTER_1:func.9">]</a></span> holds <br><font color="Olive" title="b5">x</font> <a href="latstone.html#K1" title="LATSTONE:func.1">*</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="filter_1.html#K9" title="FILTER_1:func.9">[</a><span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b4">x2</font> <a href="lattices.html#K7" title="LATTICES:func.7">`</a></span>)</span>,<span class="p2">(<span class="default"><font color="Olive" title="b4">x2</font> <a href="lattices.html#K7" title="LATTICES:func.7">`</a></span>)</span></span><a href="filter_1.html#K9" title="FILTER_1:func.9">]</a></span>
+</div>
+<div about="#PF84" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T39"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/84')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/84')" href="javascript:()" title="84"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">B</font> be   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+<div about="#FC24" typeof="oo:Theorem">
+<a NAME="FC24"><span class="kw">cluster </span></a><font color="Maroon" title="c1">B</font> <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a> <span class="kw"> -&gt; </span> <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:85_1"></a>
+<font color="Maroon" title="c1">B</font> <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a>  is  <a href="latstone.html#V2" title="LATSTONE:attr.2">satisfying_Stone_identity</a> 
+ </span><div about="#PF85_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/latstone/85_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/85_1_1')" href="javascript:()" title="85_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: LTRS: Lemma 46, p. 425<br>  
+  
+</font></div>
+<div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">B</font> be   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+<div about="#FC25" typeof="oo:Theorem">
+<a NAME="FC25"><span class="kw">cluster </span></a><font color="Maroon" title="c1">B</font> <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a> <span class="kw"> -&gt; </span> <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:86_1"></a>
+<font color="Maroon" title="c1">B</font> <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a>  is  <a href="latstone.html#V3" title="LATSTONE:attr.3">Stone</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: Skeleton and dense elements in the lattice B squared<br>  
+  
+</font></div>
+<div about="#T40" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T40"><span class="comment"><font color="firebrick">:: LATSTONE:40</font></span><br></a><div class="add"> for <font color="Olive" title="b1">B</font> being   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds   <a href="latstone.html#K3" title="LATSTONE:func.3">Skeleton</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">B</font> <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <span class="p2"><a href="filter_1.html#K9" title="FILTER_1:func.9">[</a><span class="default"><font color="Olive" title="b2">a</font>,<font color="Olive" title="b2">a</font></span><a href="filter_1.html#K9" title="FILTER_1:func.9">]</a></span> where <font color="Olive" title="b2">a</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">B</font> : verum </span> } </span> </div>
+<div about="#PF87" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T40"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/87')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/87')" href="javascript:()" title="87"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T41" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T41"><span class="comment"><font color="firebrick">:: LATSTONE:41</font></span><br></a><div class="add"> for <font color="Olive" title="b1">B</font> being   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds   <a href="latstone.html#K6" title="LATSTONE:func.6">DenseElements</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">B</font> <a href="latstone.html#K10" title="LATSTONE:func.10">squared-latt</a></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <span class="p2"><a href="filter_1.html#K9" title="FILTER_1:func.9">[</a><span class="default"><font color="Olive" title="b2">a</font>,<span class="p3">(<span class="default"><a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">B</font></span>)</span></span><a href="filter_1.html#K9" title="FILTER_1:func.9">]</a></span> where <font color="Olive" title="b2">a</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">B</font> : verum </span> } </span> </div>
+<div about="#PF88" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T41"></span><a class="txt" onmouseover="tooltip.show('url','proofs/latstone/88')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/latstone/88')" href="javascript:()" title="88"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+</body>
+</html>

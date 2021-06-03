@@ -1,0 +1,825 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LOPCLSET:  Representation Theorem for Boolean Algebras</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  Representation Theorem for Boolean Algebras</font></span><br><span class="comment"><font color="firebrick">:: by Jaros{\l}aw Stanis{\l}aw Walijewski</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received July 14, 1993</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 1993-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">T</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> ;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K1"><span class="kw">func</span> </a> <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font><span class="kw"> equals </span><a NAME="D1"><span class="comment"><font color="firebrick">:: LOPCLSET:def 1</font></span><br></a><span class="p1"> { <span class="default"> <font color="Olive" title="b1">x</font> where <font color="Olive" title="b1">x</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> : ( <font color="Olive" title="b1">x</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  &amp; <font color="Olive" title="b1">x</font> is  <a href="pre_topc.html#V4" title="PRE_TOPC:attr.4">closed</a>  ) </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:1_1"></a>
+<span class="p1"> { <span class="default"> <font color="Olive" title="b1">x</font> where <font color="Olive" title="b1">x</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font> : ( <font color="Olive" title="b1">x</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  &amp; <font color="Olive" title="b1">x</font> is  <a href="pre_topc.html#V4" title="PRE_TOPC:attr.4">closed</a>  ) </span> } </span>  is   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font>
+ </span><div about="#PF1_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/1_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/1_1_1')" href="javascript:()" title="1_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <a onclick="hs(this)" href="javascript:()">LOPCLSET:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a>  holds   <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Olive" title="b1">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">x</font> where <font color="Olive" title="b2">x</font> is   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font> : ( <font color="Olive" title="b2">x</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  &amp; <font color="Olive" title="b2">x</font> is  <a href="pre_topc.html#V4" title="PRE_TOPC:attr.4">closed</a>  ) </span> } </span> ;<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">T</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>;<br>
+<div about="#FC1" typeof="oo:Theorem">
+<a NAME="FC1"><span class="kw">cluster </span></a> <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span> non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:2_1"></a>
+ not  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ </span><div about="#PF2_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/2_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/2_1_1')" href="javascript:()" title="2_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E1">Th1</font></span>: <a NAME="T1"><span class="comment"><font color="firebrick">:: LOPCLSET:1</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b2">X</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font>  st <font color="Olive" title="b2">X</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Olive" title="b1">T</font> holds <br><font color="Olive" title="b2">X</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a> </div>
+<div about="#PF3" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/3')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/3')" href="javascript:()" title="3"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E2">Th2</font></span>: <a NAME="T2"><span class="comment"><font color="firebrick">:: LOPCLSET:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b2">X</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font>  st <font color="Olive" title="b2">X</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Olive" title="b1">T</font> holds <br><font color="Olive" title="b2">X</font> is  <a href="pre_topc.html#V4" title="PRE_TOPC:attr.4">closed</a> </div>
+<div about="#PF4" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/4')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/4')" href="javascript:()" title="4"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E3">Th3</font></span>: <a NAME="T3"><span class="comment"><font color="firebrick">:: LOPCLSET:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b2">X</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">T</font>  st <font color="Olive" title="b2">X</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  &amp; <font color="Olive" title="b2">X</font> is  <a href="pre_topc.html#V4" title="PRE_TOPC:attr.4">closed</a>  holds <br><font color="Olive" title="b2">X</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Olive" title="b1">T</font> ;<br>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">T</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">C</font>, <font color="Maroon" title="c3">D</font> be    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="xboole_0.html#K2" title="XBOOLE_0:func.2">\/</a><br><span class="kw">redefine </span><a NAME="K2"><span class="kw">func</span> </a><font color="Maroon" title="c2">C</font> <a href="lopclset.html#K2" title="LOPCLSET:func.2">\/</a> <font color="Maroon" title="c3">D</font><span class="kw"> -&gt; </span>   <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:5_1"></a>
+<font color="Maroon" title="c2">C</font> <a href="xboole_0.html#K2" title="XBOOLE_0:func.2">\/</a> <font color="Maroon" title="c3">D</font> is    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font>
+ </span><div about="#PF5_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/5_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/5_1_1')" href="javascript:()" title="5_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<span class="comment"><font color="firebrick">:: original: </font></span><a href="xboole_0.html#K3" title="XBOOLE_0:func.3">/\</a><br><span class="kw">redefine </span><a NAME="K3"><span class="kw">func</span> </a><font color="Maroon" title="c2">C</font> <a href="lopclset.html#K3" title="LOPCLSET:func.3">/\</a> <font color="Maroon" title="c3">D</font><span class="kw"> -&gt; </span>   <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:5_2"></a>
+<font color="Maroon" title="c2">C</font> <a href="xboole_0.html#K3" title="XBOOLE_0:func.3">/\</a> <font color="Maroon" title="c3">D</font> is    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font>
+ </span><div about="#PF5_2_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/5_2_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/5_2_1')" href="javascript:()" title="5_2_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">T</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>;<br><span class="kw">deffunc </span><font color="Maroon">H<sub>1</sub></font>(   <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font>,   <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font>) <span class="kw">-&gt; </span>   <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font> = $1 <a href="lopclset.html#K2" title="LOPCLSET:func.2">\/</a> $2;<br><div about="#D4" typeof="oo:Definition">
+<a NAME="K4"><span class="kw">func</span> </a> <a href="lopclset.html#K4" title="LOPCLSET:func.4">T_join</a> <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span>  <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font></span>)</span><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E4">Def2</font></span>: <a NAME="D2"><span class="comment"><font color="firebrick">:: LOPCLSET:def 2</font></span><br></a> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font> holds  <span class="kw">it</span> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b1">A</font>,<font color="Olive" title="b2">B</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">A</font> <a href="lopclset.html#K2" title="LOPCLSET:func.2">\/</a> <font color="Olive" title="b2">B</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:6_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font></span>)</span> st <br> for <font color="Olive" title="b2">A</font>, <font color="Olive" title="b3">B</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font> holds  <font color="Olive">b<sub>1</sub></font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b2">A</font>,<font color="Olive" title="b3">B</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">A</font> <a href="lopclset.html#K2" title="LOPCLSET:func.2">\/</a> <font color="Olive" title="b3">B</font>
+ </span><div about="#PF6_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/6_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/6_1_1')" href="javascript:()" title="6_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:6_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font></span>)</span>  st (  for <font color="Olive" title="b3">A</font>, <font color="Olive" title="b4">B</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font> holds  <font color="Olive">b<sub>1</sub></font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b3">A</font>,<font color="Olive" title="b4">B</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">A</font> <a href="lopclset.html#K2" title="LOPCLSET:func.2">\/</a> <font color="Olive" title="b4">B</font> ) &amp; (  for <font color="Olive" title="b3">A</font>, <font color="Olive" title="b4">B</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font> holds  <font color="Olive">b<sub>2</sub></font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b3">A</font>,<font color="Olive" title="b4">B</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">A</font> <a href="lopclset.html#K2" title="LOPCLSET:func.2">\/</a> <font color="Olive" title="b4">B</font> ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF6_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/6_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/6_1_2')" href="javascript:()" title="6_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<span class="kw">deffunc </span><font color="Maroon">H<sub>2</sub></font>(   <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font>,   <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font>) <span class="kw">-&gt; </span>   <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font> = $1 <a href="lopclset.html#K3" title="LOPCLSET:func.3">/\</a> $2;<br><div about="#D5" typeof="oo:Definition">
+<a NAME="K5"><span class="kw">func</span> </a> <a href="lopclset.html#K5" title="LOPCLSET:func.5">T_meet</a> <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span>  <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font></span>)</span><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E5">Def3</font></span>: <a NAME="D3"><span class="comment"><font color="firebrick">:: LOPCLSET:def 3</font></span><br></a> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font> holds  <span class="kw">it</span> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b1">A</font>,<font color="Olive" title="b2">B</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">A</font> <a href="lopclset.html#K3" title="LOPCLSET:func.3">/\</a> <font color="Olive" title="b2">B</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:6_2"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font></span>)</span> st <br> for <font color="Olive" title="b2">A</font>, <font color="Olive" title="b3">B</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font> holds  <font color="Olive">b<sub>1</sub></font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b2">A</font>,<font color="Olive" title="b3">B</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">A</font> <a href="lopclset.html#K3" title="LOPCLSET:func.3">/\</a> <font color="Olive" title="b3">B</font>
+ </span><div about="#PF6_2_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/6_2_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/6_2_1')" href="javascript:()" title="6_2_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:6_2"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font></span>)</span>  st (  for <font color="Olive" title="b3">A</font>, <font color="Olive" title="b4">B</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font> holds  <font color="Olive">b<sub>1</sub></font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b3">A</font>,<font color="Olive" title="b4">B</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">A</font> <a href="lopclset.html#K3" title="LOPCLSET:func.3">/\</a> <font color="Olive" title="b4">B</font> ) &amp; (  for <font color="Olive" title="b3">A</font>, <font color="Olive" title="b4">B</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font> holds  <font color="Olive">b<sub>2</sub></font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b3">A</font>,<font color="Olive" title="b4">B</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">A</font> <a href="lopclset.html#K3" title="LOPCLSET:func.3">/\</a> <font color="Olive" title="b4">B</font> ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF6_2_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/6_2_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/6_2_2')" href="javascript:()" title="6_2_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+
+
+<div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E4">Def2</font></span>   defines <a href="lopclset.html#K4" title="LOPCLSET:func.4">T_join</a> <a onclick="hs(this)" href="javascript:()">LOPCLSET:def 2 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive">b<sub>2</sub></font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Olive" title="b1">T</font></span>)</span> holds <br> ( <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lopclset.html#K4" title="LOPCLSET:func.4">T_join</a> <font color="Olive" title="b1">T</font> iff  for <font color="Olive" title="b3">A</font>, <font color="Olive" title="b4">B</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Olive" title="b1">T</font> holds  <font color="Olive">b<sub>2</sub></font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b3">A</font>,<font color="Olive" title="b4">B</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">A</font> <a href="lopclset.html#K2" title="LOPCLSET:func.2">\/</a> <font color="Olive" title="b4">B</font> );<br></span>
+</div>
+<br><div about="#DT3" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E5">Def3</font></span>   defines <a href="lopclset.html#K5" title="LOPCLSET:func.5">T_meet</a> <a onclick="hs(this)" href="javascript:()">LOPCLSET:def 3 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive">b<sub>2</sub></font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Olive" title="b1">T</font></span>)</span> holds <br> ( <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lopclset.html#K5" title="LOPCLSET:func.5">T_meet</a> <font color="Olive" title="b1">T</font> iff  for <font color="Olive" title="b3">A</font>, <font color="Olive" title="b4">B</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Olive" title="b1">T</font> holds  <font color="Olive">b<sub>2</sub></font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b3">A</font>,<font color="Olive" title="b4">B</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">A</font> <a href="lopclset.html#K3" title="LOPCLSET:func.3">/\</a> <font color="Olive" title="b4">B</font> );<br></span>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T4"><span class="comment"><font color="firebrick">:: LOPCLSET:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b2">x</font>, <font color="Olive" title="b3">y</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <a href="lattices.html#G3" title="LATTICES:aggr.3">LattStr</a>(# <span class="p1">(<span class="default"><a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Olive" title="b1">T</font></span>)</span>,<span class="p1">(<span class="default"><a href="lopclset.html#K4" title="LOPCLSET:func.4">T_join</a> <font color="Olive" title="b1">T</font></span>)</span>,<span class="p1">(<span class="default"><a href="lopclset.html#K5" title="LOPCLSET:func.5">T_meet</a> <font color="Olive" title="b1">T</font></span>)</span> #)<br>  for <font color="Olive" title="b4">x9</font>, <font color="Olive" title="b5">y9</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Olive" title="b1">T</font>  st <font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">x9</font> &amp; <font color="Olive" title="b3">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">y9</font> holds <br><font color="Olive" title="b2">x</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b3">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">x9</font> <a href="lopclset.html#K2" title="LOPCLSET:func.2">\/</a> <font color="Olive" title="b5">y9</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="lopclset.html#D2" target="_self" onmouseover="rs('lopclset/D2')" onmouseout="rh()">Def2</a></span>;<br>
+</div>
+</div>
+<br><div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T5"><span class="comment"><font color="firebrick">:: LOPCLSET:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b2">x</font>, <font color="Olive" title="b3">y</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <a href="lattices.html#G3" title="LATTICES:aggr.3">LattStr</a>(# <span class="p1">(<span class="default"><a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Olive" title="b1">T</font></span>)</span>,<span class="p1">(<span class="default"><a href="lopclset.html#K4" title="LOPCLSET:func.4">T_join</a> <font color="Olive" title="b1">T</font></span>)</span>,<span class="p1">(<span class="default"><a href="lopclset.html#K5" title="LOPCLSET:func.5">T_meet</a> <font color="Olive" title="b1">T</font></span>)</span> #)<br>  for <font color="Olive" title="b4">x9</font>, <font color="Olive" title="b5">y9</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Olive" title="b1">T</font>  st <font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">x9</font> &amp; <font color="Olive" title="b3">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b5">y9</font> holds <br><font color="Olive" title="b2">x</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b3">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">x9</font> <a href="lopclset.html#K3" title="LOPCLSET:func.3">/\</a> <font color="Olive" title="b5">y9</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="lopclset.html#D3" target="_self" onmouseover="rs('lopclset/D3')" onmouseout="rh()">Def3</a></span>;<br>
+</div>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T6"><span class="comment"><font color="firebrick">:: LOPCLSET:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   <a href="struct_0.html#K1" title="STRUCT_0:func.1">{}</a> <font color="Olive" title="b1">T</font> is    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Olive" title="b1">T</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="lopclset.html#T3" target="_self" onmouseover="rs('lopclset/T3')" onmouseout="rh()">Th3</a></span>;<br>
+</div>
+</div>
+<br><div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T7"><span class="comment"><font color="firebrick">:: LOPCLSET:7</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   <a href="struct_0.html#K2" title="STRUCT_0:func.2">[#]</a> <font color="Olive" title="b1">T</font> is    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Olive" title="b1">T</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="lopclset.html#T3" target="_self" onmouseover="rs('lopclset/T3')" onmouseout="rh()">Th3</a></span>;<br>
+</div>
+</div>
+<br><div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E6">Th8</font></span>: <a NAME="T8"><span class="comment"><font color="firebrick">:: LOPCLSET:8</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b2">x</font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Olive" title="b1">T</font> holds  <font color="Olive" title="b2">x</font> <a href="subset_1.html#K3" title="SUBSET_1:func.3">`</a>  is    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Olive" title="b1">T</font>
+</div>
+<div about="#PF7" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/7')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/7')" href="javascript:()" title="7"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E7">Th9</font></span>: <a NAME="T9"><span class="comment"><font color="firebrick">:: LOPCLSET:9</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   <a href="lattices.html#G3" title="LATTICES:aggr.3">LattStr</a>(# <span class="p1">(<span class="default"><a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Olive" title="b1">T</font></span>)</span>,<span class="p1">(<span class="default"><a href="lopclset.html#K4" title="LOPCLSET:func.4">T_join</a> <font color="Olive" title="b1">T</font></span>)</span>,<span class="p1">(<span class="default"><a href="lopclset.html#K5" title="LOPCLSET:func.5">T_meet</a> <font color="Olive" title="b1">T</font></span>)</span> #) is   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>
+</div>
+<div about="#PF8" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T9"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/8')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/8')" href="javascript:()" title="8"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">T</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K6"><span class="kw">func</span> </a> <a href="lopclset.html#K6" title="LOPCLSET:func.6">OpenClosedSetLatt</a> <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><span class="kw"> equals </span><a NAME="D4"><span class="comment"><font color="firebrick">:: LOPCLSET:def 4</font></span><br></a> <a href="lattices.html#G3" title="LATTICES:aggr.3">LattStr</a>(# <span class="p1">(<span class="default"><a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font></span>)</span>,<span class="p1">(<span class="default"><a href="lopclset.html#K4" title="LOPCLSET:func.4">T_join</a> <font color="Maroon" title="c1">T</font></span>)</span>,<span class="p1">(<span class="default"><a href="lopclset.html#K5" title="LOPCLSET:func.5">T_meet</a> <font color="Maroon" title="c1">T</font></span>)</span> #);<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:9_1"></a>
+ <a href="lattices.html#G3" title="LATTICES:aggr.3">LattStr</a>(# <span class="p1">(<span class="default"><a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Maroon" title="c1">T</font></span>)</span>,<span class="p1">(<span class="default"><a href="lopclset.html#K4" title="LOPCLSET:func.4">T_join</a> <font color="Maroon" title="c1">T</font></span>)</span>,<span class="p1">(<span class="default"><a href="lopclset.html#K5" title="LOPCLSET:func.5">T_meet</a> <font color="Maroon" title="c1">T</font></span>)</span> #) is   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="lopclset.html#T9" target="_self" onmouseover="rs('lopclset/T9')" onmouseout="rh()">Th9</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT4" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="lopclset.html#K6" title="LOPCLSET:func.6">OpenClosedSetLatt</a> <a onclick="hs(this)" href="javascript:()">LOPCLSET:def 4 : <br></a><span class="hide"> for <font color="Olive" title="b1">T</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   <a href="lopclset.html#K6" title="LOPCLSET:func.6">OpenClosedSetLatt</a> <font color="Olive" title="b1">T</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#G3" title="LATTICES:aggr.3">LattStr</a>(# <span class="p1">(<span class="default"><a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Olive" title="b1">T</font></span>)</span>,<span class="p1">(<span class="default"><a href="lopclset.html#K4" title="LOPCLSET:func.4">T_join</a> <font color="Olive" title="b1">T</font></span>)</span>,<span class="p1">(<span class="default"><a href="lopclset.html#K5" title="LOPCLSET:func.5">T_meet</a> <font color="Olive" title="b1">T</font></span>)</span> #);<br></span>
+</div>
+<br><div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T10"><span class="comment"><font color="firebrick">:: LOPCLSET:10</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b2">x</font>, <font color="Olive" title="b3">y</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K6" title="LOPCLSET:func.6">OpenClosedSetLatt</a> <font color="Olive" title="b1">T</font></span>)</span> holds  <font color="Olive" title="b2">x</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b3">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">x</font> <a href="xboole_0.html#K2" title="XBOOLE_0:func.2">\/</a> <font color="Olive" title="b3">y</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="lopclset.html#D2" target="_self" onmouseover="rs('lopclset/D2')" onmouseout="rh()">Def2</a></span>;<br>
+</div>
+</div>
+<br><div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T11"><span class="comment"><font color="firebrick">:: LOPCLSET:11</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br>  for <font color="Olive" title="b2">x</font>, <font color="Olive" title="b3">y</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K6" title="LOPCLSET:func.6">OpenClosedSetLatt</a> <font color="Olive" title="b1">T</font></span>)</span> holds  <font color="Olive" title="b2">x</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b3">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">x</font> <a href="xboole_0.html#K3" title="XBOOLE_0:func.3">/\</a> <font color="Olive" title="b3">y</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="lopclset.html#D3" target="_self" onmouseover="rs('lopclset/D3')" onmouseout="rh()">Def3</a></span>;<br>
+</div>
+</div>
+<br><div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T12"><span class="comment"><font color="firebrick">:: LOPCLSET:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K6" title="LOPCLSET:func.6">OpenClosedSetLatt</a> <font color="Olive" title="b1">T</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <font color="Olive" title="b1">T</font> ;<br>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">T</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>;<br>
+<div about="#FC2" typeof="oo:Theorem">
+<a NAME="FC2"><span class="kw">cluster </span></a> <a href="lopclset.html#K6" title="LOPCLSET:func.6">OpenClosedSetLatt</a> <font color="Maroon" title="c1">T</font><span class="kw"> -&gt; </span> <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:10_1"></a>
+ <a href="lopclset.html#K6" title="LOPCLSET:func.6">OpenClosedSetLatt</a> <font color="Maroon" title="c1">T</font> is  <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a> 
+ </span><div about="#PF10_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/10_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/10_1_1')" href="javascript:()" title="10_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T13"><span class="comment"><font color="firebrick">:: LOPCLSET:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   <a href="struct_0.html#K2" title="STRUCT_0:func.2">[#]</a> <font color="Olive" title="b1">T</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K6" title="LOPCLSET:func.6">OpenClosedSetLatt</a> <font color="Olive" title="b1">T</font></span>)</span> <span class="kw">by</span> <span class="lab"><a class="ref" href="lopclset.html#T3" target="_self" onmouseover="rs('lopclset/T3')" onmouseout="rh()">Th3</a></span>;<br>
+</div>
+</div>
+<br><div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T14"><span class="comment"><font color="firebrick">:: LOPCLSET:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">T</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds   <a href="struct_0.html#K1" title="STRUCT_0:func.1">{}</a> <font color="Olive" title="b1">T</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K6" title="LOPCLSET:func.6">OpenClosedSetLatt</a> <font color="Olive" title="b1">T</font></span>)</span> <span class="kw">by</span> <span class="lab"><a class="ref" href="lopclset.html#T3" target="_self" onmouseover="rs('lopclset/T3')" onmouseout="rh()">Th3</a></span>;<br>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC1" typeof="oo:Theorem">
+<a NAME="RC1"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>   <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>   <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a>   <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>   <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a>   <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>   <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>   <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>   <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>   <a href="lattices.html#V12" title="LATTICES:attr.12">modular</a>   <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>   <a href="lattices.html#V14" title="LATTICES:attr.14">upper-bounded</a>   <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>   <a href="lattices.html#V16" title="LATTICES:attr.16">complemented</a>   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:11_1"></a>
+ not  for <font color="Olive">b<sub>1</sub></font> being   <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a> holds  <font color="Olive">b<sub>1</sub></font> is  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a> 
+ </span><div about="#PF11_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/11_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/11_1_1')" href="javascript:()" title="11_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">BL</font> be   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K7"><span class="kw">func</span> </a> <a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Maroon" title="c1">BL</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">BL</font><span class="kw"> equals </span><a NAME="D5"><span class="comment"><font color="firebrick">:: LOPCLSET:def 5</font></span><br></a><span class="p1"> { <span class="default"> <font color="Olive" title="b1">F</font> where <font color="Olive" title="b1">F</font> is   <a href="filter_0.html#NM1" title="FILTER_0:NM.1">Filter</a> of <font color="Maroon" title="c1">BL</font> : <font color="Olive" title="b1">F</font> is  <a href="filter_0.html#V1" title="FILTER_0:attr.1">being_ultrafilter</a>  </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:12_1"></a>
+<span class="p1"> { <span class="default"> <font color="Olive" title="b1">F</font> where <font color="Olive" title="b1">F</font> is   <a href="filter_0.html#NM1" title="FILTER_0:NM.1">Filter</a> of <font color="Maroon" title="c1">BL</font> : <font color="Olive" title="b1">F</font> is  <a href="filter_0.html#V1" title="FILTER_0:attr.1">being_ultrafilter</a>  </span> } </span>  is   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">BL</font>
+ </span><div about="#PF12_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/12_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/12_1_1')" href="javascript:()" title="12_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT5" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <a onclick="hs(this)" href="javascript:()">LOPCLSET:def 5 : <br></a><span class="hide"> for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a> holds   <a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Olive" title="b1">BL</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">F</font> where <font color="Olive" title="b2">F</font> is   <a href="filter_0.html#NM1" title="FILTER_0:NM.1">Filter</a> of <font color="Olive" title="b1">BL</font> : <font color="Olive" title="b2">F</font> is  <a href="filter_0.html#V1" title="FILTER_0:attr.1">being_ultrafilter</a>  </span> } </span> ;<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">BL</font> be   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a>;<br>
+<div about="#FC3" typeof="oo:Theorem">
+<a NAME="FC3"><span class="kw">cluster </span></a> <a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Maroon" title="c1">BL</font><span class="kw"> -&gt; </span> non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:13_1"></a>
+ not  <a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Maroon" title="c1">BL</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ </span><div about="#PF13_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/13_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/13_1_1')" href="javascript:()" title="13_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T15" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T15"><span class="comment"><font color="firebrick">:: LOPCLSET:15</font></span><br></a><div class="add"> for <font color="Olive" title="b1">x</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a> holds <br> ( <font color="Olive" title="b1">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Olive" title="b2">BL</font> iff  ex <font color="Olive" title="b3">UF</font> being   <a href="filter_0.html#NM1" title="FILTER_0:NM.1">Filter</a> of <font color="Olive" title="b2">BL</font> st <br>( <font color="Olive" title="b3">UF</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">x</font> &amp; <font color="Olive" title="b3">UF</font> is  <a href="filter_0.html#V1" title="FILTER_0:attr.1">being_ultrafilter</a>  ) ) ;<br>
+</div>
+</div>
+<br><div about="#T16" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E8">Th16</font></span>: <a NAME="T16"><span class="comment"><font color="firebrick">:: LOPCLSET:16</font></span><br></a><div class="add"> for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">BL</font> holds  <span class="p1"> { <span class="default"> <font color="Olive" title="b3">F</font> where <font color="Olive" title="b3">F</font> is   <a href="filter_0.html#NM1" title="FILTER_0:NM.1">Filter</a> of <font color="Olive" title="b1">BL</font> : ( <font color="Olive" title="b3">F</font> is  <a href="filter_0.html#V1" title="FILTER_0:attr.1">being_ultrafilter</a>  &amp; <font color="Olive" title="b2">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b3">F</font> ) </span> } </span>  <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Olive" title="b1">BL</font>
+</div>
+<div about="#PF14" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T16"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/14')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/14')" href="javascript:()" title="14"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">BL</font> be   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a>;<br><div about="#D9" typeof="oo:Definition">
+<a NAME="K8"><span class="kw">func</span> </a> <a href="lopclset.html#K8" title="LOPCLSET:func.8">UFilter</a> <font color="Maroon" title="c1">BL</font><span class="kw"> -&gt; </span>  <a href="funct_1.html#NM1" title="FUNCT_1:NM.1">Function</a><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E9">Def6</font></span>: <a NAME="D6"><span class="comment"><font color="firebrick">:: LOPCLSET:def 6</font></span><br></a>(  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <span class="kw">it</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">BL</font> &amp; (  for <font color="Olive" title="b1">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">BL</font> holds  <span class="kw">it</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">UF</font> where <font color="Olive" title="b2">UF</font> is   <a href="filter_0.html#NM1" title="FILTER_0:NM.1">Filter</a> of <font color="Maroon" title="c1">BL</font> : ( <font color="Olive" title="b2">UF</font> is  <a href="filter_0.html#V1" title="FILTER_0:attr.1">being_ultrafilter</a>  &amp; <font color="Olive" title="b1">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">UF</font> ) </span> } </span>  ) );<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:15_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="funct_1.html#NM1" title="FUNCT_1:NM.1">Function</a> st <br>(  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">BL</font> &amp; (  for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">BL</font> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b3">UF</font> where <font color="Olive" title="b3">UF</font> is   <a href="filter_0.html#NM1" title="FILTER_0:NM.1">Filter</a> of <font color="Maroon" title="c1">BL</font> : ( <font color="Olive" title="b3">UF</font> is  <a href="filter_0.html#V1" title="FILTER_0:attr.1">being_ultrafilter</a>  &amp; <font color="Olive" title="b2">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b3">UF</font> ) </span> } </span>  ) )
+ </span><div about="#PF15_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/15_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/15_1_1')" href="javascript:()" title="15_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:15_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="funct_1.html#NM1" title="FUNCT_1:NM.1">Function</a>  st  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">BL</font> &amp; (  for <font color="Olive" title="b3">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">BL</font> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b4">UF</font> where <font color="Olive" title="b4">UF</font> is   <a href="filter_0.html#NM1" title="FILTER_0:NM.1">Filter</a> of <font color="Maroon" title="c1">BL</font> : ( <font color="Olive" title="b4">UF</font> is  <a href="filter_0.html#V1" title="FILTER_0:attr.1">being_ultrafilter</a>  &amp; <font color="Olive" title="b3">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b4">UF</font> ) </span> } </span>  ) &amp;  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">BL</font> &amp; (  for <font color="Olive" title="b3">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">BL</font> holds  <font color="Olive">b<sub>2</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b4">UF</font> where <font color="Olive" title="b4">UF</font> is   <a href="filter_0.html#NM1" title="FILTER_0:NM.1">Filter</a> of <font color="Maroon" title="c1">BL</font> : ( <font color="Olive" title="b4">UF</font> is  <a href="filter_0.html#V1" title="FILTER_0:attr.1">being_ultrafilter</a>  &amp; <font color="Olive" title="b3">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b4">UF</font> ) </span> } </span>  ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF15_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/15_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/15_1_2')" href="javascript:()" title="15_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT6" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E9">Def6</font></span>   defines <a href="lopclset.html#K8" title="LOPCLSET:func.8">UFilter</a> <a onclick="hs(this)" href="javascript:()">LOPCLSET:def 6 : <br></a><span class="hide"> for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a><br>  for <font color="Olive">b<sub>2</sub></font> being   <a href="funct_1.html#NM1" title="FUNCT_1:NM.1">Function</a> holds <br> ( <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lopclset.html#K8" title="LOPCLSET:func.8">UFilter</a> <font color="Olive" title="b1">BL</font> iff (  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b1">BL</font> &amp; (  for <font color="Olive" title="b3">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">BL</font> holds  <font color="Olive">b<sub>2</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b4">UF</font> where <font color="Olive" title="b4">UF</font> is   <a href="filter_0.html#NM1" title="FILTER_0:NM.1">Filter</a> of <font color="Olive" title="b1">BL</font> : ( <font color="Olive" title="b4">UF</font> is  <a href="filter_0.html#V1" title="FILTER_0:attr.1">being_ultrafilter</a>  &amp; <font color="Olive" title="b3">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b4">UF</font> ) </span> } </span>  ) ) );<br></span>
+</div>
+<br><div about="#T17" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E10">Th17</font></span>: <a NAME="T17"><span class="comment"><font color="firebrick">:: LOPCLSET:17</font></span><br></a><div class="add"> for <font color="Olive" title="b1">x</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a><br>  for <font color="Olive" title="b3">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b2">BL</font> holds <br> ( <font color="Olive" title="b1">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1">(<span class="default"><a href="lopclset.html#K8" title="LOPCLSET:func.8">UFilter</a> <font color="Olive" title="b2">BL</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">a</font> iff  ex <font color="Olive" title="b4">F</font> being   <a href="filter_0.html#NM1" title="FILTER_0:NM.1">Filter</a> of <font color="Olive" title="b2">BL</font> st <br>( <font color="Olive" title="b4">F</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">x</font> &amp; <font color="Olive" title="b4">F</font> is  <a href="filter_0.html#V1" title="FILTER_0:attr.1">being_ultrafilter</a>  &amp; <font color="Olive" title="b3">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b4">F</font> ) )</div>
+<div about="#PF16" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T17"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/16')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/16')" href="javascript:()" title="16"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T18" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E11">Th18</font></span>: <a NAME="T18"><span class="comment"><font color="firebrick">:: LOPCLSET:18</font></span><br></a><div class="add"> for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">BL</font><br>  for <font color="Olive" title="b3">F</font> being   <a href="filter_0.html#NM1" title="FILTER_0:NM.1">Filter</a> of <font color="Olive" title="b1">BL</font> holds <br> ( <font color="Olive" title="b3">F</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1">(<span class="default"><a href="lopclset.html#K8" title="LOPCLSET:func.8">UFilter</a> <font color="Olive" title="b1">BL</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">a</font> iff ( <font color="Olive" title="b3">F</font> is  <a href="filter_0.html#V1" title="FILTER_0:attr.1">being_ultrafilter</a>  &amp; <font color="Olive" title="b2">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b3">F</font> ) )</div>
+<div about="#PF17" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T18"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/17')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/17')" href="javascript:()" title="17"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T19" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E12">Th19</font></span>: <a NAME="T19"><span class="comment"><font color="firebrick">:: LOPCLSET:19</font></span><br></a><div class="add"> for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">BL</font><br>  for <font color="Olive" title="b4">F</font> being   <a href="filter_0.html#NM1" title="FILTER_0:NM.1">Filter</a> of <font color="Olive" title="b1">BL</font>  st <font color="Olive" title="b4">F</font> is  <a href="filter_0.html#V1" title="FILTER_0:attr.1">being_ultrafilter</a>  holds <br>( <font color="Olive" title="b2">a</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b3">b</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b4">F</font> iff ( <font color="Olive" title="b2">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b4">F</font> or <font color="Olive" title="b3">b</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b4">F</font> ) )</div>
+<div about="#PF18" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T19"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/18')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/18')" href="javascript:()" title="18"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T20" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E13">Th20</font></span>: <a NAME="T20"><span class="comment"><font color="firebrick">:: LOPCLSET:20</font></span><br></a><div class="add"> for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">BL</font> holds  <span class="p1">(<span class="default"><a href="lopclset.html#K8" title="LOPCLSET:func.8">UFilter</a> <font color="Olive" title="b1">BL</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b3">b</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="lopclset.html#K8" title="LOPCLSET:func.8">UFilter</a> <font color="Olive" title="b1">BL</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">a</font></span>)</span> <a href="xboole_0.html#K3" title="XBOOLE_0:func.3">/\</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="lopclset.html#K8" title="LOPCLSET:func.8">UFilter</a> <font color="Olive" title="b1">BL</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">b</font></span>)</span>
+</div>
+<div about="#PF19" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T20"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/19')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/19')" href="javascript:()" title="19"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T21" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E14">Th21</font></span>: <a NAME="T21"><span class="comment"><font color="firebrick">:: LOPCLSET:21</font></span><br></a><div class="add"> for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">BL</font> holds  <span class="p1">(<span class="default"><a href="lopclset.html#K8" title="LOPCLSET:func.8">UFilter</a> <font color="Olive" title="b1">BL</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b3">b</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="lopclset.html#K8" title="LOPCLSET:func.8">UFilter</a> <font color="Olive" title="b1">BL</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">a</font></span>)</span> <a href="xboole_0.html#K2" title="XBOOLE_0:func.2">\/</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="lopclset.html#K8" title="LOPCLSET:func.8">UFilter</a> <font color="Olive" title="b1">BL</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">b</font></span>)</span>
+</div>
+<div about="#PF20" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T21"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/20')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/20')" href="javascript:()" title="20"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">BL</font> be   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="lopclset.html#K8" title="LOPCLSET:func.8">UFilter</a><br><span class="kw">redefine </span><a NAME="K9"><span class="kw">func</span> </a> <a href="lopclset.html#K9" title="LOPCLSET:func.9">UFilter</a> <font color="Maroon" title="c1">BL</font><span class="kw"> -&gt; </span>  <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">BL</font>,<span class="p1">(<span class="default"><a href="setfam_1.html#K9" title="SETFAM_1:func.9">bool</a> <span class="p2">(<span class="default"><a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Maroon" title="c1">BL</font></span>)</span></span>)</span>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:21_1"></a>
+ <a href="lopclset.html#K8" title="LOPCLSET:func.8">UFilter</a> <font color="Maroon" title="c1">BL</font> is   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">BL</font>,<span class="p1">(<span class="default"><a href="setfam_1.html#K9" title="SETFAM_1:func.9">bool</a> <span class="p2">(<span class="default"><a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Maroon" title="c1">BL</font></span>)</span></span>)</span>
+ </span><div about="#PF21_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/21_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/21_1_1')" href="javascript:()" title="21_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">BL</font> be   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K10"><span class="kw">func</span> </a> <a href="lopclset.html#K10" title="LOPCLSET:func.10">StoneR</a> <font color="Maroon" title="c1">BL</font><span class="kw"> -&gt; </span>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <span class="kw"> equals </span><a NAME="D7"><span class="comment"><font color="firebrick">:: LOPCLSET:def 7</font></span><br></a> <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <span class="p1">(<span class="default"><a href="lopclset.html#K9" title="LOPCLSET:func.9">UFilter</a> <font color="Maroon" title="c1">BL</font></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:22_1"></a>
+ <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <span class="p1">(<span class="default"><a href="lopclset.html#K9" title="LOPCLSET:func.9">UFilter</a> <font color="Maroon" title="c1">BL</font></span>)</span> is    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT7" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="lopclset.html#K10" title="LOPCLSET:func.10">StoneR</a> <a onclick="hs(this)" href="javascript:()">LOPCLSET:def 7 : <br></a><span class="hide"> for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a> holds   <a href="lopclset.html#K10" title="LOPCLSET:func.10">StoneR</a> <font color="Olive" title="b1">BL</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <span class="p1">(<span class="default"><a href="lopclset.html#K9" title="LOPCLSET:func.9">UFilter</a> <font color="Olive" title="b1">BL</font></span>)</span>;<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">BL</font> be   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a>;<br>
+<div about="#FC4" typeof="oo:Theorem">
+<a NAME="FC4"><span class="kw">cluster </span></a> <a href="lopclset.html#K10" title="LOPCLSET:func.10">StoneR</a> <font color="Maroon" title="c1">BL</font><span class="kw"> -&gt; </span> non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:23_1"></a>
+ not  <a href="lopclset.html#K10" title="LOPCLSET:func.10">StoneR</a> <font color="Maroon" title="c1">BL</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T22" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T22"><span class="comment"><font color="firebrick">:: LOPCLSET:22</font></span><br></a><div class="add"> for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a> holds   <a href="lopclset.html#K10" title="LOPCLSET:func.10">StoneR</a> <font color="Olive" title="b1">BL</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="setfam_1.html#K9" title="SETFAM_1:func.9">bool</a> <span class="p1">(<span class="default"><a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Olive" title="b1">BL</font></span>)</span> ;<br>
+</div>
+</div>
+<br><div about="#T23" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E15">Th23</font></span>: <a NAME="T23"><span class="comment"><font color="firebrick">:: LOPCLSET:23</font></span><br></a><div class="add"> for <font color="Olive" title="b1">x</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a> holds <br> ( <font color="Olive" title="b1">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="lopclset.html#K10" title="LOPCLSET:func.10">StoneR</a> <font color="Olive" title="b2">BL</font> iff  ex <font color="Olive" title="b3">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b2">BL</font> st <span class="p1">(<span class="default"><a href="lopclset.html#K9" title="LOPCLSET:func.9">UFilter</a> <font color="Olive" title="b2">BL</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">x</font> )</div>
+<div about="#PF24" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T23"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/24')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/24')" href="javascript:()" title="24"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">BL</font> be   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a>;<br><div about="#D16" typeof="oo:Definition">
+<a NAME="K11"><span class="kw">func</span> </a> <a href="lopclset.html#K11" title="LOPCLSET:func.11">StoneSpace</a> <font color="Maroon" title="c1">BL</font><span class="kw"> -&gt; </span>  <a href="pre_topc.html#V1" title="PRE_TOPC:attr.1">strict</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E16">Def8</font></span>: <a NAME="D8"><span class="comment"><font color="firebrick">:: LOPCLSET:def 8</font></span><br></a>(  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="kw">it</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Maroon" title="c1">BL</font> &amp;  the <a href="pre_topc.html#U1" title="PRE_TOPC:sel.1">topology</a> of <span class="kw">it</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><a href="setfam_1.html#K5" title="SETFAM_1:func.5">union</a> <font color="Olive" title="b1">A</font></span>)</span> where <font color="Olive" title="b1">A</font> is   <a href="setfam_1.html#NM1" title="SETFAM_1:NM.1">Subset-Family</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Maroon" title="c1">BL</font></span>)</span> : <font color="Olive" title="b1">A</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="lopclset.html#K10" title="LOPCLSET:func.10">StoneR</a> <font color="Maroon" title="c1">BL</font> </span> } </span>  );<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:25_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="pre_topc.html#V1" title="PRE_TOPC:attr.1">strict</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> st <br>(  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Maroon" title="c1">BL</font> &amp;  the <a href="pre_topc.html#U1" title="PRE_TOPC:sel.1">topology</a> of <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><a href="setfam_1.html#K5" title="SETFAM_1:func.5">union</a> <font color="Olive" title="b2">A</font></span>)</span> where <font color="Olive" title="b2">A</font> is   <a href="setfam_1.html#NM1" title="SETFAM_1:NM.1">Subset-Family</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Maroon" title="c1">BL</font></span>)</span> : <font color="Olive" title="b2">A</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="lopclset.html#K10" title="LOPCLSET:func.10">StoneR</a> <font color="Maroon" title="c1">BL</font> </span> } </span>  )
+ </span><div about="#PF25_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/25_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/25_1_1')" href="javascript:()" title="25_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:25_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="pre_topc.html#V1" title="PRE_TOPC:attr.1">strict</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>  st  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Maroon" title="c1">BL</font> &amp;  the <a href="pre_topc.html#U1" title="PRE_TOPC:sel.1">topology</a> of <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><a href="setfam_1.html#K5" title="SETFAM_1:func.5">union</a> <font color="Olive" title="b3">A</font></span>)</span> where <font color="Olive" title="b3">A</font> is   <a href="setfam_1.html#NM1" title="SETFAM_1:NM.1">Subset-Family</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Maroon" title="c1">BL</font></span>)</span> : <font color="Olive" title="b3">A</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="lopclset.html#K10" title="LOPCLSET:func.10">StoneR</a> <font color="Maroon" title="c1">BL</font> </span> } </span>  &amp;  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Maroon" title="c1">BL</font> &amp;  the <a href="pre_topc.html#U1" title="PRE_TOPC:sel.1">topology</a> of <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><a href="setfam_1.html#K5" title="SETFAM_1:func.5">union</a> <font color="Olive" title="b3">A</font></span>)</span> where <font color="Olive" title="b3">A</font> is   <a href="setfam_1.html#NM1" title="SETFAM_1:NM.1">Subset-Family</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Maroon" title="c1">BL</font></span>)</span> : <font color="Olive" title="b3">A</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="lopclset.html#K10" title="LOPCLSET:func.10">StoneR</a> <font color="Maroon" title="c1">BL</font> </span> } </span>  holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT8" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E16">Def8</font></span>   defines <a href="lopclset.html#K11" title="LOPCLSET:func.11">StoneSpace</a> <a onclick="hs(this)" href="javascript:()">LOPCLSET:def 8 : <br></a><span class="hide"> for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a><br>  for <font color="Olive">b<sub>2</sub></font> being   <a href="pre_topc.html#V1" title="PRE_TOPC:attr.1">strict</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> holds <br> ( <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lopclset.html#K11" title="LOPCLSET:func.11">StoneSpace</a> <font color="Olive" title="b1">BL</font> iff (  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Olive" title="b1">BL</font> &amp;  the <a href="pre_topc.html#U1" title="PRE_TOPC:sel.1">topology</a> of <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><a href="setfam_1.html#K5" title="SETFAM_1:func.5">union</a> <font color="Olive" title="b3">A</font></span>)</span> where <font color="Olive" title="b3">A</font> is   <a href="setfam_1.html#NM1" title="SETFAM_1:NM.1">Subset-Family</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Olive" title="b1">BL</font></span>)</span> : <font color="Olive" title="b3">A</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="lopclset.html#K10" title="LOPCLSET:func.10">StoneR</a> <font color="Olive" title="b1">BL</font> </span> } </span>  ) );<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">BL</font> be   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a>;<br>
+<div about="#FC5" typeof="oo:Theorem">
+<a NAME="FC5"><span class="kw">cluster </span></a> <a href="lopclset.html#K11" title="LOPCLSET:func.11">StoneSpace</a> <font color="Maroon" title="c1">BL</font><span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="pre_topc.html#V1" title="PRE_TOPC:attr.1">strict</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:26_1"></a>
+ not  <a href="lopclset.html#K11" title="LOPCLSET:func.11">StoneSpace</a> <font color="Maroon" title="c1">BL</font> is  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a> 
+ </span><div about="#PF26_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/26_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/26_1_1')" href="javascript:()" title="26_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T24" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T24"><span class="comment"><font color="firebrick">:: LOPCLSET:24</font></span><br></a><div class="add"> for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">BL</font><br>  for <font color="Olive" title="b3">F</font> being   <a href="filter_0.html#NM1" title="FILTER_0:NM.1">Filter</a> of <font color="Olive" title="b1">BL</font>  st <font color="Olive" title="b3">F</font> is  <a href="filter_0.html#V1" title="FILTER_0:attr.1">being_ultrafilter</a>  &amp;  not <font color="Olive" title="b3">F</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1">(<span class="default"><a href="lopclset.html#K9" title="LOPCLSET:func.9">UFilter</a> <font color="Olive" title="b1">BL</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b2">a</font> holds <br> not <font color="Olive" title="b2">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b3">F</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="lopclset.html#T18" target="_self" onmouseover="rs('lopclset/T18')" onmouseout="rh()">Th18</a></span>;<br>
+</div>
+</div>
+<br><div about="#T25" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E17">Th25</font></span>: <a NAME="T25"><span class="comment"><font color="firebrick">:: LOPCLSET:25</font></span><br></a><div class="add"> for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">BL</font> holds  <span class="p1">(<span class="default"><a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Olive" title="b1">BL</font></span>)</span> <a href="subset_1.html#K7" title="SUBSET_1:func.7">\</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="lopclset.html#K9" title="LOPCLSET:func.9">UFilter</a> <font color="Olive" title="b1">BL</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b2">a</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="lopclset.html#K9" title="LOPCLSET:func.9">UFilter</a> <font color="Olive" title="b1">BL</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K7" title="LATTICES:func.7">`</a></span>)</span>
+</div>
+<div about="#PF27" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T25"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/27')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/27')" href="javascript:()" title="27"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">BL</font> be   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K12"><span class="kw">func</span> </a> <a href="lopclset.html#K12" title="LOPCLSET:func.12">StoneBLattice</a> <font color="Maroon" title="c1">BL</font><span class="kw"> -&gt; </span>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><span class="kw"> equals </span><a NAME="D9"><span class="comment"><font color="firebrick">:: LOPCLSET:def 9</font></span><br></a> <a href="lopclset.html#K6" title="LOPCLSET:func.6">OpenClosedSetLatt</a> <span class="p1">(<span class="default"><a href="lopclset.html#K11" title="LOPCLSET:func.11">StoneSpace</a> <font color="Maroon" title="c1">BL</font></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:28_1"></a>
+ <a href="lopclset.html#K6" title="LOPCLSET:func.6">OpenClosedSetLatt</a> <span class="p1">(<span class="default"><a href="lopclset.html#K11" title="LOPCLSET:func.11">StoneSpace</a> <font color="Maroon" title="c1">BL</font></span>)</span> is   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT9" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="lopclset.html#K12" title="LOPCLSET:func.12">StoneBLattice</a> <a onclick="hs(this)" href="javascript:()">LOPCLSET:def 9 : <br></a><span class="hide"> for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a> holds   <a href="lopclset.html#K12" title="LOPCLSET:func.12">StoneBLattice</a> <font color="Olive" title="b1">BL</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lopclset.html#K6" title="LOPCLSET:func.6">OpenClosedSetLatt</a> <span class="p1">(<span class="default"><a href="lopclset.html#K11" title="LOPCLSET:func.11">StoneSpace</a> <font color="Olive" title="b1">BL</font></span>)</span>;<br></span>
+</div>
+<br><a NAME="E35"></a><span class="lab"><font color="Green" title="E18">Lm1</font></span>: <span about="#E35" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K11" title="LOPCLSET:func.11">StoneSpace</a> <font color="Olive" title="b1">BL</font></span>)</span>  st <font color="Olive" title="b2">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="lopclset.html#K10" title="LOPCLSET:func.10">StoneR</a> <font color="Olive" title="b1">BL</font> holds <br><font color="Olive" title="b2">p</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a> 
+ </span><br><div about="#PF29" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E35"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/29')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/29')" href="javascript:()" title="29"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">BL</font> be   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a>;<br>
+<div about="#FC6" typeof="oo:Theorem">
+<a NAME="FC6"><span class="kw">cluster </span></a> <a href="lopclset.html#K8" title="LOPCLSET:func.8">UFilter</a> <font color="Maroon" title="c1">BL</font><span class="kw"> -&gt; </span> <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:30_1"></a>
+ <a href="lopclset.html#K9" title="LOPCLSET:func.9">UFilter</a> <font color="Maroon" title="c1">BL</font> is  <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a> 
+ </span><div about="#PF30_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/30_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/30_1_1')" href="javascript:()" title="30_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T26" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T26"><span class="comment"><font color="firebrick">:: LOPCLSET:26</font></span><br></a><div class="add"> for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a> holds   <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <span class="p1">(<span class="default"><a href="lopclset.html#K10" title="LOPCLSET:func.10">StoneR</a> <font color="Olive" title="b1">BL</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Olive" title="b1">BL</font>
+</div>
+<div about="#PF31" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T26"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/31')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/31')" href="javascript:()" title="31"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T27" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E19">Th27</font></span>: <a NAME="T27"><span class="comment"><font color="firebrick">:: LOPCLSET:27</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   holds <br> not  for <font color="Olive" title="b2">Y</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="finsub_1.html#K5" title="FINSUB_1:func.5">Fin</a> <font color="Olive" title="b1">X</font> holds  <font color="Olive" title="b2">Y</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> </div>
+<div about="#PF32" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T27"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/32')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/32')" href="javascript:()" title="32"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">D</font> be   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ;<br>
+<div about="#RC2" typeof="oo:Theorem">
+<a NAME="RC2"><span class="kw">cluster </span></a> non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="finsub_1.html#K5" title="FINSUB_1:func.5">Fin</a> <font color="Maroon" title="c1">D</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:33_1"></a>
+ not  for <font color="Olive">b<sub>1</sub></font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="finsub_1.html#K5" title="FINSUB_1:func.5">Fin</a> <font color="Maroon" title="c1">D</font> holds  <font color="Olive">b<sub>1</sub></font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="lopclset.html#T27" target="_self" onmouseover="rs('lopclset/T27')" onmouseout="rh()">Th27</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T28" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E20">Th28</font></span>: <a NAME="T28"><span class="comment"><font color="firebrick">:: LOPCLSET:28</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a><br>  for <font color="Olive" title="b2">D</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">L</font>  st  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"><a href="filter_0.html#K3" title="FILTER_0:func.3">&lt;.</a><span class="default"><font color="Olive" title="b2">D</font></span><a href="filter_0.html#K3" title="FILTER_0:func.3">.)</a></span> holds <br> ex <font color="Olive" title="b3">B</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="finsub_1.html#K5" title="FINSUB_1:func.5">Fin</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b1">L</font> st <br>( <font color="Olive" title="b3">B</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b2">D</font> &amp;  <a href="lattice4.html#K2" title="LATTICE4:func.2">FinMeet</a> <font color="Olive" title="b3">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font> )</div>
+<div about="#PF34" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T28"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/34')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/34')" href="javascript:()" title="34"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T29" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E21">Th29</font></span>: <a NAME="T29"><span class="comment"><font color="firebrick">:: LOPCLSET:29</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM4" title="LATTICES:NM.4">0_Lattice</a><br>  for <font color="Olive" title="b2">F</font> being   <a href="filter_0.html#NM1" title="FILTER_0:NM.1">Filter</a> of <font color="Olive" title="b1">L</font>  holds <br>(  not <font color="Olive" title="b2">F</font> is  <a href="filter_0.html#V1" title="FILTER_0:attr.1">being_ultrafilter</a>  or  not  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">F</font> )</div>
+<div about="#PF35" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T29"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/35')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/35')" href="javascript:()" title="35"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T30" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E22">Th30</font></span>: <a NAME="T30"><span class="comment"><font color="firebrick">:: LOPCLSET:30</font></span><br></a><div class="add"> for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a> holds  <span class="p1">(<span class="default"><a href="lopclset.html#K9" title="LOPCLSET:func.9">UFilter</a> <font color="Olive" title="b1">BL</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <span class="p1">(<span class="default"><a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">BL</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> </div>
+<div about="#PF36" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T30"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/36')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/36')" href="javascript:()" title="36"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T31" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T31"><span class="comment"><font color="firebrick">:: LOPCLSET:31</font></span><br></a><div class="add"> for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a> holds  <span class="p1">(<span class="default"><a href="lopclset.html#K9" title="LOPCLSET:func.9">UFilter</a> <font color="Olive" title="b1">BL</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <span class="p1">(<span class="default"><a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">BL</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Olive" title="b1">BL</font>
+</div>
+<div about="#PF37" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T31"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/37')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/37')" href="javascript:()" title="37"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T32" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E23">Th32</font></span>: <a NAME="T32"><span class="comment"><font color="firebrick">:: LOPCLSET:32</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a>  st  <a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Olive" title="b2">BL</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <font color="Olive" title="b1">X</font> &amp; <font color="Olive" title="b1">X</font> is   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K10" title="LOPCLSET:func.10">StoneR</a> <font color="Olive" title="b2">BL</font></span>)</span> holds <br> ex <font color="Olive" title="b3">Y</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="finsub_1.html#K5" title="FINSUB_1:func.5">Fin</a> <font color="Olive" title="b1">X</font> st  <a href="lopclset.html#K7" title="LOPCLSET:func.7">ultraset</a> <font color="Olive" title="b2">BL</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <font color="Olive" title="b3">Y</font>
+</div>
+<div about="#PF38" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T32"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/38')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/38')" href="javascript:()" title="38"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E43"></a><span class="lab"><font color="Green" title="E24">Lm2</font></span>: <span about="#E43" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a> holds   <a href="lopclset.html#K10" title="LOPCLSET:func.10">StoneR</a> <font color="Olive" title="b1">BL</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <span class="p1">(<span class="default"><a href="lopclset.html#K11" title="LOPCLSET:func.11">StoneSpace</a> <font color="Olive" title="b1">BL</font></span>)</span>
+ </span><br><div about="#PF39" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E43"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/39')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/39')" href="javascript:()" title="39"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T33" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E25">Th33</font></span>: <a NAME="T33"><span class="comment"><font color="firebrick">:: LOPCLSET:33</font></span><br></a><div class="add"> for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a> holds   <a href="lopclset.html#K10" title="LOPCLSET:func.10">StoneR</a> <font color="Olive" title="b1">BL</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lopclset.html#K1" title="LOPCLSET:func.1">OpenClosedSet</a> <span class="p1">(<span class="default"><a href="lopclset.html#K11" title="LOPCLSET:func.11">StoneSpace</a> <font color="Olive" title="b1">BL</font></span>)</span>
+</div>
+<div about="#PF40" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T33"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/40')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/40')" href="javascript:()" title="40"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">BL</font> be   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="lopclset.html#K8" title="LOPCLSET:func.8">UFilter</a><br><span class="kw">redefine </span><a NAME="K13"><span class="kw">func</span> </a> <a href="lopclset.html#K13" title="LOPCLSET:func.13">UFilter</a> <font color="Maroon" title="c1">BL</font><span class="kw"> -&gt; </span>  <a href="lattice4.html#NM1" title="LATTICE4:NM.1">Homomorphism</a> of <font color="Maroon" title="c1">BL</font>,<span class="p1">(<span class="default"><a href="lopclset.html#K12" title="LOPCLSET:func.12">StoneBLattice</a> <font color="Maroon" title="c1">BL</font></span>)</span>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:41_1"></a>
+ <a href="lopclset.html#K8" title="LOPCLSET:func.8">UFilter</a> <font color="Maroon" title="c1">BL</font> is   <a href="lattice4.html#NM1" title="LATTICE4:NM.1">Homomorphism</a> of <font color="Maroon" title="c1">BL</font>,<span class="p1">(<span class="default"><a href="lopclset.html#K12" title="LOPCLSET:func.12">StoneBLattice</a> <font color="Maroon" title="c1">BL</font></span>)</span>
+ </span><div about="#PF41_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/41_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/41_1_1')" href="javascript:()" title="41_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T34" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E26">Th34</font></span>: <a NAME="T34"><span class="comment"><font color="firebrick">:: LOPCLSET:34</font></span><br></a><div class="add"> for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a> holds   <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <span class="p1">(<span class="default"><a href="lopclset.html#K13" title="LOPCLSET:func.13">UFilter</a> <font color="Olive" title="b1">BL</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><a href="lopclset.html#K12" title="LOPCLSET:func.12">StoneBLattice</a> <font color="Olive" title="b1">BL</font></span>)</span>
+</div>
+<div about="#PF42" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T34"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/42')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/42')" href="javascript:()" title="42"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">BL</font> be   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a>;<br>
+<div about="#FC7" typeof="oo:Theorem">
+<a NAME="FC7"><span class="kw">cluster </span></a> <a href="lopclset.html#K8" title="LOPCLSET:func.8">UFilter</a> <font color="Maroon" title="c1">BL</font><span class="kw"> -&gt; </span> <a href="funct_2.html#V3" title="FUNCT_2:attr.3">bijective</a>   for  <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Maroon" title="c1">BL</font>,<span class="p1">(<span class="default"><a href="lopclset.html#K12" title="LOPCLSET:func.12">StoneBLattice</a> <font color="Maroon" title="c1">BL</font></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:43_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Maroon" title="c1">BL</font>,<span class="p1">(<span class="default"><a href="lopclset.html#K12" title="LOPCLSET:func.12">StoneBLattice</a> <font color="Maroon" title="c1">BL</font></span>)</span>  st <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lopclset.html#K13" title="LOPCLSET:func.13">UFilter</a> <font color="Maroon" title="c1">BL</font> holds <br><font color="Olive">b<sub>1</sub></font> is  <a href="funct_2.html#V3" title="FUNCT_2:attr.3">bijective</a> 
+ </span><div about="#PF43_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/43_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/43_1_1')" href="javascript:()" title="43_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T35" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E27">Th35</font></span>: <a NAME="T35"><span class="comment"><font color="firebrick">:: LOPCLSET:35</font></span><br></a><div class="add"> for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a> holds  <font color="Olive" title="b1">BL</font>, <a href="lopclset.html#K12" title="LOPCLSET:func.12">StoneBLattice</a> <font color="Olive" title="b1">BL</font> <a href="filter_1.html#R1" title="FILTER_1:pred.1">are_isomorphic</a> </div>
+<div about="#PF44" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T35"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/44')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/44')" href="javascript:()" title="44"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: <img src="http://mws.cs.ru.nl/~mptp/WP.ico" alt="WP: "> <a href="http://en.wikipedia.org/wiki/Stone_Representation_Theorem_for_Boolean_Algebras" title="See Wikipedia entry for Stone Representation Theorem for Boolean Algebras">Stone Representation Theorem for Boolean Algebras</a><br>  
+</font></div>
+<div about="#T36" typeof="oo:Theorem">
+<span rel="owl:sameAs" resource="http://dbpedia.org/resource/Stone_Representation_Theorem_for_Boolean_Algebras"></span><span class="kw">theorem </span><a NAME="T36"><span class="comment"><font color="firebrick">:: LOPCLSET:36</font></span><br></a><div class="add"> for <font color="Olive" title="b1">BL</font> being   non  <a href="struct_0.html#V7" title="STRUCT_0:attr.7">trivial</a>  <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a>  ex <font color="Olive" title="b2">T</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> st <font color="Olive" title="b1">BL</font>, <a href="lopclset.html#K6" title="LOPCLSET:func.6">OpenClosedSetLatt</a> <font color="Olive" title="b2">T</font> <a href="filter_1.html#R1" title="FILTER_1:pred.1">are_isomorphic</a> </div>
+<div about="#PF45" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T36"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lopclset/45')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lopclset/45')" href="javascript:()" title="45"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+</body>
+</html>

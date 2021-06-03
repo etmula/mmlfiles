@@ -1,0 +1,1152 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LIOUVIL1:  Introduction to {L}iouville Numbers</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  Introduction to {L}iouville Numbers</font></span><br><span class="comment"><font color="firebrick">:: by Adam Grabowski and Artur Korni{\l}owicz</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received February 23, 2017</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 2017-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br><div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E1">Th1</font></span>: <a NAME="T1"><span class="comment"><font color="firebrick">:: LIOUVIL1:1</font></span><br></a><div class="add"> for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">x</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1 &amp; <font color="Olive" title="b2">y</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1 holds <br><font color="Olive" title="b1">x</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b2">y</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> <font color="Olive" title="b1">x</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Olive" title="b2">y</font>
+</div>
+<div about="#PF1" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/1')" href="javascript:()" title="1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E2"></a><span class="lab"><font color="Green" title="E2">Th2</font></span>: <span about="#E2" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive" title="b1">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a>  <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1
+ </span><br><div about="#PF2" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/2')" href="javascript:()" title="2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E3">ADDC1</font></span>: <a NAME="T2"><span class="comment"><font color="firebrick">:: LIOUVIL1:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b1">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a> </div>
+<div about="#PF3" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/3')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/3')" href="javascript:()" title="3"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E4">Th3</font></span>: <a NAME="T3"><span class="comment"><font color="firebrick">:: LIOUVIL1:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive" title="b1">n</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span>
+</div>
+<div about="#PF4" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/4')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/4')" href="javascript:()" title="4"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T4"><span class="comment"><font color="firebrick">:: LIOUVIL1:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1 holds <br>2 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="newton.html#K7" title="NEWTON:func.7">!</a> </div>
+<div about="#PF5" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T4"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/5')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/5')" href="javascript:()" title="5"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E6"></a><span class="lab"><font color="Green" title="E5">Th4</font></span>: <span about="#E6" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1 holds <br><span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="newton.html#K7" title="NEWTON:func.7">!</a>  <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1
+ </span><br><div about="#PF6" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/6')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/6')" href="javascript:()" title="6"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E7"></a><span class="lab"><font color="Green" title="E6">Th5</font></span>: <span about="#E7" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 2 holds <br><span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="newton.html#K7" title="NEWTON:func.7">!</a>  <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1
+ </span><br><div about="#PF7" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E7"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/7')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/7')" href="javascript:()" title="7"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E8"></a><span class="lab"><font color="Green" title="E7">Th6</font></span>: <span about="#E8" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1 holds <br><span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 2</span>)</span> <a href="newton.html#K7" title="NEWTON:func.7">!</a>  <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 2
+ </span><br><div about="#PF8" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/8')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/8')" href="javascript:()" title="8"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E9"></a><span class="lab"><font color="Green" title="E8">Th7</font></span>: <span about="#E9" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1 &amp; <font color="Olive" title="b2">i</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1 holds <br><span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Olive" title="b2">i</font></span>)</span> <a href="newton.html#K7" title="NEWTON:func.7">!</a>  <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Olive" title="b2">i</font>
+ </span><br><div about="#PF9" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E9"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/9')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/9')" href="javascript:()" title="9"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E9">Th8</font></span>: <a NAME="T5"><span class="comment"><font color="firebrick">:: LIOUVIL1:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1 &amp; <font color="Olive" title="b2">i</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1 holds <br><span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Olive" title="b2">i</font></span>)</span> <a href="newton.html#K7" title="NEWTON:func.7">!</a>  <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Olive" title="b2">i</font>
+</div>
+<div about="#PF10" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/10')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/10')" href="javascript:()" title="10"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T6"><span class="comment"><font color="firebrick">:: LIOUVIL1:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 2 &amp; <font color="Olive" title="b2">i</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1 holds <br><span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Olive" title="b2">i</font></span>)</span> <a href="newton.html#K7" title="NEWTON:func.7">!</a>  <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Olive" title="b2">i</font>
+</div>
+<div about="#PF11" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/11')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/11')" href="javascript:()" title="11"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E10">Th9</font></span>: <a NAME="T7"><span class="comment"><font color="firebrick">:: LIOUVIL1:7</font></span><br></a><div class="add"> for <font color="Olive" title="b1">b</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">b</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1 holds <br><span class="p1"><a href="complex1.html#K9" title="COMPLEX1:func.9">|.</a><span class="default"><span class="p2">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <font color="Olive" title="b1">b</font></span>)</span></span><a href="complex1.html#K9" title="COMPLEX1:func.9">.|</a></span> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 1</div>
+<div about="#PF12" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T7"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/12')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/12')" href="javascript:()" title="12"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E11">Th10</font></span>: <a NAME="T8"><span class="comment"><font color="firebrick">:: LIOUVIL1:8</font></span><br></a><div class="add"> for <font color="Olive" title="b1">d</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>  ex <font color="Olive" title="b2">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st 2 <a href="power.html#K2" title="POWER:func.2">to_power</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">n</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1</span>)</span> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> <font color="Olive" title="b1">d</font>
+</div>
+<div about="#PF13" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/13')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/13')" href="javascript:()" title="13"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">a</font> be   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">b</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br>
+<div about="#FC1" typeof="oo:Theorem">
+<a NAME="FC1"><span class="kw">cluster </span></a><font color="Maroon" title="c1">a</font> <a href="power.html#K2" title="POWER:func.2">to_power</a> <font color="Maroon" title="c2">b</font><span class="kw"> -&gt; </span> <a href="int_1.html#V1" title="INT_1:attr.1">integer</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:14_1"></a>
+<font color="Maroon" title="c1">a</font> <a href="power.html#K2" title="POWER:func.2">to_power</a> <font color="Maroon" title="c2">b</font> is  <a href="int_1.html#V1" title="INT_1:attr.1">integer</a> 
+ </span><div about="#PF14_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/14_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/14_1_1')" href="javascript:()" title="14_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E12">Th11</font></span>: <a NAME="T9"><span class="comment"><font color="firebrick">:: LIOUVIL1:9</font></span><br></a><div class="add"> for <font color="Olive" title="b1">s1</font>, <font color="Olive" title="b2">s2</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>  st (  for <font color="Olive" title="b3">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds <br> (  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b1">s1</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">n</font> &amp; <font color="Olive" title="b1">s1</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b2">s2</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">n</font> ) ) &amp;  ex <font color="Olive" title="b3">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <br>( 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b3">n</font> &amp; <font color="Olive" title="b1">s1</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">n</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b2">s2</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">n</font> ) &amp; <font color="Olive" title="b2">s2</font> is  <a href="series_1.html#V1" title="SERIES_1:attr.1">summable</a>  holds <br>( <font color="Olive" title="b1">s1</font> is  <a href="series_1.html#V1" title="SERIES_1:attr.1">summable</a>  &amp;  <a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <font color="Olive" title="b1">s1</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a>  <a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <font color="Olive" title="b2">s2</font> )</div>
+<div about="#PF15" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T9"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/15')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/15')" href="javascript:()" title="15"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E13">Th12</font></span>: <a NAME="T10"><span class="comment"><font color="firebrick">:: LIOUVIL1:10</font></span><br></a><div class="add"> for <font color="Olive" title="b1">f</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>  st  ex <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <br> for <font color="Olive" title="b3">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b3">k</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> <font color="Olive" title="b2">n</font> holds <br><font color="Olive" title="b1">f</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">k</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br><font color="Olive" title="b1">f</font> is  <a href="series_1.html#V1" title="SERIES_1:attr.1">summable</a> </div>
+<div about="#PF16" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T10"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/16')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/16')" href="javascript:()" title="16"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E14">Th13</font></span>: <a NAME="T11"><span class="comment"><font color="firebrick">:: LIOUVIL1:11</font></span><br></a><div class="add"> for <font color="Olive" title="b1">b</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">b</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1 holds <br> <a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <font color="Olive" title="b1">b</font></span>)</span> <a href="prepower.html#K1" title="PREPOWER:func.1">GeoSeq</a></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">b</font> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">b</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1</span>)</span>
+</div>
+<div about="#PF17" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/17')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/17')" href="javascript:()" title="17"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br>
+<div about="#FC2" typeof="oo:Theorem">
+<a NAME="FC2"><span class="kw">cluster </span></a> <a href="seq_1.html#K1" title="SEQ_1:func.1">seq_const</a> <font color="Maroon" title="c1">n</font><span class="kw"> -&gt; </span> <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:18_1"></a>
+ <a href="seq_1.html#K1" title="SEQ_1:func.1">seq_const</a> <font color="Maroon" title="c1">n</font> is  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a> 
+ </span><div about="#PF18_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/18_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/18_1_1')" href="javascript:()" title="18_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">r</font> be   <a href="xxreal_0.html#V2" title="XXREAL_0:attr.2">positive</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br>
+<div about="#FC3" typeof="oo:Theorem">
+<a NAME="FC3"><span class="kw">cluster </span></a> <a href="seq_1.html#K1" title="SEQ_1:func.1">seq_const</a> <font color="Maroon" title="c1">r</font><span class="kw"> -&gt; </span> <a href="partfun3.html#V1" title="PARTFUN3:attr.1">positive-yielding</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:19_1"></a>
+ <a href="seq_1.html#K1" title="SEQ_1:func.1">seq_const</a> <font color="Maroon" title="c1">r</font> is  <a href="partfun3.html#V1" title="PARTFUN3:attr.1">positive-yielding</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC1" typeof="oo:Theorem">
+<a NAME="RC1"><span class="kw">cluster </span></a> <a href="relat_1.html#V1" title="RELAT_1:attr.1">Relation-like</a>   <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a>  <a href="relat_1.html#V4" title="RELAT_1:attr.4">-defined</a>   <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>   <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>   <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="funct_1.html#V1" title="FUNCT_1:attr.1">Function-like</a>  <a href="partfun1.html#V1" title="PARTFUN1:attr.1">V28</a>( <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a> ) <a href="funct_2.html#V1" title="FUNCT_2:attr.1">V32</a>( <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a> , <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> ) <a href="valued_0.html#V1" title="VALUED_0:attr.1">V39</a>() <a href="valued_0.html#V2" title="VALUED_0:attr.2">V40</a>() <a href="valued_0.html#V3" title="VALUED_0:attr.3">V41</a>()  for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">K21</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K22</a>(<a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a>,<a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>));<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:20_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> st <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  )
+ </span><div about="#PF20_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/20_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/20_1_1')" href="javascript:()" title="20_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E15">Th14</font></span>: <a NAME="T12"><span class="comment"><font color="firebrick">:: LIOUVIL1:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">F</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b3">a</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>  st (  for <font color="Olive" title="b4">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive" title="b1">F</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b4">k</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">a</font> ) holds <br><span class="p1">(<span class="default"><a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <font color="Olive" title="b1">F</font></span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">a</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span>
+</div>
+<div about="#PF21" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/21')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/21')" href="javascript:()" title="21"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T13"><span class="comment"><font color="firebrick">:: LIOUVIL1:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> holds  <span class="p1">(<span class="default"><a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <span class="p2">(<span class="default"><a href="seq_1.html#K1" title="SEQ_1:func.1">seq_const</a> <font color="Olive" title="b2">a</font></span>)</span></span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">a</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span>
+</div>
+<div about="#PF22" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T13"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/22')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/22')" href="javascript:()" title="22"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">f</font> be   <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>;<br>
+<div about="#FC4" typeof="oo:Theorem">
+<a NAME="FC4"><span class="kw">cluster </span></a> <a href="series_1.html#K2" title="SERIES_1:func.2">Partial_Sums</a> <font color="Maroon" title="c1">f</font><span class="kw"> -&gt; </span> <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:23_1"></a>
+ <a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <font color="Maroon" title="c1">f</font> is  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a> 
+ </span><div about="#PF23_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/23_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/23_1_1')" href="javascript:()" title="23_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">f</font> be   <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>;<br>
+<div about="#FC5" typeof="oo:Theorem">
+<a NAME="FC5"><span class="kw">cluster </span></a> <a href="series_1.html#K2" title="SERIES_1:func.2">Partial_Sums</a> <font color="Maroon" title="c1">f</font><span class="kw"> -&gt; </span> <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:24_1"></a>
+ <a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <font color="Maroon" title="c1">f</font> is  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a> 
+ </span><div about="#PF24_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/24_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/24_1_1')" href="javascript:()" title="24_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T14"><span class="comment"><font color="firebrick">:: LIOUVIL1:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">f</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>  st  ex <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <br> for <font color="Olive" title="b3">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b3">k</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> <font color="Olive" title="b2">n</font> holds <br><font color="Olive" title="b1">f</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">k</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br> ex <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <br> for <font color="Olive" title="b3">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b3">k</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> <font color="Olive" title="b2">n</font> holds <br><span class="p1">(<span class="default"><a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <font color="Olive" title="b1">f</font></span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">k</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <font color="Olive" title="b1">f</font></span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">n</font>
+</div>
+<div about="#PF25" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T14"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/25')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/25')" href="javascript:()" title="25"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T15" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E16">Th16</font></span>: <a NAME="T15"><span class="comment"><font color="firebrick">:: LIOUVIL1:15</font></span><br></a><div class="add"> for <font color="Olive" title="b1">f</font> being   <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>  st  ex <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <br> for <font color="Olive" title="b3">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b3">k</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> <font color="Olive" title="b2">n</font> holds <br><font color="Olive" title="b1">f</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">k</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br> <a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <font color="Olive" title="b1">f</font> is   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>
+</div>
+<div about="#PF26" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/26')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/26')" href="javascript:()" title="26"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">f</font> be   <a href="partfun3.html#V4" title="PARTFUN3:attr.4">nonnegative-yielding</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br>
+<div about="#FC6" typeof="oo:Theorem">
+<a NAME="FC6"><span class="kw">cluster </span></a><font color="Maroon" title="c1">f</font> <a href="nat_1.html#K6" title="NAT_1:func.6">^\</a> <font color="Maroon" title="c2">n</font><span class="kw"> -&gt; </span> <a href="partfun3.html#V4" title="PARTFUN3:attr.4">nonnegative-yielding</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:27_1"></a>
+<font color="Maroon" title="c1">f</font> <a href="nat_1.html#K7" title="NAT_1:func.7">^\</a> <font color="Maroon" title="c2">n</font> is  <a href="partfun3.html#V4" title="PARTFUN3:attr.4">nonnegative-yielding</a> 
+ </span><div about="#PF27_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/27_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/27_1_1')" href="javascript:()" title="27_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">f</font> be   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">X</font> be   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K1"><span class="kw">func</span> </a><font color="Maroon" title="c1">f</font> <a href="liouvil1.html#K1" title="LIOUVIL1:func.1">|_</a> <font color="Maroon" title="c2">X</font><span class="kw"> -&gt; </span>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><span class="kw"> equals </span><a NAME="D1"><span class="comment"><font color="firebrick">:: LIOUVIL1:def 1</font></span><br></a><span class="p1">(<span class="default"><a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <a href="funcop_1.html#K8" title="FUNCOP_1:func.8">--&gt;</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span> <a href="funct_4.html#K1" title="FUNCT_4:func.1">+*</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">f</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Maroon" title="c2">X</font></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:28_1"></a>
+<span class="p1">(<span class="default"><a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <a href="funcop_1.html#K8" title="FUNCOP_1:func.8">--&gt;</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span> <a href="funct_4.html#K1" title="FUNCT_4:func.1">+*</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">f</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Maroon" title="c2">X</font></span>)</span> is   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>
+ </span><div about="#PF28_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/28_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/28_1_1')" href="javascript:()" title="28_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="liouvil1.html#K1" title="LIOUVIL1:func.1">|_</a> <a onclick="hs(this)" href="javascript:()">LIOUVIL1:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">f</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">X</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> holds  <font color="Olive" title="b1">f</font> <a href="liouvil1.html#K1" title="LIOUVIL1:func.1">|_</a> <font color="Olive" title="b2">X</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <a href="funcop_1.html#K8" title="FUNCOP_1:func.8">--&gt;</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span> <a href="funct_4.html#K1" title="FUNCT_4:func.1">+*</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">f</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Olive" title="b2">X</font></span>)</span>;<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">f</font> be   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">X</font> be   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>;<br>
+<div about="#FC7" typeof="oo:Theorem">
+<a NAME="FC7"><span class="kw">cluster </span></a><font color="Maroon" title="c1">f</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Maroon" title="c2">X</font><span class="kw"> -&gt; </span> <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V4" title="RELAT_1:attr.4">-defined</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:29_1"></a>
+<font color="Maroon" title="c1">f</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Maroon" title="c2">X</font> is  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V4" title="RELAT_1:attr.4">-defined</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">f</font> be   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br>
+<div about="#FC8" typeof="oo:Theorem">
+<a NAME="FC8"><span class="kw">cluster </span></a><font color="Maroon" title="c1">f</font> <a href="liouvil1.html#K1" title="LIOUVIL1:func.1">|_</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c2">n</font></span>)</span><span class="kw"> -&gt; </span> <a href="series_1.html#V1" title="SERIES_1:attr.1">summable</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:30_1"></a>
+<font color="Maroon" title="c1">f</font> <a href="liouvil1.html#K1" title="LIOUVIL1:func.1">|_</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c2">n</font></span>)</span> is  <a href="series_1.html#V1" title="SERIES_1:attr.1">summable</a> 
+ </span><div about="#PF30_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/30_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/30_1_1')" href="javascript:()" title="30_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">f</font> be   <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br>
+<div about="#FC9" typeof="oo:Theorem">
+<a NAME="FC9"><span class="kw">cluster </span></a><font color="Maroon" title="c1">f</font> <a href="liouvil1.html#K1" title="LIOUVIL1:func.1">|_</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c2">n</font></span>)</span><span class="kw"> -&gt; </span> <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:31_1"></a>
+<font color="Maroon" title="c1">f</font> <a href="liouvil1.html#K1" title="LIOUVIL1:func.1">|_</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c2">n</font></span>)</span> is  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T16" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T16"><span class="comment"><font color="firebrick">:: LIOUVIL1:16</font></span><br></a><div class="add"> for <font color="Olive" title="b1">f</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> holds  <font color="Olive" title="b1">f</font> <a href="liouvil1.html#K1" title="LIOUVIL1:func.1">|_</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span> <a href="funct_2.html#R2" title="FUNCT_2:pred.2">=</a>  <a href="seq_1.html#K1" title="SEQ_1:func.1">seq_const</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>
+</div>
+<div about="#PF32" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T16"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/32')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/32')" href="javascript:()" title="32"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">f</font> be   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K2"><span class="kw">func</span> </a> <a href="liouvil1.html#K2" title="LIOUVIL1:func.2">FinSeq</a> (<font color="Maroon" title="c1">f</font>,<font color="Maroon" title="c2">n</font>)<span class="kw"> -&gt; </span>   <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> <span class="kw"> equals </span><a NAME="D2"><span class="comment"><font color="firebrick">:: LIOUVIL1:def 2</font></span><br></a><font color="Maroon" title="c1">f</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c2">n</font></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:33_1"></a>
+<font color="Maroon" title="c1">f</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c2">n</font></span>)</span> is    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> 
+ </span><div about="#PF33_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/33_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/33_1_1')" href="javascript:()" title="33_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="liouvil1.html#K2" title="LIOUVIL1:func.2">FinSeq</a> <a onclick="hs(this)" href="javascript:()">LIOUVIL1:def 2 : <br></a><span class="hide"> for <font color="Olive" title="b1">f</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds   <a href="liouvil1.html#K2" title="LIOUVIL1:func.2">FinSeq</a> (<font color="Olive" title="b1">f</font>,<font color="Olive" title="b2">n</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">f</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b2">n</font></span>)</span>;<br></span>
+</div>
+<br><div about="#T17" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E17">Th17</font></span>: <a NAME="T17"><span class="comment"><font color="firebrick">:: LIOUVIL1:17</font></span><br></a><div class="add"> for <font color="Olive" title="b1">f</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">k</font>, <font color="Olive" title="b3">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b2">k</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b3">n</font> holds <br><span class="p1">(<span class="default"><font color="Olive" title="b1">f</font> <a href="liouvil1.html#K1" title="LIOUVIL1:func.1">|_</a> <span class="p2">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b3">n</font></span>)</span></span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">k</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">f</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">k</font>
+</div>
+<div about="#PF34" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T17"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/34')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/34')" href="javascript:()" title="34"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T18" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E18">Th18</font></span>: <a NAME="T18"><span class="comment"><font color="firebrick">:: LIOUVIL1:18</font></span><br></a><div class="add"> for <font color="Olive" title="b1">f</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">f</font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br> <a href="rvsum_1.html#K18" title="RVSUM_1:func.18">Sum</a> <span class="p1">(<span class="default"><a href="liouvil1.html#K2" title="LIOUVIL1:func.2">FinSeq</a> (<font color="Olive" title="b1">f</font>,<font color="Olive" title="b2">n</font>)</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">f</font> <a href="liouvil1.html#K1" title="LIOUVIL1:func.1">|_</a> <span class="p2">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b2">n</font></span>)</span></span>)</span>
+</div>
+<div about="#PF35" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T18"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/35')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/35')" href="javascript:()" title="35"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T19" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E19">Th19</font></span>: <a NAME="T19"><span class="comment"><font color="firebrick">:: LIOUVIL1:19</font></span><br></a><div class="add"> for <font color="Olive" title="b1">f</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds   <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <span class="p1">(<span class="default"><a href="liouvil1.html#K2" title="LIOUVIL1:func.2">FinSeq</a> (<font color="Olive" title="b1">f</font>,<font color="Olive" title="b2">n</font>)</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b2">n</font>
+</div>
+<div about="#PF36" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T19"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/36')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/36')" href="javascript:()" title="36"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T20" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E20">Th20</font></span>: <a NAME="T20"><span class="comment"><font color="firebrick">:: LIOUVIL1:20</font></span><br></a><div class="add"> for <font color="Olive" title="b1">f</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <span class="p1">(<span class="default"><a href="liouvil1.html#K2" title="LIOUVIL1:func.2">FinSeq</a> (<font color="Olive" title="b1">f</font>,<font color="Olive" title="b2">i</font>)</span>)</span> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b1">f</font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <span class="p3">(<span class="default"><font color="Olive" title="b2">i</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="liouvil1.html#K2" title="LIOUVIL1:func.2">FinSeq</a> (<font color="Olive" title="b1">f</font>,<span class="p1">(<span class="default"><font color="Olive" title="b2">i</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span>)</div>
+<div about="#PF37" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T20"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/37')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/37')" href="javascript:()" title="37"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T21" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E21">Th21</font></span>: <a NAME="T21"><span class="comment"><font color="firebrick">:: LIOUVIL1:21</font></span><br></a><div class="add"> for <font color="Olive" title="b1">f</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">f</font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br> <a href="rvsum_1.html#K18" title="RVSUM_1:func.18">Sum</a> <span class="p1">(<span class="default"><a href="liouvil1.html#K2" title="LIOUVIL1:func.2">FinSeq</a> (<font color="Olive" title="b1">f</font>,<font color="Olive" title="b2">n</font>)</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <font color="Olive" title="b1">f</font></span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">n</font>
+</div>
+<div about="#PF38" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T21"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/38')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/38')" href="javascript:()" title="38"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T22" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E22">Th22</font></span>: <a NAME="T22"><span class="comment"><font color="firebrick">:: LIOUVIL1:22</font></span><br></a><div class="add"> for <font color="Olive" title="b1">f</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">f</font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br> <a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">f</font> <a href="liouvil1.html#K1" title="LIOUVIL1:func.1">|_</a> <span class="p2">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b2">n</font></span>)</span></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="series_1.html#K3" title="SERIES_1:func.3">Partial_Sums</a> <font color="Olive" title="b1">f</font></span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">n</font>
+</div>
+<div about="#PF39" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T22"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/39')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/39')" href="javascript:()" title="39"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T23" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T23"><span class="comment"><font color="firebrick">:: LIOUVIL1:23</font></span><br></a><div class="add"> for <font color="Olive" title="b1">f</font> being   <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">f</font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br> <a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">f</font> <a href="liouvil1.html#K1" title="LIOUVIL1:func.1">|_</a> <span class="p2">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b2">n</font></span>)</span></span>)</span> is   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>
+</div>
+<div about="#PF40" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T23"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/40')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/40')" href="javascript:()" title="40"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T24" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E23">Th23</font></span>: <a NAME="T24"><span class="comment"><font color="firebrick">:: LIOUVIL1:24</font></span><br></a><div class="add"> for <font color="Olive" title="b1">f</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">f</font> is  <a href="series_1.html#V1" title="SERIES_1:attr.1">summable</a>  &amp; <font color="Olive" title="b1">f</font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br> <a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <font color="Olive" title="b1">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="rvsum_1.html#K18" title="RVSUM_1:func.18">Sum</a> <span class="p2">(<span class="default"><a href="liouvil1.html#K2" title="LIOUVIL1:func.2">FinSeq</a> (<font color="Olive" title="b1">f</font>,<font color="Olive" title="b2">n</font>)</span>)</span></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p2">(<span class="default"><font color="Olive" title="b1">f</font> <a href="nat_1.html#K7" title="NAT_1:func.7">^\</a> <span class="p3">(<span class="default"><font color="Olive" title="b2">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span></span>)</span>
+</div>
+<div about="#PF41" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T24"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/41')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/41')" href="javascript:()" title="41"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: |_ is the same as SETWOP_2:def 1, p is FinSequence<br>  
+  
+</font></div>
+<div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC2" typeof="oo:Theorem">
+<a NAME="RC2"><span class="kw">cluster </span></a> <a href="relat_1.html#V1" title="RELAT_1:attr.1">Relation-like</a>   <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a>  <a href="relat_1.html#V4" title="RELAT_1:attr.4">-defined</a>   <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>   <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="funct_1.html#V1" title="FUNCT_1:attr.1">Function-like</a>  <a href="partfun1.html#V1" title="PARTFUN1:attr.1">V28</a>( <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a> ) <a href="funct_2.html#V1" title="FUNCT_2:attr.1">V32</a>( <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a> , <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> ) <a href="valued_0.html#V1" title="VALUED_0:attr.1">V39</a>() <a href="valued_0.html#V2" title="VALUED_0:attr.2">V40</a>() <a href="valued_0.html#V3" title="VALUED_0:attr.3">V41</a>()  <a href="partfun3.html#V1" title="PARTFUN3:attr.1">positive-yielding</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">K21</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K22</a>(<a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a>,<a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>));<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:42_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> st <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="partfun3.html#V1" title="PARTFUN3:attr.1">positive-yielding</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  )
+ </span><div about="#PF42_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/42_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/42_1_1')" href="javascript:()" title="42_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">f</font> be   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>;<br><div about="#D24" typeof="oo:Definition">
+<a NAME="V1"><span class="kw">attr</span> </a><font color="Maroon" title="c1">f</font> is  <a href="liouvil1.html#V1" title="LIOUVIL1:attr.1">eventually-non-zero</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E24">ENZ</font></span>: <a NAME="D3"><span class="comment"><font color="firebrick">:: LIOUVIL1:def 3</font></span><br></a> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  ex <font color="Olive" title="b2">N</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <br>( <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b2">N</font> &amp; <font color="Maroon" title="c1">f</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">N</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT3" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E24">ENZ</font></span>   defines <a href="liouvil1.html#V1" title="LIOUVIL1:attr.1">eventually-non-zero</a> <a onclick="hs(this)" href="javascript:()">LIOUVIL1:def 3 : <br></a><span class="hide"> for <font color="Olive" title="b1">f</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> holds <br> ( <font color="Olive" title="b1">f</font> is  <a href="liouvil1.html#V1" title="LIOUVIL1:attr.1">eventually-non-zero</a>  iff  for <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  ex <font color="Olive" title="b3">N</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <br>( <font color="Olive" title="b2">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b3">N</font> &amp; <font color="Olive" title="b1">f</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">N</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  ) );<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#CC1" typeof="oo:Theorem">
+<a NAME="CC1"><span class="kw">cluster </span></a> <a href="funct_1.html#V1" title="FUNCT_1:attr.1">Function-like</a>  <a href="funct_2.html#V1" title="FUNCT_2:attr.1">V32</a>( <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a> , <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> )  <a href="asympt_0.html#V5" title="ASYMPT_0:attr.5">eventually-nonzero</a>  <span class="kw"> -&gt; </span> <a href="liouvil1.html#V1" title="LIOUVIL1:attr.1">eventually-non-zero</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">K21</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K22</a>(<a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a>,<a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>));<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:44_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>  st <font color="Olive">b<sub>1</sub></font> is  <a href="asympt_0.html#V5" title="ASYMPT_0:attr.5">eventually-nonzero</a>  holds <br><font color="Olive">b<sub>1</sub></font> is  <a href="liouvil1.html#V1" title="LIOUVIL1:attr.1">eventually-non-zero</a> 
+ </span><div about="#PF44_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/44_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/44_1_1')" href="javascript:()" title="44_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#FC10" typeof="oo:Theorem">
+<a NAME="FC10"><span class="kw">cluster </span></a> <a href="rsspace.html#K2" title="RSSPACE:func.2">seq_id</a> <span class="p1">(<span class="default"><a href="relat_1.html#K4" title="RELAT_1:func.4">id</a> <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a></span>)</span><span class="kw"> -&gt; </span> <a href="asympt_0.html#V5" title="ASYMPT_0:attr.5">eventually-nonzero</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:45_1"></a>
+ <a href="rsspace.html#K2" title="RSSPACE:func.2">seq_id</a> <span class="p1">(<span class="default"><a href="relat_1.html#K4" title="RELAT_1:func.4">id</a> <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a></span>)</span> is  <a href="asympt_0.html#V5" title="ASYMPT_0:attr.5">eventually-nonzero</a> 
+ </span><div about="#PF45_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/45_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/45_1_1')" href="javascript:()" title="45_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC3" typeof="oo:Theorem">
+<a NAME="RC3"><span class="kw">cluster </span></a> <a href="relat_1.html#V1" title="RELAT_1:attr.1">Relation-like</a>   <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a>  <a href="relat_1.html#V4" title="RELAT_1:attr.4">-defined</a>   <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="funct_1.html#V1" title="FUNCT_1:attr.1">Function-like</a>  <a href="partfun1.html#V1" title="PARTFUN1:attr.1">V28</a>( <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a> ) <a href="funct_2.html#V1" title="FUNCT_2:attr.1">V32</a>( <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a> , <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> ) <a href="valued_0.html#V1" title="VALUED_0:attr.1">V39</a>() <a href="valued_0.html#V2" title="VALUED_0:attr.2">V40</a>() <a href="valued_0.html#V3" title="VALUED_0:attr.3">V41</a>()  <a href="liouvil1.html#V1" title="LIOUVIL1:attr.1">eventually-non-zero</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">K21</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K22</a>(<a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a>,<a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>));<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:46_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> st <font color="Olive">b<sub>1</sub></font> is  <a href="liouvil1.html#V1" title="LIOUVIL1:attr.1">eventually-non-zero</a> 
+ </span><div about="#PF46_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/46_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/46_1_1')" href="javascript:()" title="46_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T25" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E25">Th24</font></span>: <a NAME="T25"><span class="comment"><font color="firebrick">:: LIOUVIL1:25</font></span><br></a><div class="add"> for <font color="Olive" title="b1">f</font> being   <a href="liouvil1.html#V1" title="LIOUVIL1:attr.1">eventually-non-zero</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive" title="b1">f</font> <a href="nat_1.html#K7" title="NAT_1:func.7">^\</a> <font color="Olive" title="b2">n</font> is  <a href="liouvil1.html#V1" title="LIOUVIL1:attr.1">eventually-non-zero</a> </div>
+<div about="#PF47" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T25"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/47')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/47')" href="javascript:()" title="47"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">f</font> be   <a href="liouvil1.html#V1" title="LIOUVIL1:attr.1">eventually-non-zero</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br>
+<div about="#FC11" typeof="oo:Theorem">
+<a NAME="FC11"><span class="kw">cluster </span></a><font color="Maroon" title="c1">f</font> <a href="nat_1.html#K6" title="NAT_1:func.6">^\</a> <font color="Maroon" title="c2">n</font><span class="kw"> -&gt; </span> <a href="liouvil1.html#V1" title="LIOUVIL1:attr.1">eventually-non-zero</a>   for  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:48_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>  st <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">f</font> <a href="nat_1.html#K7" title="NAT_1:func.7">^\</a> <font color="Maroon" title="c2">n</font> holds <br><font color="Olive">b<sub>1</sub></font> is  <a href="liouvil1.html#V1" title="LIOUVIL1:attr.1">eventually-non-zero</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="liouvil1.html#T25" target="_self" onmouseover="rs('liouvil1/T25')" onmouseout="rh()">Th24</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#CC2" typeof="oo:Theorem">
+<a NAME="CC2"><span class="kw">cluster </span></a> <a href="ordinal1.html#V9" title="ORDINAL1:attr.9">non-zero</a>   <a href="funct_1.html#V1" title="FUNCT_1:attr.1">Function-like</a>   <a href="funct_1.html#V3" title="FUNCT_1:attr.3">constant</a>  <a href="funct_2.html#V1" title="FUNCT_2:attr.1">V32</a>( <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a> , <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> ) <span class="kw"> -&gt; </span> <a href="liouvil1.html#V1" title="LIOUVIL1:attr.1">eventually-non-zero</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">K21</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K22</a>(<a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a>,<a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>));<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:49_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>  st <font color="Olive">b<sub>1</sub></font> is  <a href="ordinal1.html#V9" title="ORDINAL1:attr.9">non-zero</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="funct_1.html#V3" title="FUNCT_1:attr.3">constant</a>  holds <br><font color="Olive">b<sub>1</sub></font> is  <a href="liouvil1.html#V1" title="LIOUVIL1:attr.1">eventually-non-zero</a> 
+ </span><div about="#PF49_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/49_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/49_1_1')" href="javascript:()" title="49_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">b</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br><div about="#D26" typeof="oo:Definition">
+<a NAME="K3"><span class="kw">func</span> </a> <a href="liouvil1.html#K3" title="LIOUVIL1:func.3">powerfact</a> <font color="Maroon" title="c1">b</font><span class="kw"> -&gt; </span>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E26">DefPower</font></span>: <a NAME="D4"><span class="comment"><font color="firebrick">:: LIOUVIL1:def 4</font></span><br></a> for <font color="Olive" title="b1">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <span class="kw">it</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b1">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">b</font> <a href="series_1.html#K5" title="SERIES_1:func.5">to_power</a> <span class="p2">(<span class="default"><font color="Olive" title="b1">i</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br> ex <font color="Olive">b<sub>1</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> st <br> for <font color="Olive" title="b2">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">b</font> <a href="series_1.html#K5" title="SERIES_1:func.5">to_power</a> <span class="p2">(<span class="default"><font color="Olive" title="b2">i</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span></span>)</span></span>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br> for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>  st (  for <font color="Olive" title="b3">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">b</font> <a href="series_1.html#K5" title="SERIES_1:func.5">to_power</a> <span class="p2">(<span class="default"><font color="Olive" title="b3">i</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span></span>)</span> ) &amp; (  for <font color="Olive" title="b3">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>2</sub></font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">b</font> <a href="series_1.html#K5" title="SERIES_1:func.5">to_power</a> <span class="p2">(<span class="default"><font color="Olive" title="b3">i</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span></span>)</span> ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font></span>;<br></span><div about="#PF50_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/50_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/50_1_1')" href="javascript:()" title="50_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT4" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E26">DefPower</font></span>   defines <a href="liouvil1.html#K3" title="LIOUVIL1:func.3">powerfact</a> <a onclick="hs(this)" href="javascript:()">LIOUVIL1:def 4 : <br></a><span class="hide"> for <font color="Olive" title="b1">b</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive">b<sub>2</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> holds <br> ( <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="liouvil1.html#K3" title="LIOUVIL1:func.3">powerfact</a> <font color="Olive" title="b1">b</font> iff  for <font color="Olive" title="b3">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>2</sub></font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">b</font> <a href="series_1.html#K5" title="SERIES_1:func.5">to_power</a> <span class="p2">(<span class="default"><font color="Olive" title="b3">i</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span></span>)</span> );<br></span>
+</div>
+<br><div about="#T26" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E27">Th25</font></span>: <a NAME="T26"><span class="comment"><font color="firebrick">:: LIOUVIL1:26</font></span><br></a><div class="add"> for <font color="Olive" title="b1">b</font>, <font color="Olive" title="b2">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">b</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1 holds <br><span class="p1">(<span class="default"><a href="liouvil1.html#K3" title="LIOUVIL1:func.3">powerfact</a> <font color="Olive" title="b1">b</font></span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">i</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <font color="Olive" title="b1">b</font></span>)</span> <a href="prepower.html#K1" title="PREPOWER:func.1">GeoSeq</a></span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">i</font>
+</div>
+<div about="#PF51" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T26"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/51')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/51')" href="javascript:()" title="51"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T27" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E28">Th26</font></span>: <a NAME="T27"><span class="comment"><font color="firebrick">:: LIOUVIL1:27</font></span><br></a><div class="add"> for <font color="Olive" title="b1">b</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">b</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1 holds <br>(  <a href="liouvil1.html#K3" title="LIOUVIL1:func.3">powerfact</a> <font color="Olive" title="b1">b</font> is  <a href="series_1.html#V1" title="SERIES_1:attr.1">summable</a>  &amp;  <a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p1">(<span class="default"><a href="liouvil1.html#K3" title="LIOUVIL1:func.3">powerfact</a> <font color="Olive" title="b1">b</font></span>)</span> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b1">b</font> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">b</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1</span>)</span> )</div>
+<div about="#PF52" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T27"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/52')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/52')" href="javascript:()" title="52"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">b</font> be   non  <a href="zfmisc_1.html#V1" title="ZFMISC_1:attr.1">trivial</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br>
+<div about="#FC12" typeof="oo:Theorem">
+<a NAME="FC12"><span class="kw">cluster </span></a> <a href="liouvil1.html#K3" title="LIOUVIL1:func.3">powerfact</a> <font color="Maroon" title="c1">b</font><span class="kw"> -&gt; </span> <a href="series_1.html#V1" title="SERIES_1:attr.1">summable</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:53_1"></a>
+ <a href="liouvil1.html#K3" title="LIOUVIL1:func.3">powerfact</a> <font color="Maroon" title="c1">b</font> is  <a href="series_1.html#V1" title="SERIES_1:attr.1">summable</a> 
+ </span><div about="#PF53_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/53_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/53_1_1')" href="javascript:()" title="53_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC4" typeof="oo:Theorem">
+<a NAME="RC4"><span class="kw">cluster </span></a> <a href="relat_1.html#V1" title="RELAT_1:attr.1">Relation-like</a>   <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a>  <a href="relat_1.html#V4" title="RELAT_1:attr.4">-defined</a>   <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="funct_1.html#V1" title="FUNCT_1:attr.1">Function-like</a>  <a href="partfun1.html#V1" title="PARTFUN1:attr.1">V28</a>( <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a> ) <a href="funct_2.html#V1" title="FUNCT_2:attr.1">V32</a>( <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a> , <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> ) <a href="valued_0.html#V1" title="VALUED_0:attr.1">V39</a>() <a href="valued_0.html#V2" title="VALUED_0:attr.2">V40</a>() <a href="valued_0.html#V3" title="VALUED_0:attr.3">V41</a>()  <a href="partfun3.html#V4" title="PARTFUN3:attr.4">nonnegative-yielding</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">K21</a>(<a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">K22</a>(<a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a>,<a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>));<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:54_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> st <font color="Olive">b<sub>1</sub></font> is  <a href="partfun3.html#V4" title="PARTFUN3:attr.4">nonnegative-yielding</a> 
+ </span><div about="#PF54_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/54_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/54_1_1')" href="javascript:()" title="54_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T28" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E29">Th27</font></span>: <a NAME="T28"><span class="comment"><font color="firebrick">:: LIOUVIL1:28</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">b</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b2">b</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1 &amp; <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1 holds <br> <a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b2">b</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1</span>)</span> <a href="valued_1.html#K26" title="VALUED_1:func.26">(#)</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="liouvil1.html#K3" title="LIOUVIL1:func.3">powerfact</a> <font color="Olive" title="b2">b</font></span>)</span> <a href="nat_1.html#K7" title="NAT_1:func.7">^\</a> <span class="p3">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span></span>)</span> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b2">b</font> <a href="series_1.html#K5" title="SERIES_1:func.5">to_power</a> <span class="p3">(<span class="default"><font color="Olive" title="b1">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span></span>)</span> <a href="series_1.html#K5" title="SERIES_1:func.5">to_power</a> <font color="Olive" title="b1">n</font></span>)</span>
+</div>
+<div about="#PF55" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T28"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/55')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/55')" href="javascript:()" title="55"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: <img src="http://mws.cs.ru.nl/~mptp/WP.ico" alt="WP: "> <a href="http://en.wikipedia.org/wiki/Liouville_number" title="See Wikipedia entry for Liouville number">Liouville number</a><br>  
+  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">x</font> be   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V2"><span class="kw">attr</span> </a><font color="Maroon" title="c1">x</font> is  <a href="liouvil1.html#V2" title="LIOUVIL1:attr.2">liouville</a> <span class="kw"> means </span><a NAME="D5"><span class="comment"><font color="firebrick">:: LIOUVIL1:def 5</font></span><br></a> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  ex <font color="Olive" title="b2">p</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a> ex <font color="Olive" title="b3">q</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <br>( <font color="Olive" title="b3">q</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1 &amp;  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <span class="p1"><a href="complex1.html#K9" title="COMPLEX1:func.9">|.</a><span class="default"><span class="p2">(<span class="default"><font color="Maroon" title="c1">x</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p3">(<span class="default"><font color="Olive" title="b2">p</font> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <font color="Olive" title="b3">q</font></span>)</span></span>)</span></span><a href="complex1.html#K9" title="COMPLEX1:func.9">.|</a></span> &amp; <span class="p1"><a href="complex1.html#K9" title="COMPLEX1:func.9">|.</a><span class="default"><span class="p2">(<span class="default"><font color="Maroon" title="c1">x</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p3">(<span class="default"><font color="Olive" title="b2">p</font> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <font color="Olive" title="b3">q</font></span>)</span></span>)</span></span><a href="complex1.html#K9" title="COMPLEX1:func.9">.|</a></span> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">q</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Olive" title="b1">n</font></span>)</span> );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT5" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="liouvil1.html#V2" title="LIOUVIL1:attr.2">liouville</a> <a onclick="hs(this)" href="javascript:()">LIOUVIL1:def 5 : <br></a><span class="hide"> for <font color="Olive" title="b1">x</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> holds <br> ( <font color="Olive" title="b1">x</font> is  <a href="liouvil1.html#V2" title="LIOUVIL1:attr.2">liouville</a>  iff  for <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  ex <font color="Olive" title="b3">p</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a> ex <font color="Olive" title="b4">q</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <br>( <font color="Olive" title="b4">q</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1 &amp;  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <span class="p1"><a href="complex1.html#K9" title="COMPLEX1:func.9">|.</a><span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b1">x</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p3">(<span class="default"><font color="Olive" title="b3">p</font> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <font color="Olive" title="b4">q</font></span>)</span></span>)</span></span><a href="complex1.html#K9" title="COMPLEX1:func.9">.|</a></span> &amp; <span class="p1"><a href="complex1.html#K9" title="COMPLEX1:func.9">|.</a><span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b1">x</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p3">(<span class="default"><font color="Olive" title="b3">p</font> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <font color="Olive" title="b4">q</font></span>)</span></span>)</span></span><a href="complex1.html#K9" title="COMPLEX1:func.9">.|</a></span> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">q</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Olive" title="b2">n</font></span>)</span> ) );<br></span>
+</div>
+<br><div about="#T29" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E30">Def2</font></span>: <a NAME="T29"><span class="comment"><font color="firebrick">:: LIOUVIL1:29</font></span><br></a><div class="add"> for <font color="Olive" title="b1">r</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> holds <br> ( <font color="Olive" title="b1">r</font> is  <a href="liouvil1.html#V2" title="LIOUVIL1:attr.2">liouville</a>  iff  for <font color="Olive" title="b2">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  ex <font color="Olive" title="b3">p</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a> ex <font color="Olive" title="b4">q</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <br>( 1 <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b4">q</font> &amp;  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <span class="p1"><a href="complex1.html#K9" title="COMPLEX1:func.9">|.</a><span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b1">r</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p3">(<span class="default"><font color="Olive" title="b3">p</font> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <font color="Olive" title="b4">q</font></span>)</span></span>)</span></span><a href="complex1.html#K9" title="COMPLEX1:func.9">.|</a></span> &amp; <span class="p1"><a href="complex1.html#K9" title="COMPLEX1:func.9">|.</a><span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b1">r</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p3">(<span class="default"><font color="Olive" title="b3">p</font> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <font color="Olive" title="b4">q</font></span>)</span></span>)</span></span><a href="complex1.html#K9" title="COMPLEX1:func.9">.|</a></span> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">q</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Olive" title="b2">n</font></span>)</span> ) )</div>
+<div about="#PF57" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T29"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/57')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/57')" href="javascript:()" title="57"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">a</font> be   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">b</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br><div about="#D31" typeof="oo:Definition">
+<a NAME="K4"><span class="kw">func</span> </a> <a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">b</font>)<span class="kw"> -&gt; </span>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E31">DefLio</font></span>: <a NAME="D6"><span class="comment"><font color="firebrick">:: LIOUVIL1:def 6</font></span><br></a>( <span class="kw">it</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b1">k</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <span class="kw">it</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b1">k</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">a</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b1">k</font></span>)</span> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><font color="Maroon" title="c2">b</font> <a href="series_1.html#K5" title="SERIES_1:func.5">to_power</a> <span class="p2">(<span class="default"><font color="Olive" title="b1">k</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span></span>)</span> ) );<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:58_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> st <br>( <font color="Olive">b<sub>1</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b2">k</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">k</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">a</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">k</font></span>)</span> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><font color="Maroon" title="c2">b</font> <a href="series_1.html#K5" title="SERIES_1:func.5">to_power</a> <span class="p2">(<span class="default"><font color="Olive" title="b2">k</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span></span>)</span> ) )
+ </span><div about="#PF58_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/58_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/58_1_1')" href="javascript:()" title="58_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:58_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>  st <font color="Olive">b<sub>1</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b3">k</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">k</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">a</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">k</font></span>)</span> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><font color="Maroon" title="c2">b</font> <a href="series_1.html#K5" title="SERIES_1:func.5">to_power</a> <span class="p2">(<span class="default"><font color="Olive" title="b3">k</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span></span>)</span> ) &amp; <font color="Olive">b<sub>2</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b3">k</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>2</sub></font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">k</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">a</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">k</font></span>)</span> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><font color="Maroon" title="c2">b</font> <a href="series_1.html#K5" title="SERIES_1:func.5">to_power</a> <span class="p2">(<span class="default"><font color="Olive" title="b3">k</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span></span>)</span> ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF58_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/58_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/58_1_2')" href="javascript:()" title="58_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT6" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E31">DefLio</font></span>   defines <a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> <a onclick="hs(this)" href="javascript:()">LIOUVIL1:def 6 : <br></a><span class="hide"> for <font color="Olive" title="b1">a</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">b</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive">b<sub>3</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> holds <br> ( <font color="Olive">b<sub>3</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font>) iff ( <font color="Olive">b<sub>3</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b4">k</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>3</sub></font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b4">k</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">a</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b4">k</font></span>)</span> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">b</font> <a href="series_1.html#K5" title="SERIES_1:func.5">to_power</a> <span class="p2">(<span class="default"><font color="Olive" title="b4">k</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span></span>)</span> ) ) );<br></span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: <img src="http://mws.cs.ru.nl/~mptp/WP.ico" alt="WP: "> <a href="http://en.wikipedia.org/wiki/Liouville_number!irrationality" title="See Wikipedia entry for Liouville number!irrationality">Liouville number!irrationality</a><br>  
+  
+</font></div>
+<div>
+<span class="kw">registration</span><div class="add">
+<div about="#CC3" typeof="oo:Theorem">
+<a NAME="CC3"><span class="kw">cluster </span></a><a href="xreal_0.html#V1" title="XREAL_0:attr.1">V38</a>()  <a href="liouvil1.html#V2" title="LIOUVIL1:attr.2">liouville</a>  <span class="kw"> -&gt; </span> <a href="irrat_1.html#NV1" title="IRRAT_1:NV.1">irrational</a>   for    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:59_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>  st <font color="Olive">b<sub>1</sub></font> is  <a href="liouvil1.html#V2" title="LIOUVIL1:attr.2">liouville</a>  holds <br><font color="Olive">b<sub>1</sub></font> is  <a href="irrat_1.html#NV1" title="IRRAT_1:NV.1">irrational</a> 
+ </span><div about="#PF59_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/59_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/59_1_1')" href="javascript:()" title="59_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: <img src="http://mws.cs.ru.nl/~mptp/WP.ico" alt="WP: "> <a href="http://en.wikipedia.org/wiki/Liouville's_constant" title="See Wikipedia entry for Liouville's constant">Liouville's constant</a><br>  
+  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">a</font> be   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">b</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K5"><span class="kw">func</span> </a> <a href="liouvil1.html#K5" title="LIOUVIL1:func.5">Liouville_constant</a> (<font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">b</font>)<span class="kw"> -&gt; </span>  <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a><span class="kw"> equals </span><a NAME="D7"><span class="comment"><font color="firebrick">:: LIOUVIL1:def 7</font></span><br></a> <a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p1">(<span class="default"><a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">b</font>)</span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:60_1"></a>
+ <a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p1">(<span class="default"><a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">b</font>)</span>)</span> is   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT7" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="liouvil1.html#K5" title="LIOUVIL1:func.5">Liouville_constant</a> <a onclick="hs(this)" href="javascript:()">LIOUVIL1:def 7 : <br></a><span class="hide"> for <font color="Olive" title="b1">a</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">b</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds   <a href="liouvil1.html#K5" title="LIOUVIL1:func.5">Liouville_constant</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p1">(<span class="default"><a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font>)</span>)</span>;<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">b</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br><div about="#D32" typeof="oo:Definition">
+<a NAME="K6"><span class="kw">func</span> </a> <a href="liouvil1.html#K6" title="LIOUVIL1:func.6">BLiouville_seq</a> <font color="Maroon" title="c1">b</font><span class="kw"> -&gt; </span>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E32">LiuSeq</font></span>: <a NAME="D8"><span class="comment"><font color="firebrick">:: LIOUVIL1:def 8</font></span><br></a> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <span class="kw">it</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">b</font> <a href="series_1.html#K5" title="SERIES_1:func.5">to_power</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br> ex <font color="Olive">b<sub>1</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> st <br> for <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">b</font> <a href="series_1.html#K5" title="SERIES_1:func.5">to_power</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span></span>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br> for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>  st (  for <font color="Olive" title="b3">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">b</font> <a href="series_1.html#K5" title="SERIES_1:func.5">to_power</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span> ) &amp; (  for <font color="Olive" title="b3">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>2</sub></font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">b</font> <a href="series_1.html#K5" title="SERIES_1:func.5">to_power</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span> ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font></span>;<br></span><div about="#PF61_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/61_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/61_1_1')" href="javascript:()" title="61_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT8" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E32">LiuSeq</font></span>   defines <a href="liouvil1.html#K6" title="LIOUVIL1:func.6">BLiouville_seq</a> <a onclick="hs(this)" href="javascript:()">LIOUVIL1:def 8 : <br></a><span class="hide"> for <font color="Olive" title="b1">b</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive">b<sub>2</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> holds <br> ( <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="liouvil1.html#K6" title="LIOUVIL1:func.6">BLiouville_seq</a> <font color="Olive" title="b1">b</font> iff  for <font color="Olive" title="b3">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>2</sub></font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">b</font> <a href="series_1.html#K5" title="SERIES_1:func.5">to_power</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span> );<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">b</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br>
+<div about="#FC13" typeof="oo:Theorem">
+<a NAME="FC13"><span class="kw">cluster </span></a> <a href="liouvil1.html#K6" title="LIOUVIL1:func.6">BLiouville_seq</a> <font color="Maroon" title="c1">b</font><span class="kw"> -&gt; </span> <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:62_1"></a>
+ <a href="liouvil1.html#K6" title="LIOUVIL1:func.6">BLiouville_seq</a> <font color="Maroon" title="c1">b</font> is  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a> 
+ </span><div about="#PF62_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/62_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/62_1_1')" href="javascript:()" title="62_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">a</font> be   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">b</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br><div about="#D33" typeof="oo:Definition">
+<a NAME="K7"><span class="kw">func</span> </a> <a href="liouvil1.html#K7" title="LIOUVIL1:func.7">ALiouville_seq</a> (<font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">b</font>)<span class="kw"> -&gt; </span>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E33">ALiuDef</font></span>: <a NAME="D9"><span class="comment"><font color="firebrick">:: LIOUVIL1:def 9</font></span><br></a> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <span class="kw">it</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="liouvil1.html#K6" title="LIOUVIL1:func.6">BLiouville_seq</a> <font color="Maroon" title="c2">b</font></span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">b</font>)</span>)</span> <a href="liouvil1.html#K1" title="LIOUVIL1:func.1">|_</a> <span class="p3">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">n</font></span>)</span></span>)</span></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br> ex <font color="Olive">b<sub>1</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> st <br> for <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="liouvil1.html#K6" title="LIOUVIL1:func.6">BLiouville_seq</a> <font color="Maroon" title="c2">b</font></span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">n</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">b</font>)</span>)</span> <a href="liouvil1.html#K1" title="LIOUVIL1:func.1">|_</a> <span class="p3">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b2">n</font></span>)</span></span>)</span></span>)</span></span>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br> for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>  st (  for <font color="Olive" title="b3">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="liouvil1.html#K6" title="LIOUVIL1:func.6">BLiouville_seq</a> <font color="Maroon" title="c2">b</font></span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">n</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">b</font>)</span>)</span> <a href="liouvil1.html#K1" title="LIOUVIL1:func.1">|_</a> <span class="p3">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b3">n</font></span>)</span></span>)</span></span>)</span> ) &amp; (  for <font color="Olive" title="b3">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>2</sub></font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="liouvil1.html#K6" title="LIOUVIL1:func.6">BLiouville_seq</a> <font color="Maroon" title="c2">b</font></span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">n</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">b</font>)</span>)</span> <a href="liouvil1.html#K1" title="LIOUVIL1:func.1">|_</a> <span class="p3">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b3">n</font></span>)</span></span>)</span></span>)</span> ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font></span>;<br></span><div about="#PF63_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/63_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/63_1_1')" href="javascript:()" title="63_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT9" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E33">ALiuDef</font></span>   defines <a href="liouvil1.html#K7" title="LIOUVIL1:func.7">ALiouville_seq</a> <a onclick="hs(this)" href="javascript:()">LIOUVIL1:def 9 : <br></a><span class="hide"> for <font color="Olive" title="b1">a</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">b</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive">b<sub>3</sub></font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a> holds <br> ( <font color="Olive">b<sub>3</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="liouvil1.html#K7" title="LIOUVIL1:func.7">ALiouville_seq</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font>) iff  for <font color="Olive" title="b4">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive">b<sub>3</sub></font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b4">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="liouvil1.html#K6" title="LIOUVIL1:func.6">BLiouville_seq</a> <font color="Olive" title="b2">b</font></span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b4">n</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font>)</span>)</span> <a href="liouvil1.html#K1" title="LIOUVIL1:func.1">|_</a> <span class="p3">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b4">n</font></span>)</span></span>)</span></span>)</span> );<br></span>
+</div>
+<br><div about="#T30" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E34">Th28</font></span>: <a NAME="T30"><span class="comment"><font color="firebrick">:: LIOUVIL1:30</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">b</font>, <font color="Olive" title="b3">n</font>, <font color="Olive" title="b4">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b2">b</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; <font color="Olive" title="b4">k</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b3">n</font> holds <br><span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font>)</span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b4">k</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="liouvil1.html#K6" title="LIOUVIL1:func.6">BLiouville_seq</a> <font color="Olive" title="b2">b</font></span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">n</font></span>)</span> is   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>
+</div>
+<div about="#PF64" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T30"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/64')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/64')" href="javascript:()" title="64"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T31" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E35">Th29</font></span>: <a NAME="T31"><span class="comment"><font color="firebrick">:: LIOUVIL1:31</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">b</font>, <font color="Olive" title="b3">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b2">b</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br><span class="p1">(<span class="default"><a href="liouvil1.html#K7" title="LIOUVIL1:func.7">ALiouville_seq</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font>)</span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">n</font> is   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>
+</div>
+<div about="#PF65" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T31"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/65')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/65')" href="javascript:()" title="65"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">a</font> be   <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">b</font> be   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br>
+<div about="#FC14" typeof="oo:Theorem">
+<a NAME="FC14"><span class="kw">cluster </span></a> <a href="liouvil1.html#K7" title="LIOUVIL1:func.7">ALiouville_seq</a> (<font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">b</font>)<span class="kw"> -&gt; </span> <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:66_1"></a>
+ <a href="liouvil1.html#K7" title="LIOUVIL1:func.7">ALiouville_seq</a> (<font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">b</font>) is  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a> 
+ </span><div about="#PF66_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/66_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/66_1_1')" href="javascript:()" title="66_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T32" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E36">Th30</font></span>: <a NAME="T32"><span class="comment"><font color="firebrick">:: LIOUVIL1:32</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">b</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b2">b</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1 holds <br><span class="p1">(<span class="default"><a href="liouvil1.html#K6" title="LIOUVIL1:func.6">BLiouville_seq</a> <font color="Olive" title="b2">b</font></span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1</div>
+<div about="#PF67" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T32"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/67')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/67')" href="javascript:()" title="67"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T33" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E37">Th31</font></span>: <a NAME="T33"><span class="comment"><font color="firebrick">:: LIOUVIL1:33</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">b</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b2">b</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 2 &amp;  <a href="rvsum_1.html#K1" title="RVSUM_1:func.1">rng</a> <font color="Olive" title="b1">a</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b2">b</font> holds <br> <a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font>) is  <a href="series_1.html#V1" title="SERIES_1:attr.1">summable</a> </div>
+<div about="#PF68" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T33"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/68')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/68')" href="javascript:()" title="68"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T34" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E38">Th32</font></span>: <a NAME="T34"><span class="comment"><font color="firebrick">:: LIOUVIL1:34</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">n</font>, <font color="Olive" title="b3">b</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b3">b</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1 holds <br><span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="liouvil1.html#K7" title="LIOUVIL1:func.7">ALiouville_seq</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b3">b</font>)</span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">n</font></span>)</span> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="liouvil1.html#K6" title="LIOUVIL1:func.6">BLiouville_seq</a> <font color="Olive" title="b3">b</font></span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">n</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="rvsum_1.html#K18" title="RVSUM_1:func.18">Sum</a> <span class="p1">(<span class="default"><a href="liouvil1.html#K2" title="LIOUVIL1:func.2">FinSeq</a> (<span class="p2">(<span class="default"><a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b3">b</font>)</span>)</span>,<font color="Olive" title="b2">n</font>)</span>)</span>
+</div>
+<div about="#PF69" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T34"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/69')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/69')" href="javascript:()" title="69"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T35" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E39">Th33</font></span>: <a NAME="T35"><span class="comment"><font color="firebrick">:: LIOUVIL1:35</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">b</font> being   non  <a href="zfmisc_1.html#V1" title="ZFMISC_1:attr.1">trivial</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b3">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <span class="p1">(<span class="default"><a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font>)</span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">n</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </div>
+<div about="#PF70" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T35"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/70')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/70')" href="javascript:()" title="70"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T36" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T36"><span class="comment"><font color="firebrick">:: LIOUVIL1:36</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>   <a href="partfun3.html#V1" title="PARTFUN3:attr.1">positive-yielding</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">b</font> being   non  <a href="zfmisc_1.html#V1" title="ZFMISC_1:attr.1">trivial</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b3">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  holds <span class="p1">(<span class="default"><a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font>)</span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b3">n</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </div>
+<div about="#PF71" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T36"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/71')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/71')" href="javascript:()" title="71"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">a</font> be   <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">b</font> be   non  <a href="zfmisc_1.html#V1" title="ZFMISC_1:attr.1">trivial</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br>
+<div about="#FC15" typeof="oo:Theorem">
+<a NAME="FC15"><span class="kw">cluster </span></a> <a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">b</font>)<span class="kw"> -&gt; </span> <a href="partfun3.html#V4" title="PARTFUN3:attr.4">nonnegative-yielding</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:72_1"></a>
+ <a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">b</font>) is  <a href="partfun3.html#V4" title="PARTFUN3:attr.4">nonnegative-yielding</a> 
+ </span><div about="#PF72_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/72_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/72_1_1')" href="javascript:()" title="72_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T37" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E40">Th34</font></span>: <a NAME="T37"><span class="comment"><font color="firebrick">:: LIOUVIL1:37</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">b</font>, <font color="Olive" title="b3">c</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b2">b</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 2 &amp; <font color="Olive" title="b3">c</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1 &amp;  <a href="rvsum_1.html#K1" title="RVSUM_1:func.1">rng</a> <font color="Olive" title="b1">a</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b3">c</font> &amp; <font color="Olive" title="b3">c</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b2">b</font> holds <br> for <font color="Olive" title="b4">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <span class="p1">(<span class="default"><a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font>)</span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b4">i</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b3">c</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1</span>)</span> <a href="valued_1.html#K26" title="VALUED_1:func.26">(#)</a> <span class="p2">(<span class="default"><a href="liouvil1.html#K3" title="LIOUVIL1:func.3">powerfact</a> <font color="Olive" title="b2">b</font></span>)</span></span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b4">i</font>
+</div>
+<div about="#PF73" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T37"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/73')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/73')" href="javascript:()" title="73"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T38" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T38"><span class="comment"><font color="firebrick">:: LIOUVIL1:38</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">b</font>, <font color="Olive" title="b3">c</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b2">b</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 2 &amp; <font color="Olive" title="b3">c</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1 &amp;  <a href="rvsum_1.html#K1" title="RVSUM_1:func.1">rng</a> <font color="Olive" title="b1">a</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b3">c</font> &amp; <font color="Olive" title="b3">c</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b2">b</font> holds <br> <a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p1">(<span class="default"><a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font>)</span>)</span> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b3">c</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1</span>)</span> <a href="valued_1.html#K26" title="VALUED_1:func.26">(#)</a> <span class="p2">(<span class="default"><a href="liouvil1.html#K3" title="LIOUVIL1:func.3">powerfact</a> <font color="Olive" title="b2">b</font></span>)</span></span>)</span>
+</div>
+<div about="#PF74" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T38"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/74')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/74')" href="javascript:()" title="74"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T39" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E41">Th35</font></span>: <a NAME="T39"><span class="comment"><font color="firebrick">:: LIOUVIL1:39</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">b</font>, <font color="Olive" title="b3">c</font>, <font color="Olive" title="b4">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b2">b</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 2 &amp; <font color="Olive" title="b3">c</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1 &amp;  <a href="rvsum_1.html#K1" title="RVSUM_1:func.1">rng</a> <font color="Olive" title="b1">a</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b3">c</font> &amp; <font color="Olive" title="b3">c</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b2">b</font> holds <br> <a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font>)</span>)</span> <a href="nat_1.html#K7" title="NAT_1:func.7">^\</a> <span class="p2">(<span class="default"><font color="Olive" title="b4">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b3">c</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1</span>)</span> <a href="valued_1.html#K26" title="VALUED_1:func.26">(#)</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="liouvil1.html#K3" title="LIOUVIL1:func.3">powerfact</a> <font color="Olive" title="b2">b</font></span>)</span> <a href="nat_1.html#K7" title="NAT_1:func.7">^\</a> <span class="p3">(<span class="default"><font color="Olive" title="b4">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span></span>)</span>
+</div>
+<div about="#PF75" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T39"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/75')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/75')" href="javascript:()" title="75"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T40" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E42">Th36</font></span>: <a NAME="T40"><span class="comment"><font color="firebrick">:: LIOUVIL1:40</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">b</font> being   non  <a href="zfmisc_1.html#V1" title="ZFMISC_1:attr.1">trivial</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b3">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">a</font> is  <a href="liouvil1.html#V1" title="LIOUVIL1:attr.1">eventually-non-zero</a>  &amp;  <a href="rvsum_1.html#K1" title="RVSUM_1:func.1">rng</a> <font color="Olive" title="b1">a</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b2">b</font> holds <br> <a href="series_1.html#K4" title="SERIES_1:func.4">Sum</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font>)</span>)</span> <a href="nat_1.html#K7" title="NAT_1:func.7">^\</a> <span class="p2">(<span class="default"><font color="Olive" title="b3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </div>
+<div about="#PF76" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T40"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/76')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/76')" href="javascript:()" title="76"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T41" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E43">Th37</font></span>: <a NAME="T41"><span class="comment"><font color="firebrick">:: LIOUVIL1:41</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">b</font> being   non  <a href="zfmisc_1.html#V1" title="ZFMISC_1:attr.1">trivial</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st  <a href="rvsum_1.html#K1" title="RVSUM_1:func.1">rng</a> <font color="Olive" title="b1">a</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b2">b</font> &amp; <font color="Olive" title="b1">a</font> is  <a href="liouvil1.html#V1" title="LIOUVIL1:attr.1">eventually-non-zero</a>  holds <br> for <font color="Olive" title="b3">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  ex <font color="Olive" title="b4">p</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a> ex <font color="Olive" title="b5">q</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <br>( <font color="Olive" title="b5">q</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1 &amp;  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <span class="p1"><a href="complex1.html#K9" title="COMPLEX1:func.9">|.</a><span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="liouvil1.html#K5" title="LIOUVIL1:func.5">Liouville_constant</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font>)</span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p3">(<span class="default"><font color="Olive" title="b4">p</font> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <font color="Olive" title="b5">q</font></span>)</span></span>)</span></span><a href="complex1.html#K9" title="COMPLEX1:func.9">.|</a></span> &amp; <span class="p1"><a href="complex1.html#K9" title="COMPLEX1:func.9">|.</a><span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="liouvil1.html#K5" title="LIOUVIL1:func.5">Liouville_constant</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font>)</span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p3">(<span class="default"><font color="Olive" title="b4">p</font> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <font color="Olive" title="b5">q</font></span>)</span></span>)</span></span><a href="complex1.html#K9" title="COMPLEX1:func.9">.|</a></span> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default"><font color="Olive" title="b5">q</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Olive" title="b3">n</font></span>)</span> )</div>
+<div about="#PF77" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T41"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/77')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/77')" href="javascript:()" title="77"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K8"><span class="kw">func</span> </a> <a href="liouvil1.html#K8" title="LIOUVIL1:func.8">Liouville_constant</a> <span class="kw"> -&gt; </span>  <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a><span class="kw"> equals </span><a NAME="D10"><span class="comment"><font color="firebrick">:: LIOUVIL1:def 10</font></span><br></a> <a href="liouvil1.html#K5" title="LIOUVIL1:func.5">Liouville_constant</a> (<span class="p1">(<span class="default"><a href="seq_1.html#K1" title="SEQ_1:func.1">seq_const</a> 1</span>)</span>,10);<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="liouvil1.html#K5" title="LIOUVIL1:func.5">Liouville_constant</a> (<span class="p1">(<span class="default"><a href="seq_1.html#K1" title="SEQ_1:func.1">seq_const</a> 1</span>)</span>,10) is   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a></span>;<br></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT10" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="liouvil1.html#K8" title="LIOUVIL1:func.8">Liouville_constant</a> <a onclick="hs(this)" href="javascript:()">LIOUVIL1:def 10 : <br></a><span class="hide"> <a href="liouvil1.html#K8" title="LIOUVIL1:func.8">Liouville_constant</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="liouvil1.html#K5" title="LIOUVIL1:func.5">Liouville_constant</a> (<span class="p1">(<span class="default"><a href="seq_1.html#K1" title="SEQ_1:func.1">seq_const</a> 1</span>)</span>,10);<br></span>
+</div>
+<br><div about="#T42" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E44">Th38</font></span>: <a NAME="T42"><span class="comment"><font color="firebrick">:: LIOUVIL1:42</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>  <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><br>  for <font color="Olive" title="b2">b</font> being   non  <a href="zfmisc_1.html#V1" title="ZFMISC_1:attr.1">trivial</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st  <a href="rvsum_1.html#K1" title="RVSUM_1:func.1">rng</a> <font color="Olive" title="b1">a</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b2">b</font> &amp; <font color="Olive" title="b1">a</font> is  <a href="liouvil1.html#V1" title="LIOUVIL1:attr.1">eventually-non-zero</a>  holds <br> <a href="liouvil1.html#K5" title="LIOUVIL1:func.5">Liouville_constant</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font>) is  <a href="liouvil1.html#V2" title="LIOUVIL1:attr.2">liouville</a> </div>
+<div about="#PF79" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T42"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/79')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/79')" href="javascript:()" title="79"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#FC16" typeof="oo:Theorem">
+<a NAME="FC16"><span class="kw">cluster </span></a> <a href="liouvil1.html#K8" title="LIOUVIL1:func.8">Liouville_constant</a> <span class="kw"> -&gt; </span> <a href="liouvil1.html#V2" title="LIOUVIL1:attr.2">liouville</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:80_1"></a>
+ <a href="liouvil1.html#K8" title="LIOUVIL1:func.8">Liouville_constant</a>  is  <a href="liouvil1.html#V2" title="LIOUVIL1:attr.2">liouville</a> 
+ </span><div about="#PF80_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/80_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/80_1_1')" href="javascript:()" title="80_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC5" typeof="oo:Theorem">
+<a NAME="RC5"><span class="kw">cluster </span></a> <a href="xxreal_0.html#V1" title="XXREAL_0:attr.1">ext-real</a>   <a href="xcmplx_0.html#V1" title="XCMPLX_0:attr.1">complex</a>  <a href="xreal_0.html#V1" title="XREAL_0:attr.1">V38</a>()  <a href="liouvil1.html#V2" title="LIOUVIL1:attr.2">liouville</a>   for    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:81_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> st <font color="Olive">b<sub>1</sub></font> is  <a href="liouvil1.html#V2" title="LIOUVIL1:attr.2">liouville</a> 
+ </span><div about="#PF81_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/81_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/81_1_1')" href="javascript:()" title="81_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<a NAME="NM1"><span class="kw">mode </span>Liouville<span class="kw"> is </span></a>  <a href="liouvil1.html#V2" title="LIOUVIL1:attr.2">liouville</a>  <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T43" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E45">Th39</font></span>: <a NAME="T43"><span class="comment"><font color="firebrick">:: LIOUVIL1:43</font></span><br></a><div class="add"> for <font color="Olive" title="b1">m</font>, <font color="Olive" title="b2">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <span class="p1">(<span class="default"><a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<span class="p2">(<span class="default"><a href="seq_1.html#K1" title="SEQ_1:func.1">seq_const</a> 1</span>)</span>,<font color="Olive" title="b1">m</font>)</span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">m</font> <a href="power.html#K2" title="POWER:func.2">to_power</a> <span class="p1">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <span class="p2">(<span class="default"><font color="Olive" title="b2">n</font> <a href="newton.html#K7" title="NEWTON:func.7">!</a></span>)</span></span>)</span>
+</div>
+<div about="#PF83" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T43"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/83')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/83')" href="javascript:()" title="83"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E59"></a><span class="lab"><font color="Green" title="E46">TC1</font></span>: <span about="#E59" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">m</font>, <font color="Olive" title="b2">n</font> being   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st 1 <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b1">m</font> holds <br><span class="p1">(<span class="default"><a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<span class="p2">(<span class="default"><a href="seq_1.html#K1" title="SEQ_1:func.1">seq_const</a> 1</span>)</span>,<font color="Olive" title="b1">m</font>)</span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default">2 <a href="series_1.html#K5" title="SERIES_1:func.5">to_power</a> <font color="Olive" title="b2">n</font></span>)</span>
+ </span><br><div about="#PF84" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E59"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/84')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/84')" href="javascript:()" title="84"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E60"></a><span class="lab"><font color="Green" title="E47">TLLC</font></span>: <span about="#E60" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">m</font>, <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st 1 <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b1">m</font> holds <br><span class="p1">(<span class="default"><a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<span class="p2">(<span class="default"><a href="seq_1.html#K1" title="SEQ_1:func.1">seq_const</a> 1</span>)</span>,<font color="Olive" title="b1">m</font>)</span>)</span> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> <span class="p1">(<span class="default">2 <a href="series_1.html#K5" title="SERIES_1:func.5">to_power</a> <font color="Olive" title="b2">n</font></span>)</span>
+ </span><br><div about="#PF85" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E60"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/85')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/85')" href="javascript:()" title="85"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T44" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T44"><span class="comment"><font color="firebrick">:: LIOUVIL1:44</font></span><br></a><div class="add"> for <font color="Olive" title="b1">m</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st 1 <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b1">m</font> holds <br> <a href="liouvil1.html#K4" title="LIOUVIL1:func.4">Liouville_seq</a> (<span class="p1">(<span class="default"><a href="seq_1.html#K1" title="SEQ_1:func.1">seq_const</a> 1</span>)</span>,<font color="Olive" title="b1">m</font>) is  <a href="asympt_3.html#V2" title="ASYMPT_3:attr.2">negligible</a> </div>
+<div about="#PF86" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T44"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/86')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/86')" href="javascript:()" title="86"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T45" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T45"><span class="comment"><font color="firebrick">:: LIOUVIL1:45</font></span><br></a><div class="add">( 1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 10 <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a>  <a href="liouvil1.html#K8" title="LIOUVIL1:func.8">Liouville_constant</a>  &amp;  <a href="liouvil1.html#K8" title="LIOUVIL1:func.8">Liouville_constant</a>  <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <span class="p1">(<span class="default">10 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 9</span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p1">(<span class="default">1 <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 10</span>)</span> )</div>
+<div about="#PF87" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T45"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/87')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/87')" href="javascript:()" title="87"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T46" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E48">Th40</font></span>: <a NAME="T46"><span class="comment"><font color="firebrick">:: LIOUVIL1:46</font></span><br></a><div class="add"> for <font color="Olive" title="b1">nl</font> being   <a href="liouvil1.html#NM1" title="LIOUVIL1:NM.1">Liouville</a><br>  for <font color="Olive" title="b2">z</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a> holds  <font color="Olive" title="b2">z</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Olive" title="b1">nl</font> is  <a href="liouvil1.html#V2" title="LIOUVIL1:attr.2">liouville</a> </div>
+<div about="#PF88" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T46"></span><a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/88')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/88')" href="javascript:()" title="88"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">nl</font> be   <a href="liouvil1.html#NM1" title="LIOUVIL1:NM.1">Liouville</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">z</font> be   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>;<br>
+<div about="#FC17" typeof="oo:Theorem">
+<a NAME="FC17"><span class="kw">cluster </span></a><font color="Maroon" title="c1">nl</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Maroon" title="c2">z</font><span class="kw"> -&gt; </span> <a href="liouvil1.html#V2" title="LIOUVIL1:attr.2">liouville</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:89_1"></a>
+<font color="Maroon" title="c1">nl</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Maroon" title="c2">z</font> is  <a href="liouvil1.html#V2" title="LIOUVIL1:attr.2">liouville</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="liouvil1.html#T46" target="_self" onmouseover="rs('liouvil1/T46')" onmouseout="rh()">Th40</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K9"><span class="kw">func</span> </a> <a href="liouvil1.html#K9" title="LIOUVIL1:func.9">LiouvilleNumbers</a> <span class="kw"> -&gt; </span>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a><span class="kw"> equals </span><a NAME="D11"><span class="comment"><font color="firebrick">:: LIOUVIL1:def 11</font></span><br></a><span class="p1"> { <span class="default"> <font color="Olive" title="b1">nl</font> where <font color="Olive" title="b1">nl</font> is   <a href="liouvil1.html#NM1" title="LIOUVIL1:NM.1">Liouville</a> : verum </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:90_1"></a>
+<span class="p1"> { <span class="default"> <font color="Olive" title="b1">nl</font> where <font color="Olive" title="b1">nl</font> is   <a href="liouvil1.html#NM1" title="LIOUVIL1:NM.1">Liouville</a> : verum </span> } </span>  is   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>
+ </span><div about="#PF90_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/90_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/90_1_1')" href="javascript:()" title="90_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT11" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="liouvil1.html#K9" title="LIOUVIL1:func.9">LiouvilleNumbers</a> <a onclick="hs(this)" href="javascript:()">LIOUVIL1:def 11 : <br></a><span class="hide"> <a href="liouvil1.html#K9" title="LIOUVIL1:func.9">LiouvilleNumbers</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">nl</font> where <font color="Olive" title="b1">nl</font> is   <a href="liouvil1.html#NM1" title="LIOUVIL1:NM.1">Liouville</a> : verum </span> } </span> ;<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#FC18" typeof="oo:Theorem">
+<a NAME="FC18"><span class="kw">cluster </span></a> <a href="liouvil1.html#K9" title="LIOUVIL1:func.9">LiouvilleNumbers</a> <span class="kw"> -&gt; </span> non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:91_1"></a>
+ not  <a href="liouvil1.html#K9" title="LIOUVIL1:func.9">LiouvilleNumbers</a>  is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ </span><div about="#PF91_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/91_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/91_1_1')" href="javascript:()" title="91_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#FC19" typeof="oo:Theorem">
+<a NAME="FC19"><span class="kw">cluster </span></a> <a href="liouvil1.html#K9" title="LIOUVIL1:func.9">LiouvilleNumbers</a> <span class="kw"> -&gt; </span> <a href="finset_1.html#NV2" title="FINSET_1:NV.2">infinite</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:92_1"></a>
+ not  <a href="liouvil1.html#K9" title="LIOUVIL1:func.9">LiouvilleNumbers</a>  is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a> 
+ </span><div about="#PF92_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/liouvil1/92_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/liouvil1/92_1_1')" href="javascript:()" title="92_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+</body>
+</html>

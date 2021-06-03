@@ -1,0 +1,908 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>MATRTOP1:  Linear Transformations of Euclidean Topological Spaces</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  Linear Transformations of Euclidean Topological Spaces</font></span><br><span class="comment"><font color="firebrick">:: by Karol P\kak</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received October 26, 2010</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 2010-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+<div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">X</font>, <font color="Maroon" title="c2">Y</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ;<br><span class="kw">let </span><font color="Maroon" title="c3">F</font> be   <a href="partfun3.html#V1" title="PARTFUN3:attr.1">positive-yielding</a>  <a href="partfun1.html#NM1" title="PARTFUN1:NM.1">PartFunc</a> of <font color="Maroon" title="c1">X</font>,<a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>;<br>
+<div about="#FC1" typeof="oo:Theorem">
+<a NAME="FC1"><span class="kw">cluster </span></a><font color="Maroon" title="c3">F</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Maroon" title="c2">Y</font><span class="kw"> -&gt; </span> <a href="partfun3.html#V1" title="PARTFUN3:attr.1">positive-yielding</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:1_1"></a>
+<font color="Maroon" title="c3">F</font> <a href="partfun1.html#K2" title="PARTFUN1:func.2">|</a> <font color="Maroon" title="c2">Y</font> is  <a href="partfun3.html#V1" title="PARTFUN3:attr.1">positive-yielding</a> 
+ </span><div about="#PF1_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/1_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/1_1_1')" href="javascript:()" title="1_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">X</font>, <font color="Maroon" title="c2">Y</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ;<br><span class="kw">let </span><font color="Maroon" title="c3">F</font> be   <a href="partfun3.html#V2" title="PARTFUN3:attr.2">negative-yielding</a>  <a href="partfun1.html#NM1" title="PARTFUN1:NM.1">PartFunc</a> of <font color="Maroon" title="c1">X</font>,<a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>;<br>
+<div about="#FC2" typeof="oo:Theorem">
+<a NAME="FC2"><span class="kw">cluster </span></a><font color="Maroon" title="c3">F</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Maroon" title="c2">Y</font><span class="kw"> -&gt; </span> <a href="partfun3.html#V2" title="PARTFUN3:attr.2">negative-yielding</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:2_1"></a>
+<font color="Maroon" title="c3">F</font> <a href="partfun1.html#K2" title="PARTFUN1:func.2">|</a> <font color="Maroon" title="c2">Y</font> is  <a href="partfun3.html#V2" title="PARTFUN3:attr.2">negative-yielding</a> 
+ </span><div about="#PF2_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/2_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/2_1_1')" href="javascript:()" title="2_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">X</font>, <font color="Maroon" title="c2">Y</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ;<br><span class="kw">let </span><font color="Maroon" title="c3">F</font> be   <a href="partfun3.html#V3" title="PARTFUN3:attr.3">nonpositive-yielding</a>  <a href="partfun1.html#NM1" title="PARTFUN1:NM.1">PartFunc</a> of <font color="Maroon" title="c1">X</font>,<a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>;<br>
+<div about="#FC3" typeof="oo:Theorem">
+<a NAME="FC3"><span class="kw">cluster </span></a><font color="Maroon" title="c3">F</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Maroon" title="c2">Y</font><span class="kw"> -&gt; </span> <a href="partfun3.html#V3" title="PARTFUN3:attr.3">nonpositive-yielding</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:3_1"></a>
+<font color="Maroon" title="c3">F</font> <a href="partfun1.html#K2" title="PARTFUN1:func.2">|</a> <font color="Maroon" title="c2">Y</font> is  <a href="partfun3.html#V3" title="PARTFUN3:attr.3">nonpositive-yielding</a> 
+ </span><div about="#PF3_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/3_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/3_1_1')" href="javascript:()" title="3_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">X</font>, <font color="Maroon" title="c2">Y</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ;<br><span class="kw">let </span><font color="Maroon" title="c3">F</font> be   <a href="partfun3.html#V4" title="PARTFUN3:attr.4">nonnegative-yielding</a>  <a href="partfun1.html#NM1" title="PARTFUN1:NM.1">PartFunc</a> of <font color="Maroon" title="c1">X</font>,<a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>;<br>
+<div about="#FC4" typeof="oo:Theorem">
+<a NAME="FC4"><span class="kw">cluster </span></a><font color="Maroon" title="c3">F</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Maroon" title="c2">Y</font><span class="kw"> -&gt; </span> <a href="partfun3.html#V4" title="PARTFUN3:attr.4">nonnegative-yielding</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:4_1"></a>
+<font color="Maroon" title="c3">F</font> <a href="partfun1.html#K2" title="PARTFUN1:func.2">|</a> <font color="Maroon" title="c2">Y</font> is  <a href="partfun3.html#V4" title="PARTFUN3:attr.4">nonnegative-yielding</a> 
+ </span><div about="#PF4_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/4_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/4_1_1')" href="javascript:()" title="4_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">rf</font> be   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a>;<br>
+<div about="#FC5" typeof="oo:Theorem">
+<a NAME="FC5"><span class="kw">cluster </span></a> <a href="partfun3.html#K1" title="PARTFUN3:func.1">sqrt</a> <font color="Maroon" title="c1">rf</font><span class="kw"> -&gt; </span> <a href="finseq_1.html#V1" title="FINSEQ_1:attr.1">FinSequence-like</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:5_1"></a>
+ <a href="partfun3.html#K1" title="PARTFUN3:func.1">sqrt</a> <font color="Maroon" title="c1">rf</font> is  <a href="finseq_1.html#V1" title="FINSEQ_1:attr.1">FinSequence-like</a> 
+ </span><div about="#PF5_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/5_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/5_1_1')" href="javascript:()" title="5_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">rf</font> be   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K1"><span class="kw">func</span> </a> <a href="matrtop1.html#K1" title="MATRTOP1:func.1">@</a> <font color="Maroon" title="c1">rf</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM7" title="STRUCT_0:NM.7">FinSequence</a> of <a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a><span class="kw"> equals </span><a NAME="D1"><span class="comment"><font color="firebrick">:: MATRTOP1:def 1</font></span><br></a><font color="Maroon" title="c1">rf</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:6_1"></a>
+<font color="Maroon" title="c1">rf</font> is   <a href="struct_0.html#NM7" title="STRUCT_0:NM.7">FinSequence</a> of <a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>
+ </span><div about="#PF6_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/6_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/6_1_1')" href="javascript:()" title="6_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="matrtop1.html#K1" title="MATRTOP1:func.1">@</a> <a onclick="hs(this)" href="javascript:()">MATRTOP1:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">rf</font> being   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> holds   <a href="matrtop1.html#K1" title="MATRTOP1:func.1">@</a> <font color="Olive" title="b1">rf</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">rf</font>;<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">p</font> be   <a href="struct_0.html#NM7" title="STRUCT_0:NM.7">FinSequence</a> of <a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K2"><span class="kw">func</span> </a> <a href="matrtop1.html#K2" title="MATRTOP1:func.2">@</a> <font color="Maroon" title="c1">p</font><span class="kw"> -&gt; </span>   <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> <span class="kw"> equals </span><a NAME="D2"><span class="comment"><font color="firebrick">:: MATRTOP1:def 2</font></span><br></a><font color="Maroon" title="c1">p</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:7_1"></a>
+<font color="Maroon" title="c1">p</font> is    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="matrtop1.html#K2" title="MATRTOP1:func.2">@</a> <a onclick="hs(this)" href="javascript:()">MATRTOP1:def 2 : <br></a><span class="hide"> for <font color="Olive" title="b1">p</font> being   <a href="struct_0.html#NM7" title="STRUCT_0:NM.7">FinSequence</a> of <a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a> holds   <a href="matrtop1.html#K2" title="MATRTOP1:func.2">@</a> <font color="Olive" title="b1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">p</font>;<br></span>
+</div>
+<br><div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T1"><span class="comment"><font color="firebrick">:: MATRTOP1:1</font></span><br></a><div class="add"> for <font color="Olive" title="b1">rf1</font>, <font color="Olive" title="b2">rf2</font> being   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> holds  <span class="p1">(<span class="default"><a href="matrtop1.html#K1" title="MATRTOP1:func.1">@</a> <font color="Olive" title="b1">rf1</font></span>)</span> <a href="fvsum_1.html#K3" title="FVSUM_1:func.3">+</a> <span class="p1">(<span class="default"><a href="matrtop1.html#K1" title="MATRTOP1:func.1">@</a> <font color="Olive" title="b2">rf2</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">rf1</font> <a href="rvsum_1.html#K4" title="RVSUM_1:func.4">+</a> <font color="Olive" title="b2">rf2</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="rvsum_1.html#D4" onmouseover="rs('rvsum_1/D4')" onmouseout="rh()">RVSUM_1:def 4</a></span>;<br>
+</div>
+</div>
+<br><div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E1">Th2</font></span>: <a NAME="T2"><span class="comment"><font color="firebrick">:: MATRTOP1:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">rf1</font>, <font color="Olive" title="b2">rf2</font> being   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> holds   <a href="partfun3.html#K1" title="PARTFUN3:func.1">sqrt</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">rf1</font> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <font color="Olive" title="b2">rf2</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="partfun3.html#K1" title="PARTFUN3:func.1">sqrt</a> <font color="Olive" title="b1">rf1</font></span>)</span> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <span class="p1">(<span class="default"><a href="partfun3.html#K1" title="PARTFUN3:func.1">sqrt</a> <font color="Olive" title="b2">rf2</font></span>)</span>
+</div>
+<div about="#PF8" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/8')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/8')" href="javascript:()" title="8"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E2">Th3</font></span>: <a NAME="T3"><span class="comment"><font color="firebrick">:: MATRTOP1:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">r</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> holds   <a href="partfun3.html#K1" title="PARTFUN3:func.1">sqrt</a> <span class="p1"><a href="finseq_1.html#K9" title="FINSEQ_1:func.9">&lt;*</a><span class="default"><font color="Olive" title="b1">r</font></span><a href="finseq_1.html#K9" title="FINSEQ_1:func.9">*&gt;</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="finseq_1.html#K9" title="FINSEQ_1:func.9">&lt;*</a><span class="default"><span class="p2">(<span class="default"><a href="square_1.html#K3" title="SQUARE_1:func.3">sqrt</a> <font color="Olive" title="b1">r</font></span>)</span></span><a href="finseq_1.html#K9" title="FINSEQ_1:func.9">*&gt;</a></span>
+</div>
+<div about="#PF9" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/9')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/9')" href="javascript:()" title="9"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E3">Th4</font></span>: <a NAME="T4"><span class="comment"><font color="firebrick">:: MATRTOP1:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">rf</font> being   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> holds   <a href="partfun3.html#K1" title="PARTFUN3:func.1">sqrt</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">rf</font> <a href="valued_1.html#K39" title="VALUED_1:func.39">^2</a></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="euclid.html#K3" title="EUCLID:func.3">abs</a> <font color="Olive" title="b1">rf</font>
+</div>
+<div about="#PF10" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T4"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/10')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/10')" href="javascript:()" title="10"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E4">Th5</font></span>: <a NAME="T5"><span class="comment"><font color="firebrick">:: MATRTOP1:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">rf</font> being   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a>  st <font color="Olive" title="b1">rf</font> is  <a href="partfun3.html#V4" title="PARTFUN3:attr.4">nonnegative-yielding</a>  holds <br> <a href="square_1.html#K3" title="SQUARE_1:func.3">sqrt</a> <span class="p1">(<span class="default"><a href="rvsum_1.html#K16" title="RVSUM_1:func.16">Sum</a> <font color="Olive" title="b1">rf</font></span>)</span> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="rvsum_1.html#K16" title="RVSUM_1:func.16">Sum</a> <span class="p1">(<span class="default"><a href="partfun3.html#K1" title="PARTFUN3:func.1">sqrt</a> <font color="Olive" title="b1">rf</font></span>)</span>
+</div>
+<div about="#PF11" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/11')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/11')" href="javascript:()" title="11"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T6"><span class="comment"><font color="firebrick">:: MATRTOP1:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">F</font> being   <a href="funct_1.html#NM1" title="FUNCT_1:NM.1">Function</a>  ex <font color="Olive" title="b2">X</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  st <br>( <font color="Olive" title="b2">X</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b1">F</font> &amp;  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Olive" title="b1">F</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">F</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Olive" title="b2">X</font></span>)</span> &amp; <font color="Olive" title="b1">F</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Olive" title="b2">X</font> is  <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a>  )</div>
+<div about="#PF12" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/12')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/12')" href="javascript:()" title="12"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">cf</font> be   <a href="valued_0.html#V1" title="VALUED_0:attr.1">complex-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">X</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ;<br>
+<div about="#FC6" typeof="oo:Theorem">
+<a NAME="FC6"><span class="kw">cluster </span></a><font color="Maroon" title="c1">cf</font> <a href="finseq_3.html#K1" title="FINSEQ_3:func.1">-</a> <font color="Maroon" title="c2">X</font><span class="kw"> -&gt; </span> <a href="valued_0.html#V1" title="VALUED_0:attr.1">complex-valued</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:13_1"></a>
+<font color="Maroon" title="c1">cf</font> <a href="finseq_3.html#K1" title="FINSEQ_3:func.1">-</a> <font color="Maroon" title="c2">X</font> is  <a href="valued_0.html#V1" title="VALUED_0:attr.1">complex-valued</a> 
+ </span><div about="#PF13_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/13_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/13_1_1')" href="javascript:()" title="13_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">rf</font> be   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">X</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ;<br>
+<div about="#FC7" typeof="oo:Theorem">
+<a NAME="FC7"><span class="kw">cluster </span></a><font color="Maroon" title="c1">rf</font> <a href="finseq_3.html#K1" title="FINSEQ_3:func.1">-</a> <font color="Maroon" title="c2">X</font><span class="kw"> -&gt; </span> <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:14_1"></a>
+<font color="Maroon" title="c1">rf</font> <a href="finseq_3.html#K1" title="FINSEQ_3:func.1">-</a> <font color="Maroon" title="c2">X</font> is  <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a> 
+ </span><div about="#PF14_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/14_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/14_1_1')" href="javascript:()" title="14_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">cf</font> be   <a href="valued_0.html#V1" title="VALUED_0:attr.1">complex-valued</a>  <a href="finseq_1.html#NM4" title="FINSEQ_1:NM.4">FinSubsequence</a>;<br>
+<div about="#FC8" typeof="oo:Theorem">
+<a NAME="FC8"><span class="kw">cluster </span></a> <a href="finseq_1.html#K15" title="FINSEQ_1:func.15">Seq</a> <font color="Maroon" title="c1">cf</font><span class="kw"> -&gt; </span> <a href="valued_0.html#V1" title="VALUED_0:attr.1">complex-valued</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:15_1"></a>
+ <a href="finseq_1.html#K15" title="FINSEQ_1:func.15">Seq</a> <font color="Maroon" title="c1">cf</font> is  <a href="valued_0.html#V1" title="VALUED_0:attr.1">complex-valued</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">rf</font> be   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM4" title="FINSEQ_1:NM.4">FinSubsequence</a>;<br>
+<div about="#FC9" typeof="oo:Theorem">
+<a NAME="FC9"><span class="kw">cluster </span></a> <a href="finseq_1.html#K15" title="FINSEQ_1:func.15">Seq</a> <font color="Maroon" title="c1">rf</font><span class="kw"> -&gt; </span> <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:16_1"></a>
+ <a href="finseq_1.html#K15" title="FINSEQ_1:func.15">Seq</a> <font color="Maroon" title="c1">rf</font> is  <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E5">Th7</font></span>: <a NAME="T7"><span class="comment"><font color="firebrick">:: MATRTOP1:7</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">f</font>, <font color="Olive" title="b3">f1</font> being   <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a><br>  for <font color="Olive" title="b4">P</font> being   <a href="funct_2.html#NM2" title="FUNCT_2:NM.2">Permutation</a> of <span class="p1">(<span class="default"><a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b2">f</font></span>)</span>  st <font color="Olive" title="b3">f1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">f</font> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <font color="Olive" title="b4">P</font> holds <br> ex <font color="Olive" title="b5">Q</font> being   <a href="funct_2.html#NM2" title="FUNCT_2:NM.2">Permutation</a> of <span class="p1">(<span class="default"><a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <span class="p2">(<span class="default"><font color="Olive" title="b2">f</font> <a href="finseq_3.html#K1" title="FINSEQ_3:func.1">-</a> <font color="Olive" title="b1">X</font></span>)</span></span>)</span> st <font color="Olive" title="b3">f1</font> <a href="finseq_3.html#K1" title="FINSEQ_3:func.1">-</a> <font color="Olive" title="b1">X</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">f</font> <a href="finseq_3.html#K1" title="FINSEQ_3:func.1">-</a> <font color="Olive" title="b1">X</font></span>)</span> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <font color="Olive" title="b5">Q</font>
+</div>
+<div about="#PF17" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T7"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/17')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/17')" href="javascript:()" title="17"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T8"><span class="comment"><font color="firebrick">:: MATRTOP1:8</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">cf</font>, <font color="Olive" title="b3">cf1</font> being   <a href="valued_0.html#V1" title="VALUED_0:attr.1">complex-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a><br>  for <font color="Olive" title="b4">P</font> being   <a href="funct_2.html#NM2" title="FUNCT_2:NM.2">Permutation</a> of <span class="p1">(<span class="default"><a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b2">cf</font></span>)</span>  st <font color="Olive" title="b3">cf1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">cf</font> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <font color="Olive" title="b4">P</font> holds <br> <a href="rvsum_1.html#K16" title="RVSUM_1:func.16">Sum</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">cf1</font> <a href="finseq_3.html#K1" title="FINSEQ_3:func.1">-</a> <font color="Olive" title="b1">X</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="rvsum_1.html#K16" title="RVSUM_1:func.16">Sum</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">cf</font> <a href="finseq_3.html#K1" title="FINSEQ_3:func.1">-</a> <font color="Olive" title="b1">X</font></span>)</span>
+</div>
+<div about="#PF18" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/18')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/18')" href="javascript:()" title="18"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E6">Th9</font></span>: <a NAME="T9"><span class="comment"><font color="firebrick">:: MATRTOP1:9</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">f</font>, <font color="Olive" title="b3">f1</font> being   <a href="finseq_1.html#NM4" title="FINSEQ_1:NM.4">FinSubsequence</a><br>  for <font color="Olive" title="b4">P</font> being   <a href="funct_2.html#NM2" title="FUNCT_2:NM.2">Permutation</a> of <span class="p1">(<span class="default"><a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b2">f</font></span>)</span>  st <font color="Olive" title="b3">f1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">f</font> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <font color="Olive" title="b4">P</font> holds <br> ex <font color="Olive" title="b5">Q</font> being   <a href="funct_2.html#NM2" title="FUNCT_2:NM.2">Permutation</a> of <span class="p1">(<span class="default"><a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <span class="p2">(<span class="default"><a href="finseq_1.html#K15" title="FINSEQ_1:func.15">Seq</a> <span class="p3">(<span class="default"><font color="Olive" title="b3">f1</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <span class="p4">(<span class="default"><font color="Olive" title="b4">P</font> <a href="relat_1.html#K8" title="RELAT_1:func.8">"</a> <font color="Olive" title="b1">X</font></span>)</span></span>)</span></span>)</span></span>)</span> st  <a href="finseq_1.html#K15" title="FINSEQ_1:func.15">Seq</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">f</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Olive" title="b1">X</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K15" title="FINSEQ_1:func.15">Seq</a> <span class="p2">(<span class="default"><font color="Olive" title="b3">f1</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <span class="p3">(<span class="default"><font color="Olive" title="b4">P</font> <a href="relat_1.html#K8" title="RELAT_1:func.8">"</a> <font color="Olive" title="b1">X</font></span>)</span></span>)</span></span>)</span> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <font color="Olive" title="b5">Q</font>
+</div>
+<div about="#PF19" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T9"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/19')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/19')" href="javascript:()" title="19"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T10"><span class="comment"><font color="firebrick">:: MATRTOP1:10</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">cf</font>, <font color="Olive" title="b3">cf1</font> being   <a href="valued_0.html#V1" title="VALUED_0:attr.1">complex-valued</a>  <a href="finseq_1.html#NM4" title="FINSEQ_1:NM.4">FinSubsequence</a><br>  for <font color="Olive" title="b4">P</font> being   <a href="funct_2.html#NM2" title="FUNCT_2:NM.2">Permutation</a> of <span class="p1">(<span class="default"><a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Olive" title="b2">cf</font></span>)</span>  st <font color="Olive" title="b3">cf1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">cf</font> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <font color="Olive" title="b4">P</font> holds <br> <a href="rvsum_1.html#K16" title="RVSUM_1:func.16">Sum</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K15" title="FINSEQ_1:func.15">Seq</a> <span class="p2">(<span class="default"><font color="Olive" title="b2">cf</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Olive" title="b1">X</font></span>)</span></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="rvsum_1.html#K16" title="RVSUM_1:func.16">Sum</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K15" title="FINSEQ_1:func.15">Seq</a> <span class="p2">(<span class="default"><font color="Olive" title="b3">cf1</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <span class="p3">(<span class="default"><font color="Olive" title="b4">P</font> <a href="relat_1.html#K8" title="RELAT_1:func.8">"</a> <font color="Olive" title="b1">X</font></span>)</span></span>)</span></span>)</span>
+</div>
+<div about="#PF20" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T10"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/20')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/20')" href="javascript:()" title="20"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E7">Th11</font></span>: <a NAME="T11"><span class="comment"><font color="firebrick">:: MATRTOP1:11</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font>, <font color="Olive" title="b2">Y</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b3">f</font> being   <a href="finseq_1.html#NM4" title="FINSEQ_1:NM.4">FinSubsequence</a><br>  for <font color="Olive" title="b4">n</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>   st (  for <font color="Olive" title="b5">i</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a> holds <br> ( <font color="Olive" title="b5">i</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Olive" title="b4">n</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">X</font> iff <font color="Olive" title="b5">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">Y</font> ) ) holds <br><span class="p1">(<span class="default"><font color="Olive" title="b4">n</font> <a href="pnproc_1.html#NK15" title="PNPROC_1:NK.15">Shift</a> <font color="Olive" title="b3">f</font></span>)</span> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Olive" title="b1">X</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">n</font> <a href="pnproc_1.html#NK15" title="PNPROC_1:NK.15">Shift</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">f</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Olive" title="b2">Y</font></span>)</span>
+</div>
+<div about="#PF21" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/21')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/21')" href="javascript:()" title="21"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E8">Th12</font></span>: <a NAME="T12"><span class="comment"><font color="firebrick">:: MATRTOP1:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">f1</font>, <font color="Olive" title="b3">f2</font> being   <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a>  ex <font color="Olive" title="b4">Y</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> st <br>(  <a href="finseq_1.html#K15" title="FINSEQ_1:func.15">Seq</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b2">f1</font> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <font color="Olive" title="b3">f2</font></span>)</span> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Olive" title="b1">X</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K15" title="FINSEQ_1:func.15">Seq</a> <span class="p2">(<span class="default"><font color="Olive" title="b2">f1</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Olive" title="b1">X</font></span>)</span></span>)</span> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K15" title="FINSEQ_1:func.15">Seq</a> <span class="p2">(<span class="default"><font color="Olive" title="b3">f2</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <font color="Olive" title="b4">Y</font></span>)</span></span>)</span> &amp; (  for <font color="Olive" title="b5">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>  st <font color="Olive" title="b5">n</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br>( <font color="Olive" title="b5">n</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b4">Y</font> iff <font color="Olive" title="b5">n</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">f1</font></span>)</span> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">X</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <span class="p2">(<span class="default"><font color="Olive" title="b2">f1</font> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <font color="Olive" title="b3">f2</font></span>)</span></span>)</span> ) ) )</div>
+<div about="#PF22" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/22')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/22')" href="javascript:()" title="22"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T13"><span class="comment"><font color="firebrick">:: MATRTOP1:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">f1</font>, <font color="Olive" title="b3">f2</font>, <font color="Olive" title="b4">g1</font>, <font color="Olive" title="b5">g2</font> being   <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a>  st  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b4">g1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">f1</font> &amp;  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b5">g2</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">f2</font> holds <br> <a href="finseq_1.html#K15" title="FINSEQ_1:func.15">Seq</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b2">f1</font> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <font color="Olive" title="b3">f2</font></span>)</span> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><font color="Olive" title="b4">g1</font> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <font color="Olive" title="b5">g2</font></span>)</span> <a href="relat_1.html#K8" title="RELAT_1:func.8">"</a> <font color="Olive" title="b1">X</font></span>)</span></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K15" title="FINSEQ_1:func.15">Seq</a> <span class="p2">(<span class="default"><font color="Olive" title="b2">f1</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <span class="p3">(<span class="default"><font color="Olive" title="b4">g1</font> <a href="relat_1.html#K8" title="RELAT_1:func.8">"</a> <font color="Olive" title="b1">X</font></span>)</span></span>)</span></span>)</span> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K15" title="FINSEQ_1:func.15">Seq</a> <span class="p2">(<span class="default"><font color="Olive" title="b3">f2</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <span class="p3">(<span class="default"><font color="Olive" title="b5">g2</font> <a href="relat_1.html#K8" title="RELAT_1:func.8">"</a> <font color="Olive" title="b1">X</font></span>)</span></span>)</span></span>)</span>
+</div>
+<div about="#PF23" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T13"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/23')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/23')" href="javascript:()" title="23"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T14"><span class="comment"><font color="firebrick">:: MATRTOP1:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">n</font>, <font color="Olive" title="b3">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b4">D</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b5">M</font> being   <a href="matrix_0.html#NM2" title="MATRIX_0:NM.2">Matrix</a> of <font color="Olive" title="b2">n</font>,<font color="Olive" title="b3">m</font>,<font color="Olive" title="b4">D</font> holds  <font color="Olive" title="b5">M</font> <a href="finseq_3.html#K1" title="FINSEQ_3:func.1">-</a> <font color="Olive" title="b1">X</font> is   <a href="matrix_0.html#NM2" title="MATRIX_0:NM.2">Matrix</a> of <font color="Olive" title="b2">n</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> <span class="p1">(<span class="default"><a href="card_1.html#K4" title="CARD_1:func.4">card</a> <span class="p2">(<span class="default"><font color="Olive" title="b5">M</font> <a href="relat_1.html#K8" title="RELAT_1:func.8">"</a> <font color="Olive" title="b1">X</font></span>)</span></span>)</span>,<font color="Olive" title="b3">m</font>,<font color="Olive" title="b4">D</font>
+</div>
+<div about="#PF24" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T14"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/24')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/24')" href="javascript:()" title="24"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T15" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E9">Th15</font></span>: <a NAME="T15"><span class="comment"><font color="firebrick">:: MATRTOP1:15</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">F</font> being   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <span class="p1">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">n</font></span>)</span>,<span class="p1">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">n</font></span>)</span><br>  for <font color="Olive" title="b4">D</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b5">M</font> being   <a href="matrix_0.html#NM2" title="MATRIX_0:NM.2">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<font color="Olive" title="b4">D</font><br>  for <font color="Olive" title="b6">i</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>  st <font color="Olive" title="b6">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <span class="p1">(<span class="default"><a href="matrix_0.html#K1" title="MATRIX_0:func.1">width</a> <font color="Olive" title="b5">M</font></span>)</span> holds <br> <a href="matrix_0.html#K8" title="MATRIX_0:func.8">Col</a> (<span class="p1">(<span class="default"><font color="Olive" title="b5">M</font> <a href="matrix11.html#K4" title="MATRIX11:func.4">*</a> <font color="Olive" title="b3">F</font></span>)</span>,<font color="Olive" title="b6">i</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="matrix_0.html#K8" title="MATRIX_0:func.8">Col</a> (<font color="Olive" title="b5">M</font>,<font color="Olive" title="b6">i</font>)</span>)</span> <a href="partfun1.html#K1" title="PARTFUN1:func.1">*</a> <font color="Olive" title="b3">F</font>
+</div>
+<div about="#PF25" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/25')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/25')" href="javascript:()" title="25"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E18"></a><span class="lab"><font color="Green" title="E10">Lm1</font></span>: <span about="#E18" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">K</font> being   <a href="vectsp_1.html#NM5" title="VECTSP_1:NM.5">Field</a><br>  for <font color="Olive" title="b4">A</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<font color="Olive" title="b3">K</font>  st ( <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies <font color="Olive" title="b2">m</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  ) &amp;  <a href="matrix13.html#K8" title="MATRIX13:func.8">the_rank_of</a> <font color="Olive" title="b4">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> holds <br> ex <font color="Olive" title="b5">B</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b2">m</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<font color="Olive" title="b3">K</font> st  <a href="matrix13.html#K8" title="MATRIX13:func.8">the_rank_of</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">A</font> <a href="matrlin.html#K8" title="MATRLIN:func.8">^</a> <font color="Olive" title="b5">B</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">m</font>
+ </span><br><div about="#PF26" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E18"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/26')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/26')" href="javascript:()" title="26"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T16" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E11">Th16</font></span>: <a NAME="T16"><span class="comment"><font color="firebrick">:: MATRTOP1:16</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">K</font> being   <a href="vectsp_1.html#NM5" title="VECTSP_1:NM.5">Field</a><br>  for <font color="Olive" title="b4">A</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<font color="Olive" title="b3">K</font>  st  <a href="matrix13.html#K8" title="MATRIX13:func.8">the_rank_of</a> <font color="Olive" title="b4">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> holds <br> ex <font color="Olive" title="b5">B</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b2">m</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<font color="Olive" title="b3">K</font> st  <a href="matrix13.html#K8" title="MATRIX13:func.8">the_rank_of</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">A</font> <a href="matrlin.html#K8" title="MATRLIN:func.8">^</a> <font color="Olive" title="b5">B</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">m</font>
+</div>
+<div about="#PF27" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T16"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/27')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/27')" href="javascript:()" title="27"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T17" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T17"><span class="comment"><font color="firebrick">:: MATRTOP1:17</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">K</font> being   <a href="vectsp_1.html#NM5" title="VECTSP_1:NM.5">Field</a><br>  for <font color="Olive" title="b4">A</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<font color="Olive" title="b3">K</font>  st  <a href="matrix13.html#K8" title="MATRIX13:func.8">the_rank_of</a> <font color="Olive" title="b4">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">m</font> holds <br> ex <font color="Olive" title="b5">B</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b1">n</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> <font color="Olive" title="b2">m</font>,<font color="Olive" title="b3">K</font> st  <a href="matrix13.html#K8" title="MATRIX13:func.8">the_rank_of</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">A</font> <a href="matrix15.html#K1" title="MATRIX15:func.1">^^</a> <font color="Olive" title="b5">B</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font>
+</div>
+<div about="#PF28" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T17"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/28')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/28')" href="javascript:()" title="28"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<a NAME="E21"></a><span class="lab"><font color="Green" title="E12">Lm2</font></span>: <span about="#E21" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b2">f</font> being  <font color="Olive">b<sub>1</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> holds  <font color="Olive" title="b2">f</font> is   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span>
+ </span><br><div about="#PF29" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E21"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/29')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/29')" href="javascript:()" title="29"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">      :: given by a Transformation Matrix<br>  
+  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font>, <font color="Maroon" title="c2">m</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>;<br><span class="kw">let </span><font color="Maroon" title="c3">M</font> be   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Maroon" title="c1">n</font>,<font color="Maroon" title="c2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>;<br><div about="#D13" typeof="oo:Definition">
+<a NAME="K3"><span class="kw">func</span> </a> <a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c3">M</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c1">n</font></span>)</span>,<span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c2">m</font></span>)</span><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E13">Def3</font></span>: <a NAME="D3"><span class="comment"><font color="firebrick">:: MATRTOP1:def 3</font></span><br></a> for <font color="Olive" title="b1">f</font> being  <font color="Maroon" title="c1">n</font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> holds  <span class="kw">it</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="matrix_0.html#K7" title="MATRIX_0:func.7">Line</a> (<span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrix15.html#K2" title="MATRIX15:func.2">LineVec2Mx</a> <span class="p3">(<span class="default"><a href="matrtop1.html#K1" title="MATRTOP1:func.1">@</a> <font color="Olive" title="b1">f</font></span>)</span></span>)</span> <a href="matrix_3.html#K4" title="MATRIX_3:func.4">*</a> <font color="Maroon" title="c3">M</font></span>)</span>,1)<span class="kw"> if </span><font color="Maroon" title="c1">n</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <br><span class="kw"> otherwise </span> for <font color="Olive" title="b1">f</font> being  <font color="Maroon" title="c1">n</font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> holds  <span class="kw">it</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c2">m</font></span>)</span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:30_1"></a>
+( ( <font color="Maroon" title="c1">n</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies  ex <font color="Olive">b<sub>1</sub></font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c1">n</font></span>)</span>,<span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c2">m</font></span>)</span> st <br> for <font color="Olive" title="b2">f</font> being  <font color="Maroon" title="c1">n</font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="matrix_0.html#K7" title="MATRIX_0:func.7">Line</a> (<span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrix15.html#K2" title="MATRIX15:func.2">LineVec2Mx</a> <span class="p3">(<span class="default"><a href="matrtop1.html#K1" title="MATRTOP1:func.1">@</a> <font color="Olive" title="b2">f</font></span>)</span></span>)</span> <a href="matrix_3.html#K4" title="MATRIX_3:func.4">*</a> <font color="Maroon" title="c3">M</font></span>)</span>,1) ) &amp; (  not <font color="Maroon" title="c1">n</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies  ex <font color="Olive">b<sub>1</sub></font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c1">n</font></span>)</span>,<span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c2">m</font></span>)</span> st <br> for <font color="Olive" title="b2">f</font> being  <font color="Maroon" title="c1">n</font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c2">m</font></span>)</span> ) )
+ </span><div about="#PF30_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/30_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/30_1_1')" href="javascript:()" title="30_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:30_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c1">n</font></span>)</span>,<span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c2">m</font></span>)</span> holds <br> ( ( <font color="Maroon" title="c1">n</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b3">f</font> being  <font color="Maroon" title="c1">n</font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="matrix_0.html#K7" title="MATRIX_0:func.7">Line</a> (<span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrix15.html#K2" title="MATRIX15:func.2">LineVec2Mx</a> <span class="p3">(<span class="default"><a href="matrtop1.html#K1" title="MATRTOP1:func.1">@</a> <font color="Olive" title="b3">f</font></span>)</span></span>)</span> <a href="matrix_3.html#K4" title="MATRIX_3:func.4">*</a> <font color="Maroon" title="c3">M</font></span>)</span>,1) ) &amp; (  for <font color="Olive" title="b3">f</font> being  <font color="Maroon" title="c1">n</font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> holds  <font color="Olive">b<sub>2</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="matrix_0.html#K7" title="MATRIX_0:func.7">Line</a> (<span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrix15.html#K2" title="MATRIX15:func.2">LineVec2Mx</a> <span class="p3">(<span class="default"><a href="matrtop1.html#K1" title="MATRTOP1:func.1">@</a> <font color="Olive" title="b3">f</font></span>)</span></span>)</span> <a href="matrix_3.html#K4" title="MATRIX_3:func.4">*</a> <font color="Maroon" title="c3">M</font></span>)</span>,1) ) implies <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font> ) &amp; (  not <font color="Maroon" title="c1">n</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b3">f</font> being  <font color="Maroon" title="c1">n</font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> holds  <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c2">m</font></span>)</span> ) &amp; (  for <font color="Olive" title="b3">f</font> being  <font color="Maroon" title="c1">n</font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> holds  <font color="Olive">b<sub>2</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c2">m</font></span>)</span> ) implies <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font> ) )
+ </span><div about="#PF30_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/30_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/30_1_2')" href="javascript:()" title="30_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">consistency</span> </a><span class="hide"><br> for <font color="Olive">b<sub>1</sub></font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c1">n</font></span>)</span>,<span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c2">m</font></span>)</span> holds  verum</span>;<br></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+<div about="#DT3" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E13">Def3</font></span>   defines <a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <a onclick="hs(this)" href="javascript:()">MATRTOP1:def 3 : <br></a><span class="hide"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a><br>  for <font color="Olive">b<sub>4</sub></font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span>,<span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b2">m</font></span>)</span> holds <br> ( ( <font color="Olive" title="b1">n</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies ( <font color="Olive">b<sub>4</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b3">M</font> iff  for <font color="Olive" title="b5">f</font> being  <font color="Olive">b<sub>1</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> holds  <font color="Olive">b<sub>4</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="matrix_0.html#K7" title="MATRIX_0:func.7">Line</a> (<span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrix15.html#K2" title="MATRIX15:func.2">LineVec2Mx</a> <span class="p3">(<span class="default"><a href="matrtop1.html#K1" title="MATRTOP1:func.1">@</a> <font color="Olive" title="b5">f</font></span>)</span></span>)</span> <a href="matrix_3.html#K4" title="MATRIX_3:func.4">*</a> <font color="Olive" title="b3">M</font></span>)</span>,1) ) ) &amp; (  not <font color="Olive" title="b1">n</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies ( <font color="Olive">b<sub>4</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b3">M</font> iff  for <font color="Olive" title="b5">f</font> being  <font color="Olive">b<sub>1</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> holds  <font color="Olive">b<sub>4</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b2">m</font></span>)</span> ) ) );<br></span>
+</div>
+<br><div>
+<span class="lab"><font color="Green" title="E14">Lm3</font></span>: <a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="31"><span class="kw">now </span> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a><br>  for <font color="Olive" title="b4">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds  <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b3">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">x</font> is   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a></span></a><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font>, <font color="Maroon" title="c2">m</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Maroon" title="c1">n</font>,<font color="Maroon" title="c2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a><br>  for <font color="Olive" title="b2">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds  <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive">b<sub>5</sub></font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive">b<sub>6</sub></font> is   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a></span><br><span class="kw">let </span><font color="Maroon" title="c3">M</font> be   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Maroon" title="c1">n</font>,<font color="Maroon" title="c2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds  <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive">b<sub>4</sub></font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive">b<sub>5</sub></font> is   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a></span><br><span class="kw">let </span><font color="Maroon" title="c4">x</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive">b<sub>3</sub></font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive">b<sub>4</sub></font> is   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a></span><br><span class="kw">set </span><font color="Maroon" title="c5">T</font> =  <a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c3">M</font>;<br><div>
+<a class="txt" onclick="hsNdiv(this)" href="javascript:()" title="31_1"><span class="kw">per </span></a><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">cases </span></a><span class="hide"><a NAME="E1:31_1"></a>
+( <font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c3">M</font></span>)</span> or  not <font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c3">M</font></span>)</span> )
+ </span>;<br><div class="add">
+<div>
+<a class="txt" onclick="hsNdiv(this)" href="javascript:()" title="31_1_1"><span class="kw">suppose </span></a><a NAME="E1:31_1_1"></a><span class="lab"><font color="Green" title="E15">A1</font></span>: 
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c3">M</font></span>)</span>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive">b<sub>3</sub></font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive">b<sub>4</sub></font> is   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a></span><br><div class="add">
+<a NAME="E2:31_1_1"></a><span class="lab"><font color="Green" title="E16">A2</font></span>: 
+ <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c3">M</font></span>)</span> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Maroon" title="c2">m</font></span>)</span>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="relat_1.html#D19" onmouseover="rs('relat_1/D19')" onmouseout="rh()">RELAT_1:def 19</a></span>;<br><a NAME="E3:31_1_1"></a>
+<span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c3">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c3">M</font></span>)</span>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:31_1_1"><span class="lab"><font color="Green" title="E15">A1</font></span></a>, <a class="ref" href="funct_1.html#D3" onmouseover="rs('funct_1/D3')" onmouseout="rh()">FUNCT_1:def 3</a></span>;<br><span class="kw">hence </span><a NAME="E4:31_1_1"></a>
+<span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c3">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">x</font> is   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:31_1_1"><span class="lab"><font color="Green" title="E16">A2</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br>
+</div>
+<span class="kw">end;</span>
+</div>
+<div>
+<a class="txt" onclick="hsNdiv(this)" href="javascript:()" title="31_1_2"><span class="kw">suppose </span></a><a NAME="E1:31_1_2"></a>
+ not <font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c3">M</font></span>)</span>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive">b<sub>3</sub></font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive">b<sub>4</sub></font> is   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a></span><br><div class="add">
+<span class="kw">hence </span><a NAME="E2:31_1_2"></a>
+<span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c3">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">x</font> is   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="funct_1.html#D2" onmouseover="rs('funct_1/D2')" onmouseout="rh()">FUNCT_1:def 2</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br>
+</div>
+<span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font>, <font color="Maroon" title="c2">m</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>;<br><span class="kw">let </span><font color="Maroon" title="c3">M</font> be   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Maroon" title="c1">n</font>,<font color="Maroon" title="c2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>;<br><span class="kw">let </span><font color="Maroon" title="c4">x</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ;<br>
+<div about="#FC10" typeof="oo:Theorem">
+<a NAME="FC10"><span class="kw">cluster </span></a><span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c3">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">x</font><span class="kw"> -&gt; </span> <a href="relat_1.html#V1" title="RELAT_1:attr.1">Relation-like</a>   <a href="funct_1.html#V1" title="FUNCT_1:attr.1">Function-like</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:32_1"></a>
+( <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c3">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">x</font> is  <a href="funct_1.html#V1" title="FUNCT_1:attr.1">Function-like</a>  &amp; <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c3">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">x</font> is  <a href="relat_1.html#V1" title="RELAT_1:attr.1">Relation-like</a>  )
+ </span><span class="kw">by</span> <span class="lab"><a class="txt" href="matrtop1.html#E23"><span class="lab"><font color="Green" title="E14">Lm3</font></span></a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font>, <font color="Maroon" title="c2">m</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>;<br><span class="kw">let </span><font color="Maroon" title="c3">M</font> be   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Maroon" title="c1">n</font>,<font color="Maroon" title="c2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>;<br><span class="kw">let </span><font color="Maroon" title="c4">x</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ;<br>
+<div about="#FC11" typeof="oo:Theorem">
+<a NAME="FC11"><span class="kw">cluster </span></a><span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c3">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">x</font><span class="kw"> -&gt; </span> <a href="finseq_1.html#V1" title="FINSEQ_1:attr.1">FinSequence-like</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:33_1"></a>
+( <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c3">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">x</font> is  <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  &amp; <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c3">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">x</font> is  <a href="finseq_1.html#V1" title="FINSEQ_1:attr.1">FinSequence-like</a>  )
+ </span><span class="kw">by</span> <span class="lab"><a class="txt" href="matrtop1.html#E23"><span class="lab"><font color="Green" title="E14">Lm3</font></span></a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">n</font>, <font color="Maroon" title="c2">m</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>;<br><span class="kw">let </span><font color="Maroon" title="c3">M</font> be   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Maroon" title="c1">n</font>,<font color="Maroon" title="c2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>;<br><span class="kw">let </span><font color="Maroon" title="c4">f</font> be  <font color="Maroon" title="c1">n</font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a>;<br>
+<div about="#FC12" typeof="oo:Theorem">
+<a NAME="FC12"><span class="kw">cluster </span></a><span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c3">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">f</font><span class="kw"> -&gt; </span><font color="Maroon" title="c2">m</font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:34_1"></a>
+<span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c3">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">f</font> is <font color="Maroon" title="c2">m</font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a> 
+ </span><div about="#PF34_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/34_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/34_1_1')" href="javascript:()" title="34_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T18" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E15">Th18</font></span>: <a NAME="T18"><span class="comment"><font color="firebrick">:: MATRTOP1:18</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font>, <font color="Olive" title="b3">i</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b4">f</font> being  <font color="Olive">b<sub>1</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a><br>  for <font color="Olive" title="b5">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>  st 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b3">i</font> &amp; <font color="Olive" title="b3">i</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b2">m</font> &amp; <font color="Olive" title="b1">n</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br><span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">f</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="matrtop1.html#K1" title="MATRTOP1:func.1">@</a> <font color="Olive" title="b4">f</font></span>)</span> <a href="fvsum_1.html#K13" title="FVSUM_1:func.13">"*"</a> <span class="p1">(<span class="default"><a href="matrix_0.html#K8" title="MATRIX_0:func.8">Col</a> (<font color="Olive" title="b5">M</font>,<font color="Olive" title="b3">i</font>)</span>)</span>
+</div>
+<div about="#PF35" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T18"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/35')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/35')" href="javascript:()" title="35"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T19" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E16">Th19</font></span>: <a NAME="T19"><span class="comment"><font color="firebrick">:: MATRTOP1:19</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b2">K</font> being   <a href="vectsp_1.html#NM5" title="VECTSP_1:NM.5">Field</a> holds   <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <span class="p1">(<span class="default"><a href="matrix13.html#K11" title="MATRIX13:func.11">MX2FinS</a> <span class="p2">(<span class="default"><a href="matrix_1.html#K3" title="MATRIX_1:func.3">1.</a> (<font color="Olive" title="b2">K</font>,<font color="Olive" title="b1">n</font>)</span>)</span></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font>
+</div>
+<div about="#PF36" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T19"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/36')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/36')" href="javascript:()" title="36"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T20" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E17">Th20</font></span>: <a NAME="T20"><span class="comment"><font color="firebrick">:: MATRTOP1:20</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a><br>  for <font color="Olive" title="b4">Bn</font> being    <a href="matrlin.html#M1" title="MATRLIN:mode.1">OrdBasis</a> of <font color="Olive" title="b1">n</font> <a href="prvect_1.html#K6" title="PRVECT_1:func.6">-VectSp_over</a> <a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a><br>  for <font color="Olive" title="b5">Bm</font> being    <a href="matrlin.html#M1" title="MATRLIN:mode.1">OrdBasis</a> of <font color="Olive" title="b2">m</font> <a href="prvect_1.html#K6" title="PRVECT_1:func.6">-VectSp_over</a> <a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>  st <font color="Olive" title="b4">Bn</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="matrix13.html#K11" title="MATRIX13:func.11">MX2FinS</a> <span class="p1">(<span class="default"><a href="matrix_1.html#K3" title="MATRIX_1:func.3">1.</a> (<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>,<font color="Olive" title="b1">n</font>)</span>)</span> &amp; <font color="Olive" title="b5">Bm</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="matrix13.html#K11" title="MATRIX13:func.11">MX2FinS</a> <span class="p1">(<span class="default"><a href="matrix_1.html#K3" title="MATRIX_1:func.3">1.</a> (<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>,<font color="Olive" title="b2">m</font>)</span>)</span> holds <br> for <font color="Olive" title="b6">M1</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b4">Bn</font>, <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b5">Bm</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>  st <font color="Olive" title="b6">M1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">M</font> holds <br> <a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b3">M</font> <a href="funct_2.html#R1" title="FUNCT_2:pred.1">=</a>  <a href="matrlin2.html#K4" title="MATRLIN2:func.4">Mx2Tran</a> (<font color="Olive" title="b6">M1</font>,<font color="Olive" title="b4">Bn</font>,<font color="Olive" title="b5">Bm</font>)</div>
+<div about="#PF37" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T20"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/37')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/37')" href="javascript:()" title="37"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T21" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T21"><span class="comment"><font color="firebrick">:: MATRTOP1:21</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">f</font> being  <font color="Olive">b<sub>1</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a><br>  for <font color="Olive" title="b4">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a><br>  for <font color="Olive" title="b5">P</font> being   <a href="funct_2.html#NM2" title="FUNCT_2:NM.2">Permutation</a> of <span class="p1">(<span class="default"><a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">n</font></span>)</span> holds <br> ( <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b4">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <span class="p2">(<span class="default"><font color="Olive" title="b4">M</font> <a href="matrix11.html#K4" title="MATRIX11:func.4">*</a> <font color="Olive" title="b5">P</font></span>)</span></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">f</font> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <font color="Olive" title="b5">P</font></span>)</span> &amp; <font color="Olive" title="b3">f</font> <a href="funct_1.html#NK3" title="FUNCT_1:NK.3">*</a> <font color="Olive" title="b5">P</font> is  <font color="Olive">b<sub>1</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>  )</div>
+<div about="#PF38" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T21"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/38')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/38')" href="javascript:()" title="38"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T22" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E18">Th22</font></span>: <a NAME="T22"><span class="comment"><font color="firebrick">:: MATRTOP1:22</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">f1</font>, <font color="Olive" title="b4">f2</font> being  <font color="Olive">b<sub>1</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a><br>  for <font color="Olive" title="b5">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a> holds  <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">f1</font> <a href="rvsum_1.html#K4" title="RVSUM_1:func.4">+</a> <font color="Olive" title="b4">f2</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">f1</font></span>)</span> <a href="rvsum_1.html#K4" title="RVSUM_1:func.4">+</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">f2</font></span>)</span>
+</div>
+<div about="#PF39" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T22"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/39')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/39')" href="javascript:()" title="39"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><span class="kw">reconsider </span><font color="Maroon" title="c1">zz</font> =  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  as   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> ;<br><br><div about="#T23" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E19">Th23</font></span>: <a NAME="T23"><span class="comment"><font color="firebrick">:: MATRTOP1:23</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">r</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a><br>  for <font color="Olive" title="b4">f</font> being  <font color="Olive">b<sub>1</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a><br>  for <font color="Olive" title="b5">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a> holds  <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">r</font> <a href="rvsum_1.html#K10" title="RVSUM_1:func.10">*</a> <font color="Olive" title="b4">f</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">r</font> <a href="rvsum_1.html#K10" title="RVSUM_1:func.10">*</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">f</font></span>)</span>
+</div>
+<div about="#PF40" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T23"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/40')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/40')" href="javascript:()" title="40"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T24" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E20">Th24</font></span>: <a NAME="T24"><span class="comment"><font color="firebrick">:: MATRTOP1:24</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">f1</font>, <font color="Olive" title="b4">f2</font> being  <font color="Olive">b<sub>1</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a><br>  for <font color="Olive" title="b5">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a> holds  <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">f1</font> <a href="rvsum_1.html#K8" title="RVSUM_1:func.8">-</a> <font color="Olive" title="b4">f2</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">f1</font></span>)</span> <a href="rvsum_1.html#K8" title="RVSUM_1:func.8">-</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">f2</font></span>)</span>
+</div>
+<div about="#PF41" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T24"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/41')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/41')" href="javascript:()" title="41"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T25" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T25"><span class="comment"><font color="firebrick">:: MATRTOP1:25</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">f</font> being  <font color="Olive">b<sub>1</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a><br>  for <font color="Olive" title="b4">M1</font>, <font color="Olive" title="b5">M2</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a> holds  <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <span class="p2">(<span class="default"><font color="Olive" title="b4">M1</font> <a href="matrlin2.html#K5" title="MATRLIN2:func.5">+</a> <font color="Olive" title="b5">M2</font></span>)</span></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b4">M1</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">f</font></span>)</span> <a href="rvsum_1.html#K4" title="RVSUM_1:func.4">+</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">M2</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">f</font></span>)</span>
+</div>
+<div about="#PF42" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T25"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/42')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/42')" href="javascript:()" title="42"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T26" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T26"><span class="comment"><font color="firebrick">:: MATRTOP1:26</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">r</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a><br>  for <font color="Olive" title="b4">R</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a><br>  for <font color="Olive" title="b5">f</font> being  <font color="Olive">b<sub>1</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a><br>  for <font color="Olive" title="b6">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>  st <font color="Olive" title="b3">r</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">R</font> holds <br><font color="Olive" title="b3">r</font> <a href="rvsum_1.html#K10" title="RVSUM_1:func.10">*</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b6">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">f</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <span class="p2">(<span class="default"><font color="Olive" title="b4">R</font> <a href="matrix13.html#K2" title="MATRIX13:func.2">*</a> <font color="Olive" title="b6">M</font></span>)</span></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">f</font>
+</div>
+<div about="#PF43" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T26"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/43')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/43')" href="javascript:()" title="43"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T27" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E21">Th27</font></span>: <a NAME="T27"><span class="comment"><font color="firebrick">:: MATRTOP1:27</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">p1</font>, <font color="Olive" title="b4">p2</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span><br>  for <font color="Olive" title="b5">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a> holds  <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">M</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">p1</font> <a href="algstr_0.html#K1" title="ALGSTR_0:func.1">+</a> <font color="Olive" title="b4">p2</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">M</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">p1</font></span>)</span> <a href="algstr_0.html#K1" title="ALGSTR_0:func.1">+</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">M</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b4">p2</font></span>)</span> <span class="kw">by</span> <span class="lab"><a class="ref" href="matrtop1.html#T22" target="_self" onmouseover="rs('matrtop1/T22')" onmouseout="rh()">Th22</a></span>;<br>
+</div>
+</div>
+<br><div about="#T28" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E22">Th28</font></span>: <a NAME="T28"><span class="comment"><font color="firebrick">:: MATRTOP1:28</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">p1</font>, <font color="Olive" title="b4">p2</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span><br>  for <font color="Olive" title="b5">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a> holds  <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">M</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">p1</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b4">p2</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">M</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">p1</font></span>)</span> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">M</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b4">p2</font></span>)</span> <span class="kw">by</span> <span class="lab"><a class="ref" href="matrtop1.html#T24" target="_self" onmouseover="rs('matrtop1/T24')" onmouseout="rh()">Th24</a></span>;<br>
+</div>
+</div>
+<br><div about="#T29" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E23">Th29</font></span>: <a NAME="T29"><span class="comment"><font color="firebrick">:: MATRTOP1:29</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a> holds  <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b3">M</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <span class="p1">(<span class="default"><a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p2">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b2">m</font></span>)</span>
+</div>
+<div about="#PF44" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T29"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/44')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/44')" href="javascript:()" title="44"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T30" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T30"><span class="comment"><font color="firebrick">:: MATRTOP1:30</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">p</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span><br>  for <font color="Olive" title="b4">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a><br>  for <font color="Olive" title="b5">A</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span> holds  <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b4">M</font></span>)</span> <a href="ranknull.html#K2" title="RANKNULL:func.2">.:</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">p</font> <a href="rusub_4.html#K5" title="RUSUB_4:func.5">+</a> <font color="Olive" title="b5">A</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b4">M</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">p</font></span>)</span> <a href="rusub_4.html#K5" title="RUSUB_4:func.5">+</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b4">M</font></span>)</span> <a href="ranknull.html#K2" title="RANKNULL:func.2">.:</a> <font color="Olive" title="b5">A</font></span>)</span>
+</div>
+<div about="#PF45" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T30"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/45')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/45')" href="javascript:()" title="45"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T31" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T31"><span class="comment"><font color="firebrick">:: MATRTOP1:31</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">p</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span><br>  for <font color="Olive" title="b4">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a><br>  for <font color="Olive" title="b5">A</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b2">m</font></span>)</span> holds  <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b4">M</font></span>)</span> <a href="ranknull.html#K7" title="RANKNULL:func.7">"</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b4">M</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">p</font></span>)</span> <a href="rusub_4.html#K5" title="RUSUB_4:func.5">+</a> <font color="Olive" title="b5">A</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">p</font> <a href="rusub_4.html#K5" title="RUSUB_4:func.5">+</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b4">M</font></span>)</span> <a href="ranknull.html#K7" title="RANKNULL:func.7">"</a> <font color="Olive" title="b5">A</font></span>)</span>
+</div>
+<div about="#PF46" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T31"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/46')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/46')" href="javascript:()" title="46"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T32" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E24">Th32</font></span>: <a NAME="T32"><span class="comment"><font color="firebrick">:: MATRTOP1:32</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font>, <font color="Olive" title="b3">k</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b4">A</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a><br>  for <font color="Olive" title="b5">B</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of  <a href="matrix_0.html#K1" title="MATRIX_0:func.1">width</a> <font color="Olive" title="b4">A</font>,<font color="Olive" title="b3">k</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>  st ( <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies <font color="Olive" title="b2">m</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  ) &amp; ( <font color="Olive" title="b2">m</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies <font color="Olive" title="b3">k</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  ) holds <br><span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">B</font></span>)</span> <a href="partfun1.html#K1" title="PARTFUN1:func.1">*</a> <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b4">A</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">A</font> <a href="matrix_3.html#K5" title="MATRIX_3:func.5">*</a> <font color="Olive" title="b5">B</font></span>)</span>
+</div>
+<div about="#PF47" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T32"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/47')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/47')" href="javascript:()" title="47"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T33" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E25">Th33</font></span>: <a NAME="T33"><span class="comment"><font color="firebrick">:: MATRTOP1:33</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a> holds   <a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <span class="p1">(<span class="default"><a href="matrix_1.html#K3" title="MATRIX_1:func.3">1.</a> (<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>,<font color="Olive" title="b1">n</font>)</span>)</span> <a href="funct_2.html#R2" title="FUNCT_2:pred.2">=</a>  <a href="struct_0.html#K3" title="STRUCT_0:func.3">id</a> <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> <font color="Olive" title="b1">n</font></span>)</span>
+</div>
+<div about="#PF48" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T33"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/48')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/48')" href="javascript:()" title="48"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T34" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E26">Th34</font></span>: <a NAME="T34"><span class="comment"><font color="firebrick">:: MATRTOP1:34</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">M1</font>, <font color="Olive" title="b4">M2</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>  st  <a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b3">M1</font> <a href="funct_2.html#R2" title="FUNCT_2:pred.2">=</a>  <a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b4">M2</font> holds <br><font color="Olive" title="b3">M1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">M2</font>
+</div>
+<div about="#PF49" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T34"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/49')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/49')" href="javascript:()" title="49"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T35" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E27">Th35</font></span>: <a NAME="T35"><span class="comment"><font color="firebrick">:: MATRTOP1:35</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font>, <font color="Olive" title="b3">k</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b4">f</font> being  <font color="Olive">b<sub>1</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a><br>  for <font color="Olive" title="b5">A</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a><br>  for <font color="Olive" title="b6">B</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b3">k</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a> holds <br> ( <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <span class="p2">(<span class="default"><font color="Olive" title="b5">A</font> <a href="matrlin.html#K8" title="MATRLIN:func.8">^</a> <font color="Olive" title="b6">B</font></span>)</span></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">f</font> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <span class="p2">(<span class="default"><font color="Olive" title="b3">k</font> <a href="finseq_2.html#K5" title="FINSEQ_2:func.5">|-&gt;</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">A</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">f</font> &amp; <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <span class="p2">(<span class="default"><font color="Olive" title="b6">B</font> <a href="matrlin.html#K8" title="MATRLIN:func.8">^</a> <font color="Olive" title="b5">A</font></span>)</span></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b3">k</font> <a href="finseq_2.html#K5" title="FINSEQ_2:func.5">|-&gt;</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <font color="Olive" title="b4">f</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">A</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">f</font> )</div>
+<div about="#PF50" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T35"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/50')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/50')" href="javascript:()" title="50"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T36" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T36"><span class="comment"><font color="firebrick">:: MATRTOP1:36</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font>, <font color="Olive" title="b3">k</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b4">f</font> being  <font color="Olive">b<sub>1</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a><br>  for <font color="Olive" title="b5">A</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a><br>  for <font color="Olive" title="b6">B</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b3">k</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a><br>  for <font color="Olive" title="b7">g</font> being  <font color="Olive">b<sub>3</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> holds  <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <span class="p2">(<span class="default"><font color="Olive" title="b5">A</font> <a href="matrlin.html#K8" title="MATRLIN:func.8">^</a> <font color="Olive" title="b6">B</font></span>)</span></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">f</font> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <font color="Olive" title="b7">g</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">A</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">f</font></span>)</span> <a href="rvsum_1.html#K4" title="RVSUM_1:func.4">+</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b6">B</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b7">g</font></span>)</span>
+</div>
+<div about="#PF51" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T36"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/51')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/51')" href="javascript:()" title="51"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T37" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T37"><span class="comment"><font color="firebrick">:: MATRTOP1:37</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font>, <font color="Olive" title="b3">k</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b4">f</font> being  <font color="Olive">b<sub>1</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a><br>  for <font color="Olive" title="b5">A</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b3">k</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a><br>  for <font color="Olive" title="b6">B</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>  st ( <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies <font color="Olive" title="b3">k</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Olive" title="b2">m</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  ) holds <br><span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <span class="p2">(<span class="default"><font color="Olive" title="b5">A</font> <a href="matrix15.html#K1" title="MATRIX15:func.1">^^</a> <font color="Olive" title="b6">B</font></span>)</span></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b5">A</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">f</font></span>)</span> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b6">B</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">f</font></span>)</span>
+</div>
+<div about="#PF52" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T37"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/52')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/52')" href="javascript:()" title="52"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T38" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T38"><span class="comment"><font color="firebrick">:: MATRTOP1:38</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">f</font> being  <font color="Olive">b<sub>1</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a><br>  for <font color="Olive" title="b4">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>  st <font color="Olive" title="b4">M</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="matrix_1.html#K3" title="MATRIX_1:func.3">1.</a> (<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>,<font color="Olive" title="b2">m</font>)</span>)</span> <a href="finseq_1.html#K17" title="FINSEQ_1:func.17">|</a> <font color="Olive" title="b1">n</font> holds <br><span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b4">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">f</font></span>)</span> <a href="finseq_1.html#K16" title="FINSEQ_1:func.16">|</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">f</font>
+</div>
+<div about="#PF53" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T38"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/53')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/53')" href="javascript:()" title="53"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T39" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E28">Th39</font></span>: <a NAME="T39"><span class="comment"><font color="firebrick">:: MATRTOP1:39</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a> holds <br> (  <a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b3">M</font> is  <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a>  iff  <a href="matrix13.html#K8" title="MATRIX13:func.8">the_rank_of</a> <font color="Olive" title="b3">M</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> )</div>
+<div about="#PF54" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T39"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/54')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/54')" href="javascript:()" title="54"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T40" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E29">Th40</font></span>: <a NAME="T40"><span class="comment"><font color="firebrick">:: MATRTOP1:40</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b2">A</font> being   <a href="matrix_1.html#NM2" title="MATRIX_1:NM.2">Matrix</a> of <font color="Olive" title="b1">n</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a> holds <br> (  <a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b2">A</font> is  <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a>  iff  <a href="matrix_3.html#K12" title="MATRIX_3:func.12">Det</a> <font color="Olive" title="b2">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a> )</div>
+<div about="#PF55" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T40"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/55')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/55')" href="javascript:()" title="55"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T41" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E30">Th41</font></span>: <a NAME="T41"><span class="comment"><font color="firebrick">:: MATRTOP1:41</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a> holds <br> (  <a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b3">M</font> is  <a href="funct_2.html#V2" title="FUNCT_2:attr.2">onto</a>  iff  <a href="matrix13.html#K8" title="MATRIX13:func.8">the_rank_of</a> <font color="Olive" title="b3">M</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">m</font> )</div>
+<div about="#PF56" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T41"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/56')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/56')" href="javascript:()" title="56"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T42" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E31">Th42</font></span>: <a NAME="T42"><span class="comment"><font color="firebrick">:: MATRTOP1:42</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b2">A</font> being   <a href="matrix_1.html#NM2" title="MATRIX_1:NM.2">Matrix</a> of <font color="Olive" title="b1">n</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a> holds <br> (  <a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b2">A</font> is  <a href="funct_2.html#V2" title="FUNCT_2:attr.2">onto</a>  iff  <a href="matrix_3.html#K12" title="MATRIX_3:func.12">Det</a> <font color="Olive" title="b2">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a> )</div>
+<div about="#PF57" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T42"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/57')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/57')" href="javascript:()" title="57"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T43" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E32">Th43</font></span>: <a NAME="T43"><span class="comment"><font color="firebrick">:: MATRTOP1:43</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b2">A</font>, <font color="Olive" title="b3">B</font> being   <a href="matrix_1.html#NM2" title="MATRIX_1:NM.2">Matrix</a> of <font color="Olive" title="b1">n</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>  st  <a href="matrix_3.html#K12" title="MATRIX_3:func.12">Det</a> <font color="Olive" title="b2">A</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a> holds <br>( <span class="p1">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b2">A</font></span>)</span> <a href="funct_1.html#K2" title="FUNCT_1:func.2">"</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b3">B</font> iff <font color="Olive" title="b2">A</font> <a href="matrix_6.html#K1" title="MATRIX_6:func.1">~</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">B</font> )</div>
+<div about="#PF58" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T43"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/58')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/58')" href="javascript:()" title="58"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E51"></a><span class="lab"><font color="Green" title="E33">Lm4</font></span>: <span about="#E51" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a><br>  for <font color="Olive" title="b4">f</font> being  <font color="Olive">b<sub>1</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a>  ex <font color="Olive" title="b5">L</font> being  <font color="Olive">b<sub>2</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>  st <br>( <span class="p1"><a href="euclid.html#K12" title="EUCLID:func.12">|.</a><span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b3">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">f</font></span>)</span></span><a href="euclid.html#K12" title="EUCLID:func.12">.|</a></span> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <span class="p1">(<span class="default"><a href="rvsum_1.html#K18" title="RVSUM_1:func.18">Sum</a> <font color="Olive" title="b5">L</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1"><a href="euclid.html#K12" title="EUCLID:func.12">|.</a><span class="default"><font color="Olive" title="b4">f</font></span><a href="euclid.html#K12" title="EUCLID:func.12">.|</a></span> &amp; (  for <font color="Olive" title="b6">i</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>  st <font color="Olive" title="b6">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b5">L</font> holds <br><font color="Olive" title="b5">L</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b6">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="euclid.html#K12" title="EUCLID:func.12">|.</a><span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K2" title="MATRTOP1:func.2">@</a> <span class="p3">(<span class="default"><a href="matrix_0.html#K8" title="MATRIX_0:func.8">Col</a> (<font color="Olive" title="b3">M</font>,<font color="Olive" title="b6">i</font>)</span>)</span></span>)</span></span><a href="euclid.html#K12" title="EUCLID:func.12">.|</a></span> ) )
+ </span><br><div about="#PF59" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E51"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/59')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/59')" href="javascript:()" title="59"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T44" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E34">Th44</font></span>: <a NAME="T44"><span class="comment"><font color="firebrick">:: MATRTOP1:44</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>  ex <font color="Olive" title="b4">L</font> being  <font color="Olive">b<sub>2</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>  st <br>( (  for <font color="Olive" title="b5">i</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>  st <font color="Olive" title="b5">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b4">L</font> holds <br><font color="Olive" title="b4">L</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="euclid.html#K12" title="EUCLID:func.12">|.</a><span class="default"><span class="p2">(<span class="default"><a href="matrtop1.html#K2" title="MATRTOP1:func.2">@</a> <span class="p3">(<span class="default"><a href="matrix_0.html#K8" title="MATRIX_0:func.8">Col</a> (<font color="Olive" title="b3">M</font>,<font color="Olive" title="b5">i</font>)</span>)</span></span>)</span></span><a href="euclid.html#K12" title="EUCLID:func.12">.|</a></span> ) &amp; (  for <font color="Olive" title="b5">f</font> being  <font color="Olive">b<sub>1</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> holds  <span class="p1"><a href="euclid.html#K12" title="EUCLID:func.12">|.</a><span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b3">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">f</font></span>)</span></span><a href="euclid.html#K12" title="EUCLID:func.12">.|</a></span> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <span class="p1">(<span class="default"><a href="rvsum_1.html#K18" title="RVSUM_1:func.18">Sum</a> <font color="Olive" title="b4">L</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1"><a href="euclid.html#K12" title="EUCLID:func.12">|.</a><span class="default"><font color="Olive" title="b5">f</font></span><a href="euclid.html#K12" title="EUCLID:func.12">.|</a></span> ) )</div>
+<div about="#PF60" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T44"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/60')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/60')" href="javascript:()" title="60"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T45" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E35">Th45</font></span>: <a NAME="T45"><span class="comment"><font color="firebrick">:: MATRTOP1:45</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>  ex <font color="Olive" title="b4">L</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> st <br>( <font color="Olive" title="b4">L</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b5">f</font> being  <font color="Olive">b<sub>1</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> holds  <span class="p1"><a href="euclid.html#K12" title="EUCLID:func.12">|.</a><span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b3">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">f</font></span>)</span></span><a href="euclid.html#K12" title="EUCLID:func.12">.|</a></span> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b4">L</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1"><a href="euclid.html#K12" title="EUCLID:func.12">|.</a><span class="default"><font color="Olive" title="b5">f</font></span><a href="euclid.html#K12" title="EUCLID:func.12">.|</a></span> ) )</div>
+<div about="#PF61" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T45"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/61')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/61')" href="javascript:()" title="61"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><span class="kw">reconsider </span><font color="Maroon" title="c2">jj</font> = 1 as   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> ;<br><br><div about="#T46" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T46"><span class="comment"><font color="firebrick">:: MATRTOP1:46</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>  st  <a href="matrix13.html#K8" title="MATRIX13:func.8">the_rank_of</a> <font color="Olive" title="b3">M</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> holds <br> ex <font color="Olive" title="b4">L</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> st <br>( <font color="Olive" title="b4">L</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b5">f</font> being  <font color="Olive">b<sub>1</sub></font> <a href="card_1.html#V3" title="CARD_1:attr.3">-element</a>   <a href="valued_0.html#V3" title="VALUED_0:attr.3">real-valued</a>  <a href="finseq_1.html#NM1" title="FINSEQ_1:NM.1">FinSequence</a> holds  <span class="p1"><a href="euclid.html#K12" title="EUCLID:func.12">|.</a><span class="default"><font color="Olive" title="b5">f</font></span><a href="euclid.html#K12" title="EUCLID:func.12">.|</a></span> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b4">L</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1"><a href="euclid.html#K12" title="EUCLID:func.12">|.</a><span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b3">M</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">f</font></span>)</span></span><a href="euclid.html#K12" title="EUCLID:func.12">.|</a></span> ) )</div>
+<div about="#PF62" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T46"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/62')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/62')" href="javascript:()" title="62"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T47" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E36">Th47</font></span>: <a NAME="T47"><span class="comment"><font color="firebrick">:: MATRTOP1:47</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a><br>  for <font color="Olive" title="b3">M</font> being   <a href="matrix_1.html#NM3" title="MATRIX_1:NM.3">Matrix</a> of <font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">m</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a> holds   <a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Olive" title="b3">M</font> is  <a href="pre_topc.html#V5" title="PRE_TOPC:attr.5">continuous</a> </div>
+<div about="#PF63" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T47"></span><a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/63')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/63')" href="javascript:()" title="63"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c3">n</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>;<br><span class="kw">let </span><font color="Maroon" title="c4">K</font> be   <a href="vectsp_1.html#NM5" title="VECTSP_1:NM.5">Field</a>;<br>
+<div about="#RC1" typeof="oo:Theorem">
+<a NAME="RC1"><span class="kw">cluster </span></a> <a href="relat_1.html#V1" title="RELAT_1:attr.1">Relation-like</a>   <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  <a href="relat_1.html#V4" title="RELAT_1:attr.4">-defined</a>   the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c2">K</font> <a href="finseq_2.html#K3" title="FINSEQ_2:func.3">*</a>  <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>   <a href="funct_1.html#V1" title="FUNCT_1:attr.1">Function-like</a>   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>   <a href="finseq_1.html#V1" title="FINSEQ_1:attr.1">FinSequence-like</a>   <a href="finseq_1.html#V2" title="FINSEQ_1:attr.2">FinSubsequence-like</a>   <a href="matrix_0.html#V1" title="MATRIX_0:attr.1">tabular</a>  <a href="matrix_0.html#V2" title="MATRIX_0:attr.2">V145</a>( the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c2">K</font>,<font color="Maroon" title="c1">n</font>,<font color="Maroon" title="c1">n</font>)  <a href="matrix_6.html#V1" title="MATRIX_6:attr.1">invertible</a>   for    <a href="finseq_1.html#M1" title="FINSEQ_1:mode.1">FinSequence</a> of  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c2">K</font> <a href="finseq_2.html#K3" title="FINSEQ_2:func.3">*</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:64_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="matrix_1.html#NM2" title="MATRIX_1:NM.2">Matrix</a> of <font color="Maroon" title="c3">n</font>,<font color="Maroon" title="c4">K</font> st <font color="Olive">b<sub>1</sub></font> is  <a href="matrix_6.html#V1" title="MATRIX_6:attr.1">invertible</a> 
+ </span><div about="#PF64_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/64_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/64_1_1')" href="javascript:()" title="64_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c3">n</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>;<br><span class="kw">let </span><font color="Maroon" title="c4">A</font> be   <a href="matrix_6.html#V1" title="MATRIX_6:attr.1">invertible</a>  <a href="matrix_1.html#NM2" title="MATRIX_1:NM.2">Matrix</a> of <font color="Maroon" title="c3">n</font>,<a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a>;<br>
+<div about="#FC13" typeof="oo:Theorem">
+<a NAME="FC13"><span class="kw">cluster </span></a> <a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c2">A</font><span class="kw"> -&gt; </span> <a href="tops_2.html#V3" title="TOPS_2:attr.3">being_homeomorphism</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:65_1"></a>
+ <a href="matrtop1.html#K3" title="MATRTOP1:func.3">Mx2Tran</a> <font color="Maroon" title="c4">A</font> is  <a href="tops_2.html#V3" title="TOPS_2:attr.3">being_homeomorphism</a> 
+ </span><div about="#PF65_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/matrtop1/65_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/matrtop1/65_1_1')" href="javascript:()" title="65_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+</body>
+</html>

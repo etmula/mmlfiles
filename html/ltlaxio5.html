@@ -1,0 +1,926 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LTLAXIO5:  Propositional Linear Time Temporal Logic with Initial Semantics</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  Propositional Linear Time Temporal Logic with Initial Semantics</font></span><br><span class="comment"><font color="firebrick">:: by Mariusz Giero</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received October 22, 2015</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 2015-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br><div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E1">Lm1</font></span>: <a NAME="T1"><span class="comment"><font color="firebrick">:: LTLAXIO5:1</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">f</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of <font color="Olive" title="b1">X</font><br>  for <font color="Olive" title="b3">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b3">i</font> &amp; <font color="Olive" title="b3">i</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">f</font> holds <br><font color="Olive" title="b2">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b3">i</font>
+</div>
+<div about="#PF1" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/1')" href="javascript:()" title="1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div class="comment mathjax"><font color="firebrick">::#INSERT: LTLB with normal semantics is monotonic<br>  
+</font></div>
+<div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E2">mon2</font></span>: <a NAME="T2"><span class="comment"><font color="firebrick">:: LTLAXIO5:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font>, <font color="Olive" title="b3">G</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b2">F</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b3">G</font> &amp; <font color="Olive" title="b2">F</font> <a href="ltlaxio1.html#R8" title="LTLAXIO1:pred.8">|-</a> <font color="Olive" title="b1">A</font> holds <br><font color="Olive" title="b3">G</font> <a href="ltlaxio1.html#R8" title="LTLAXIO1:pred.8">|-</a> <font color="Olive" title="b1">A</font>
+</div>
+<div about="#PF2" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/2')" href="javascript:()" title="2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E3">th16</font></span>: <a NAME="T3"><span class="comment"><font color="firebrick">:: LTLAXIO5:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font>, <font color="Olive" title="b3">C</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  holds  <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b2">B</font></span>)</span> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b2">B</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b3">C</font></span>)</span> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p2">(<span class="default"><font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b3">C</font></span>)</span></span>)</span> is  <a href="ltlaxio1.html#V1" title="LTLAXIO1:attr.1">LTL_TAUT_OF_PL</a> </div>
+<div about="#PF3" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/3')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/3')" href="javascript:()" title="3"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E4">th17</font></span>: <a NAME="T4"><span class="comment"><font color="firebrick">:: LTLAXIO5:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font>, <font color="Olive" title="b3">C</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  holds  <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p2">(<span class="default"><font color="Olive" title="b2">B</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b3">C</font></span>)</span></span>)</span> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b2">B</font></span>)</span> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p2">(<span class="default"><font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b3">C</font></span>)</span></span>)</span> is  <a href="ltlaxio1.html#V1" title="LTLAXIO1:attr.1">LTL_TAUT_OF_PL</a> </div>
+<div about="#PF4" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T4"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/4')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/4')" href="javascript:()" title="4"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E5">th18</font></span>: <a NAME="T5"><span class="comment"><font color="firebrick">:: LTLAXIO5:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> holds  <font color="Olive" title="b2">F</font> <a href="ltlaxio1.html#R8" title="LTLAXIO1:pred.8">|-</a> <span class="p1">(<span class="default"><a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b1">A</font></span>)</span> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b1">A</font>
+</div>
+<div about="#PF5" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/5')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/5')" href="javascript:()" title="5"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E6">th19a</font></span>: <a NAME="T6"><span class="comment"><font color="firebrick">:: LTLAXIO5:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  holds  <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><font color="Olive" title="b1">A</font></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> <a href="ltlaxio1.html#R3" title="LTLAXIO1:pred.3">|=</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><a href="ltlaxio1.html#K2" title="LTLAXIO1:func.2">'X'</a> <font color="Olive" title="b1">A</font></span>)</span>
+</div>
+<div about="#PF6" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/6')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/6')" href="javascript:()" title="6"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E7">th19</font></span>: <a NAME="T7"><span class="comment"><font color="firebrick">:: LTLAXIO5:7</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> holds  <font color="Olive" title="b2">F</font> <a href="ltlaxio1.html#R8" title="LTLAXIO1:pred.8">|-</a> <span class="p1">(<span class="default"><a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b1">A</font></span>)</span> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p1">(<span class="default"><a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p2">(<span class="default"><a href="ltlaxio1.html#K2" title="LTLAXIO1:func.2">'X'</a> <font color="Olive" title="b1">A</font></span>)</span></span>)</span>
+</div>
+<div about="#PF7" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T7"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/7')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/7')" href="javascript:()" title="7"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E8">th20</font></span>: <a NAME="T8"><span class="comment"><font color="firebrick">:: LTLAXIO5:8</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b3">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> holds  <font color="Olive" title="b3">F</font> <a href="ltlaxio1.html#R8" title="LTLAXIO1:pred.8">|-</a> <span class="p1">(<span class="default"><a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p2">(<span class="default"><font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b2">B</font></span>)</span></span>)</span> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p3">(<span class="default"><font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p4">(<span class="default"><a href="ltlaxio1.html#K2" title="LTLAXIO1:func.2">'X'</a> <font color="Olive" title="b1">A</font></span>)</span></span>)</span></span>)</span> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p2">(<span class="default"><a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p3">(<span class="default"><font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p4">(<span class="default"><a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b2">B</font></span>)</span></span>)</span></span>)</span></span>)</span>
+</div>
+<div about="#PF8" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/8')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/8')" href="javascript:()" title="8"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: A formula A is initially valid in the temporal structure M<br>  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">M</font> be   <a href="ltlaxio1.html#NM1" title="LTLAXIO1:NM.1">LTLModel</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">A</font> be    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> ;<br><div class="comment mathjax"><font color="firebrick">::#INSERT: A formula A is initially valid in the temporal structure M<br>  
+</font></div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="R1"><span class="kw">pred</span> </a><font color="Maroon" title="c1">M</font> <a href="ltlaxio5.html#R1" title="LTLAXIO5:pred.1">|=0</a> <font color="Maroon" title="c2">A</font><span class="kw"> means </span><a NAME="D1"><span class="comment"><font color="firebrick">:: LTLAXIO5:def 1</font></span><br></a><span class="p1">(<span class="default"><a href="ltlaxio1.html#K11" title="LTLAXIO1:func.11">SAT</a> <font color="Maroon" title="c1">M</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <span class="p1"><a href="domain_1.html#K1" title="DOMAIN_1:func.1">[</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,<font color="Maroon" title="c2">A</font></span><a href="domain_1.html#K1" title="DOMAIN_1:func.1">]</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="ltlaxio5.html#R1" title="LTLAXIO5:pred.1">|=0</a> <a onclick="hs(this)" href="javascript:()">LTLAXIO5:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">M</font> being   <a href="ltlaxio1.html#NM1" title="LTLAXIO1:NM.1">LTLModel</a><br>  for <font color="Olive" title="b2">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  holds <br> ( <font color="Olive" title="b1">M</font> <a href="ltlaxio5.html#R1" title="LTLAXIO5:pred.1">|=0</a> <font color="Olive" title="b2">A</font> iff <span class="p1">(<span class="default"><a href="ltlaxio1.html#K11" title="LTLAXIO1:func.11">SAT</a> <font color="Olive" title="b1">M</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <span class="p1"><a href="domain_1.html#K1" title="DOMAIN_1:func.1">[</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,<font color="Olive" title="b2">A</font></span><a href="domain_1.html#K1" title="DOMAIN_1:func.1">]</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 );<br></span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: A set F of formulas is initially valid in the temporal structure M<br>  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">M</font> be   <a href="ltlaxio1.html#NM1" title="LTLAXIO1:NM.1">LTLModel</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">F</font> be   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>;<br><div class="comment mathjax"><font color="firebrick">::#INSERT: A set F of formulas is initially valid in the temporal structure M<br>  
+</font></div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="R2"><span class="kw">pred</span> </a><font color="Maroon" title="c1">M</font> <a href="ltlaxio5.html#R2" title="LTLAXIO5:pred.2">|=0</a> <font color="Maroon" title="c2">F</font><span class="kw"> means </span><a NAME="D2"><span class="comment"><font color="firebrick">:: LTLAXIO5:def 2</font></span><br></a> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>   st <font color="Olive" title="b1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">F</font> holds <br><font color="Maroon" title="c1">M</font> <a href="ltlaxio5.html#R1" title="LTLAXIO5:pred.1">|=0</a> <font color="Olive" title="b1">A</font>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="ltlaxio5.html#R2" title="LTLAXIO5:pred.2">|=0</a> <a onclick="hs(this)" href="javascript:()">LTLAXIO5:def 2 : <br></a><span class="hide"> for <font color="Olive" title="b1">M</font> being   <a href="ltlaxio1.html#NM1" title="LTLAXIO1:NM.1">LTLModel</a><br>  for <font color="Olive" title="b2">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> holds <br> ( <font color="Olive" title="b1">M</font> <a href="ltlaxio5.html#R2" title="LTLAXIO5:pred.2">|=0</a> <font color="Olive" title="b2">F</font> iff  for <font color="Olive" title="b3">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>   st <font color="Olive" title="b3">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">F</font> holds <br><font color="Olive" title="b1">M</font> <a href="ltlaxio5.html#R1" title="LTLAXIO5:pred.1">|=0</a> <font color="Olive" title="b3">A</font> );<br></span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: A formula A is an initial consequence of a set F of formulas<br>  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">F</font> be   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">A</font> be    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> ;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="R3"><span class="kw">pred</span> </a><font color="Maroon" title="c1">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a> <font color="Maroon" title="c2">A</font><span class="kw"> means </span><a NAME="D3"><span class="comment"><font color="firebrick">:: LTLAXIO5:def 3</font></span><br></a> for <font color="Olive" title="b1">M</font> being   <a href="ltlaxio1.html#NM1" title="LTLAXIO1:NM.1">LTLModel</a>  st <font color="Olive" title="b1">M</font> <a href="ltlaxio5.html#R2" title="LTLAXIO5:pred.2">|=0</a> <font color="Maroon" title="c1">F</font> holds <br><font color="Olive" title="b1">M</font> <a href="ltlaxio5.html#R1" title="LTLAXIO5:pred.1">|=0</a> <font color="Maroon" title="c2">A</font>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT3" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a> <a onclick="hs(this)" href="javascript:()">LTLAXIO5:def 3 : <br></a><span class="hide"> for <font color="Olive" title="b1">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a><br>  for <font color="Olive" title="b2">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  holds <br> ( <font color="Olive" title="b1">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a> <font color="Olive" title="b2">A</font> iff  for <font color="Olive" title="b3">M</font> being   <a href="ltlaxio1.html#NM1" title="LTLAXIO1:NM.1">LTLModel</a>  st <font color="Olive" title="b3">M</font> <a href="ltlaxio5.html#R2" title="LTLAXIO5:pred.2">|=0</a> <font color="Olive" title="b1">F</font> holds <br><font color="Olive" title="b3">M</font> <a href="ltlaxio5.html#R1" title="LTLAXIO5:pred.1">|=0</a> <font color="Olive" title="b2">A</font> );<br></span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: The numbers 2.6.1-2.6.8, put in comments in the article,<br>  
+::#INSERT: correspond to the ones in: Kroeger, Merz. Temporal Logic and State<br>  
+::#INSERT: Systems. 2008. Springer-Verlag.<br>  
+::#INSERT: 2.6.1a-trivial: M |= A implies M |=0 A<br>  
+  
+</font></div>
+<div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E9">Th1</font></span>: <a NAME="T9"><span class="comment"><font color="firebrick">:: LTLAXIO5:9</font></span><br></a><div class="add"> for <font color="Olive" title="b1">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a><br>  for <font color="Olive" title="b2">M</font> being   <a href="ltlaxio1.html#NM1" title="LTLAXIO1:NM.1">LTLModel</a>  st <font color="Olive" title="b2">M</font> <a href="ltlaxio1.html#R2" title="LTLAXIO1:pred.2">|=</a> <font color="Olive" title="b1">F</font> holds <br><font color="Olive" title="b2">M</font> <a href="ltlaxio5.html#R2" title="LTLAXIO5:pred.2">|=0</a> <font color="Olive" title="b1">F</font>
+</div>
+<div about="#PF12" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T9"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/12')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/12')" href="javascript:()" title="12"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: 2.6.1b<br>  
+</font></div>
+<div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E10">th261b</font></span>: <a NAME="T10"><span class="comment"><font color="firebrick">:: LTLAXIO5:10</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">M</font> being   <a href="ltlaxio1.html#NM1" title="LTLAXIO1:NM.1">LTLModel</a> holds <br> ( <font color="Olive" title="b2">M</font> <a href="ltlaxio1.html#R1" title="LTLAXIO1:pred.1">|=</a> <font color="Olive" title="b1">A</font> iff <font color="Olive" title="b2">M</font> <a href="ltlaxio5.html#R1" title="LTLAXIO5:pred.1">|=0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b1">A</font> )</div>
+<div about="#PF13" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T10"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/13')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/13')" href="javascript:()" title="13"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: 2.6.2a<br>  
+</font></div>
+<div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E11">th262a</font></span>: <a NAME="T11"><span class="comment"><font color="firebrick">:: LTLAXIO5:11</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a> <font color="Olive" title="b1">A</font> holds <br><font color="Olive" title="b2">F</font> <a href="ltlaxio1.html#R3" title="LTLAXIO1:pred.3">|=</a> <font color="Olive" title="b1">A</font>
+</div>
+<div about="#PF14" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/14')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/14')" href="javascript:()" title="14"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">F</font> be   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K1"><span class="kw">func</span> </a> <a href="ltlaxio5.html#K1" title="LTLAXIO5:func.1">'G'</a> <font color="Maroon" title="c1">F</font><span class="kw"> -&gt; </span>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a><span class="kw"> equals </span><a NAME="D4"><span class="comment"><font color="firebrick">:: LTLAXIO5:def 4</font></span><br></a><span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b1">A</font></span>)</span> where <font color="Olive" title="b1">A</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  : <font color="Olive" title="b1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c1">F</font> </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b1">A</font></span>)</span> where <font color="Olive" title="b1">A</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  : <font color="Olive" title="b1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c1">F</font> </span> } </span>  is   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a></span>;<br></span><div about="#PF15_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/15_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/15_1_1')" href="javascript:()" title="15_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT4" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="ltlaxio5.html#K1" title="LTLAXIO5:func.1">'G'</a> <a onclick="hs(this)" href="javascript:()">LTLAXIO5:def 4 : <br></a><span class="hide"> for <font color="Olive" title="b1">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> holds   <a href="ltlaxio5.html#K1" title="LTLAXIO5:func.1">'G'</a> <font color="Olive" title="b1">F</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b2">A</font></span>)</span> where <font color="Olive" title="b2">A</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  : <font color="Olive" title="b2">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">F</font> </span> } </span> ;<br></span>
+</div>
+<br><div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E12">th261bq</font></span>: <a NAME="T12"><span class="comment"><font color="firebrick">:: LTLAXIO5:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a><br>  for <font color="Olive" title="b2">M</font> being   <a href="ltlaxio1.html#NM1" title="LTLAXIO1:NM.1">LTLModel</a> holds <br> ( <font color="Olive" title="b2">M</font> <a href="ltlaxio1.html#R2" title="LTLAXIO1:pred.2">|=</a> <font color="Olive" title="b1">F</font> iff <font color="Olive" title="b2">M</font> <a href="ltlaxio5.html#R2" title="LTLAXIO5:pred.2">|=0</a>  <a href="ltlaxio5.html#K1" title="LTLAXIO5:func.1">'G'</a> <font color="Olive" title="b1">F</font> )</div>
+<div about="#PF16" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/16')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/16')" href="javascript:()" title="16"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: 2.6.2b<br>  
+</font></div>
+<div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E13">th262b</font></span>: <a NAME="T13"><span class="comment"><font color="firebrick">:: LTLAXIO5:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> holds <br> ( <font color="Olive" title="b2">F</font> <a href="ltlaxio1.html#R3" title="LTLAXIO1:pred.3">|=</a> <font color="Olive" title="b1">A</font> iff  <a href="ltlaxio5.html#K1" title="LTLAXIO5:func.1">'G'</a> <font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a> <font color="Olive" title="b1">A</font> )</div>
+<div about="#PF17" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T13"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/17')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/17')" href="javascript:()" title="17"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E14">th262ac1</font></span>: <a NAME="T14"><span class="comment"><font color="firebrick">:: LTLAXIO5:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  holds <br> ( <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><span class="p2">(<span class="default"><a href="hilbert2.html#K1" title="HILBERT2:func.1">prop</a> <font color="Olive" title="b1">n</font></span>)</span></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> <a href="ltlaxio1.html#R3" title="LTLAXIO1:pred.3">|=</a>  <a href="ltlaxio1.html#K2" title="LTLAXIO1:func.2">'X'</a> <span class="p1">(<span class="default"><a href="hilbert2.html#K1" title="HILBERT2:func.1">prop</a> <font color="Olive" title="b1">n</font></span>)</span> &amp;  not <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><span class="p2">(<span class="default"><a href="hilbert2.html#K1" title="HILBERT2:func.1">prop</a> <font color="Olive" title="b1">n</font></span>)</span></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a>  <a href="ltlaxio1.html#K2" title="LTLAXIO1:func.2">'X'</a> <span class="p1">(<span class="default"><a href="hilbert2.html#K1" title="HILBERT2:func.1">prop</a> <font color="Olive" title="b1">n</font></span>)</span> )</div>
+<div about="#PF18" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T14"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/18')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/18')" href="javascript:()" title="18"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: The converse of 2.6.2a does not hold in general<br>  
+</font></div>
+<div about="#T15" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T15"><span class="comment"><font color="firebrick">:: LTLAXIO5:15</font></span><br></a><div class="add"> ex <font color="Olive" title="b1">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> ex <font color="Olive" title="b2">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <br>( <font color="Olive" title="b1">F</font> <a href="ltlaxio1.html#R3" title="LTLAXIO1:pred.3">|=</a> <font color="Olive" title="b2">A</font> &amp;  not <font color="Olive" title="b1">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a> <font color="Olive" title="b2">A</font> )</div>
+<div about="#PF19" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/19')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/19')" href="javascript:()" title="19"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T16" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E15">th21</font></span>: <a NAME="T16"><span class="comment"><font color="firebrick">:: LTLAXIO5:16</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b1">A</font> holds <br><font color="Olive" title="b2">F</font> <a href="ltlaxio1.html#R3" title="LTLAXIO1:pred.3">|=</a> <font color="Olive" title="b1">A</font>
+</div>
+<div about="#PF20" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T16"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/20')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/20')" href="javascript:()" title="20"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T17" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E16">th21cp</font></span>: <a NAME="T17"><span class="comment"><font color="firebrick">:: LTLAXIO5:17</font></span><br></a><div class="add"> for <font color="Olive" title="b1">i</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  holds <br> ( <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><span class="p2">(<span class="default"><a href="hilbert2.html#K1" title="HILBERT2:func.1">prop</a> <font color="Olive" title="b1">i</font></span>)</span></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> <a href="ltlaxio1.html#R3" title="LTLAXIO1:pred.3">|=</a>  <a href="hilbert2.html#K1" title="HILBERT2:func.1">prop</a> <font color="Olive" title="b1">i</font> &amp;  not <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><span class="p2">(<span class="default"><a href="hilbert2.html#K1" title="HILBERT2:func.1">prop</a> <font color="Olive" title="b1">i</font></span>)</span></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><a href="hilbert2.html#K1" title="HILBERT2:func.1">prop</a> <font color="Olive" title="b1">i</font></span>)</span> )</div>
+<div about="#PF21" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T17"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/21')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/21')" href="javascript:()" title="21"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T18" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T18"><span class="comment"><font color="firebrick">:: LTLAXIO5:18</font></span><br></a><div class="add"> ex <font color="Olive" title="b1">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> ex <font color="Olive" title="b2">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <br>( <font color="Olive" title="b1">F</font> <a href="ltlaxio1.html#R3" title="LTLAXIO1:pred.3">|=</a> <font color="Olive" title="b2">A</font> &amp;  not <font color="Olive" title="b1">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b2">A</font> )</div>
+<div about="#PF22" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T18"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/22')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/22')" href="javascript:()" title="22"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T19" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E17">th263pa</font></span>: <a NAME="T19"><span class="comment"><font color="firebrick">:: LTLAXIO5:19</font></span><br></a><div class="add"> for <font color="Olive" title="b1">F</font>, <font color="Olive" title="b2">G</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a><br>  for <font color="Olive" title="b3">M</font> being   <a href="ltlaxio1.html#NM1" title="LTLAXIO1:NM.1">LTLModel</a> holds <br> ( ( <font color="Olive" title="b3">M</font> <a href="ltlaxio5.html#R2" title="LTLAXIO5:pred.2">|=0</a> <font color="Olive" title="b1">F</font> &amp; <font color="Olive" title="b3">M</font> <a href="ltlaxio5.html#R2" title="LTLAXIO5:pred.2">|=0</a> <font color="Olive" title="b2">G</font> ) iff <font color="Olive" title="b3">M</font> <a href="ltlaxio5.html#R2" title="LTLAXIO5:pred.2">|=0</a> <font color="Olive" title="b1">F</font> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <font color="Olive" title="b2">G</font> )</div>
+<div about="#PF23" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T19"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/23')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/23')" href="javascript:()" title="23"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T20" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E18">th263pb</font></span>: <a NAME="T20"><span class="comment"><font color="firebrick">:: LTLAXIO5:20</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">M</font> being   <a href="ltlaxio1.html#NM1" title="LTLAXIO1:NM.1">LTLModel</a> holds <br> ( <font color="Olive" title="b2">M</font> <a href="ltlaxio5.html#R1" title="LTLAXIO5:pred.1">|=0</a> <font color="Olive" title="b1">A</font> iff <font color="Olive" title="b2">M</font> <a href="ltlaxio5.html#R2" title="LTLAXIO5:pred.2">|=0</a> <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><font color="Olive" title="b1">A</font></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> )</div>
+<div about="#PF24" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T20"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/24')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/24')" href="javascript:()" title="24"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: 2.6.3<br>  
+::#INSERT: In compare to normal consequence (LTLAXIO1:30), the relationship<br>  
+::#INSERT: between implication and initial consequence holds in the classical<br>  
+::#INSERT: form<br>  
+</font></div>
+<div about="#T21" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E19">th263</font></span>: <a NAME="T21"><span class="comment"><font color="firebrick">:: LTLAXIO5:21</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b3">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> holds <br> ( <font color="Olive" title="b3">F</font> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><font color="Olive" title="b1">A</font></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a> <font color="Olive" title="b2">B</font> iff <font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a> <font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b2">B</font> )</div>
+<div about="#PF25" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T21"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/25')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/25')" href="javascript:()" title="25"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T22" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E20">th264p</font></span>: <a NAME="T22"><span class="comment"><font color="firebrick">:: LTLAXIO5:22</font></span><br></a><div class="add"> <a href="ltlaxio5.html#K1" title="LTLAXIO5:func.1">'G'</a> <span class="p1">(<span class="default"><a href="subset_1.html#K1" title="SUBSET_1:func.1">{}</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="subset_1.html#K1" title="SUBSET_1:func.1">{}</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>
+</div>
+<div about="#PF26" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T22"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/26')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/26')" href="javascript:()" title="26"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: Universal validity concepts are equaivalent as far as<br>  
+::#INSERT: initial and normal semantics is concerned:<br>  
+::#INSERT: 2.6.4: one line proof:<br>  
+::#INSERT: {}LTLB_WFF |= A iff {}LTLB_WFF |=0 A by th262b,th264p<br>  
+  
+::#INSERT: 2.1.8<br>  
+</font></div>
+<div about="#T23" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E21">th218</font></span>: <a NAME="T23"><span class="comment"><font color="firebrick">:: LTLAXIO5:23</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b2">F</font> <a href="ltlaxio1.html#R3" title="LTLAXIO1:pred.3">|=</a> <font color="Olive" title="b1">A</font> &amp; (  for <font color="Olive" title="b3">B</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>   st <font color="Olive" title="b3">B</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">F</font> holds <br> <a href="subset_1.html#K1" title="SUBSET_1:func.1">{}</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <a href="ltlaxio1.html#R3" title="LTLAXIO1:pred.3">|=</a> <font color="Olive" title="b3">B</font> ) holds <br> <a href="subset_1.html#K1" title="SUBSET_1:func.1">{}</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <a href="ltlaxio1.html#R3" title="LTLAXIO1:pred.3">|=</a> <font color="Olive" title="b1">A</font>
+</div>
+<div about="#PF27" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T23"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/27')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/27')" href="javascript:()" title="27"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: 2.6.5<br>  
+</font></div>
+<div about="#T24" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E22">th265</font></span>: <a NAME="T24"><span class="comment"><font color="firebrick">:: LTLAXIO5:24</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b2">F</font> <a href="ltlaxio1.html#R3" title="LTLAXIO1:pred.3">|=</a> <font color="Olive" title="b1">A</font> &amp; (  for <font color="Olive" title="b3">B</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>   st <font color="Olive" title="b3">B</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">F</font> holds <br> <a href="subset_1.html#K1" title="SUBSET_1:func.1">{}</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a> <font color="Olive" title="b3">B</font> ) holds <br> <a href="subset_1.html#K1" title="SUBSET_1:func.1">{}</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a> <font color="Olive" title="b1">A</font>
+</div>
+<div about="#PF28" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T24"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/28')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/28')" href="javascript:()" title="28"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T25" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T25"><span class="comment"><font color="firebrick">:: LTLAXIO5:25</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>   st  <a href="subset_1.html#K1" title="SUBSET_1:func.1">{}</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a> <font color="Olive" title="b1">A</font> holds <br> <a href="subset_1.html#K1" title="SUBSET_1:func.1">{}</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a>  <a href="ltlaxio1.html#K2" title="LTLAXIO1:func.2">'X'</a> <font color="Olive" title="b1">A</font>
+</div>
+<div about="#PF29" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T25"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/29')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/29')" href="javascript:()" title="29"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: Axioms<br>  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<div about="#D0" typeof="oo:Definition">
+<a NAME="K2"><span class="kw">func</span> </a> <a href="ltlaxio5.html#K2" title="LTLAXIO5:func.2">LTL0_axioms</a> <span class="kw"> -&gt; </span>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a><span class="kw"> equals </span><a NAME="D5"><span class="comment"><font color="firebrick">:: LTLAXIO5:def 5</font></span><br></a> <a href="ltlaxio5.html#K1" title="LTLAXIO5:func.1">'G'</a> <a href="ltlaxio1.html#K13" title="LTLAXIO1:func.13">LTL_axioms</a>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br> <a href="ltlaxio5.html#K1" title="LTLAXIO5:func.1">'G'</a> <a href="ltlaxio1.html#K13" title="LTLAXIO1:func.13">LTL_axioms</a> is   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a></span>;<br></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT5" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="ltlaxio5.html#K2" title="LTLAXIO5:func.2">LTL0_axioms</a> <a onclick="hs(this)" href="javascript:()">LTLAXIO5:def 5 : <br></a><span class="hide"> <a href="ltlaxio5.html#K2" title="LTLAXIO5:func.2">LTL0_axioms</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio5.html#K1" title="LTLAXIO5:func.1">'G'</a> <a href="ltlaxio1.html#K13" title="LTLAXIO1:func.13">LTL_axioms</a>;<br></span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: Derivation rules<br>  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">p</font>, <font color="Maroon" title="c2">q</font> be    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> ;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="R4"><span class="kw">pred</span> </a><font color="Maroon" title="c1">p</font> <a href="ltlaxio5.html#R4" title="LTLAXIO5:pred.4">REFL0_rule</a> <font color="Maroon" title="c2">q</font><span class="kw"> means </span><a NAME="D6"><span class="comment"><font color="firebrick">:: LTLAXIO5:def 6</font></span><br></a><font color="Maroon" title="c1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Maroon" title="c2">q</font>;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="R5"><span class="kw">pred</span> </a><font color="Maroon" title="c1">p</font> <a href="ltlaxio5.html#R5" title="LTLAXIO5:pred.5">NEX0_rule</a> <font color="Maroon" title="c2">q</font><span class="kw"> means </span><a NAME="D7"><span class="comment"><font color="firebrick">:: LTLAXIO5:def 7</font></span><br></a> ex <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <br>( <font color="Maroon" title="c1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b1">A</font> &amp; <font color="Maroon" title="c2">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><a href="ltlaxio1.html#K2" title="LTLAXIO1:func.2">'X'</a> <font color="Olive" title="b1">A</font></span>)</span> );<br>
+</div>
+<span class="kw">let </span><font color="Maroon" title="c3">r</font> be    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> ;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="R6"><span class="kw">pred</span> </a><font color="Maroon" title="c1">p</font>,<font color="Maroon" title="c2">q</font> <a href="ltlaxio5.html#R6" title="LTLAXIO5:pred.6">MP0_rule</a> <font color="Maroon" title="c3">r</font><span class="kw"> means </span><a NAME="D8"><span class="comment"><font color="firebrick">:: LTLAXIO5:def 8</font></span><br></a> ex <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <br>( <font color="Maroon" title="c1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b1">A</font> &amp; <font color="Maroon" title="c2">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b2">B</font></span>)</span> &amp; <font color="Maroon" title="c3">r</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b2">B</font> );<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="R7"><span class="kw">pred</span> </a><font color="Maroon" title="c1">p</font>,<font color="Maroon" title="c2">q</font> <a href="ltlaxio5.html#R7" title="LTLAXIO5:pred.7">IND0_rule</a> <font color="Maroon" title="c3">r</font><span class="kw"> means </span><a NAME="D9"><span class="comment"><font color="firebrick">:: LTLAXIO5:def 9</font></span><br></a> ex <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <br>( <font color="Maroon" title="c1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b2">B</font></span>)</span> &amp; <font color="Maroon" title="c2">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p2">(<span class="default"><a href="ltlaxio1.html#K2" title="LTLAXIO1:func.2">'X'</a> <font color="Olive" title="b1">A</font></span>)</span></span>)</span> &amp; <font color="Maroon" title="c3">r</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p2">(<span class="default"><a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b2">B</font></span>)</span></span>)</span> );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div about="#DT6" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="ltlaxio5.html#R4" title="LTLAXIO5:pred.4">REFL0_rule</a> <a onclick="hs(this)" href="javascript:()">LTLAXIO5:def 6 : <br></a><span class="hide"> for <font color="Olive" title="b1">p</font>, <font color="Olive" title="b2">q</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  holds <br> ( <font color="Olive" title="b1">p</font> <a href="ltlaxio5.html#R4" title="LTLAXIO5:pred.4">REFL0_rule</a> <font color="Olive" title="b2">q</font> iff <font color="Olive" title="b1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b2">q</font> );<br></span>
+</div>
+<br><div about="#DT7" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="ltlaxio5.html#R5" title="LTLAXIO5:pred.5">NEX0_rule</a> <a onclick="hs(this)" href="javascript:()">LTLAXIO5:def 7 : <br></a><span class="hide"> for <font color="Olive" title="b1">p</font>, <font color="Olive" title="b2">q</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  holds <br> ( <font color="Olive" title="b1">p</font> <a href="ltlaxio5.html#R5" title="LTLAXIO5:pred.5">NEX0_rule</a> <font color="Olive" title="b2">q</font> iff  ex <font color="Olive" title="b3">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <br>( <font color="Olive" title="b1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b3">A</font> &amp; <font color="Olive" title="b2">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><a href="ltlaxio1.html#K2" title="LTLAXIO1:func.2">'X'</a> <font color="Olive" title="b3">A</font></span>)</span> ) );<br></span>
+</div>
+<br><div about="#DT8" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="ltlaxio5.html#R6" title="LTLAXIO5:pred.6">MP0_rule</a> <a onclick="hs(this)" href="javascript:()">LTLAXIO5:def 8 : <br></a><span class="hide"> for <font color="Olive" title="b1">p</font>, <font color="Olive" title="b2">q</font>, <font color="Olive" title="b3">r</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  holds <br> ( <font color="Olive" title="b1">p</font>,<font color="Olive" title="b2">q</font> <a href="ltlaxio5.html#R6" title="LTLAXIO5:pred.6">MP0_rule</a> <font color="Olive" title="b3">r</font> iff  ex <font color="Olive" title="b4">A</font>, <font color="Olive" title="b5">B</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <br>( <font color="Olive" title="b1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b4">A</font> &amp; <font color="Olive" title="b2">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b5">B</font></span>)</span> &amp; <font color="Olive" title="b3">r</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b5">B</font> ) );<br></span>
+</div>
+<br><div about="#DT9" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="ltlaxio5.html#R7" title="LTLAXIO5:pred.7">IND0_rule</a> <a onclick="hs(this)" href="javascript:()">LTLAXIO5:def 9 : <br></a><span class="hide"> for <font color="Olive" title="b1">p</font>, <font color="Olive" title="b2">q</font>, <font color="Olive" title="b3">r</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  holds <br> ( <font color="Olive" title="b1">p</font>,<font color="Olive" title="b2">q</font> <a href="ltlaxio5.html#R7" title="LTLAXIO5:pred.7">IND0_rule</a> <font color="Olive" title="b3">r</font> iff  ex <font color="Olive" title="b4">A</font>, <font color="Olive" title="b5">B</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <br>( <font color="Olive" title="b1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b5">B</font></span>)</span> &amp; <font color="Olive" title="b2">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p2">(<span class="default"><a href="ltlaxio1.html#K2" title="LTLAXIO1:func.2">'X'</a> <font color="Olive" title="b4">A</font></span>)</span></span>)</span> &amp; <font color="Olive" title="b3">r</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p2">(<span class="default"><a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b5">B</font></span>)</span></span>)</span> ) );<br></span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: Definition of derivation step<br>  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">i</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">f</font> be    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> ;<br><span class="kw">let </span><font color="Maroon" title="c3">X</font> be   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>;<br><div class="comment mathjax"><font color="firebrick">::#INSERT: Definition of derivation step<br>  
+</font></div>
+<div about="#D23" typeof="oo:Definition">
+<a NAME="R8"><span class="kw">pred</span> </a> <a href="ltlaxio5.html#R8" title="LTLAXIO5:pred.8">prc0</a> <font color="Maroon" title="c2">f</font>,<font color="Maroon" title="c3">X</font>,<font color="Maroon" title="c1">i</font><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E23">Def29</font></span>: <a NAME="D10"><span class="comment"><font color="firebrick">:: LTLAXIO5:def 10</font></span><br></a>( <font color="Maroon" title="c2">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c1">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ltlaxio5.html#K2" title="LTLAXIO5:func.2">LTL0_axioms</a>  or <font color="Maroon" title="c2">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c1">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c3">X</font> or  ex <font color="Olive" title="b1">j</font>, <font color="Olive" title="b2">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <br>( 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b1">j</font> &amp; <font color="Olive" title="b1">j</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c1">i</font> &amp; 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b2">k</font> &amp; <font color="Olive" title="b2">k</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c1">i</font> &amp; ( <font color="Maroon" title="c2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b1">j</font>,<font color="Maroon" title="c2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b2">k</font> <a href="ltlaxio1.html#R5" title="LTLAXIO1:pred.5">MP_rule</a> <font color="Maroon" title="c2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Maroon" title="c1">i</font> or <font color="Maroon" title="c2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b1">j</font>,<font color="Maroon" title="c2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b2">k</font> <a href="ltlaxio5.html#R6" title="LTLAXIO5:pred.6">MP0_rule</a> <font color="Maroon" title="c2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Maroon" title="c1">i</font> or <font color="Maroon" title="c2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b1">j</font>,<font color="Maroon" title="c2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b2">k</font> <a href="ltlaxio5.html#R7" title="LTLAXIO5:pred.7">IND0_rule</a> <font color="Maroon" title="c2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Maroon" title="c1">i</font> ) ) or  ex <font color="Olive" title="b1">j</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <br>( 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b1">j</font> &amp; <font color="Olive" title="b1">j</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c1">i</font> &amp; ( <font color="Maroon" title="c2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b1">j</font> <a href="ltlaxio5.html#R5" title="LTLAXIO5:pred.5">NEX0_rule</a> <font color="Maroon" title="c2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Maroon" title="c1">i</font> or <font color="Maroon" title="c2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b1">j</font> <a href="ltlaxio5.html#R4" title="LTLAXIO5:pred.4">REFL0_rule</a> <font color="Maroon" title="c2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Maroon" title="c1">i</font> ) ) );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT10" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E23">Def29</font></span>   defines <a href="ltlaxio5.html#R8" title="LTLAXIO5:pred.8">prc0</a> <a onclick="hs(this)" href="javascript:()">LTLAXIO5:def 10 : <br></a><span class="hide"> for <font color="Olive" title="b1">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b2">f</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b3">X</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> holds <br> (  <a href="ltlaxio5.html#R8" title="LTLAXIO5:pred.8">prc0</a> <font color="Olive" title="b2">f</font>,<font color="Olive" title="b3">X</font>,<font color="Olive" title="b1">i</font> iff ( <font color="Olive" title="b2">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ltlaxio5.html#K2" title="LTLAXIO5:func.2">LTL0_axioms</a>  or <font color="Olive" title="b2">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b3">X</font> or  ex <font color="Olive" title="b4">j</font>, <font color="Olive" title="b5">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <br>( 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b4">j</font> &amp; <font color="Olive" title="b4">j</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b1">i</font> &amp; 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b5">k</font> &amp; <font color="Olive" title="b5">k</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b1">i</font> &amp; ( <font color="Olive" title="b2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b4">j</font>,<font color="Olive" title="b2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b5">k</font> <a href="ltlaxio1.html#R5" title="LTLAXIO1:pred.5">MP_rule</a> <font color="Olive" title="b2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b1">i</font> or <font color="Olive" title="b2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b4">j</font>,<font color="Olive" title="b2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b5">k</font> <a href="ltlaxio5.html#R6" title="LTLAXIO5:pred.6">MP0_rule</a> <font color="Olive" title="b2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b1">i</font> or <font color="Olive" title="b2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b4">j</font>,<font color="Olive" title="b2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b5">k</font> <a href="ltlaxio5.html#R7" title="LTLAXIO5:pred.7">IND0_rule</a> <font color="Olive" title="b2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b1">i</font> ) ) or  ex <font color="Olive" title="b4">j</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <br>( 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b4">j</font> &amp; <font color="Olive" title="b4">j</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Olive" title="b1">i</font> &amp; ( <font color="Olive" title="b2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b4">j</font> <a href="ltlaxio5.html#R5" title="LTLAXIO5:pred.5">NEX0_rule</a> <font color="Olive" title="b2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b1">i</font> or <font color="Olive" title="b2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b4">j</font> <a href="ltlaxio5.html#R4" title="LTLAXIO5:pred.4">REFL0_rule</a> <font color="Olive" title="b2">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b1">i</font> ) ) ) );<br></span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: Properties of derivation step prc0 - analogue of "prc" from LTLAXIO1<br>  
+</font></div>
+<div about="#T26" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E24">Th38</font></span>: <a NAME="T26"><span class="comment"><font color="firebrick">:: LTLAXIO5:26</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a><br>  for <font color="Olive" title="b2">f</font>, <font color="Olive" title="b3">f2</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b4">i</font>, <font color="Olive" title="b5">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b5">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">f</font></span>)</span> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">f2</font> &amp; (  for <font color="Olive" title="b6">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b6">k</font> &amp; <font color="Olive" title="b6">k</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">f</font> holds <br><font color="Olive" title="b2">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b6">k</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">f2</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b6">k</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Olive" title="b5">n</font></span>)</span> ) &amp; 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b4">i</font> &amp; <font color="Olive" title="b4">i</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">f</font> &amp;  <a href="ltlaxio5.html#R8" title="LTLAXIO5:pred.8">prc0</a> <font color="Olive" title="b2">f</font>,<font color="Olive" title="b1">X</font>,<font color="Olive" title="b4">i</font> holds <br> <a href="ltlaxio5.html#R8" title="LTLAXIO5:pred.8">prc0</a> <font color="Olive" title="b3">f2</font>,<font color="Olive" title="b1">X</font>,<font color="Olive" title="b4">i</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Olive" title="b5">n</font>
+</div>
+<div about="#PF33" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T26"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/33')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/33')" href="javascript:()" title="33"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T27" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E25">Th39</font></span>: <a NAME="T27"><span class="comment"><font color="firebrick">:: LTLAXIO5:27</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a><br>  for <font color="Olive" title="b2">f</font>, <font color="Olive" title="b3">f1</font>, <font color="Olive" title="b4">f2</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>   st <font color="Olive" title="b4">f2</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">f</font> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <font color="Olive" title="b3">f1</font> &amp; 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">f</font> &amp; 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">f1</font> &amp; (  for <font color="Olive" title="b5">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b5">i</font> &amp; <font color="Olive" title="b5">i</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">f</font> holds <br> <a href="ltlaxio5.html#R8" title="LTLAXIO5:pred.8">prc0</a> <font color="Olive" title="b2">f</font>,<font color="Olive" title="b1">X</font>,<font color="Olive" title="b5">i</font> ) &amp; (  for <font color="Olive" title="b5">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b5">i</font> &amp; <font color="Olive" title="b5">i</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">f1</font> holds <br> <a href="ltlaxio5.html#R8" title="LTLAXIO5:pred.8">prc0</a> <font color="Olive" title="b3">f1</font>,<font color="Olive" title="b1">X</font>,<font color="Olive" title="b5">i</font> ) holds <br> for <font color="Olive" title="b5">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b5">i</font> &amp; <font color="Olive" title="b5">i</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b4">f2</font> holds <br> <a href="ltlaxio5.html#R8" title="LTLAXIO5:pred.8">prc0</a> <font color="Olive" title="b4">f2</font>,<font color="Olive" title="b1">X</font>,<font color="Olive" title="b5">i</font>
+</div>
+<div about="#PF34" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T27"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/34')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/34')" href="javascript:()" title="34"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: Derivability<br>  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">X</font> be   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">p</font> be    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> ;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="R9"><span class="kw">pred</span> </a><font color="Maroon" title="c1">X</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <font color="Maroon" title="c2">p</font><span class="kw"> means </span><a NAME="D11"><span class="comment"><font color="firebrick">:: LTLAXIO5:def 11</font></span><br></a> ex <font color="Olive" title="b1">f</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <br>( <font color="Olive" title="b1">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">f</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">p</font> &amp; 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">f</font> &amp; (  for <font color="Olive" title="b2">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b2">i</font> &amp; <font color="Olive" title="b2">i</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">f</font> holds <br> <a href="ltlaxio5.html#R8" title="LTLAXIO5:pred.8">prc0</a> <font color="Olive" title="b1">f</font>,<font color="Maroon" title="c1">X</font>,<font color="Olive" title="b2">i</font> ) );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT11" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <a onclick="hs(this)" href="javascript:()">LTLAXIO5:def 11 : <br></a><span class="hide"> for <font color="Olive" title="b1">X</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a><br>  for <font color="Olive" title="b2">p</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  holds <br> ( <font color="Olive" title="b1">X</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <font color="Olive" title="b2">p</font> iff  ex <font color="Olive" title="b3">f</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <br>( <font color="Olive" title="b3">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">f</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">p</font> &amp; 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">f</font> &amp; (  for <font color="Olive" title="b4">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b4">i</font> &amp; <font color="Olive" title="b4">i</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">f</font> holds <br> <a href="ltlaxio5.html#R8" title="LTLAXIO5:pred.8">prc0</a> <font color="Olive" title="b3">f</font>,<font color="Olive" title="b1">X</font>,<font color="Olive" title="b4">i</font> ) ) );<br></span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: Properties of derivation sequences<br>  
+</font></div>
+<div about="#T28" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E26">Th40</font></span>: <a NAME="T28"><span class="comment"><font color="firebrick">:: LTLAXIO5:28</font></span><br></a><div class="add"> for <font color="Olive" title="b1">p</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">X</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a><br>  for <font color="Olive" title="b3">f</font>, <font color="Olive" title="b4">f1</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>   st <font color="Olive" title="b3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">f1</font> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><font color="Olive" title="b1">p</font></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> &amp; 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b4">f1</font> &amp; (  for <font color="Olive" title="b5">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b5">i</font> &amp; <font color="Olive" title="b5">i</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b4">f1</font> holds <br> <a href="ltlaxio5.html#R8" title="LTLAXIO5:pred.8">prc0</a> <font color="Olive" title="b4">f1</font>,<font color="Olive" title="b2">X</font>,<font color="Olive" title="b5">i</font> ) &amp;  <a href="ltlaxio5.html#R8" title="LTLAXIO5:pred.8">prc0</a> <font color="Olive" title="b3">f</font>,<font color="Olive" title="b2">X</font>, <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">f</font> holds <br>( (  for <font color="Olive" title="b5">i</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b5">i</font> &amp; <font color="Olive" title="b5">i</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">f</font> holds <br> <a href="ltlaxio5.html#R8" title="LTLAXIO5:pred.8">prc0</a> <font color="Olive" title="b3">f</font>,<font color="Olive" title="b2">X</font>,<font color="Olive" title="b5">i</font> ) &amp; <font color="Olive" title="b2">X</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <font color="Olive" title="b1">p</font> )</div>
+<div about="#PF36" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T28"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/36')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/36')" href="javascript:()" title="36"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: Axioms are sound<br>  
+</font></div>
+<div about="#T29" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E27">Th2</font></span>: <a NAME="T29"><span class="comment"><font color="firebrick">:: LTLAXIO5:29</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ltlaxio5.html#K2" title="LTLAXIO5:func.2">LTL0_axioms</a>  holds <br><font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a> <font color="Olive" title="b1">A</font>
+</div>
+<div about="#PF37" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T29"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/37')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/37')" href="javascript:()" title="37"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: MP_rule is sound<br>  
+</font></div>
+<div about="#T30" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E28">Th3</font></span>: <a NAME="T30"><span class="comment"><font color="firebrick">:: LTLAXIO5:30</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b3">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a> <font color="Olive" title="b1">A</font> &amp; <font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a> <font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b2">B</font> holds <br><font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a> <font color="Olive" title="b2">B</font>
+</div>
+<div about="#PF38" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T30"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/38')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/38')" href="javascript:()" title="38"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: MP0_rule is sound<br>  
+</font></div>
+<div about="#T31" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E29">Th4</font></span>: <a NAME="T31"><span class="comment"><font color="firebrick">:: LTLAXIO5:31</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b3">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b1">A</font> &amp; <font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b2">B</font></span>)</span> holds <br><font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b2">B</font>
+</div>
+<div about="#PF39" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T31"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/39')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/39')" href="javascript:()" title="39"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: NEX0_rule is sound<br>  
+</font></div>
+<div about="#T32" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E30">Th5</font></span>: <a NAME="T32"><span class="comment"><font color="firebrick">:: LTLAXIO5:32</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b1">A</font> holds <br><font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><a href="ltlaxio1.html#K2" title="LTLAXIO1:func.2">'X'</a> <font color="Olive" title="b1">A</font></span>)</span>
+</div>
+<div about="#PF40" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T32"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/40')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/40')" href="javascript:()" title="40"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: REFL0_rule is sound<br>  
+</font></div>
+<div about="#T33" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E31">Th6</font></span>: <a NAME="T33"><span class="comment"><font color="firebrick">:: LTLAXIO5:33</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b1">A</font> holds <br><font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a> <font color="Olive" title="b1">A</font>
+</div>
+<div about="#PF41" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T33"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/41')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/41')" href="javascript:()" title="41"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: IND0_rule is sound<br>  
+</font></div>
+<div about="#T34" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E32">Th7</font></span>: <a NAME="T34"><span class="comment"><font color="firebrick">:: LTLAXIO5:34</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b3">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b2">B</font></span>)</span> &amp; <font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p2">(<span class="default"><a href="ltlaxio1.html#K2" title="LTLAXIO1:func.2">'X'</a> <font color="Olive" title="b1">A</font></span>)</span></span>)</span> holds <br><font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p2">(<span class="default"><a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b2">B</font></span>)</span></span>)</span>
+</div>
+<div about="#PF42" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T34"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/42')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/42')" href="javascript:()" title="42"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: 2.6.6<br>  
+:: <img src="http://mws.cs.ru.nl/~mptp/WP.ico" alt="WP: "> <a href="http://en.wikipedia.org/wiki/Soundness_Theorem_for_LTLB_with_initial_semantics." title="See Wikipedia entry for Soundness Theorem for LTLB with initial semantics.">Soundness Theorem for LTLB with initial semantics.</a><br>  
+</font></div>
+<div about="#T35" typeof="oo:Theorem">
+<span rel="owl:sameAs" resource="http://dbpedia.org/resource/Soundness_Theorem_for_LTLB_with_initial_semantics."></span><span class="kw">theorem </span><span class="lab"><font color="Green" title="E33">th266</font></span>: <a NAME="T35"><span class="comment"><font color="firebrick">:: LTLAXIO5:35</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <font color="Olive" title="b1">A</font> holds <br><font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a> <font color="Olive" title="b1">A</font>
+</div>
+<div about="#PF43" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T35"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/43')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/43')" href="javascript:()" title="43"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: Axioms and premises are derivable<br>  
+</font></div>
+<div about="#T36" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E34">th10</font></span>: <a NAME="T36"><span class="comment"><font color="firebrick">:: LTLAXIO5:36</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st ( <font color="Olive" title="b1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ltlaxio5.html#K2" title="LTLAXIO5:func.2">LTL0_axioms</a>  or <font color="Olive" title="b1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">F</font> ) holds <br><font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <font color="Olive" title="b1">A</font>
+</div>
+<div about="#PF44" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T36"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/44')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/44')" href="javascript:()" title="44"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: REFL0_rule is derivable<br>  
+</font></div>
+<div about="#T37" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E35">th9</font></span>: <a NAME="T37"><span class="comment"><font color="firebrick">:: LTLAXIO5:37</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b1">A</font> holds <br><font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <font color="Olive" title="b1">A</font>
+</div>
+<div about="#PF45" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T37"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/45')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/45')" href="javascript:()" title="45"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: NEX0_rule is derivable<br>  
+</font></div>
+<div about="#T38" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E36">th12</font></span>: <a NAME="T38"><span class="comment"><font color="firebrick">:: LTLAXIO5:38</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b1">A</font> holds <br><font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><a href="ltlaxio1.html#K2" title="LTLAXIO1:func.2">'X'</a> <font color="Olive" title="b1">A</font></span>)</span>
+</div>
+<div about="#PF46" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T38"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/46')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/46')" href="javascript:()" title="46"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: MP_rule is derivable<br>  
+</font></div>
+<div about="#T39" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E37">th11a</font></span>: <a NAME="T39"><span class="comment"><font color="firebrick">:: LTLAXIO5:39</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b3">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <font color="Olive" title="b1">A</font> &amp; <font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b2">B</font> holds <br><font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <font color="Olive" title="b2">B</font>
+</div>
+<div about="#PF47" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T39"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/47')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/47')" href="javascript:()" title="47"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: MP0_rule is derivable<br>  
+</font></div>
+<div about="#T40" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E38">th11</font></span>: <a NAME="T40"><span class="comment"><font color="firebrick">:: LTLAXIO5:40</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b3">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b1">A</font> &amp; <font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b2">B</font></span>)</span> holds <br><font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b2">B</font>
+</div>
+<div about="#PF48" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T40"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/48')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/48')" href="javascript:()" title="48"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: IND0_rule is derivable<br>  
+</font></div>
+<div about="#T41" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E39">th13</font></span>: <a NAME="T41"><span class="comment"><font color="firebrick">:: LTLAXIO5:41</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b3">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b2">B</font></span>)</span> &amp; <font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p2">(<span class="default"><a href="ltlaxio1.html#K2" title="LTLAXIO1:func.2">'X'</a> <font color="Olive" title="b1">A</font></span>)</span></span>)</span> holds <br><font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p2">(<span class="default"><a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b2">B</font></span>)</span></span>)</span>
+</div>
+<div about="#PF49" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T41"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/49')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/49')" href="javascript:()" title="49"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T42" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E40">th15</font></span>: <a NAME="T42"><span class="comment"><font color="firebrick">:: LTLAXIO5:42</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ltlaxio1.html#K13" title="LTLAXIO1:func.13">LTL_axioms</a>  holds <br><font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <font color="Olive" title="b1">A</font>
+</div>
+<div about="#PF50" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T42"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/50')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/50')" href="javascript:()" title="50"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T43" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T43"><span class="comment"><font color="firebrick">:: LTLAXIO5:43</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ltlaxio5.html#K2" title="LTLAXIO5:func.2">LTL0_axioms</a>  holds <br><font color="Olive" title="b2">F</font> <a href="ltlaxio1.html#R8" title="LTLAXIO1:pred.8">|-</a> <font color="Olive" title="b1">A</font>
+</div>
+<div about="#PF51" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T43"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/51')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/51')" href="javascript:()" title="51"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: 2.6.7<br>  
+::#INSERT: auxilliary theorem to prove completeness theorem<br>  
+</font></div>
+<div about="#T44" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E41">th267</font></span>: <a NAME="T44"><span class="comment"><font color="firebrick">:: LTLAXIO5:44</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>   st  <a href="subset_1.html#K1" title="SUBSET_1:func.1">{}</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <a href="ltlaxio1.html#R8" title="LTLAXIO1:pred.8">|-</a> <font color="Olive" title="b1">A</font> holds <br> <a href="subset_1.html#K1" title="SUBSET_1:func.1">{}</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <font color="Olive" title="b1">A</font>
+</div>
+<div about="#PF52" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T44"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/52')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/52')" href="javascript:()" title="52"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: Generalized theorem 2.6.7 does not hold, i.e.,<br>  
+::#INSERT: not for F,A holds (F |- A implies F |-0 A);<br>  
+</font></div>
+<div about="#T45" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E42">th14</font></span>: <a NAME="T45"><span class="comment"><font color="firebrick">:: LTLAXIO5:45</font></span><br></a><div class="add"> for <font color="Olive" title="b1">i</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  holds <br> ( <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><span class="p2">(<span class="default"><a href="hilbert2.html#K1" title="HILBERT2:func.1">prop</a> <font color="Olive" title="b1">i</font></span>)</span></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> <a href="ltlaxio1.html#R8" title="LTLAXIO1:pred.8">|-</a>  <a href="ltlaxio1.html#K2" title="LTLAXIO1:func.2">'X'</a> <span class="p1">(<span class="default"><a href="hilbert2.html#K1" title="HILBERT2:func.1">prop</a> <font color="Olive" title="b1">i</font></span>)</span> &amp;  not <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><span class="p2">(<span class="default"><a href="hilbert2.html#K1" title="HILBERT2:func.1">prop</a> <font color="Olive" title="b1">i</font></span>)</span></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a>  <a href="ltlaxio1.html#K2" title="LTLAXIO1:func.2">'X'</a> <span class="p1">(<span class="default"><a href="hilbert2.html#K1" title="HILBERT2:func.1">prop</a> <font color="Olive" title="b1">i</font></span>)</span> )</div>
+<div about="#PF53" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T45"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/53')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/53')" href="javascript:()" title="53"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: LTLB with initial semantics is monotonic<br>  
+</font></div>
+<div about="#T46" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E43">mon</font></span>: <a NAME="T46"><span class="comment"><font color="firebrick">:: LTLAXIO5:46</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font>, <font color="Olive" title="b3">G</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b2">F</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b3">G</font> &amp; <font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <font color="Olive" title="b1">A</font> holds <br><font color="Olive" title="b3">G</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <font color="Olive" title="b1">A</font>
+</div>
+<div about="#PF54" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T46"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/54')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/54')" href="javascript:()" title="54"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">f</font> be    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">A</font> be    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> ;<br><div about="#D44" typeof="oo:Definition">
+<a NAME="K3"><span class="kw">func</span> </a> <a href="ltlaxio5.html#K3" title="LTLAXIO5:func.3">implications</a> (<font color="Maroon" title="c1">f</font>,<font color="Maroon" title="c2">A</font>)<span class="kw"> -&gt; </span>   <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E44">imps</font></span>: <a NAME="D12"><span class="comment"><font color="firebrick">:: LTLAXIO5:def 12</font></span><br></a>(  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <span class="kw">it</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font> &amp; <span class="kw">it</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> 1 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> 1</span>)</span> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Maroon" title="c2">A</font> &amp; (  for <font color="Olive" title="b1">i</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>   st 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b1">i</font> &amp; <font color="Olive" title="b1">i</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font> holds <br><span class="kw">it</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">i</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <span class="p2">(<span class="default"><font color="Olive" title="b1">i</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p1">(<span class="default"><span class="kw">it</span> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b1">i</font></span>)</span> ) )<span class="kw"> if </span> <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <br><span class="kw"> otherwise </span><span class="kw">it</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K6" title="FINSEQ_1:func.6">&lt;*&gt;</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:55_1"></a>
+( (  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies  ex <font color="Olive">b<sub>1</sub></font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <br>(  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font> &amp; <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> 1 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> 1</span>)</span> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Maroon" title="c2">A</font> &amp; (  for <font color="Olive" title="b2">i</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>   st 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b2">i</font> &amp; <font color="Olive" title="b2">i</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font> holds <br><font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">i</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <span class="p2">(<span class="default"><font color="Olive" title="b2">i</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p1">(<span class="default"><font color="Olive">b<sub>1</sub></font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b2">i</font></span>)</span> ) ) ) &amp; (  not  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies  ex <font color="Olive">b<sub>1</sub></font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K6" title="FINSEQ_1:func.6">&lt;*&gt;</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> ) )
+ </span><div about="#PF55_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/55_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/55_1_1')" href="javascript:()" title="55_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:55_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  holds <br> ( (  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp;  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font> &amp; <font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> 1 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> 1</span>)</span> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Maroon" title="c2">A</font> &amp; (  for <font color="Olive" title="b3">i</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>   st 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b3">i</font> &amp; <font color="Olive" title="b3">i</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font> holds <br><font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">i</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <span class="p2">(<span class="default"><font color="Olive" title="b3">i</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p1">(<span class="default"><font color="Olive">b<sub>1</sub></font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b3">i</font></span>)</span> ) &amp;  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font> &amp; <font color="Olive">b<sub>2</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> 1 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> 1</span>)</span> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Maroon" title="c2">A</font> &amp; (  for <font color="Olive" title="b3">i</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>   st 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b3">i</font> &amp; <font color="Olive" title="b3">i</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font> holds <br><font color="Olive">b<sub>2</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">i</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <span class="p2">(<span class="default"><font color="Olive" title="b3">i</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p1">(<span class="default"><font color="Olive">b<sub>2</sub></font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b3">i</font></span>)</span> ) implies <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font> ) &amp; (  not  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">f</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K6" title="FINSEQ_1:func.6">&lt;*&gt;</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> &amp; <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K6" title="FINSEQ_1:func.6">&lt;*&gt;</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> implies <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font> ) )
+ </span><div about="#PF55_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/55_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/55_1_2')" href="javascript:()" title="55_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">consistency</span> </a><span class="hide"><br><a NAME="E3:55_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  holds  verum
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT12" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E44">imps</font></span>   defines <a href="ltlaxio5.html#K3" title="LTLAXIO5:func.3">implications</a> <a onclick="hs(this)" href="javascript:()">LTLAXIO5:def 12 : <br></a><span class="hide"> for <font color="Olive" title="b1">f</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive">b<sub>3</sub></font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  holds <br> ( (  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">f</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies ( <font color="Olive">b<sub>3</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio5.html#K3" title="LTLAXIO5:func.3">implications</a> (<font color="Olive" title="b1">f</font>,<font color="Olive" title="b2">A</font>) iff (  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive">b<sub>3</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">f</font> &amp; <font color="Olive">b<sub>3</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> 1 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> 1</span>)</span> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b2">A</font> &amp; (  for <font color="Olive" title="b4">i</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>   st 1 <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b4">i</font> &amp; <font color="Olive" title="b4">i</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">f</font> holds <br><font color="Olive">b<sub>3</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">i</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">f</font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <span class="p2">(<span class="default"><font color="Olive" title="b4">i</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <span class="p1">(<span class="default"><font color="Olive">b<sub>3</sub></font> <a href="partfun1.html#K7" title="PARTFUN1:func.7">/.</a> <font color="Olive" title="b4">i</font></span>)</span> ) ) ) ) &amp; (  not  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">f</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies ( <font color="Olive">b<sub>3</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="ltlaxio5.html#K3" title="LTLAXIO5:func.3">implications</a> (<font color="Olive" title="b1">f</font>,<font color="Olive" title="b2">A</font>) iff <font color="Olive">b<sub>3</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K6" title="FINSEQ_1:func.6">&lt;*&gt;</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> ) ) );<br></span>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: 2.6.8<br>  
+:: <img src="http://mws.cs.ru.nl/~mptp/WP.ico" alt="WP: "> <a href="http://en.wikipedia.org/wiki/Weak_Completeness_Theorem_for_LTLB_with_initial_semantics" title="See Wikipedia entry for Weak Completeness Theorem for LTLB with initial semantics">Weak Completeness Theorem for LTLB with initial semantics</a><br>  
+</font></div>
+<div about="#T47" typeof="oo:Theorem">
+<span rel="owl:sameAs" resource="http://dbpedia.org/resource/Weak_Completeness_Theorem_for_LTLB_with_initial_semantics"></span><span class="kw">theorem </span><span class="lab"><font color="Green" title="E45">th268</font></span>: <a NAME="T47"><span class="comment"><font color="firebrick">:: LTLAXIO5:47</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R3" title="LTLAXIO5:pred.3">|=0</a> <font color="Olive" title="b1">A</font> holds <br><font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <font color="Olive" title="b1">A</font>
+</div>
+<div about="#PF56" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T47"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/56')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/56')" href="javascript:()" title="56"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: Deduction theorem holds in the classical form compared with<br>  
+::#INSERT: Deduction theorem for LTLB with normal semantics (see LTLAXIO1:57)<br>  
+</font></div>
+<div about="#T48" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T48"><span class="comment"><font color="firebrick">:: LTLAXIO5:48</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b3">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b3">F</font> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><font color="Olive" title="b1">A</font></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <font color="Olive" title="b2">B</font> holds <br><font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b2">B</font>
+</div>
+<div about="#PF57" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T48"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/57')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/57')" href="javascript:()" title="57"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: Converse of Deduction Theorem<br>  
+</font></div>
+<div about="#T49" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T49"><span class="comment"><font color="firebrick">:: LTLAXIO5:49</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b3">F</font> being   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b3">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <font color="Olive" title="b1">A</font> <a href="hilbert1.html#K3" title="HILBERT1:func.3">=&gt;</a> <font color="Olive" title="b2">B</font> holds <br><font color="Olive" title="b3">F</font> <a href="subset_1.html#K4" title="SUBSET_1:func.4">\/</a> <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><font color="Olive" title="b1">A</font></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <font color="Olive" title="b2">B</font>
+</div>
+<div about="#PF58" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T49"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/58')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/58')" href="javascript:()" title="58"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">F</font> be   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>;<br>
+<div about="#FC1" typeof="oo:Theorem">
+<a NAME="FC1"><span class="kw">cluster </span></a> <a href="ltlaxio5.html#K1" title="LTLAXIO5:func.1">'G'</a> <font color="Maroon" title="c1">F</font><span class="kw"> -&gt; </span> <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:59_1"></a>
+ <a href="ltlaxio5.html#K1" title="LTLAXIO5:func.1">'G'</a> <font color="Maroon" title="c1">F</font> is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a> 
+ </span><div about="#PF59_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/59_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/59_1_1')" href="javascript:()" title="59_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T50" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T50"><span class="comment"><font color="firebrick">:: LTLAXIO5:50</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> holds <br> ( <font color="Olive" title="b2">F</font> <a href="ltlaxio1.html#R8" title="LTLAXIO1:pred.8">|-</a> <font color="Olive" title="b1">A</font> iff  <a href="ltlaxio5.html#K1" title="LTLAXIO5:func.1">'G'</a> <font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <font color="Olive" title="b1">A</font> )</div>
+<div about="#PF60" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T50"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/60')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/60')" href="javascript:()" title="60"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T51" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T51"><span class="comment"><font color="firebrick">:: LTLAXIO5:51</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a> <font color="Olive" title="b1">A</font> holds <br><font color="Olive" title="b2">F</font> <a href="ltlaxio1.html#R8" title="LTLAXIO1:pred.8">|-</a> <font color="Olive" title="b1">A</font>
+</div>
+<div about="#PF61" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T51"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/61')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/61')" href="javascript:()" title="61"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: The counterexample that "for F,A holds (F |- A implies F |-0 A)"<br>  
+::#INSERT: is not true. Another counterexample see above for theorem "th14".<br>  
+</font></div>
+<div about="#T52" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T52"><span class="comment"><font color="firebrick">:: LTLAXIO5:52</font></span><br></a><div class="add"> for <font color="Olive" title="b1">i</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  holds <br> ( <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><span class="p2">(<span class="default"><a href="hilbert2.html#K1" title="HILBERT2:func.1">prop</a> <font color="Olive" title="b1">i</font></span>)</span></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> <a href="ltlaxio1.html#R8" title="LTLAXIO1:pred.8">|-</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><a href="hilbert2.html#K1" title="HILBERT2:func.1">prop</a> <font color="Olive" title="b1">i</font></span>)</span> &amp;  not <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><span class="p2">(<span class="default"><a href="hilbert2.html#K1" title="HILBERT2:func.1">prop</a> <font color="Olive" title="b1">i</font></span>)</span></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><a href="hilbert2.html#K1" title="HILBERT2:func.1">prop</a> <font color="Olive" title="b1">i</font></span>)</span> )</div>
+<div about="#PF62" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T52"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/62')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/62')" href="javascript:()" title="62"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T53" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T53"><span class="comment"><font color="firebrick">:: LTLAXIO5:53</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <br>  for <font color="Olive" title="b2">F</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>  st <font color="Olive" title="b2">F</font> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <font color="Olive" title="b1">A</font> holds <br><font color="Olive" title="b2">F</font> <a href="ltlaxio1.html#R8" title="LTLAXIO1:pred.8">|-</a> <font color="Olive" title="b1">A</font>
+</div>
+<div about="#PF63" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T53"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/63')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/63')" href="javascript:()" title="63"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::#INSERT: The converse of the above theorem does not hold<br>  
+</font></div>
+<div about="#T54" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T54"><span class="comment"><font color="firebrick">:: LTLAXIO5:54</font></span><br></a><div class="add"> for <font color="Olive" title="b1">i</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  holds <br> ( <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><span class="p2">(<span class="default"><a href="hilbert2.html#K1" title="HILBERT2:func.1">prop</a> <font color="Olive" title="b1">i</font></span>)</span></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> <a href="ltlaxio1.html#R8" title="LTLAXIO1:pred.8">|-</a>  <a href="hilbert2.html#K1" title="HILBERT2:func.1">prop</a> <font color="Olive" title="b1">i</font> &amp;  not <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><span class="p2">(<span class="default"><a href="hilbert2.html#K1" title="HILBERT2:func.1">prop</a> <font color="Olive" title="b1">i</font></span>)</span></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> <a href="ltlaxio5.html#R9" title="LTLAXIO5:pred.9">|-0</a>  <a href="ltlaxio1.html#K6" title="LTLAXIO1:func.6">'G'</a> <span class="p1">(<span class="default"><a href="hilbert2.html#K1" title="HILBERT2:func.1">prop</a> <font color="Olive" title="b1">i</font></span>)</span> )</div>
+<div about="#PF64" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T54"></span><a class="txt" onmouseover="tooltip.show('url','proofs/ltlaxio5/64')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/ltlaxio5/64')" href="javascript:()" title="64"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+</body>
+</html>

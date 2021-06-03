@@ -1,0 +1,1224 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LATTICES:  Introduction to Lattice Theory</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  Introduction to Lattice Theory</font></span><br><span class="comment"><font color="firebrick">:: by Stanis{\l}aw \.Zukowski</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received April 14, 1989</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 1990-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<a NAME="V1"><span class="kw">attr</span> </a><font color="Maroon">c<sub>1</sub></font> is  <a href="lattices.html#V1" title="LATTICES:attr.1">strict</a> ;<br><a NAME="L1"><span class="kw">struct</span> </a> <a href="lattices.html#L1" title="LATTICES:struct.1">/\-SemiLattStr</a> <span class="kw"> -&gt; </span>   <a href="struct_0.html#L1" title="STRUCT_0:struct.1">1-sorted</a> ;<br><a NAME="G1"><span class="kw">aggr</span> </a><a href="lattices.html#G1" title="LATTICES:aggr.1">/\-SemiLattStr</a>(# <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a>, <a href="lattices.html#U1" title="LATTICES:sel.1">L_meet</a> #)<span class="kw"> -&gt; </span>   <a href="lattices.html#L1" title="LATTICES:struct.1">/\-SemiLattStr</a> ;<br><a NAME="U1"><span class="kw">sel</span> </a> <a href="lattices.html#U1" title="LATTICES:sel.1">L_meet</a> <font color="Maroon">c<sub>1</sub></font><span class="kw"> -&gt; </span>  <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon">c<sub>1</sub></font>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<a NAME="V2"><span class="kw">attr</span> </a><font color="Maroon">c<sub>1</sub></font> is  <a href="lattices.html#V2" title="LATTICES:attr.2">strict</a> ;<br><a NAME="L2"><span class="kw">struct</span> </a> <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a> <span class="kw"> -&gt; </span>   <a href="struct_0.html#L1" title="STRUCT_0:struct.1">1-sorted</a> ;<br><a NAME="G2"><span class="kw">aggr</span> </a><a href="lattices.html#G2" title="LATTICES:aggr.2">\/-SemiLattStr</a>(# <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a>, <a href="lattices.html#U2" title="LATTICES:sel.2">L_join</a> #)<span class="kw"> -&gt; </span>   <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a> ;<br><a NAME="U2"><span class="kw">sel</span> </a> <a href="lattices.html#U2" title="LATTICES:sel.2">L_join</a> <font color="Maroon">c<sub>1</sub></font><span class="kw"> -&gt; </span>  <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon">c<sub>1</sub></font>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<a NAME="V3"><span class="kw">attr</span> </a><font color="Maroon">c<sub>1</sub></font> is  <a href="lattices.html#V3" title="LATTICES:attr.3">strict</a> ;<br><a NAME="L3"><span class="kw">struct</span> </a> <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> <span class="kw"> -&gt; </span>   <a href="lattices.html#L1" title="LATTICES:struct.1">/\-SemiLattStr</a> ,   <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a> ;<br><a NAME="G3"><span class="kw">aggr</span> </a><a href="lattices.html#G3" title="LATTICES:aggr.3">LattStr</a>(# <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a>, <a href="lattices.html#U2" title="LATTICES:sel.2">L_join</a>, <a href="lattices.html#U1" title="LATTICES:sel.1">L_meet</a> #)<span class="kw"> -&gt; </span>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">D</font> be   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">u</font> be   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <font color="Maroon" title="c1">D</font>;<br>
+<div about="#FC1" typeof="oo:Theorem">
+<a NAME="FC1"><span class="kw">cluster </span></a> <a href="lattices.html#G2" title="LATTICES:aggr.2">\/-SemiLattStr</a>(# <font color="Maroon" title="c1">D</font>,<font color="Maroon" title="c2">u</font> #)<span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:4_1"></a>
+ not  <a href="lattices.html#G2" title="LATTICES:aggr.2">\/-SemiLattStr</a>(# <font color="Maroon" title="c1">D</font>,<font color="Maroon" title="c2">u</font> #) is  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a> 
+ </span>;<br>
+
+<div about="#FC2" typeof="oo:Theorem">
+<a NAME="FC2"><span class="kw">cluster </span></a> <a href="lattices.html#G1" title="LATTICES:aggr.1">/\-SemiLattStr</a>(# <font color="Maroon" title="c1">D</font>,<font color="Maroon" title="c2">u</font> #)<span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:4_2"></a>
+ not  <a href="lattices.html#G1" title="LATTICES:aggr.1">/\-SemiLattStr</a>(# <font color="Maroon" title="c1">D</font>,<font color="Maroon" title="c2">u</font> #) is  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">D</font> be   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">u</font>, <font color="Maroon" title="c3">n</font> be   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <font color="Maroon" title="c1">D</font>;<br>
+<div about="#FC3" typeof="oo:Theorem">
+<a NAME="FC3"><span class="kw">cluster </span></a> <a href="lattices.html#G3" title="LATTICES:aggr.3">LattStr</a>(# <font color="Maroon" title="c1">D</font>,<font color="Maroon" title="c2">u</font>,<font color="Maroon" title="c3">n</font> #)<span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:5_1"></a>
+ not  <a href="lattices.html#G3" title="LATTICES:aggr.3">LattStr</a>(# <font color="Maroon" title="c1">D</font>,<font color="Maroon" title="c2">u</font>,<font color="Maroon" title="c3">n</font> #) is  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC4" typeof="oo:Theorem">
+<a NAME="RC4"><span class="kw">cluster </span></a>1 <a href="struct_0.html#V13" title="STRUCT_0:attr.13">-element</a>   <a href="lattices.html#V2" title="LATTICES:attr.2">strict</a>   for    <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:6_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being    <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a>  st <br>( <font color="Olive">b<sub>1</sub></font> is 1 <a href="struct_0.html#V13" title="STRUCT_0:attr.13">-element</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V2" title="LATTICES:attr.2">strict</a>  )
+ </span><div about="#PF6_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lattices/6_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/6_1_1')" href="javascript:()" title="6_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+
+<div about="#RC5" typeof="oo:Theorem">
+<a NAME="RC5"><span class="kw">cluster </span></a>1 <a href="struct_0.html#V13" title="STRUCT_0:attr.13">-element</a>   <a href="lattices.html#V1" title="LATTICES:attr.1">strict</a>   for    <a href="lattices.html#L1" title="LATTICES:struct.1">/\-SemiLattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:6_2"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being    <a href="lattices.html#L1" title="LATTICES:struct.1">/\-SemiLattStr</a>  st <br>( <font color="Olive">b<sub>1</sub></font> is 1 <a href="struct_0.html#V13" title="STRUCT_0:attr.13">-element</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V1" title="LATTICES:attr.1">strict</a>  )
+ </span><div about="#PF6_2_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lattices/6_2_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/6_2_1')" href="javascript:()" title="6_2_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+
+<div about="#RC6" typeof="oo:Theorem">
+<a NAME="RC6"><span class="kw">cluster </span></a>1 <a href="struct_0.html#V13" title="STRUCT_0:attr.13">-element</a>   <a href="lattices.html#V3" title="LATTICES:attr.3">strict</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:6_3"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a>  st <br>( <font color="Olive">b<sub>1</sub></font> is 1 <a href="struct_0.html#V13" title="STRUCT_0:attr.13">-element</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V3" title="LATTICES:attr.3">strict</a>  )
+ </span><div about="#PF6_3_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lattices/6_3_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/6_3_1')" href="javascript:()" title="6_3_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">p</font>, <font color="Maroon" title="c3">q</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">G</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K1"><span class="kw">func</span> </a><font color="Maroon" title="c2">p</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Maroon" title="c3">q</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">G</font><span class="kw"> equals </span><a NAME="D1"><span class="comment"><font color="firebrick">:: LATTICES:def 1</font></span><br></a> the <a href="lattices.html#U2" title="LATTICES:sel.2">L_join</a> of <font color="Maroon" title="c1">G</font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Maroon" title="c2">p</font>,<font color="Maroon" title="c3">q</font>);<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:7_1"></a>
+ the <a href="lattices.html#U2" title="LATTICES:sel.2">L_join</a> of <font color="Maroon" title="c1">G</font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Maroon" title="c2">p</font>,<font color="Maroon" title="c3">q</font>) is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">G</font>
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">G</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a> <br>  for <font color="Olive" title="b2">p</font>, <font color="Olive" title="b3">q</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">G</font> holds  <font color="Olive" title="b2">p</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b3">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="lattices.html#U2" title="LATTICES:sel.2">L_join</a> of <font color="Olive" title="b1">G</font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b2">p</font>,<font color="Olive" title="b3">q</font>);<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L1" title="LATTICES:struct.1">/\-SemiLattStr</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">p</font>, <font color="Maroon" title="c3">q</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">G</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="K2"><span class="kw">func</span> </a><font color="Maroon" title="c2">p</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Maroon" title="c3">q</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">G</font><span class="kw"> equals </span><a NAME="D2"><span class="comment"><font color="firebrick">:: LATTICES:def 2</font></span><br></a> the <a href="lattices.html#U1" title="LATTICES:sel.1">L_meet</a> of <font color="Maroon" title="c1">G</font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Maroon" title="c2">p</font>,<font color="Maroon" title="c3">q</font>);<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:8_1"></a>
+ the <a href="lattices.html#U1" title="LATTICES:sel.1">L_meet</a> of <font color="Maroon" title="c1">G</font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Maroon" title="c2">p</font>,<font color="Maroon" title="c3">q</font>) is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">G</font>
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+<div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 2 : <br></a><span class="hide"> for <font color="Olive" title="b1">G</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L1" title="LATTICES:struct.1">/\-SemiLattStr</a> <br>  for <font color="Olive" title="b2">p</font>, <font color="Olive" title="b3">q</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">G</font> holds  <font color="Olive" title="b2">p</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b3">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="lattices.html#U1" title="LATTICES:sel.1">L_meet</a> of <font color="Olive" title="b1">G</font> <a href="binop_1.html#K4" title="BINOP_1:func.4">.</a> (<font color="Olive" title="b2">p</font>,<font color="Olive" title="b3">q</font>);<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">p</font>, <font color="Maroon" title="c3">q</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">G</font>;<br><div about="#D1" typeof="oo:Definition">
+<a NAME="R1"><span class="kw">pred</span> </a><font color="Maroon" title="c2">p</font> <a href="lattices.html#R1" title="LATTICES:pred.1">[=</a> <font color="Maroon" title="c3">q</font><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E1">Def3</font></span>: <a NAME="D3"><span class="comment"><font color="firebrick">:: LATTICES:def 3</font></span><br></a><font color="Maroon" title="c2">p</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Maroon" title="c3">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">q</font>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT3" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E1">Def3</font></span>   defines <a href="lattices.html#R1" title="LATTICES:pred.1">[=</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 3 : <br></a><span class="hide"> for <font color="Olive" title="b1">G</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a> <br>  for <font color="Olive" title="b2">p</font>, <font color="Olive" title="b3">q</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">G</font> holds <br> ( <font color="Olive" title="b2">p</font> <a href="lattices.html#R1" title="LATTICES:pred.1">[=</a> <font color="Olive" title="b3">q</font> iff <font color="Olive" title="b2">p</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b3">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">q</font> );<br></span>
+</div>
+<br><a NAME="E4"></a><span class="lab"><font color="Green" title="E2">Lm1</font></span>: <span about="#E4" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">uu</font>, <font color="Olive" title="b2">nn</font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a></span>)</span><br>  for <font color="Olive" title="b3">x</font>, <font color="Olive" title="b4">y</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <a href="lattices.html#G3" title="LATTICES:aggr.3">LattStr</a>(# <span class="p1">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a></span>)</span>,<font color="Olive" title="b1">uu</font>,<font color="Olive" title="b2">nn</font> #) holds  <font color="Olive" title="b3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">y</font>
+ </span><br><div about="#PF10" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E4"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/10')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/10')" href="javascript:()" title="10"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E5"></a><span class="lab"><font color="Green" title="E3">Lm2</font></span>: <span about="#E5" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">n</font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a></span>)</span><br>  for <font color="Olive" title="b2">x</font>, <font color="Olive" title="b3">y</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <a href="lattices.html#G2" title="LATTICES:aggr.2">\/-SemiLattStr</a>(# <span class="p1">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a></span>)</span>,<font color="Olive" title="b1">n</font> #) holds  <font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">y</font>
+ </span><br><div about="#PF11" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/11')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/11')" href="javascript:()" title="11"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E6"></a><span class="lab"><font color="Green" title="E4">Lm3</font></span>: <span about="#E6" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">n</font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a></span>)</span><br>  for <font color="Olive" title="b2">x</font>, <font color="Olive" title="b3">y</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <a href="lattices.html#G1" title="LATTICES:aggr.1">/\-SemiLattStr</a>(# <span class="p1">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a></span>)</span>,<font color="Olive" title="b1">n</font> #) holds  <font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">y</font>
+ </span><br><div about="#PF12" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/12')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/12')" href="javascript:()" title="12"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IT</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a> ;<br><div about="#D5" typeof="oo:Definition">
+<a NAME="V4"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E5">Def4</font></span>: <a NAME="D4"><span class="comment"><font color="firebrick">:: LATTICES:def 4</font></span><br></a> for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">IT</font> holds  <font color="Olive" title="b1">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b2">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">b</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b1">a</font>;<br>
+</div>
+<div about="#D6" typeof="oo:Definition">
+<a NAME="V5"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E6">Def5</font></span>: <a NAME="D5"><span class="comment"><font color="firebrick">:: LATTICES:def 5</font></span><br></a> for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font>, <font color="Olive" title="b3">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">IT</font> holds  <font color="Olive" title="b1">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">b</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b3">c</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b2">b</font></span>)</span> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b3">c</font>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+<div about="#DT4" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E5">Def4</font></span>   defines <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 4 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a>  holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>  iff  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">IT</font> holds  <font color="Olive" title="b2">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">b</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b2">a</font> );<br></span>
+</div>
+<br><div about="#DT5" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E6">Def5</font></span>   defines <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 5 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a>  holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a>  iff  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">IT</font> holds  <font color="Olive" title="b2">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">b</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b4">c</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b3">b</font></span>)</span> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b4">c</font> );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IT</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L1" title="LATTICES:struct.1">/\-SemiLattStr</a> ;<br><div about="#D7" typeof="oo:Definition">
+<a NAME="V6"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E7">Def6</font></span>: <a NAME="D6"><span class="comment"><font color="firebrick">:: LATTICES:def 6</font></span><br></a> for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">IT</font> holds  <font color="Olive" title="b1">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b2">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">b</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b1">a</font>;<br>
+</div>
+<div about="#D8" typeof="oo:Definition">
+<a NAME="V7"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E8">Def7</font></span>: <a NAME="D7"><span class="comment"><font color="firebrick">:: LATTICES:def 7</font></span><br></a> for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font>, <font color="Olive" title="b3">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">IT</font> holds  <font color="Olive" title="b1">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">b</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b3">c</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b2">b</font></span>)</span> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b3">c</font>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+<div about="#DT6" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E7">Def6</font></span>   defines <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 6 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L1" title="LATTICES:struct.1">/\-SemiLattStr</a>  holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>  iff  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">IT</font> holds  <font color="Olive" title="b2">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">b</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b2">a</font> );<br></span>
+</div>
+<br><div about="#DT7" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E8">Def7</font></span>   defines <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 7 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L1" title="LATTICES:struct.1">/\-SemiLattStr</a>  holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a>  iff  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">IT</font> holds  <font color="Olive" title="b2">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">b</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b4">c</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b3">b</font></span>)</span> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b4">c</font> );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IT</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br><div about="#D9" typeof="oo:Definition">
+<a NAME="V8"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E9">Def8</font></span>: <a NAME="D8"><span class="comment"><font color="firebrick">:: LATTICES:def 8</font></span><br></a> for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">IT</font> holds  <span class="p1">(<span class="default"><font color="Olive" title="b1">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b2">b</font></span>)</span> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b2">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">b</font>;<br>
+</div>
+<div about="#D10" typeof="oo:Definition">
+<a NAME="V9"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E10">Def9</font></span>: <a NAME="D9"><span class="comment"><font color="firebrick">:: LATTICES:def 9</font></span><br></a> for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">IT</font> holds  <font color="Olive" title="b1">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b2">b</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">a</font>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+<div about="#DT8" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E9">Def8</font></span>   defines <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 8 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a>  holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>  iff  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">IT</font> holds  <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b3">b</font></span>)</span> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">b</font> );<br></span>
+</div>
+<br><div about="#DT9" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E10">Def9</font></span>   defines <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 9 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a>  holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>  iff  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">IT</font> holds  <font color="Olive" title="b2">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b3">b</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">a</font> );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IT</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V10"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a> <span class="kw"> means </span><a NAME="D10"><span class="comment"><font color="firebrick">:: LATTICES:def 10</font></span><br></a>( <font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>  &amp; <font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a>  &amp; <font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>  &amp; <font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>  &amp; <font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a>  &amp; <font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>  );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT10" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 10 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a>  holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>  iff ( <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>  &amp; <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a>  &amp; <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>  &amp; <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>  &amp; <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a>  &amp; <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>  ) );<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#CC1" typeof="oo:Theorem">
+<a NAME="CC1"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>  <span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>   <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a>   <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>   <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a>   <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>   <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:17_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a>   st <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>  holds <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>  )
+ </span>;<br>
+
+<div about="#CC2" typeof="oo:Theorem">
+<a NAME="CC2"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>   <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a>   <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>   <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a>   <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>   <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>  <span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:17_2"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a>   st <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>  holds <br><font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC7" typeof="oo:Theorem">
+<a NAME="RC7"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V2" title="LATTICES:attr.2">strict</a>   <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>   <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a>   for    <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:18_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a>  st <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V2" title="LATTICES:attr.2">strict</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a>  )
+ </span><div about="#PF18_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lattices/18_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/18_1_1')" href="javascript:()" title="18_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+
+<div about="#RC8" typeof="oo:Theorem">
+<a NAME="RC8"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V1" title="LATTICES:attr.1">strict</a>   <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>   <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a>   for    <a href="lattices.html#L1" title="LATTICES:struct.1">/\-SemiLattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:18_2"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L1" title="LATTICES:struct.1">/\-SemiLattStr</a>  st <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V1" title="LATTICES:attr.1">strict</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a>  )
+ </span><div about="#PF18_2_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lattices/18_2_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/18_2_1')" href="javascript:()" title="18_2_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+
+<div about="#RC9" typeof="oo:Theorem">
+<a NAME="RC9"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V3" title="LATTICES:attr.3">strict</a>   <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:18_3"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a>  st <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V3" title="LATTICES:attr.3">strict</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>  )
+ </span><div about="#PF18_3_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lattices/18_3_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/18_3_1')" href="javascript:()" title="18_3_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<a NAME="NM1"><span class="kw">mode </span>Lattice<span class="kw"> is </span></a>  non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>   <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">a</font>, <font color="Maroon" title="c3">b</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a><br><span class="kw">redefine </span><a NAME="K3"><span class="kw">func</span> </a><font color="Maroon" title="c2">a</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Maroon" title="c3">b</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">commutativity</span> </a><span class="hide"><br><a NAME="E1:20_1"></a>
+ for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> holds  <font color="Olive" title="b1">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b2">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">b</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b1">a</font>
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="lattices.html#D4" target="_self" onmouseover="rs('lattices/D4')" onmouseout="rh()">Def4</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>   <a href="lattices.html#L1" title="LATTICES:struct.1">/\-SemiLattStr</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">a</font>, <font color="Maroon" title="c3">b</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a><br><span class="kw">redefine </span><a NAME="K4"><span class="kw">func</span> </a><font color="Maroon" title="c2">a</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Maroon" title="c3">b</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">commutativity</span> </a><span class="hide"><br><a NAME="E1:21_1"></a>
+ for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> holds  <font color="Olive" title="b1">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b2">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">b</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b1">a</font>
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="lattices.html#D6" target="_self" onmouseover="rs('lattices/D6')" onmouseout="rh()">Def6</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IT</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br><div about="#D11" typeof="oo:Definition">
+<a NAME="V11"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E11">Def11</font></span>: <a NAME="D11"><span class="comment"><font color="firebrick">:: LATTICES:def 11</font></span><br></a> for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font>, <font color="Olive" title="b3">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">IT</font> holds  <font color="Olive" title="b1">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">b</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b3">c</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b2">b</font></span>)</span> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b3">c</font></span>)</span>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT11" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E11">Def11</font></span>   defines <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 11 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a>  holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>  iff  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">IT</font> holds  <font color="Olive" title="b2">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">b</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b4">c</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b3">b</font></span>)</span> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b4">c</font></span>)</span> );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IT</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V12"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V12" title="LATTICES:attr.12">modular</a> <span class="kw"> means </span><a NAME="D12"><span class="comment"><font color="firebrick">:: LATTICES:def 12</font></span><br></a> for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font>, <font color="Olive" title="b3">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">IT</font>  st <font color="Olive" title="b1">a</font> <a href="lattices.html#R1" title="LATTICES:pred.1">[=</a> <font color="Olive" title="b3">c</font> holds <br><font color="Olive" title="b1">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">b</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b3">c</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b2">b</font></span>)</span> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b3">c</font>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT12" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="lattices.html#V12" title="LATTICES:attr.12">modular</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 12 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a>  holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V12" title="LATTICES:attr.12">modular</a>  iff  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">IT</font>  st <font color="Olive" title="b2">a</font> <a href="lattices.html#R1" title="LATTICES:pred.1">[=</a> <font color="Olive" title="b4">c</font> holds <br><font color="Olive" title="b2">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">b</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b4">c</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b3">b</font></span>)</span> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b4">c</font> );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IT</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L1" title="LATTICES:struct.1">/\-SemiLattStr</a> ;<br><div about="#D12" typeof="oo:Definition">
+<a NAME="V13"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E12">Def13</font></span>: <a NAME="D13"><span class="comment"><font color="firebrick">:: LATTICES:def 13</font></span><br></a> ex <font color="Olive" title="b1">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">IT</font> st <br> for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">IT</font> holds <br> ( <font color="Olive" title="b1">c</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">c</font> &amp; <font color="Olive" title="b2">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b1">c</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">c</font> );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT13" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E12">Def13</font></span>   defines <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 13 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L1" title="LATTICES:struct.1">/\-SemiLattStr</a>  holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>  iff  ex <font color="Olive" title="b2">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">IT</font> st <br> for <font color="Olive" title="b3">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">IT</font> holds <br> ( <font color="Olive" title="b2">c</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b3">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">c</font> &amp; <font color="Olive" title="b3">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b2">c</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">c</font> ) );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IT</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a> ;<br><div about="#D13" typeof="oo:Definition">
+<a NAME="V14"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V14" title="LATTICES:attr.14">upper-bounded</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E13">Def14</font></span>: <a NAME="D14"><span class="comment"><font color="firebrick">:: LATTICES:def 14</font></span><br></a> ex <font color="Olive" title="b1">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">IT</font> st <br> for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">IT</font> holds <br> ( <font color="Olive" title="b1">c</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">c</font> &amp; <font color="Olive" title="b2">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b1">c</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">c</font> );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT14" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E13">Def14</font></span>   defines <a href="lattices.html#V14" title="LATTICES:attr.14">upper-bounded</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 14 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a>  holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V14" title="LATTICES:attr.14">upper-bounded</a>  iff  ex <font color="Olive" title="b2">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">IT</font> st <br> for <font color="Olive" title="b3">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">IT</font> holds <br> ( <font color="Olive" title="b2">c</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b3">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">c</font> &amp; <font color="Olive" title="b3">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b2">c</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">c</font> ) );<br></span>
+</div>
+<br><a NAME="E18"></a><span class="lab"><font color="Green" title="E14">Lm4</font></span>: <span about="#E18" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">u</font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a></span>)</span> holds   <a href="lattices.html#G3" title="LATTICES:aggr.3">LattStr</a>(# <span class="p1">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a></span>)</span>,<font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">u</font> #) is   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>
+ </span><br><div about="#PF26" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E18"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/26')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/26')" href="javascript:()" title="26"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC10" typeof="oo:Theorem">
+<a NAME="RC10"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V3" title="LATTICES:attr.3">strict</a>   <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>   <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a>   <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>   <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a>   <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>   <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>   <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>   <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>   <a href="lattices.html#V12" title="LATTICES:attr.12">modular</a>   <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>   <a href="lattices.html#V14" title="LATTICES:attr.14">upper-bounded</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:27_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> st <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V3" title="LATTICES:attr.3">strict</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V14" title="LATTICES:attr.14">upper-bounded</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V12" title="LATTICES:attr.12">modular</a>  )
+ </span><div about="#PF27_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lattices/27_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/27_1_1')" href="javascript:()" title="27_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<a NAME="NM2"><span class="kw">mode </span>D_Lattice<span class="kw"> is </span></a>  <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br><a NAME="NM3"><span class="kw">mode </span>M_Lattice<span class="kw"> is </span></a>  <a href="lattices.html#V12" title="LATTICES:attr.12">modular</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br><a NAME="NM4"><span class="kw">mode </span>0_Lattice<span class="kw"> is </span></a>  <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br><a NAME="NM5"><span class="kw">mode </span>1_Lattice<span class="kw"> is </span></a>  <a href="lattices.html#V14" title="LATTICES:attr.14">upper-bounded</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><a NAME="E19"></a><span class="lab"><font color="Green" title="E15">Lm5</font></span>: <span about="#E19" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">u</font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a></span>)</span> holds   <a href="lattices.html#G3" title="LATTICES:aggr.3">LattStr</a>(# <span class="p1">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a></span>)</span>,<font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">u</font> #) is   <a href="lattices.html#NM4" title="LATTICES:NM.4">0_Lattice</a>
+ </span><br><div about="#PF29" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E19"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/29')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/29')" href="javascript:()" title="29"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><a NAME="E20"></a><span class="lab"><font color="Green" title="E16">Lm6</font></span>: <span about="#E20" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">n</font>, <font color="Olive" title="b2">u</font> being   <a href="binop_1.html#NM2" title="BINOP_1:NM.2">BinOp</a> of <span class="p1">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a></span>)</span> holds   <a href="lattices.html#G3" title="LATTICES:aggr.3">LattStr</a>(# <span class="p1">(<span class="default"><a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a></span>)</span>,<font color="Olive" title="b1">n</font>,<font color="Olive" title="b2">u</font> #) is   <a href="lattices.html#NM5" title="LATTICES:NM.5">1_Lattice</a>
+ </span><br><div about="#PF30" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E20"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/30')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/30')" href="javascript:()" title="30"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IT</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V15"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a> <span class="kw"> means </span><a NAME="D15"><span class="comment"><font color="firebrick">:: LATTICES:def 15</font></span><br></a>( <font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>  &amp; <font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V14" title="LATTICES:attr.14">upper-bounded</a>  );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT15" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 15 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a>  holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>  iff ( <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>  &amp; <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V14" title="LATTICES:attr.14">upper-bounded</a>  ) );<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#CC3" typeof="oo:Theorem">
+<a NAME="CC3"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>   <a href="lattices.html#V14" title="LATTICES:attr.14">upper-bounded</a>  <span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:32_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a>   st <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V14" title="LATTICES:attr.14">upper-bounded</a>  holds <br><font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a> 
+ </span>;<br>
+
+<div about="#CC4" typeof="oo:Theorem">
+<a NAME="CC4"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>  <span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>   <a href="lattices.html#V14" title="LATTICES:attr.14">upper-bounded</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:32_2"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a>   st <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>  holds <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V14" title="LATTICES:attr.14">upper-bounded</a>  )
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC11" typeof="oo:Theorem">
+<a NAME="RC11"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V3" title="LATTICES:attr.3">strict</a>   <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>   <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a>   <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>   <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a>   <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>   <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>   <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>   <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:33_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> st <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V3" title="LATTICES:attr.3">strict</a>  )
+ </span><div about="#PF33_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lattices/33_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/33_1_1')" href="javascript:()" title="33_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<a NAME="NM6"><span class="kw">mode </span>01_Lattice<span class="kw"> is </span></a>  <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L1" title="LATTICES:struct.1">/\-SemiLattStr</a> ;<br><span class="kw">assume </span><a NAME="E1:35"></a><span class="lab"><font color="Green" title="E17">A1</font></span>: 
+<font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a> 
+ ;<br><div about="#D17" typeof="oo:Definition">
+<a NAME="K5"><span class="kw">func</span> </a> <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Maroon" title="c1">L</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E17">Def16</font></span>: <a NAME="D16"><span class="comment"><font color="firebrick">:: LATTICES:def 16</font></span><br></a> for <font color="Olive" title="b1">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> holds <br> ( <span class="kw">it</span> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b1">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="kw">it</span> &amp; <font color="Olive" title="b1">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <span class="kw">it</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="kw">it</span> );<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:35_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> st <br> for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> holds <br> ( <font color="Olive">b<sub>1</sub></font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>1</sub></font> &amp; <font color="Olive" title="b2">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>1</sub></font> )
+ </span><span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:35"><span class="lab"><font color="Green" title="E17">A1</font></span></a></span>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:35_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>  st (  for <font color="Olive" title="b3">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> holds <br> ( <font color="Olive">b<sub>1</sub></font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b3">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>1</sub></font> &amp; <font color="Olive" title="b3">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>1</sub></font> ) ) &amp; (  for <font color="Olive" title="b3">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> holds <br> ( <font color="Olive">b<sub>2</sub></font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b3">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font> &amp; <font color="Olive" title="b3">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font> ) ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF35_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lattices/35_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/35_1_1')" href="javascript:()" title="35_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT16" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E17">Def16</font></span>   defines <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 16 : <br></a><span class="hide"> for <font color="Olive" title="b1">L</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L1" title="LATTICES:struct.1">/\-SemiLattStr</a>   st <font color="Olive" title="b1">L</font> is  <a href="lattices.html#V13" title="LATTICES:attr.13">lower-bounded</a>  holds <br> for <font color="Olive">b<sub>2</sub></font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds <br> ( <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font> iff  for <font color="Olive" title="b3">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds <br> ( <font color="Olive">b<sub>2</sub></font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b3">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font> &amp; <font color="Olive" title="b3">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font> ) );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a> ;<br><span class="kw">assume </span><a NAME="E1:36"></a><span class="lab"><font color="Green" title="E18">A1</font></span>: 
+<font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V14" title="LATTICES:attr.14">upper-bounded</a> 
+ ;<br><div about="#D18" typeof="oo:Definition">
+<a NAME="K6"><span class="kw">func</span> </a> <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Maroon" title="c1">L</font><span class="kw"> -&gt; </span>  <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E18">Def17</font></span>: <a NAME="D17"><span class="comment"><font color="firebrick">:: LATTICES:def 17</font></span><br></a> for <font color="Olive" title="b1">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> holds <br> ( <span class="kw">it</span> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b1">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="kw">it</span> &amp; <font color="Olive" title="b1">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <span class="kw">it</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="kw">it</span> );<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:36_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> st <br> for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> holds <br> ( <font color="Olive">b<sub>1</sub></font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>1</sub></font> &amp; <font color="Olive" title="b2">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>1</sub></font> )
+ </span><span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:36"><span class="lab"><font color="Green" title="E18">A1</font></span></a></span>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:36_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>  st (  for <font color="Olive" title="b3">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> holds <br> ( <font color="Olive">b<sub>1</sub></font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b3">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>1</sub></font> &amp; <font color="Olive" title="b3">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>1</sub></font> ) ) &amp; (  for <font color="Olive" title="b3">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> holds <br> ( <font color="Olive">b<sub>2</sub></font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b3">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font> &amp; <font color="Olive" title="b3">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font> ) ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF36_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lattices/36_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/36_1_1')" href="javascript:()" title="36_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT17" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E18">Def17</font></span>   defines <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 17 : <br></a><span class="hide"> for <font color="Olive" title="b1">L</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a>   st <font color="Olive" title="b1">L</font> is  <a href="lattices.html#V14" title="LATTICES:attr.14">upper-bounded</a>  holds <br> for <font color="Olive">b<sub>2</sub></font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds <br> ( <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">L</font> iff  for <font color="Olive" title="b3">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds <br> ( <font color="Olive">b<sub>2</sub></font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b3">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font> &amp; <font color="Olive" title="b3">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font> ) );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">a</font>, <font color="Maroon" title="c3">b</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="R2"><span class="kw">pred</span> </a><font color="Maroon" title="c2">a</font> <a href="lattices.html#R2" title="LATTICES:pred.2">is_a_complement_of</a> <font color="Maroon" title="c3">b</font><span class="kw"> means </span><a NAME="D18"><span class="comment"><font color="firebrick">:: LATTICES:def 18</font></span><br></a>( <font color="Maroon" title="c2">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Maroon" title="c3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Maroon" title="c1">L</font> &amp; <font color="Maroon" title="c3">b</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Maroon" title="c2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Maroon" title="c1">L</font> &amp; <font color="Maroon" title="c2">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Maroon" title="c3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Maroon" title="c1">L</font> &amp; <font color="Maroon" title="c3">b</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Maroon" title="c2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Maroon" title="c1">L</font> );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT18" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="lattices.html#R2" title="LATTICES:pred.2">is_a_complement_of</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 18 : <br></a><span class="hide"> for <font color="Olive" title="b1">L</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> <br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds <br> ( <font color="Olive" title="b2">a</font> <a href="lattices.html#R2" title="LATTICES:pred.2">is_a_complement_of</a> <font color="Olive" title="b3">b</font> iff ( <font color="Olive" title="b2">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">L</font> &amp; <font color="Olive" title="b3">b</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">L</font> &amp; <font color="Olive" title="b2">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font> &amp; <font color="Olive" title="b3">b</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font> ) );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IT</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br><div about="#D19" typeof="oo:Definition">
+<a NAME="V16"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V16" title="LATTICES:attr.16">complemented</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E19">Def19</font></span>: <a NAME="D19"><span class="comment"><font color="firebrick">:: LATTICES:def 19</font></span><br></a> for <font color="Olive" title="b1">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">IT</font>  ex <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">IT</font> st <font color="Olive" title="b2">a</font> <a href="lattices.html#R2" title="LATTICES:pred.2">is_a_complement_of</a> <font color="Olive" title="b1">b</font>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT19" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E19">Def19</font></span>   defines <a href="lattices.html#V16" title="LATTICES:attr.16">complemented</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 19 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a>  holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V16" title="LATTICES:attr.16">complemented</a>  iff  for <font color="Olive" title="b2">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">IT</font>  ex <font color="Olive" title="b3">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">IT</font> st <font color="Olive" title="b3">a</font> <a href="lattices.html#R2" title="LATTICES:pred.2">is_a_complement_of</a> <font color="Olive" title="b2">b</font> );<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC12" typeof="oo:Theorem">
+<a NAME="RC12"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V3" title="LATTICES:attr.3">strict</a>   <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>   <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a>   <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>   <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a>   <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>   <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>   <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>   <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>   <a href="lattices.html#V16" title="LATTICES:attr.16">complemented</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:39_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> st <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V16" title="LATTICES:attr.16">complemented</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V3" title="LATTICES:attr.3">strict</a>  )
+ </span><div about="#PF39_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lattices/39_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/39_1_1')" href="javascript:()" title="39_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<a NAME="NM7"><span class="kw">mode </span>C_Lattice<span class="kw"> is </span></a>  <a href="lattices.html#V16" title="LATTICES:attr.16">complemented</a>  <a href="lattices.html#NM6" title="LATTICES:NM.6">01_Lattice</a>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">IT</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V17"><span class="kw">attr</span> </a><font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a> <span class="kw"> means </span><a NAME="D20"><span class="comment"><font color="firebrick">:: LATTICES:def 20</font></span><br></a>( <font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>  &amp; <font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V16" title="LATTICES:attr.16">complemented</a>  &amp; <font color="Maroon" title="c1">IT</font> is  <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>  );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+<div about="#DT20" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 20 : <br></a><span class="hide"> for <font color="Olive" title="b1">IT</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a>  holds <br> ( <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  iff ( <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>  &amp; <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V16" title="LATTICES:attr.16">complemented</a>  &amp; <font color="Olive" title="b1">IT</font> is  <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>  ) );<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#CC5" typeof="oo:Theorem">
+<a NAME="CC5"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>   <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>   <a href="lattices.html#V16" title="LATTICES:attr.16">complemented</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:42_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a>   st <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  holds <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V16" title="LATTICES:attr.16">complemented</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>  )
+ </span>;<br>
+
+<div about="#CC6" typeof="oo:Theorem">
+<a NAME="CC6"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>   <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>   <a href="lattices.html#V16" title="LATTICES:attr.16">complemented</a>  <span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:42_2"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a>   st <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V15" title="LATTICES:attr.15">bounded</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V16" title="LATTICES:attr.16">complemented</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>  holds <br><font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#RC13" typeof="oo:Theorem">
+<a NAME="RC13"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V3" title="LATTICES:attr.3">strict</a>   <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>   <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a>   <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>   <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a>   <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>   <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>   <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>   <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:43_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> st <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V3" title="LATTICES:attr.3">strict</a>  )
+ </span><div about="#PF43_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lattices/43_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/43_1_1')" href="javascript:()" title="43_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<a NAME="NM8"><span class="kw">mode </span>B_Lattice<span class="kw"> is </span></a>  <a href="lattices.html#V17" title="LATTICES:attr.17">Boolean</a>  <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>   <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>   <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">a</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>;<br>
+<div about="#RD1" typeof="oo:Theorem">
+<a NAME="RD1"><span class="kw">reduce </span></a><font color="Maroon" title="c2">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Maroon" title="c2">a</font><span class="kw"> to </span><font color="Maroon" title="c2">a</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">reducibility</span> </a><span class="hide"><br><a NAME="E1:45_1"></a>
+<font color="Maroon" title="c2">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Maroon" title="c2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">a</font>
+ </span><div about="#PF45_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lattices/45_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/45_1_1')" href="javascript:()" title="45_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>   <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>   <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">a</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>;<br>
+<div about="#RD2" typeof="oo:Theorem">
+<a NAME="RD2"><span class="kw">reduce </span></a><font color="Maroon" title="c2">a</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Maroon" title="c2">a</font><span class="kw"> to </span><font color="Maroon" title="c2">a</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">reducibility</span> </a><span class="hide"><br><a NAME="E1:46_1"></a>
+<font color="Maroon" title="c2">a</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Maroon" title="c2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">a</font>
+ </span><div about="#PF46_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lattices/46_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/46_1_1')" href="javascript:()" title="46_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T1"><span class="comment"><font color="firebrick">:: LATTICES:1</font></span><br></a><div class="add"><span class="kw">canceled; </span></div>
+</div>
+<br><div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T2"><span class="comment"><font color="firebrick">:: LATTICES:2</font></span><br></a><div class="add"><span class="kw">canceled; </span></div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::$CT 2<br>  
+  
+</font></div>
+<div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E20">Th1</font></span>: <a NAME="T3"><span class="comment"><font color="firebrick">:: LATTICES:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> holds <br> ( (  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <font color="Olive" title="b2">a</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">b</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b4">c</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b3">b</font></span>)</span> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b4">c</font></span>)</span> ) iff  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <font color="Olive" title="b2">a</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">b</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b4">c</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b3">b</font></span>)</span> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b4">c</font></span>)</span> )</div>
+<div about="#PF49" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/49')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/49')" href="javascript:()" title="49"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E21">Th2</font></span>: <a NAME="T4"><span class="comment"><font color="firebrick">:: LATTICES:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>   <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> <br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds <br> ( <font color="Olive" title="b2">a</font> <a href="lattices.html#R1" title="LATTICES:pred.1">[=</a> <font color="Olive" title="b3">b</font> iff <font color="Olive" title="b2">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">a</font> ) <span class="kw">by</span> <span class="lab"><a class="ref" href="lattices.html#D8" target="_self" onmouseover="rs('lattices/D8')" onmouseout="rh()">Def8</a>, <a class="ref" href="lattices.html#D9" target="_self" onmouseover="rs('lattices/D9')" onmouseout="rh()">Def9</a></span>;<br>
+</div>
+</div>
+<br><div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E22">Th3</font></span>: <a NAME="T5"><span class="comment"><font color="firebrick">:: LATTICES:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a>   <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>   <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>   <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> <br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <font color="Olive" title="b2">a</font> <a href="lattices.html#R1" title="LATTICES:pred.1">[=</a> <font color="Olive" title="b2">a</font> <a href="lattices.html#K1" title="LATTICES:func.1">"\/"</a> <font color="Olive" title="b3">b</font>
+</div>
+<div about="#PF50" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/50')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/50')" href="javascript:()" title="50"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E23">Th4</font></span>: <a NAME="T6"><span class="comment"><font color="firebrick">:: LATTICES:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>   <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> <br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <font color="Olive" title="b2">a</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b3">b</font> <a href="lattices.html#R1" title="LATTICES:pred.1">[=</a> <font color="Olive" title="b2">a</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="lattices.html#D8" target="_self" onmouseover="rs('lattices/D8')" onmouseout="rh()">Def8</a></span>;<br>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V6" title="LATTICES:attr.6">meet-commutative</a>   <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>   <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">a</font>, <font color="Maroon" title="c3">b</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="lattices.html#R1" title="LATTICES:pred.1">[=</a><br><span class="kw">redefine </span><a NAME="R3"><span class="kw">pred</span> </a><font color="Maroon" title="c2">a</font> <a href="lattices.html#R3" title="LATTICES:pred.3">[=</a> <font color="Maroon" title="c3">b</font>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">reflexivity</span> </a><span class="hide"><br><a NAME="E1:51_1"></a>
+ for <font color="Olive" title="b1">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> holds  (<font color="Maroon" title="c1">L</font>,<font color="Olive">b<sub>1</sub></font>,<font color="Olive">b<sub>1</sub></font>)
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T7"><span class="comment"><font color="firebrick">:: LATTICES:7</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V5" title="LATTICES:attr.5">join-associative</a>   <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a> <br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b2">a</font> <a href="lattices.html#R1" title="LATTICES:pred.1">[=</a> <font color="Olive" title="b3">b</font> &amp; <font color="Olive" title="b3">b</font> <a href="lattices.html#R1" title="LATTICES:pred.1">[=</a> <font color="Olive" title="b4">c</font> holds <br><font color="Olive" title="b2">a</font> <a href="lattices.html#R1" title="LATTICES:pred.1">[=</a> <font color="Olive" title="b4">c</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="lattices.html#D5" target="_self" onmouseover="rs('lattices/D5')" onmouseout="rh()">Def5</a></span>;<br>
+</div>
+</div>
+<br><div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E24">Th6</font></span>: <a NAME="T8"><span class="comment"><font color="firebrick">:: LATTICES:8</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>   <a href="lattices.html#L2" title="LATTICES:struct.2">\/-SemiLattStr</a> <br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b2">a</font> <a href="lattices.html#R1" title="LATTICES:pred.1">[=</a> <font color="Olive" title="b3">b</font> &amp; <font color="Olive" title="b3">b</font> <a href="lattices.html#R1" title="LATTICES:pred.1">[=</a> <font color="Olive" title="b2">a</font> holds <br><font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">b</font>
+</div>
+<div about="#PF52" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/52')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/52')" href="javascript:()" title="52"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E25">Th7</font></span>: <a NAME="T9"><span class="comment"><font color="firebrick">:: LATTICES:9</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V7" title="LATTICES:attr.7">meet-associative</a>   <a href="lattices.html#V8" title="LATTICES:attr.8">meet-absorbing</a>   <a href="lattices.html#V9" title="LATTICES:attr.9">join-absorbing</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> <br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b2">a</font> <a href="lattices.html#R1" title="LATTICES:pred.1">[=</a> <font color="Olive" title="b3">b</font> holds <br><font color="Olive" title="b2">a</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b4">c</font> <a href="lattices.html#R1" title="LATTICES:pred.1">[=</a> <font color="Olive" title="b3">b</font> <a href="lattices.html#K2" title="LATTICES:func.2">"/\"</a> <font color="Olive" title="b4">c</font>
+</div>
+<div about="#PF53" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T9"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/53')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/53')" href="javascript:()" title="53"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T10"><span class="comment"><font color="firebrick">:: LATTICES:10</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>  st (  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b3">b</font></span>)</span> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <span class="p2">(<span class="default"><font color="Olive" title="b3">b</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b4">c</font></span>)</span></span>)</span> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">c</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b2">a</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b3">b</font></span>)</span> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <span class="p2">(<span class="default"><font color="Olive" title="b3">b</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b4">c</font></span>)</span></span>)</span> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">c</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b2">a</font></span>)</span> ) holds <br><font color="Olive" title="b1">L</font> is  <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a> </div>
+<div about="#PF54" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T10"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/54')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/54')" href="javascript:()" title="54"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E26">Th9</font></span>: <a NAME="T11"><span class="comment"><font color="firebrick">:: LATTICES:11</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <font color="Olive" title="b2">a</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">b</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b4">c</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b3">b</font></span>)</span> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b4">c</font></span>)</span>
+</div>
+<div about="#PF55" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/55')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/55')" href="javascript:()" title="55"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E27">Th10</font></span>: <a NAME="T12"><span class="comment"><font color="firebrick">:: LATTICES:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b4">c</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">c</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b3">b</font> &amp; <font color="Olive" title="b4">c</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">c</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b3">b</font> holds <br><font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">b</font>
+</div>
+<div about="#PF56" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/56')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/56')" href="javascript:()" title="56"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T13"><span class="comment"><font color="firebrick">:: LATTICES:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font>, <font color="Olive" title="b4">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b3">b</font></span>)</span> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <span class="p2">(<span class="default"><font color="Olive" title="b3">b</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b4">c</font></span>)</span></span>)</span> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">c</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b2">a</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b3">b</font></span>)</span> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <span class="p2">(<span class="default"><font color="Olive" title="b3">b</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b4">c</font></span>)</span></span>)</span> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">c</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b2">a</font></span>)</span>
+</div>
+<div about="#PF57" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T13"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/57')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/57')" href="javascript:()" title="57"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<div about="#CC7" typeof="oo:Theorem">
+<a NAME="CC7"><span class="kw">cluster </span></a> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V10" title="LATTICES:attr.10">Lattice-like</a>   <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>  <span class="kw"> -&gt; </span> <a href="lattices.html#V12" title="LATTICES:attr.12">modular</a>   for    <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:58_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>  st <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V11" title="LATTICES:attr.11">distributive</a>  holds <br><font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V12" title="LATTICES:attr.12">modular</a> 
+ </span><div about="#PF58_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lattices/58_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/58_1_1')" href="javascript:()" title="58_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="lattices.html#NM4" title="LATTICES:NM.4">0_Lattice</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">a</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>;<br>
+<div about="#RD3" typeof="oo:Theorem">
+<a NAME="RD3"><span class="kw">reduce </span></a><span class="p1">(<span class="default"><a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Maroon" title="c1">L</font></span>)</span> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Maroon" title="c2">a</font><span class="kw"> to </span><font color="Maroon" title="c2">a</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">reducibility</span> </a><span class="hide"><br><a NAME="E1:59_1"></a>
+<span class="p1">(<span class="default"><a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Maroon" title="c1">L</font></span>)</span> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Maroon" title="c2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">a</font>
+ </span><div about="#PF59_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lattices/59_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/59_1_1')" href="javascript:()" title="59_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+
+<div about="#RD4" typeof="oo:Theorem">
+<a NAME="RD4"><span class="kw">reduce </span></a><span class="p1">(<span class="default"><a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Maroon" title="c1">L</font></span>)</span> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Maroon" title="c2">a</font><span class="kw"> to </span> <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Maroon" title="c1">L</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">reducibility</span> </a><span class="hide"><br><a NAME="E1:59_2"></a>
+<span class="p1">(<span class="default"><a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Maroon" title="c1">L</font></span>)</span> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Maroon" title="c2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Maroon" title="c1">L</font>
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="lattices.html#D16" target="_self" onmouseover="rs('lattices/D16')" onmouseout="rh()">Def16</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T14"><span class="comment"><font color="firebrick">:: LATTICES:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM4" title="LATTICES:NM.4">0_Lattice</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <span class="p1">(<span class="default"><a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font></span>)</span> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">a</font> ;<br>
+</div>
+</div>
+<br><div about="#T15" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T15"><span class="comment"><font color="firebrick">:: LATTICES:15</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM4" title="LATTICES:NM.4">0_Lattice</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <span class="p1">(<span class="default"><a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font></span>)</span> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font> ;<br>
+</div>
+</div>
+<br><div about="#T16" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T16"><span class="comment"><font color="firebrick">:: LATTICES:16</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM4" title="LATTICES:NM.4">0_Lattice</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds   <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font> <a href="lattices.html#R3" title="LATTICES:pred.3">[=</a> <font color="Olive" title="b2">a</font> ;<br>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="lattices.html#NM5" title="LATTICES:NM.5">1_Lattice</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">a</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>;<br>
+<div about="#RD5" typeof="oo:Theorem">
+<a NAME="RD5"><span class="kw">reduce </span></a><span class="p1">(<span class="default"><a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Maroon" title="c1">L</font></span>)</span> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Maroon" title="c2">a</font><span class="kw"> to </span><font color="Maroon" title="c2">a</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">reducibility</span> </a><span class="hide"><br><a NAME="E1:60_1"></a>
+<span class="p1">(<span class="default"><a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Maroon" title="c1">L</font></span>)</span> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Maroon" title="c2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">a</font>
+ </span><div about="#PF60_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lattices/60_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/60_1_1')" href="javascript:()" title="60_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+
+<div about="#RD6" typeof="oo:Theorem">
+<a NAME="RD6"><span class="kw">reduce </span></a><span class="p1">(<span class="default"><a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Maroon" title="c1">L</font></span>)</span> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Maroon" title="c2">a</font><span class="kw"> to </span> <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Maroon" title="c1">L</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">reducibility</span> </a><span class="hide"><br><a NAME="E1:60_2"></a>
+<span class="p1">(<span class="default"><a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Maroon" title="c1">L</font></span>)</span> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Maroon" title="c2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Maroon" title="c1">L</font>
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="lattices.html#D17" target="_self" onmouseover="rs('lattices/D17')" onmouseout="rh()">Def17</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T17" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T17"><span class="comment"><font color="firebrick">:: LATTICES:17</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM5" title="LATTICES:NM.5">1_Lattice</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <span class="p1">(<span class="default"><a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">L</font></span>)</span> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">a</font> ;<br>
+</div>
+</div>
+<br><div about="#T18" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T18"><span class="comment"><font color="firebrick">:: LATTICES:18</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM5" title="LATTICES:NM.5">1_Lattice</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <span class="p1">(<span class="default"><a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">L</font></span>)</span> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">L</font> ;<br>
+</div>
+</div>
+<br><div about="#T19" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T19"><span class="comment"><font color="firebrick">:: LATTICES:19</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM5" title="LATTICES:NM.5">1_Lattice</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <font color="Olive" title="b2">a</font> <a href="lattices.html#R3" title="LATTICES:pred.3">[=</a>  <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">L</font>
+</div>
+<div about="#PF61" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T19"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/61')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/61')" href="javascript:()" title="61"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">x</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>;<br><span class="kw">assume </span><a NAME="E1:62"></a><span class="lab"><font color="Green" title="E28">A1</font></span>: 
+<font color="Maroon" title="c1">L</font> is   <a href="lattices.html#V16" title="LATTICES:attr.16">complemented</a>  <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a>
+ ;<br><div about="#D28" typeof="oo:Definition">
+<a NAME="K7"><span class="kw">func</span> </a><font color="Maroon" title="c2">x</font> <a href="lattices.html#K7" title="LATTICES:func.7">`</a> <span class="kw"> -&gt; </span>  <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E28">Def21</font></span>: <a NAME="D21"><span class="comment"><font color="firebrick">:: LATTICES:def 21</font></span><br></a><span class="kw">it</span> <a href="lattices.html#R2" title="LATTICES:pred.2">is_a_complement_of</a> <font color="Maroon" title="c2">x</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:62_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> st <font color="Olive">b<sub>1</sub></font> <a href="lattices.html#R2" title="LATTICES:pred.2">is_a_complement_of</a> <font color="Maroon" title="c2">x</font>
+ </span><span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:62"><span class="lab"><font color="Green" title="E28">A1</font></span></a>, <a class="ref" href="lattices.html#D19" target="_self" onmouseover="rs('lattices/D19')" onmouseout="rh()">Def19</a></span>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:62_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>  st <font color="Olive">b<sub>1</sub></font> <a href="lattices.html#R2" title="LATTICES:pred.2">is_a_complement_of</a> <font color="Maroon" title="c2">x</font> &amp; <font color="Olive">b<sub>2</sub></font> <a href="lattices.html#R2" title="LATTICES:pred.2">is_a_complement_of</a> <font color="Maroon" title="c2">x</font> holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:62"><span class="lab"><font color="Green" title="E28">A1</font></span></a>, <a class="ref" href="lattices.html#T12" target="_self" onmouseover="rs('lattices/T12')" onmouseout="rh()">Th10</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+<div about="#DT21" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E28">Def21</font></span>   defines <a href="lattices.html#K7" title="LATTICES:func.7">`</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 21 : <br></a><span class="hide"> for <font color="Olive" title="b1">L</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> <br>  for <font color="Olive" title="b2">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b1">L</font> is   <a href="lattices.html#V16" title="LATTICES:attr.16">complemented</a>  <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a> holds <br> for <font color="Olive">b<sub>3</sub></font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds <br> ( <font color="Olive">b<sub>3</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">x</font> <a href="lattices.html#K7" title="LATTICES:func.7">`</a>  iff <font color="Olive">b<sub>3</sub></font> <a href="lattices.html#R2" title="LATTICES:pred.2">is_a_complement_of</a> <font color="Olive" title="b2">x</font> );<br></span>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div about="#T20" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E29">Th18</font></span>: <a NAME="T20"><span class="comment"><font color="firebrick">:: LATTICES:20</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K7" title="LATTICES:func.7">`</a></span>)</span> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font>
+</div>
+<div about="#PF63" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T20"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/63')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/63')" href="javascript:()" title="63"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T21" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E30">Th19</font></span>: <a NAME="T21"><span class="comment"><font color="firebrick">:: LATTICES:21</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K7" title="LATTICES:func.7">`</a></span>)</span> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K6" title="LATTICES:func.6">Top</a> <font color="Olive" title="b1">L</font>
+</div>
+<div about="#PF64" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T21"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/64')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/64')" href="javascript:()" title="64"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">a</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>;<br>
+<div about="#RD7" typeof="oo:Theorem">
+<a NAME="RD7"><span class="kw">reduce </span></a><span class="p1">(<span class="default"><font color="Maroon" title="c2">a</font> <a href="lattices.html#K7" title="LATTICES:func.7">`</a></span>)</span> <a href="lattices.html#K7" title="LATTICES:func.7">`</a> <span class="kw"> to </span><font color="Maroon" title="c2">a</font>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">reducibility</span> </a><span class="hide"><br><a NAME="E1:65_1"></a>
+<span class="p1">(<span class="default"><font color="Maroon" title="c2">a</font> <a href="lattices.html#K7" title="LATTICES:func.7">`</a></span>)</span> <a href="lattices.html#K7" title="LATTICES:func.7">`</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">a</font>
+ </span><div about="#PF65_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lattices/65_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/65_1_1')" href="javascript:()" title="65_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T22" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T22"><span class="comment"><font color="firebrick">:: LATTICES:22</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a><br>  for <font color="Olive" title="b2">a</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K7" title="LATTICES:func.7">`</a></span>)</span> <a href="lattices.html#K7" title="LATTICES:func.7">`</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">a</font> ;<br>
+</div>
+</div>
+<br><div about="#T23" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E31">Th21</font></span>: <a NAME="T23"><span class="comment"><font color="firebrick">:: LATTICES:23</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b3">b</font></span>)</span> <a href="lattices.html#K7" title="LATTICES:func.7">`</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K7" title="LATTICES:func.7">`</a></span>)</span> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">b</font> <a href="lattices.html#K7" title="LATTICES:func.7">`</a></span>)</span>
+</div>
+<div about="#PF66" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T23"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/66')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/66')" href="javascript:()" title="66"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T24" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T24"><span class="comment"><font color="firebrick">:: LATTICES:24</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds  <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b3">b</font></span>)</span> <a href="lattices.html#K7" title="LATTICES:func.7">`</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">a</font> <a href="lattices.html#K7" title="LATTICES:func.7">`</a></span>)</span> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">b</font> <a href="lattices.html#K7" title="LATTICES:func.7">`</a></span>)</span>
+</div>
+<div about="#PF67" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T24"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/67')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/67')" href="javascript:()" title="67"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T25" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E32">Th23</font></span>: <a NAME="T25"><span class="comment"><font color="firebrick">:: LATTICES:25</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font> holds <br> ( <font color="Olive" title="b3">b</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b2">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="lattices.html#K5" title="LATTICES:func.5">Bottom</a> <font color="Olive" title="b1">L</font> iff <font color="Olive" title="b3">b</font> <a href="lattices.html#R3" title="LATTICES:pred.3">[=</a> <font color="Olive" title="b2">a</font> <a href="lattices.html#K7" title="LATTICES:func.7">`</a>  )</div>
+<div about="#PF68" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T25"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/68')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/68')" href="javascript:()" title="68"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T26" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T26"><span class="comment"><font color="firebrick">:: LATTICES:26</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM8" title="LATTICES:NM.8">B_Lattice</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b2">a</font> <a href="lattices.html#R3" title="LATTICES:pred.3">[=</a> <font color="Olive" title="b3">b</font> holds <br><font color="Olive" title="b3">b</font> <a href="lattices.html#K7" title="LATTICES:func.7">`</a>  <a href="lattices.html#R3" title="LATTICES:pred.3">[=</a> <font color="Olive" title="b2">a</font> <a href="lattices.html#K7" title="LATTICES:func.7">`</a> </div>
+<div about="#PF69" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T26"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/69')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/69')" href="javascript:()" title="69"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">:: missing, 2009.07.28, A.T.<br>  
+  
+</font></div>
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">S</font> be   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">L</font>;<br><div about="#D33" typeof="oo:Definition">
+<a NAME="V18"><span class="kw">attr</span> </a><font color="Maroon" title="c2">S</font> is  <a href="lattices.html#V18" title="LATTICES:attr.18">initial</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E33">Def22</font></span>: <a NAME="D22"><span class="comment"><font color="firebrick">:: LATTICES:def 22</font></span><br></a> for <font color="Olive" title="b1">p</font>, <font color="Olive" title="b2">q</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>  st <font color="Olive" title="b1">p</font> <a href="lattices.html#R3" title="LATTICES:pred.3">[=</a> <font color="Olive" title="b2">q</font> &amp; <font color="Olive" title="b2">q</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">S</font> holds <br><font color="Olive" title="b1">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">S</font>;<br>
+</div>
+<div about="#D34" typeof="oo:Definition">
+<a NAME="V19"><span class="kw">attr</span> </a><font color="Maroon" title="c2">S</font> is  <a href="lattices.html#V19" title="LATTICES:attr.19">final</a> <span class="kw"> means </span>:<span class="lab"><font color="Green" title="E34">Def23</font></span>: <a NAME="D23"><span class="comment"><font color="firebrick">:: LATTICES:def 23</font></span><br></a> for <font color="Olive" title="b1">p</font>, <font color="Olive" title="b2">q</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>  st <font color="Olive" title="b1">p</font> <a href="lattices.html#R3" title="LATTICES:pred.3">[=</a> <font color="Olive" title="b2">q</font> &amp; <font color="Olive" title="b1">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">S</font> holds <br><font color="Olive" title="b2">q</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">S</font>;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V20"><span class="kw">attr</span> </a><font color="Maroon" title="c2">S</font> is  <a href="lattices.html#V20" title="LATTICES:attr.20">meet-closed</a> <span class="kw"> means </span><a NAME="D24"><span class="comment"><font color="firebrick">:: LATTICES:def 24</font></span><br></a> for <font color="Olive" title="b1">p</font>, <font color="Olive" title="b2">q</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>  st <font color="Olive" title="b1">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">S</font> &amp; <font color="Olive" title="b2">q</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">S</font> holds <br><font color="Olive" title="b1">p</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b2">q</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">S</font>;<br>
+</div>
+<div about="#D0" typeof="oo:Definition">
+<a NAME="V21"><span class="kw">attr</span> </a><font color="Maroon" title="c2">S</font> is  <a href="lattices.html#V21" title="LATTICES:attr.21">join-closed</a> <span class="kw"> means </span><a NAME="D25"><span class="comment"><font color="firebrick">:: LATTICES:def 25</font></span><br></a> for <font color="Olive" title="b1">p</font>, <font color="Olive" title="b2">q</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>  st <font color="Olive" title="b1">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">S</font> &amp; <font color="Olive" title="b2">q</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">S</font> holds <br><font color="Olive" title="b1">p</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b2">q</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">S</font>;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div about="#DT22" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E33">Def22</font></span>   defines <a href="lattices.html#V18" title="LATTICES:attr.18">initial</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 22 : <br></a><span class="hide"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">S</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">L</font> holds <br> ( <font color="Olive" title="b2">S</font> is  <a href="lattices.html#V18" title="LATTICES:attr.18">initial</a>  iff  for <font color="Olive" title="b3">p</font>, <font color="Olive" title="b4">q</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b3">p</font> <a href="lattices.html#R3" title="LATTICES:pred.3">[=</a> <font color="Olive" title="b4">q</font> &amp; <font color="Olive" title="b4">q</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">S</font> holds <br><font color="Olive" title="b3">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">S</font> );<br></span>
+</div>
+<br><div about="#DT23" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E34">Def23</font></span>   defines <a href="lattices.html#V19" title="LATTICES:attr.19">final</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 23 : <br></a><span class="hide"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">S</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">L</font> holds <br> ( <font color="Olive" title="b2">S</font> is  <a href="lattices.html#V19" title="LATTICES:attr.19">final</a>  iff  for <font color="Olive" title="b3">p</font>, <font color="Olive" title="b4">q</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b3">p</font> <a href="lattices.html#R3" title="LATTICES:pred.3">[=</a> <font color="Olive" title="b4">q</font> &amp; <font color="Olive" title="b3">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">S</font> holds <br><font color="Olive" title="b4">q</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">S</font> );<br></span>
+</div>
+<br><div about="#DT24" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="lattices.html#V20" title="LATTICES:attr.20">meet-closed</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 24 : <br></a><span class="hide"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">S</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">L</font> holds <br> ( <font color="Olive" title="b2">S</font> is  <a href="lattices.html#V20" title="LATTICES:attr.20">meet-closed</a>  iff  for <font color="Olive" title="b3">p</font>, <font color="Olive" title="b4">q</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b3">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">S</font> &amp; <font color="Olive" title="b4">q</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">S</font> holds <br><font color="Olive" title="b3">p</font> <a href="lattices.html#K4" title="LATTICES:func.4">"/\"</a> <font color="Olive" title="b4">q</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">S</font> );<br></span>
+</div>
+<br><div about="#DT25" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="lattices.html#V21" title="LATTICES:attr.21">join-closed</a> <a onclick="hs(this)" href="javascript:()">LATTICES:def 25 : <br></a><span class="hide"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">S</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">L</font> holds <br> ( <font color="Olive" title="b2">S</font> is  <a href="lattices.html#V21" title="LATTICES:attr.21">join-closed</a>  iff  for <font color="Olive" title="b3">p</font>, <font color="Olive" title="b4">q</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">L</font>  st <font color="Olive" title="b3">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">S</font> &amp; <font color="Olive" title="b4">q</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">S</font> holds <br><font color="Olive" title="b3">p</font> <a href="lattices.html#K3" title="LATTICES:func.3">"\/"</a> <font color="Olive" title="b4">q</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b2">S</font> );<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+<div about="#FC4" typeof="oo:Theorem">
+<a NAME="FC4"><span class="kw">cluster </span></a> <a href="struct_0.html#K2" title="STRUCT_0:func.2">[#]</a> <font color="Maroon" title="c1">L</font><span class="kw"> -&gt; </span> non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="lattices.html#V18" title="LATTICES:attr.18">initial</a>   <a href="lattices.html#V19" title="LATTICES:attr.19">final</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:71_1"></a>
+(  <a href="struct_0.html#K2" title="STRUCT_0:func.2">[#]</a> <font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V18" title="LATTICES:attr.18">initial</a>  &amp;  <a href="struct_0.html#K2" title="STRUCT_0:func.2">[#]</a> <font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V19" title="LATTICES:attr.19">final</a>  &amp;  not  <a href="struct_0.html#K2" title="STRUCT_0:func.2">[#]</a> <font color="Maroon" title="c1">L</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  )
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>;<br>
+<div about="#RC14" typeof="oo:Theorem">
+<a NAME="RC14"><span class="kw">cluster </span></a> non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="lattices.html#V18" title="LATTICES:attr.18">initial</a>   <a href="lattices.html#V19" title="LATTICES:attr.19">final</a>   for   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">M3</a>( <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">L</font>);<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:72_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">L</font> st <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V18" title="LATTICES:attr.18">initial</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V19" title="LATTICES:attr.19">final</a>  &amp;  not <font color="Olive">b<sub>1</sub></font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  )
+ </span><div about="#PF72_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/lattices/72_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/72_1_1')" href="javascript:()" title="72_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+
+<div about="#CC8" typeof="oo:Theorem">
+<a NAME="CC8"><span class="kw">cluster </span></a> <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <span class="kw"> -&gt; </span> <a href="lattices.html#V18" title="LATTICES:attr.18">initial</a>   <a href="lattices.html#V19" title="LATTICES:attr.19">final</a>   for   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">M3</a>( <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">L</font>);<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:72_2"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">L</font>  st <font color="Olive">b<sub>1</sub></font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  holds <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V18" title="LATTICES:attr.18">initial</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V19" title="LATTICES:attr.19">final</a>  )
+ </span>;<br>
+
+<div about="#CC9" typeof="oo:Theorem">
+<a NAME="CC9"><span class="kw">cluster </span></a> <a href="lattices.html#V18" title="LATTICES:attr.18">initial</a>  <span class="kw"> -&gt; </span> <a href="lattices.html#V20" title="LATTICES:attr.20">meet-closed</a>   for   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">M3</a>( <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">L</font>);<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:72_3"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">L</font>  st <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V18" title="LATTICES:attr.18">initial</a>  holds <br><font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V20" title="LATTICES:attr.20">meet-closed</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="lattices.html#T6" target="_self" onmouseover="rs('lattices/T6')" onmouseout="rh()">Th4</a></span>;<br>
+
+<div about="#CC10" typeof="oo:Theorem">
+<a NAME="CC10"><span class="kw">cluster </span></a> <a href="lattices.html#V19" title="LATTICES:attr.19">final</a>  <span class="kw"> -&gt; </span> <a href="lattices.html#V21" title="LATTICES:attr.21">join-closed</a>   for   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">M3</a>( <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">L</font>);<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:72_4"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">L</font>  st <font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V19" title="LATTICES:attr.19">final</a>  holds <br><font color="Olive">b<sub>1</sub></font> is  <a href="lattices.html#V21" title="LATTICES:attr.21">join-closed</a> 
+ </span><span class="kw">by</span> <span class="lab"><a class="ref" href="lattices.html#T5" target="_self" onmouseover="rs('lattices/T5')" onmouseout="rh()">Th3</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T27" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T27"><span class="comment"><font color="firebrick">:: LATTICES:27</font></span><br></a><div class="add"> for <font color="Olive" title="b1">L</font> being   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a><br>  for <font color="Olive" title="b2">S</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="lattices.html#V18" title="LATTICES:attr.18">initial</a>   <a href="lattices.html#V19" title="LATTICES:attr.19">final</a>  <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Olive" title="b1">L</font> holds  <font color="Olive" title="b2">S</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K2" title="STRUCT_0:func.2">[#]</a> <font color="Olive" title="b1">L</font>
+</div>
+<div about="#PF73" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T27"></span><a class="txt" onmouseover="tooltip.show('url','proofs/lattices/73')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/lattices/73')" href="javascript:()" title="73"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+</body>
+</html>
