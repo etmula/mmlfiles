@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">i</font> be   <a href="compos_1.html#NM1" title="COMPOS_1:NM.1">Instruction</a> of <a href="scmfsa_2.html#K1" title="SCMFSA_2:func.1">SCM+FSA</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">i</font> is  <a href="amistd_1.html#V4" title="AMISTD_1:attr.4">sequential</a>  implies <font color="Maroon" title="c3">i</font> is  <a href="compos_0.html#V6" title="COMPOS_0:attr.6">No-StopCode</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:31_1_1"/><span class="lab"><font color="Green" title="E6">A1</font></span>: 
+<font color="Maroon" title="c3">i</font> is  <a href="amistd_1.html#V4" title="AMISTD_1:attr.4">sequential</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">i</font> is  <a href="compos_0.html#V6" title="COMPOS_0:attr.6">No-StopCode</a> </span><br/>
+
+<span class="kw">reconsider </span><font color="Maroon" title="c4">i</font> = <font color="Maroon" title="c3">i</font> as    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  the <a href="compos_1.html#U1" title="COMPOS_1:sel.1">InstructionsF</a> of <a href="scmfsa_2.html#K1" title="SCMFSA_2:func.1">SCM+FSA</a> ;<br/>
+<a NAME="E3:31_1_1"/>
+<font color="Maroon" title="c4">i</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="compos_1.html#K2" title="COMPOS_1:func.2">halt</a> <a href="scmfsa_2.html#K1" title="SCMFSA_2:func.1">SCM+FSA</a>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:31_1_1"><span class="lab"><font color="Green" title="E6">A1</font></span></a></span>;<br/>
+<a NAME="E4:31_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c4">i</font> is  <a href="compos_0.html#V6" title="COMPOS_0:attr.6">No-StopCode</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="compos_0.html#D12" onmouseover="rs('compos_0/D12')" onmouseout="rh()">COMPOS_0:def 12</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:31_1_1"/>
+<font color="Maroon" title="c3">i</font> is  <a href="compos_0.html#V6" title="COMPOS_0:attr.6">No-StopCode</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

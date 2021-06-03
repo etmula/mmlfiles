@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">x</font>, <font color="Maroon" title="c5">y</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <span class="p1">(<span class="default"><font color="Maroon" title="c2">N</font> <a href="waybel_9.html#K4" title="WAYBEL_9:func.4">|</a> <font color="Maroon" title="c3">i</font></span>)</span>; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="yellow_0.html#D3" onmouseover="rs('yellow_0/D3')" onmouseout="rh()">YELLOW_0:def 3</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c4">x</font> <a href="orders_2.html#R1" title="ORDERS_2:pred.1">&lt;=</a> <font color="Maroon" title="c5">y</font> or  not <font color="Maroon" title="c5">y</font> <a href="orders_2.html#R1" title="ORDERS_2:pred.1">&lt;=</a> <font color="Maroon" title="c4">x</font> or <font color="Maroon" title="c4">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c5">y</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:46_1_1"/><span class="lab"><font color="Green" title="E18">A1</font></span>: 
+( <font color="Maroon" title="c4">x</font> <a href="orders_2.html#R3" title="ORDERS_2:pred.3">&lt;=</a> <font color="Maroon" title="c5">y</font> &amp; <font color="Maroon" title="c5">y</font> <a href="orders_2.html#R3" title="ORDERS_2:pred.3">&lt;=</a> <font color="Maroon" title="c4">x</font> )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c4">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c5">y</font></span><br/>
+
+<span class="kw">consider </span><font color="Maroon" title="c6">y1</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c2">N</font><span class="kw"> such that </span><br/><a NAME="E3:46_1_1"/><span class="lab"><font color="Green" title="E19">A2</font></span>: 
+<font color="Maroon" title="c6">y1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c5">y</font>
+ <span class="kw">and </span><br/><a NAME="E4:46_1_1"/>
+<font color="Maroon" title="c3">i</font> <a href="orders_2.html#R3" title="ORDERS_2:pred.3">&lt;=</a> <font color="Maroon" title="c6">y1</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="waybel_9.html#D7" target="_self" onmouseover="rs('waybel_9/D7')" onmouseout="rh()">Def7</a></span>;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c7">x1</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c2">N</font><span class="kw"> such that </span><br/><a NAME="E6:46_1_1"/><span class="lab"><font color="Green" title="E20">A3</font></span>: 
+<font color="Maroon" title="c7">x1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">x</font>
+ <span class="kw">and </span><br/><a NAME="E7:46_1_1"/>
+<font color="Maroon" title="c3">i</font> <a href="orders_2.html#R3" title="ORDERS_2:pred.3">&lt;=</a> <font color="Maroon" title="c7">x1</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="waybel_9.html#D7" target="_self" onmouseover="rs('waybel_9/D7')" onmouseout="rh()">Def7</a></span>;<br/>
+<a NAME="E8:46_1_1"/>
+<font color="Maroon" title="c2">N</font> <a href="waybel_9.html#K4" title="WAYBEL_9:func.4">|</a> <font color="Maroon" title="c3">i</font> is    <a href="yellow_6.html#M1" title="YELLOW_6:mode.1">SubNetStr</a> of <font color="Maroon" title="c2">N</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="waybel_9.html#T14" target="_self" onmouseover="rs('waybel_9/T14')" onmouseout="rh()">Th14</a></span>;<br/>
+<a NAME="E9:46_1_1"/><span class="kw">then </span>
+( <font color="Maroon" title="c7">x1</font> <a href="orders_2.html#R3" title="ORDERS_2:pred.3">&lt;=</a> <font color="Maroon" title="c6">y1</font> &amp; <font color="Maroon" title="c6">y1</font> <a href="orders_2.html#R3" title="ORDERS_2:pred.3">&lt;=</a> <font color="Maroon" title="c7">x1</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:46_1_1"><span class="lab"><font color="Green" title="E18">A1</font></span></a>, <a class="txt" href="#E6:46_1_1"><span class="lab"><font color="Green" title="E20">A3</font></span></a>, <a class="txt" href="#E3:46_1_1"><span class="lab"><font color="Green" title="E19">A2</font></span></a>, <a class="ref" href="yellow_6.html#T11" onmouseover="rs('yellow_6/T11')" onmouseout="rh()">YELLOW_6:11</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E10:46_1_1"/>
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c5">y</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:46_1_1"><span class="lab"><font color="Green" title="E20">A3</font></span></a>, <a class="txt" href="#E3:46_1_1"><span class="lab"><font color="Green" title="E19">A2</font></span></a>, <a class="ref" href="yellow_0.html#D3" onmouseover="rs('yellow_0/D3')" onmouseout="rh()">YELLOW_0:def 3</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

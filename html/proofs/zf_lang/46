@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">x</font>, <font color="Maroon" title="c2">y</font> be   <a href="zf_lang.html#NM1" title="ZF_LANG:NM.1">Variable</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">G</font>, <font color="Olive" title="b2">H</font> being   <a href="zf_lang.html#NM2" title="ZF_LANG:NM.2">ZF-formula</a>  st  <a href="zf_lang.html#K12" title="ZF_LANG:func.12">Ex</a> (<font color="Maroon" title="c1">x</font>,<font color="Olive" title="b2">H</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="zf_lang.html#K12" title="ZF_LANG:func.12">Ex</a> (<font color="Maroon" title="c2">y</font>,<font color="Olive" title="b1">G</font>) holds <br/>( <font color="Maroon" title="c1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">y</font> &amp; <font color="Olive" title="b2">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">G</font> )</span><br/><span class="kw">let </span><font color="Maroon" title="c3">G</font>, <font color="Maroon" title="c4">H</font> be   <a href="zf_lang.html#NM2" title="ZF_LANG:NM.2">ZF-formula</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="zf_lang.html#K12" title="ZF_LANG:func.12">Ex</a> (<font color="Maroon" title="c1">x</font>,<font color="Maroon" title="c4">H</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="zf_lang.html#K12" title="ZF_LANG:func.12">Ex</a> (<font color="Maroon" title="c2">y</font>,<font color="Maroon" title="c3">G</font>) implies ( <font color="Maroon" title="c1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">y</font> &amp; <font color="Maroon" title="c4">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">G</font> ) )</span><br/>
+
+
+
+
+
+
+
+<span class="kw">assume </span><a NAME="E1:46"/>
+ <a href="zf_lang.html#K12" title="ZF_LANG:func.12">Ex</a> (<font color="Maroon" title="c1">x</font>,<font color="Maroon" title="c4">H</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="zf_lang.html#K12" title="ZF_LANG:func.12">Ex</a> (<font color="Maroon" title="c2">y</font>,<font color="Maroon" title="c3">G</font>)
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">y</font> &amp; <font color="Maroon" title="c4">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">G</font> )</span><br/>
+
+<a NAME="E2:46"/><span class="kw">then </span><span class="lab"><font color="Green" title="E24">A1</font></span>: 
+ <a href="zf_lang.html#K7" title="ZF_LANG:func.7">All</a> (<font color="Maroon" title="c1">x</font>,<span class="p1">(<span class="default"><a href="zf_lang.html#K5" title="ZF_LANG:func.5">'not'</a> <font color="Maroon" title="c4">H</font></span>)</span>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="zf_lang.html#K7" title="ZF_LANG:func.7">All</a> (<font color="Maroon" title="c2">y</font>,<span class="p1">(<span class="default"><a href="zf_lang.html#K5" title="ZF_LANG:func.5">'not'</a> <font color="Maroon" title="c3">G</font></span>)</span>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_1.html#T33" onmouseover="rs('finseq_1/T33')" onmouseout="rh()">FINSEQ_1:33</a></span>;<br/>
+<a NAME="E3:46"/><span class="kw">then </span>
+ <a href="zf_lang.html#K5" title="ZF_LANG:func.5">'not'</a> <font color="Maroon" title="c4">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="zf_lang.html#K5" title="ZF_LANG:func.5">'not'</a> <font color="Maroon" title="c3">G</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zf_lang.html#T3" target="_self" onmouseover="rs('zf_lang/T3')" onmouseout="rh()">Th3</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E4:46"/>
+( <font color="Maroon" title="c1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">y</font> &amp; <font color="Maroon" title="c4">H</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">G</font> )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:46"><span class="lab"><font color="Green" title="E24">A1</font></span></a>, <a class="ref" href="zf_lang.html#T3" target="_self" onmouseover="rs('zf_lang/T3')" onmouseout="rh()">Th3</a>, <a class="ref" href="finseq_1.html#T33" onmouseover="rs('finseq_1/T33')" onmouseout="rh()">FINSEQ_1:33</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

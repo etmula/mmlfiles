@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c2">L</font> be   non  <a href="struct_0.html#V6" title="STRUCT_0:attr.6">degenerated</a>  <a href="vectsp_2.html#NM1" title="VECTSP_2:NM.1">comRing</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">p</font> being   <a href="polynom3.html#NM1" title="POLYNOM3:NM.1">Polynomial</a> of <font color="Maroon" title="c2">L</font>  st  <a href="algseq_1.html#K1" title="ALGSEQ_1:func.1">len</a> <font color="Olive" title="b1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 holds <br/> <a href="polynom5.html#K7" title="POLYNOM5:func.7">Roots</a> <font color="Olive" title="b1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c3">p</font> be   <a href="polynom3.html#NM1" title="POLYNOM3:NM.1">Polynomial</a> of <font color="Maroon" title="c2">L</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="algseq_1.html#K1" title="ALGSEQ_1:func.1">len</a> <font color="Maroon" title="c3">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 implies  <a href="polynom5.html#K7" title="POLYNOM5:func.7">Roots</a> <font color="Maroon" title="c3">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:60"/>
+ <a href="algseq_1.html#K1" title="ALGSEQ_1:func.1">len</a> <font color="Maroon" title="c3">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="polynom5.html#K7" title="POLYNOM5:func.7">Roots</a> <font color="Maroon" title="c3">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> </span><br/>
+
+<a NAME="E2:60"/><span class="kw">then </span><span class="lab"><font color="Green" title="E44">A1</font></span>: 
+( <font color="Maroon" title="c3">p</font> <a href="funct_2.html#R2" title="FUNCT_2:pred.2">=</a> <span class="p1"><a href="algseq_1.html#K2" title="ALGSEQ_1:func.2">&lt;%</a><span class="default"><span class="p2">(<span class="default"><font color="Maroon" title="c3">p</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span></span><a href="algseq_1.html#K2" title="ALGSEQ_1:func.2">%&gt;</a></span> &amp; <font color="Maroon" title="c3">p</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Maroon" title="c2">L</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="uproots.html#T19" target="_self" onmouseover="rs('uproots/T19')" onmouseout="rh()">Th16</a></span>;<br/>
+<span class="kw">assume </span><a NAME="E3:60"/>
+ <a href="polynom5.html#K7" title="POLYNOM5:func.7">Roots</a> <font color="Maroon" title="c3">p</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c4">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E5:60"/><span class="lab"><font color="Green" title="E45">A2</font></span>: 
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="polynom5.html#K7" title="POLYNOM5:func.7">Roots</a> <font color="Maroon" title="c3">p</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_0.html#D1" onmouseover="rs('xboole_0/D1')" onmouseout="rh()">XBOOLE_0:def 1</a></span>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c5">x</font> = <font color="Maroon" title="c4">x</font> as   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c2">L</font> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:60"><span class="lab"><font color="Green" title="E45">A2</font></span></a></span>;<br/>
+<a NAME="E7:60"/>
+<font color="Maroon" title="c5">x</font> <a href="polynom5.html#R1" title="POLYNOM5:pred.1">is_a_root_of</a> <font color="Maroon" title="c3">p</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:60"><span class="lab"><font color="Green" title="E45">A2</font></span></a>, <a class="ref" href="polynom5.html#D10" onmouseover="rs('polynom5/D10')" onmouseout="rh()">POLYNOM5:def 10</a></span>;<br/>
+<a NAME="E8:60"/><span class="kw">then </span>
+ <a href="polynom4.html#K2" title="POLYNOM4:func.2">eval</a> (<font color="Maroon" title="c3">p</font>,<font color="Maroon" title="c5">x</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Maroon" title="c2">L</font>
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E9:60"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:60"><span class="lab"><font color="Green" title="E44">A1</font></span></a>, <a class="ref" href="polynom5.html#T37" onmouseover="rs('polynom5/T37')" onmouseout="rh()">POLYNOM5:37</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

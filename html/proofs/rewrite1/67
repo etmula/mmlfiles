@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">R</font> be   <a href="rewrite1.html#V4" title="REWRITE1:attr.4">with_UN_property</a>  <a href="relat_1.html#NM1" title="RELAT_1:NM.1">Relation</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font>, <font color="Olive" title="b3">c</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>   st <font color="Olive" title="b2">b</font> <a href="rewrite1.html#R4" title="REWRITE1:pred.4">is_a_normal_form_of</a> <font color="Olive" title="b1">a</font>,<font color="Maroon" title="c1">R</font> &amp; <font color="Olive" title="b3">c</font> <a href="rewrite1.html#R4" title="REWRITE1:pred.4">is_a_normal_form_of</a> <font color="Olive" title="b1">a</font>,<font color="Maroon" title="c1">R</font> holds <br/><font color="Olive" title="b2">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">c</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">a</font>, <font color="Maroon" title="c3">b</font>, <font color="Maroon" title="c4">c</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">b</font> <a href="rewrite1.html#R4" title="REWRITE1:pred.4">is_a_normal_form_of</a> <font color="Maroon" title="c2">a</font>,<font color="Maroon" title="c1">R</font> &amp; <font color="Maroon" title="c4">c</font> <a href="rewrite1.html#R4" title="REWRITE1:pred.4">is_a_normal_form_of</a> <font color="Maroon" title="c2">a</font>,<font color="Maroon" title="c1">R</font> implies <font color="Maroon" title="c3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">c</font> )</span><br/>
+
+
+
+<span class="kw">assume </span><span class="kw">that </span><br/><a NAME="E1:67"/><span class="lab"><font color="Green" title="E54">A1</font></span>: 
+<font color="Maroon" title="c3">b</font> <a href="rewrite1.html#R3" title="REWRITE1:pred.3">is_a_normal_form_wrt</a> <font color="Maroon" title="c1">R</font>
+ <span class="kw">and </span><br/><a NAME="E2:67"/><span class="lab"><font color="Green" title="E55">A2</font></span>: 
+<font color="Maroon" title="c1">R</font> <a href="rewrite1.html#R1" title="REWRITE1:pred.1">reduces</a> <font color="Maroon" title="c2">a</font>,<font color="Maroon" title="c3">b</font>
+ <span class="kw">and </span><br/><a NAME="E3:67"/><span class="lab"><font color="Green" title="E56">A3</font></span>: 
+<font color="Maroon" title="c4">c</font> <a href="rewrite1.html#R3" title="REWRITE1:pred.3">is_a_normal_form_wrt</a> <font color="Maroon" title="c1">R</font>
+ <span class="kw">and </span><br/><a NAME="E4:67"/><span class="lab"><font color="Green" title="E57">A4</font></span>: 
+<font color="Maroon" title="c1">R</font> <a href="rewrite1.html#R1" title="REWRITE1:pred.1">reduces</a> <font color="Maroon" title="c2">a</font>,<font color="Maroon" title="c4">c</font>
+ ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="rewrite1.html#D6" target="_self" onmouseover="rs('rewrite1/D6')" onmouseout="rh()">REWRITE1:def 6</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">c</font></span><br/>
+
+<a NAME="E5:67"/>
+<font color="Maroon" title="c3">b</font>,<font color="Maroon" title="c4">c</font> <a href="rewrite1.html#R6" title="REWRITE1:pred.6">are_divergent_wrt</a> <font color="Maroon" title="c1">R</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:67"><span class="lab"><font color="Green" title="E55">A2</font></span></a>, <a class="txt" href="#E4:67"><span class="lab"><font color="Green" title="E57">A4</font></span></a></span>;<br/>
+<a NAME="E6:67"/><span class="kw">then </span>
+<font color="Maroon" title="c3">b</font>,<font color="Maroon" title="c4">c</font> <a href="rewrite1.html#R2" title="REWRITE1:pred.2">are_convertible_wrt</a> <font color="Maroon" title="c1">R</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="rewrite1.html#T37" target="_self" onmouseover="rs('rewrite1/T37')" onmouseout="rh()">Th37</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:67"/>
+<font color="Maroon" title="c3">b</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">c</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:67"><span class="lab"><font color="Green" title="E54">A1</font></span></a>, <a class="txt" href="#E3:67"><span class="lab"><font color="Green" title="E56">A3</font></span></a>, <a class="ref" href="rewrite1.html#D19" target="_self" onmouseover="rs('rewrite1/D19')" onmouseout="rh()">Def19</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">F</font>, <font color="Maroon" title="c2">G</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not  <a href="setfam_1.html#K2" title="SETFAM_1:func.2">UNION</a> (<font color="Maroon" title="c1">F</font>,<font color="Maroon" title="c2">G</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  or <font color="Maroon" title="c1">F</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  or <font color="Maroon" title="c2">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:50"/><span class="lab"><font color="Green" title="E28">A1</font></span>: 
+ <a href="setfam_1.html#K2" title="SETFAM_1:func.2">UNION</a> (<font color="Maroon" title="c1">F</font>,<font color="Maroon" title="c2">G</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">F</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  or <font color="Maroon" title="c2">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  )</span><br/>
+
+<span class="kw">assume </span><span class="kw">that </span><br/><a NAME="E2:50"/><span class="lab"><font color="Green" title="E29">A2</font></span>: 
+<font color="Maroon" title="c1">F</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ <span class="kw">and </span><br/><a NAME="E3:50"/><span class="lab"><font color="Green" title="E30">A3</font></span>: 
+<font color="Maroon" title="c2">G</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">consider </span><font color="Maroon" title="c3">X</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E5:50"/><span class="lab"><font color="Green" title="E31">A4</font></span>: 
+<font color="Maroon" title="c3">X</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c1">F</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:50"><span class="lab"><font color="Green" title="E29">A2</font></span></a>, <a class="ref" href="xboole_0.html#D1" onmouseover="rs('xboole_0/D1')" onmouseout="rh()">XBOOLE_0:def 1</a></span>;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c4">Y</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E7:50"/><span class="lab"><font color="Green" title="E32">A5</font></span>: 
+<font color="Maroon" title="c4">Y</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c2">G</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:50"><span class="lab"><font color="Green" title="E30">A3</font></span></a>, <a class="ref" href="xboole_0.html#D1" onmouseover="rs('xboole_0/D1')" onmouseout="rh()">XBOOLE_0:def 1</a></span>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c5">Y</font> = <font color="Maroon" title="c4">Y</font>, <font color="Maroon" title="c6">X</font> = <font color="Maroon" title="c3">X</font> as    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  <span class="kw">by</span> <span class="lab"><a class="ref" href="tarski.html#T1" onmouseover="rs('tarski/T1')" onmouseout="rh()">TARSKI:1</a></span>;<br/>
+<a NAME="E9:50"/>
+<font color="Maroon" title="c6">X</font> <a href="xboole_0.html#K2" title="XBOOLE_0:func.2">\/</a> <font color="Maroon" title="c5">Y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="setfam_1.html#K2" title="SETFAM_1:func.2">UNION</a> (<font color="Maroon" title="c1">F</font>,<font color="Maroon" title="c2">G</font>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:50"><span class="lab"><font color="Green" title="E31">A4</font></span></a>, <a class="txt" href="#E7:50"><span class="lab"><font color="Green" title="E32">A5</font></span></a>, <a class="ref" href="setfam_1.html#D4" onmouseover="rs('setfam_1/D4')" onmouseout="rh()">SETFAM_1:def 4</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E10:50"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:50"><span class="lab"><font color="Green" title="E28">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="robbins3.html#L3" title="ROBBINS3:struct.3">LattRelStr</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>  &amp; <font color="Maroon" title="c1">L</font> is  <a href="robbins3.html#V10" title="ROBBINS3:attr.10">naturally_sup-generated</a>  implies <font color="Maroon" title="c1">L</font> is  <a href="orders_2.html#V5" title="ORDERS_2:attr.5">antisymmetric</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:87_1_1"/>
+( <font color="Maroon" title="c1">L</font> is  <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>  &amp; <font color="Maroon" title="c1">L</font> is  <a href="robbins3.html#V10" title="ROBBINS3:attr.10">naturally_sup-generated</a>  )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">L</font> is  <a href="orders_2.html#V5" title="ORDERS_2:attr.5">antisymmetric</a> </span><br/>
+
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c2">L9</font> = <font color="Maroon" title="c1">L</font> as   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#V4" title="LATTICES:attr.4">join-commutative</a>   <a href="robbins3.html#V10" title="ROBBINS3:attr.10">naturally_sup-generated</a>   <a href="robbins3.html#L3" title="ROBBINS3:struct.3">LattRelStr</a>  ;<br/>
+<a NAME="E3:87_1_1"/>
+ for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c2">L9</font>  st <font color="Olive" title="b1">x</font> <a href="orders_2.html#R1" title="ORDERS_2:pred.1">&lt;=</a> <font color="Olive" title="b2">y</font> &amp; <font color="Olive" title="b2">y</font> <a href="orders_2.html#R1" title="ORDERS_2:pred.1">&lt;=</a> <font color="Olive" title="b1">x</font> holds <br/><font color="Olive" title="b1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">y</font>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="87_1_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">x</font>, <font color="Maroon" title="c4">y</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c2">L9</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">x</font> <a href="orders_2.html#R1" title="ORDERS_2:pred.1">&lt;=</a> <font color="Maroon" title="c4">y</font> &amp; <font color="Maroon" title="c4">y</font> <a href="orders_2.html#R1" title="ORDERS_2:pred.1">&lt;=</a> <font color="Maroon" title="c3">x</font> implies <font color="Maroon" title="c3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">y</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:87_1_1_1"/>
+( <font color="Maroon" title="c3">x</font> <a href="orders_2.html#R1" title="ORDERS_2:pred.1">&lt;=</a> <font color="Maroon" title="c4">y</font> &amp; <font color="Maroon" title="c4">y</font> <a href="orders_2.html#R1" title="ORDERS_2:pred.1">&lt;=</a> <font color="Maroon" title="c3">x</font> )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">y</font></span><br/>
+
+<a NAME="E2:87_1_1_1"/><span class="kw">then </span>
+( <font color="Maroon" title="c3">x</font> <a href="lattices.html#R1" title="LATTICES:pred.1">[=</a> <font color="Maroon" title="c4">y</font> &amp; <font color="Maroon" title="c4">y</font> <a href="lattices.html#R1" title="LATTICES:pred.1">[=</a> <font color="Maroon" title="c3">x</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="robbins3.html#T22" target="_self" onmouseover="rs('robbins3/T22')" onmouseout="rh()">Th22</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E3:87_1_1_1"/>
+<font color="Maroon" title="c3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">y</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="lattices.html#T8" onmouseover="rs('lattices/T8')" onmouseout="rh()">LATTICES:8</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E4:87_1_1"/>
+<font color="Maroon" title="c1">L</font> is  <a href="orders_2.html#V5" title="ORDERS_2:attr.5">antisymmetric</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="yellow_0.html#D3" onmouseover="rs('yellow_0/D3')" onmouseout="rh()">YELLOW_0:def 3</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

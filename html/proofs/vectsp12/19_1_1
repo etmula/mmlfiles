@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">set </span><font color="Maroon" title="c2">S</font> =  the   <a href="vectsp_1.html#NM9" title="VECTSP_1:NM.9">VectSp</a> of <font color="Maroon" title="c1">K</font>;<br/>
+<span class="kw">take </span>
+<span class="p1"><a href="finseq_1.html#K9" title="FINSEQ_1:func.9">&lt;*</a><span class="default"> the   <a href="vectsp_1.html#NM9" title="VECTSP_1:NM.9">VectSp</a> of <font color="Maroon" title="c1">K</font></span><a href="finseq_1.html#K9" title="FINSEQ_1:func.9">*&gt;</a></span>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">S</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st <font color="Olive" title="b1">S</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1"><a href="finseq_1.html#K9" title="FINSEQ_1:func.9">&lt;*</a><span class="default"> the   <a href="vectsp_1.html#NM9" title="VECTSP_1:NM.9">VectSp</a> of <font color="Maroon" title="c1">K</font></span><a href="finseq_1.html#K9" title="FINSEQ_1:func.9">*&gt;</a></span> holds <br/><font color="Olive" title="b1">S</font> is   <a href="vectsp_1.html#NM9" title="VECTSP_1:NM.9">VectSp</a> of <font color="Maroon" title="c1">K</font></span><br/>
+
+<span class="kw">let </span><font color="Maroon" title="c3">x</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1"><a href="finseq_1.html#K9" title="FINSEQ_1:func.9">&lt;*</a><span class="default"> the   <a href="vectsp_1.html#NM9" title="VECTSP_1:NM.9">VectSp</a> of <font color="Maroon" title="c1">K</font></span><a href="finseq_1.html#K9" title="FINSEQ_1:func.9">*&gt;</a></span> implies <font color="Maroon" title="c3">x</font> is   <a href="vectsp_1.html#NM9" title="VECTSP_1:NM.9">VectSp</a> of <font color="Maroon" title="c1">K</font> )</span><br/>
+
+<span class="kw">assume </span><span class="kw">that </span><br/><a NAME="E1:19_1_1"/><span class="lab"><font color="Green" title="E11">A1</font></span>: 
+<font color="Maroon" title="c3">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1"><a href="finseq_1.html#K9" title="FINSEQ_1:func.9">&lt;*</a><span class="default"> the   <a href="vectsp_1.html#NM9" title="VECTSP_1:NM.9">VectSp</a> of <font color="Maroon" title="c1">K</font></span><a href="finseq_1.html#K9" title="FINSEQ_1:func.9">*&gt;</a></span>
+ <span class="kw">and </span><br/><a NAME="E2:19_1_1"/><span class="lab"><font color="Green" title="E12">A2</font></span>: 
+<font color="Maroon" title="c3">x</font> is  not   <a href="vectsp_1.html#NM9" title="VECTSP_1:NM.9">VectSp</a> of <font color="Maroon" title="c1">K</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E3:19_1_1"/>
+<font color="Maroon" title="c3">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"> the   <a href="vectsp_1.html#NM9" title="VECTSP_1:NM.9">VectSp</a> of <font color="Maroon" title="c1">K</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:19_1_1"><span class="lab"><font color="Green" title="E11">A1</font></span></a>, <a class="ref" href="finseq_1.html#T38" onmouseover="rs('finseq_1/T38')" onmouseout="rh()">FINSEQ_1:38</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E4:19_1_1"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:19_1_1"><span class="lab"><font color="Green" title="E12">A2</font></span></a>, <a class="ref" href="tarski.html#D1" onmouseover="rs('tarski/D1')" onmouseout="rh()">TARSKI:def 1</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

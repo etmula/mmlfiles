@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">D</font>, <font color="Maroon" title="c2">E</font> be   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">R</font> being   <a href="relset_1.html#NM1" title="RELSET_1:NM.1">Relation</a> of <font color="Maroon" title="c1">D</font>,<font color="Maroon" title="c2">E</font>  st  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Olive" title="b1">R</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  holds <br/> ex <font color="Olive" title="b2">y</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c2">E</font> st <font color="Olive" title="b2">y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b1">R</font></span><br/><span class="kw">let </span><font color="Maroon" title="c3">R</font> be   <a href="relset_1.html#NM1" title="RELSET_1:NM.1">Relation</a> of <font color="Maroon" title="c1">D</font>,<font color="Maroon" title="c2">E</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Maroon" title="c3">R</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  implies  ex <font color="Olive" title="b1">y</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c2">E</font> st <font color="Olive" title="b1">y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Maroon" title="c3">R</font> )</span><br/>
+
+
+
+
+
+<span class="kw">assume </span><a NAME="E1:40"/>
+ <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Maroon" title="c3">R</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  ex <font color="Olive" title="b1">y</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c2">E</font> st <font color="Olive" title="b1">y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Maroon" title="c3">R</font></span><br/>
+
+<a NAME="E2:40"/><span class="kw">then </span>
+ <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Maroon" title="c3">R</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="relat_1.html#T42" onmouseover="rs('relat_1/T42')" onmouseout="rh()">RELAT_1:42</a></span>;<br/>
+<a NAME="E3:40"/><span class="kw">then </span>
+ ex <font color="Olive" title="b1">y</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  st <font color="Olive" title="b1">y</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Maroon" title="c3">R</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_0.html#D1" onmouseover="rs('xboole_0/D1')" onmouseout="rh()">XBOOLE_0:def 1</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E4:40"/>
+ ex <font color="Olive" title="b1">y</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c2">E</font> st <font color="Olive" title="b1">y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Maroon" title="c3">R</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

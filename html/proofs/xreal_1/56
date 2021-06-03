@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">b</font>, <font color="Maroon" title="c2">c</font> be   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( (  for <font color="Olive" title="b1">a</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>  st <font color="Olive" title="b1">a</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br/><font color="Maroon" title="c2">c</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">b</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Olive" title="b1">a</font> ) implies <font color="Maroon" title="c2">c</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">b</font> )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:56"/><span class="lab"><font color="Green" title="E43">A1</font></span>: 
+ for <font color="Olive" title="b1">a</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>  st <font color="Olive" title="b1">a</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br/><font color="Maroon" title="c1">b</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Olive" title="b1">a</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> <font color="Maroon" title="c2">c</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">c</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">b</font></span><br/>
+
+<span class="kw">set </span><font color="Maroon" title="c3">d</font> = <font color="Maroon" title="c2">c</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Maroon" title="c1">b</font>;<br/>
+<span class="kw">assume </span><a NAME="E2:56"/>
+<font color="Maroon" title="c1">b</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c2">c</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E3:56"/><span class="kw">then </span><span class="lab"><font color="Green" title="E44">A2</font></span>: 
+ <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c2">c</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Maroon" title="c1">b</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="xreal_1.html#E45"><span class="lab"><font color="Green" title="E28">Lm21</font></span></a></span>;<br/>
+<a NAME="E4:56"/><span class="kw">then </span>
+<font color="Maroon" title="c1">b</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Maroon" title="c2">c</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Maroon" title="c1">b</font></span>)</span> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 2</span>)</span> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c1">b</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><font color="Maroon" title="c2">c</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Maroon" title="c1">b</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="xreal_1.html#E13"><span class="lab"><font color="Green" title="E12">Lm10</font></span></a>, <a class="txt" href="xreal_1.html#E67"><span class="lab"><font color="Green" title="E42">Lm27</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:56"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:56"><span class="lab"><font color="Green" title="E43">A1</font></span></a>, <a class="txt" href="#E3:56"><span class="lab"><font color="Green" title="E44">A2</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">R</font> be   <a href="vectsp_1.html#NM3" title="VECTSP_1:NM.3">Ring</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">o</font> being   <a href="memstr_0.html#NM3" title="MEMSTR_0:NM.3">Object</a> of <span class="p1">(<span class="default"><a href="scmring2.html#K1" title="SCMRING2:func.1">SCM</a> <font color="Maroon" title="c1">R</font></span>)</span>  holds <br/>( <font color="Olive" title="b1">o</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="memstr_0.html#NK2" title="MEMSTR_0:NK.2">IC</a>  or <font color="Olive" title="b1">o</font> is   <a href="scmring2.html#NM1" title="SCMRING2:NM.1">Data-Location</a> of <font color="Maroon" title="c1">R</font> )</span><br/><span class="kw">let </span><font color="Maroon" title="c2">o</font> be   <a href="memstr_0.html#NM3" title="MEMSTR_0:NM.3">Object</a> of <span class="p1">(<span class="default"><a href="scmring2.html#K1" title="SCMRING2:func.1">SCM</a> <font color="Maroon" title="c1">R</font></span>)</span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">o</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="memstr_0.html#NK2" title="MEMSTR_0:NK.2">IC</a>  or <font color="Maroon" title="c2">o</font> is   <a href="scmring2.html#NM1" title="SCMRING2:NM.1">Data-Location</a> of <font color="Maroon" title="c1">R</font> )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:4"/>
+<font color="Maroon" title="c2">o</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="memstr_0.html#NK2" title="MEMSTR_0:NK.2">IC</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">o</font> is   <a href="scmring2.html#NM1" title="SCMRING2:NM.1">Data-Location</a> of <font color="Maroon" title="c1">R</font></span><br/>
+
+<a NAME="E2:4"/><span class="kw">then </span>
+ not <font color="Maroon" title="c2">o</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><span class="p2">(<span class="default"><a href="memstr_0.html#NK2" title="MEMSTR_0:NK.2">IC</a> </span>)</span></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="tarski.html#D1" onmouseover="rs('tarski/D1')" onmouseout="rh()">TARSKI:def 1</a></span>;<br/>
+<a NAME="E3:4"/><span class="kw">then </span><span class="lab"><font color="Green" title="E3">A1</font></span>: 
+ not <font color="Maroon" title="c2">o</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="scmring2.html#T8" onmouseover="rs('scmring2/T8')" onmouseout="rh()">SCMRING2:8</a></span>;<br/>
+<a NAME="E4:4"/>
+ not <font color="Maroon" title="c2">o</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:4"><span class="lab"><font color="Green" title="E3">A1</font></span></a></span>;<br/>
+<a NAME="E5:4"/><span class="kw">then </span>
+<font color="Maroon" title="c2">o</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><a href="scmring2.html#K1" title="SCMRING2:func.1">SCM</a> <font color="Maroon" title="c1">R</font></span>)</span> <a href="subset_1.html#K6" title="SUBSET_1:func.6">\</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_0.html#D5" onmouseover="rs('xboole_0/D5')" onmouseout="rh()">XBOOLE_0:def 5</a></span>;<br/>
+<a NAME="E6:4"/><span class="kw">then </span>
+<font color="Maroon" title="c2">o</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="ami_2.html#K2" title="AMI_2:func.2">SCM-Data-Loc</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="scmring2.html#T25" onmouseover="rs('scmring2/T25')" onmouseout="rh()">SCMRING2:25</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:4"/>
+<font color="Maroon" title="c2">o</font> is   <a href="scmring2.html#NM1" title="SCMRING2:NM.1">Data-Location</a> of <font color="Maroon" title="c1">R</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="ami_2.html#D16" onmouseover="rs('ami_2/D16')" onmouseout="rh()">AMI_2:def 16</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

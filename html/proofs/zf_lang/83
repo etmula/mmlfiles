@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">x</font>, <font color="Maroon" title="c2">y</font> be   <a href="zf_lang.html#NM1" title="ZF_LANG:NM.1">Variable</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">F</font> being   <a href="zf_lang.html#NM2" title="ZF_LANG:NM.2">ZF-formula</a>  holds  not <font color="Olive" title="b1">F</font> <a href="zf_lang.html#R3" title="ZF_LANG:pred.3">is_proper_subformula_of</a> <font color="Maroon" title="c1">x</font> <a href="zf_lang.html#K3" title="ZF_LANG:func.3">'='</a> <font color="Maroon" title="c2">y</font></span><br/><span class="kw">let </span><font color="Maroon" title="c3">F</font> be   <a href="zf_lang.html#NM2" title="ZF_LANG:NM.2">ZF-formula</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not <font color="Maroon" title="c3">F</font> <a href="zf_lang.html#R3" title="ZF_LANG:pred.3">is_proper_subformula_of</a> <font color="Maroon" title="c1">x</font> <a href="zf_lang.html#K3" title="ZF_LANG:func.3">'='</a> <font color="Maroon" title="c2">y</font></span><br/>
+
+
+
+
+
+<span class="kw">assume </span><a NAME="E1:83"/>
+<font color="Maroon" title="c3">F</font> <a href="zf_lang.html#R3" title="ZF_LANG:pred.3">is_proper_subformula_of</a> <font color="Maroon" title="c1">x</font> <a href="zf_lang.html#K3" title="ZF_LANG:func.3">'='</a> <font color="Maroon" title="c2">y</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E2:83"/><span class="kw">then </span>
+ ex <font color="Olive" title="b1">G</font> being   <a href="zf_lang.html#NM2" title="ZF_LANG:NM.2">ZF-formula</a> st <font color="Olive" title="b1">G</font> <a href="zf_lang.html#R1" title="ZF_LANG:pred.1">is_immediate_constituent_of</a> <font color="Maroon" title="c1">x</font> <a href="zf_lang.html#K3" title="ZF_LANG:func.3">'='</a> <font color="Maroon" title="c2">y</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zf_lang.html#T63" target="_self" onmouseover="rs('zf_lang/T63')" onmouseout="rh()">Th63</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E3:83"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="zf_lang.html#T50" target="_self" onmouseover="rs('zf_lang/T50')" onmouseout="rh()">Th50</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

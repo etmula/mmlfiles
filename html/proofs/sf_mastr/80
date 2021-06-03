@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">l</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">i</font> being   <a href="compos_1.html#NM1" title="COMPOS_1:NM.1">Instruction</a> of <a href="scmfsa_2.html#K1" title="SCMFSA_2:func.1">SCM+FSA</a> holds   <a href="sf_mastr.html#K3" title="SF_MASTR:func.3">UsedILoc</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">l</font> <a href="funcop_1.html#K17" title="FUNCOP_1:func.17">.--&gt;</a> <font color="Olive" title="b1">i</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="sf_mastr.html#K1" title="SF_MASTR:func.1">UsedIntLoc</a> <font color="Olive" title="b1">i</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">i</font> be   <a href="compos_1.html#NM1" title="COMPOS_1:NM.1">Instruction</a> of <a href="scmfsa_2.html#K1" title="SCMFSA_2:func.1">SCM+FSA</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="sf_mastr.html#K3" title="SF_MASTR:func.3">UsedILoc</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">l</font> <a href="funcop_1.html#K17" title="FUNCOP_1:func.17">.--&gt;</a> <font color="Maroon" title="c2">i</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="sf_mastr.html#K1" title="SF_MASTR:func.1">UsedIntLoc</a> <font color="Maroon" title="c2">i</font></span><br/>
+
+
+
+<a NAME="E1:80"/>
+ <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">l</font> <a href="funcop_1.html#K17" title="FUNCOP_1:func.17">.--&gt;</a> <font color="Maroon" title="c2">i</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><font color="Maroon" title="c2">i</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="funcop_1.html#T8" onmouseover="rs('funcop_1/T8')" onmouseout="rh()">FUNCOP_1:8</a></span>;<br/>
+<span class="kw">hence </span> <a href="sf_mastr.html#K3" title="SF_MASTR:func.3">UsedILoc</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">l</font> <a href="funcop_1.html#K17" title="FUNCOP_1:func.17">.--&gt;</a> <font color="Maroon" title="c2">i</font></span>)</span> = 
+ <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><a href="sf_mastr.html#K1" title="SF_MASTR:func.1">UsedIntLoc</a> <font color="Olive" title="b1">i1</font></span>)</span> where <font color="Olive" title="b1">i1</font> is   <a href="compos_1.html#NM1" title="COMPOS_1:NM.1">Instruction</a> of <a href="scmfsa_2.html#K1" title="SCMFSA_2:func.1">SCM+FSA</a> : <font color="Olive" title="b1">i1</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><font color="Maroon" title="c2">i</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span> </span> } </span> 
+
+<br/>.= 
+ <a href="sf_mastr.html#K1" title="SF_MASTR:func.1">UsedIntLoc</a> <font color="Maroon" title="c2">i</font>
+<span class="kw">from</span> <span class="lab"><a class="ref" href="subset_1.html#S5" onmouseover="rs('subset_1/S5')" onmouseout="rh()">SUBSET_1:sch 5</a>()</span>
+;<br/> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

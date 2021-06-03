@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">seq</font> be   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">seq</font> is <a href="valued_0.html#V8" title="VALUED_0:attr.8">V55</a>() &amp; <font color="Maroon" title="c1">seq</font> is <a href="seq_2.html#V2" title="SEQ_2:attr.2">V96</a>() implies  <a href="seq_2.html#K1" title="SEQ_2:func.1">lim</a> <font color="Maroon" title="c1">seq</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="rinfsup1.html#K2" title="RINFSUP1:func.2">lower_bound</a> <font color="Maroon" title="c1">seq</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:27"/><span class="lab"><font color="Green" title="E22">A1</font></span>: 
+( <font color="Maroon" title="c1">seq</font> is <a href="valued_0.html#V8" title="VALUED_0:attr.8">V55</a>() &amp; <font color="Maroon" title="c1">seq</font> is <a href="seq_2.html#V2" title="SEQ_2:attr.2">V96</a>() )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="seq_2.html#K1" title="SEQ_2:func.1">lim</a> <font color="Maroon" title="c1">seq</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="rinfsup1.html#K2" title="RINFSUP1:func.2">lower_bound</a> <font color="Maroon" title="c1">seq</font></span><br/>
+
+<a NAME="E2:27"/><span class="kw">then </span>
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds   <a href="seq_2.html#K1" title="SEQ_2:func.1">lim</a> <font color="Maroon" title="c1">seq</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">seq</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="seq_4.html#T38" onmouseover="rs('seq_4/T38')" onmouseout="rh()">SEQ_4:38</a></span>;<br/>
+<a NAME="E3:27"/><span class="kw">then </span><span class="lab"><font color="Green" title="E23">A2</font></span>: 
+ <a href="seq_2.html#K1" title="SEQ_2:func.1">lim</a> <font color="Maroon" title="c1">seq</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="rinfsup1.html#K2" title="RINFSUP1:func.2">lower_bound</a> <font color="Maroon" title="c1">seq</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="rinfsup1.html#T10" target="_self" onmouseover="rs('rinfsup1/T10')" onmouseout="rh()">Th10</a></span>;<br/>
+<a NAME="E4:27"/>
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds   <a href="rinfsup1.html#K2" title="RINFSUP1:func.2">lower_bound</a> <font color="Maroon" title="c1">seq</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">seq</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:27"><span class="lab"><font color="Green" title="E22">A1</font></span></a>, <a class="ref" href="rinfsup1.html#T8" target="_self" onmouseover="rs('rinfsup1/T8')" onmouseout="rh()">Th8</a></span>;<br/>
+<a NAME="E5:27"/><span class="kw">then </span>
+ <a href="rinfsup1.html#K2" title="RINFSUP1:func.2">lower_bound</a> <font color="Maroon" title="c1">seq</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="seq_2.html#K1" title="SEQ_2:func.1">lim</a> <font color="Maroon" title="c1">seq</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:27"><span class="lab"><font color="Green" title="E22">A1</font></span></a>, <a class="ref" href="prepower.html#T1" onmouseover="rs('prepower/T1')" onmouseout="rh()">PREPOWER:1</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E6:27"/>
+ <a href="seq_2.html#K1" title="SEQ_2:func.1">lim</a> <font color="Maroon" title="c1">seq</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="rinfsup1.html#K2" title="RINFSUP1:func.2">lower_bound</a> <font color="Maroon" title="c1">seq</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:27"><span class="lab"><font color="Green" title="E23">A2</font></span></a>, <a class="ref" href="xxreal_0.html#T1" onmouseover="rs('xxreal_0/T1')" onmouseout="rh()">XXREAL_0:1</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">T</font> be    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">F</font>, <font color="Olive" title="b2">G</font> being   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font>  st <font color="Olive" title="b1">F</font> is  <a href="tops_2.html#V1" title="TOPS_2:attr.1">open</a>  holds <br/><font color="Olive" title="b1">F</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <font color="Olive" title="b2">G</font> is  <a href="tops_2.html#V1" title="TOPS_2:attr.1">open</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c2">F</font>, <font color="Maroon" title="c3">G</font> be   <a href="struct_0.html#NM3" title="STRUCT_0:NM.3">Subset-Family</a> of <font color="Maroon" title="c1">T</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">F</font> is  <a href="tops_2.html#V1" title="TOPS_2:attr.1">open</a>  implies <font color="Maroon" title="c2">F</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <font color="Maroon" title="c3">G</font> is  <a href="tops_2.html#V1" title="TOPS_2:attr.1">open</a>  )</span><br/>
+
+
+
+
+
+<span class="kw">assume </span><a NAME="E1:13"/><span class="lab"><font color="Green" title="E7">A1</font></span>: 
+<font color="Maroon" title="c2">F</font> is  <a href="tops_2.html#V1" title="TOPS_2:attr.1">open</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">F</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <font color="Maroon" title="c3">G</font> is  <a href="tops_2.html#V1" title="TOPS_2:attr.1">open</a> </span><br/>
+
+<span class="kw">let </span><font color="Maroon" title="c4">P</font> be   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font>; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="tops_2.html#D1" target="_self" onmouseover="rs('tops_2/D1')" onmouseout="rh()">TOPS_2:def 1</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c4">P</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">F</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <font color="Maroon" title="c3">G</font> implies <font color="Maroon" title="c4">P</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E2:13"/>
+<font color="Maroon" title="c4">P</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">F</font> <a href="subset_1.html#K9" title="SUBSET_1:func.9">/\</a> <font color="Maroon" title="c3">G</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c4">P</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a> </span><br/>
+
+<a NAME="E3:13"/><span class="kw">then </span>
+<font color="Maroon" title="c4">P</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">F</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_0.html#D4" onmouseover="rs('xboole_0/D4')" onmouseout="rh()">XBOOLE_0:def 4</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E4:13"/>
+<font color="Maroon" title="c4">P</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:13"><span class="lab"><font color="Green" title="E7">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

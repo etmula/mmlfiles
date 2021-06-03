@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">R</font>, <font color="Maroon" title="c2">S</font> be   <a href="relat_1.html#NM1" title="RELAT_1:NM.1">Relation</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="relat_1.html#NK2" title="RELAT_1:NK.2">rng</a> <font color="Maroon" title="c1">R</font> <a href="xboole_0.html#R1" title="XBOOLE_0:pred.1">misses</a>  <a href="relat_1.html#NK2" title="RELAT_1:NK.2">rng</a> <font color="Maroon" title="c2">S</font> implies <font color="Maroon" title="c1">R</font> <a href="xboole_0.html#R1" title="XBOOLE_0:pred.1">misses</a> <font color="Maroon" title="c2">S</font> )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:205"/><span class="lab"><font color="Green" title="E68">A1</font></span>: 
+ <a href="relat_1.html#NK2" title="RELAT_1:NK.2">rng</a> <font color="Maroon" title="c1">R</font> <a href="xboole_0.html#R1" title="XBOOLE_0:pred.1">misses</a>  <a href="relat_1.html#NK2" title="RELAT_1:NK.2">rng</a> <font color="Maroon" title="c2">S</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">R</font> <a href="xboole_0.html#R1" title="XBOOLE_0:pred.1">misses</a> <font color="Maroon" title="c2">S</font></span><br/>
+
+<span class="kw">assume </span><a NAME="E2:205"/>
+<font color="Maroon" title="c1">R</font> <a href="xboole_0.html#NR5" title="XBOOLE_0:NR.5">meets</a> <font color="Maroon" title="c2">S</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c3">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E4:205"/><span class="lab"><font color="Green" title="E69">A2</font></span>: 
+<font color="Maroon" title="c3">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c1">R</font>
+ <span class="kw">and </span><br/><a NAME="E5:205"/><span class="lab"><font color="Green" title="E70">A3</font></span>: 
+<font color="Maroon" title="c3">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c2">S</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_0.html#T3" onmouseover="rs('xboole_0/T3')" onmouseout="rh()">XBOOLE_0:3</a></span>;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c4">y</font>, <font color="Maroon" title="c5">z</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E7:205"/><span class="lab"><font color="Green" title="E71">A4</font></span>: 
+<font color="Maroon" title="c3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Maroon" title="c4">y</font>,<font color="Maroon" title="c5">z</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:205"><span class="lab"><font color="Green" title="E69">A2</font></span></a>, <a class="ref" href="relat_1.html#D1" target="_self" onmouseover="rs('relat_1/D1')" onmouseout="rh()">Def1</a></span>;<br/>
+<a NAME="E8:205"/>
+( <font color="Maroon" title="c5">z</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relat_1.html#NK2" title="RELAT_1:NK.2">rng</a> <font color="Maroon" title="c1">R</font> &amp; <font color="Maroon" title="c5">z</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relat_1.html#NK2" title="RELAT_1:NK.2">rng</a> <font color="Maroon" title="c2">S</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:205"><span class="lab"><font color="Green" title="E69">A2</font></span></a>, <a class="txt" href="#E5:205"><span class="lab"><font color="Green" title="E70">A3</font></span></a>, <a class="txt" href="#E7:205"><span class="lab"><font color="Green" title="E71">A4</font></span></a>, <a class="ref" href="xtuple_0.html#D13" onmouseover="rs('xtuple_0/D13')" onmouseout="rh()">XTUPLE_0:def 13</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E9:205"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:205"><span class="lab"><font color="Green" title="E68">A1</font></span></a>, <a class="ref" href="xboole_0.html#T3" onmouseover="rs('xboole_0/T3')" onmouseout="rh()">XBOOLE_0:3</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

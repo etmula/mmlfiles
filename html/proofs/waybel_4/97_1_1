@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">consider </span><font color="Maroon" title="c2">X</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <span class="kw"> such that </span><br/><a NAME="E2:97_1_1"/><span class="lab"><font color="Green" title="E55">A1</font></span>: 
+ for <font color="Olive" title="b1">a</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  holds <br/> ( <font color="Olive" title="b1">a</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c2">X</font> iff ( <font color="Olive" title="b1">a</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="waybel_4.html#K3" title="WAYBEL_4:func.3">Aux</a> <font color="Maroon" title="c1">L</font> &amp; <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">a</font>] ) )
+ <span class="kw">from</span> <span class="lab"><a class="ref" href="xboole_0.html#S1" onmouseover="rs('xboole_0/S1')" onmouseout="rh()">XBOOLE_0:sch 1</a>();<br/></span>
+<span class="kw">take </span>
+<font color="Maroon" title="c2">X</font>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">a</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  holds <br/> ( <font color="Olive" title="b1">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">X</font> iff <font color="Olive" title="b1">a</font> is   <a href="waybel_4.html#V5" title="WAYBEL_4:attr.5">auxiliary</a>   <a href="waybel_4.html#V6" title="WAYBEL_4:attr.6">approximating</a>  <a href="alg_1.html#NM1" title="ALG_1:NM.1">Relation</a> of <font color="Maroon" title="c1">L</font> )</span><br/>
+
+<a NAME="E3:97_1_1"/>
+ for <font color="Olive" title="b1">a</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st <font color="Olive" title="b1">a</font> is   <a href="waybel_4.html#V5" title="WAYBEL_4:attr.5">auxiliary</a>   <a href="waybel_4.html#V6" title="WAYBEL_4:attr.6">approximating</a>  <a href="alg_1.html#NM1" title="ALG_1:NM.1">Relation</a> of <font color="Maroon" title="c1">L</font> holds <br/><font color="Olive" title="b1">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">X</font>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="97_1_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">a</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">a</font> is   <a href="waybel_4.html#V5" title="WAYBEL_4:attr.5">auxiliary</a>   <a href="waybel_4.html#V6" title="WAYBEL_4:attr.6">approximating</a>  <a href="alg_1.html#NM1" title="ALG_1:NM.1">Relation</a> of <font color="Maroon" title="c1">L</font> implies <font color="Maroon" title="c3">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">X</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:97_1_1_1"/><span class="lab"><font color="Green" title="E56">A2</font></span>: 
+<font color="Maroon" title="c3">a</font> is   <a href="waybel_4.html#V5" title="WAYBEL_4:attr.5">auxiliary</a>   <a href="waybel_4.html#V6" title="WAYBEL_4:attr.6">approximating</a>  <a href="alg_1.html#NM1" title="ALG_1:NM.1">Relation</a> of <font color="Maroon" title="c1">L</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">X</font></span><br/>
+
+<a NAME="E2:97_1_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c3">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="waybel_4.html#K3" title="WAYBEL_4:func.3">Aux</a> <font color="Maroon" title="c1">L</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="waybel_4.html#D8" target="_self" onmouseover="rs('waybel_4/D8')" onmouseout="rh()">Def8</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E3:97_1_1_1"/>
+<font color="Maroon" title="c3">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">X</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:97_1_1"><span class="lab"><font color="Green" title="E55">A1</font></span></a>, <a class="txt" href="#E1:97_1_1_1"><span class="lab"><font color="Green" title="E56">A2</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E4:97_1_1"/>
+ for <font color="Olive" title="b1">a</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  holds <br/> ( <font color="Olive" title="b1">a</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">X</font> iff <font color="Olive" title="b1">a</font> is   <a href="waybel_4.html#V5" title="WAYBEL_4:attr.5">auxiliary</a>   <a href="waybel_4.html#V6" title="WAYBEL_4:attr.6">approximating</a>  <a href="alg_1.html#NM1" title="ALG_1:NM.1">Relation</a> of <font color="Maroon" title="c1">L</font> )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:97_1_1"><span class="lab"><font color="Green" title="E55">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">Y0</font>, <font color="Maroon" title="c2">Y1</font> be    <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="pre_topc.html#G1" title="PRE_TOPC:aggr.1">TopStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">Y0</font>, the <a href="pre_topc.html#U1" title="PRE_TOPC:sel.1">topology</a> of <font color="Maroon" title="c1">Y0</font> #) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="pre_topc.html#G1" title="PRE_TOPC:aggr.1">TopStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c2">Y1</font>, the <a href="pre_topc.html#U1" title="PRE_TOPC:sel.1">topology</a> of <font color="Maroon" title="c2">Y1</font> #) &amp; <font color="Maroon" title="c1">Y0</font> is  <a href="tdlat_3.html#V3" title="TDLAT_3:attr.3">almost_discrete</a>  implies <font color="Maroon" title="c2">Y1</font> is  <a href="tdlat_3.html#V3" title="TDLAT_3:attr.3">almost_discrete</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:23"/><span class="lab"><font color="Green" title="E5">A1</font></span>: 
+ <a href="pre_topc.html#G1" title="PRE_TOPC:aggr.1">TopStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">Y0</font>, the <a href="pre_topc.html#U1" title="PRE_TOPC:sel.1">topology</a> of <font color="Maroon" title="c1">Y0</font> #) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="pre_topc.html#G1" title="PRE_TOPC:aggr.1">TopStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c2">Y1</font>, the <a href="pre_topc.html#U1" title="PRE_TOPC:sel.1">topology</a> of <font color="Maroon" title="c2">Y1</font> #)
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c1">Y0</font> is  <a href="tdlat_3.html#V3" title="TDLAT_3:attr.3">almost_discrete</a>  or <font color="Maroon" title="c2">Y1</font> is  <a href="tdlat_3.html#V3" title="TDLAT_3:attr.3">almost_discrete</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E2:23"/>
+<font color="Maroon" title="c1">Y0</font> is  <a href="tdlat_3.html#V3" title="TDLAT_3:attr.3">almost_discrete</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">Y1</font> is  <a href="tdlat_3.html#V3" title="TDLAT_3:attr.3">almost_discrete</a> </span><br/>
+
+<a NAME="E3:23"/><span class="kw">then </span>
+ for <font color="Olive" title="b1">A</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">Y0</font>  st <font color="Olive" title="b1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  the <a href="pre_topc.html#U1" title="PRE_TOPC:sel.1">topology</a> of <font color="Maroon" title="c1">Y0</font> holds <br/> the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">Y0</font> <a href="subset_1.html#K6" title="SUBSET_1:func.6">\</a> <font color="Olive" title="b1">A</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  the <a href="pre_topc.html#U1" title="PRE_TOPC:sel.1">topology</a> of <font color="Maroon" title="c1">Y0</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="tdlat_3.html#D3" onmouseover="rs('tdlat_3/D3')" onmouseout="rh()">TDLAT_3:def 3</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E4:23"/>
+<font color="Maroon" title="c2">Y1</font> is  <a href="tdlat_3.html#V3" title="TDLAT_3:attr.3">almost_discrete</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:23"><span class="lab"><font color="Green" title="E5">A1</font></span></a>, <a class="ref" href="tdlat_3.html#D3" onmouseover="rs('tdlat_3/D3')" onmouseout="rh()">TDLAT_3:def 3</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c6">I</font> be   <a href="compos_1.html#NM1" title="COMPOS_1:NM.1">Instruction</a> of <a href="scmpds_2.html#K1" title="SCMPDS_2:func.1">SCMPDS</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  ex <font color="Olive" title="b1">s</font> being   <a href="memstr_0.html#NM2" title="MEMSTR_0:NM.2">State</a> of <a href="scmpds_2.html#K1" title="SCMPDS_2:func.1">SCMPDS</a> st <span class="p1">(<span class="default"><a href="extpro_1.html#K2" title="EXTPRO_1:func.2">Exec</a> (<font color="Maroon" title="c6">I</font>,<font color="Olive" title="b1">s</font>)</span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><a href="memstr_0.html#NK2" title="MEMSTR_0:NK.2">IC</a> </span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="memstr_0.html#K5" title="MEMSTR_0:func.5">IC</a> <font color="Olive" title="b1">s</font></span>)</span> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 implies  not <font color="Maroon" title="c6">I</font> is  <a href="extpro_1.html#V2" title="EXTPRO_1:attr.2">halting</a>  )</span><br/>
+
+<span class="kw">given </span><font color="Maroon" title="c7">s</font> being   <a href="memstr_0.html#NM2" title="MEMSTR_0:NM.2">State</a> of <a href="scmpds_2.html#K1" title="SCMPDS_2:func.1">SCMPDS</a><span class="kw"> such that </span><a NAME="E2:71"/><span class="lab"><font color="Green" title="E39">A1</font></span>: 
+<span class="p1">(<span class="default"><a href="extpro_1.html#K2" title="EXTPRO_1:func.2">Exec</a> (<font color="Maroon" title="c6">I</font>,<font color="Maroon" title="c7">s</font>)</span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><a href="memstr_0.html#NK2" title="MEMSTR_0:NK.2">IC</a> </span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="memstr_0.html#K5" title="MEMSTR_0:func.5">IC</a> <font color="Maroon" title="c7">s</font></span>)</span> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not <font color="Maroon" title="c6">I</font> is  <a href="extpro_1.html#V2" title="EXTPRO_1:attr.2">halting</a> </span><br/>
+
+<span class="kw">assume </span><a NAME="E3:71"/>
+<font color="Maroon" title="c6">I</font> is  <a href="extpro_1.html#V2" title="EXTPRO_1:attr.2">halting</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E4:71"/><span class="kw">then </span>
+<span class="p1">(<span class="default"><a href="extpro_1.html#K2" title="EXTPRO_1:func.2">Exec</a> (<font color="Maroon" title="c6">I</font>,<font color="Maroon" title="c7">s</font>)</span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><a href="memstr_0.html#NK2" title="MEMSTR_0:NK.2">IC</a> </span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c7">s</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="scmpds_2.html#T2" target="_self" onmouseover="rs('scmpds_2/T2')" onmouseout="rh()">Th1</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:71"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:71"><span class="lab"><font color="Green" title="E39">A1</font></span></a>, <a class="ref" href="scmpds_2.html#T2" target="_self" onmouseover="rs('scmpds_2/T2')" onmouseout="rh()">Th1</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+<a NAME="E6:71"/>
+ <a href="memstr_0.html#K5" title="MEMSTR_0:func.5">IC</a> <font color="Maroon" title="c7">s</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c7">s</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="ami_2.html#T22" onmouseover="rs('ami_2/T22')" onmouseout="rh()">AMI_2:22</a>, <a class="ref" href="subset_1.html#D8" onmouseover="rs('subset_1/D8')" onmouseout="rh()">SUBSET_1:def 8</a></span>;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c8">w</font> = <font color="Maroon" title="c7">s</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> as    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  ;<br/>
+
+</div>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">X</font> be   <a href="stacks_1.html#NM3" title="STACKS_1:NM.3">StackAlgebra</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">s1</font>, <font color="Olive" title="b2">s2</font> being   <a href="stacks_1.html#NM2" title="STACKS_1:NM.2">stack</a> of <font color="Maroon" title="c1">X</font>  st <font color="Olive" title="b1">s1</font> <a href="stacks_1.html#R2" title="STACKS_1:pred.2">==</a> <font color="Olive" title="b2">s2</font> &amp;  <a href="stacks_1.html#R1" title="STACKS_1:pred.1">emp</a> <font color="Olive" title="b1">s1</font> holds <br/> <a href="stacks_1.html#R1" title="STACKS_1:pred.1">emp</a> <font color="Olive" title="b2">s2</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">s1</font>, <font color="Maroon" title="c3">s2</font> be   <a href="stacks_1.html#NM2" title="STACKS_1:NM.2">stack</a> of <font color="Maroon" title="c1">X</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">s1</font> <a href="stacks_1.html#R2" title="STACKS_1:pred.2">==</a> <font color="Maroon" title="c3">s2</font> &amp;  <a href="stacks_1.html#R1" title="STACKS_1:pred.1">emp</a> <font color="Maroon" title="c2">s1</font> implies  <a href="stacks_1.html#R1" title="STACKS_1:pred.1">emp</a> <font color="Maroon" title="c3">s2</font> )</span><br/>
+
+
+
+
+
+<span class="kw">assume </span><a NAME="E1:41"/><span class="lab"><font color="Green" title="E22">A1</font></span>: 
+( <span class="p1"><a href="stacks_1.html#K9" title="STACKS_1:func.9">|.</a><span class="default"><font color="Maroon" title="c2">s1</font></span><a href="stacks_1.html#K9" title="STACKS_1:func.9">.|</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="stacks_1.html#K9" title="STACKS_1:func.9">|.</a><span class="default"><font color="Maroon" title="c3">s2</font></span><a href="stacks_1.html#K9" title="STACKS_1:func.9">.|</a></span> &amp;  <a href="stacks_1.html#R1" title="STACKS_1:pred.1">emp</a> <font color="Maroon" title="c2">s1</font> )
+ ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="stacks_1.html#D14" target="_self" onmouseover="rs('stacks_1/D14')" onmouseout="rh()">STACKS_1:def 14</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="stacks_1.html#R1" title="STACKS_1:pred.1">emp</a> <font color="Maroon" title="c3">s2</font></span><br/>
+
+<span class="kw">assume </span><a NAME="E2:41"/>
+ not  <a href="stacks_1.html#R1" title="STACKS_1:pred.1">emp</a> <font color="Maroon" title="c3">s2</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E3:41"/><span class="kw">then </span>
+<span class="p1"><a href="stacks_1.html#K9" title="STACKS_1:func.9">|.</a><span class="default"><font color="Maroon" title="c3">s2</font></span><a href="stacks_1.html#K9" title="STACKS_1:func.9">.|</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"><span class="p2">(<span class="default"><a href="stacks_1.html#K6" title="STACKS_1:func.6">top</a> <font color="Maroon" title="c3">s2</font></span>)</span></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> <a href="stacks_1.html#K1" title="STACKS_1:func.1">^</a> <span class="p1"><a href="stacks_1.html#K9" title="STACKS_1:func.9">|.</a><span class="default"><span class="p2">(<span class="default"><a href="stacks_1.html#K5" title="STACKS_1:func.5">pop</a> <font color="Maroon" title="c3">s2</font></span>)</span></span><a href="stacks_1.html#K9" title="STACKS_1:func.9">.|</a></span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="stacks_1.html#T6" target="_self" onmouseover="rs('stacks_1/T6')" onmouseout="rh()">Th6</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E4:41"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:41"><span class="lab"><font color="Green" title="E22">A1</font></span></a>, <a class="ref" href="stacks_1.html#T5" target="_self" onmouseover="rs('stacks_1/T5')" onmouseout="rh()">Th5</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<a NAME="E1:100_1_1"/>
+ <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><a href="compos_1.html#K11" title="COMPOS_1:func.11">Macro</a> <font color="Maroon" title="c6">i</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="tarski.html#K2" title="TARSKI:func.2">{</a><span class="default"><font color="Maroon" title="c6">i</font>,<span class="p2">(<span class="default"><a href="compos_1.html#K2" title="COMPOS_1:func.2">halt</a> <a href="scmfsa_2.html#K1" title="SCMFSA_2:func.1">SCM+FSA</a></span>)</span></span><a href="tarski.html#K2" title="TARSKI:func.2">}</a></span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="compos_1.html#T67" onmouseover="rs('compos_1/T67')" onmouseout="rh()">COMPOS_1:67</a></span>;<br/>
+<a NAME="E2:100_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c6">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><a href="compos_1.html#K11" title="COMPOS_1:func.11">Macro</a> <font color="Maroon" title="c6">i</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="tarski.html#D2" onmouseover="rs('tarski/D2')" onmouseout="rh()">TARSKI:def 2</a></span>;<br/>
+<a NAME="E3:100_1_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E51">A1</font></span>: 
+(  not  <a href="compos_1.html#K11" title="COMPOS_1:func.11">Macro</a> <font color="Maroon" title="c6">i</font> <a href="scmfsa7b.html#R4" title="SCMFSA7B:pred.4">destroys</a>  <a href="scmfsa_2.html#K4" title="SCMFSA_2:func.4">intloc</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> implies  not <font color="Maroon" title="c6">i</font> <a href="scmfsa7b.html#R3" title="SCMFSA7B:pred.3">destroys</a>  <a href="scmfsa_2.html#K4" title="SCMFSA_2:func.4">intloc</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> )
+ 
+;<br/>
+<a NAME="E4:100_1_1"/><span class="lab"><font color="Green" title="E52">A2</font></span>: 
+(  not <font color="Maroon" title="c6">i</font> <a href="scmfsa7b.html#R3" title="SCMFSA7B:pred.3">destroys</a>  <a href="scmfsa_2.html#K4" title="SCMFSA_2:func.4">intloc</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> implies  not  <a href="compos_1.html#K11" title="COMPOS_1:func.11">Macro</a> <font color="Maroon" title="c6">i</font> <a href="scmfsa7b.html#R4" title="SCMFSA7B:pred.4">destroys</a>  <a href="scmfsa_2.html#K4" title="SCMFSA_2:func.4">intloc</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="scmfsa8c.html#T48" onmouseover="rs('scmfsa8c/T48')" onmouseout="rh()">SCMFSA8C:48</a></span>;<br/>
+<a NAME="E5:100_1_1"/>
+(  <a href="compos_1.html#K11" title="COMPOS_1:func.11">Macro</a> <font color="Maroon" title="c6">i</font> is  <a href="scmfsa7b.html#V1" title="SCMFSA7B:attr.1">good</a>  iff <font color="Maroon" title="c6">i</font> is  <a href="sfmastr1.html#V1" title="SFMASTR1:attr.1">good</a>  )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="sfmastr1.html#D1" onmouseover="rs('sfmastr1/D1')" onmouseout="rh()">SFMASTR1:def 1</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E6:100_1_1"/>
+( <font color="Maroon" title="c6">i</font> is  <a href="sfmastr1.html#V1" title="SFMASTR1:attr.1">good</a>  iff  not <font color="Maroon" title="c6">i</font> <a href="scmfsa7b.html#R3" title="SCMFSA7B:pred.3">destroys</a>  <a href="scmfsa_2.html#K4" title="SCMFSA_2:func.4">intloc</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:100_1_1"><span class="lab"><font color="Green" title="E52">A2</font></span></a>, <a class="txt" href="#E3:100_1_1"><span class="lab"><font color="Green" title="E51">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

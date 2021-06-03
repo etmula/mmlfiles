@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">s</font> be    <a href="trees_1.html#M1" title="TREES_1:mode.1">Element</a> of <font color="Maroon" title="c1">T</font> <a href="trees_1.html#K5" title="TREES_1:func.5">with-replacement</a> (<font color="Maroon" title="c2">t</font>,<font color="Maroon" title="c3">S</font>); <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="trees_3.html#D14" target="_self" onmouseover="rs('trees_3/D14')" onmouseout="rh()">TREES_3:def 14</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c4">s</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c1">T</font> or  ex <font color="Olive" title="b1">l</font> being    <a href="trees_3.html#M3" title="TREES_3:mode.3">Leaf</a> of <font color="Maroon" title="c1">T</font> st <font color="Olive" title="b1">l</font> <a href="trees_1.html#NR3" title="TREES_1:NR.3">is_a_proper_prefix_of</a> <font color="Maroon" title="c4">s</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:95_1_1"/><span class="lab"><font color="Green" title="E39">A1</font></span>: 
+ not <font color="Maroon" title="c4">s</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c1">T</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  ex <font color="Olive" title="b1">l</font> being    <a href="trees_3.html#M3" title="TREES_3:mode.3">Leaf</a> of <font color="Maroon" title="c1">T</font> st <font color="Olive" title="b1">l</font> <a href="trees_1.html#NR3" title="TREES_1:NR.3">is_a_proper_prefix_of</a> <font color="Maroon" title="c4">s</font></span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c5">t1</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <span class="kw"> such that </span><br/><a NAME="E3:95_1_1"/>
+<font color="Maroon" title="c5">t1</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c3">S</font>
+ <span class="kw">and </span><br/><a NAME="E4:95_1_1"/><span class="lab"><font color="Green" title="E40">A2</font></span>: 
+<font color="Maroon" title="c4">s</font> <a href="relset_1.html#R2" title="RELSET_1:pred.2">=</a> <font color="Maroon" title="c2">t</font> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <font color="Maroon" title="c5">t1</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="trees_1.html#D9" onmouseover="rs('trees_1/D9')" onmouseout="rh()">TREES_1:def 9</a></span>;<br/>
+<span class="kw">take </span>
+<font color="Maroon" title="c2">t</font>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">t</font> <a href="trees_1.html#NR3" title="TREES_1:NR.3">is_a_proper_prefix_of</a> <font color="Maroon" title="c4">s</font></span><br/>
+
+<a NAME="E5:95_1_1"/>
+<font color="Maroon" title="c2">t</font> <a href="finseq_1.html#K7" title="FINSEQ_1:func.7">^</a> <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">t</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_1.html#T34" onmouseover="rs('finseq_1/T34')" onmouseout="rh()">FINSEQ_1:34</a></span>;<br/>
+<a NAME="E6:95_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c5">t1</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:95_1_1"><span class="lab"><font color="Green" title="E39">A1</font></span></a>, <a class="txt" href="#E4:95_1_1"><span class="lab"><font color="Green" title="E40">A2</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:95_1_1"/>
+<font color="Maroon" title="c2">t</font> <a href="trees_1.html#NR3" title="TREES_1:NR.3">is_a_proper_prefix_of</a> <font color="Maroon" title="c4">s</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:95_1_1"><span class="lab"><font color="Green" title="E40">A2</font></span></a>, <a class="ref" href="trees_1.html#T10" onmouseover="rs('trees_1/T10')" onmouseout="rh()">TREES_1:10</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">X</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">X</font>  st <font color="Olive" title="b1">A</font>,<font color="Olive" title="b2">B</font> <a href="tsep_2.html#R2" title="TSEP_2:pred.2">constitute_a_decomposition</a>  holds <br/>( <font color="Olive" title="b1">A</font> is  <a href="tops_3.html#V1" title="TOPS_3:attr.1">everywhere_dense</a>  iff <font color="Olive" title="b2">B</font> is  <a href="tops_1.html#V3" title="TOPS_1:attr.3">nowhere_dense</a>  )</span><br/><span class="kw">let </span><font color="Maroon" title="c2">A</font>, <font color="Maroon" title="c3">B</font> be   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">X</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">A</font>,<font color="Maroon" title="c3">B</font> <a href="tsep_2.html#R2" title="TSEP_2:pred.2">constitute_a_decomposition</a>  implies ( <font color="Maroon" title="c2">A</font> is  <a href="tops_3.html#V1" title="TOPS_3:attr.1">everywhere_dense</a>  iff <font color="Maroon" title="c3">B</font> is  <a href="tops_1.html#V3" title="TOPS_1:attr.3">nowhere_dense</a>  ) )</span><br/>
+
+
+
+
+
+<span class="kw">assume </span><a NAME="E1:5"/><span class="lab"><font color="Green" title="E6">A1</font></span>: 
+<font color="Maroon" title="c2">A</font>,<font color="Maroon" title="c3">B</font> <a href="tsep_2.html#R2" title="TSEP_2:pred.2">constitute_a_decomposition</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">A</font> is  <a href="tops_3.html#V1" title="TOPS_3:attr.1">everywhere_dense</a>  iff <font color="Maroon" title="c3">B</font> is  <a href="tops_1.html#V3" title="TOPS_1:attr.3">nowhere_dense</a>  )</span><br/>
+
+<a NAME="E2:5"/><span class="kw">then </span>
+<font color="Maroon" title="c3">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">A</font> <a href="subset_1.html#K3" title="SUBSET_1:func.3">`</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="tsep_2.html#T3" onmouseover="rs('tsep_2/T3')" onmouseout="rh()">TSEP_2:3</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E3:5"/>
+( <font color="Maroon" title="c2">A</font> is  <a href="tops_3.html#V1" title="TOPS_3:attr.1">everywhere_dense</a>  implies <font color="Maroon" title="c3">B</font> is  <a href="tops_1.html#V3" title="TOPS_1:attr.3">nowhere_dense</a>  )
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="tops_3.html#T39" onmouseover="rs('tops_3/T39')" onmouseout="rh()">TOPS_3:39</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">B</font> is  <a href="tops_1.html#V3" title="TOPS_1:attr.3">nowhere_dense</a>  implies <font color="Maroon" title="c2">A</font> is  <a href="tops_3.html#V1" title="TOPS_3:attr.1">everywhere_dense</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E4:5"/><span class="lab"><font color="Green" title="E7">A2</font></span>: 
+<font color="Maroon" title="c3">B</font> is  <a href="tops_1.html#V3" title="TOPS_1:attr.3">nowhere_dense</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">A</font> is  <a href="tops_3.html#V1" title="TOPS_3:attr.1">everywhere_dense</a> </span><br/>
+
+<a NAME="E5:5"/>
+<font color="Maroon" title="c2">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">B</font> <a href="subset_1.html#K3" title="SUBSET_1:func.3">`</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:5"><span class="lab"><font color="Green" title="E6">A1</font></span></a>, <a class="ref" href="tsep_2.html#T3" onmouseover="rs('tsep_2/T3')" onmouseout="rh()">TSEP_2:3</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E6:5"/>
+<font color="Maroon" title="c2">A</font> is  <a href="tops_3.html#V1" title="TOPS_3:attr.1">everywhere_dense</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:5"><span class="lab"><font color="Green" title="E7">A2</font></span></a>, <a class="ref" href="tops_3.html#T40" onmouseover="rs('tops_3/T40')" onmouseout="rh()">TOPS_3:40</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

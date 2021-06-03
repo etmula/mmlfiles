@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">V</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="algstr_0.html#L2" title="ALGSTR_0:struct.2">addLoopStr</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">M</font>, <font color="Olive" title="b2">N</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">V</font>  st ( <font color="Olive" title="b1">M</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  or <font color="Olive" title="b2">N</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  ) holds <br/><font color="Olive" title="b1">M</font> <a href="rusub_5.html#K1" title="RUSUB_5:func.1">-</a> <font color="Olive" title="b2">N</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c2">M</font>, <font color="Maroon" title="c3">N</font> be   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">V</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( ( <font color="Maroon" title="c2">M</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  or <font color="Maroon" title="c3">N</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  ) implies <font color="Maroon" title="c2">M</font> <a href="rusub_5.html#K1" title="RUSUB_5:func.1">-</a> <font color="Maroon" title="c3">N</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:9"/><span class="lab"><font color="Green" title="E4">A1</font></span>: 
+( <font color="Maroon" title="c2">M</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  or <font color="Maroon" title="c3">N</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">M</font> <a href="rusub_5.html#K1" title="RUSUB_5:func.1">-</a> <font color="Maroon" title="c3">N</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> </span><br/>
+
+<span class="kw">assume </span><a NAME="E2:9"/>
+ not <font color="Maroon" title="c2">M</font> <a href="rusub_5.html#K1" title="RUSUB_5:func.1">-</a> <font color="Maroon" title="c3">N</font> is  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c4">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E4:9"/><span class="lab"><font color="Green" title="E5">A2</font></span>: 
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c2">M</font> <a href="rusub_5.html#K1" title="RUSUB_5:func.1">-</a> <font color="Maroon" title="c3">N</font>
+ ;<br/>
+<a NAME="E5:9"/>
+ ex <font color="Olive" title="b1">u</font>, <font color="Olive" title="b2">v</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">V</font> st <br/>( <font color="Maroon" title="c4">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">u</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <font color="Olive" title="b2">v</font> &amp; <font color="Olive" title="b1">u</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">M</font> &amp; <font color="Olive" title="b2">v</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c3">N</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:9"><span class="lab"><font color="Green" title="E5">A2</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E6:9"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:9"><span class="lab"><font color="Green" title="E4">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

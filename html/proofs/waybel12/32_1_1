@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c2">A</font> be   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">L</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">A</font> is  <a href="waybel_0.html#V12" title="WAYBEL_0:attr.12">lower</a>  implies <font color="Maroon" title="c2">A</font> is  <a href="waybel_6.html#V1" title="WAYBEL_6:attr.1">Open</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:32_1_1"/><span class="lab"><font color="Green" title="E18">A1</font></span>: 
+<font color="Maroon" title="c2">A</font> is  <a href="waybel_0.html#V12" title="WAYBEL_0:attr.12">lower</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">A</font> is  <a href="waybel_6.html#V1" title="WAYBEL_6:attr.1">Open</a> </span><br/>
+
+<span class="kw">let </span><font color="Maroon" title="c3">x</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font>; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="waybel_6.html#D1" onmouseover="rs('waybel_6/D1')" onmouseout="rh()">WAYBEL_6:def 1</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c3">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">A</font> or  ex <font color="Olive">b<sub>1</sub></font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">L</font> st <br/>( <font color="Olive">b<sub>1</sub></font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">A</font> &amp; <font color="Olive">b<sub>1</sub></font> <a href="waybel_3.html#R1" title="WAYBEL_3:pred.1">is_way_below</a> <font color="Maroon" title="c3">x</font> ) )</span><br/>
+
+<span class="kw">assume </span><a NAME="E2:32_1_1"/><span class="lab"><font color="Green" title="E19">A2</font></span>: 
+<font color="Maroon" title="c3">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">A</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  ex <font color="Olive">b<sub>1</sub></font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">L</font> st <br/>( <font color="Olive">b<sub>1</sub></font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">A</font> &amp; <font color="Olive">b<sub>1</sub></font> <a href="waybel_3.html#R1" title="WAYBEL_3:pred.1">is_way_below</a> <font color="Maroon" title="c3">x</font> )</span><br/>
+
+<span class="kw">consider </span><font color="Maroon" title="c4">y</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E4:32_1_1"/><span class="lab"><font color="Green" title="E20">A3</font></span>: 
+<font color="Maroon" title="c4">y</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="waybel_3.html#K1" title="WAYBEL_3:func.1">waybelow</a> <font color="Maroon" title="c3">x</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_0.html#D1" onmouseover="rs('xboole_0/D1')" onmouseout="rh()">XBOOLE_0:def 1</a></span>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c5">y</font> = <font color="Maroon" title="c4">y</font> as   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:32_1_1"><span class="lab"><font color="Green" title="E20">A3</font></span></a></span>;<br/>
+<span class="kw">take </span>
+<font color="Maroon" title="c5">y</font>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c5">y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">A</font> &amp; <font color="Maroon" title="c5">y</font> <a href="waybel_3.html#R1" title="WAYBEL_3:pred.1">is_way_below</a> <font color="Maroon" title="c3">x</font> )</span><br/>
+
+<a NAME="E6:32_1_1"/>
+<font color="Maroon" title="c5">y</font> <a href="waybel_3.html#NR2" title="WAYBEL_3:NR.2">&lt;&lt;</a> <font color="Maroon" title="c3">x</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:32_1_1"><span class="lab"><font color="Green" title="E20">A3</font></span></a>, <a class="ref" href="waybel_3.html#T7" onmouseover="rs('waybel_3/T7')" onmouseout="rh()">WAYBEL_3:7</a></span>;<br/>
+<a NAME="E7:32_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c5">y</font> <a href="orders_2.html#R3" title="ORDERS_2:pred.3">&lt;=</a> <font color="Maroon" title="c3">x</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="waybel_3.html#T1" onmouseover="rs('waybel_3/T1')" onmouseout="rh()">WAYBEL_3:1</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E8:32_1_1"/>
+( <font color="Maroon" title="c5">y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">A</font> &amp; <font color="Maroon" title="c5">y</font> <a href="waybel_3.html#R1" title="WAYBEL_3:pred.1">is_way_below</a> <font color="Maroon" title="c3">x</font> )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:32_1_1"><span class="lab"><font color="Green" title="E18">A1</font></span></a>, <a class="txt" href="#E2:32_1_1"><span class="lab"><font color="Green" title="E19">A2</font></span></a>, <a class="txt" href="#E4:32_1_1"><span class="lab"><font color="Green" title="E20">A3</font></span></a>, <a class="ref" href="waybel_3.html#T7" onmouseover="rs('waybel_3/T7')" onmouseout="rh()">WAYBEL_3:7</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

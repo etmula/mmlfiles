@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">set </span><font color="Maroon" title="c3">b1</font> =  the    <a href="zmatrlin.html#M1" title="ZMATRLIN:mode.1">OrdBasis</a> of <font color="Maroon" title="c1">V</font>;<br/>
+<a NAME="E1:210_1_1"/>
+ for <font color="Olive" title="b1">b</font> being    <a href="zmatrlin.html#M1" title="ZMATRLIN:mode.1">OrdBasis</a> of <font color="Maroon" title="c1">V</font> holds   <a href="matrix_3.html#K12" title="MATRIX_3:func.12">Det</a> <span class="p1">(<span class="default"><a href="zmodlat1.html#K22" title="ZMODLAT1:func.22">GramMatrix</a> (<font color="Maroon" title="c2">f</font>,<font color="Olive" title="b1">b</font>)</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="matrix_3.html#K12" title="MATRIX_3:func.12">Det</a> <span class="p1">(<span class="default"><a href="zmodlat1.html#K22" title="ZMODLAT1:func.22">GramMatrix</a> (<font color="Maroon" title="c2">f</font>, the    <a href="zmatrlin.html#M1" title="ZMATRLIN:mode.1">OrdBasis</a> of <font color="Maroon" title="c1">V</font>)</span>)</span>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="210_1_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">b</font> be    <a href="zmatrlin.html#M1" title="ZMATRLIN:mode.1">OrdBasis</a> of <font color="Maroon" title="c1">V</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="matrix_3.html#K12" title="MATRIX_3:func.12">Det</a> <span class="p1">(<span class="default"><a href="zmodlat1.html#K22" title="ZMODLAT1:func.22">GramMatrix</a> (<font color="Maroon" title="c2">f</font>,<font color="Maroon" title="c4">b</font>)</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="matrix_3.html#K12" title="MATRIX_3:func.12">Det</a> <span class="p1">(<span class="default"><a href="zmodlat1.html#K22" title="ZMODLAT1:func.22">GramMatrix</a> (<font color="Maroon" title="c2">f</font>, the    <a href="zmatrlin.html#M1" title="ZMATRLIN:mode.1">OrdBasis</a> of <font color="Maroon" title="c1">V</font>)</span>)</span></span><br/>
+
+<span class="kw">thus </span> <a href="matrix_3.html#K12" title="MATRIX_3:func.12">Det</a> <span class="p1">(<span class="default"><a href="zmodlat1.html#K22" title="ZMODLAT1:func.22">GramMatrix</a> (<font color="Maroon" title="c2">f</font>,<font color="Maroon" title="c4">b</font>)</span>)</span> = 
+ <a href="matrix_3.html#K12" title="MATRIX_3:func.12">Det</a> <span class="p1">(<span class="default"><a href="zmodlat1.html#K18" title="ZMODLAT1:func.18">BilinearM</a> (<font color="Maroon" title="c2">f</font>,<font color="Maroon" title="c4">b</font>,<font color="Maroon" title="c4">b</font>)</span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zmatrlin.html#T49" onmouseover="rs('zmatrlin/T49')" onmouseout="rh()">ZMATRLIN:49</a></span>
+<br/>.= 
+ <a href="matrix_3.html#K12" title="MATRIX_3:func.12">Det</a> <span class="p1">(<span class="default"><a href="zmodlat1.html#K18" title="ZMODLAT1:func.18">BilinearM</a> (<font color="Maroon" title="c2">f</font>, the    <a href="zmatrlin.html#M1" title="ZMATRLIN:mode.1">OrdBasis</a> of <font color="Maroon" title="c1">V</font>, the    <a href="zmatrlin.html#M1" title="ZMATRLIN:mode.1">OrdBasis</a> of <font color="Maroon" title="c1">V</font>)</span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zmodlat1.html#T101" target="_self" onmouseover="rs('zmodlat1/T101')" onmouseout="rh()">ThMBFY</a></span>
+<br/>.= 
+ <a href="matrix_3.html#K12" title="MATRIX_3:func.12">Det</a> <span class="p1">(<span class="default"><a href="zmodlat1.html#K22" title="ZMODLAT1:func.22">GramMatrix</a> (<font color="Maroon" title="c2">f</font>, the    <a href="zmatrlin.html#M1" title="ZMATRLIN:mode.1">OrdBasis</a> of <font color="Maroon" title="c1">V</font>)</span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zmatrlin.html#T49" onmouseover="rs('zmatrlin/T49')" onmouseout="rh()">ZMATRLIN:49</a></span>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E2:210_1_1"/>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <a href="vectsp_1.html#K2" title="VECTSP_1:func.2">F_Real</a> st <br/> for <font color="Olive" title="b2">b</font> being    <a href="zmatrlin.html#M1" title="ZMATRLIN:mode.1">OrdBasis</a> of <font color="Maroon" title="c1">V</font> holds  <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="matrix_3.html#K12" title="MATRIX_3:func.12">Det</a> <span class="p1">(<span class="default"><a href="zmodlat1.html#K22" title="ZMODLAT1:func.22">GramMatrix</a> (<font color="Maroon" title="c2">f</font>,<font color="Olive" title="b2">b</font>)</span>)</span>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

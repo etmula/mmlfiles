@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">T</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">A</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font>  st <font color="Olive" title="b1">A</font> is  <a href="card_3.html#V4" title="CARD_3:attr.4">countable</a>  holds <br/><font color="Olive" title="b1">A</font> <a href="topgen_4.html#K4" title="TOPGEN_4:func.4">^0</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c2">A</font> be   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">T</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">A</font> is  <a href="card_3.html#V4" title="CARD_3:attr.4">countable</a>  implies <font color="Maroon" title="c2">A</font> <a href="topgen_4.html#K4" title="TOPGEN_4:func.4">^0</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:83"/><span class="lab"><font color="Green" title="E41">A1</font></span>: 
+<font color="Maroon" title="c2">A</font> is  <a href="card_3.html#V4" title="CARD_3:attr.4">countable</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">A</font> <a href="topgen_4.html#K4" title="TOPGEN_4:func.4">^0</a>  <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> </span><br/>
+
+<span class="kw">assume </span><a NAME="E2:83"/>
+<font color="Maroon" title="c2">A</font> <a href="topgen_4.html#K4" title="TOPGEN_4:func.4">^0</a>  <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c3">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E4:83"/><span class="lab"><font color="Green" title="E42">A2</font></span>: 
+<font color="Maroon" title="c3">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c2">A</font> <a href="topgen_4.html#K4" title="TOPGEN_4:func.4">^0</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_0.html#D1" onmouseover="rs('xboole_0/D1')" onmouseout="rh()">XBOOLE_0:def 1</a></span>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c4">x9</font> = <font color="Maroon" title="c3">x</font> as   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Maroon" title="c1">T</font> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:83"><span class="lab"><font color="Green" title="E42">A2</font></span></a></span>;<br/>
+<a NAME="E6:83"/>
+<font color="Maroon" title="c4">x9</font> <a href="topgen_4.html#R1" title="TOPGEN_4:pred.1">is_a_condensation_point_of</a> <font color="Maroon" title="c2">A</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:83"><span class="lab"><font color="Green" title="E42">A2</font></span></a>, <a class="ref" href="topgen_4.html#D10" target="_self" onmouseover="rs('topgen_4/D10')" onmouseout="rh()">Def10</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:83"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:83"><span class="lab"><font color="Green" title="E41">A1</font></span></a>, <a class="ref" href="topgen_4.html#T55" target="_self" onmouseover="rs('topgen_4/T55')" onmouseout="rh()">Th55</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

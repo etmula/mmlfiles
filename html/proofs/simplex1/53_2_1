@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">defpred </span><font color="Maroon">S<sub>1</sub></font>[  <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>] <span class="kw">means </span>(  <a href="simplex1.html#K5" title="SIMPLEX1:func.5">BCS</a> (<font color="Maroon" title="c1">V</font>,<font color="Maroon" title="c2">K</font>) is  <a href="simplex1.html#V2" title="SIMPLEX1:attr.2">simplex-join-closed</a>  &amp;  <a href="simplex1.html#K5" title="SIMPLEX1:func.5">BCS</a> (<font color="Maroon" title="c1">V</font>,<font color="Maroon" title="c2">K</font>) is  <a href="simplex1.html#V1" title="SIMPLEX1:attr.1">affinely-independent</a>  );<br/>
+<a NAME="E1:53_2_1"/>
+ <a href="struct_0.html#K2" title="STRUCT_0:func.2">[#]</a> <font color="Maroon" title="c2">K</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K2" title="STRUCT_0:func.2">[#]</a> <font color="Maroon" title="c1">V</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="simplex0.html#D10" onmouseover="rs('simplex0/D10')" onmouseout="rh()">SIMPLEX0:def 10</a></span>;<br/>
+<a NAME="E2:53_2_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E32">A1</font></span>: 
+<span class="p1"><a href="simplex1.html#K3" title="SIMPLEX1:func.3">|.</a><span class="default"><font color="Maroon" title="c2">K</font></span><a href="simplex1.html#K3" title="SIMPLEX1:func.3">.|</a></span> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="struct_0.html#K2" title="STRUCT_0:func.2">[#]</a> <font color="Maroon" title="c2">K</font>
+ 
+;<br/>
+<a NAME="E3:53_2_1"/><span class="lab"><font color="Green" title="E33">A2</font></span>: 
+ for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>  st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">n</font>] holds <br/><font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">n</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1]
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="53_2_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">n</font> be   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c4">n</font>] implies <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c4">n</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1] )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:53_2_1_1"/><span class="lab"><font color="Green" title="E34">A3</font></span>: 
+<font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c4">n</font>]
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c4">n</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1]</span><br/>
+
+<a NAME="E2:53_2_1_1"/>
+ <a href="simplex1.html#K5" title="SIMPLEX1:func.5">BCS</a> (<span class="p1">(<span class="default"><font color="Maroon" title="c4">n</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1</span>)</span>,<font color="Maroon" title="c2">K</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="simplex1.html#K4" title="SIMPLEX1:func.4">BCS</a> <span class="p1">(<span class="default"><a href="simplex1.html#K5" title="SIMPLEX1:func.5">BCS</a> (<font color="Maroon" title="c4">n</font>,<font color="Maroon" title="c2">K</font>)</span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:53_2_1"><span class="lab"><font color="Green" title="E32">A1</font></span></a>, <a class="ref" href="simplex1.html#T20" target="_self" onmouseover="rs('simplex1/T20')" onmouseout="rh()">Th20</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E3:53_2_1_1"/>
+<font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c4">n</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1]
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:53_2_1_1"><span class="lab"><font color="Green" title="E34">A3</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E4:53_2_1"/><span class="lab"><font color="Green" title="E34">A4</font></span>: 
+<font color="Maroon">S<sub>1</sub></font>[ <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> ]
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:53_2_1"><span class="lab"><font color="Green" title="E32">A1</font></span></a>, <a class="ref" href="simplex1.html#T16" target="_self" onmouseover="rs('simplex1/T16')" onmouseout="rh()">Th16</a></span>;<br/>
+<a NAME="E5:53_2_1"/>
+ for <font color="Olive" title="b1">n</font> being   <a href="ordinal1.html#NM6" title="ORDINAL1:NM.6">Nat</a> holds  <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">n</font>]
+ 
+<span class="kw">from</span> <span class="lab"><a class="ref" href="nat_1.html#S2" onmouseover="rs('nat_1/S2')" onmouseout="rh()">NAT_1:sch 2</a>(<a class="txt" href="#E4:53_2_1"><span class="lab"><font color="Green" title="E34">A4</font></span></a>, <a class="txt" href="#E3:53_2_1"><span class="lab"><font color="Green" title="E33">A2</font></span></a>);<br/></span>
+<span class="kw">hence </span><a NAME="E6:53_2_1"/>
+ <a href="simplex1.html#K5" title="SIMPLEX1:func.5">BCS</a> (<font color="Maroon" title="c3">n</font>,<font color="Maroon" title="c2">K</font>) is  <a href="simplex1.html#V2" title="SIMPLEX1:attr.2">simplex-join-closed</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

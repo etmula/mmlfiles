@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">a</font>, <font color="Maroon" title="c2">b</font>, <font color="Maroon" title="c3">r</font> be   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="jgraph_6.html#K6" title="JGRAPH_6:func.6">inside_of_circle</a> (<font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">b</font>,<font color="Maroon" title="c3">r</font>) <a href="xboole_0.html#R1" title="XBOOLE_0:pred.1">misses</a>  <a href="jgraph_6.html#K5" title="JGRAPH_6:func.5">circle</a> (<font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">b</font>,<font color="Maroon" title="c3">r</font>)</span><br/>
+
+
+
+
+
+<span class="kw">assume </span><a NAME="E1:68"/>
+ not  <a href="jgraph_6.html#K6" title="JGRAPH_6:func.6">inside_of_circle</a> (<font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">b</font>,<font color="Maroon" title="c3">r</font>) <a href="xboole_0.html#R1" title="XBOOLE_0:pred.1">misses</a>  <a href="jgraph_6.html#K5" title="JGRAPH_6:func.5">circle</a> (<font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">b</font>,<font color="Maroon" title="c3">r</font>)
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c4">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E3:68"/><span class="lab"><font color="Green" title="E36">A1</font></span>: 
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="jgraph_6.html#K6" title="JGRAPH_6:func.6">inside_of_circle</a> (<font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">b</font>,<font color="Maroon" title="c3">r</font>)
+ <span class="kw">and </span><br/><a NAME="E4:68"/><span class="lab"><font color="Green" title="E37">A2</font></span>: 
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="jgraph_6.html#K5" title="JGRAPH_6:func.5">circle</a> (<font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">b</font>,<font color="Maroon" title="c3">r</font>)
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_0.html#T3" onmouseover="rs('xboole_0/T3')" onmouseout="rh()">XBOOLE_0:3</a></span>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c5">x</font> = <font color="Maroon" title="c4">x</font> as   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> 2</span>)</span> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:68"><span class="lab"><font color="Green" title="E36">A1</font></span></a></span>;<br/>
+<a NAME="E6:68"/>
+<span class="p1"><a href="euclid.html#K12" title="EUCLID:func.12">|.</a><span class="default"><span class="p2">(<span class="default"><font color="Maroon" title="c5">x</font> <a href="algstr_0.html#K5" title="ALGSTR_0:func.5">-</a> <span class="p3"><a href="euclid.html#K19" title="EUCLID:func.19">|[</a><span class="default"><font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">b</font></span><a href="euclid.html#K19" title="EUCLID:func.19">]|</a></span></span>)</span></span><a href="euclid.html#K12" title="EUCLID:func.12">.|</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">r</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:68"><span class="lab"><font color="Green" title="E37">A2</font></span></a>, <a class="ref" href="topreal9.html#T43" target="_self" onmouseover="rs('topreal9/T43')" onmouseout="rh()">Th41</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:68"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:68"><span class="lab"><font color="Green" title="E36">A1</font></span></a>, <a class="ref" href="topreal9.html#T45" target="_self" onmouseover="rs('topreal9/T45')" onmouseout="rh()">Th43</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

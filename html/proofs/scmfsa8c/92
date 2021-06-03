@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">I</font> be   <a href="compos_1.html#NM5" title="COMPOS_1:NM.5">MacroInstruction</a> of  <a href="scmfsa_2.html#K1" title="SCMFSA_2:func.1">SCM+FSA</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font> being   <a href="scmfsa_2.html#NM1" title="SCMFSA_2:NM.1">Int-Location</a>  st  not <font color="Maroon" title="c3">I</font> <a href="scmfsa7b.html#R4" title="SCMFSA7B:pred.4">destroys</a> <font color="Olive" title="b2">b</font> &amp; <font color="Olive" title="b1">a</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b2">b</font> holds <br/> not  <a href="scmfsa8c.html#K1" title="SCMFSA8C:func.1">Times</a> (<font color="Olive" title="b1">a</font>,<font color="Maroon" title="c3">I</font>) <a href="scmfsa7b.html#R4" title="SCMFSA7B:pred.4">destroys</a> <font color="Olive" title="b2">b</font></span><br/><span class="kw">let </span><font color="Maroon" title="c4">a</font>, <font color="Maroon" title="c5">b</font> be   <a href="scmfsa_2.html#NM1" title="SCMFSA_2:NM.1">Int-Location</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c3">I</font> <a href="scmfsa7b.html#R4" title="SCMFSA7B:pred.4">destroys</a> <font color="Maroon" title="c5">b</font> &amp; <font color="Maroon" title="c4">a</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c5">b</font> implies  not  <a href="scmfsa8c.html#K1" title="SCMFSA8C:func.1">Times</a> (<font color="Maroon" title="c4">a</font>,<font color="Maroon" title="c3">I</font>) <a href="scmfsa7b.html#R4" title="SCMFSA7B:pred.4">destroys</a> <font color="Maroon" title="c5">b</font> )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:92"/><span class="lab"><font color="Green" title="E46">A1</font></span>: 
+ not <font color="Maroon" title="c3">I</font> <a href="scmfsa7b.html#R4" title="SCMFSA7B:pred.4">destroys</a> <font color="Maroon" title="c5">b</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c4">a</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c5">b</font> or  not  <a href="scmfsa8c.html#K1" title="SCMFSA8C:func.1">Times</a> (<font color="Maroon" title="c4">a</font>,<font color="Maroon" title="c3">I</font>) <a href="scmfsa7b.html#R4" title="SCMFSA7B:pred.4">destroys</a> <font color="Maroon" title="c5">b</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E2:92"/>
+<font color="Maroon" title="c4">a</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c5">b</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not  <a href="scmfsa8c.html#K1" title="SCMFSA8C:func.1">Times</a> (<font color="Maroon" title="c4">a</font>,<font color="Maroon" title="c3">I</font>) <a href="scmfsa7b.html#R4" title="SCMFSA7B:pred.4">destroys</a> <font color="Maroon" title="c5">b</font></span><br/>
+
+<a NAME="E3:92"/><span class="kw">then </span>
+ not  <a href="scmfsa_2.html#K8" title="SCMFSA_2:func.8">SubFrom</a> (<font color="Maroon" title="c4">a</font>,<span class="p1">(<span class="default"><a href="scmfsa_2.html#K4" title="SCMFSA_2:func.4">intloc</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span>) <a href="scmfsa7b.html#R3" title="SCMFSA7B:pred.3">destroys</a> <font color="Maroon" title="c5">b</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="scmfsa7b.html#T8" onmouseover="rs('scmfsa7b/T8')" onmouseout="rh()">SCMFSA7B:8</a></span>;<br/>
+<a NAME="E4:92"/><span class="kw">then </span>
+ not <font color="Maroon" title="c3">I</font> <a href="scmfsa6a.html#K4" title="SCMFSA6A:func.4">";"</a> <span class="p1">(<span class="default"><a href="scmfsa_2.html#K8" title="SCMFSA_2:func.8">SubFrom</a> (<font color="Maroon" title="c4">a</font>,<span class="p2">(<span class="default"><a href="scmfsa_2.html#K4" title="SCMFSA_2:func.4">intloc</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span>)</span>)</span> <a href="scmfsa7b.html#R4" title="SCMFSA7B:pred.4">destroys</a> <font color="Maroon" title="c5">b</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:92"><span class="lab"><font color="Green" title="E46">A1</font></span></a>, <a class="ref" href="scmfsa8c.html#T54" target="_self" onmouseover="rs('scmfsa8c/T54')" onmouseout="rh()">Th45</a></span>;<br/>
+<a NAME="E5:92"/><span class="kw">then </span>
+ not  <a href="scmfsa_x.html#K4" title="SCMFSA_X:func.4">while&gt;0</a> (<font color="Maroon" title="c4">a</font>,<span class="p1">(<span class="default"><font color="Maroon" title="c3">I</font> <a href="scmfsa6a.html#K4" title="SCMFSA6A:func.4">";"</a> <span class="p2">(<span class="default"><a href="scmfsa_2.html#K8" title="SCMFSA_2:func.8">SubFrom</a> (<font color="Maroon" title="c4">a</font>,<span class="p3">(<span class="default"><a href="scmfsa_2.html#K4" title="SCMFSA_2:func.4">intloc</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span>)</span>)</span></span>)</span>) <a href="scmfsa7b.html#R4" title="SCMFSA7B:pred.4">destroys</a> <font color="Maroon" title="c5">b</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="scmfsa8c.html#T92" target="_self" onmouseover="rs('scmfsa8c/T92')" onmouseout="rh()">Th67</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E6:92"/>
+ not  <a href="scmfsa8c.html#K1" title="SCMFSA8C:func.1">Times</a> (<font color="Maroon" title="c4">a</font>,<font color="Maroon" title="c3">I</font>) <a href="scmfsa7b.html#R4" title="SCMFSA7B:pred.4">destroys</a> <font color="Maroon" title="c5">b</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

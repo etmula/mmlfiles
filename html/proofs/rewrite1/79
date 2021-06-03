@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">R</font> be   <a href="relat_1.html#NM1" title="RELAT_1:NM.1">Relation</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( (  for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>   holds  not <font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font> <a href="rewrite1.html#R13" title="REWRITE1:pred.13">are_critical_wrt</a> <font color="Maroon" title="c1">R</font> ) implies <font color="Maroon" title="c1">R</font> is  <a href="rewrite1.html#V9" title="REWRITE1:attr.9">locally-confluent</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:79"/><span class="lab"><font color="Green" title="E57">A1</font></span>: 
+ for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>   holds  not <font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">b</font> <a href="rewrite1.html#R13" title="REWRITE1:pred.13">are_critical_wrt</a> <font color="Maroon" title="c1">R</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">R</font> is  <a href="rewrite1.html#V9" title="REWRITE1:attr.9">locally-confluent</a> </span><br/>
+
+<span class="kw">let </span><font color="Maroon" title="c2">a</font>, <font color="Maroon" title="c3">b</font>, <font color="Maroon" title="c4">c</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="rewrite1.html#D24" target="_self" onmouseover="rs('rewrite1/D24')" onmouseout="rh()">REWRITE1:def 24</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Maroon" title="c2">a</font>,<font color="Maroon" title="c3">b</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c1">R</font> &amp; <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Maroon" title="c2">a</font>,<font color="Maroon" title="c4">c</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c1">R</font> implies <font color="Maroon" title="c3">b</font>,<font color="Maroon" title="c4">c</font> <a href="rewrite1.html#R5" title="REWRITE1:pred.5">are_convergent_wrt</a> <font color="Maroon" title="c1">R</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E2:79"/>
+( <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Maroon" title="c2">a</font>,<font color="Maroon" title="c3">b</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c1">R</font> &amp; <span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Maroon" title="c2">a</font>,<font color="Maroon" title="c4">c</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c1">R</font> )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">b</font>,<font color="Maroon" title="c4">c</font> <a href="rewrite1.html#R5" title="REWRITE1:pred.5">are_convergent_wrt</a> <font color="Maroon" title="c1">R</font></span><br/>
+
+<a NAME="E3:79"/><span class="kw">then </span><span class="lab"><font color="Green" title="E58">A2</font></span>: 
+<font color="Maroon" title="c3">b</font>,<font color="Maroon" title="c4">c</font> <a href="rewrite1.html#R8" title="REWRITE1:pred.8">are_divergent&lt;=1_wrt</a> <font color="Maroon" title="c1">R</font>
+ 
+;<br/>
+<a NAME="E4:79"/>
+ not <font color="Maroon" title="c3">b</font>,<font color="Maroon" title="c4">c</font> <a href="rewrite1.html#R13" title="REWRITE1:pred.13">are_critical_wrt</a> <font color="Maroon" title="c1">R</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:79"><span class="lab"><font color="Green" title="E57">A1</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:79"/>
+<font color="Maroon" title="c3">b</font>,<font color="Maroon" title="c4">c</font> <a href="rewrite1.html#R5" title="REWRITE1:pred.5">are_convergent_wrt</a> <font color="Maroon" title="c1">R</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:79"><span class="lab"><font color="Green" title="E58">A2</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

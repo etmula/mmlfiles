@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">G</font> be   <a href="scmyciel.html#V6" title="SCMYCIEL:attr.6">with_finite_clique#</a>  <a href="scmyciel.html#NM1" title="SCMYCIEL:NM.1">SimpleGraph</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="scmyciel.html#K8" title="SCMYCIEL:func.8">clique#</a> <font color="Maroon" title="c1">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies  <a href="scmyciel.html#NK2" title="SCMYCIEL:NK.2">Vertices</a> <font color="Maroon" title="c1">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:106"/><span class="lab"><font color="Green" title="E67">A1</font></span>: 
+ <a href="scmyciel.html#K8" title="SCMYCIEL:func.8">clique#</a> <font color="Maroon" title="c1">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="scmyciel.html#NK2" title="SCMYCIEL:NK.2">Vertices</a> <font color="Maroon" title="c1">G</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> </span><br/>
+
+<span class="kw">assume </span><a NAME="E2:106"/>
+ <a href="scmyciel.html#NK2" title="SCMYCIEL:NK.2">Vertices</a> <font color="Maroon" title="c1">G</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c2">v</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E4:106"/><span class="lab"><font color="Green" title="E68">A2</font></span>: 
+<font color="Maroon" title="c2">v</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="scmyciel.html#NK2" title="SCMYCIEL:NK.2">Vertices</a> <font color="Maroon" title="c1">G</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="xboole_0.html#D1" onmouseover="rs('xboole_0/D1')" onmouseout="rh()">XBOOLE_0:def 1</a></span>;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c3">D</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="scmyciel.html#NM6" title="SCMYCIEL:NM.6">Clique</a> of <font color="Maroon" title="c1">G</font><span class="kw"> such that </span><br/><a NAME="E6:106"/><span class="lab"><font color="Green" title="E69">A3</font></span>: 
+ <a href="scmyciel.html#NK2" title="SCMYCIEL:NK.2">Vertices</a> <font color="Maroon" title="c3">D</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="tarski.html#K1" title="TARSKI:func.1">{</a><span class="default"><font color="Maroon" title="c2">v</font></span><a href="tarski.html#K1" title="TARSKI:func.1">}</a></span>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:106"><span class="lab"><font color="Green" title="E68">A2</font></span></a>, <a class="ref" href="scmyciel.html#T52" target="_self" onmouseover="rs('scmyciel/T52')" onmouseout="rh()">Th52</a></span>;<br/>
+<a NAME="E7:106"/>
+ <a href="scmyciel.html#K2" title="SCMYCIEL:func.2">order</a> <font color="Maroon" title="c3">D</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:106"><span class="lab"><font color="Green" title="E67">A1</font></span></a>, <a class="ref" href="scmyciel.html#D15" target="_self" onmouseover="rs('scmyciel/D15')" onmouseout="rh()">Def15</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E8:106"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:106"><span class="lab"><font color="Green" title="E69">A3</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">defpred </span><font color="Maroon">S<sub>1</sub></font>[  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>] <span class="kw">means </span><font color="Maroon" title="c3">f</font> <a href="vectsp11.html#K1" title="VECTSP11:func.1">|^</a> <font color="Maroon" title="c1">K</font> is   <a href="ranknull.html#NM1" title="RANKNULL:NM.1">linear-transformation</a> of <font color="Maroon" title="c2">V1</font>,<font color="Maroon" title="c2">V1</font>;<br/>
+<a NAME="E1:31_1_1"/><span class="lab"><font color="Green" title="E21">A1</font></span>: 
+ for <font color="Olive" title="b1">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">k</font>] holds <br/><font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">k</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1]
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="31_1_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c5">k</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c5">k</font>] implies <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c5">k</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1] )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:31_1_1_1"/>
+<font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c5">k</font>]
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c5">k</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1]</span><br/>
+
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c6">fk</font> = <font color="Maroon" title="c3">f</font> <a href="vectsp11.html#K1" title="VECTSP11:func.1">|^</a> <font color="Maroon" title="c5">k</font> as   <a href="ranknull.html#NM1" title="RANKNULL:NM.1">linear-transformation</a> of <font color="Maroon" title="c2">V1</font>,<font color="Maroon" title="c2">V1</font> ;<br/>
+<font color="Maroon" title="c3">f</font> <a href="vectsp11.html#K1" title="VECTSP11:func.1">|^</a> <span class="p1">(<span class="default"><font color="Maroon" title="c5">k</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> = 
+<font color="Maroon" title="c6">fk</font> <a href="partfun1.html#K1" title="PARTFUN1:func.1">*</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">f</font> <a href="vectsp11.html#K1" title="VECTSP11:func.1">|^</a> 1</span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="vectsp11.html#T20" target="_self" onmouseover="rs('vectsp11/T20')" onmouseout="rh()">Th20</a></span>
+<br/>.= 
+<font color="Maroon" title="c6">fk</font> <a href="matrlin2.html#K6" title="MATRLIN2:func.6">*</a> <font color="Maroon" title="c3">f</font>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="vectsp11.html#T19" target="_self" onmouseover="rs('vectsp11/T19')" onmouseout="rh()">Th19</a></span>
+;<br/>
+<span class="kw">hence </span><a NAME="E4:31_1_1_1"/>
+<font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c5">k</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1]
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E2:31_1_1"/>
+<font color="Maroon" title="c3">f</font> <a href="vectsp11.html#K1" title="VECTSP11:func.1">|^</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="funct_2.html#R2" title="FUNCT_2:pred.2">=</a>  <a href="struct_0.html#K3" title="STRUCT_0:func.3">id</a> <font color="Maroon" title="c2">V1</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="vectsp11.html#T18" target="_self" onmouseover="rs('vectsp11/T18')" onmouseout="rh()">Th18</a></span>;<br/>
+<a NAME="E3:31_1_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E22">A2</font></span>: 
+<font color="Maroon">S<sub>1</sub></font>[ <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> ]
+ 
+;<br/>
+<a NAME="E4:31_1_1"/>
+ for <font color="Olive" title="b1">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">k</font>]
+ 
+<span class="kw">from</span> <span class="lab"><a class="ref" href="nat_1.html#S2" onmouseover="rs('nat_1/S2')" onmouseout="rh()">NAT_1:sch 2</a>(<a class="txt" href="#E3:31_1_1"><span class="lab"><font color="Green" title="E22">A2</font></span></a>, <a class="txt" href="#E1:31_1_1"><span class="lab"><font color="Green" title="E21">A1</font></span></a>);<br/></span>
+<span class="kw">hence </span><a NAME="E5:31_1_1"/>
+( <font color="Maroon" title="c3">f</font> <a href="vectsp11.html#K1" title="VECTSP11:func.1">|^</a> <font color="Maroon" title="c4">n</font> is  <a href="mod_2.html#V1" title="MOD_2:attr.1">homogeneous</a>  &amp; <font color="Maroon" title="c3">f</font> <a href="vectsp11.html#K1" title="VECTSP11:func.1">|^</a> <font color="Maroon" title="c4">n</font> is  <a href="vectsp_1.html#V13" title="VECTSP_1:attr.13">additive</a>  )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">x</font> be   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">x</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies  <a href="sin_cos2.html#K2" title="SIN_COS2:func.2">sinh</a> <font color="Maroon" title="c1">x</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:49"/><span class="lab"><font color="Green" title="E17">A1</font></span>: 
+<font color="Maroon" title="c1">x</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="sin_cos2.html#K2" title="SIN_COS2:func.2">sinh</a> <font color="Maroon" title="c1">x</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </span><br/>
+
+<a NAME="E2:49"/><span class="kw">then </span>
+<font color="Maroon" title="c1">x</font> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <font color="Maroon" title="c1">x</font></span>)</span> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <font color="Maroon" title="c1">x</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xreal_1.html#T8" onmouseover="rs('xreal_1/T8')" onmouseout="rh()">XREAL_1:8</a></span>;<br/>
+<a NAME="E3:49"/><span class="kw">then </span><span class="lab"><font color="Green" title="E18">A2</font></span>: 
+<a href="sin_cos.html#K22" title="SIN_COS:func.22">exp_R</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <font color="Maroon" title="c1">x</font></span>)</span> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="sin_cos.html#T53" onmouseover="rs('sin_cos/T53')" onmouseout="rh()">SIN_COS:53</a></span>;<br/>
+<a NAME="E4:49"/>
+<a href="sin_cos.html#K22" title="SIN_COS:func.22">exp_R</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c1">x</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:49"><span class="lab"><font color="Green" title="E17">A1</font></span></a>, <a class="ref" href="sin_cos.html#T52" onmouseover="rs('sin_cos/T52')" onmouseout="rh()">SIN_COS:52</a></span>;<br/>
+<a NAME="E5:49"/><span class="kw">then </span>
+<span class="p1">(<span class="default"><a href="sin_cos.html#K22" title="SIN_COS:func.22">exp_R</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c1">x</font></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p1">(<span class="default"><a href="sin_cos.html#K22" title="SIN_COS:func.22">exp_R</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p2">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <font color="Maroon" title="c1">x</font></span>)</span></span>)</span> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> 1 <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:49"><span class="lab"><font color="Green" title="E18">A2</font></span></a>, <a class="ref" href="xreal_1.html#T13" onmouseover="rs('xreal_1/T13')" onmouseout="rh()">XREAL_1:13</a></span>;<br/>
+<a NAME="E6:49"/><span class="kw">then </span>
+<span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="sin_cos.html#K22" title="SIN_COS:func.22">exp_R</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c1">x</font></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p2">(<span class="default"><a href="sin_cos.html#K22" title="SIN_COS:func.22">exp_R</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p3">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <font color="Maroon" title="c1">x</font></span>)</span></span>)</span></span>)</span> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 2 <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xreal_1.html#T136" onmouseover="rs('xreal_1/T136')" onmouseout="rh()">XREAL_1:136</a></span>;<br/>
+<a NAME="E7:49"/><span class="kw">then </span>
+<a href="sin_cos2.html#K1" title="SIN_COS2:func.1">sinh</a> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c1">x</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="sin_cos2.html#D1" onmouseover="rs('sin_cos2/D1')" onmouseout="rh()">SIN_COS2:def 1</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E8:49"/>
+ <a href="sin_cos2.html#K2" title="SIN_COS2:func.2">sinh</a> <font color="Maroon" title="c1">x</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="sin_cos2.html#D2" onmouseover="rs('sin_cos2/D2')" onmouseout="rh()">SIN_COS2:def 2</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

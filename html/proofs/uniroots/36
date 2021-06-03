@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">set </span><font color="Maroon" title="c1">MGFC</font> =  <a href="uniroots.html#K1" title="UNIROOTS:func.1">MultGroup</a> <a href="complfld.html#K1" title="COMPLFLD:func.1">F_Complex</a>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c2">cMGFC</font> =  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><a href="uniroots.html#K1" title="UNIROOTS:func.1">MultGroup</a> <a href="complfld.html#K1" title="COMPLFLD:func.1">F_Complex</a></span>)</span>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c3">FC</font> =  <a href="complfld.html#K1" title="COMPLFLD:func.1">F_Complex</a> ;<br/>
+<span class="kw">let </span><font color="Maroon" title="c4">n</font> be   non  <a href="ordinal1.html#V8" title="ORDINAL1:attr.8">zero</a>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <span class="p1">(<span class="default"><a href="uniroots.html#K1" title="UNIROOTS:func.1">MultGroup</a> <a href="complfld.html#K1" title="COMPLFLD:func.1">F_Complex</a></span>)</span>  st <font color="Olive" title="b1">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c4">n</font> <a href="uniroots.html#K2" title="UNIROOTS:func.2">-roots_of_1</a>  holds <br/> not <font color="Olive" title="b1">x</font> is  <a href="group_1.html#V4" title="GROUP_1:attr.4">being_of_order_0</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c5">x</font> be    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <span class="p1">(<span class="default"><a href="uniroots.html#K1" title="UNIROOTS:func.1">MultGroup</a> <a href="complfld.html#K1" title="COMPLFLD:func.1">F_Complex</a></span>)</span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c5">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c4">n</font> <a href="uniroots.html#K2" title="UNIROOTS:func.2">-roots_of_1</a>  implies  not <font color="Maroon" title="c5">x</font> is  <a href="group_1.html#V4" title="GROUP_1:attr.4">being_of_order_0</a>  )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:36"/>
+<font color="Maroon" title="c5">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c4">n</font> <a href="uniroots.html#K2" title="UNIROOTS:func.2">-roots_of_1</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not <font color="Maroon" title="c5">x</font> is  <a href="group_1.html#V4" title="GROUP_1:attr.4">being_of_order_0</a> </span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c6">c</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <a href="complfld.html#K1" title="COMPLFLD:func.1">F_Complex</a><span class="kw"> such that </span><br/><a NAME="E3:36"/><span class="lab"><font color="Green" title="E31">A1</font></span>: 
+<font color="Maroon" title="c6">c</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c5">x</font>
+ <span class="kw">and </span><br/><a NAME="E4:36"/><span class="lab"><font color="Green" title="E32">A2</font></span>: 
+<font color="Maroon" title="c6">c</font> is    <a href="comptrig.html#M1" title="COMPTRIG:mode.1">CRoot</a> of <font color="Maroon" title="c4">n</font>, <a href="group_1.html#K1" title="GROUP_1:func.1">1_</a> <a href="complfld.html#K1" title="COMPLFLD:func.1">F_Complex</a>
+ ;<br/>
+<a NAME="E5:36"/><span class="lab"><font color="Green" title="E33">A3</font></span>: 
+ <a href="group_1.html#K1" title="GROUP_1:func.1">1_</a> <span class="p1">(<span class="default"><a href="uniroots.html#K1" title="UNIROOTS:func.1">MultGroup</a> <a href="complfld.html#K1" title="COMPLFLD:func.1">F_Complex</a></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="group_1.html#K1" title="GROUP_1:func.1">1_</a> <a href="complfld.html#K1" title="COMPLFLD:func.1">F_Complex</a>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="uniroots.html#T17" target="_self" onmouseover="rs('uniroots/T17')" onmouseout="rh()">Th17</a></span>;<br/>
+<a NAME="E6:36"/>
+<span class="p1">(<span class="default"><a href="group_1.html#K4" title="GROUP_1:func.4">power</a> <a href="complfld.html#K1" title="COMPLFLD:func.1">F_Complex</a></span>)</span> <a href="binop_1.html#K2" title="BINOP_1:func.2">.</a> (<font color="Maroon" title="c6">c</font>,<font color="Maroon" title="c4">n</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="group_1.html#K1" title="GROUP_1:func.1">1_</a> <a href="complfld.html#K1" title="COMPLFLD:func.1">F_Complex</a>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:36"><span class="lab"><font color="Green" title="E32">A2</font></span></a>, <a class="ref" href="complfld.html#D2" onmouseover="rs('complfld/D2')" onmouseout="rh()">COMPLFLD:def 2</a></span>;<br/>
+<a NAME="E7:36"/><span class="kw">then </span>
+<font color="Maroon" title="c5">x</font> <a href="group_1.html#K5" title="GROUP_1:func.5">|^</a> <font color="Maroon" title="c4">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="group_1.html#K1" title="GROUP_1:func.1">1_</a> <span class="p1">(<span class="default"><a href="uniroots.html#K1" title="UNIROOTS:func.1">MultGroup</a> <a href="complfld.html#K1" title="COMPLFLD:func.1">F_Complex</a></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:36"><span class="lab"><font color="Green" title="E31">A1</font></span></a>, <a class="txt" href="#E5:36"><span class="lab"><font color="Green" title="E33">A3</font></span></a>, <a class="ref" href="uniroots.html#T29" target="_self" onmouseover="rs('uniroots/T29')" onmouseout="rh()">Th29</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E8:36"/>
+ not <font color="Maroon" title="c5">x</font> is  <a href="group_1.html#V4" title="GROUP_1:attr.4">being_of_order_0</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

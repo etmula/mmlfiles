@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">t</font>, <font color="Maroon" title="c2">u</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">t</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c2">u</font> implies  <a href="sgraph1.html#K2" title="SGRAPH1:func.2">TWOELEMENTSETS</a> <font color="Maroon" title="c1">t</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="sgraph1.html#K2" title="SGRAPH1:func.2">TWOELEMENTSETS</a> <font color="Maroon" title="c2">u</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:15"/><span class="lab"><font color="Green" title="E9">A1</font></span>: 
+<font color="Maroon" title="c1">t</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c2">u</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="sgraph1.html#K2" title="SGRAPH1:func.2">TWOELEMENTSETS</a> <font color="Maroon" title="c1">t</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="sgraph1.html#K2" title="SGRAPH1:func.2">TWOELEMENTSETS</a> <font color="Maroon" title="c2">u</font></span><br/>
+
+<span class="kw">let </span><font color="Maroon" title="c3">e</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="tarski.html#D3" onmouseover="rs('tarski/D3')" onmouseout="rh()">TARSKI:def 3</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c3">e</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="sgraph1.html#K2" title="SGRAPH1:func.2">TWOELEMENTSETS</a> <font color="Maroon" title="c1">t</font> or <font color="Maroon" title="c3">e</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="sgraph1.html#K2" title="SGRAPH1:func.2">TWOELEMENTSETS</a> <font color="Maroon" title="c2">u</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E2:15"/><span class="lab"><font color="Green" title="E10">A2</font></span>: 
+<font color="Maroon" title="c3">e</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="sgraph1.html#K2" title="SGRAPH1:func.2">TWOELEMENTSETS</a> <font color="Maroon" title="c1">t</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">e</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="sgraph1.html#K2" title="SGRAPH1:func.2">TWOELEMENTSETS</a> <font color="Maroon" title="c2">u</font></span><br/>
+
+<a NAME="E3:15"/><span class="kw">then </span>
+<font color="Maroon" title="c3">e</font> is   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <font color="Maroon" title="c1">t</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="sgraph1.html#T8" target="_self" onmouseover="rs('sgraph1/T8')" onmouseout="rh()">Th8</a></span>;<br/>
+<a NAME="E4:15"/><span class="kw">then </span><span class="lab"><font color="Green" title="E11">A3</font></span>: 
+<font color="Maroon" title="c3">e</font> is   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <font color="Maroon" title="c2">u</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:15"><span class="lab"><font color="Green" title="E9">A1</font></span></a>, <a class="ref" href="xboole_1.html#T1" onmouseover="rs('xboole_1/T1')" onmouseout="rh()">XBOOLE_1:1</a></span>;<br/>
+<a NAME="E5:15"/>
+ ex <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  st <br/>( <font color="Olive" title="b1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c1">t</font> &amp; <font color="Olive" title="b2">y</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c1">t</font> &amp;  not <font color="Olive" title="b1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">y</font> &amp; <font color="Maroon" title="c3">e</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="tarski.html#K2" title="TARSKI:func.2">{</a><span class="default"><font color="Olive" title="b1">x</font>,<font color="Olive" title="b2">y</font></span><a href="tarski.html#K2" title="TARSKI:func.2">}</a></span> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:15"><span class="lab"><font color="Green" title="E10">A2</font></span></a>, <a class="ref" href="sgraph1.html#T8" target="_self" onmouseover="rs('sgraph1/T8')" onmouseout="rh()">Th8</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E6:15"/>
+<font color="Maroon" title="c3">e</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="sgraph1.html#K2" title="SGRAPH1:func.2">TWOELEMENTSETS</a> <font color="Maroon" title="c2">u</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:15"><span class="lab"><font color="Green" title="E9">A1</font></span></a>, <a class="txt" href="#E4:15"><span class="lab"><font color="Green" title="E11">A3</font></span></a>, <a class="ref" href="sgraph1.html#T8" target="_self" onmouseover="rs('sgraph1/T8')" onmouseout="rh()">Th8</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
