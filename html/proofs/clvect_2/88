@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">X</font> be   <a href="csspace.html#NM1" title="CSSPACE:NM.1">ComplexUnitarySpace</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">seq</font> being   <a href="struct_0.html#NM9" title="STRUCT_0:NM.9">sequence</a> of <font color="Maroon" title="c1">X</font>  st <font color="Olive" title="b1">seq</font> is  <a href="funct_1.html#V3" title="FUNCT_1:attr.3">constant</a>  holds <br/><font color="Olive" title="b1">seq</font> is  <a href="clvect_2.html#V3" title="CLVECT_2:attr.3">bounded</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c2">seq</font> be   <a href="struct_0.html#NM9" title="STRUCT_0:NM.9">sequence</a> of <font color="Maroon" title="c1">X</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">seq</font> is  <a href="funct_1.html#V3" title="FUNCT_1:attr.3">constant</a>  implies <font color="Maroon" title="c2">seq</font> is  <a href="clvect_2.html#V3" title="CLVECT_2:attr.3">bounded</a>  )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:88"/>
+<font color="Maroon" title="c2">seq</font> is  <a href="funct_1.html#V3" title="FUNCT_1:attr.3">constant</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">seq</font> is  <a href="clvect_2.html#V3" title="CLVECT_2:attr.3">bounded</a> </span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c3">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Maroon" title="c1">X</font><span class="kw"> such that </span><br/><a NAME="E3:88"/><span class="lab"><font color="Green" title="E41">A1</font></span>: 
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Maroon" title="c2">seq</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">x</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="valued_0.html#D18" onmouseover="rs('valued_0/D18')" onmouseout="rh()">VALUED_0:def 18</a></span>;<br/>
+<a NAME="E4:88"/><span class="lab"><font color="Green" title="E42">A2</font></span>: 
+( <font color="Maroon" title="c3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c1">X</font>) implies <font color="Maroon" title="c2">seq</font> is  <a href="clvect_2.html#V3" title="CLVECT_2:attr.3">bounded</a>  )
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="88_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">consider </span><font color="Maroon" title="c4">M</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a><span class="kw"> such that </span><br/><a NAME="E2:88_1"/><span class="lab"><font color="Green" title="E43">A3</font></span>: 
+<font color="Maroon" title="c4">M</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="xreal_1.html#T1" onmouseover="rs('xreal_1/T1')" onmouseout="rh()">XREAL_1:1</a></span>;<br/>
+<span class="kw">assume </span><a NAME="E3:88_1"/><span class="lab"><font color="Green" title="E44">A4</font></span>: 
+<font color="Maroon" title="c3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c1">X</font>)
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">seq</font> is  <a href="clvect_2.html#V3" title="CLVECT_2:attr.3">bounded</a> </span><br/>
+
+<a NAME="E4:88_1"/>
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <span class="p1"><a href="csspace.html#K11" title="CSSPACE:func.11">||.</a><span class="default"><span class="p2">(<span class="default"><font color="Maroon" title="c2">seq</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b1">n</font></span>)</span></span><a href="csspace.html#K11" title="CSSPACE:func.11">.||</a></span> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c4">M</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:88_1"><span class="lab"><font color="Green" title="E43">A3</font></span></a>, <a class="ref" href="csspace.html#T42" onmouseover="rs('csspace/T42')" onmouseout="rh()">CSSPACE:42</a>, <a class="txt" href="#E3:88"><span class="lab"><font color="Green" title="E41">A1</font></span></a>, <a class="txt" href="#E3:88_1"><span class="lab"><font color="Green" title="E44">A4</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:88_1"/>
+<font color="Maroon" title="c2">seq</font> is  <a href="clvect_2.html#V3" title="CLVECT_2:attr.3">bounded</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:88_1"><span class="lab"><font color="Green" title="E43">A3</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E5:88"/>
+( <font color="Maroon" title="c3">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c1">X</font>) implies <font color="Maroon" title="c2">seq</font> is  <a href="clvect_2.html#V3" title="CLVECT_2:attr.3">bounded</a>  )
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="88_2"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><a NAME="E1:88_2"/>
+<font color="Maroon" title="c3">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c1">X</font>)
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">seq</font> is  <a href="clvect_2.html#V3" title="CLVECT_2:attr.3">bounded</a> </span><br/>
+
+<span class="kw">consider </span><font color="Maroon" title="c4">M</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a><span class="kw"> such that </span><br/><a NAME="E3:88_2"/><span class="lab"><font color="Green" title="E43">A5</font></span>: 
+<span class="p1"><a href="csspace.html#K11" title="CSSPACE:func.11">||.</a><span class="default"><font color="Maroon" title="c3">x</font></span><a href="csspace.html#K11" title="CSSPACE:func.11">.||</a></span> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c4">M</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="xreal_1.html#T1" onmouseover="rs('xreal_1/T1')" onmouseout="rh()">XREAL_1:1</a></span>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c5">M</font> = <font color="Maroon" title="c4">M</font> as   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> ;<br/>
+<a NAME="E5:88_2"/>
+( <span class="p1"><a href="csspace.html#K11" title="CSSPACE:func.11">||.</a><span class="default"><font color="Maroon" title="c3">x</font></span><a href="csspace.html#K11" title="CSSPACE:func.11">.||</a></span> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; (  for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <span class="p1"><a href="csspace.html#K11" title="CSSPACE:func.11">||.</a><span class="default"><span class="p2">(<span class="default"><font color="Maroon" title="c2">seq</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b1">n</font></span>)</span></span><a href="csspace.html#K11" title="CSSPACE:func.11">.||</a></span> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c5">M</font> ) )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:88"><span class="lab"><font color="Green" title="E41">A1</font></span></a>, <a class="txt" href="#E3:88_2"><span class="lab"><font color="Green" title="E43">A5</font></span></a>, <a class="ref" href="csspace.html#T44" onmouseover="rs('csspace/T44')" onmouseout="rh()">CSSPACE:44</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E6:88_2"/>
+<font color="Maroon" title="c2">seq</font> is  <a href="clvect_2.html#V3" title="CLVECT_2:attr.3">bounded</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:88_2"><span class="lab"><font color="Green" title="E43">A5</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E6:88"/>
+<font color="Maroon" title="c2">seq</font> is  <a href="clvect_2.html#V3" title="CLVECT_2:attr.3">bounded</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:88"><span class="lab"><font color="Green" title="E42">A2</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

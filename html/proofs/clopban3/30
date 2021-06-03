@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">X</font> be   <a href="clvect_1.html#NM5" title="CLVECT_1:NM.5">ComplexNormSpace</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">s</font> being   <a href="struct_0.html#NM9" title="STRUCT_0:NM.9">sequence</a> of <font color="Maroon" title="c1">X</font>  st <font color="Olive" title="b1">s</font> is  <a href="clopban3.html#V1" title="CLOPBAN3:attr.1">summable</a>  holds <br/> for <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive" title="b1">s</font> <a href="valued_0.html#K1" title="VALUED_0:func.1">^\</a> <font color="Olive" title="b2">n</font> is  <a href="clopban3.html#V1" title="CLOPBAN3:attr.1">summable</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c2">s</font> be   <a href="struct_0.html#NM9" title="STRUCT_0:NM.9">sequence</a> of <font color="Maroon" title="c1">X</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">s</font> is  <a href="clopban3.html#V1" title="CLOPBAN3:attr.1">summable</a>  implies  for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Maroon" title="c2">s</font> <a href="valued_0.html#K1" title="VALUED_0:func.1">^\</a> <font color="Olive" title="b1">n</font> is  <a href="clopban3.html#V1" title="CLOPBAN3:attr.1">summable</a>  )</span><br/>
+
+
+
+<span class="kw">defpred </span><font color="Maroon">S<sub>1</sub></font>[  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>] <span class="kw">means </span><font color="Maroon" title="c2">s</font> <a href="valued_0.html#K1" title="VALUED_0:func.1">^\</a> $1 is  <a href="clopban3.html#V1" title="CLOPBAN3:attr.1">summable</a> ;<br/>
+<a NAME="E1:30"/><span class="lab"><font color="Green" title="E24">A1</font></span>: 
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">n</font>] holds <br/><font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1]
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="30_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">n</font>] implies <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1] )</span><br/>
+
+<span class="kw">reconsider </span><font color="Maroon" title="c4">s1</font> = <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <a href="funcop_1.html#K8" title="FUNCOP_1:func.8">--&gt;</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Maroon" title="c2">s</font> <a href="valued_0.html#K1" title="VALUED_0:func.1">^\</a> <font color="Maroon" title="c3">n</font></span>)</span> <a href="normsp_0.html#K1" title="NORMSP_0:func.1">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a></span>)</span> as   <a href="struct_0.html#NM9" title="STRUCT_0:NM.9">sequence</a> of <font color="Maroon" title="c1">X</font> ;<br/>
+<a NAME="E2:30_1"/>
+ for <font color="Olive" title="b1">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Maroon" title="c4">s1</font> <a href="normsp_0.html#K1" title="NORMSP_0:func.1">.</a> <font color="Olive" title="b1">k</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Maroon" title="c2">s</font> <a href="valued_0.html#K1" title="VALUED_0:func.1">^\</a> <font color="Maroon" title="c3">n</font></span>)</span> <a href="normsp_0.html#K1" title="NORMSP_0:func.1">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="ordinal1.html#D12" onmouseover="rs('ordinal1/D12')" onmouseout="rh()">ORDINAL1:def 12</a>, <a class="ref" href="funcop_1.html#T7" onmouseover="rs('funcop_1/T7')" onmouseout="rh()">FUNCOP_1:7</a></span>;<br/>
+<a NAME="E3:30_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E25">A2</font></span>: 
+ <a href="bhsp_4.html#K1" title="BHSP_4:func.1">Partial_Sums</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Maroon" title="c2">s</font> <a href="valued_0.html#K1" title="VALUED_0:func.1">^\</a> <font color="Maroon" title="c3">n</font></span>)</span> <a href="valued_0.html#K1" title="VALUED_0:func.1">^\</a> 1</span>)</span> <a href="funct_2.html#R2" title="FUNCT_2:pred.2">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="bhsp_4.html#K1" title="BHSP_4:func.1">Partial_Sums</a> <span class="p3">(<span class="default"><font color="Maroon" title="c2">s</font> <a href="valued_0.html#K1" title="VALUED_0:func.1">^\</a> <font color="Maroon" title="c3">n</font></span>)</span></span>)</span> <a href="valued_0.html#K1" title="VALUED_0:func.1">^\</a> 1</span>)</span> <a href="normsp_1.html#K2" title="NORMSP_1:func.2">-</a> <font color="Maroon" title="c4">s1</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="clopban3.html#T21" target="_self" onmouseover="rs('clopban3/T21')" onmouseout="rh()">Th21</a></span>;<br/>
+<span class="kw">assume </span><a NAME="E4:30_1"/>
+<font color="Maroon" title="c2">s</font> <a href="valued_0.html#K1" title="VALUED_0:func.1">^\</a> <font color="Maroon" title="c3">n</font> is  <a href="clopban3.html#V1" title="CLOPBAN3:attr.1">summable</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1]</span><br/>
+
+<a NAME="E5:30_1"/><span class="kw">then </span>
+ <a href="bhsp_4.html#K1" title="BHSP_4:func.1">Partial_Sums</a> <span class="p1">(<span class="default"><font color="Maroon" title="c2">s</font> <a href="valued_0.html#K1" title="VALUED_0:func.1">^\</a> <font color="Maroon" title="c3">n</font></span>)</span> is  <a href="clvect_1.html#V9" title="CLVECT_1:attr.9">convergent</a> 
+ 
+;<br/>
+<a NAME="E6:30_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E26">A3</font></span>: 
+<span class="p1">(<span class="default"><a href="bhsp_4.html#K1" title="BHSP_4:func.1">Partial_Sums</a> <span class="p2">(<span class="default"><font color="Maroon" title="c2">s</font> <a href="valued_0.html#K1" title="VALUED_0:func.1">^\</a> <font color="Maroon" title="c3">n</font></span>)</span></span>)</span> <a href="valued_0.html#K1" title="VALUED_0:func.1">^\</a> 1 is  <a href="clvect_1.html#V9" title="CLVECT_1:attr.9">convergent</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="clopban3.html#T7" target="_self" onmouseover="rs('clopban3/T7')" onmouseout="rh()">Th7</a></span>;<br/>
+<a NAME="E7:30_1"/>
+<font color="Maroon" title="c4">s1</font> is  <a href="clvect_1.html#V9" title="CLVECT_1:attr.9">convergent</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="clopban3.html#T12" target="_self" onmouseover="rs('clopban3/T12')" onmouseout="rh()">Th12</a></span>;<br/>
+<a NAME="E8:30_1"/><span class="kw">then </span>
+( <font color="Maroon" title="c2">s</font> <a href="valued_0.html#K1" title="VALUED_0:func.1">^\</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="funct_2.html#R2" title="FUNCT_2:pred.2">=</a> <span class="p1">(<span class="default"><font color="Maroon" title="c2">s</font> <a href="valued_0.html#K1" title="VALUED_0:func.1">^\</a> <font color="Maroon" title="c3">n</font></span>)</span> <a href="valued_0.html#K1" title="VALUED_0:func.1">^\</a> 1 &amp;  <a href="bhsp_4.html#K1" title="BHSP_4:func.1">Partial_Sums</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Maroon" title="c2">s</font> <a href="valued_0.html#K1" title="VALUED_0:func.1">^\</a> <font color="Maroon" title="c3">n</font></span>)</span> <a href="valued_0.html#K1" title="VALUED_0:func.1">^\</a> 1</span>)</span> is  <a href="clvect_1.html#V9" title="CLVECT_1:attr.9">convergent</a>  )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:30_1"><span class="lab"><font color="Green" title="E26">A3</font></span></a>, <a class="txt" href="#E3:30_1"><span class="lab"><font color="Green" title="E25">A2</font></span></a>, <a class="ref" href="clvect_1.html#T114" onmouseover="rs('clvect_1/T114')" onmouseout="rh()">CLVECT_1:114</a>, <a class="ref" href="nat_1.html#T48" onmouseover="rs('nat_1/T48')" onmouseout="rh()">NAT_1:48</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E9:30_1"/>
+<font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1]
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="clopban3.html#D1" target="_self" onmouseover="rs('clopban3/D1')" onmouseout="rh()">Def1</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">assume </span><a NAME="E2:30"/>
+<font color="Maroon" title="c2">s</font> is  <a href="clopban3.html#V1" title="CLOPBAN3:attr.1">summable</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Maroon" title="c2">s</font> <a href="valued_0.html#K1" title="VALUED_0:func.1">^\</a> <font color="Olive" title="b1">n</font> is  <a href="clopban3.html#V1" title="CLOPBAN3:attr.1">summable</a> </span><br/>
+
+<a NAME="E3:30"/><span class="kw">then </span><span class="lab"><font color="Green" title="E25">A4</font></span>: 
+<font color="Maroon">S<sub>1</sub></font>[ <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> ]
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_1.html#T47" onmouseover="rs('nat_1/T47')" onmouseout="rh()">NAT_1:47</a></span>;<br/>
+<span class="kw">thus </span><a NAME="E4:30"/>
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">n</font>]
+ <span class="kw">from</span> <span class="lab"><a class="ref" href="nat_1.html#S2" onmouseover="rs('nat_1/S2')" onmouseout="rh()">NAT_1:sch 2</a>(<a class="txt" href="#E3:30"><span class="lab"><font color="Green" title="E25">A4</font></span></a>, <a class="txt" href="#E1:30"><span class="lab"><font color="Green" title="E24">A1</font></span></a>);</span> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
