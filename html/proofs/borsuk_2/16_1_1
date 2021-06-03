@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">GX</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">GX</font> is  <a href="borsuk_2.html#V1" title="BORSUK_2:attr.1">pathwise_connected</a>  implies <font color="Maroon" title="c1">GX</font> is  <a href="connsp_1.html#V1" title="CONNSP_1:attr.1">connected</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:16_1_1"/><span class="lab"><font color="Green" title="E7">A1</font></span>: 
+ for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Maroon" title="c1">GX</font> holds  <font color="Olive" title="b1">x</font>,<font color="Olive" title="b2">y</font> <a href="borsuk_2.html#R2" title="BORSUK_2:pred.2">are_connected</a> 
+ ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="borsuk_2.html#D3" target="_self" onmouseover="rs('borsuk_2/D3')" onmouseout="rh()">BORSUK_2:def 3</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">GX</font> is  <a href="connsp_1.html#V1" title="CONNSP_1:attr.1">connected</a> </span><br/>
+
+<a NAME="E2:16_1_1"/>
+ for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Maroon" title="c1">GX</font>  ex <font color="Olive" title="b3">GY</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> st <br/>( <font color="Olive" title="b3">GY</font> is  <a href="connsp_1.html#V1" title="CONNSP_1:attr.1">connected</a>  &amp;  ex <font color="Olive" title="b4">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b3">GY</font>,<font color="Maroon" title="c1">GX</font> st <br/>( <font color="Olive" title="b4">f</font> is  <a href="pre_topc.html#V5" title="PRE_TOPC:attr.5">continuous</a>  &amp; <font color="Olive" title="b1">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b4">f</font> &amp; <font color="Olive" title="b2">y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b4">f</font> ) )
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="16_1_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c2">x</font>, <font color="Maroon" title="c3">y</font> be   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Maroon" title="c1">GX</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  ex <font color="Olive" title="b1">GY</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> st <br/>( <font color="Olive" title="b1">GY</font> is  <a href="connsp_1.html#V1" title="CONNSP_1:attr.1">connected</a>  &amp;  ex <font color="Olive" title="b2">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">GY</font>,<font color="Maroon" title="c1">GX</font> st <br/>( <font color="Olive" title="b2">f</font> is  <a href="pre_topc.html#V5" title="PRE_TOPC:attr.5">continuous</a>  &amp; <font color="Maroon" title="c2">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b2">f</font> &amp; <font color="Maroon" title="c3">y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b2">f</font> ) )</span><br/>
+
+<a NAME="E1:16_1_1_1"/>
+<font color="Maroon" title="c2">x</font>,<font color="Maroon" title="c3">y</font> <a href="borsuk_2.html#R2" title="BORSUK_2:pred.2">are_connected</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:16_1_1"><span class="lab"><font color="Green" title="E7">A1</font></span></a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c4">h</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <a href="topmetr.html#K5" title="TOPMETR:func.5">I[01]</a>,<font color="Maroon" title="c1">GX</font><span class="kw"> such that </span><br/><a NAME="E3:16_1_1_1"/><span class="lab"><font color="Green" title="E8">A2</font></span>: 
+<font color="Maroon" title="c4">h</font> is  <a href="pre_topc.html#V5" title="PRE_TOPC:attr.5">continuous</a> 
+ <span class="kw">and </span><br/><a NAME="E4:16_1_1_1"/><span class="lab"><font color="Green" title="E9">A3</font></span>: 
+<font color="Maroon" title="c2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">h</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>
+ <span class="kw">and </span><br/><a NAME="E5:16_1_1_1"/><span class="lab"><font color="Green" title="E10">A4</font></span>: 
+<font color="Maroon" title="c3">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">h</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> 1
+ ;<br/>
+<a NAME="E6:16_1_1_1"/>
+1 <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Maroon" title="c4">h</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="borsuk_2.html#E9"><span class="lab"><font color="Green" title="E6">Lm2</font></span></a>, <a class="ref" href="borsuk_1.html#T40" onmouseover="rs('borsuk_1/T40')" onmouseout="rh()">BORSUK_1:40</a>, <a class="ref" href="funct_2.html#D1" onmouseover="rs('funct_2/D1')" onmouseout="rh()">FUNCT_2:def 1</a></span>;<br/>
+<a NAME="E7:16_1_1_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E11">A5</font></span>: 
+<font color="Maroon" title="c3">y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Maroon" title="c4">h</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:16_1_1_1"><span class="lab"><font color="Green" title="E10">A4</font></span></a>, <a class="ref" href="funct_1.html#D3" onmouseover="rs('funct_1/D3')" onmouseout="rh()">FUNCT_1:def 3</a></span>;<br/>
+<a NAME="E8:16_1_1_1"/>
+ <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a> <font color="Maroon" title="c4">h</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="borsuk_2.html#E9"><span class="lab"><font color="Green" title="E6">Lm2</font></span></a>, <a class="ref" href="borsuk_1.html#T40" onmouseover="rs('borsuk_1/T40')" onmouseout="rh()">BORSUK_1:40</a>, <a class="ref" href="funct_2.html#D1" onmouseover="rs('funct_2/D1')" onmouseout="rh()">FUNCT_2:def 1</a></span>;<br/>
+<a NAME="E9:16_1_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c2">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Maroon" title="c4">h</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:16_1_1_1"><span class="lab"><font color="Green" title="E9">A3</font></span></a>, <a class="ref" href="funct_1.html#D3" onmouseover="rs('funct_1/D3')" onmouseout="rh()">FUNCT_1:def 3</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E10:16_1_1_1"/>
+ ex <font color="Olive" title="b1">GY</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a> st <br/>( <font color="Olive" title="b1">GY</font> is  <a href="connsp_1.html#V1" title="CONNSP_1:attr.1">connected</a>  &amp;  ex <font color="Olive" title="b2">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">GY</font>,<font color="Maroon" title="c1">GX</font> st <br/>( <font color="Olive" title="b2">f</font> is  <a href="pre_topc.html#V5" title="PRE_TOPC:attr.5">continuous</a>  &amp; <font color="Maroon" title="c2">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b2">f</font> &amp; <font color="Maroon" title="c3">y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b2">f</font> ) )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:16_1_1_1"><span class="lab"><font color="Green" title="E8">A2</font></span></a>, <a class="txt" href="#E7:16_1_1_1"><span class="lab"><font color="Green" title="E11">A5</font></span></a>, <a class="ref" href="treal_1.html#T19" onmouseover="rs('treal_1/T19')" onmouseout="rh()">TREAL_1:19</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E3:16_1_1"/>
+<font color="Maroon" title="c1">GX</font> is  <a href="connsp_1.html#V1" title="CONNSP_1:attr.1">connected</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="tops_2.html#T63" onmouseover="rs('tops_2/T63')" onmouseout="rh()">TOPS_2:63</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

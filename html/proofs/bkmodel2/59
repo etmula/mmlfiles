@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">CLSP</font> be   <a href="collsp.html#NM2" title="COLLSP:NM.2">CollSp</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">p</font>, <font color="Olive" title="b2">q</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">CLSP</font> holds   <a href="collsp.html#K1" title="COLLSP:func.1">Line</a> (<font color="Olive" title="b1">p</font>,<font color="Olive" title="b2">q</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="collsp.html#K1" title="COLLSP:func.1">Line</a> (<font color="Olive" title="b2">q</font>,<font color="Olive" title="b1">p</font>)</span><br/><span class="kw">let </span><font color="Maroon" title="c2">p</font>, <font color="Maroon" title="c3">q</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">CLSP</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="collsp.html#K1" title="COLLSP:func.1">Line</a> (<font color="Maroon" title="c2">p</font>,<font color="Maroon" title="c3">q</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="collsp.html#K1" title="COLLSP:func.1">Line</a> (<font color="Maroon" title="c3">q</font>,<font color="Maroon" title="c2">p</font>)</span><br/>
+
+
+
+<a NAME="E1:59"/><span class="lab"><font color="Green" title="E46">A1</font></span>: 
+ <a href="collsp.html#K1" title="COLLSP:func.1">Line</a> (<font color="Maroon" title="c2">p</font>,<font color="Maroon" title="c3">q</font>) <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="collsp.html#K1" title="COLLSP:func.1">Line</a> (<font color="Maroon" title="c3">q</font>,<font color="Maroon" title="c2">p</font>)
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="59_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">x</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="tarski.html#D3" onmouseover="rs('tarski/D3')" onmouseout="rh()">TARSKI:def 3</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="collsp.html#K1" title="COLLSP:func.1">Line</a> (<font color="Maroon" title="c2">p</font>,<font color="Maroon" title="c3">q</font>) or <font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="collsp.html#K1" title="COLLSP:func.1">Line</a> (<font color="Maroon" title="c3">q</font>,<font color="Maroon" title="c2">p</font>) )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:59_1"/>
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="collsp.html#K1" title="COLLSP:func.1">Line</a> (<font color="Maroon" title="c2">p</font>,<font color="Maroon" title="c3">q</font>)
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="collsp.html#K1" title="COLLSP:func.1">Line</a> (<font color="Maroon" title="c3">q</font>,<font color="Maroon" title="c2">p</font>)</span><br/>
+
+<a NAME="E2:59_1"/><span class="kw">then </span>
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">y</font> where <font color="Olive" title="b1">y</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">CLSP</font> : <font color="Maroon" title="c2">p</font>,<font color="Maroon" title="c3">q</font>,<font color="Olive" title="b1">y</font> <a href="collsp.html#R1" title="COLLSP:pred.1">are_collinear</a>  </span> } </span> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="collsp.html#D5" onmouseover="rs('collsp/D5')" onmouseout="rh()">COLLSP:def 5</a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c5">y</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">CLSP</font><span class="kw"> such that </span><br/><a NAME="E4:59_1"/><span class="lab"><font color="Green" title="E47">A2</font></span>: 
+<font color="Maroon" title="c5">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">x</font>
+ <span class="kw">and </span><br/><a NAME="E5:59_1"/><span class="lab"><font color="Green" title="E48">A3</font></span>: 
+<font color="Maroon" title="c2">p</font>,<font color="Maroon" title="c3">q</font>,<font color="Maroon" title="c5">y</font> <a href="collsp.html#R1" title="COLLSP:pred.1">are_collinear</a> 
+ ;<br/>
+<a NAME="E6:59_1"/>
+<font color="Maroon" title="c3">q</font>,<font color="Maroon" title="c2">p</font>,<font color="Maroon" title="c5">y</font> <a href="collsp.html#R1" title="COLLSP:pred.1">are_collinear</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:59_1"><span class="lab"><font color="Green" title="E48">A3</font></span></a>, <a class="ref" href="collsp.html#T4" onmouseover="rs('collsp/T4')" onmouseout="rh()">COLLSP:4</a></span>;<br/>
+<a NAME="E7:59_1"/><span class="kw">then </span>
+<font color="Maroon" title="c5">y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">y</font> where <font color="Olive" title="b1">y</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">CLSP</font> : <font color="Maroon" title="c3">q</font>,<font color="Maroon" title="c2">p</font>,<font color="Olive" title="b1">y</font> <a href="collsp.html#R1" title="COLLSP:pred.1">are_collinear</a>  </span> } </span> 
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E8:59_1"/>
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="collsp.html#K1" title="COLLSP:func.1">Line</a> (<font color="Maroon" title="c3">q</font>,<font color="Maroon" title="c2">p</font>)
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:59_1"><span class="lab"><font color="Green" title="E47">A2</font></span></a>, <a class="ref" href="collsp.html#D5" onmouseover="rs('collsp/D5')" onmouseout="rh()">COLLSP:def 5</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E2:59"/>
+ <a href="collsp.html#K1" title="COLLSP:func.1">Line</a> (<font color="Maroon" title="c3">q</font>,<font color="Maroon" title="c2">p</font>) <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="collsp.html#K1" title="COLLSP:func.1">Line</a> (<font color="Maroon" title="c2">p</font>,<font color="Maroon" title="c3">q</font>)
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="59_2"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">x</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="tarski.html#D3" onmouseover="rs('tarski/D3')" onmouseout="rh()">TARSKI:def 3</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="collsp.html#K1" title="COLLSP:func.1">Line</a> (<font color="Maroon" title="c3">q</font>,<font color="Maroon" title="c2">p</font>) or <font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="collsp.html#K1" title="COLLSP:func.1">Line</a> (<font color="Maroon" title="c2">p</font>,<font color="Maroon" title="c3">q</font>) )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:59_2"/>
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="collsp.html#K1" title="COLLSP:func.1">Line</a> (<font color="Maroon" title="c3">q</font>,<font color="Maroon" title="c2">p</font>)
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="collsp.html#K1" title="COLLSP:func.1">Line</a> (<font color="Maroon" title="c2">p</font>,<font color="Maroon" title="c3">q</font>)</span><br/>
+
+<a NAME="E2:59_2"/><span class="kw">then </span>
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">y</font> where <font color="Olive" title="b1">y</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">CLSP</font> : <font color="Maroon" title="c3">q</font>,<font color="Maroon" title="c2">p</font>,<font color="Olive" title="b1">y</font> <a href="collsp.html#R1" title="COLLSP:pred.1">are_collinear</a>  </span> } </span> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="collsp.html#D5" onmouseover="rs('collsp/D5')" onmouseout="rh()">COLLSP:def 5</a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c5">y</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">CLSP</font><span class="kw"> such that </span><br/><a NAME="E4:59_2"/><span class="lab"><font color="Green" title="E47">A4</font></span>: 
+<font color="Maroon" title="c5">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">x</font>
+ <span class="kw">and </span><br/><a NAME="E5:59_2"/><span class="lab"><font color="Green" title="E48">A5</font></span>: 
+<font color="Maroon" title="c3">q</font>,<font color="Maroon" title="c2">p</font>,<font color="Maroon" title="c5">y</font> <a href="collsp.html#R1" title="COLLSP:pred.1">are_collinear</a> 
+ ;<br/>
+<a NAME="E6:59_2"/>
+<font color="Maroon" title="c2">p</font>,<font color="Maroon" title="c3">q</font>,<font color="Maroon" title="c5">y</font> <a href="collsp.html#R1" title="COLLSP:pred.1">are_collinear</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:59_2"><span class="lab"><font color="Green" title="E48">A5</font></span></a>, <a class="ref" href="collsp.html#T4" onmouseover="rs('collsp/T4')" onmouseout="rh()">COLLSP:4</a></span>;<br/>
+<a NAME="E7:59_2"/><span class="kw">then </span>
+<font color="Maroon" title="c5">y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">y</font> where <font color="Olive" title="b1">y</font> is   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">CLSP</font> : <font color="Maroon" title="c2">p</font>,<font color="Maroon" title="c3">q</font>,<font color="Olive" title="b1">y</font> <a href="collsp.html#R1" title="COLLSP:pred.1">are_collinear</a>  </span> } </span> 
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E8:59_2"/>
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="collsp.html#K1" title="COLLSP:func.1">Line</a> (<font color="Maroon" title="c2">p</font>,<font color="Maroon" title="c3">q</font>)
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:59_2"><span class="lab"><font color="Green" title="E47">A4</font></span></a>, <a class="ref" href="collsp.html#D5" onmouseover="rs('collsp/D5')" onmouseout="rh()">COLLSP:def 5</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E3:59"/>
+ <a href="collsp.html#K1" title="COLLSP:func.1">Line</a> (<font color="Maroon" title="c2">p</font>,<font color="Maroon" title="c3">q</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="collsp.html#K1" title="COLLSP:func.1">Line</a> (<font color="Maroon" title="c3">q</font>,<font color="Maroon" title="c2">p</font>)
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:59"><span class="lab"><font color="Green" title="E46">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
