@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">set </span><font color="Maroon" title="c2">x</font> =  the    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">S</font>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c3">sx</font> = <span class="p1"><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">&lt;*</a><span class="default"> the    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">S</font></span><a href="finseq_1.html#K12" title="FINSEQ_1:func.12">*&gt;</a></span> as    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of <font color="Maroon" title="c1">S</font> ;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c4">sx</font> = <font color="Maroon" title="c3">sx</font> as    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Maroon" title="c1">S</font> <a href="finseq_2.html#K3" title="FINSEQ_2:func.3">*</a>  <span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_1.html#D11" onmouseover="rs('finseq_1/D11')" onmouseout="rh()">FINSEQ_1:def 11</a></span>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c5">Dx</font> =  <a href="dist_1.html#K5" title="DIST_1:func.5">Finseq-EQclass</a> <font color="Maroon" title="c4">sx</font> as    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="dist_1.html#K6" title="DIST_1:func.6">distribution_family</a> <font color="Maroon" title="c1">S</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="dist_1.html#D6" onmouseover="rs('dist_1/D6')" onmouseout="rh()">DIST_1:def 6</a></span>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c6">z</font> =  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  as    <a href="finseq_2.html#M2" title="FINSEQ_2:mode.2">Element</a> of <font color="Maroon" title="c1">S</font> <a href="finseq_2.html#K3" title="FINSEQ_2:func.3">*</a>  <span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_1.html#T49" onmouseover="rs('finseq_1/T49')" onmouseout="rh()">FINSEQ_1:49</a></span>;<br/>
+<a NAME="E5:10_1_1"/>
+ not  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c5">Dx</font>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="10_1_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><a NAME="E1:10_1_1_1"/>
+ <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c5">Dx</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c7">z</font> =  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  as    <a href="dist_2.html#M1" title="DIST_2:mode.1">Element</a> of <font color="Maroon" title="c5">Dx</font> ;<br/>
+<a NAME="E3:10_1_1_1"/><span class="lab"><font color="Green" title="E5">A1</font></span>: 
+(  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c4">sx</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 &amp;  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Maroon" title="c4">sx</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"> the    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">S</font></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_1.html#T39" onmouseover="rs('finseq_1/T39')" onmouseout="rh()">FINSEQ_1:39</a></span>;<br/>
+<a NAME="E4:10_1_1_1"/>
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c4">sx</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="card_1.html#K4" title="CARD_1:func.4">card</a> <span class="p1">(<span class="default"><a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Maroon" title="c4">sx</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:10_1_1_1"><span class="lab"><font color="Green" title="E5">A1</font></span></a>, <a class="ref" href="card_1.html#T30" onmouseover="rs('card_1/T30')" onmouseout="rh()">CARD_1:30</a></span>;<br/>
+<a NAME="E5:10_1_1_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E6">A2</font></span>: 
+<font color="Maroon" title="c4">sx</font> is  <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_4.html#T62" onmouseover="rs('finseq_4/T62')" onmouseout="rh()">FINSEQ_4:62</a></span>;<br/>
+<a NAME="E6:10_1_1_1"/><span class="lab"><font color="Green" title="E7">A3</font></span>: 
+ the    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">S</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Maroon" title="c4">sx</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:10_1_1_1"><span class="lab"><font color="Green" title="E5">A1</font></span></a>, <a class="ref" href="tarski.html#D1" onmouseover="rs('tarski/D1')" onmouseout="rh()">TARSKI:def 1</a></span>;<br/>
+<a NAME="E7:10_1_1_1"/>
+ <a href="dist_1.html#K3" title="DIST_1:func.3">FDprobability</a> ( the    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">S</font>,<font color="Maroon" title="c4">sx</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="dist_1.html#K3" title="DIST_1:func.3">FDprobability</a> ( the    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">S</font>,<font color="Maroon" title="c7">z</font>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="dist_1.html#D4" onmouseover="rs('dist_1/D4')" onmouseout="rh()">DIST_1:def 4</a>, <a class="ref" href="dist_1.html#T7" onmouseover="rs('dist_1/T7')" onmouseout="rh()">DIST_1:7</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E8:10_1_1_1"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:10_1_1_1"><span class="lab"><font color="Green" title="E7">A3</font></span></a>, <a class="txt" href="#E3:10_1_1_1"><span class="lab"><font color="Green" title="E5">A1</font></span></a>, <a class="txt" href="#E5:10_1_1_1"><span class="lab"><font color="Green" title="E6">A2</font></span></a>, <a class="ref" href="finseq_4.html#T73" onmouseover="rs('finseq_4/T73')" onmouseout="rh()">FINSEQ_4:73</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E6:10_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c5">Dx</font> is  <a href="dist_2.html#NV1" title="DIST_2:NV.1">well-distributed</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="setfam_1.html#D8" onmouseover="rs('setfam_1/D8')" onmouseout="rh()">SETFAM_1:def 8</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:10_1_1"/>
+ ex <font color="Olive">b<sub>1</sub></font> being    <a href="subset_1.html#M2" title="SUBSET_1:mode.2">Element</a> of  <a href="dist_1.html#K6" title="DIST_1:func.6">distribution_family</a> <font color="Maroon" title="c1">S</font> st <font color="Olive">b<sub>1</sub></font> is  <a href="dist_2.html#NV1" title="DIST_2:NV.1">well-distributed</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

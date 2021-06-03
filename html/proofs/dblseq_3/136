@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">seq</font> be   <a href="mesfunc5.html#NM1" title="MESFUNC5:NM.1">ExtREAL_sequence</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">r</font> being   <a href="supinf_1.html#NM1" title="SUPINF_1:NM.1">R_eal</a>  st (  for <font color="Olive" title="b2">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive" title="b1">r</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">seq</font> <a href="supinf_2.html#K12" title="SUPINF_2:func.12">.</a> <font color="Olive" title="b2">n</font> ) holds <br/><font color="Olive" title="b1">r</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="rinfsup2.html#K6" title="RINFSUP2:func.6">lim_inf</a> <font color="Maroon" title="c1">seq</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">r</font> be   <a href="supinf_1.html#NM1" title="SUPINF_1:NM.1">R_eal</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( (  for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Maroon" title="c2">r</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">seq</font> <a href="supinf_2.html#K12" title="SUPINF_2:func.12">.</a> <font color="Olive" title="b1">n</font> ) implies <font color="Maroon" title="c2">r</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="rinfsup2.html#K6" title="RINFSUP2:func.6">lim_inf</a> <font color="Maroon" title="c1">seq</font> )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:136"/><span class="lab"><font color="Green" title="E59">A1</font></span>: 
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Maroon" title="c2">r</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">seq</font> <a href="supinf_2.html#K12" title="SUPINF_2:func.12">.</a> <font color="Olive" title="b1">n</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">r</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="rinfsup2.html#K6" title="RINFSUP2:func.6">lim_inf</a> <font color="Maroon" title="c1">seq</font></span><br/>
+
+<span class="kw">deffunc </span><font color="Maroon">H<sub>1</sub></font>(   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> ) <span class="kw">-&gt; </span>  <a href="supinf_1.html#NM1" title="SUPINF_1:NM.1">R_eal</a> = <font color="Maroon" title="c2">r</font>;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c3">f</font> being   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>,<a href="numbers.html#K6" title="NUMBERS:func.6">ExtREAL</a><span class="kw"> such that </span><br/><a NAME="E3:136"/><span class="lab"><font color="Green" title="E60">A2</font></span>: 
+ for <font color="Olive" title="b1">n</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  holds  <font color="Maroon" title="c3">f</font> <a href="supinf_2.html#K12" title="SUPINF_2:func.12">.</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon">H<sub>1</sub></font>(<font color="Olive" title="b1">n</font>)
+ <span class="kw">from</span> <span class="lab"><a class="ref" href="funct_2.html#S4" onmouseover="rs('funct_2/S4')" onmouseout="rh()">FUNCT_2:sch 4</a>();<br/></span>
+<a NAME="E4:136"/><span class="lab"><font color="Green" title="E61">A4</font></span>: 
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Maroon" title="c3">f</font> <a href="supinf_2.html#K12" title="SUPINF_2:func.12">.</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">r</font>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="136_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">f</font> <a href="supinf_2.html#K12" title="SUPINF_2:func.12">.</a> <font color="Maroon" title="c4">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">r</font></span><br/>
+
+<a NAME="E1:136_1"/>
+<font color="Maroon" title="c4">n</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="ordinal1.html#D12" onmouseover="rs('ordinal1/D12')" onmouseout="rh()">ORDINAL1:def 12</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E2:136_1"/>
+<font color="Maroon" title="c3">f</font> <a href="supinf_2.html#K12" title="SUPINF_2:func.12">.</a> <font color="Maroon" title="c4">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">r</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:136"><span class="lab"><font color="Green" title="E60">A2</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E5:136"/><span class="kw">then </span><span class="lab"><font color="Green" title="E62">A5</font></span>: 
+( <font color="Maroon" title="c3">f</font> is  <a href="mesfunc5.html#V10" title="MESFUNC5:attr.10">convergent</a>  &amp;  <a href="mesfunc5.html#K2" title="MESFUNC5:func.2">lim</a> <font color="Maroon" title="c3">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">r</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="mesfunc5.html#T60" onmouseover="rs('mesfunc5/T60')" onmouseout="rh()">MESFUNC5:60</a></span>;<br/>
+<a NAME="E6:136"/>
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Maroon" title="c3">f</font> <a href="supinf_2.html#K12" title="SUPINF_2:func.12">.</a> <font color="Olive" title="b1">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">seq</font> <a href="supinf_2.html#K12" title="SUPINF_2:func.12">.</a> <font color="Olive" title="b1">n</font>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="136_2"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">f</font> <a href="supinf_2.html#K12" title="SUPINF_2:func.12">.</a> <font color="Maroon" title="c4">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">seq</font> <a href="supinf_2.html#K12" title="SUPINF_2:func.12">.</a> <font color="Maroon" title="c4">n</font></span><br/>
+
+<a NAME="E1:136_2"/>
+<font color="Maroon" title="c3">f</font> <a href="supinf_2.html#K12" title="SUPINF_2:func.12">.</a> <font color="Maroon" title="c4">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c2">r</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:136"><span class="lab"><font color="Green" title="E61">A4</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E2:136_2"/>
+<font color="Maroon" title="c3">f</font> <a href="supinf_2.html#K12" title="SUPINF_2:func.12">.</a> <font color="Maroon" title="c4">n</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c1">seq</font> <a href="supinf_2.html#K12" title="SUPINF_2:func.12">.</a> <font color="Maroon" title="c4">n</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:136"><span class="lab"><font color="Green" title="E59">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E7:136"/><span class="kw">then </span>
+ <a href="rinfsup2.html#K6" title="RINFSUP2:func.6">lim_inf</a> <font color="Maroon" title="c3">f</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="rinfsup2.html#K6" title="RINFSUP2:func.6">lim_inf</a> <font color="Maroon" title="c1">seq</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="mesfun10.html#T3" onmouseover="rs('mesfun10/T3')" onmouseout="rh()">MESFUN10:3</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E8:136"/>
+<font color="Maroon" title="c2">r</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="rinfsup2.html#K6" title="RINFSUP2:func.6">lim_inf</a> <font color="Maroon" title="c1">seq</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:136"><span class="lab"><font color="Green" title="E62">A5</font></span></a>, <a class="ref" href="rinfsup2.html#T41" onmouseover="rs('rinfsup2/T41')" onmouseout="rh()">RINFSUP2:41</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

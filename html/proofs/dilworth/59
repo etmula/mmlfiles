@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">R</font> be    <a href="orders_2.html#L1" title="ORDERS_2:struct.1">RelStr</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">A</font> being   <a href="dilworth.html#NM2" title="DILWORTH:NM.2">StableSet</a> of <font color="Maroon" title="c1">R</font>  st  not  <a href="dilworth.html#K6" title="DILWORTH:func.6">maximals</a> <font color="Maroon" title="c1">R</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b1">A</font> holds <br/> not  <a href="dilworth.html#K6" title="DILWORTH:func.6">maximals</a> <font color="Maroon" title="c1">R</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="dilworth.html#K3" title="DILWORTH:func.3">Lower</a> <font color="Olive" title="b1">A</font></span><br/><span class="kw">let </span><font color="Maroon" title="c2">A</font> be   <a href="dilworth.html#NM2" title="DILWORTH:NM.2">StableSet</a> of <font color="Maroon" title="c1">R</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not  <a href="dilworth.html#K6" title="DILWORTH:func.6">maximals</a> <font color="Maroon" title="c1">R</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c2">A</font> implies  not  <a href="dilworth.html#K6" title="DILWORTH:func.6">maximals</a> <font color="Maroon" title="c1">R</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="dilworth.html#K3" title="DILWORTH:func.3">Lower</a> <font color="Maroon" title="c2">A</font> )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:59"/><span class="lab"><font color="Green" title="E32">A1</font></span>: 
+ not  <a href="dilworth.html#K6" title="DILWORTH:func.6">maximals</a> <font color="Maroon" title="c1">R</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c2">A</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not  <a href="dilworth.html#K6" title="DILWORTH:func.6">maximals</a> <font color="Maroon" title="c1">R</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="dilworth.html#K3" title="DILWORTH:func.3">Lower</a> <font color="Maroon" title="c2">A</font></span><br/>
+
+<span class="kw">consider </span><font color="Maroon" title="c3">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E3:59"/><span class="lab"><font color="Green" title="E33">A2</font></span>: 
+<font color="Maroon" title="c3">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="dilworth.html#K6" title="DILWORTH:func.6">maximals</a> <font color="Maroon" title="c1">R</font>
+ <span class="kw">and </span><br/><a NAME="E4:59"/><span class="lab"><font color="Green" title="E34">A3</font></span>: 
+ not <font color="Maroon" title="c3">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c2">A</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:59"><span class="lab"><font color="Green" title="E32">A1</font></span></a></span>;<br/>
+<span class="kw">assume </span><a NAME="E5:59"/><span class="lab"><font color="Green" title="E35">A4</font></span>: 
+ <a href="dilworth.html#K6" title="DILWORTH:func.6">maximals</a> <font color="Maroon" title="c1">R</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="dilworth.html#K3" title="DILWORTH:func.3">Lower</a> <font color="Maroon" title="c2">A</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">reconsider </span><font color="Maroon" title="c4">x9</font> = <font color="Maroon" title="c3">x</font> as   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">R</font> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:59"><span class="lab"><font color="Green" title="E33">A2</font></span></a></span>;<br/>
+<a NAME="E7:59"/>
+ not <font color="Maroon" title="c1">R</font> is  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:59"><span class="lab"><font color="Green" title="E33">A2</font></span></a></span>;<br/>
+<a NAME="E8:59"/><span class="kw">then </span><span class="lab"><font color="Green" title="E36">A5</font></span>: 
+<font color="Maroon" title="c4">x9</font> <a href="waybel_4.html#R3" title="WAYBEL_4:pred.3">is_maximal_in</a>  <a href="struct_0.html#K2" title="STRUCT_0:func.2">[#]</a> <font color="Maroon" title="c1">R</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:59"><span class="lab"><font color="Green" title="E33">A2</font></span></a>, <a class="ref" href="dilworth.html#D10" target="_self" onmouseover="rs('dilworth/D10')" onmouseout="rh()">Def10</a></span>;<br/>
+<a NAME="E9:59"/>
+<font color="Maroon" title="c4">x9</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="waybel_0.html#K3" title="WAYBEL_0:func.3">downarrow</a> <font color="Maroon" title="c2">A</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:59"><span class="lab"><font color="Green" title="E34">A3</font></span></a>, <a class="txt" href="#E3:59"><span class="lab"><font color="Green" title="E33">A2</font></span></a>, <a class="txt" href="#E5:59"><span class="lab"><font color="Green" title="E35">A4</font></span></a>, <a class="ref" href="xboole_0.html#D3" onmouseover="rs('xboole_0/D3')" onmouseout="rh()">XBOOLE_0:def 3</a></span>;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c5">x99</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">R</font><span class="kw"> such that </span><br/><a NAME="E11:59"/><span class="lab"><font color="Green" title="E37">A6</font></span>: 
+<font color="Maroon" title="c4">x9</font> <a href="orders_2.html#R1" title="ORDERS_2:pred.1">&lt;=</a> <font color="Maroon" title="c5">x99</font>
+ <span class="kw">and </span><br/><a NAME="E12:59"/><span class="lab"><font color="Green" title="E38">A7</font></span>: 
+<font color="Maroon" title="c5">x99</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c2">A</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="waybel_0.html#D15" onmouseover="rs('waybel_0/D15')" onmouseout="rh()">WAYBEL_0:def 15</a></span>;<br/>
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="59_1"><span class="kw">now </span> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not <font color="Maroon" title="c5">x99</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c4">x9</font></span></a><div class="add"><span class="kw">assume </span><a NAME="E1:59_1"/>
+<font color="Maroon" title="c5">x99</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Maroon" title="c4">x9</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/><a NAME="E2:59_1"/><span class="kw">then </span>
+<font color="Maroon" title="c4">x9</font> <a href="orders_2.html#R2" title="ORDERS_2:pred.2">&lt;</a> <font color="Maroon" title="c5">x99</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E11:59"><span class="lab"><font color="Green" title="E37">A6</font></span></a></span>;<br/><span class="kw">hence </span><a NAME="E3:59_1"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:59"><span class="lab"><font color="Green" title="E33">A2</font></span></a>, <a class="txt" href="#E8:59"><span class="lab"><font color="Green" title="E36">A5</font></span></a>, <a class="ref" href="waybel_4.html#T55" onmouseover="rs('waybel_4/T55')" onmouseout="rh()">WAYBEL_4:55</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/></div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E14:59"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E12:59"><span class="lab"><font color="Green" title="E38">A7</font></span></a>, <a class="txt" href="#E4:59"><span class="lab"><font color="Green" title="E34">A3</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
