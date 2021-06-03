@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">A</font>, <font color="Maroon" title="c2">B</font> be   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> 2</span>)</span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">A</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  &amp; <font color="Maroon" title="c2">B</font> <a href="connsp_1.html#R3" title="CONNSP_1:pred.3">is_a_component_of</a> <font color="Maroon" title="c1">A</font> implies <font color="Maroon" title="c2">B</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a>  )</span><br/>
+
+<span class="kw">assume </span><span class="kw">that </span><br/><a NAME="E1:8"/><span class="lab"><font color="Green" title="E7">A1</font></span>: 
+<font color="Maroon" title="c1">A</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a> 
+ <span class="kw">and </span><br/><a NAME="E2:8"/><span class="lab"><font color="Green" title="E8">A2</font></span>: 
+<font color="Maroon" title="c2">B</font> <a href="connsp_1.html#R3" title="CONNSP_1:pred.3">is_a_component_of</a> <font color="Maroon" title="c1">A</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">B</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a> </span><br/>
+
+<a NAME="E3:8"/><span class="lab"><font color="Green" title="E9">A3</font></span>: 
+<font color="Maroon" title="c2">B</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c1">A</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:8"><span class="lab"><font color="Green" title="E8">A2</font></span></a>, <a class="ref" href="sprect_1.html#T5" onmouseover="rs('sprect_1/T5')" onmouseout="rh()">SPRECT_1:5</a></span>;<br/>
+<a NAME="E4:8"/><span class="lab"><font color="Green" title="E10">A4</font></span>: 
+ <a href="pre_topc.html#G1" title="PRE_TOPC:aggr.1">TopStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">U1</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> 2</span>)</span>, the <a href="pre_topc.html#U1" title="PRE_TOPC:sel.1">topology</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> 2</span>)</span> #) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="pcomps_1.html#K3" title="PCOMPS_1:func.3">TopSpaceMetr</a> <span class="p1">(<span class="default"><a href="euclid.html#K14" title="EUCLID:func.14">Euclid</a> 2</span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="euclid.html#D8" onmouseover="rs('euclid/D8')" onmouseout="rh()">EUCLID:def 8</a></span>;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c3">C</font> = <font color="Maroon" title="c2">B</font>, <font color="Maroon" title="c4">D</font> = <font color="Maroon" title="c1">A</font> as   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="pcomps_1.html#K3" title="PCOMPS_1:func.3">TopSpaceMetr</a> <span class="p2">(<span class="default"><a href="euclid.html#K14" title="EUCLID:func.14">Euclid</a> 2</span>)</span></span>)</span> ;<br/>
+<a NAME="E6:8"/><span class="lab"><font color="Green" title="E11">A5</font></span>: 
+<font color="Maroon" title="c4">D</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:8"><span class="lab"><font color="Green" title="E7">A1</font></span></a>, <a class="txt" href="#E4:8"><span class="lab"><font color="Green" title="E10">A4</font></span></a>, <a class="ref" href="pre_topc.html#T30" onmouseover="rs('pre_topc/T30')" onmouseout="rh()">PRE_TOPC:30</a></span>;<br/>
+<a NAME="E7:8"/>
+ for <font color="Olive" title="b1">p</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="euclid.html#K14" title="EUCLID:func.14">Euclid</a> 2</span>)</span>  st <font color="Olive" title="b1">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c3">C</font> holds <br/> ex <font color="Olive" title="b2">r</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> st <br/>( <font color="Olive" title="b2">r</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp;  <a href="metric_1.html#K8" title="METRIC_1:func.8">Ball</a> (<font color="Olive" title="b1">p</font>,<font color="Olive" title="b2">r</font>) <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c3">C</font> )
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="8_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c5">p</font> be   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <span class="p1">(<span class="default"><a href="euclid.html#K14" title="EUCLID:func.14">Euclid</a> 2</span>)</span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c5">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c3">C</font> implies  ex <font color="Olive" title="b1">r</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> st <br/>( <font color="Olive" title="b1">r</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp;  <a href="metric_1.html#K8" title="METRIC_1:func.8">Ball</a> (<font color="Maroon" title="c5">p</font>,<font color="Olive" title="b1">r</font>) <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c3">C</font> ) )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:8_1"/><span class="lab"><font color="Green" title="E12">A6</font></span>: 
+<font color="Maroon" title="c5">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c3">C</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  ex <font color="Olive" title="b1">r</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> st <br/>( <font color="Olive" title="b1">r</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp;  <a href="metric_1.html#K8" title="METRIC_1:func.8">Ball</a> (<font color="Maroon" title="c5">p</font>,<font color="Olive" title="b1">r</font>) <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c3">C</font> )</span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c6">r</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a><span class="kw"> such that </span><br/><a NAME="E3:8_1"/><span class="lab"><font color="Green" title="E13">A7</font></span>: 
+<font color="Maroon" title="c6">r</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ <span class="kw">and </span><br/><a NAME="E4:8_1"/><span class="lab"><font color="Green" title="E14">A8</font></span>: 
+ <a href="metric_1.html#K8" title="METRIC_1:func.8">Ball</a> (<font color="Maroon" title="c5">p</font>,<font color="Maroon" title="c6">r</font>) <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c4">D</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:8"><span class="lab"><font color="Green" title="E9">A3</font></span></a>, <a class="txt" href="#E6:8"><span class="lab"><font color="Green" title="E11">A5</font></span></a>, <a class="ref" href="topmetr.html#T15" onmouseover="rs('topmetr/T15')" onmouseout="rh()">TOPMETR:15</a></span>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c7">r</font> = <font color="Maroon" title="c6">r</font> as   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> ;<br/>
+<span class="kw">take </span>
+<font color="Maroon" title="c7">r</font>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c7">r</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp;  <a href="metric_1.html#K8" title="METRIC_1:func.8">Ball</a> (<font color="Maroon" title="c5">p</font>,<font color="Maroon" title="c7">r</font>) <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c3">C</font> )</span><br/>
+
+<span class="kw">thus </span><a NAME="E6:8_1"/>
+<font color="Maroon" title="c7">r</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:8_1"><span class="lab"><font color="Green" title="E13">A7</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="metric_1.html#K8" title="METRIC_1:func.8">Ball</a> (<font color="Maroon" title="c5">p</font>,<font color="Maroon" title="c7">r</font>) <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c3">C</font></span><br/>
+
+<span class="kw">reconsider </span><font color="Maroon" title="c8">E</font> =  <a href="metric_1.html#K8" title="METRIC_1:func.8">Ball</a> (<font color="Maroon" title="c5">p</font>,<font color="Maroon" title="c7">r</font>) as   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> 2</span>)</span> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:8"><span class="lab"><font color="Green" title="E10">A4</font></span></a>, <a class="ref" href="topmetr.html#T12" onmouseover="rs('topmetr/T12')" onmouseout="rh()">TOPMETR:12</a></span>;<br/>
+<a NAME="E8:8_1"/><span class="lab"><font color="Green" title="E15">A9</font></span>: 
+<font color="Maroon" title="c5">p</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c8">E</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:8_1"><span class="lab"><font color="Green" title="E13">A7</font></span></a>, <a class="ref" href="goboard6.html#T1" onmouseover="rs('goboard6/T1')" onmouseout="rh()">GOBOARD6:1</a></span>;<br/>
+<a NAME="E9:8_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E16">A10</font></span>: 
+<font color="Maroon" title="c8">E</font> is  <a href="connsp_1.html#V2" title="CONNSP_1:attr.2">connected</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="sprect_3.html#T7" target="_self" onmouseover="rs('sprect_3/T7')" onmouseout="rh()">Th7</a></span>;<br/>
+<a NAME="E10:8_1"/>
+<font color="Maroon" title="c2">B</font> <a href="xboole_0.html#NR5" title="XBOOLE_0:NR.5">meets</a> <font color="Maroon" title="c8">E</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:8_1"><span class="lab"><font color="Green" title="E12">A6</font></span></a>, <a class="txt" href="#E8:8_1"><span class="lab"><font color="Green" title="E15">A9</font></span></a>, <a class="ref" href="xboole_0.html#T3" onmouseover="rs('xboole_0/T3')" onmouseout="rh()">XBOOLE_0:3</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E11:8_1"/>
+ <a href="metric_1.html#K8" title="METRIC_1:func.8">Ball</a> (<font color="Maroon" title="c5">p</font>,<font color="Maroon" title="c7">r</font>) <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c3">C</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:8"><span class="lab"><font color="Green" title="E8">A2</font></span></a>, <a class="txt" href="#E4:8_1"><span class="lab"><font color="Green" title="E14">A8</font></span></a>, <a class="txt" href="#E9:8_1"><span class="lab"><font color="Green" title="E16">A10</font></span></a>, <a class="ref" href="goboard9.html#T4" onmouseover="rs('goboard9/T4')" onmouseout="rh()">GOBOARD9:4</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E8:8"/><span class="kw">then </span>
+<font color="Maroon" title="c3">C</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="topmetr.html#T15" onmouseover="rs('topmetr/T15')" onmouseout="rh()">TOPMETR:15</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E9:8"/>
+<font color="Maroon" title="c2">B</font> is  <a href="pre_topc.html#V3" title="PRE_TOPC:attr.3">open</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:8"><span class="lab"><font color="Green" title="E10">A4</font></span></a>, <a class="ref" href="pre_topc.html#T30" onmouseover="rs('pre_topc/T30')" onmouseout="rh()">PRE_TOPC:30</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">S</font> be   <a href="setfam_1.html#NM1" title="SETFAM_1:NM.1">Subset-Family</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">S</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">s</font> where <font color="Olive" title="b1">s</font> is   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> : <font color="Olive" title="b1">s</font> is  <a href="measure5.html#V4" title="MEASURE5:attr.4">left_open_interval</a>  </span> } </span>  implies <font color="Maroon" title="c3">S</font> is  <a href="srings_1.html#V4" title="SRINGS_1:attr.4">with_countable_Cover</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:25"/><span class="lab"><font color="Green" title="E15">A1</font></span>: 
+<font color="Maroon" title="c3">S</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">s</font> where <font color="Olive" title="b1">s</font> is   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> : <font color="Olive" title="b1">s</font> is  <a href="measure5.html#V4" title="MEASURE5:attr.4">left_open_interval</a>  </span> } </span> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">S</font> is  <a href="srings_1.html#V4" title="SRINGS_1:attr.4">with_countable_Cover</a> </span><br/>
+
+<span class="kw">defpred </span><font color="Maroon">S<sub>1</sub></font>[   <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ,   <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ] <span class="kw">means </span>( $1 is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  &amp; $2 <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c3">S</font> &amp;  ex <font color="Olive" title="b1">x</font> being   <a href="xreal_0.html#V1" title="XREAL_0:attr.1">real</a>   <a href="ordinal1.html#NM2" title="ORDINAL1:NM.2">number</a>  st <br/>( <font color="Olive" title="b1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> $1 &amp; $2 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="rcomp_1.html#K4" title="RCOMP_1:func.4">].</a><span class="default"><a href="supinf_1.html#K2" title="SUPINF_1:func.2">-infty</a>,<font color="Olive" title="b1">x</font></span><a href="rcomp_1.html#K4" title="RCOMP_1:func.4">.]</a></span> ) );<br/>
+<a NAME="E2:25"/><span class="lab"><font color="Green" title="E16">A2</font></span>: 
+ for <font color="Olive" title="b1">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>   st <font color="Olive" title="b1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  holds <br/> ex <font color="Olive" title="b2">y</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  st <br/>( <font color="Olive" title="b2">y</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c3">S</font> &amp; <font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">x</font>,<font color="Olive" title="b2">y</font>] )
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="25_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">x</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  implies  ex <font color="Olive" title="b1">y</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  st <br/>( <font color="Olive" title="b1">y</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c3">S</font> &amp; <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c4">x</font>,<font color="Olive" title="b1">y</font>] ) )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:25_1"/><span class="lab"><font color="Green" title="E17">A3</font></span>: 
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  ex <font color="Olive" title="b1">y</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  st <br/>( <font color="Olive" title="b1">y</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c3">S</font> &amp; <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c4">x</font>,<font color="Olive" title="b1">y</font>] )</span><br/>
+
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c5">x</font> = <font color="Maroon" title="c4">x</font> as   <a href="xreal_0.html#V1" title="XREAL_0:attr.1">real</a>   <a href="ordinal1.html#NM2" title="ORDINAL1:NM.2">number</a>  ;<br/>
+<span class="kw">set </span><font color="Maroon" title="c6">y</font> = <span class="p1"><a href="rcomp_1.html#K4" title="RCOMP_1:func.4">].</a><span class="default"><a href="supinf_1.html#K2" title="SUPINF_1:func.2">-infty</a>,<font color="Maroon" title="c5">x</font></span><a href="rcomp_1.html#K4" title="RCOMP_1:func.4">.]</a></span>;<br/>
+<a NAME="E3:25_1"/><span class="lab"><font color="Green" title="E18">A4</font></span>: 
+( <span class="p1"><a href="rcomp_1.html#K4" title="RCOMP_1:func.4">].</a><span class="default"><a href="supinf_1.html#K2" title="SUPINF_1:func.2">-infty</a>,<font color="Maroon" title="c5">x</font></span><a href="rcomp_1.html#K4" title="RCOMP_1:func.4">.]</a></span> is   <a href="subset_1.html#NM2" title="SUBSET_1:NM.2">Subset</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> &amp; <span class="p1"><a href="rcomp_1.html#K4" title="RCOMP_1:func.4">].</a><span class="default"><a href="supinf_1.html#K2" title="SUPINF_1:func.2">-infty</a>,<font color="Maroon" title="c5">x</font></span><a href="rcomp_1.html#K4" title="RCOMP_1:func.4">.]</a></span> is  <a href="measure5.html#V4" title="MEASURE5:attr.4">left_open_interval</a>  )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="measure5.html#D5" onmouseover="rs('measure5/D5')" onmouseout="rh()">MEASURE5:def 5</a></span>;<br/>
+<a NAME="E4:25_1"/>
+<font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c5">x</font>,<span class="p1"><a href="rcomp_1.html#K4" title="RCOMP_1:func.4">].</a><span class="default"><a href="supinf_1.html#K2" title="SUPINF_1:func.2">-infty</a>,<font color="Maroon" title="c5">x</font></span><a href="rcomp_1.html#K4" title="RCOMP_1:func.4">.]</a></span>]
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:25"><span class="lab"><font color="Green" title="E15">A1</font></span></a>, <a class="txt" href="#E1:25_1"><span class="lab"><font color="Green" title="E17">A3</font></span></a>, <a class="txt" href="#E3:25_1"><span class="lab"><font color="Green" title="E18">A4</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:25_1"/>
+ ex <font color="Olive" title="b1">y</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>  st <br/>( <font color="Olive" title="b1">y</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c3">S</font> &amp; <font color="Maroon">S<sub>1</sub></font>[<font color="Maroon" title="c4">x</font>,<font color="Olive" title="b1">y</font>] )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">consider </span><font color="Maroon" title="c4">f</font> being   <a href="funct_1.html#NM1" title="FUNCT_1:NM.1">Function</a><span class="kw"> such that </span><br/><a NAME="E4:25"/><span class="lab"><font color="Green" title="E17">A5</font></span>: 
+(  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c4">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  &amp;  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c4">f</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c3">S</font> )
+ <span class="kw">and </span><br/><a NAME="E5:25"/><span class="lab"><font color="Green" title="E18">A6</font></span>: 
+ for <font color="Olive" title="b1">x</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>   st <font color="Olive" title="b1">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  holds <br/><font color="Maroon">S<sub>1</sub></font>[<font color="Olive" title="b1">x</font>,<font color="Maroon" title="c4">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">x</font>]
+ <span class="kw">from</span> <span class="lab"><a class="ref" href="funct_1.html#S6" onmouseover="rs('funct_1/S6')" onmouseout="rh()">FUNCT_1:sch 6</a>(<a class="txt" href="#E2:25"><span class="lab"><font color="Green" title="E16">A2</font></span></a>);<br/></span>
+<a NAME="E6:25"/><span class="lab"><font color="Green" title="E19">A7</font></span>: 
+ <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c4">f</font> is   <a href="setfam_1.html#NM1" title="SETFAM_1:NM.1">Subset-Family</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:25"><span class="lab"><font color="Green" title="E17">A5</font></span></a>, <a class="ref" href="xboole_1.html#T1" onmouseover="rs('xboole_1/T1')" onmouseout="rh()">XBOOLE_1:1</a></span>;<br/>
+<a NAME="E7:25"/><span class="lab"><font color="Green" title="E20">A8</font></span>: 
+ <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c4">f</font> is  <a href="card_3.html#V4" title="CARD_3:attr.4">countable</a> 
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="25_2"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">reconsider </span><font color="Maroon" title="c5">f</font> = <font color="Maroon" title="c4">f</font> as   <a href="prob_1.html#NM2" title="PROB_1:NM.2">SetSequence</a> of <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:25"><span class="lab"><font color="Green" title="E17">A5</font></span></a>, <a class="txt" href="#E6:25"><span class="lab"><font color="Green" title="E19">A7</font></span></a>, <a class="ref" href="relset_1.html#T4" onmouseover="rs('relset_1/T4')" onmouseout="rh()">RELSET_1:4</a>, <a class="ref" href="funct_2.html#D1" onmouseover="rs('funct_2/D1')" onmouseout="rh()">FUNCT_2:def 1</a></span>;<br/>
+<a NAME="E2:25_2"/>
+ <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c5">f</font> is  <a href="card_3.html#V4" title="CARD_3:attr.4">countable</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="topgen_4.html#T58" onmouseover="rs('topgen_4/T58')" onmouseout="rh()">TOPGEN_4:58</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E3:25_2"/>
+ <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c4">f</font> is  <a href="card_3.html#V4" title="CARD_3:attr.4">countable</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E8:25"/>
+ <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c4">f</font> is    <a href="setfam_1.html#M1" title="SETFAM_1:mode.1">Cover</a> of  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> 
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="25_3"><span class="kw">proof </span></a><div class="add">
+
+<a NAME="E1:25_3"/>
+ <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <span class="p1">(<span class="default"><a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c4">f</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> 
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="25_3_1"><span class="kw">proof </span></a><div class="add">
+
+<a NAME="E1:25_3_1"/><span class="lab"><font color="Green" title="E21">A9</font></span>: 
+ <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <span class="p1">(<span class="default"><a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c4">f</font></span>)</span> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> 
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="25_3_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c5">x</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="tarski.html#D3" onmouseover="rs('tarski/D3')" onmouseout="rh()">TARSKI:def 3</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <span class="p1">(<span class="default"><a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c4">f</font></span>)</span> or <font color="Maroon" title="c5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:25_3_1_1"/>
+<font color="Maroon" title="c5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <span class="p1">(<span class="default"><a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c4">f</font></span>)</span>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> </span><br/>
+
+<a NAME="E2:25_3_1_1"/><span class="kw">then </span>
+<font color="Maroon" title="c5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="card_3.html#K3" title="CARD_3:func.3">Union</a> <font color="Maroon" title="c4">f</font>
+ 
+;<br/>
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c6">t</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E4:25_3_1_1"/><span class="lab"><font color="Green" title="E22">A10</font></span>: 
+( <font color="Maroon" title="c6">t</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c4">f</font> &amp; <font color="Maroon" title="c5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c4">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c6">t</font> )
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="card_5.html#T2" onmouseover="rs('card_5/T2')" onmouseout="rh()">CARD_5:2</a></span>;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c7">x0</font> being   <a href="xreal_0.html#V1" title="XREAL_0:attr.1">real</a>   <a href="ordinal1.html#NM2" title="ORDINAL1:NM.2">number</a> <span class="kw"> such that </span><br/><a NAME="E6:25_3_1_1"/><span class="lab"><font color="Green" title="E23">A11</font></span>: 
+( <font color="Maroon" title="c7">x0</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c6">t</font> &amp; <font color="Maroon" title="c4">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c6">t</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="rcomp_1.html#K4" title="RCOMP_1:func.4">].</a><span class="default"><a href="supinf_1.html#K2" title="SUPINF_1:func.2">-infty</a>,<font color="Maroon" title="c7">x0</font></span><a href="rcomp_1.html#K4" title="RCOMP_1:func.4">.]</a></span> )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:25"><span class="lab"><font color="Green" title="E17">A5</font></span></a>, <a class="txt" href="#E5:25"><span class="lab"><font color="Green" title="E18">A6</font></span></a>, <a class="txt" href="#E4:25_3_1_1"><span class="lab"><font color="Green" title="E22">A10</font></span></a></span>;<br/>
+<span class="kw">thus </span><a NAME="E7:25_3_1_1"/>
+<font color="Maroon" title="c5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:25_3_1_1"><span class="lab"><font color="Green" title="E22">A10</font></span></a>, <a class="txt" href="#E6:25_3_1_1"><span class="lab"><font color="Green" title="E23">A11</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E2:25_3_1"/>
+ <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>  <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <span class="p1">(<span class="default"><a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c4">f</font></span>)</span>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="25_3_1_2"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c5">x</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="tarski.html#D3" onmouseover="rs('tarski/D3')" onmouseout="rh()">TARSKI:def 3</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>  or <font color="Maroon" title="c5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <span class="p1">(<span class="default"><a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c4">f</font></span>)</span> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:25_3_1_2"/>
+<font color="Maroon" title="c5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <span class="p1">(<span class="default"><a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c4">f</font></span>)</span></span><br/>
+
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c6">x</font> = <font color="Maroon" title="c5">x</font> as   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> ;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c7">n</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <span class="kw"> such that </span><br/><a NAME="E4:25_3_1_2"/><span class="lab"><font color="Green" title="E22">A12</font></span>: 
+<font color="Maroon" title="c6">x</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c7">n</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="mesfunc1.html#T8" onmouseover="rs('mesfunc1/T8')" onmouseout="rh()">MESFUNC1:8</a></span>;<br/>
+<a NAME="E5:25_3_1_2"/>
+<font color="Maroon" title="c6">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c4">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c7">n</font>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="25_3_1_2_1"><span class="kw">proof </span></a><div class="add">
+
+<a NAME="E1:25_3_1_2_1"/>
+ ex <font color="Olive" title="b1">z</font> being   <a href="xreal_0.html#V1" title="XREAL_0:attr.1">real</a>   <a href="ordinal1.html#NM2" title="ORDINAL1:NM.2">number</a>  st <br/>( <font color="Olive" title="b1">z</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c7">n</font> &amp; <font color="Maroon" title="c4">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c7">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="rcomp_1.html#K4" title="RCOMP_1:func.4">].</a><span class="default"><a href="supinf_1.html#K2" title="SUPINF_1:func.2">-infty</a>,<font color="Olive" title="b1">z</font></span><a href="rcomp_1.html#K4" title="RCOMP_1:func.4">.]</a></span> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:25"><span class="lab"><font color="Green" title="E18">A6</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E2:25_3_1_2_1"/>
+<font color="Maroon" title="c6">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c4">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c7">n</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:25_3_1_2"><span class="lab"><font color="Green" title="E22">A12</font></span></a>, <a class="ref" href="xxreal_1.html#T234" onmouseover="rs('xxreal_1/T234')" onmouseout="rh()">XXREAL_1:234</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E6:25_3_1_2"/><span class="kw">then </span>
+( <font color="Maroon" title="c6">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <font color="Maroon" title="c4">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c7">n</font> &amp; <font color="Maroon" title="c4">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c7">n</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c4">f</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:25"><span class="lab"><font color="Green" title="E17">A5</font></span></a>, <a class="ref" href="funct_1.html#D3" onmouseover="rs('funct_1/D3')" onmouseout="rh()">FUNCT_1:def 3</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:25_3_1_2"/>
+<font color="Maroon" title="c5">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <span class="p1">(<span class="default"><a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c4">f</font></span>)</span>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="tarski.html#D4" onmouseover="rs('tarski/D4')" onmouseout="rh()">TARSKI:def 4</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E3:25_3_1"/>
+ <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <span class="p1">(<span class="default"><a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c4">f</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:25_3_1"><span class="lab"><font color="Green" title="E21">A9</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E2:25_3"/>
+ <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <font color="Maroon" title="c4">f</font> is    <a href="setfam_1.html#M1" title="SETFAM_1:mode.1">Cover</a> of  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:25"><span class="lab"><font color="Green" title="E19">A7</font></span></a>, <a class="ref" href="setfam_1.html#T45" onmouseover="rs('setfam_1/T45')" onmouseout="rh()">SETFAM_1:45</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E9:25"/>
+<font color="Maroon" title="c3">S</font> is  <a href="srings_1.html#V4" title="SRINGS_1:attr.4">with_countable_Cover</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:25"><span class="lab"><font color="Green" title="E17">A5</font></span></a>, <a class="txt" href="#E7:25"><span class="lab"><font color="Green" title="E20">A8</font></span></a>, <a class="ref" href="srings_1.html#D4" onmouseover="rs('srings_1/D4')" onmouseout="rh()">SRINGS_1:def 4</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
