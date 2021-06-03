@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">P</font> be   <a href="ltlaxio3.html#NM1" title="LTLAXIO3:NM.1">PNPair</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">P</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="ltlaxio3.html#K11" title="LTLAXIO3:func.11">[</a><span class="default"><span class="p2">(<span class="default"><a href="finseq_1.html#K6" title="FINSEQ_1:func.6">&lt;*&gt;</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a></span>)</span>,<span class="p2">(<span class="default"><a href="finseq_1.html#K6" title="FINSEQ_1:func.6">&lt;*&gt;</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a></span>)</span></span><a href="ltlaxio3.html#K11" title="LTLAXIO3:func.11">]</a></span> implies  not <font color="Maroon" title="c3">P</font> is  <a href="ltlaxio3.html#V2" title="LTLAXIO3:attr.2">Inconsistent</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:54_1_1"/><span class="lab"><font color="Green" title="E30">A1</font></span>: 
+<font color="Maroon" title="c3">P</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="ltlaxio3.html#K11" title="LTLAXIO3:func.11">[</a><span class="default"><span class="p2">(<span class="default"><a href="finseq_1.html#K6" title="FINSEQ_1:func.6">&lt;*&gt;</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a></span>)</span>,<span class="p2">(<span class="default"><a href="finseq_1.html#K6" title="FINSEQ_1:func.6">&lt;*&gt;</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a></span>)</span></span><a href="ltlaxio3.html#K11" title="LTLAXIO3:func.11">]</a></span>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not <font color="Maroon" title="c3">P</font> is  <a href="ltlaxio3.html#V2" title="LTLAXIO3:attr.2">Inconsistent</a> </span><br/>
+
+<a NAME="E2:54_1_1"/>
+ not  <a href="subset_1.html#K1" title="SUBSET_1:func.1">{}</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> <a href="ltlaxio1.html#R3" title="LTLAXIO1:pred.3">|=</a>  <a href="ltlaxio1.html#K1" title="LTLAXIO1:func.1">'not'</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">P</font> <a href="ltlaxio3.html#K12" title="LTLAXIO3:func.12">^</a></span>)</span>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="54_1_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">reconsider </span><font color="Maroon" title="c4">M</font> = <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <a href="funcop_1.html#K7" title="FUNCOP_1:func.7">--&gt;</a> <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> as   <a href="ltlaxio1.html#NM1" title="LTLAXIO1:NM.1">LTLModel</a> <span class="kw">by</span> <span class="lab"><a class="ref" href="ltlaxio3.html#T2" target="_self" onmouseover="rs('ltlaxio3/T2')" onmouseout="rh()">Th2</a></span>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c5">s</font> =  <a href="ltlaxio1.html#K11" title="LTLAXIO1:func.11">SAT</a> <font color="Maroon" title="c4">M</font>;<br/>
+<span class="kw">take </span>
+<font color="Maroon" title="c4">M</font>
+; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="ltlaxio1.html#D14" onmouseover="rs('ltlaxio1/D14')" onmouseout="rh()">LTLAXIO1:def 14</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c4">M</font> <a href="ltlaxio1.html#R2" title="LTLAXIO1:pred.2">|=</a>  <a href="subset_1.html#K1" title="SUBSET_1:func.1">{}</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a> &amp;  not <font color="Maroon" title="c4">M</font> <a href="ltlaxio1.html#R1" title="LTLAXIO1:pred.1">|=</a>  <a href="ltlaxio1.html#K1" title="LTLAXIO1:func.1">'not'</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">P</font> <a href="ltlaxio3.html#K12" title="LTLAXIO3:func.12">^</a></span>)</span> )</span><br/>
+
+<span class="kw">thus </span><a NAME="E2:54_1_1_1"/>
+<font color="Maroon" title="c4">M</font> <a href="ltlaxio1.html#R2" title="LTLAXIO1:pred.2">|=</a>  <a href="subset_1.html#K1" title="SUBSET_1:func.1">{}</a> <a href="ltlaxio1.html#NK1" title="LTLAXIO1:NK.1">LTLB_WFF</a>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not <font color="Maroon" title="c4">M</font> <a href="ltlaxio1.html#R1" title="LTLAXIO1:pred.1">|=</a>  <a href="ltlaxio1.html#K1" title="LTLAXIO1:func.1">'not'</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">P</font> <a href="ltlaxio3.html#K12" title="LTLAXIO3:func.12">^</a></span>)</span></span><br/>
+
+<a NAME="E3:54_1_1_1"/>
+<span class="p1">(<span class="default"><a href="ltlaxio1.html#K11" title="LTLAXIO1:func.11">SAT</a> <font color="Maroon" title="c4">M</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <span class="p1"><a href="domain_1.html#K1" title="DOMAIN_1:func.1">[</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,<span class="p2">(<span class="default"><a href="ltlaxio1.html#K1" title="LTLAXIO1:func.1">'not'</a> <span class="p3">(<span class="default"><font color="Maroon" title="c3">P</font> <a href="ltlaxio3.html#K12" title="LTLAXIO3:func.12">^</a></span>)</span></span>)</span></span><a href="domain_1.html#K1" title="DOMAIN_1:func.1">]</a></span> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> 1
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="54_1_1_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><a NAME="E1:54_1_1_1_1"/>
+<span class="p1">(<span class="default"><a href="ltlaxio1.html#K11" title="LTLAXIO1:func.11">SAT</a> <font color="Maroon" title="c4">M</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <span class="p1"><a href="domain_1.html#K1" title="DOMAIN_1:func.1">[</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,<span class="p2">(<span class="default"><a href="ltlaxio1.html#K1" title="LTLAXIO1:func.1">'not'</a> <span class="p3">(<span class="default"><font color="Maroon" title="c3">P</font> <a href="ltlaxio3.html#K12" title="LTLAXIO3:func.12">^</a></span>)</span></span>)</span></span><a href="domain_1.html#K1" title="DOMAIN_1:func.1">]</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E2:54_1_1_1_1"/><span class="kw">then </span>
+<span class="p1">(<span class="default"><a href="ltlaxio1.html#K11" title="LTLAXIO1:func.11">SAT</a> <font color="Maroon" title="c4">M</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <span class="p1"><a href="domain_1.html#K1" title="DOMAIN_1:func.1">[</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,<span class="p2">(<span class="default"><font color="Maroon" title="c3">P</font> <a href="ltlaxio3.html#K12" title="LTLAXIO3:func.12">^</a></span>)</span></span><a href="domain_1.html#K1" title="DOMAIN_1:func.1">]</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="ltlaxio1.html#T5" onmouseover="rs('ltlaxio1/T5')" onmouseout="rh()">LTLAXIO1:5</a></span>;<br/>
+<a NAME="E3:54_1_1_1_1"/><span class="kw">then </span>
+<span class="p1">(<span class="default"><a href="ltlaxio1.html#K11" title="LTLAXIO1:func.11">SAT</a> <font color="Maroon" title="c4">M</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <span class="p1"><a href="domain_1.html#K1" title="DOMAIN_1:func.1">[</a><span class="default"><a href="numbers.html#K5" title="NUMBERS:func.5">0</a>,<a href="ltlaxio1.html#K3" title="LTLAXIO1:func.3">TVERUM</a></span><a href="domain_1.html#K1" title="DOMAIN_1:func.1">]</a></span> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="ltlaxio1.html#T7" onmouseover="rs('ltlaxio1/T7')" onmouseout="rh()">LTLAXIO1:7</a>, <a class="txt" href="#E1:54_1_1"><span class="lab"><font color="Green" title="E30">A1</font></span></a>, <a class="ref" href="ltlaxio3.html#T27" target="_self" onmouseover="rs('ltlaxio3/T27')" onmouseout="rh()">Th27</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E4:54_1_1_1_1"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="ltlaxio1.html#T6" onmouseover="rs('ltlaxio1/T6')" onmouseout="rh()">LTLAXIO1:6</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E4:54_1_1_1"/>
+ not <font color="Maroon" title="c4">M</font> <a href="ltlaxio1.html#R1" title="LTLAXIO1:pred.1">|=</a>  <a href="ltlaxio1.html#K1" title="LTLAXIO1:func.1">'not'</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">P</font> <a href="ltlaxio3.html#K12" title="LTLAXIO3:func.12">^</a></span>)</span>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E3:54_1_1"/>
+<font color="Maroon" title="c3">P</font> is  <a href="ltlaxio3.html#NV3" title="LTLAXIO3:NV.3">consistent</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="ltlaxio1.html#T41" onmouseover="rs('ltlaxio1/T41')" onmouseout="rh()">LTLAXIO1:41</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
