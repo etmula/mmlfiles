@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">q</font> be   <a href="gaussint.html#NM1" title="GAUSSINT:NM.1">G_INTEG</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="gaussint.html#K16" title="GAUSSINT:func.16">Norm</a> <font color="Maroon" title="c3">q</font> is   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a> implies <font color="Maroon" title="c3">q</font> is  <a href="gaussint.html#V4" title="GAUSSINT:attr.4">g_prime</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:115"/><span class="lab"><font color="Green" title="E49">A1</font></span>: 
+ <a href="gaussint.html#K16" title="GAUSSINT:func.16">Norm</a> <font color="Maroon" title="c3">q</font> is   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">q</font> is  <a href="gaussint.html#V4" title="GAUSSINT:attr.4">g_prime</a> </span><br/>
+
+<a NAME="E2:115"/>
+ for <font color="Olive" title="b1">z</font> being   <a href="gaussint.html#NM1" title="GAUSSINT:NM.1">G_INTEG</a>  holds <br/>(  not <font color="Olive" title="b1">z</font> <a href="gaussint.html#R1" title="GAUSSINT:pred.1">Divides</a> <font color="Maroon" title="c3">q</font> or <font color="Olive" title="b1">z</font> is  <a href="gaussint.html#V3" title="GAUSSINT:attr.3">g_int_unit</a>  or <font color="Olive" title="b1">z</font> <a href="gaussint.html#R2" title="GAUSSINT:pred.2">is_associated_to</a> <font color="Maroon" title="c3">q</font> )
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="115_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">z</font> be   <a href="gaussint.html#NM1" title="GAUSSINT:NM.1">G_INTEG</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c4">z</font> <a href="gaussint.html#R1" title="GAUSSINT:pred.1">Divides</a> <font color="Maroon" title="c3">q</font> or <font color="Maroon" title="c4">z</font> is  <a href="gaussint.html#V3" title="GAUSSINT:attr.3">g_int_unit</a>  or <font color="Maroon" title="c4">z</font> <a href="gaussint.html#R2" title="GAUSSINT:pred.2">is_associated_to</a> <font color="Maroon" title="c3">q</font> )</span><br/>
+
+<div><a class="txt" onclick="hsNdiv(this)" href="javascript:()" title="115_1_1"><span class="kw">per </span></a><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">cases </span></a><span class="hide"><a NAME="E1:115_1_1"/>
+( <font color="Maroon" title="c4">z</font> is  <a href="gaussint.html#V3" title="GAUSSINT:attr.3">g_int_unit</a>  or (  not <font color="Maroon" title="c4">z</font> is  <a href="gaussint.html#V3" title="GAUSSINT:attr.3">g_int_unit</a>  &amp; <font color="Maroon" title="c4">z</font> <a href="gaussint.html#R2" title="GAUSSINT:pred.2">is_associated_to</a> <font color="Maroon" title="c3">q</font> ) or (  not <font color="Maroon" title="c4">z</font> is  <a href="gaussint.html#V3" title="GAUSSINT:attr.3">g_int_unit</a>  &amp;  not <font color="Maroon" title="c4">z</font> <a href="gaussint.html#R2" title="GAUSSINT:pred.2">is_associated_to</a> <font color="Maroon" title="c3">q</font> ) )
+ </span>;<br/><div class="add"><div><a class="txt" onclick="hsNdiv(this)" href="javascript:()" title="115_1_1_1"><span class="kw">suppose </span></a><a NAME="E1:115_1_1_1"/>
+<font color="Maroon" title="c4">z</font> is  <a href="gaussint.html#V3" title="GAUSSINT:attr.3">g_int_unit</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c4">z</font> <a href="gaussint.html#R1" title="GAUSSINT:pred.1">Divides</a> <font color="Maroon" title="c3">q</font> or <font color="Maroon" title="c4">z</font> is  <a href="gaussint.html#V3" title="GAUSSINT:attr.3">g_int_unit</a>  or <font color="Maroon" title="c4">z</font> <a href="gaussint.html#R2" title="GAUSSINT:pred.2">is_associated_to</a> <font color="Maroon" title="c3">q</font> )</span><br/><div class="add"><span class="kw">hence </span><a NAME="E2:115_1_1_1"/>
+(  not <font color="Maroon" title="c4">z</font> <a href="gaussint.html#R1" title="GAUSSINT:pred.1">Divides</a> <font color="Maroon" title="c3">q</font> or <font color="Maroon" title="c4">z</font> is  <a href="gaussint.html#V3" title="GAUSSINT:attr.3">g_int_unit</a>  or <font color="Maroon" title="c4">z</font> <a href="gaussint.html#R2" title="GAUSSINT:pred.2">is_associated_to</a> <font color="Maroon" title="c3">q</font> )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/></div><span class="kw">end;</span></div><div><a class="txt" onclick="hsNdiv(this)" href="javascript:()" title="115_1_1_2"><span class="kw">suppose </span></a><a NAME="E1:115_1_1_2"/>
+(  not <font color="Maroon" title="c4">z</font> is  <a href="gaussint.html#V3" title="GAUSSINT:attr.3">g_int_unit</a>  &amp; <font color="Maroon" title="c4">z</font> <a href="gaussint.html#R2" title="GAUSSINT:pred.2">is_associated_to</a> <font color="Maroon" title="c3">q</font> )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c4">z</font> <a href="gaussint.html#R1" title="GAUSSINT:pred.1">Divides</a> <font color="Maroon" title="c3">q</font> or <font color="Maroon" title="c4">z</font> is  <a href="gaussint.html#V3" title="GAUSSINT:attr.3">g_int_unit</a>  or <font color="Maroon" title="c4">z</font> <a href="gaussint.html#R2" title="GAUSSINT:pred.2">is_associated_to</a> <font color="Maroon" title="c3">q</font> )</span><br/><div class="add"><span class="kw">hence </span><a NAME="E2:115_1_1_2"/>
+(  not <font color="Maroon" title="c4">z</font> <a href="gaussint.html#R1" title="GAUSSINT:pred.1">Divides</a> <font color="Maroon" title="c3">q</font> or <font color="Maroon" title="c4">z</font> is  <a href="gaussint.html#V3" title="GAUSSINT:attr.3">g_int_unit</a>  or <font color="Maroon" title="c4">z</font> <a href="gaussint.html#R2" title="GAUSSINT:pred.2">is_associated_to</a> <font color="Maroon" title="c3">q</font> )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/></div><span class="kw">end;</span></div><div><a class="txt" onclick="hsNdiv(this)" href="javascript:()" title="115_1_1_3"><span class="kw">suppose </span></a><a NAME="E1:115_1_1_3"/><span class="lab"><font color="Green" title="E50">A2</font></span>: 
+(  not <font color="Maroon" title="c4">z</font> is  <a href="gaussint.html#V3" title="GAUSSINT:attr.3">g_int_unit</a>  &amp;  not <font color="Maroon" title="c4">z</font> <a href="gaussint.html#R2" title="GAUSSINT:pred.2">is_associated_to</a> <font color="Maroon" title="c3">q</font> )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c4">z</font> <a href="gaussint.html#R1" title="GAUSSINT:pred.1">Divides</a> <font color="Maroon" title="c3">q</font> or <font color="Maroon" title="c4">z</font> is  <a href="gaussint.html#V3" title="GAUSSINT:attr.3">g_int_unit</a>  or <font color="Maroon" title="c4">z</font> <a href="gaussint.html#R2" title="GAUSSINT:pred.2">is_associated_to</a> <font color="Maroon" title="c3">q</font> )</span><br/><div class="add"><a NAME="E2:115_1_1_3"/>
+ not <font color="Maroon" title="c4">z</font> <a href="gaussint.html#R1" title="GAUSSINT:pred.1">Divides</a> <font color="Maroon" title="c3">q</font>
+ <div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="115_1_1_3_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><a NAME="E1:115_1_1_3_1"/><span class="lab"><font color="Green" title="E51">A3</font></span>: 
+<font color="Maroon" title="c4">z</font> <a href="gaussint.html#R1" title="GAUSSINT:pred.1">Divides</a> <font color="Maroon" title="c3">q</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">consider </span><font color="Maroon" title="c5">c</font> being   <a href="gaussint.html#NM1" title="GAUSSINT:NM.1">G_INTEG</a><span class="kw"> such that </span><br/><a NAME="E3:115_1_1_3_1"/><span class="lab"><font color="Green" title="E52">A4</font></span>: 
+<font color="Maroon" title="c3">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c4">z</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Maroon" title="c5">c</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:115_1_1_3_1"><span class="lab"><font color="Green" title="E51">A3</font></span></a></span>;<br/>
+<a NAME="E4:115_1_1_3_1"/><span class="lab"><font color="Green" title="E53">A5</font></span>: 
+ <a href="gaussint.html#K16" title="GAUSSINT:func.16">Norm</a> <font color="Maroon" title="c3">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="gaussint.html#K16" title="GAUSSINT:func.16">Norm</a> <font color="Maroon" title="c4">z</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><a href="gaussint.html#K16" title="GAUSSINT:func.16">Norm</a> <font color="Maroon" title="c5">c</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:115_1_1_3_1"><span class="lab"><font color="Green" title="E52">A4</font></span></a>, <a class="ref" href="gaussint.html#T34" target="_self" onmouseover="rs('gaussint/T34')" onmouseout="rh()">Th34</a></span>;<br/>
+<a NAME="E5:115_1_1_3_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E54">A6</font></span>: 
+ <a href="gaussint.html#K16" title="GAUSSINT:func.16">Norm</a> <font color="Maroon" title="c4">z</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a>  <a href="gaussint.html#K16" title="GAUSSINT:func.16">Norm</a> <font color="Maroon" title="c3">q</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="int_1.html#D3" onmouseover="rs('int_1/D3')" onmouseout="rh()">INT_1:def 3</a></span>;<br/>
+<a NAME="E6:115_1_1_3_1"/><span class="lab"><font color="Green" title="E55">A7</font></span>: 
+ <a href="gaussint.html#K16" title="GAUSSINT:func.16">Norm</a> <font color="Maroon" title="c4">z</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="115_1_1_3_1_1"><span class="kw">proof </span></a><div class="add">
+
+<a NAME="E1:115_1_1_3_1_1"/>
+ <a href="gaussint.html#K16" title="GAUSSINT:func.16">Norm</a> <font color="Maroon" title="c4">z</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="115_1_1_3_1_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><a NAME="E1:115_1_1_3_1_1_1"/>
+ <a href="gaussint.html#K16" title="GAUSSINT:func.16">Norm</a> <font color="Maroon" title="c4">z</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">then </span> <a href="gaussint.html#K16" title="GAUSSINT:func.16">Norm</a> <font color="Maroon" title="c3">q</font> = 
+<a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><a href="gaussint.html#K16" title="GAUSSINT:func.16">Norm</a> <font color="Maroon" title="c5">c</font></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:115_1_1_3_1"><span class="lab"><font color="Green" title="E52">A4</font></span></a>, <a class="ref" href="gaussint.html#T34" target="_self" onmouseover="rs('gaussint/T34')" onmouseout="rh()">Th34</a></span>
+<br/>.= 
+ <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+
+;<br/>
+<span class="kw">hence </span><a NAME="E3:115_1_1_3_1_1_1"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:115"><span class="lab"><font color="Green" title="E49">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E2:115_1_1_3_1_1"/><span class="kw">then </span>
+ <a href="gaussint.html#K16" title="GAUSSINT:func.16">Norm</a> <font color="Maroon" title="c4">z</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_1.html#T13" onmouseover="rs('nat_1/T13')" onmouseout="rh()">NAT_1:13</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E3:115_1_1_3_1_1"/>
+ <a href="gaussint.html#K16" title="GAUSSINT:func.16">Norm</a> <font color="Maroon" title="c4">z</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:115_1_1_3"><span class="lab"><font color="Green" title="E50">A2</font></span></a>, <a class="ref" href="xxreal_0.html#T1" onmouseover="rs('xxreal_0/T1')" onmouseout="rh()">XXREAL_0:1</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E7:115_1_1_3_1"/><span class="lab"><font color="Green" title="E56">A8</font></span>: 
+ <a href="gaussint.html#K16" title="GAUSSINT:func.16">Norm</a> <font color="Maroon" title="c5">c</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:115_1_1_3"><span class="lab"><font color="Green" title="E50">A2</font></span></a>, <a class="txt" href="#E3:115_1_1_3_1"><span class="lab"><font color="Green" title="E52">A4</font></span></a>, <a class="ref" href="gaussint.html#D20" target="_self" onmouseover="rs('gaussint/D20')" onmouseout="rh()">Def20</a>, <a class="ref" href="gaussint.html#T40" target="_self" onmouseover="rs('gaussint/T40')" onmouseout="rh()">Th40</a></span>;<br/>
+<a NAME="E8:115_1_1_3_1"/>
+ <a href="gaussint.html#K16" title="GAUSSINT:func.16">Norm</a> <font color="Maroon" title="c3">q</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="gaussint.html#K16" title="GAUSSINT:func.16">Norm</a> <font color="Maroon" title="c4">z</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:115"><span class="lab"><font color="Green" title="E49">A1</font></span></a>, <a class="txt" href="#E4:115_1_1_3_1"><span class="lab"><font color="Green" title="E53">A5</font></span></a>, <a class="txt" href="#E7:115_1_1_3_1"><span class="lab"><font color="Green" title="E56">A8</font></span></a>, <a class="ref" href="xcmplx_1.html#T7" onmouseover="rs('xcmplx_1/T7')" onmouseout="rh()">XCMPLX_1:7</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E9:115_1_1_3_1"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:115"><span class="lab"><font color="Green" title="E49">A1</font></span></a>, <a class="txt" href="#E5:115_1_1_3_1"><span class="lab"><font color="Green" title="E54">A6</font></span></a>, <a class="txt" href="#E6:115_1_1_3_1"><span class="lab"><font color="Green" title="E55">A7</font></span></a>, <a class="ref" href="int_2.html#D4" onmouseover="rs('int_2/D4')" onmouseout="rh()">INT_2:def 4</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div><span class="kw">hence </span><a NAME="E3:115_1_1_3"/>
+(  not <font color="Maroon" title="c4">z</font> <a href="gaussint.html#R1" title="GAUSSINT:pred.1">Divides</a> <font color="Maroon" title="c3">q</font> or <font color="Maroon" title="c4">z</font> is  <a href="gaussint.html#V3" title="GAUSSINT:attr.3">g_int_unit</a>  or <font color="Maroon" title="c4">z</font> <a href="gaussint.html#R2" title="GAUSSINT:pred.2">is_associated_to</a> <font color="Maroon" title="c3">q</font> )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/></div><span class="kw">end;</span></div></div><span class="kw">end;</span></div>
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E3:115"/>
+<font color="Maroon" title="c3">q</font> is  <a href="gaussint.html#V4" title="GAUSSINT:attr.4">g_prime</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:115"><span class="lab"><font color="Green" title="E49">A1</font></span></a>, <a class="ref" href="int_2.html#D4" onmouseover="rs('int_2/D4')" onmouseout="rh()">INT_2:def 4</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
