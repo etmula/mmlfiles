@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">L1</font>, <font color="Maroon" title="c2">L2</font> be   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( ( <font color="Maroon" title="c1">L1</font> is   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a> &amp; <font color="Maroon" title="c2">L2</font> is   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a> ) iff <span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">L1</font>,<font color="Maroon" title="c2">L2</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span> is   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a> )</span><br/>
+
+
+
+<span class="kw">thus </span><a NAME="E1:53"/>
+( <font color="Maroon" title="c1">L1</font> is   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a> &amp; <font color="Maroon" title="c2">L2</font> is   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a> implies <span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">L1</font>,<font color="Maroon" title="c2">L2</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span> is   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a> )
+  <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">L1</font>,<font color="Maroon" title="c2">L2</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span> is   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a> implies ( <font color="Maroon" title="c1">L1</font> is   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a> &amp; <font color="Maroon" title="c2">L2</font> is   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a> ) )</span><div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="53_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><span class="kw">that </span><br/><a NAME="E1:53_1"/><span class="lab"><font color="Green" title="E35">A1</font></span>: 
+<font color="Maroon" title="c1">L1</font> is   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a>
+ <span class="kw">and </span><br/><a NAME="E2:53_1"/><span class="lab"><font color="Green" title="E36">A2</font></span>: 
+<font color="Maroon" title="c2">L2</font> is   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">L1</font>,<font color="Maroon" title="c2">L2</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span> is   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a></span><br/>
+
+<a NAME="E3:53_1"/><span class="lab"><font color="Green" title="E37">A3</font></span>: 
+<font color="Maroon">H<sub>1</sub></font>(<font color="Maroon" title="c2">L2</font>) <a href="binop_1.html#R6" title="BINOP_1:pred.6">is_distributive_wrt</a> <font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c2">L2</font>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:53_1"><span class="lab"><font color="Green" title="E36">A2</font></span></a>, <a class="ref" href="lattice2.html#T21" onmouseover="rs('lattice2/T21')" onmouseout="rh()">LATTICE2:21</a></span>;<br/>
+<a NAME="E4:53_1"/>
+<font color="Maroon">H<sub>1</sub></font>(<font color="Maroon" title="c1">L1</font>) <a href="binop_1.html#R6" title="BINOP_1:pred.6">is_distributive_wrt</a> <font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c1">L1</font>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:53_1"><span class="lab"><font color="Green" title="E35">A1</font></span></a>, <a class="ref" href="lattice2.html#T21" onmouseover="rs('lattice2/T21')" onmouseout="rh()">LATTICE2:21</a></span>;<br/>
+<a NAME="E5:53_1"/><span class="kw">then </span>
+<span class="p1"><a href="filter_1.html#K6" title="FILTER_1:func.6">|:</a><span class="default"><font color="Maroon">H<sub>1</sub></font>(<font color="Maroon" title="c1">L1</font>),<font color="Maroon">H<sub>1</sub></font>(<font color="Maroon" title="c2">L2</font>)</span><a href="filter_1.html#K6" title="FILTER_1:func.6">:|</a></span> <a href="binop_1.html#R6" title="BINOP_1:pred.6">is_distributive_wrt</a> <span class="p1"><a href="filter_1.html#K6" title="FILTER_1:func.6">|:</a><span class="default"><font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c1">L1</font>),<font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c2">L2</font>)</span><a href="filter_1.html#K6" title="FILTER_1:func.6">:|</a></span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:53_1"><span class="lab"><font color="Green" title="E37">A3</font></span></a>, <a class="ref" href="filter_1.html#T29" target="_self" onmouseover="rs('filter_1/T29')" onmouseout="rh()">Th29</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E6:53_1"/>
+<span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">L1</font>,<font color="Maroon" title="c2">L2</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span> is   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="lattice2.html#T22" onmouseover="rs('lattice2/T22')" onmouseout="rh()">LATTICE2:22</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+
+<span class="kw">assume </span><a NAME="E2:53"/>
+<span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">L1</font>,<font color="Maroon" title="c2">L2</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span> is   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">L1</font> is   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a> &amp; <font color="Maroon" title="c2">L2</font> is   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a> )</span><br/>
+
+<a NAME="E3:53"/><span class="kw">then </span><span class="lab"><font color="Green" title="E35">A4</font></span>: 
+<font color="Maroon">H<sub>1</sub></font>(<span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">L1</font>,<font color="Maroon" title="c2">L2</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span>) <a href="binop_1.html#R6" title="BINOP_1:pred.6">is_distributive_wrt</a> <font color="Maroon">H<sub>2</sub></font>(<span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">L1</font>,<font color="Maroon" title="c2">L2</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="lattice2.html#T21" onmouseover="rs('lattice2/T21')" onmouseout="rh()">LATTICE2:21</a></span>;<br/>
+<a NAME="E4:53"/><span class="kw">then </span><span class="lab"><font color="Green" title="E36">A5</font></span>: 
+<font color="Maroon">H<sub>1</sub></font>(<font color="Maroon" title="c2">L2</font>) <a href="binop_1.html#R6" title="BINOP_1:pred.6">is_distributive_wrt</a> <font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c2">L2</font>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="filter_1.html#T29" target="_self" onmouseover="rs('filter_1/T29')" onmouseout="rh()">Th29</a></span>;<br/>
+<a NAME="E5:53"/>
+<font color="Maroon">H<sub>1</sub></font>(<font color="Maroon" title="c1">L1</font>) <a href="binop_1.html#R6" title="BINOP_1:pred.6">is_distributive_wrt</a> <font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c1">L1</font>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:53"><span class="lab"><font color="Green" title="E35">A4</font></span></a>, <a class="ref" href="filter_1.html#T29" target="_self" onmouseover="rs('filter_1/T29')" onmouseout="rh()">Th29</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E6:53"/>
+( <font color="Maroon" title="c1">L1</font> is   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a> &amp; <font color="Maroon" title="c2">L2</font> is   <a href="lattices.html#NM2" title="LATTICES:NM.2">D_Lattice</a> )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:53"><span class="lab"><font color="Green" title="E36">A5</font></span></a>, <a class="ref" href="lattice2.html#T22" onmouseover="rs('lattice2/T22')" onmouseout="rh()">LATTICE2:22</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

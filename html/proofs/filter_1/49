@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">L1</font>, <font color="Maroon" title="c2">L2</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">L1</font>,<font color="Maroon" title="c2">L2</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span> is   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> implies ( <font color="Maroon" title="c1">L1</font> is   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> &amp; <font color="Maroon" title="c2">L2</font> is   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> ) )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:49"/><span class="lab"><font color="Green" title="E33">A1</font></span>: 
+<span class="p1"><a href="filter_1.html#K7" title="FILTER_1:func.7">[:</a><span class="default"><font color="Maroon" title="c1">L1</font>,<font color="Maroon" title="c2">L2</font></span><a href="filter_1.html#K7" title="FILTER_1:func.7">:]</a></span> is   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c1">L1</font> is   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> &amp; <font color="Maroon" title="c2">L2</font> is   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> )</span><br/>
+
+<a NAME="E2:49"/><span class="lab"><font color="Green" title="E34">A2</font></span>: 
+<font color="Maroon">H<sub>1</sub></font>(<font color="Maroon" title="c1">L1</font>) is  <a href="binop_1.html#V2" title="BINOP_1:attr.2">associative</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:49"><span class="lab"><font color="Green" title="E33">A1</font></span></a>, <a class="ref" href="filter_1.html#T23" target="_self" onmouseover="rs('filter_1/T23')" onmouseout="rh()">Th23</a></span>;<br/>
+<a NAME="E3:49"/><span class="lab"><font color="Green" title="E35">A3</font></span>: 
+<font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c2">L2</font>) is  <a href="binop_1.html#V2" title="BINOP_1:attr.2">associative</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:49"><span class="lab"><font color="Green" title="E33">A1</font></span></a>, <a class="ref" href="filter_1.html#T23" target="_self" onmouseover="rs('filter_1/T23')" onmouseout="rh()">Th23</a></span>;<br/>
+<a NAME="E4:49"/><span class="lab"><font color="Green" title="E36">A4</font></span>: 
+<font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c2">L2</font>) is  <a href="binop_1.html#V1" title="BINOP_1:attr.1">commutative</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:49"><span class="lab"><font color="Green" title="E33">A1</font></span></a>, <a class="ref" href="filter_1.html#T22" target="_self" onmouseover="rs('filter_1/T22')" onmouseout="rh()">Th22</a></span>;<br/>
+<span class="kw">reconsider </span><font color="Maroon" title="c3">LL</font> =  <a href="lattices.html#G3" title="LATTICES:aggr.3">LattStr</a>(# <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"> the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">L1</font>, the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c2">L2</font></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>,<span class="p1"><a href="filter_1.html#K6" title="FILTER_1:func.6">|:</a><span class="default"><font color="Maroon">H<sub>1</sub></font>(<font color="Maroon" title="c1">L1</font>),<font color="Maroon">H<sub>1</sub></font>(<font color="Maroon" title="c2">L2</font>)</span><a href="filter_1.html#K6" title="FILTER_1:func.6">:|</a></span>,<span class="p1"><a href="filter_1.html#K6" title="FILTER_1:func.6">|:</a><span class="default"><font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c1">L1</font>),<font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c2">L2</font>)</span><a href="filter_1.html#K6" title="FILTER_1:func.6">:|</a></span> #) as   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="lattices.html#L3" title="LATTICES:struct.3">LattStr</a>  ;<br/>
+<a NAME="E6:49"/><span class="lab"><font color="Green" title="E37">A5</font></span>: 
+<font color="Maroon">H<sub>1</sub></font>(<font color="Maroon" title="c3">LL</font>) <a href="lattice2.html#R1" title="LATTICE2:pred.1">absorbs</a> <font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c3">LL</font>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:49"><span class="lab"><font color="Green" title="E33">A1</font></span></a>, <a class="ref" href="lattice2.html#T26" onmouseover="rs('lattice2/T26')" onmouseout="rh()">LATTICE2:26</a></span>;<br/>
+<a NAME="E7:49"/><span class="kw">then </span><span class="lab"><font color="Green" title="E38">A6</font></span>: 
+<font color="Maroon">H<sub>1</sub></font>(<font color="Maroon" title="c1">L1</font>) <a href="lattice2.html#R1" title="LATTICE2:pred.1">absorbs</a> <font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c1">L1</font>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="filter_1.html#T30" target="_self" onmouseover="rs('filter_1/T30')" onmouseout="rh()">Th30</a></span>;<br/>
+<a NAME="E8:49"/><span class="lab"><font color="Green" title="E39">A7</font></span>: 
+<font color="Maroon">H<sub>1</sub></font>(<font color="Maroon" title="c2">L2</font>) is  <a href="binop_1.html#V2" title="BINOP_1:attr.2">associative</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:49"><span class="lab"><font color="Green" title="E33">A1</font></span></a>, <a class="ref" href="filter_1.html#T23" target="_self" onmouseover="rs('filter_1/T23')" onmouseout="rh()">Th23</a></span>;<br/>
+<a NAME="E9:49"/><span class="lab"><font color="Green" title="E40">A8</font></span>: 
+<font color="Maroon">H<sub>1</sub></font>(<font color="Maroon" title="c2">L2</font>) is  <a href="binop_1.html#V1" title="BINOP_1:attr.1">commutative</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:49"><span class="lab"><font color="Green" title="E33">A1</font></span></a>, <a class="ref" href="filter_1.html#T22" target="_self" onmouseover="rs('filter_1/T22')" onmouseout="rh()">Th22</a></span>;<br/>
+<a NAME="E10:49"/><span class="lab"><font color="Green" title="E41">A9</font></span>: 
+<font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c1">L1</font>) is  <a href="binop_1.html#V2" title="BINOP_1:attr.2">associative</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:49"><span class="lab"><font color="Green" title="E33">A1</font></span></a>, <a class="ref" href="filter_1.html#T23" target="_self" onmouseover="rs('filter_1/T23')" onmouseout="rh()">Th23</a></span>;<br/>
+<a NAME="E11:49"/><span class="lab"><font color="Green" title="E42">A10</font></span>: 
+<font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c1">L1</font>) is  <a href="binop_1.html#V1" title="BINOP_1:attr.1">commutative</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:49"><span class="lab"><font color="Green" title="E33">A1</font></span></a>, <a class="ref" href="filter_1.html#T22" target="_self" onmouseover="rs('filter_1/T22')" onmouseout="rh()">Th22</a></span>;<br/>
+<a NAME="E12:49"/><span class="lab"><font color="Green" title="E43">A11</font></span>: 
+<font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c3">LL</font>) <a href="lattice2.html#R1" title="LATTICE2:pred.1">absorbs</a> <font color="Maroon">H<sub>1</sub></font>(<font color="Maroon" title="c3">LL</font>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:49"><span class="lab"><font color="Green" title="E33">A1</font></span></a>, <a class="ref" href="lattice2.html#T27" onmouseover="rs('lattice2/T27')" onmouseout="rh()">LATTICE2:27</a></span>;<br/>
+<a NAME="E13:49"/><span class="kw">then </span><span class="lab"><font color="Green" title="E44">A12</font></span>: 
+<font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c1">L1</font>) <a href="lattice2.html#R1" title="LATTICE2:pred.1">absorbs</a> <font color="Maroon">H<sub>1</sub></font>(<font color="Maroon" title="c1">L1</font>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="filter_1.html#T30" target="_self" onmouseover="rs('filter_1/T30')" onmouseout="rh()">Th30</a></span>;<br/>
+<a NAME="E14:49"/><span class="lab"><font color="Green" title="E45">A13</font></span>: 
+<font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c2">L2</font>) <a href="lattice2.html#R1" title="LATTICE2:pred.1">absorbs</a> <font color="Maroon">H<sub>1</sub></font>(<font color="Maroon" title="c2">L2</font>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E12:49"><span class="lab"><font color="Green" title="E43">A11</font></span></a>, <a class="ref" href="filter_1.html#T30" target="_self" onmouseover="rs('filter_1/T30')" onmouseout="rh()">Th30</a></span>;<br/>
+<a NAME="E15:49"/><span class="lab"><font color="Green" title="E46">A14</font></span>: 
+<font color="Maroon">H<sub>1</sub></font>(<font color="Maroon" title="c2">L2</font>) <a href="lattice2.html#R1" title="LATTICE2:pred.1">absorbs</a> <font color="Maroon">H<sub>2</sub></font>(<font color="Maroon" title="c2">L2</font>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:49"><span class="lab"><font color="Green" title="E37">A5</font></span></a>, <a class="ref" href="filter_1.html#T30" target="_self" onmouseover="rs('filter_1/T30')" onmouseout="rh()">Th30</a></span>;<br/>
+<a NAME="E16:49"/>
+<font color="Maroon">H<sub>1</sub></font>(<font color="Maroon" title="c1">L1</font>) is  <a href="binop_1.html#V1" title="BINOP_1:attr.1">commutative</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:49"><span class="lab"><font color="Green" title="E33">A1</font></span></a>, <a class="ref" href="filter_1.html#T22" target="_self" onmouseover="rs('filter_1/T22')" onmouseout="rh()">Th22</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E17:49"/>
+( <font color="Maroon" title="c1">L1</font> is   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> &amp; <font color="Maroon" title="c2">L2</font> is   <a href="lattices.html#NM1" title="LATTICES:NM.1">Lattice</a> )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:49"><span class="lab"><font color="Green" title="E34">A2</font></span></a>, <a class="txt" href="#E11:49"><span class="lab"><font color="Green" title="E42">A10</font></span></a>, <a class="txt" href="#E10:49"><span class="lab"><font color="Green" title="E41">A9</font></span></a>, <a class="txt" href="#E7:49"><span class="lab"><font color="Green" title="E38">A6</font></span></a>, <a class="txt" href="#E13:49"><span class="lab"><font color="Green" title="E44">A12</font></span></a>, <a class="txt" href="#E9:49"><span class="lab"><font color="Green" title="E40">A8</font></span></a>, <a class="txt" href="#E8:49"><span class="lab"><font color="Green" title="E39">A7</font></span></a>, <a class="txt" href="#E4:49"><span class="lab"><font color="Green" title="E36">A4</font></span></a>, <a class="txt" href="#E3:49"><span class="lab"><font color="Green" title="E35">A3</font></span></a>, <a class="txt" href="#E15:49"><span class="lab"><font color="Green" title="E46">A14</font></span></a>, <a class="txt" href="#E14:49"><span class="lab"><font color="Green" title="E45">A13</font></span></a>, <a class="ref" href="lattice2.html#T11" onmouseover="rs('lattice2/T11')" onmouseout="rh()">LATTICE2:11</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
