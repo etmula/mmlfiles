@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">n0</font> be    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  ex <font color="Olive" title="b1">NS</font> being   <a href="valued_0.html#V5" title="VALUED_0:attr.5">increasing</a>  <a href="nat_1.html#NM2" title="NAT_1:NM.2">sequence</a> of <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> st <br/> for <font color="Olive" title="b2">n</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  holds  <font color="Olive" title="b1">NS</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b2">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> <font color="Maroon" title="c1">n0</font></span><br/>
+
+<span class="kw">deffunc </span><font color="Maroon">H<sub>1</sub></font>(  <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>) <span class="kw">-&gt; </span>   <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="ordinal1.html#K4" title="ORDINAL1:func.4">omega</a>  = $1 <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> <font color="Maroon" title="c1">n0</font>;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c2">NS</font> being   <a href="seq_1.html#NM1" title="SEQ_1:NM.1">Real_Sequence</a><span class="kw"> such that </span><br/><a NAME="E2:43"/><span class="lab"><font color="Green" title="E32">A1</font></span>: 
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Maroon" title="c2">NS</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon">H<sub>1</sub></font>(<font color="Olive" title="b1">n</font>)
+ <span class="kw">from</span> <span class="lab"><a class="ref" href="seq_1.html#S1" onmouseover="rs('seq_1/S1')" onmouseout="rh()">SEQ_1:sch 1</a>();<br/></span>
+<a NAME="E3:43"/><span class="lab"><font color="Green" title="E33">A2</font></span>: 
+<font color="Maroon" title="c2">NS</font> is  <a href="valued_0.html#V5" title="VALUED_0:attr.5">increasing</a> 
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="43_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="seqm_3.html#D6" onmouseover="rs('seqm_3/D6')" onmouseout="rh()">SEQM_3:def 6</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  not <font color="Maroon" title="c2">NS</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c2">NS</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Maroon" title="c3">n</font></span><br/>
+
+<a NAME="E1:43_1"/>
+<font color="Maroon" title="c3">n</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="nat_1.html#T13" onmouseover="rs('nat_1/T13')" onmouseout="rh()">NAT_1:13</a></span>;<br/>
+<a NAME="E2:43_1"/><span class="kw">then </span>
+<font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> <font color="Maroon" title="c1">n0</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> <font color="Maroon" title="c1">n0</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="xreal_1.html#T6" onmouseover="rs('xreal_1/T6')" onmouseout="rh()">XREAL_1:6</a></span>;<br/>
+<a NAME="E3:43_1"/><span class="kw">then </span>
+<font color="Maroon" title="c2">NS</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Maroon" title="c3">n</font> <a href="xxreal_0.html#NR3" title="XXREAL_0:NR.3">&lt;</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> <font color="Maroon" title="c1">n0</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:43"><span class="lab"><font color="Green" title="E32">A1</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E4:43_1"/>
+ not <font color="Maroon" title="c2">NS</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Maroon" title="c2">NS</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Maroon" title="c3">n</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:43"><span class="lab"><font color="Green" title="E32">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E4:43"/>
+ for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Maroon" title="c2">NS</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b1">n</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> 
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="43_2"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">NS</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Maroon" title="c3">n</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> </span><br/>
+
+<a NAME="E1:43_2"/>
+<font color="Maroon" title="c3">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> <font color="Maroon" title="c1">n0</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> 
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E2:43_2"/>
+<font color="Maroon" title="c2">NS</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Maroon" title="c3">n</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:43"><span class="lab"><font color="Green" title="E32">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c3">NS</font> = <font color="Maroon" title="c2">NS</font> as   <a href="valued_0.html#V5" title="VALUED_0:attr.5">increasing</a>  <a href="nat_1.html#NM2" title="NAT_1:NM.2">sequence</a> of <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:43"><span class="lab"><font color="Green" title="E33">A2</font></span></a>, <a class="ref" href="seqm_3.html#T13" onmouseover="rs('seqm_3/T13')" onmouseout="rh()">SEQM_3:13</a></span>;<br/>
+<span class="kw">take </span>
+<font color="Maroon" title="c3">NS</font>
+; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">n</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  holds  <font color="Maroon" title="c3">NS</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> <font color="Maroon" title="c1">n0</font></span><br/>
+
+<span class="kw">thus </span><a NAME="E6:43"/>
+ for <font color="Olive" title="b1">n</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  holds  <font color="Maroon" title="c3">NS</font> <a href="nat_1.html#K8" title="NAT_1:func.8">.</a> <font color="Olive" title="b1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> <font color="Maroon" title="c1">n0</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:43"><span class="lab"><font color="Green" title="E32">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
