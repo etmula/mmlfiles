@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">set </span><font color="Maroon" title="c2">aspcs</font> =  <a href="polyform.html#K27" title="POLYFORM:func.27">alternating-semi-proper-f-vector</a> <font color="Maroon" title="c1">p</font>;<br/>
+<span class="kw">set </span><font color="Maroon" title="c3">apcs</font> =  <a href="polyform.html#K26" title="POLYFORM:func.26">alternating-proper-f-vector</a> <font color="Maroon" title="c1">p</font>;<br/>
+<a NAME="E1:83_1_1"/>
+ <a href="polyform.html#K27" title="POLYFORM:func.27">alternating-semi-proper-f-vector</a> <font color="Maroon" title="c1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="polyform.html#K26" title="POLYFORM:func.26">alternating-proper-f-vector</a> <font color="Maroon" title="c1">p</font></span>)</span> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <span class="p1"><a href="polyform.html#K1" title="POLYFORM:func.1">&lt;*</a><span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1</span>)</span> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p3">(<span class="default"><a href="polyform.html#K4" title="POLYFORM:func.4">dim</a> <font color="Maroon" title="c1">p</font></span>)</span></span>)</span></span><a href="polyform.html#K1" title="POLYFORM:func.1">*&gt;</a></span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="polyform.html#T52" target="_self" onmouseover="rs('polyform/T52')" onmouseout="rh()">Th50</a></span>;<br/>
+<a NAME="E2:83_1_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E61">A1</font></span>: 
+ <a href="rvsum_1.html#K16" title="RVSUM_1:func.16">Sum</a> <span class="p1">(<span class="default"><a href="polyform.html#K27" title="POLYFORM:func.27">alternating-semi-proper-f-vector</a> <font color="Maroon" title="c1">p</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="rvsum_1.html#K16" title="RVSUM_1:func.16">Sum</a> <span class="p2">(<span class="default"><a href="polyform.html#K26" title="POLYFORM:func.26">alternating-proper-f-vector</a> <font color="Maroon" title="c1">p</font></span>)</span></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1</span>)</span> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p2">(<span class="default"><a href="polyform.html#K4" title="POLYFORM:func.4">dim</a> <font color="Maroon" title="c1">p</font></span>)</span></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="rvsum_1.html#T74" onmouseover="rs('rvsum_1/T74')" onmouseout="rh()">RVSUM_1:74</a></span>;<br/>
+<a NAME="E3:83_1_1"/><span class="lab"><font color="Green" title="E62">A2</font></span>: 
+(  <a href="rvsum_1.html#K16" title="RVSUM_1:func.16">Sum</a> <span class="p1">(<span class="default"><a href="polyform.html#K27" title="POLYFORM:func.27">alternating-semi-proper-f-vector</a> <font color="Maroon" title="c1">p</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 implies <font color="Maroon" title="c1">p</font> is  <a href="polyform.html#V6" title="POLYFORM:attr.6">eulerian</a>  )
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="83_1_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><a NAME="E1:83_1_1_1"/>
+ <a href="rvsum_1.html#K16" title="RVSUM_1:func.16">Sum</a> <span class="p1">(<span class="default"><a href="polyform.html#K27" title="POLYFORM:func.27">alternating-semi-proper-f-vector</a> <font color="Maroon" title="c1">p</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">p</font> is  <a href="polyform.html#V6" title="POLYFORM:attr.6">eulerian</a> </span><br/>
+
+<span class="kw">then </span> <a href="rvsum_1.html#K16" title="RVSUM_1:func.16">Sum</a> <span class="p1">(<span class="default"><a href="polyform.html#K26" title="POLYFORM:func.26">alternating-proper-f-vector</a> <font color="Maroon" title="c1">p</font></span>)</span> = 
+1 <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1</span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1</span>)</span> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p3">(<span class="default"><a href="polyform.html#K4" title="POLYFORM:func.4">dim</a> <font color="Maroon" title="c1">p</font></span>)</span></span>)</span></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:83_1_1"><span class="lab"><font color="Green" title="E61">A1</font></span></a></span>
+<br/>.= 
+1 <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1</span>)</span> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="polyform.html#K4" title="POLYFORM:func.4">dim</a> <font color="Maroon" title="c1">p</font></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1</span>)</span></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="newton.html#T6" onmouseover="rs('newton/T6')" onmouseout="rh()">NEWTON:6</a></span>
+;<br/>
+<span class="kw">hence </span><a NAME="E3:83_1_1_1"/>
+<font color="Maroon" title="c1">p</font> is  <a href="polyform.html#V6" title="POLYFORM:attr.6">eulerian</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E4:83_1_1"/>
+( <font color="Maroon" title="c1">p</font> is  <a href="polyform.html#V6" title="POLYFORM:attr.6">eulerian</a>  implies  <a href="rvsum_1.html#K16" title="RVSUM_1:func.16">Sum</a> <span class="p1">(<span class="default"><a href="polyform.html#K27" title="POLYFORM:func.27">alternating-semi-proper-f-vector</a> <font color="Maroon" title="c1">p</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 )
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="83_1_1_2"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><a NAME="E1:83_1_1_2"/>
+<font color="Maroon" title="c1">p</font> is  <a href="polyform.html#V6" title="POLYFORM:attr.6">eulerian</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="rvsum_1.html#K16" title="RVSUM_1:func.16">Sum</a> <span class="p1">(<span class="default"><a href="polyform.html#K27" title="POLYFORM:func.27">alternating-semi-proper-f-vector</a> <font color="Maroon" title="c1">p</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1</span><br/>
+
+<span class="kw">then </span> <a href="rvsum_1.html#K16" title="RVSUM_1:func.16">Sum</a> <span class="p1">(<span class="default"><a href="polyform.html#K27" title="POLYFORM:func.27">alternating-semi-proper-f-vector</a> <font color="Maroon" title="c1">p</font></span>)</span> = 
+<span class="p1">(<span class="default">1 <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1</span>)</span> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p3">(<span class="default"><span class="p4">(<span class="default"><a href="polyform.html#K4" title="POLYFORM:func.4">dim</a> <font color="Maroon" title="c1">p</font></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1</span>)</span></span>)</span></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1</span>)</span> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p2">(<span class="default"><a href="polyform.html#K4" title="POLYFORM:func.4">dim</a> <font color="Maroon" title="c1">p</font></span>)</span></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:83_1_1"><span class="lab"><font color="Green" title="E61">A1</font></span></a></span>
+<br/>.= 
+<span class="p1">(<span class="default">1 <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1</span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p3">(<span class="default"><span class="p4">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1</span>)</span> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p4">(<span class="default"><a href="polyform.html#K4" title="POLYFORM:func.4">dim</a> <font color="Maroon" title="c1">p</font></span>)</span></span>)</span></span>)</span></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1</span>)</span> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p2">(<span class="default"><a href="polyform.html#K4" title="POLYFORM:func.4">dim</a> <font color="Maroon" title="c1">p</font></span>)</span></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="newton.html#T6" onmouseover="rs('newton/T6')" onmouseout="rh()">NEWTON:6</a></span>
+<br/>.= 
+1
+
+;<br/>
+<span class="kw">hence </span><a NAME="E3:83_1_1_2"/>
+ <a href="rvsum_1.html#K16" title="RVSUM_1:func.16">Sum</a> <span class="p1">(<span class="default"><a href="polyform.html#K27" title="POLYFORM:func.27">alternating-semi-proper-f-vector</a> <font color="Maroon" title="c1">p</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E5:83_1_1"/>
+( <font color="Maroon" title="c1">p</font> is  <a href="polyform.html#V6" title="POLYFORM:attr.6">eulerian</a>  iff  <a href="rvsum_1.html#K16" title="RVSUM_1:func.16">Sum</a> <span class="p1">(<span class="default"><a href="polyform.html#K27" title="POLYFORM:func.27">alternating-semi-proper-f-vector</a> <font color="Maroon" title="c1">p</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:83_1_1"><span class="lab"><font color="Green" title="E62">A2</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

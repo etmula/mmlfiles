@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">L</font> be   <a href="vectsp_1.html#NM5" title="VECTSP_1:NM.5">Field</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">p</font> being   <a href="polynom3.html#NM1" title="POLYNOM3:NM.1">Polynomial</a> of <font color="Maroon" title="c1">L</font>  st  <a href="algseq_1.html#K1" title="ALGSEQ_1:func.1">len</a> <font color="Olive" title="b1">p</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br/>( <font color="Olive" title="b1">p</font> is  <a href="polynom5.html#V1" title="POLYNOM5:attr.1">with_roots</a>  iff  <a href="polynom5.html#K8" title="POLYNOM5:func.8">NormPolynomial</a> <font color="Olive" title="b1">p</font> is  <a href="polynom5.html#V1" title="POLYNOM5:attr.1">with_roots</a>  )</span><br/><span class="kw">let </span><font color="Maroon" title="c2">p</font> be   <a href="polynom3.html#NM1" title="POLYNOM3:NM.1">Polynomial</a> of <font color="Maroon" title="c1">L</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="algseq_1.html#K1" title="ALGSEQ_1:func.1">len</a> <font color="Maroon" title="c2">p</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies ( <font color="Maroon" title="c2">p</font> is  <a href="polynom5.html#V1" title="POLYNOM5:attr.1">with_roots</a>  iff  <a href="polynom5.html#K8" title="POLYNOM5:func.8">NormPolynomial</a> <font color="Maroon" title="c2">p</font> is  <a href="polynom5.html#V1" title="POLYNOM5:attr.1">with_roots</a>  ) )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:77"/><span class="lab"><font color="Green" title="E53">A1</font></span>: 
+ <a href="algseq_1.html#K1" title="ALGSEQ_1:func.1">len</a> <font color="Maroon" title="c2">p</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">p</font> is  <a href="polynom5.html#V1" title="POLYNOM5:attr.1">with_roots</a>  iff  <a href="polynom5.html#K8" title="POLYNOM5:func.8">NormPolynomial</a> <font color="Maroon" title="c2">p</font> is  <a href="polynom5.html#V1" title="POLYNOM5:attr.1">with_roots</a>  )</span><br/>
+
+<span class="kw">thus </span><a NAME="E2:77"/>
+( <font color="Maroon" title="c2">p</font> is  <a href="polynom5.html#V1" title="POLYNOM5:attr.1">with_roots</a>  implies  <a href="polynom5.html#K8" title="POLYNOM5:func.8">NormPolynomial</a> <font color="Maroon" title="c2">p</font> is  <a href="polynom5.html#V1" title="POLYNOM5:attr.1">with_roots</a>  )
+  <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="polynom5.html#K8" title="POLYNOM5:func.8">NormPolynomial</a> <font color="Maroon" title="c2">p</font> is  <a href="polynom5.html#V1" title="POLYNOM5:attr.1">with_roots</a>  implies <font color="Maroon" title="c2">p</font> is  <a href="polynom5.html#V1" title="POLYNOM5:attr.1">with_roots</a>  )</span><div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="77_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><a NAME="E1:77_1"/>
+<font color="Maroon" title="c2">p</font> is  <a href="polynom5.html#V1" title="POLYNOM5:attr.1">with_roots</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="polynom5.html#K8" title="POLYNOM5:func.8">NormPolynomial</a> <font color="Maroon" title="c2">p</font> is  <a href="polynom5.html#V1" title="POLYNOM5:attr.1">with_roots</a> </span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c3">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font><span class="kw"> such that </span><br/><a NAME="E3:77_1"/><span class="lab"><font color="Green" title="E54">A2</font></span>: 
+<font color="Maroon" title="c3">x</font> <a href="polynom5.html#R1" title="POLYNOM5:pred.1">is_a_root_of</a> <font color="Maroon" title="c2">p</font>
+ ;<br/>
+<a NAME="E4:77_1"/>
+<font color="Maroon" title="c3">x</font> <a href="polynom5.html#R1" title="POLYNOM5:pred.1">is_a_root_of</a>  <a href="polynom5.html#K8" title="POLYNOM5:func.8">NormPolynomial</a> <font color="Maroon" title="c2">p</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:77"><span class="lab"><font color="Green" title="E53">A1</font></span></a>, <a class="txt" href="#E3:77_1"><span class="lab"><font color="Green" title="E54">A2</font></span></a>, <a class="ref" href="polynom5.html#T59" target="_self" onmouseover="rs('polynom5/T59')" onmouseout="rh()">Th59</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:77_1"/>
+ <a href="polynom5.html#K8" title="POLYNOM5:func.8">NormPolynomial</a> <font color="Maroon" title="c2">p</font> is  <a href="polynom5.html#V1" title="POLYNOM5:attr.1">with_roots</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+
+<span class="kw">assume </span><a NAME="E3:77"/>
+ <a href="polynom5.html#K8" title="POLYNOM5:func.8">NormPolynomial</a> <font color="Maroon" title="c2">p</font> is  <a href="polynom5.html#V1" title="POLYNOM5:attr.1">with_roots</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">p</font> is  <a href="polynom5.html#V1" title="POLYNOM5:attr.1">with_roots</a> </span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c3">x</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c1">L</font><span class="kw"> such that </span><br/><a NAME="E5:77"/><span class="lab"><font color="Green" title="E54">A3</font></span>: 
+<font color="Maroon" title="c3">x</font> <a href="polynom5.html#R1" title="POLYNOM5:pred.1">is_a_root_of</a>  <a href="polynom5.html#K8" title="POLYNOM5:func.8">NormPolynomial</a> <font color="Maroon" title="c2">p</font>
+ ;<br/>
+<a NAME="E6:77"/>
+<font color="Maroon" title="c3">x</font> <a href="polynom5.html#R1" title="POLYNOM5:pred.1">is_a_root_of</a> <font color="Maroon" title="c2">p</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:77"><span class="lab"><font color="Green" title="E53">A1</font></span></a>, <a class="txt" href="#E5:77"><span class="lab"><font color="Green" title="E54">A3</font></span></a>, <a class="ref" href="polynom5.html#T59" target="_self" onmouseover="rs('polynom5/T59')" onmouseout="rh()">Th59</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:77"/>
+<font color="Maroon" title="c2">p</font> is  <a href="polynom5.html#V1" title="POLYNOM5:attr.1">with_roots</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
