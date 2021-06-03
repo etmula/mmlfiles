@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c5">M</font> be   <a href="matrix_1.html#NM2" title="MATRIX_1:NM.2">Matrix</a> of <font color="Maroon" title="c1">n</font>,<font color="Maroon" title="c2">K</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c5">M</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">M1</font> <a href="matrix_3.html#K3" title="MATRIX_3:func.3">+</a> <font color="Maroon" title="c4">M2</font> implies <font color="Maroon" title="c5">M</font> is  <a href="matrix17.html#V4" title="MATRIX17:attr.4">symmetry_circulant</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:43_1_1"/><span class="lab"><font color="Green" title="E15">A1</font></span>: 
+<font color="Maroon" title="c5">M</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">M1</font> <a href="matrix_3.html#K3" title="MATRIX_3:func.3">+</a> <font color="Maroon" title="c4">M2</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c5">M</font> is  <a href="matrix17.html#V4" title="MATRIX17:attr.4">symmetry_circulant</a> </span><br/>
+
+<span class="kw">consider </span><font color="Maroon" title="c6">p</font> being   <a href="struct_0.html#NM7" title="STRUCT_0:NM.7">FinSequence</a> of <font color="Maroon" title="c2">K</font><span class="kw"> such that </span><br/><a NAME="E3:43_1_1"/><span class="lab"><font color="Green" title="E16">A2</font></span>: 
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c6">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="matrix_0.html#K1" title="MATRIX_0:func.1">width</a> <font color="Maroon" title="c3">M1</font>
+ <span class="kw">and </span><br/><a NAME="E4:43_1_1"/><span class="lab"><font color="Green" title="E17">A3</font></span>: 
+<font color="Maroon" title="c3">M1</font> <a href="matrix17.html#R1" title="MATRIX17:pred.1">is_symmetry_circulant_about</a> <font color="Maroon" title="c6">p</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="matrix17.html#D5" target="_self" onmouseover="rs('matrix17/D5')" onmouseout="rh()">Def5</a></span>;<br/>
+<a NAME="E5:43_1_1"/>
+ <a href="matrix_0.html#K1" title="MATRIX_0:func.1">width</a> <font color="Maroon" title="c3">M1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="matrix_0.html#T24" onmouseover="rs('matrix_0/T24')" onmouseout="rh()">MATRIX_0:24</a></span>;<br/>
+<a NAME="E6:43_1_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E18">A4</font></span>: 
+ <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c6">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c1">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:43_1_1"><span class="lab"><font color="Green" title="E16">A2</font></span></a>, <a class="ref" href="finseq_1.html#D3" onmouseover="rs('finseq_1/D3')" onmouseout="rh()">FINSEQ_1:def 3</a></span>;<br/>
+<span class="kw">consider </span><font color="Maroon" title="c7">q</font> being   <a href="struct_0.html#NM7" title="STRUCT_0:NM.7">FinSequence</a> of <font color="Maroon" title="c2">K</font><span class="kw"> such that </span><br/><a NAME="E8:43_1_1"/><span class="lab"><font color="Green" title="E19">A5</font></span>: 
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c7">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="matrix_0.html#K1" title="MATRIX_0:func.1">width</a> <font color="Maroon" title="c4">M2</font>
+ <span class="kw">and </span><br/><a NAME="E9:43_1_1"/><span class="lab"><font color="Green" title="E20">A6</font></span>: 
+<font color="Maroon" title="c4">M2</font> <a href="matrix17.html#R1" title="MATRIX17:pred.1">is_symmetry_circulant_about</a> <font color="Maroon" title="c7">q</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="matrix17.html#D5" target="_self" onmouseover="rs('matrix17/D5')" onmouseout="rh()">Def5</a></span>;<br/>
+<a NAME="E10:43_1_1"/><span class="lab"><font color="Green" title="E21">A7</font></span>: 
+<font color="Maroon" title="c1">n</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="ordinal1.html#D12" onmouseover="rs('ordinal1/D12')" onmouseout="rh()">ORDINAL1:def 12</a></span>;<br/>
+<a NAME="E11:43_1_1"/>
+ <a href="matrix_0.html#K1" title="MATRIX_0:func.1">width</a> <font color="Maroon" title="c4">M2</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="matrix_0.html#T24" onmouseover="rs('matrix_0/T24')" onmouseout="rh()">MATRIX_0:24</a></span>;<br/>
+<a NAME="E12:43_1_1"/><span class="kw">then </span>
+ <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c7">q</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c1">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E8:43_1_1"><span class="lab"><font color="Green" title="E19">A5</font></span></a>, <a class="ref" href="finseq_1.html#D3" onmouseover="rs('finseq_1/D3')" onmouseout="rh()">FINSEQ_1:def 3</a></span>;<br/>
+<a NAME="E13:43_1_1"/><span class="kw">then </span>
+ <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <span class="p1">(<span class="default"><font color="Maroon" title="c6">p</font> <a href="fvsum_1.html#K3" title="FVSUM_1:func.3">+</a> <font color="Maroon" title="c7">q</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c6">p</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:43_1_1"><span class="lab"><font color="Green" title="E18">A4</font></span></a>, <a class="ref" href="polynom1.html#T1" onmouseover="rs('polynom1/T1')" onmouseout="rh()">POLYNOM1:1</a></span>;<br/>
+<a NAME="E14:43_1_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E22">A8</font></span>: 
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <span class="p1">(<span class="default"><font color="Maroon" title="c6">p</font> <a href="fvsum_1.html#K3" title="FVSUM_1:func.3">+</a> <font color="Maroon" title="c7">q</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:43_1_1"><span class="lab"><font color="Green" title="E18">A4</font></span></a>, <a class="txt" href="#E10:43_1_1"><span class="lab"><font color="Green" title="E21">A7</font></span></a>, <a class="ref" href="finseq_1.html#D3" onmouseover="rs('finseq_1/D3')" onmouseout="rh()">FINSEQ_1:def 3</a></span>;<br/>
+<a NAME="E15:43_1_1"/>
+ <a href="matrix_0.html#K1" title="MATRIX_0:func.1">width</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">M1</font> <a href="matrix_3.html#K3" title="MATRIX_3:func.3">+</a> <font color="Maroon" title="c4">M2</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="matrix_0.html#T24" onmouseover="rs('matrix_0/T24')" onmouseout="rh()">MATRIX_0:24</a></span>;<br/>
+<a NAME="E16:43_1_1"/><span class="kw">then </span>
+ ex <font color="Olive" title="b1">r</font> being   <a href="struct_0.html#NM7" title="STRUCT_0:NM.7">FinSequence</a> of <font color="Maroon" title="c2">K</font> st <br/>(  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">r</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="matrix_0.html#K1" title="MATRIX_0:func.1">width</a> <span class="p1">(<span class="default"><font color="Maroon" title="c3">M1</font> <a href="matrix_3.html#K3" title="MATRIX_3:func.3">+</a> <font color="Maroon" title="c4">M2</font></span>)</span> &amp; <font color="Maroon" title="c3">M1</font> <a href="matrix_3.html#K3" title="MATRIX_3:func.3">+</a> <font color="Maroon" title="c4">M2</font> <a href="matrix17.html#R1" title="MATRIX17:pred.1">is_symmetry_circulant_about</a> <font color="Olive" title="b1">r</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E14:43_1_1"><span class="lab"><font color="Green" title="E22">A8</font></span></a>, <a class="txt" href="#E4:43_1_1"><span class="lab"><font color="Green" title="E17">A3</font></span></a>, <a class="txt" href="#E9:43_1_1"><span class="lab"><font color="Green" title="E20">A6</font></span></a>, <a class="ref" href="matrix17.html#T5" target="_self" onmouseover="rs('matrix17/T5')" onmouseout="rh()">Th5</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E17:43_1_1"/>
+<font color="Maroon" title="c5">M</font> is  <a href="matrix17.html#V4" title="MATRIX17:attr.4">symmetry_circulant</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:43_1_1"><span class="lab"><font color="Green" title="E15">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

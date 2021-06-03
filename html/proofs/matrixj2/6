@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">K</font> being   <a href="vectsp_1.html#NM5" title="VECTSP_1:NM.5">Field</a><br/>  for <font color="Olive" title="b2">L</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Olive" title="b1">K</font> holds <br/> (  <a href="matrixj2.html#K2" title="MATRIXJ2:func.2">Jordan_block</a> (<font color="Olive" title="b2">L</font>,<font color="Maroon" title="c1">n</font>) is  <a href="matrix_6.html#V1" title="MATRIX_6:attr.1">invertible</a>  iff ( <font color="Maroon" title="c1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  or <font color="Olive" title="b2">L</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Olive" title="b1">K</font> ) )</span><br/><span class="kw">let </span><font color="Maroon" title="c2">K</font> be   <a href="vectsp_1.html#NM5" title="VECTSP_1:NM.5">Field</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">L</font> being   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c2">K</font> holds <br/> (  <a href="matrixj2.html#K2" title="MATRIXJ2:func.2">Jordan_block</a> (<font color="Olive" title="b1">L</font>,<font color="Maroon" title="c1">n</font>) is  <a href="matrix_6.html#V1" title="MATRIX_6:attr.1">invertible</a>  iff ( <font color="Maroon" title="c1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  or <font color="Olive" title="b1">L</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Maroon" title="c2">K</font> ) )</span><br/><span class="kw">let </span><font color="Maroon" title="c3">L</font> be   <a href="struct_0.html#NM1" title="STRUCT_0:NM.1">Element</a> of <font color="Maroon" title="c2">K</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="matrixj2.html#K2" title="MATRIXJ2:func.2">Jordan_block</a> (<font color="Maroon" title="c3">L</font>,<font color="Maroon" title="c1">n</font>) is  <a href="matrix_6.html#V1" title="MATRIX_6:attr.1">invertible</a>  iff ( <font color="Maroon" title="c1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  or <font color="Maroon" title="c3">L</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Maroon" title="c2">K</font> ) )</span><br/>
+
+
+
+
+
+<span class="kw">set </span><font color="Maroon" title="c4">B</font> =  <a href="matrixj2.html#K2" title="MATRIXJ2:func.2">Jordan_block</a> (<font color="Maroon" title="c3">L</font>,<font color="Maroon" title="c1">n</font>);<br/>
+<a NAME="E1:6"/><span class="lab"><font color="Green" title="E6">A1</font></span>: 
+(  not  <a href="matrixj2.html#K2" title="MATRIXJ2:func.2">Jordan_block</a> (<font color="Maroon" title="c3">L</font>,<font color="Maroon" title="c1">n</font>) is  <a href="matrix_6.html#V1" title="MATRIX_6:attr.1">invertible</a>  or <font color="Maroon" title="c3">L</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Maroon" title="c2">K</font> or <font color="Maroon" title="c1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  )
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="6_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><a NAME="E1:6_1"/>
+ <a href="matrixj2.html#K2" title="MATRIXJ2:func.2">Jordan_block</a> (<font color="Maroon" title="c3">L</font>,<font color="Maroon" title="c1">n</font>) is  <a href="matrix_6.html#V1" title="MATRIX_6:attr.1">invertible</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">L</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Maroon" title="c2">K</font> or <font color="Maroon" title="c1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  )</span><br/>
+
+<a NAME="E2:6_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E7">A2</font></span>: 
+ <a href="matrix_3.html#K12" title="MATRIX_3:func.12">Det</a> <span class="p1">(<span class="default"><a href="matrixj2.html#K2" title="MATRIXJ2:func.2">Jordan_block</a> (<font color="Maroon" title="c3">L</font>,<font color="Maroon" title="c1">n</font>)</span>)</span> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Maroon" title="c2">K</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="laplace.html#T34" onmouseover="rs('laplace/T34')" onmouseout="rh()">LAPLACE:34</a></span>;<br/>
+<span class="kw">assume </span><a NAME="E3:6_1"/><span class="lab"><font color="Green" title="E8">A3</font></span>: 
+<font color="Maroon" title="c3">L</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Maroon" title="c2">K</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </span><br/>
+
+<span class="kw">assume </span><a NAME="E4:6_1"/>
+<font color="Maroon" title="c1">n</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<a NAME="E5:6_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E9">A4</font></span>: 
+<font color="Maroon" title="c1">n</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c1">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_1.html#T3" onmouseover="rs('finseq_1/T3')" onmouseout="rh()">FINSEQ_1:3</a></span>;<br/>
+<a NAME="E6:6_1"/><span class="kw">then </span>
+(  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K5" title="FINSEQ_2:func.5">|-&gt;</a> <font color="Maroon" title="c3">L</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c1">n</font> &amp; <span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K5" title="FINSEQ_2:func.5">|-&gt;</a> <font color="Maroon" title="c3">L</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">L</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_2.html#T57" onmouseover="rs('finseq_2/T57')" onmouseout="rh()">FINSEQ_2:57</a>, <a class="ref" href="finseq_2.html#T124" onmouseover="rs('finseq_2/T124')" onmouseout="rh()">FINSEQ_2:124</a></span>;<br/>
+<span class="kw">then </span> <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Maroon" title="c2">K</font> = 
+ <a href="group_4.html#K3" title="GROUP_4:func.3">Product</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K5" title="FINSEQ_2:func.5">|-&gt;</a> <font color="Maroon" title="c3">L</font></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:6_1"><span class="lab"><font color="Green" title="E8">A3</font></span></a>, <a class="txt" href="#E5:6_1"><span class="lab"><font color="Green" title="E9">A4</font></span></a>, <a class="ref" href="fvsum_1.html#T82" onmouseover="rs('fvsum_1/T82')" onmouseout="rh()">FVSUM_1:82</a></span>
+<br/>.= 
+<span class="p1">(<span class="default"><a href="group_1.html#K4" title="GROUP_1:func.4">power</a> <font color="Maroon" title="c2">K</font></span>)</span> <a href="laplace.html#K1" title="LAPLACE:func.1">.</a> (<font color="Maroon" title="c3">L</font>,<font color="Maroon" title="c1">n</font>)
+<span class="kw">by</span> <span class="lab"><a class="ref" href="matrixj1.html#T5" onmouseover="rs('matrixj1/T5')" onmouseout="rh()">MATRIXJ1:5</a></span>
+;<br/>
+<span class="kw">hence </span><a NAME="E8:6_1"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:6_1"><span class="lab"><font color="Green" title="E7">A2</font></span></a>, <a class="ref" href="matrixj2.html#T2" target="_self" onmouseover="rs('matrixj2/T2')" onmouseout="rh()">Th2</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E2:6"/>
+( ( <font color="Maroon" title="c1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  or <font color="Maroon" title="c3">L</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Maroon" title="c2">K</font> ) implies  <a href="matrixj2.html#K2" title="MATRIXJ2:func.2">Jordan_block</a> (<font color="Maroon" title="c3">L</font>,<font color="Maroon" title="c1">n</font>) is  <a href="matrix_6.html#V1" title="MATRIX_6:attr.1">invertible</a>  )
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="6_2"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><a NAME="E1:6_2"/><span class="lab"><font color="Green" title="E7">A5</font></span>: 
+( <font color="Maroon" title="c1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  or <font color="Maroon" title="c3">L</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Maroon" title="c2">K</font> )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="matrixj2.html#K2" title="MATRIXJ2:func.2">Jordan_block</a> (<font color="Maroon" title="c3">L</font>,<font color="Maroon" title="c1">n</font>) is  <a href="matrix_6.html#V1" title="MATRIX_6:attr.1">invertible</a> </span><br/>
+
+<span class="kw">assume </span><a NAME="E2:6_2"/>
+ not  <a href="matrixj2.html#K2" title="MATRIXJ2:func.2">Jordan_block</a> (<font color="Maroon" title="c3">L</font>,<font color="Maroon" title="c1">n</font>) is  <a href="matrix_6.html#V1" title="MATRIX_6:attr.1">invertible</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> contradiction</span><br/>
+
+<span class="kw">then </span> <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Maroon" title="c2">K</font> = 
+ <a href="matrix_3.html#K12" title="MATRIX_3:func.12">Det</a> <span class="p1">(<span class="default"><a href="matrixj2.html#K2" title="MATRIXJ2:func.2">Jordan_block</a> (<font color="Maroon" title="c3">L</font>,<font color="Maroon" title="c1">n</font>)</span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="laplace.html#T34" onmouseover="rs('laplace/T34')" onmouseout="rh()">LAPLACE:34</a></span>
+<br/>.= 
+<span class="p1">(<span class="default"><a href="group_1.html#K4" title="GROUP_1:func.4">power</a> <font color="Maroon" title="c2">K</font></span>)</span> <a href="laplace.html#K1" title="LAPLACE:func.1">.</a> (<font color="Maroon" title="c3">L</font>,<font color="Maroon" title="c1">n</font>)
+<span class="kw">by</span> <span class="lab"><a class="ref" href="matrixj2.html#T2" target="_self" onmouseover="rs('matrixj2/T2')" onmouseout="rh()">Th2</a></span>
+<br/>.= 
+ <a href="group_4.html#K3" title="GROUP_4:func.3">Product</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K5" title="FINSEQ_2:func.5">|-&gt;</a> <font color="Maroon" title="c3">L</font></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="matrixj1.html#T5" onmouseover="rs('matrixj1/T5')" onmouseout="rh()">MATRIXJ1:5</a></span>
+;<br/>
+<a NAME="E4:6_2"/><span class="kw">then </span><span class="lab"><font color="Green" title="E8">A6</font></span>: 
+ ex <font color="Olive" title="b1">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <br/>( <font color="Olive" title="b1">k</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K5" title="FINSEQ_2:func.5">|-&gt;</a> <font color="Maroon" title="c3">L</font></span>)</span> &amp; <span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K5" title="FINSEQ_2:func.5">|-&gt;</a> <font color="Maroon" title="c3">L</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">k</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Maroon" title="c2">K</font> )
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="fvsum_1.html#T82" onmouseover="rs('fvsum_1/T82')" onmouseout="rh()">FVSUM_1:82</a></span>;<br/>
+<a NAME="E5:6_2"/>
+ <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">n</font> <a href="finseq_2.html#K5" title="FINSEQ_2:func.5">|-&gt;</a> <font color="Maroon" title="c3">L</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Maroon" title="c1">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_2.html#T124" onmouseover="rs('finseq_2/T124')" onmouseout="rh()">FINSEQ_2:124</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E6:6_2"/>
+contradiction
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:6_2"><span class="lab"><font color="Green" title="E7">A5</font></span></a>, <a class="txt" href="#E4:6_2"><span class="lab"><font color="Green" title="E8">A6</font></span></a>, <a class="ref" href="finseq_2.html#T57" onmouseover="rs('finseq_2/T57')" onmouseout="rh()">FINSEQ_2:57</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E3:6"/>
+(  <a href="matrixj2.html#K2" title="MATRIXJ2:func.2">Jordan_block</a> (<font color="Maroon" title="c3">L</font>,<font color="Maroon" title="c1">n</font>) is  <a href="matrix_6.html#V1" title="MATRIX_6:attr.1">invertible</a>  iff ( <font color="Maroon" title="c1">n</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  or <font color="Maroon" title="c3">L</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="struct_0.html#K4" title="STRUCT_0:func.4">0.</a> <font color="Maroon" title="c2">K</font> ) )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:6"><span class="lab"><font color="Green" title="E6">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
