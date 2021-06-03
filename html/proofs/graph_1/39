@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">G</font>, <font color="Maroon" title="c2">G1</font> be   <a href="graph_1.html#NM3" title="GRAPH_1:NM.3">Graph</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">G1</font> <a href="graph_1.html#R4" title="GRAPH_1:pred.4">c=</a> <font color="Maroon" title="c1">G</font> implies (  the <a href="graph_1.html#U1" title="GRAPH_1:sel.1">Source</a> of <font color="Maroon" title="c2">G1</font> <a href="relset_1.html#R1" title="RELSET_1:pred.1">c=</a>  the <a href="graph_1.html#U1" title="GRAPH_1:sel.1">Source</a> of <font color="Maroon" title="c1">G</font> &amp;  the <a href="graph_1.html#U2" title="GRAPH_1:sel.2">Target</a> of <font color="Maroon" title="c2">G1</font> <a href="relset_1.html#R1" title="RELSET_1:pred.1">c=</a>  the <a href="graph_1.html#U2" title="GRAPH_1:sel.2">Target</a> of <font color="Maroon" title="c1">G</font> ) )</span><br/>
+
+
+
+<span class="kw">assume </span><a NAME="E1:39"/>
+<font color="Maroon" title="c2">G1</font> <a href="graph_1.html#R4" title="GRAPH_1:pred.4">c=</a> <font color="Maroon" title="c1">G</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  the <a href="graph_1.html#U1" title="GRAPH_1:sel.1">Source</a> of <font color="Maroon" title="c2">G1</font> <a href="relset_1.html#R1" title="RELSET_1:pred.1">c=</a>  the <a href="graph_1.html#U1" title="GRAPH_1:sel.1">Source</a> of <font color="Maroon" title="c1">G</font> &amp;  the <a href="graph_1.html#U2" title="GRAPH_1:sel.2">Target</a> of <font color="Maroon" title="c2">G1</font> <a href="relset_1.html#R1" title="RELSET_1:pred.1">c=</a>  the <a href="graph_1.html#U2" title="GRAPH_1:sel.2">Target</a> of <font color="Maroon" title="c1">G</font> )</span><br/>
+
+<a NAME="E2:39"/><span class="kw">then </span><span class="lab"><font color="Green" title="E17">A1</font></span>: 
+<font color="Maroon" title="c2">G1</font> is    <a href="graph_1.html#M3" title="GRAPH_1:mode.3">Subgraph</a> of <font color="Maroon" title="c1">G</font>
+ 
+;<br/>
+<a NAME="E3:39"/>
+ for <font color="Olive" title="b1">v</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a>   st <font color="Olive" title="b1">v</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  the <a href="graph_1.html#U1" title="GRAPH_1:sel.1">Source</a> of <font color="Maroon" title="c2">G1</font> holds <br/><font color="Olive" title="b1">v</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  the <a href="graph_1.html#U1" title="GRAPH_1:sel.1">Source</a> of <font color="Maroon" title="c1">G</font>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="39_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">v</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">v</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  the <a href="graph_1.html#U1" title="GRAPH_1:sel.1">Source</a> of <font color="Maroon" title="c2">G1</font> implies <font color="Maroon" title="c3">v</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  the <a href="graph_1.html#U1" title="GRAPH_1:sel.1">Source</a> of <font color="Maroon" title="c1">G</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:39_1"/><span class="lab"><font color="Green" title="E18">A2</font></span>: 
+<font color="Maroon" title="c3">v</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  the <a href="graph_1.html#U1" title="GRAPH_1:sel.1">Source</a> of <font color="Maroon" title="c2">G1</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">v</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  the <a href="graph_1.html#U1" title="GRAPH_1:sel.1">Source</a> of <font color="Maroon" title="c1">G</font></span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c4">x</font>, <font color="Maroon" title="c5">y</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E3:39_1"/><span class="lab"><font color="Green" title="E19">A3</font></span>: 
+<span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Maroon" title="c4">x</font>,<font color="Maroon" title="c5">y</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">v</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="relat_1.html#D1" onmouseover="rs('relat_1/D1')" onmouseout="rh()">RELAT_1:def 1</a></span>;<br/>
+<a NAME="E4:39_1"/><span class="lab"><font color="Green" title="E20">A4</font></span>: 
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a>  the <a href="graph_1.html#U1" title="GRAPH_1:sel.1">Source</a> of <font color="Maroon" title="c2">G1</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:39_1"><span class="lab"><font color="Green" title="E18">A2</font></span></a>, <a class="txt" href="#E3:39_1"><span class="lab"><font color="Green" title="E19">A3</font></span></a>, <a class="ref" href="funct_1.html#T1" onmouseover="rs('funct_1/T1')" onmouseout="rh()">FUNCT_1:1</a></span>;<br/>
+<a NAME="E5:39_1"/><span class="lab"><font color="Green" title="E21">A5</font></span>: 
+<font color="Maroon" title="c5">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="graph_1.html#U1" title="GRAPH_1:sel.1">Source</a> of <font color="Maroon" title="c2">G1</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">x</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:39_1"><span class="lab"><font color="Green" title="E18">A2</font></span></a>, <a class="txt" href="#E3:39_1"><span class="lab"><font color="Green" title="E19">A3</font></span></a>, <a class="ref" href="funct_1.html#T1" onmouseover="rs('funct_1/T1')" onmouseout="rh()">FUNCT_1:1</a></span>;<br/>
+<a NAME="E6:39_1"/><span class="lab"><font color="Green" title="E22">A6</font></span>: 
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  the <a href="struct_0.html#U4" title="STRUCT_0:sel.4">carrier'</a> of <font color="Maroon" title="c2">G1</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:39_1"><span class="lab"><font color="Green" title="E20">A4</font></span></a></span>;<br/>
+<a NAME="E7:39_1"/>
+ the <a href="struct_0.html#U4" title="STRUCT_0:sel.4">carrier'</a> of <font color="Maroon" title="c2">G1</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  the <a href="struct_0.html#U4" title="STRUCT_0:sel.4">carrier'</a> of <font color="Maroon" title="c1">G</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:39"><span class="lab"><font color="Green" title="E17">A1</font></span></a>, <a class="ref" href="graph_1.html#D18" target="_self" onmouseover="rs('graph_1/D18')" onmouseout="rh()">Def18</a></span>;<br/>
+<a NAME="E8:39_1"/><span class="kw">then </span>
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  the <a href="struct_0.html#U4" title="STRUCT_0:sel.4">carrier'</a> of <font color="Maroon" title="c1">G</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:39_1"><span class="lab"><font color="Green" title="E22">A6</font></span></a></span>;<br/>
+<a NAME="E9:39_1"/><span class="kw">then </span><span class="lab"><font color="Green" title="E23">A7</font></span>: 
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a>  the <a href="graph_1.html#U1" title="GRAPH_1:sel.1">Source</a> of <font color="Maroon" title="c1">G</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="funct_2.html#D1" onmouseover="rs('funct_2/D1')" onmouseout="rh()">FUNCT_2:def 1</a></span>;<br/>
+<a NAME="E10:39_1"/>
+<font color="Maroon" title="c5">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="graph_1.html#U1" title="GRAPH_1:sel.1">Source</a> of <font color="Maroon" title="c1">G</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">x</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:39"><span class="lab"><font color="Green" title="E17">A1</font></span></a>, <a class="txt" href="#E4:39_1"><span class="lab"><font color="Green" title="E20">A4</font></span></a>, <a class="txt" href="#E5:39_1"><span class="lab"><font color="Green" title="E21">A5</font></span></a>, <a class="ref" href="graph_1.html#D18" target="_self" onmouseover="rs('graph_1/D18')" onmouseout="rh()">Def18</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E11:39_1"/>
+<font color="Maroon" title="c3">v</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  the <a href="graph_1.html#U1" title="GRAPH_1:sel.1">Source</a> of <font color="Maroon" title="c1">G</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:39_1"><span class="lab"><font color="Green" title="E19">A3</font></span></a>, <a class="txt" href="#E9:39_1"><span class="lab"><font color="Green" title="E23">A7</font></span></a>, <a class="ref" href="funct_1.html#D2" onmouseover="rs('funct_1/D2')" onmouseout="rh()">FUNCT_1:def 2</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E4:39"/>
+ the <a href="graph_1.html#U1" title="GRAPH_1:sel.1">Source</a> of <font color="Maroon" title="c2">G1</font> <a href="relset_1.html#R1" title="RELSET_1:pred.1">c=</a>  the <a href="graph_1.html#U1" title="GRAPH_1:sel.1">Source</a> of <font color="Maroon" title="c1">G</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  the <a href="graph_1.html#U2" title="GRAPH_1:sel.2">Target</a> of <font color="Maroon" title="c2">G1</font> <a href="relset_1.html#R1" title="RELSET_1:pred.1">c=</a>  the <a href="graph_1.html#U2" title="GRAPH_1:sel.2">Target</a> of <font color="Maroon" title="c1">G</font></span><br/>
+
+<span class="kw">let </span><font color="Maroon" title="c3">v</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="tarski.html#D3" onmouseover="rs('tarski/D3')" onmouseout="rh()">TARSKI:def 3</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c3">v</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  the <a href="graph_1.html#U2" title="GRAPH_1:sel.2">Target</a> of <font color="Maroon" title="c2">G1</font> or <font color="Maroon" title="c3">v</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  the <a href="graph_1.html#U2" title="GRAPH_1:sel.2">Target</a> of <font color="Maroon" title="c1">G</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E5:39"/><span class="lab"><font color="Green" title="E18">A8</font></span>: 
+<font color="Maroon" title="c3">v</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  the <a href="graph_1.html#U2" title="GRAPH_1:sel.2">Target</a> of <font color="Maroon" title="c2">G1</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c3">v</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  the <a href="graph_1.html#U2" title="GRAPH_1:sel.2">Target</a> of <font color="Maroon" title="c1">G</font></span><br/>
+
+<span class="kw">then </span><span class="kw">consider </span><font color="Maroon" title="c4">x</font>, <font color="Maroon" title="c5">y</font> being    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> <span class="kw"> such that </span><br/><a NAME="E7:39"/><span class="lab"><font color="Green" title="E19">A9</font></span>: 
+<span class="p1"><a href="tarski.html#K4" title="TARSKI:func.4">[</a><span class="default"><font color="Maroon" title="c4">x</font>,<font color="Maroon" title="c5">y</font></span><a href="tarski.html#K4" title="TARSKI:func.4">]</a></span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">v</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="relat_1.html#D1" onmouseover="rs('relat_1/D1')" onmouseout="rh()">RELAT_1:def 1</a></span>;<br/>
+<a NAME="E8:39"/><span class="lab"><font color="Green" title="E20">A10</font></span>: 
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a>  the <a href="graph_1.html#U2" title="GRAPH_1:sel.2">Target</a> of <font color="Maroon" title="c2">G1</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:39"><span class="lab"><font color="Green" title="E18">A8</font></span></a>, <a class="txt" href="#E7:39"><span class="lab"><font color="Green" title="E19">A9</font></span></a>, <a class="ref" href="funct_1.html#T1" onmouseover="rs('funct_1/T1')" onmouseout="rh()">FUNCT_1:1</a></span>;<br/>
+<a NAME="E9:39"/><span class="lab"><font color="Green" title="E21">A11</font></span>: 
+<font color="Maroon" title="c5">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="graph_1.html#U2" title="GRAPH_1:sel.2">Target</a> of <font color="Maroon" title="c2">G1</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">x</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:39"><span class="lab"><font color="Green" title="E18">A8</font></span></a>, <a class="txt" href="#E7:39"><span class="lab"><font color="Green" title="E19">A9</font></span></a>, <a class="ref" href="funct_1.html#T1" onmouseover="rs('funct_1/T1')" onmouseout="rh()">FUNCT_1:1</a></span>;<br/>
+<a NAME="E10:39"/><span class="lab"><font color="Green" title="E22">A12</font></span>: 
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  the <a href="struct_0.html#U4" title="STRUCT_0:sel.4">carrier'</a> of <font color="Maroon" title="c2">G1</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E8:39"><span class="lab"><font color="Green" title="E20">A10</font></span></a></span>;<br/>
+<a NAME="E11:39"/>
+ the <a href="struct_0.html#U4" title="STRUCT_0:sel.4">carrier'</a> of <font color="Maroon" title="c2">G1</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  the <a href="struct_0.html#U4" title="STRUCT_0:sel.4">carrier'</a> of <font color="Maroon" title="c1">G</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:39"><span class="lab"><font color="Green" title="E17">A1</font></span></a>, <a class="ref" href="graph_1.html#D18" target="_self" onmouseover="rs('graph_1/D18')" onmouseout="rh()">Def18</a></span>;<br/>
+<a NAME="E12:39"/><span class="kw">then </span>
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  the <a href="struct_0.html#U4" title="STRUCT_0:sel.4">carrier'</a> of <font color="Maroon" title="c1">G</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E10:39"><span class="lab"><font color="Green" title="E22">A12</font></span></a></span>;<br/>
+<a NAME="E13:39"/><span class="kw">then </span><span class="lab"><font color="Green" title="E23">A13</font></span>: 
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="relset_1.html#K1" title="RELSET_1:func.1">dom</a>  the <a href="graph_1.html#U2" title="GRAPH_1:sel.2">Target</a> of <font color="Maroon" title="c1">G</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="funct_2.html#D1" onmouseover="rs('funct_2/D1')" onmouseout="rh()">FUNCT_2:def 1</a></span>;<br/>
+<a NAME="E14:39"/>
+<font color="Maroon" title="c5">y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="graph_1.html#U2" title="GRAPH_1:sel.2">Target</a> of <font color="Maroon" title="c1">G</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">x</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:39"><span class="lab"><font color="Green" title="E17">A1</font></span></a>, <a class="txt" href="#E8:39"><span class="lab"><font color="Green" title="E20">A10</font></span></a>, <a class="txt" href="#E9:39"><span class="lab"><font color="Green" title="E21">A11</font></span></a>, <a class="ref" href="graph_1.html#D18" target="_self" onmouseover="rs('graph_1/D18')" onmouseout="rh()">Def18</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E15:39"/>
+<font color="Maroon" title="c3">v</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  the <a href="graph_1.html#U2" title="GRAPH_1:sel.2">Target</a> of <font color="Maroon" title="c1">G</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E7:39"><span class="lab"><font color="Green" title="E19">A9</font></span></a>, <a class="txt" href="#E13:39"><span class="lab"><font color="Green" title="E23">A13</font></span></a>, <a class="ref" href="funct_1.html#D2" onmouseover="rs('funct_1/D2')" onmouseout="rh()">FUNCT_1:def 2</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

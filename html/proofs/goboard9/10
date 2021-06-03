@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">f</font>, <font color="Maroon" title="c2">ff</font> be   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="struct_0.html#NM7" title="STRUCT_0:NM.7">FinSequence</a> of <span class="p1">(<span class="default"><a href="euclid.html#K15" title="EUCLID:func.15">TOP-REAL</a> 2</span>)</span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">ff</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_5.html#K4" title="FINSEQ_5:func.4">Rev</a> <font color="Maroon" title="c1">f</font> implies  <a href="goboard2.html#K2" title="GOBOARD2:func.2">GoB</a> <font color="Maroon" title="c2">ff</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="goboard2.html#K2" title="GOBOARD2:func.2">GoB</a> <font color="Maroon" title="c1">f</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:10"/><span class="lab"><font color="Green" title="E9">A1</font></span>: 
+<font color="Maroon" title="c2">ff</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_5.html#K4" title="FINSEQ_5:func.4">Rev</a> <font color="Maroon" title="c1">f</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="goboard2.html#K2" title="GOBOARD2:func.2">GoB</a> <font color="Maroon" title="c2">ff</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="goboard2.html#K2" title="GOBOARD2:func.2">GoB</a> <font color="Maroon" title="c1">f</font></span><br/>
+
+<a NAME="E2:10"/><span class="kw">then </span><span class="lab"><font color="Green" title="E10">A2</font></span>: 
+ <a href="finseq_5.html#K4" title="FINSEQ_5:func.4">Rev</a> <span class="p1">(<span class="default"><a href="goboard1.html#K1" title="GOBOARD1:func.1">X_axis</a> <font color="Maroon" title="c1">f</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="goboard1.html#K1" title="GOBOARD1:func.1">X_axis</a> <font color="Maroon" title="c2">ff</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="goboard9.html#T7" target="_self" onmouseover="rs('goboard9/T7')" onmouseout="rh()">Th6</a></span>;<br/>
+<span class="lab"><font color="Green" title="E11">A3</font></span>:  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><a href="seq_4.html#K26" title="SEQ_4:func.26">Incr</a> <span class="p2">(<span class="default"><a href="goboard1.html#K1" title="GOBOARD1:func.1">X_axis</a> <font color="Maroon" title="c2">ff</font></span>)</span></span>)</span> = 
+ <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><a href="goboard1.html#K1" title="GOBOARD1:func.1">X_axis</a> <font color="Maroon" title="c2">ff</font></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="seq_4.html#D21" onmouseover="rs('seq_4/D21')" onmouseout="rh()">SEQ_4:def 21</a></span>
+<br/>.= 
+ <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><a href="goboard1.html#K1" title="GOBOARD1:func.1">X_axis</a> <font color="Maroon" title="c1">f</font></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:10"><span class="lab"><font color="Green" title="E10">A2</font></span></a>, <a class="ref" href="finseq_5.html#T57" onmouseover="rs('finseq_5/T57')" onmouseout="rh()">FINSEQ_5:57</a></span>
+;<br/>
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <span class="p1">(<span class="default"><a href="seq_4.html#K26" title="SEQ_4:func.26">Incr</a> <span class="p2">(<span class="default"><a href="goboard1.html#K1" title="GOBOARD1:func.1">X_axis</a> <font color="Maroon" title="c2">ff</font></span>)</span></span>)</span> = 
+ <a href="card_1.html#K1" title="CARD_1:func.1">card</a> <span class="p1">(<span class="default"><a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p2">(<span class="default"><a href="goboard1.html#K1" title="GOBOARD1:func.1">X_axis</a> <font color="Maroon" title="c2">ff</font></span>)</span></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="seq_4.html#D21" onmouseover="rs('seq_4/D21')" onmouseout="rh()">SEQ_4:def 21</a></span>
+<br/>.= 
+ <a href="card_1.html#K1" title="CARD_1:func.1">card</a> <span class="p1">(<span class="default"><a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p2">(<span class="default"><a href="goboard1.html#K1" title="GOBOARD1:func.1">X_axis</a> <font color="Maroon" title="c1">f</font></span>)</span></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:10"><span class="lab"><font color="Green" title="E10">A2</font></span></a>, <a class="ref" href="finseq_5.html#T57" onmouseover="rs('finseq_5/T57')" onmouseout="rh()">FINSEQ_5:57</a></span>
+;<br/>
+<a NAME="E5:10"/><span class="kw">then </span><span class="lab"><font color="Green" title="E12">A4</font></span>: 
+ <a href="seq_4.html#K26" title="SEQ_4:func.26">Incr</a> <span class="p1">(<span class="default"><a href="goboard1.html#K1" title="GOBOARD1:func.1">X_axis</a> <font color="Maroon" title="c1">f</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="seq_4.html#K26" title="SEQ_4:func.26">Incr</a> <span class="p1">(<span class="default"><a href="goboard1.html#K1" title="GOBOARD1:func.1">X_axis</a> <font color="Maroon" title="c2">ff</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E3:10"><span class="lab"><font color="Green" title="E11">A3</font></span></a>, <a class="ref" href="seq_4.html#D21" onmouseover="rs('seq_4/D21')" onmouseout="rh()">SEQ_4:def 21</a></span>;<br/>
+<a NAME="E6:10"/><span class="lab"><font color="Green" title="E13">A5</font></span>: 
+ <a href="finseq_5.html#K4" title="FINSEQ_5:func.4">Rev</a> <span class="p1">(<span class="default"><a href="goboard1.html#K2" title="GOBOARD1:func.2">Y_axis</a> <font color="Maroon" title="c1">f</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="goboard1.html#K2" title="GOBOARD1:func.2">Y_axis</a> <font color="Maroon" title="c2">ff</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:10"><span class="lab"><font color="Green" title="E9">A1</font></span></a>, <a class="ref" href="goboard9.html#T8" target="_self" onmouseover="rs('goboard9/T8')" onmouseout="rh()">Th7</a></span>;<br/>
+<span class="lab"><font color="Green" title="E14">A6</font></span>:  <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><a href="seq_4.html#K26" title="SEQ_4:func.26">Incr</a> <span class="p2">(<span class="default"><a href="goboard1.html#K2" title="GOBOARD1:func.2">Y_axis</a> <font color="Maroon" title="c2">ff</font></span>)</span></span>)</span> = 
+ <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><a href="goboard1.html#K2" title="GOBOARD1:func.2">Y_axis</a> <font color="Maroon" title="c2">ff</font></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="seq_4.html#D21" onmouseover="rs('seq_4/D21')" onmouseout="rh()">SEQ_4:def 21</a></span>
+<br/>.= 
+ <a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p1">(<span class="default"><a href="goboard1.html#K2" title="GOBOARD1:func.2">Y_axis</a> <font color="Maroon" title="c1">f</font></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:10"><span class="lab"><font color="Green" title="E13">A5</font></span></a>, <a class="ref" href="finseq_5.html#T57" onmouseover="rs('finseq_5/T57')" onmouseout="rh()">FINSEQ_5:57</a></span>
+;<br/>
+ <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <span class="p1">(<span class="default"><a href="seq_4.html#K26" title="SEQ_4:func.26">Incr</a> <span class="p2">(<span class="default"><a href="goboard1.html#K2" title="GOBOARD1:func.2">Y_axis</a> <font color="Maroon" title="c2">ff</font></span>)</span></span>)</span> = 
+ <a href="card_1.html#K1" title="CARD_1:func.1">card</a> <span class="p1">(<span class="default"><a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p2">(<span class="default"><a href="goboard1.html#K2" title="GOBOARD1:func.2">Y_axis</a> <font color="Maroon" title="c2">ff</font></span>)</span></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="seq_4.html#D21" onmouseover="rs('seq_4/D21')" onmouseout="rh()">SEQ_4:def 21</a></span>
+<br/>.= 
+ <a href="card_1.html#K1" title="CARD_1:func.1">card</a> <span class="p1">(<span class="default"><a href="xtuple_0.html#K10" title="XTUPLE_0:func.10">rng</a> <span class="p2">(<span class="default"><a href="goboard1.html#K2" title="GOBOARD1:func.2">Y_axis</a> <font color="Maroon" title="c1">f</font></span>)</span></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E6:10"><span class="lab"><font color="Green" title="E13">A5</font></span></a>, <a class="ref" href="finseq_5.html#T57" onmouseover="rs('finseq_5/T57')" onmouseout="rh()">FINSEQ_5:57</a></span>
+;<br/>
+<a NAME="E9:10"/><span class="kw">then </span>
+ <a href="seq_4.html#K26" title="SEQ_4:func.26">Incr</a> <span class="p1">(<span class="default"><a href="goboard1.html#K2" title="GOBOARD1:func.2">Y_axis</a> <font color="Maroon" title="c1">f</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="seq_4.html#K26" title="SEQ_4:func.26">Incr</a> <span class="p1">(<span class="default"><a href="goboard1.html#K2" title="GOBOARD1:func.2">Y_axis</a> <font color="Maroon" title="c2">ff</font></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E7:10"><span class="lab"><font color="Green" title="E14">A6</font></span></a>, <a class="ref" href="seq_4.html#D21" onmouseover="rs('seq_4/D21')" onmouseout="rh()">SEQ_4:def 21</a></span>;<br/>
+<span class="kw">hence </span> <a href="goboard2.html#K2" title="GOBOARD2:func.2">GoB</a> <font color="Maroon" title="c2">ff</font> = 
+ <a href="goboard2.html#K1" title="GOBOARD2:func.1">GoB</a> (<span class="p1">(<span class="default"><a href="seq_4.html#K26" title="SEQ_4:func.26">Incr</a> <span class="p2">(<span class="default"><a href="goboard1.html#K1" title="GOBOARD1:func.1">X_axis</a> <font color="Maroon" title="c1">f</font></span>)</span></span>)</span>,<span class="p1">(<span class="default"><a href="seq_4.html#K26" title="SEQ_4:func.26">Incr</a> <span class="p2">(<span class="default"><a href="goboard1.html#K2" title="GOBOARD1:func.2">Y_axis</a> <font color="Maroon" title="c1">f</font></span>)</span></span>)</span>)
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E5:10"><span class="lab"><font color="Green" title="E12">A4</font></span></a>, <a class="ref" href="goboard2.html#D2" onmouseover="rs('goboard2/D2')" onmouseout="rh()">GOBOARD2:def 2</a></span>
+<br/>.= 
+ <a href="goboard2.html#K2" title="GOBOARD2:func.2">GoB</a> <font color="Maroon" title="c1">f</font>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="goboard2.html#D2" onmouseover="rs('goboard2/D2')" onmouseout="rh()">GOBOARD2:def 2</a></span>
+;<br/> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
