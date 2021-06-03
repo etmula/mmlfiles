@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">s</font>, <font color="Maroon" title="c2">i</font>, <font color="Maroon" title="c3">n</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">n</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1 &amp; <font color="Maroon" title="c2">i</font>,<font color="Maroon" title="c3">n</font> <a href="int_2.html#R1" title="INT_2:pred.1">are_coprime</a>  implies ( <font color="Maroon" title="c2">i</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c1">s</font>,1 <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a> <font color="Maroon" title="c3">n</font> iff  <a href="pepin.html#K3" title="PEPIN:func.3">order</a> (<font color="Maroon" title="c2">i</font>,<font color="Maroon" title="c3">n</font>) <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Maroon" title="c1">s</font> ) )</span><br/>
+
+
+
+
+
+<span class="kw">assume </span><a NAME="E1:15"/><span class="lab"><font color="Green" title="E11">A1</font></span>: 
+( <font color="Maroon" title="c3">n</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 1 &amp; <font color="Maroon" title="c2">i</font>,<font color="Maroon" title="c3">n</font> <a href="int_2.html#R1" title="INT_2:pred.1">are_coprime</a>  )
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c2">i</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c1">s</font>,1 <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a> <font color="Maroon" title="c3">n</font> iff  <a href="pepin.html#K3" title="PEPIN:func.3">order</a> (<font color="Maroon" title="c2">i</font>,<font color="Maroon" title="c3">n</font>) <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Maroon" title="c1">s</font> )</span><br/>
+
+<span class="kw">thus </span><a NAME="E2:15"/>
+( <font color="Maroon" title="c2">i</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c1">s</font>,1 <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a> <font color="Maroon" title="c3">n</font> implies  <a href="pepin.html#K3" title="PEPIN:func.3">order</a> (<font color="Maroon" title="c2">i</font>,<font color="Maroon" title="c3">n</font>) <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Maroon" title="c1">s</font> )
+  <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  <a href="pepin.html#K3" title="PEPIN:func.3">order</a> (<font color="Maroon" title="c2">i</font>,<font color="Maroon" title="c3">n</font>) <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Maroon" title="c1">s</font> implies <font color="Maroon" title="c2">i</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c1">s</font>,1 <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a> <font color="Maroon" title="c3">n</font> )</span><div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="15_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">assume </span><a NAME="E1:15_1"/>
+<font color="Maroon" title="c2">i</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c1">s</font>,1 <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a> <font color="Maroon" title="c3">n</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="pepin.html#K3" title="PEPIN:func.3">order</a> (<font color="Maroon" title="c2">i</font>,<font color="Maroon" title="c3">n</font>) <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Maroon" title="c1">s</font></span><br/>
+
+<a NAME="E2:15_1"/><span class="kw">then </span>
+<font color="Maroon" title="c2">i</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c1">s</font>,<font color="Maroon" title="c2">i</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a> <font color="Maroon" title="c3">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="newton.html#T4" onmouseover="rs('newton/T4')" onmouseout="rh()">NEWTON:4</a></span>;<br/>
+<a NAME="E3:15_1"/><span class="kw">then </span>
+<font color="Maroon" title="c1">s</font>, <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a>  <a href="pepin.html#K3" title="PEPIN:func.3">order</a> (<font color="Maroon" title="c2">i</font>,<font color="Maroon" title="c3">n</font>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:15"><span class="lab"><font color="Green" title="E11">A1</font></span></a>, <a class="ref" href="int_8.html#T10" target="_self" onmouseover="rs('int_8/T10')" onmouseout="rh()">Th10</a></span>;<br/>
+<a NAME="E4:15_1"/><span class="kw">then </span>
+ <a href="pepin.html#K3" title="PEPIN:func.3">order</a> (<font color="Maroon" title="c2">i</font>,<font color="Maroon" title="c3">n</font>) <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Maroon" title="c1">s</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="int_2.html#T15" onmouseover="rs('int_2/T15')" onmouseout="rh()">INT_2:15</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:15_1"/>
+ <a href="pepin.html#K3" title="PEPIN:func.3">order</a> (<font color="Maroon" title="c2">i</font>,<font color="Maroon" title="c3">n</font>) <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Maroon" title="c1">s</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+
+<span class="kw">assume </span><a NAME="E3:15"/>
+ <a href="pepin.html#K3" title="PEPIN:func.3">order</a> (<font color="Maroon" title="c2">i</font>,<font color="Maroon" title="c3">n</font>) <a href="nat_d.html#R1" title="NAT_D:pred.1">divides</a> <font color="Maroon" title="c1">s</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c2">i</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c1">s</font>,1 <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a> <font color="Maroon" title="c3">n</font></span><br/>
+
+<a NAME="E4:15"/><span class="kw">then </span>
+ <a href="pepin.html#K3" title="PEPIN:func.3">order</a> (<font color="Maroon" title="c2">i</font>,<font color="Maroon" title="c3">n</font>) <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Maroon" title="c1">s</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>
+ 
+;<br/>
+<a NAME="E5:15"/><span class="kw">then </span>
+<font color="Maroon" title="c1">s</font>, <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a>  <a href="pepin.html#K3" title="PEPIN:func.3">order</a> (<font color="Maroon" title="c2">i</font>,<font color="Maroon" title="c3">n</font>)
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="int_2.html#T15" onmouseover="rs('int_2/T15')" onmouseout="rh()">INT_2:15</a></span>;<br/>
+<a NAME="E6:15"/><span class="kw">then </span>
+<font color="Maroon" title="c2">i</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c1">s</font>,<font color="Maroon" title="c2">i</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a> <font color="Maroon" title="c3">n</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:15"><span class="lab"><font color="Green" title="E11">A1</font></span></a>, <a class="ref" href="int_8.html#T10" target="_self" onmouseover="rs('int_8/T10')" onmouseout="rh()">Th10</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:15"/>
+<font color="Maroon" title="c2">i</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Maroon" title="c1">s</font>,1 <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a> <font color="Maroon" title="c3">n</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="newton.html#T4" onmouseover="rs('newton/T4')" onmouseout="rh()">NEWTON:4</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
