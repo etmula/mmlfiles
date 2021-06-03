@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c2">p</font> be   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="matrprob.html#V1" title="MATRPROB:attr.1">ProbFinS</a>   <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="entropy1.html#K6" title="ENTROPY1:func.6">Entropy</a> <font color="Maroon" title="c2">p</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </span><br/>
+
+<span class="kw">set </span><font color="Maroon" title="c3">p1</font> =  <a href="rvsum_1.html#K6" title="RVSUM_1:func.6">-</a> <span class="p1">(<span class="default"><a href="entropy1.html#K4" title="ENTROPY1:func.4">Infor_FinSeq_of</a> <font color="Maroon" title="c2">p</font></span>)</span>;<br/>
+<span class="lab"><font color="Green" title="E57">A1</font></span>:  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Maroon" title="c2">p</font> = 
+ <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c2">p</font></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_1.html#D3" onmouseover="rs('finseq_1/D3')" onmouseout="rh()">FINSEQ_1:def 3</a></span>
+<br/>.= 
+ <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <span class="p2">(<span class="default"><a href="entropy1.html#K4" title="ENTROPY1:func.4">Infor_FinSeq_of</a> <font color="Maroon" title="c2">p</font></span>)</span></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="entropy1.html#T47" target="_self" onmouseover="rs('entropy1/T47')" onmouseout="rh()">Th47</a></span>
+<br/>.= 
+ <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <span class="p1">(<span class="default"><a href="entropy1.html#K4" title="ENTROPY1:func.4">Infor_FinSeq_of</a> <font color="Maroon" title="c2">p</font></span>)</span>
+<span class="kw">by</span> <span class="lab"><a class="ref" href="finseq_1.html#D3" onmouseover="rs('finseq_1/D3')" onmouseout="rh()">FINSEQ_1:def 3</a></span>
+;<br/>
+<a NAME="E2:67"/><span class="lab"><font color="Green" title="E58">A2</font></span>: 
+ for <font color="Olive" title="b1">k</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">k</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <span class="p1">(<span class="default"><a href="rvsum_1.html#K6" title="RVSUM_1:func.6">-</a> <span class="p2">(<span class="default"><a href="entropy1.html#K4" title="ENTROPY1:func.4">Infor_FinSeq_of</a> <font color="Maroon" title="c2">p</font></span>)</span></span>)</span> holds <br/><span class="p1">(<span class="default"><a href="rvsum_1.html#K6" title="RVSUM_1:func.6">-</a> <span class="p2">(<span class="default"><a href="entropy1.html#K4" title="ENTROPY1:func.4">Infor_FinSeq_of</a> <font color="Maroon" title="c2">p</font></span>)</span></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">k</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="67_2"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">k</font> be   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c4">k</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <span class="p1">(<span class="default"><a href="rvsum_1.html#K6" title="RVSUM_1:func.6">-</a> <span class="p2">(<span class="default"><a href="entropy1.html#K4" title="ENTROPY1:func.4">Infor_FinSeq_of</a> <font color="Maroon" title="c2">p</font></span>)</span></span>)</span> implies <span class="p1">(<span class="default"><a href="rvsum_1.html#K6" title="RVSUM_1:func.6">-</a> <span class="p2">(<span class="default"><a href="entropy1.html#K4" title="ENTROPY1:func.4">Infor_FinSeq_of</a> <font color="Maroon" title="c2">p</font></span>)</span></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">k</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:67_2"/>
+<font color="Maroon" title="c4">k</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <span class="p1">(<span class="default"><a href="rvsum_1.html#K6" title="RVSUM_1:func.6">-</a> <span class="p2">(<span class="default"><a href="entropy1.html#K4" title="ENTROPY1:func.4">Infor_FinSeq_of</a> <font color="Maroon" title="c2">p</font></span>)</span></span>)</span>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <span class="p1">(<span class="default"><a href="rvsum_1.html#K6" title="RVSUM_1:func.6">-</a> <span class="p2">(<span class="default"><a href="entropy1.html#K4" title="ENTROPY1:func.4">Infor_FinSeq_of</a> <font color="Maroon" title="c2">p</font></span>)</span></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">k</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </span><br/>
+
+<a NAME="E2:67_2"/><span class="kw">then </span>
+<font color="Maroon" title="c4">k</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Maroon" title="c2">p</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:67"><span class="lab"><font color="Green" title="E57">A1</font></span></a>, <a class="ref" href="valued_1.html#T8" onmouseover="rs('valued_1/T8')" onmouseout="rh()">VALUED_1:8</a></span>;<br/>
+<a NAME="E3:67_2"/><span class="kw">then </span>
+<span class="p1">(<span class="default"><a href="entropy1.html#K4" title="ENTROPY1:func.4">Infor_FinSeq_of</a> <font color="Maroon" title="c2">p</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">k</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="entropy1.html#T52" target="_self" onmouseover="rs('entropy1/T52')" onmouseout="rh()">Th52</a></span>;<br/>
+<a NAME="E4:67_2"/><span class="kw">then </span>
+ <a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="entropy1.html#K4" title="ENTROPY1:func.4">Infor_FinSeq_of</a> <font color="Maroon" title="c2">p</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">k</font></span>)</span> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a>  <a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>
+ 
+;<br/>
+<span class="kw">hence </span><a NAME="E5:67_2"/>
+<span class="p1">(<span class="default"><a href="rvsum_1.html#K6" title="RVSUM_1:func.6">-</a> <span class="p2">(<span class="default"><a href="entropy1.html#K4" title="ENTROPY1:func.4">Infor_FinSeq_of</a> <font color="Maroon" title="c2">p</font></span>)</span></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">k</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="rvsum_1.html#T17" onmouseover="rs('rvsum_1/T17')" onmouseout="rh()">RVSUM_1:17</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E3:67"/>
+ <a href="entropy1.html#K6" title="ENTROPY1:func.6">Entropy</a> <font color="Maroon" title="c2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="rvsum_1.html#K18" title="RVSUM_1:func.18">Sum</a> <span class="p1">(<span class="default"><a href="rvsum_1.html#K6" title="RVSUM_1:func.6">-</a> <span class="p2">(<span class="default"><a href="entropy1.html#K4" title="ENTROPY1:func.4">Infor_FinSeq_of</a> <font color="Maroon" title="c2">p</font></span>)</span></span>)</span>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="rvsum_1.html#T88" onmouseover="rs('rvsum_1/T88')" onmouseout="rh()">RVSUM_1:88</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E4:67"/>
+ <a href="entropy1.html#K6" title="ENTROPY1:func.6">Entropy</a> <font color="Maroon" title="c2">p</font> <a href="xxreal_0.html#NR2" title="XXREAL_0:NR.2">&gt;=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:67"><span class="lab"><font color="Green" title="E58">A2</font></span></a>, <a class="ref" href="rvsum_1.html#T84" onmouseover="rs('rvsum_1/T84')" onmouseout="rh()">RVSUM_1:84</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
