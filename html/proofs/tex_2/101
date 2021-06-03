@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">Y</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( (  for <font color="Olive" title="b1">X</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br/>  for <font color="Olive" title="b2">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Maroon" title="c1">Y</font> holds  <font color="Olive" title="b2">f</font> is  <a href="pre_topc.html#V5" title="PRE_TOPC:attr.5">continuous</a>  ) implies <font color="Maroon" title="c1">Y</font> is  <a href="tdlat_3.html#V2" title="TDLAT_3:attr.2">anti-discrete</a>  )</span><br/>
+
+<span class="kw">set </span><font color="Maroon" title="c2">X</font> =  <a href="tex_1.html#K2" title="TEX_1:func.2">ADTS</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">Y</font>;<br/>
+<a NAME="E1:101"/><span class="lab"><font color="Green" title="E41">A1</font></span>: 
+ <a href="tex_1.html#K2" title="TEX_1:func.2">ADTS</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">Y</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="pre_topc.html#G1" title="PRE_TOPC:aggr.1">TopStruct</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">Y</font>,<span class="p1">(<span class="default"><a href="tex_1.html#K1" title="TEX_1:func.1">cobool</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">Y</font></span>)</span> #)
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="tex_1.html#D3" onmouseover="rs('tex_1/D3')" onmouseout="rh()">TEX_1:def 3</a></span>;<br/>
+<span class="kw">then </span><span class="kw">reconsider </span><font color="Maroon" title="c3">f</font> =  <a href="partfun1.html#K6" title="PARTFUN1:func.6">id</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">Y</font> as   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <span class="p1">(<span class="default"><a href="tex_1.html#K2" title="TEX_1:func.2">ADTS</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">Y</font></span>)</span>,<font color="Maroon" title="c1">Y</font> ;<br/>
+<span class="kw">assume </span><a NAME="E3:101"/>
+ for <font color="Olive" title="b1">X</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  <a href="pre_topc.html#NM1" title="PRE_TOPC:NM.1">TopSpace</a><br/>  for <font color="Olive" title="b2">f</font> being   <a href="struct_0.html#NM6" title="STRUCT_0:NM.6">Function</a> of <font color="Olive" title="b1">X</font>,<font color="Maroon" title="c1">Y</font> holds  <font color="Olive" title="b2">f</font> is  <a href="pre_topc.html#V5" title="PRE_TOPC:attr.5">continuous</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c1">Y</font> is  <a href="tdlat_3.html#V2" title="TDLAT_3:attr.2">anti-discrete</a> </span><br/>
+
+<a NAME="E4:101"/><span class="kw">then </span><span class="lab"><font color="Green" title="E42">A2</font></span>: 
+<font color="Maroon" title="c3">f</font> is  <a href="pre_topc.html#V5" title="PRE_TOPC:attr.5">continuous</a> 
+ 
+;<br/>
+<a NAME="E5:101"/>
+ for <font color="Olive" title="b1">A</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">Y</font>  holds <br/>(  not <font color="Olive" title="b1">A</font> is  <a href="pre_topc.html#V4" title="PRE_TOPC:attr.4">closed</a>  or <font color="Olive" title="b1">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  or <font color="Olive" title="b1">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">Y</font> )
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="101_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">A</font> be   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">Y</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c4">A</font> is  <a href="pre_topc.html#V4" title="PRE_TOPC:attr.4">closed</a>  or <font color="Maroon" title="c4">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  or <font color="Maroon" title="c4">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">Y</font> )</span><br/>
+
+<span class="kw">reconsider </span><font color="Maroon" title="c5">B</font> = <font color="Maroon" title="c4">A</font> as   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <span class="p1">(<span class="default"><a href="tex_1.html#K2" title="TEX_1:func.2">ADTS</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">Y</font></span>)</span> <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:101"><span class="lab"><font color="Green" title="E41">A1</font></span></a></span>;<br/>
+<a NAME="E2:101_1"/><span class="lab"><font color="Green" title="E43">A3</font></span>: 
+<font color="Maroon" title="c3">f</font> <a href="relset_1.html#K8" title="RELSET_1:func.8">"</a> <font color="Maroon" title="c4">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c5">B</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="funct_2.html#T94" onmouseover="rs('funct_2/T94')" onmouseout="rh()">FUNCT_2:94</a></span>;<br/>
+<span class="kw">assume </span><a NAME="E3:101_1"/>
+<font color="Maroon" title="c4">A</font> is  <a href="pre_topc.html#V4" title="PRE_TOPC:attr.4">closed</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c4">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  or <font color="Maroon" title="c4">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">Y</font> )</span><br/>
+
+<a NAME="E4:101_1"/><span class="kw">then </span>
+<font color="Maroon" title="c5">B</font> is  <a href="pre_topc.html#V4" title="PRE_TOPC:attr.4">closed</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E4:101"><span class="lab"><font color="Green" title="E42">A2</font></span></a>, <a class="txt" href="#E2:101_1"><span class="lab"><font color="Green" title="E43">A3</font></span></a></span>;<br/>
+<span class="kw">hence </span><a NAME="E5:101_1"/>
+( <font color="Maroon" title="c4">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  or <font color="Maroon" title="c4">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">Y</font> )
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:101"><span class="lab"><font color="Green" title="E41">A1</font></span></a>, <a class="ref" href="tdlat_3.html#T19" onmouseover="rs('tdlat_3/T19')" onmouseout="rh()">TDLAT_3:19</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<span class="kw">hence </span><a NAME="E6:101"/>
+<font color="Maroon" title="c1">Y</font> is  <a href="tdlat_3.html#V2" title="TDLAT_3:attr.2">anti-discrete</a> 
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="tdlat_3.html#T19" onmouseover="rs('tdlat_3/T19')" onmouseout="rh()">TDLAT_3:19</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>

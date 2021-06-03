@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c1">Y</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="pre_topc.html#L1" title="PRE_TOPC:struct.1">TopStruct</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">x</font> being   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Maroon" title="c1">Y</font> holds   <a href="tex_4.html#K2" title="TEX_4:func.2">MaxADSet</a> <font color="Olive" title="b1">x</font> is  <a href="tex_4.html#V3" title="TEX_4:attr.3">maximal_anti-discrete</a> </span><br/><span class="kw">let </span><font color="Maroon" title="c2">x</font> be   <a href="pre_topc.html#NM2" title="PRE_TOPC:NM.2">Point</a> of <font color="Maroon" title="c1">Y</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="tex_4.html#K2" title="TEX_4:func.2">MaxADSet</a> <font color="Maroon" title="c2">x</font> is  <a href="tex_4.html#V3" title="TEX_4:attr.3">maximal_anti-discrete</a> </span><br/>
+
+
+
+<a NAME="E1:35"/><span class="lab"><font color="Green" title="E16">A1</font></span>: 
+ for <font color="Olive" title="b1">D</font> being   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">Y</font>  st <font color="Olive" title="b1">D</font> is  <a href="tex_4.html#V1" title="TEX_4:attr.1">anti-discrete</a>  &amp;  <a href="tex_4.html#K2" title="TEX_4:func.2">MaxADSet</a> <font color="Maroon" title="c2">x</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b1">D</font> holds <br/> <a href="tex_4.html#K2" title="TEX_4:func.2">MaxADSet</a> <font color="Maroon" title="c2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">D</font>
+ 
+<div><a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="35_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c3">D</font> be   <a href="struct_0.html#NM2" title="STRUCT_0:NM.2">Subset</a> of <font color="Maroon" title="c1">Y</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> ( <font color="Maroon" title="c3">D</font> is  <a href="tex_4.html#V1" title="TEX_4:attr.1">anti-discrete</a>  &amp;  <a href="tex_4.html#K2" title="TEX_4:func.2">MaxADSet</a> <font color="Maroon" title="c2">x</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c3">D</font> implies  <a href="tex_4.html#K2" title="TEX_4:func.2">MaxADSet</a> <font color="Maroon" title="c2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">D</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E1:35_1"/><span class="lab"><font color="Green" title="E17">A2</font></span>: 
+<font color="Maroon" title="c3">D</font> is  <a href="tex_4.html#V1" title="TEX_4:attr.1">anti-discrete</a> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not  <a href="tex_4.html#K2" title="TEX_4:func.2">MaxADSet</a> <font color="Maroon" title="c2">x</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c3">D</font> or  <a href="tex_4.html#K2" title="TEX_4:func.2">MaxADSet</a> <font color="Maroon" title="c2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">D</font> )</span><br/>
+
+<span class="kw">assume </span><a NAME="E2:35_1"/><span class="lab"><font color="Green" title="E18">A3</font></span>: 
+ <a href="tex_4.html#K2" title="TEX_4:func.2">MaxADSet</a> <font color="Maroon" title="c2">x</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c3">D</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="tex_4.html#K2" title="TEX_4:func.2">MaxADSet</a> <font color="Maroon" title="c2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">D</font></span><br/>
+
+<a NAME="E3:35_1"/>
+<span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><font color="Maroon" title="c2">x</font></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="tex_4.html#K2" title="TEX_4:func.2">MaxADSet</a> <font color="Maroon" title="c2">x</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="tex_4.html#T12" target="_self" onmouseover="rs('tex_4/T12')" onmouseout="rh()">Th12</a></span>;<br/>
+<a NAME="E4:35_1"/><span class="kw">then </span>
+<span class="p1"><a href="domain_1.html#K6" title="DOMAIN_1:func.6">{</a><span class="default"><font color="Maroon" title="c2">x</font></span><a href="domain_1.html#K6" title="DOMAIN_1:func.6">}</a></span> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Maroon" title="c3">D</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:35_1"><span class="lab"><font color="Green" title="E18">A3</font></span></a></span>;<br/>
+<a NAME="E5:35_1"/><span class="kw">then </span>
+<font color="Maroon" title="c2">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c3">D</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="zfmisc_1.html#T31" onmouseover="rs('zfmisc_1/T31')" onmouseout="rh()">ZFMISC_1:31</a></span>;<br/>
+<a NAME="E6:35_1"/><span class="kw">then </span>
+<font color="Maroon" title="c3">D</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="tex_4.html#K2" title="TEX_4:func.2">MaxADSet</a> <font color="Maroon" title="c2">x</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:35_1"><span class="lab"><font color="Green" title="E17">A2</font></span></a>, <a class="ref" href="tex_4.html#T19" target="_self" onmouseover="rs('tex_4/T19')" onmouseout="rh()">Th19</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E7:35_1"/>
+ <a href="tex_4.html#K2" title="TEX_4:func.2">MaxADSet</a> <font color="Maroon" title="c2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c3">D</font>
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E2:35_1"><span class="lab"><font color="Green" title="E18">A3</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div><span class="kw">end;</span></div>
+<a NAME="E2:35"/>
+ <a href="tex_4.html#K2" title="TEX_4:func.2">MaxADSet</a> <font color="Maroon" title="c2">x</font> is  <a href="tex_4.html#V1" title="TEX_4:attr.1">anti-discrete</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="tex_4.html#T13" target="_self" onmouseover="rs('tex_4/T13')" onmouseout="rh()">Th13</a></span>;<br/>
+<span class="kw">hence </span><a NAME="E3:35"/>
+ <a href="tex_4.html#K2" title="TEX_4:func.2">MaxADSet</a> <font color="Maroon" title="c2">x</font> is  <a href="tex_4.html#V3" title="TEX_4:attr.3">maximal_anti-discrete</a> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:35"><span class="lab"><font color="Green" title="E16">A1</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br/>
+
+
+</div>
