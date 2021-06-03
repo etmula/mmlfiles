@@ -1,0 +1,569 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>CLOSURE3:  Algebraic Operation on Subsets of Many Sorted Sets</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  Algebraic Operation on Subsets of Many Sorted Sets</font></span><br><span class="comment"><font color="firebrick">:: by Agnieszka Julia Marasik</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received June 23, 1997</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 1997-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">S</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="struct_0.html#L1" title="STRUCT_0:struct.1">1-sorted</a> ;<br>
+<div about="#FC1" typeof="oo:Theorem">
+<a NAME="FC1"><span class="kw">cluster </span></a> <a href="struct_0.html#G1" title="STRUCT_0:aggr.1">1-sorted</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">S</font> #)<span class="kw"> -&gt; </span> non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:1_1"></a>
+ not  <a href="struct_0.html#G1" title="STRUCT_0:aggr.1">1-sorted</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">S</font> #) is  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a> 
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E1">Th1</font></span>: <a NAME="T1"><span class="comment"><font color="firebrick">:: CLOSURE3:1</font></span><br></a><div class="add"> for <font color="Olive" title="b1">I</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">M</font>, <font color="Olive" title="b3">N</font> being   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Olive" title="b1">I</font> holds  <font color="Olive" title="b2">M</font> <a href="funct_4.html#K1" title="FUNCT_4:func.1">+*</a> <font color="Olive" title="b3">N</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">N</font>
+</div>
+<div about="#PF2" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/closure3/2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/closure3/2')" href="javascript:()" title="2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T2"><span class="comment"><font color="firebrick">:: CLOSURE3:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">I</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">M</font>, <font color="Olive" title="b3">N</font> being   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Olive" title="b1">I</font><br>  for <font color="Olive" title="b4">F</font> being   <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of <font color="Olive" title="b2">M</font>  st <font color="Olive" title="b3">N</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b4">F</font> holds <br> <a href="mssubfam.html#K4" title="MSSUBFAM:func.4">meet</a> <span class="p1"><a href="closure2.html#K5" title="CLOSURE2:func.5">|:</a><span class="default"><font color="Olive" title="b4">F</font></span><a href="closure2.html#K5" title="CLOSURE2:func.5">:|</a></span> <a href="closure2.html#NR2" title="CLOSURE2:NR.2">c='</a> <font color="Olive" title="b3">N</font> <span class="kw">by</span> <span class="lab"><a class="ref" href="closure2.html#T21" onmouseover="rs('closure2/T21')" onmouseout="rh()">CLOSURE2:21</a>, <a class="ref" href="mssubfam.html#T43" onmouseover="rs('mssubfam/T43')" onmouseout="rh()">MSSUBFAM:43</a></span>;<br>
+</div>
+</div>
+<br><div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E2">Th3</font></span>: <a NAME="T3"><span class="comment"><font color="firebrick">:: CLOSURE3:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">S</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   non  <a href="struct_0.html#V11" title="STRUCT_0:attr.11">void</a>   <a href="msualg_1.html#L1" title="MSUALG_1:struct.1">ManySortedSign</a> <br>  for <font color="Olive" title="b2">MA</font> being   <a href="msualg_1.html#V3" title="MSUALG_1:attr.3">strict</a>   <a href="msualg_1.html#V4" title="MSUALG_1:attr.4">non-empty</a>   <a href="msualg_1.html#L3" title="MSUALG_1:struct.3">MSAlgebra</a> over <font color="Olive" title="b1">S</font><br>  for <font color="Olive" title="b3">F</font> being   <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of  the <a href="msualg_1.html#U3" title="MSUALG_1:sel.3">Sorts</a> of <font color="Olive" title="b2">MA</font>  st <font color="Olive" title="b3">F</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="msualg_2.html#K6" title="MSUALG_2:func.6">SubSort</a> <font color="Olive" title="b2">MA</font> holds <br> for <font color="Olive" title="b4">B</font> being   <a href="msualg_2.html#NM1" title="MSUALG_2:NM.1">MSSubset</a> of <font color="Olive" title="b2">MA</font>  st <font color="Olive" title="b4">B</font> <a href="pboole.html#R8" title="PBOOLE:pred.8">=</a>  <a href="mssubfam.html#K4" title="MSSUBFAM:func.4">meet</a> <span class="p1"><a href="closure2.html#K5" title="CLOSURE2:func.5">|:</a><span class="default"><font color="Olive" title="b3">F</font></span><a href="closure2.html#K5" title="CLOSURE2:func.5">:|</a></span> holds <br><font color="Olive" title="b4">B</font> is  <a href="msualg_2.html#V3" title="MSUALG_2:attr.3">opers_closed</a> </div>
+<div about="#PF3" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/closure3/3')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/closure3/3')" href="javascript:()" title="3"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T4"><span class="comment"><font color="firebrick">:: CLOSURE3:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">A</font>, <font color="Olive" title="b2">B</font>, <font color="Olive" title="b3">C</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st <font color="Olive" title="b1">A</font> <a href="setfam_1.html#R2" title="SETFAM_1:pred.2">is_coarser_than</a> <font color="Olive" title="b2">B</font> &amp; <font color="Olive" title="b2">B</font> <a href="setfam_1.html#R2" title="SETFAM_1:pred.2">is_coarser_than</a> <font color="Olive" title="b3">C</font> holds <br><font color="Olive" title="b1">A</font> <a href="setfam_1.html#R2" title="SETFAM_1:pred.2">is_coarser_than</a> <font color="Olive" title="b3">C</font>
+</div>
+<div about="#PF4" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T4"></span><a class="txt" onmouseover="tooltip.show('url','proofs/closure3/4')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/closure3/4')" href="javascript:()" title="4"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="lab"><font color="Green" title="E3">Lm1</font></span>: <a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="5"><span class="kw">now </span> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">I</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">M</font> being   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Olive" title="b1">I</font> holds   <a href="pre_poly.html#K13" title="PRE_POLY:func.13">support</a> <font color="Olive" title="b2">M</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b3">x</font> where <font color="Olive" title="b3">x</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Olive" title="b1">I</font> : <font color="Olive" title="b2">M</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  </span> } </span> </span></a><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">I</font> be   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  for <font color="Olive" title="b1">M</font> being   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Maroon" title="c1">I</font> holds   <a href="pre_poly.html#K13" title="PRE_POLY:func.13">support</a> <font color="Olive" title="b1">M</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">x</font> where <font color="Olive" title="b2">x</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">I</font> : <font color="Olive" title="b1">M</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  </span> } </span> </span><br><span class="kw">let </span><font color="Maroon" title="c2">M</font> be   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Maroon" title="c1">I</font>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide">  <a href="pre_poly.html#K13" title="PRE_POLY:func.13">support</a> <font color="Maroon" title="c2">M</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">x</font> where <font color="Olive" title="b1">x</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">I</font> : <font color="Maroon" title="c2">M</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  </span> } </span> </span><br><span class="kw">set </span><font color="Maroon" title="c3">F</font> = <span class="p1"> { <span class="default"> <font color="Olive" title="b1">x</font> where <font color="Olive" title="b1">x</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">I</font> : <font color="Maroon" title="c2">M</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  </span> } </span> ;<br><span class="kw">thus </span><a NAME="E1:5"></a>
+ <a href="pre_poly.html#K13" title="PRE_POLY:func.13">support</a> <font color="Maroon" title="c2">M</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">x</font> where <font color="Olive" title="b1">x</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">I</font> : <font color="Maroon" title="c2">M</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  </span> } </span> 
+  <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><div>
+<a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="5_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">thus </span><a NAME="E1:5_1"></a>
+ <a href="pre_poly.html#K13" title="PRE_POLY:func.13">support</a> <font color="Maroon" title="c2">M</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">x</font> where <font color="Olive" title="b1">x</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">I</font> : <font color="Maroon" title="c2">M</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  </span> } </span> 
+  <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="xboole_0.html#D10" onmouseover="rs('xboole_0/D10')" onmouseout="rh()">XBOOLE_0:def 10</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">x</font> where <font color="Olive" title="b1">x</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">I</font> : <font color="Maroon" title="c2">M</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  </span> } </span>  <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="pre_poly.html#K13" title="PRE_POLY:func.13">support</a> <font color="Maroon" title="c2">M</font></span><div>
+<a class="txt" onmouseover="tooltip.show('hs2',this)" onmouseout="tooltip.hide()" onclick="hs2(this)" href="javascript:()" title="5_1_1"><span class="kw">proof </span></a><div class="add">
+
+<span class="kw">let </span><font color="Maroon" title="c4">x</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="tarski.html#D3" onmouseover="rs('tarski/D3')" onmouseout="rh()">TARSKI:def 3</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="pre_poly.html#K13" title="PRE_POLY:func.13">support</a> <font color="Maroon" title="c2">M</font> or <font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">x</font> where <font color="Olive" title="b1">x</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">I</font> : <font color="Maroon" title="c2">M</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  </span> } </span>  )</span><br>
+
+<a NAME="E1:5_1_1"></a><span class="lab"><font color="Green" title="E4">A1</font></span>: 
+ <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c2">M</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Maroon" title="c1">I</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="partfun1.html#D2" onmouseover="rs('partfun1/D2')" onmouseout="rh()">PARTFUN1:def 2</a></span>;<br>
+<a NAME="E2:5_1_1"></a><span class="lab"><font color="Green" title="E5">A2</font></span>: 
+ <a href="pre_poly.html#K13" title="PRE_POLY:func.13">support</a> <font color="Maroon" title="c2">M</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a>  <a href="relat_1.html#NK1" title="RELAT_1:NK.1">dom</a> <font color="Maroon" title="c2">M</font>
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="pre_poly.html#T37" onmouseover="rs('pre_poly/T37')" onmouseout="rh()">PRE_POLY:37</a></span>;<br>
+<span class="kw">assume </span><a NAME="E3:5_1_1"></a><span class="lab"><font color="Green" title="E6">A3</font></span>: 
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="pre_poly.html#K13" title="PRE_POLY:func.13">support</a> <font color="Maroon" title="c2">M</font>
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">x</font> where <font color="Olive" title="b1">x</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">I</font> : <font color="Maroon" title="c2">M</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  </span> } </span> </span><br>
+
+<a NAME="E4:5_1_1"></a><span class="kw">then </span>
+<font color="Maroon" title="c2">M</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Maroon" title="c4">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a> 
+ 
+<span class="kw">by</span> <span class="lab"><a class="ref" href="pre_poly.html#D7" onmouseover="rs('pre_poly/D7')" onmouseout="rh()">PRE_POLY:def 7</a></span>;<br>
+<span class="kw">hence </span><a NAME="E5:5_1_1"></a>
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">x</font> where <font color="Olive" title="b1">x</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">I</font> : <font color="Maroon" title="c2">M</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  </span> } </span> 
+ <span class="kw">by</span> <span class="lab"><a class="txt" href="#E1:5_1_1"><span class="lab"><font color="Green" title="E4">A1</font></span></a>, <a class="txt" href="#E2:5_1_1"><span class="lab"><font color="Green" title="E5">A2</font></span></a>, <a class="txt" href="#E3:5_1_1"><span class="lab"><font color="Green" title="E6">A3</font></span></a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br>
+
+
+</div>
+<span class="kw">end;</span>
+</div>
+
+<span class="kw">let </span><font color="Maroon" title="c4">x</font> be    <a href="hidden.html#M1" title="HIDDEN:mode.1">object</a> ; <span class="comment"><font color="firebrick">:: according to </font></span><a class="ref" href="tarski.html#D3" onmouseover="rs('tarski/D3')" onmouseout="rh()">TARSKI:def 3</a> <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> (  not <font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">x</font> where <font color="Olive" title="b1">x</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">I</font> : <font color="Maroon" title="c2">M</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  </span> } </span>  or <font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="pre_poly.html#K13" title="PRE_POLY:func.13">support</a> <font color="Maroon" title="c2">M</font> )</span><br>
+
+<span class="kw">assume </span><a NAME="E2:5_1"></a>
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b1">x</font> where <font color="Olive" title="b1">x</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">I</font> : <font color="Maroon" title="c2">M</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  </span> } </span> 
+ ; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> <font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="pre_poly.html#K13" title="PRE_POLY:func.13">support</a> <font color="Maroon" title="c2">M</font></span><br>
+
+<a NAME="E3:5_1"></a><span class="kw">then </span>
+ ex <font color="Olive" title="b1">i</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">I</font> st <br>( <font color="Maroon" title="c4">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">i</font> &amp; <font color="Maroon" title="c2">M</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">i</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  )
+ 
+;<br>
+<span class="kw">hence </span><a NAME="E4:5_1"></a>
+<font color="Maroon" title="c4">x</font> <a href="hidden.html#R2" title="HIDDEN:pred.2">in</a>  <a href="pre_poly.html#K13" title="PRE_POLY:func.13">support</a> <font color="Maroon" title="c2">M</font>
+ <span class="kw">by</span> <span class="lab"><a class="ref" href="pre_poly.html#D7" onmouseover="rs('pre_poly/D7')" onmouseout="rh()">PRE_POLY:def 7</a></span>; <a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="comment"><font color="firebrick">::  thesis: </font></span></a><span class="hide"> verum</span><br>
+
+
+</div>
+<span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">I</font> be   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">M</font> be   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Maroon" title="c1">I</font>;<br><div about="#D0" typeof="oo:Definition">
+<span class="comment"><font color="firebrick">:: original: </font></span><a href="pre_poly.html#K13" title="PRE_POLY:func.13">support</a><br><span class="kw">redefine </span><a NAME="K1"><span class="kw">func</span> </a> <a href="closure3.html#K1" title="CLOSURE3:func.1">support</a> <font color="Maroon" title="c2">M</font><span class="kw"> -&gt; </span>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <span class="kw"> equals </span><a NAME="D1"><span class="comment"><font color="firebrick">:: CLOSURE3:def 1</font></span><br></a><span class="p1"> { <span class="default"> <font color="Olive" title="b1">x</font> where <font color="Olive" title="b1">x</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">I</font> : <font color="Maroon" title="c2">M</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">compatibility</span> </a><span class="hide"><br><a NAME="E1:6_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>  holds <br> ( <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="pre_poly.html#K13" title="PRE_POLY:func.13">support</a> <font color="Maroon" title="c2">M</font> iff <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b2">x</font> where <font color="Olive" title="b2">x</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Maroon" title="c1">I</font> : <font color="Maroon" title="c2">M</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  </span> } </span>  )
+ </span><span class="kw">by</span> <span class="lab"><a class="txt" href="closure3.html#E5"><span class="lab"><font color="Green" title="E3">Lm1</font></span></a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="closure3.html#K1" title="CLOSURE3:func.1">support</a> <a onclick="hs(this)" href="javascript:()">CLOSURE3:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">I</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">M</font> being   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Olive" title="b1">I</font> holds   <a href="closure3.html#K1" title="CLOSURE3:func.1">support</a> <font color="Olive" title="b2">M</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b3">x</font> where <font color="Olive" title="b3">x</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Olive" title="b1">I</font> : <font color="Olive" title="b2">M</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="xboole_0.html#K1" title="XBOOLE_0:func.1">{}</a>  </span> } </span> ;<br></span>
+</div>
+<br><div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T5"><span class="comment"><font color="firebrick">:: CLOSURE3:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">I</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">M</font> being  <a href="relat_1.html#V2" title="RELAT_1:attr.2">V8</a>() <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Olive" title="b1">I</font> holds  <font color="Olive" title="b2">M</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="pboole.html#K1" title="PBOOLE:func.1">EmptyMS</a> <font color="Olive" title="b1">I</font></span>)</span> <a href="funct_4.html#K1" title="FUNCT_4:func.1">+*</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">M</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <span class="p2">(<span class="default"><a href="closure3.html#K1" title="CLOSURE3:func.1">support</a> <font color="Olive" title="b2">M</font></span>)</span></span>)</span>
+</div>
+<div about="#PF7" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/closure3/7')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/closure3/7')" href="javascript:()" title="7"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T6"><span class="comment"><font color="firebrick">:: CLOSURE3:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">I</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">M1</font>, <font color="Olive" title="b3">M2</font> being  <a href="relat_1.html#V2" title="RELAT_1:attr.2">V8</a>() <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Olive" title="b1">I</font>  st <font color="Olive" title="b2">M1</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <span class="p1">(<span class="default"><a href="closure3.html#K1" title="CLOSURE3:func.1">support</a> <font color="Olive" title="b2">M1</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">M2</font> <a href="relat_1.html#K5" title="RELAT_1:func.5">|</a> <span class="p1">(<span class="default"><a href="closure3.html#K1" title="CLOSURE3:func.1">support</a> <font color="Olive" title="b3">M2</font></span>)</span> holds <br><font color="Olive" title="b2">M1</font> <a href="pboole.html#R8" title="PBOOLE:pred.8">=</a> <font color="Olive" title="b3">M2</font>
+</div>
+<div about="#PF8" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/closure3/8')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/closure3/8')" href="javascript:()" title="8"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T7"><span class="comment"><font color="firebrick">:: CLOSURE3:7</font></span><br></a><div class="add"><span class="kw">canceled; </span></div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::$CT<br>  
+  
+</font></div>
+<div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E4">Th7</font></span>: <a NAME="T8"><span class="comment"><font color="firebrick">:: CLOSURE3:8</font></span><br></a><div class="add"> for <font color="Olive" title="b1">I</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">M</font> being   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Olive" title="b1">I</font><br>  for <font color="Olive" title="b3">x</font> being    <a href="closure2.html#M1" title="CLOSURE2:mode.1">Element</a> of  <a href="closure2.html#K6" title="CLOSURE2:func.6">Bool</a> <font color="Olive" title="b2">M</font><br>  for <font color="Olive" title="b4">i</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of <font color="Olive" title="b1">I</font><br>  for <font color="Olive" title="b5">y</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st <font color="Olive" title="b5">y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b3">x</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">i</font> holds <br> ex <font color="Olive" title="b6">a</font> being    <a href="closure2.html#M1" title="CLOSURE2:mode.1">Element</a> of  <a href="closure2.html#K6" title="CLOSURE2:func.6">Bool</a> <font color="Olive" title="b2">M</font> st <br>( <font color="Olive" title="b5">y</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b6">a</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">i</font> &amp; <font color="Olive" title="b6">a</font> is <a href="finset_1.html#V2" title="FINSET_1:attr.2">V45</a>() &amp;  <a href="closure3.html#K1" title="CLOSURE3:func.1">support</a> <font color="Olive" title="b6">a</font> is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  &amp; <font color="Olive" title="b6">a</font> <a href="pboole.html#R2" title="PBOOLE:pred.2">c=</a> <font color="Olive" title="b3">x</font> )</div>
+<div about="#PF10" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/closure3/10')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/closure3/10')" href="javascript:()" title="10"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">I</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">M</font> be   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Maroon" title="c1">I</font>;<br><span class="kw">let </span><font color="Maroon" title="c3">A</font> be   <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of <font color="Maroon" title="c2">M</font>;<br><div about="#D5" typeof="oo:Definition">
+<a NAME="K2"><span class="kw">func</span> </a> <a href="closure3.html#K2" title="CLOSURE3:func.2">MSUnion</a> <font color="Maroon" title="c3">A</font><span class="kw"> -&gt; </span>   <a href="pboole.html#M3" title="PBOOLE:mode.3">ManySortedSubset</a> of <font color="Maroon" title="c2">M</font><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E5">Def2</font></span>: <a NAME="D2"><span class="comment"><font color="firebrick">:: CLOSURE3:def 2</font></span><br></a> for <font color="Olive" title="b1">i</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st <font color="Olive" title="b1">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c1">I</font> holds <br><span class="kw">it</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><font color="Olive" title="b2">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b1">i</font></span>)</span> where <font color="Olive" title="b2">f</font> is    <a href="closure2.html#M1" title="CLOSURE2:mode.1">Element</a> of  <a href="closure2.html#K6" title="CLOSURE2:func.6">Bool</a> <font color="Maroon" title="c2">M</font> : <font color="Olive" title="b2">f</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c3">A</font> </span> } </span> ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:11_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being    <a href="pboole.html#M3" title="PBOOLE:mode.3">ManySortedSubset</a> of <font color="Maroon" title="c2">M</font> st <br> for <font color="Olive" title="b2">i</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st <font color="Olive" title="b2">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c1">I</font> holds <br><font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><font color="Olive" title="b3">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">i</font></span>)</span> where <font color="Olive" title="b3">f</font> is    <a href="closure2.html#M1" title="CLOSURE2:mode.1">Element</a> of  <a href="closure2.html#K6" title="CLOSURE2:func.6">Bool</a> <font color="Maroon" title="c2">M</font> : <font color="Olive" title="b3">f</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c3">A</font> </span> } </span> 
+ </span><div about="#PF11_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/closure3/11_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/closure3/11_1_1')" href="javascript:()" title="11_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:11_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being    <a href="pboole.html#M3" title="PBOOLE:mode.3">ManySortedSubset</a> of <font color="Maroon" title="c2">M</font>  st (  for <font color="Olive" title="b3">i</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st <font color="Olive" title="b3">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c1">I</font> holds <br><font color="Olive">b<sub>1</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><font color="Olive" title="b4">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">i</font></span>)</span> where <font color="Olive" title="b4">f</font> is    <a href="closure2.html#M1" title="CLOSURE2:mode.1">Element</a> of  <a href="closure2.html#K6" title="CLOSURE2:func.6">Bool</a> <font color="Maroon" title="c2">M</font> : <font color="Olive" title="b4">f</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c3">A</font> </span> } </span>  ) &amp; (  for <font color="Olive" title="b3">i</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st <font color="Olive" title="b3">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c1">I</font> holds <br><font color="Olive">b<sub>2</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><font color="Olive" title="b4">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">i</font></span>)</span> where <font color="Olive" title="b4">f</font> is    <a href="closure2.html#M1" title="CLOSURE2:mode.1">Element</a> of  <a href="closure2.html#K6" title="CLOSURE2:func.6">Bool</a> <font color="Maroon" title="c2">M</font> : <font color="Olive" title="b4">f</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Maroon" title="c3">A</font> </span> } </span>  ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF11_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/closure3/11_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/closure3/11_1_2')" href="javascript:()" title="11_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+
+<div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E5">Def2</font></span>   defines <a href="closure3.html#K2" title="CLOSURE3:func.2">MSUnion</a> <a onclick="hs(this)" href="javascript:()">CLOSURE3:def 2 : <br></a><span class="hide"> for <font color="Olive" title="b1">I</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">M</font> being   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Olive" title="b1">I</font><br>  for <font color="Olive" title="b3">A</font> being   <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of <font color="Olive" title="b2">M</font><br>  for <font color="Olive">b<sub>4</sub></font> being    <a href="pboole.html#M3" title="PBOOLE:mode.3">ManySortedSubset</a> of <font color="Olive" title="b2">M</font> holds <br> ( <font color="Olive">b<sub>4</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="closure3.html#K2" title="CLOSURE3:func.2">MSUnion</a> <font color="Olive" title="b3">A</font> iff  for <font color="Olive" title="b5">i</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st <font color="Olive" title="b5">i</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b1">I</font> holds <br><font color="Olive">b<sub>4</sub></font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">i</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><font color="Olive" title="b6">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">i</font></span>)</span> where <font color="Olive" title="b6">f</font> is    <a href="closure2.html#M1" title="CLOSURE2:mode.1">Element</a> of  <a href="closure2.html#K6" title="CLOSURE2:func.6">Bool</a> <font color="Olive" title="b2">M</font> : <font color="Olive" title="b6">f</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b3">A</font> </span> } </span>  );<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">I</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">M</font> be   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Maroon" title="c1">I</font>;<br><span class="kw">let </span><font color="Maroon" title="c3">A</font> be   <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>  <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of <font color="Maroon" title="c2">M</font>;<br>
+<div about="#FC2" typeof="oo:Theorem">
+<a NAME="FC2"><span class="kw">cluster </span></a> <a href="closure3.html#K2" title="CLOSURE3:func.2">MSUnion</a> <font color="Maroon" title="c3">A</font><span class="kw"> -&gt; </span><a href="relat_1.html#V3" title="RELAT_1:attr.3">V9</a>() ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:12_1"></a>
+ <a href="closure3.html#K2" title="CLOSURE3:func.2">MSUnion</a> <font color="Maroon" title="c3">A</font> is  <a href="relat_1.html#V3" title="RELAT_1:attr.3">empty-yielding</a> 
+ </span><div about="#PF12_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/closure3/12_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/closure3/12_1_1')" href="javascript:()" title="12_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T9"><span class="comment"><font color="firebrick">:: CLOSURE3:9</font></span><br></a><div class="add"> for <font color="Olive" title="b1">I</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">M</font> being   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Olive" title="b1">I</font><br>  for <font color="Olive" title="b3">A</font> being   <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of <font color="Olive" title="b2">M</font> holds   <a href="closure3.html#K2" title="CLOSURE3:func.2">MSUnion</a> <font color="Olive" title="b3">A</font> <a href="pboole.html#R6" title="PBOOLE:pred.6">=</a>  <a href="mboolean.html#K2" title="MBOOLEAN:func.2">union</a> <span class="p1"><a href="closure2.html#K5" title="CLOSURE2:func.5">|:</a><span class="default"><font color="Olive" title="b3">A</font></span><a href="closure2.html#K5" title="CLOSURE2:func.5">:|</a></span>
+</div>
+<div about="#PF13" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T9"></span><a class="txt" onmouseover="tooltip.show('url','proofs/closure3/13')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/closure3/13')" href="javascript:()" title="13"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">I</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">M</font> be   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Maroon" title="c1">I</font>;<br><span class="kw">let </span><font color="Maroon" title="c3">A</font>, <font color="Maroon" title="c4">B</font> be   <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of <font color="Maroon" title="c2">M</font>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="xboole_0.html#K2" title="XBOOLE_0:func.2">\/</a><br><span class="kw">redefine </span><a NAME="K3"><span class="kw">func</span> </a><font color="Maroon" title="c3">A</font> <a href="closure3.html#K3" title="CLOSURE3:func.3">\/</a> <font color="Maroon" title="c4">B</font><span class="kw"> -&gt; </span>  <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of <font color="Maroon" title="c2">M</font>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><font color="Maroon" title="c3">A</font> <a href="xboole_0.html#K2" title="XBOOLE_0:func.2">\/</a> <font color="Maroon" title="c4">B</font> is   <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of <font color="Maroon" title="c2">M</font></span>;<br></span><span class="kw">by</span> <span class="lab"><a class="ref" href="closure2.html#T3" onmouseover="rs('closure2/T3')" onmouseout="rh()">CLOSURE2:3</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T10"><span class="comment"><font color="firebrick">:: CLOSURE3:10</font></span><br></a><div class="add"> for <font color="Olive" title="b1">I</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">M</font> being   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Olive" title="b1">I</font><br>  for <font color="Olive" title="b3">A</font>, <font color="Olive" title="b4">B</font> being   <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of <font color="Olive" title="b2">M</font> holds   <a href="closure3.html#K2" title="CLOSURE3:func.2">MSUnion</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">A</font> <a href="closure3.html#K3" title="CLOSURE3:func.3">\/</a> <font color="Olive" title="b4">B</font></span>)</span> <a href="pboole.html#R6" title="PBOOLE:pred.6">=</a> <span class="p1">(<span class="default"><a href="closure3.html#K2" title="CLOSURE3:func.2">MSUnion</a> <font color="Olive" title="b3">A</font></span>)</span> <a href="pboole.html#K2" title="PBOOLE:func.2">(\/)</a> <span class="p1">(<span class="default"><a href="closure3.html#K2" title="CLOSURE3:func.2">MSUnion</a> <font color="Olive" title="b4">B</font></span>)</span>
+</div>
+<div about="#PF15" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T10"></span><a class="txt" onmouseover="tooltip.show('url','proofs/closure3/15')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/closure3/15')" href="javascript:()" title="15"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T11"><span class="comment"><font color="firebrick">:: CLOSURE3:11</font></span><br></a><div class="add"> for <font color="Olive" title="b1">I</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">M</font> being   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Olive" title="b1">I</font><br>  for <font color="Olive" title="b3">A</font>, <font color="Olive" title="b4">B</font> being   <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of <font color="Olive" title="b2">M</font>  st <font color="Olive" title="b3">A</font> <a href="tarski.html#R1" title="TARSKI:pred.1">c=</a> <font color="Olive" title="b4">B</font> holds <br> <a href="closure3.html#K2" title="CLOSURE3:func.2">MSUnion</a> <font color="Olive" title="b3">A</font> <a href="pboole.html#R2" title="PBOOLE:pred.2">c=</a>  <a href="closure3.html#K2" title="CLOSURE3:func.2">MSUnion</a> <font color="Olive" title="b4">B</font>
+</div>
+<div about="#PF16" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/closure3/16')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/closure3/16')" href="javascript:()" title="16"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">I</font> be    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">M</font> be   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Maroon" title="c1">I</font>;<br><span class="kw">let </span><font color="Maroon" title="c3">A</font>, <font color="Maroon" title="c4">B</font> be   <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of <font color="Maroon" title="c2">M</font>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="xboole_0.html#K3" title="XBOOLE_0:func.3">/\</a><br><span class="kw">redefine </span><a NAME="K4"><span class="kw">func</span> </a><font color="Maroon" title="c3">A</font> <a href="closure3.html#K4" title="CLOSURE3:func.4">/\</a> <font color="Maroon" title="c4">B</font><span class="kw"> -&gt; </span>  <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of <font color="Maroon" title="c2">M</font>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">correctness </span></a><span class="hide"><br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><font color="Maroon" title="c3">A</font> <a href="xboole_0.html#K3" title="XBOOLE_0:func.3">/\</a> <font color="Maroon" title="c4">B</font> is   <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of <font color="Maroon" title="c2">M</font></span>;<br></span><span class="kw">by</span> <span class="lab"><a class="ref" href="closure2.html#T4" onmouseover="rs('closure2/T4')" onmouseout="rh()">CLOSURE2:4</a></span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T12"><span class="comment"><font color="firebrick">:: CLOSURE3:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">I</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">M</font> being   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Olive" title="b1">I</font><br>  for <font color="Olive" title="b3">A</font>, <font color="Olive" title="b4">B</font> being   <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of <font color="Olive" title="b2">M</font> holds   <a href="closure3.html#K2" title="CLOSURE3:func.2">MSUnion</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">A</font> <a href="closure3.html#K4" title="CLOSURE3:func.4">/\</a> <font color="Olive" title="b4">B</font></span>)</span> <a href="pboole.html#R2" title="PBOOLE:pred.2">c=</a> <span class="p1">(<span class="default"><a href="closure3.html#K2" title="CLOSURE3:func.2">MSUnion</a> <font color="Olive" title="b3">A</font></span>)</span> <a href="pboole.html#K3" title="PBOOLE:func.3">(/\)</a> <span class="p1">(<span class="default"><a href="closure3.html#K2" title="CLOSURE3:func.2">MSUnion</a> <font color="Olive" title="b4">B</font></span>)</span>
+</div>
+<div about="#PF18" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/closure3/18')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/closure3/18')" href="javascript:()" title="18"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T13"><span class="comment"><font color="firebrick">:: CLOSURE3:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">I</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">M</font> being   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Olive" title="b1">I</font><br>  for <font color="Olive" title="b3">AA</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st (  for <font color="Olive" title="b4">x</font> being    <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a>   st <font color="Olive" title="b4">x</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b3">AA</font> holds <br><font color="Olive" title="b4">x</font> is   <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of <font color="Olive" title="b2">M</font> ) holds <br> for <font color="Olive" title="b4">A</font>, <font color="Olive" title="b5">B</font> being   <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of <font color="Olive" title="b2">M</font>  st <font color="Olive" title="b5">B</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><a href="closure3.html#K2" title="CLOSURE3:func.2">MSUnion</a> <font color="Olive" title="b6">X</font></span>)</span> where <font color="Olive" title="b6">X</font> is   <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of <font color="Olive" title="b2">M</font> : <font color="Olive" title="b6">X</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a> <font color="Olive" title="b3">AA</font> </span> } </span>  &amp; <font color="Olive" title="b4">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="tarski.html#K3" title="TARSKI:func.3">union</a> <font color="Olive" title="b3">AA</font> holds <br> <a href="closure3.html#K2" title="CLOSURE3:func.2">MSUnion</a> <font color="Olive" title="b5">B</font> <a href="pboole.html#R6" title="PBOOLE:pred.6">=</a>  <a href="closure3.html#K2" title="CLOSURE3:func.2">MSUnion</a> <font color="Olive" title="b4">A</font>
+</div>
+<div about="#PF19" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T13"></span><a class="txt" onmouseover="tooltip.show('url','proofs/closure3/19')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/closure3/19')" href="javascript:()" title="19"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">I</font> be   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">M</font> be   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Maroon" title="c1">I</font>;<br><span class="kw">let </span><font color="Maroon" title="c3">S</font> be   <a href="closure2.html#NM3" title="CLOSURE2:NM.3">SetOp</a> of <font color="Maroon" title="c2">M</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V1"><span class="kw">attr</span> </a><font color="Maroon" title="c3">S</font> is  <a href="closure3.html#V1" title="CLOSURE3:attr.1">algebraic</a> <span class="kw"> means </span><a NAME="D3"><span class="comment"><font color="firebrick">:: CLOSURE3:def 3</font></span><br></a> for <font color="Olive" title="b1">x</font> being    <a href="closure2.html#M1" title="CLOSURE2:mode.1">Element</a> of  <a href="closure2.html#K6" title="CLOSURE2:func.6">Bool</a> <font color="Maroon" title="c2">M</font>  st <font color="Olive" title="b1">x</font> <a href="pboole.html#R8" title="PBOOLE:pred.8">=</a> <font color="Maroon" title="c3">S</font> <a href="closure2.html#K7" title="CLOSURE2:func.7">.</a> <font color="Olive" title="b1">x</font> holds <br> ex <font color="Olive" title="b2">A</font> being   <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of <font color="Maroon" title="c2">M</font> st <br>( <font color="Olive" title="b2">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><font color="Maroon" title="c3">S</font> <a href="closure2.html#K7" title="CLOSURE2:func.7">.</a> <font color="Olive" title="b3">a</font></span>)</span> where <font color="Olive" title="b3">a</font> is    <a href="closure2.html#M1" title="CLOSURE2:mode.1">Element</a> of  <a href="closure2.html#K6" title="CLOSURE2:func.6">Bool</a> <font color="Maroon" title="c2">M</font> : ( <font color="Olive" title="b3">a</font> is <a href="finset_1.html#V2" title="FINSET_1:attr.2">V45</a>() &amp;  <a href="closure3.html#K1" title="CLOSURE3:func.1">support</a> <font color="Olive" title="b3">a</font> is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  &amp; <font color="Olive" title="b3">a</font> <a href="pboole.html#R2" title="PBOOLE:pred.2">c=</a> <font color="Olive" title="b1">x</font> ) </span> } </span>  &amp; <font color="Olive" title="b1">x</font> <a href="pboole.html#R8" title="PBOOLE:pred.8">=</a>  <a href="closure3.html#K2" title="CLOSURE3:func.2">MSUnion</a> <font color="Olive" title="b2">A</font> );<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT3" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="closure3.html#V1" title="CLOSURE3:attr.1">algebraic</a> <a onclick="hs(this)" href="javascript:()">CLOSURE3:def 3 : <br></a><span class="hide"> for <font color="Olive" title="b1">I</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">M</font> being   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Olive" title="b1">I</font><br>  for <font color="Olive" title="b3">S</font> being   <a href="closure2.html#NM3" title="CLOSURE2:NM.3">SetOp</a> of <font color="Olive" title="b2">M</font> holds <br> ( <font color="Olive" title="b3">S</font> is  <a href="closure3.html#V1" title="CLOSURE3:attr.1">algebraic</a>  iff  for <font color="Olive" title="b4">x</font> being    <a href="closure2.html#M1" title="CLOSURE2:mode.1">Element</a> of  <a href="closure2.html#K6" title="CLOSURE2:func.6">Bool</a> <font color="Olive" title="b2">M</font>  st <font color="Olive" title="b4">x</font> <a href="pboole.html#R8" title="PBOOLE:pred.8">=</a> <font color="Olive" title="b3">S</font> <a href="closure2.html#K7" title="CLOSURE2:func.7">.</a> <font color="Olive" title="b4">x</font> holds <br> ex <font color="Olive" title="b5">A</font> being   <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of <font color="Olive" title="b2">M</font> st <br>( <font color="Olive" title="b5">A</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"> { <span class="default"> <span class="p2">(<span class="default"><font color="Olive" title="b3">S</font> <a href="closure2.html#K7" title="CLOSURE2:func.7">.</a> <font color="Olive" title="b6">a</font></span>)</span> where <font color="Olive" title="b6">a</font> is    <a href="closure2.html#M1" title="CLOSURE2:mode.1">Element</a> of  <a href="closure2.html#K6" title="CLOSURE2:func.6">Bool</a> <font color="Olive" title="b2">M</font> : ( <font color="Olive" title="b6">a</font> is <a href="finset_1.html#V2" title="FINSET_1:attr.2">V45</a>() &amp;  <a href="closure3.html#K1" title="CLOSURE3:func.1">support</a> <font color="Olive" title="b6">a</font> is  <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>  &amp; <font color="Olive" title="b6">a</font> <a href="pboole.html#R2" title="PBOOLE:pred.2">c=</a> <font color="Olive" title="b4">x</font> ) </span> } </span>  &amp; <font color="Olive" title="b4">x</font> <a href="pboole.html#R8" title="PBOOLE:pred.8">=</a>  <a href="closure3.html#K2" title="CLOSURE3:func.2">MSUnion</a> <font color="Olive" title="b5">A</font> ) );<br></span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">I</font> be   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">M</font> be   <a href="pboole.html#NM1" title="PBOOLE:NM.1">ManySortedSet</a> of <font color="Maroon" title="c1">I</font>;<br>
+<div about="#RC1" typeof="oo:Theorem">
+<a NAME="RC1"><span class="kw">cluster </span></a> non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="relat_1.html#V1" title="RELAT_1:attr.1">Relation-like</a>   <a href="closure2.html#K6" title="CLOSURE2:func.6">Bool</a> <font color="Maroon" title="c2">M</font> <a href="relat_1.html#V4" title="RELAT_1:attr.4">-defined</a>   <a href="closure2.html#K6" title="CLOSURE2:func.6">Bool</a> <font color="Maroon" title="c2">M</font> <a href="relat_1.html#V5" title="RELAT_1:attr.5">-valued</a>   <a href="funct_1.html#V1" title="FUNCT_1:attr.1">Function-like</a>  <a href="partfun1.html#V1" title="PARTFUN1:attr.1">V17</a>( <a href="closure2.html#K6" title="CLOSURE2:func.6">Bool</a> <font color="Maroon" title="c2">M</font>)  <a href="funct_2.html#V1" title="FUNCT_2:attr.1">quasi_total</a>   <a href="closure2.html#V7" title="CLOSURE2:attr.7">reflexive</a>   <a href="closure2.html#V8" title="CLOSURE2:attr.8">monotonic</a>   <a href="closure2.html#V9" title="CLOSURE2:attr.9">idempotent</a>   <a href="closure3.html#V1" title="CLOSURE3:attr.1">algebraic</a>   for    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <span class="p1"><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">[:</a><span class="default"><span class="p2">(<span class="default"><a href="closure2.html#K6" title="CLOSURE2:func.6">Bool</a> <font color="Maroon" title="c2">M</font></span>)</span>,<span class="p2">(<span class="default"><a href="closure2.html#K6" title="CLOSURE2:func.6">Bool</a> <font color="Maroon" title="c2">M</font></span>)</span></span><a href="zfmisc_1.html#K2" title="ZFMISC_1:func.2">:]</a></span>;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:21_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="closure2.html#NM3" title="CLOSURE2:NM.3">SetOp</a> of <font color="Maroon" title="c2">M</font> st <br>( <font color="Olive">b<sub>1</sub></font> is  <a href="closure3.html#V1" title="CLOSURE3:attr.1">algebraic</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="closure2.html#V7" title="CLOSURE2:attr.7">reflexive</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="closure2.html#V8" title="CLOSURE2:attr.8">monotonic</a>  &amp; <font color="Olive">b<sub>1</sub></font> is  <a href="closure2.html#V9" title="CLOSURE2:attr.9">idempotent</a>  )
+ </span><div about="#PF21_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/closure3/21_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/closure3/21_1_1')" href="javascript:()" title="21_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">S</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="struct_0.html#L1" title="STRUCT_0:struct.1">1-sorted</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">IT</font> be   <a href="closure2.html#NM4" title="CLOSURE2:NM.4">ClosureSystem</a> of <font color="Maroon" title="c1">S</font>;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="V2"><span class="kw">attr</span> </a><font color="Maroon" title="c2">IT</font> is  <a href="closure3.html#V2" title="CLOSURE3:attr.2">algebraic</a> <span class="kw"> means </span><a NAME="D4"><span class="comment"><font color="firebrick">:: CLOSURE3:def 4</font></span><br></a> <a href="closure2.html#K12" title="CLOSURE2:func.12">ClSys-&gt;ClOp</a> <font color="Maroon" title="c2">IT</font> is  <a href="closure3.html#V1" title="CLOSURE3:attr.1">algebraic</a> ;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT4" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="closure3.html#V2" title="CLOSURE3:attr.2">algebraic</a> <a onclick="hs(this)" href="javascript:()">CLOSURE3:def 4 : <br></a><span class="hide"> for <font color="Olive" title="b1">S</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   <a href="struct_0.html#L1" title="STRUCT_0:struct.1">1-sorted</a> <br>  for <font color="Olive" title="b2">IT</font> being   <a href="closure2.html#NM4" title="CLOSURE2:NM.4">ClosureSystem</a> of <font color="Olive" title="b1">S</font> holds <br> ( <font color="Olive" title="b2">IT</font> is  <a href="closure3.html#V2" title="CLOSURE3:attr.2">algebraic</a>  iff  <a href="closure2.html#K12" title="CLOSURE2:func.12">ClSys-&gt;ClOp</a> <font color="Olive" title="b2">IT</font> is  <a href="closure3.html#V1" title="CLOSURE3:attr.1">algebraic</a>  );<br></span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">S</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   non  <a href="struct_0.html#V11" title="STRUCT_0:attr.11">void</a>   <a href="msualg_1.html#L1" title="MSUALG_1:struct.1">ManySortedSign</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">MA</font> be   <a href="msualg_1.html#V4" title="MSUALG_1:attr.4">non-empty</a>   <a href="msualg_1.html#L3" title="MSUALG_1:struct.3">MSAlgebra</a> over <font color="Maroon" title="c1">S</font>;<br><div about="#D6" typeof="oo:Definition">
+<a NAME="K5"><span class="kw">func</span> </a> <a href="closure3.html#K5" title="CLOSURE3:func.5">SubAlgCl</a> <font color="Maroon" title="c2">MA</font><span class="kw"> -&gt; </span>  <a href="closure2.html#V11" title="CLOSURE2:attr.11">strict</a>   <a href="closure2.html#L1" title="CLOSURE2:struct.1">ClosureStr</a> over  <a href="struct_0.html#G1" title="STRUCT_0:aggr.1">1-sorted</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">S</font> #)<span class="kw"> means </span>:<span class="lab"><font color="Green" title="E6">Def5</font></span>: <a NAME="D5"><span class="comment"><font color="firebrick">:: CLOSURE3:def 5</font></span><br></a>(  the <a href="msualg_1.html#U3" title="MSUALG_1:sel.3">Sorts</a> of <span class="kw">it</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="msualg_1.html#U3" title="MSUALG_1:sel.3">Sorts</a> of <font color="Maroon" title="c2">MA</font> &amp;  the <a href="closure2.html#U1" title="CLOSURE2:sel.1">Family</a> of <span class="kw">it</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="msualg_2.html#K6" title="MSUALG_2:func.6">SubSort</a> <font color="Maroon" title="c2">MA</font> );<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:23_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="closure2.html#V11" title="CLOSURE2:attr.11">strict</a>   <a href="closure2.html#L1" title="CLOSURE2:struct.1">ClosureStr</a> over  <a href="struct_0.html#G1" title="STRUCT_0:aggr.1">1-sorted</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">S</font> #) st <br>(  the <a href="msualg_1.html#U3" title="MSUALG_1:sel.3">Sorts</a> of <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="msualg_1.html#U3" title="MSUALG_1:sel.3">Sorts</a> of <font color="Maroon" title="c2">MA</font> &amp;  the <a href="closure2.html#U1" title="CLOSURE2:sel.1">Family</a> of <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="msualg_2.html#K6" title="MSUALG_2:func.6">SubSort</a> <font color="Maroon" title="c2">MA</font> )
+ </span><div about="#PF23_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/closure3/23_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/closure3/23_1_1')" href="javascript:()" title="23_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:23_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="closure2.html#V11" title="CLOSURE2:attr.11">strict</a>   <a href="closure2.html#L1" title="CLOSURE2:struct.1">ClosureStr</a> over  <a href="struct_0.html#G1" title="STRUCT_0:aggr.1">1-sorted</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Maroon" title="c1">S</font> #)  st  the <a href="msualg_1.html#U3" title="MSUALG_1:sel.3">Sorts</a> of <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="msualg_1.html#U3" title="MSUALG_1:sel.3">Sorts</a> of <font color="Maroon" title="c2">MA</font> &amp;  the <a href="closure2.html#U1" title="CLOSURE2:sel.1">Family</a> of <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="msualg_2.html#K6" title="MSUALG_2:func.6">SubSort</a> <font color="Maroon" title="c2">MA</font> &amp;  the <a href="msualg_1.html#U3" title="MSUALG_1:sel.3">Sorts</a> of <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="msualg_1.html#U3" title="MSUALG_1:sel.3">Sorts</a> of <font color="Maroon" title="c2">MA</font> &amp;  the <a href="closure2.html#U1" title="CLOSURE2:sel.1">Family</a> of <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="msualg_2.html#K6" title="MSUALG_2:func.6">SubSort</a> <font color="Maroon" title="c2">MA</font> holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT5" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E6">Def5</font></span>   defines <a href="closure3.html#K5" title="CLOSURE3:func.5">SubAlgCl</a> <a onclick="hs(this)" href="javascript:()">CLOSURE3:def 5 : <br></a><span class="hide"> for <font color="Olive" title="b1">S</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   non  <a href="struct_0.html#V11" title="STRUCT_0:attr.11">void</a>   <a href="msualg_1.html#L1" title="MSUALG_1:struct.1">ManySortedSign</a> <br>  for <font color="Olive" title="b2">MA</font> being   <a href="msualg_1.html#V4" title="MSUALG_1:attr.4">non-empty</a>   <a href="msualg_1.html#L3" title="MSUALG_1:struct.3">MSAlgebra</a> over <font color="Olive" title="b1">S</font><br>  for <font color="Olive">b<sub>3</sub></font> being   <a href="closure2.html#V11" title="CLOSURE2:attr.11">strict</a>   <a href="closure2.html#L1" title="CLOSURE2:struct.1">ClosureStr</a> over  <a href="struct_0.html#G1" title="STRUCT_0:aggr.1">1-sorted</a>(#  the <a href="struct_0.html#U1" title="STRUCT_0:sel.1">carrier</a> of <font color="Olive" title="b1">S</font> #) holds <br> ( <font color="Olive">b<sub>3</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="closure3.html#K5" title="CLOSURE3:func.5">SubAlgCl</a> <font color="Olive" title="b2">MA</font> iff (  the <a href="msualg_1.html#U3" title="MSUALG_1:sel.3">Sorts</a> of <font color="Olive">b<sub>3</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  the <a href="msualg_1.html#U3" title="MSUALG_1:sel.3">Sorts</a> of <font color="Olive" title="b2">MA</font> &amp;  the <a href="closure2.html#U1" title="CLOSURE2:sel.1">Family</a> of <font color="Olive">b<sub>3</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="msualg_2.html#K6" title="MSUALG_2:func.6">SubSort</a> <font color="Olive" title="b2">MA</font> ) );<br></span>
+</div>
+<br><div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E7">Th13</font></span>: <a NAME="T14"><span class="comment"><font color="firebrick">:: CLOSURE3:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">S</font> being   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   non  <a href="struct_0.html#V11" title="STRUCT_0:attr.11">void</a>   <a href="msualg_1.html#L1" title="MSUALG_1:struct.1">ManySortedSign</a> <br>  for <font color="Olive" title="b2">MA</font> being   <a href="msualg_1.html#V3" title="MSUALG_1:attr.3">strict</a>   <a href="msualg_1.html#V4" title="MSUALG_1:attr.4">non-empty</a>   <a href="msualg_1.html#L3" title="MSUALG_1:struct.3">MSAlgebra</a> over <font color="Olive" title="b1">S</font> holds   <a href="msualg_2.html#K6" title="MSUALG_2:func.6">SubSort</a> <font color="Olive" title="b2">MA</font> is   <a href="closure2.html#V4" title="CLOSURE2:attr.4">absolutely-multiplicative</a>  <a href="closure2.html#NM1" title="CLOSURE2:NM.1">SubsetFamily</a> of  the <a href="msualg_1.html#U3" title="MSUALG_1:sel.3">Sorts</a> of <font color="Olive" title="b2">MA</font>
+</div>
+<div about="#PF24" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T14"></span><a class="txt" onmouseover="tooltip.show('url','proofs/closure3/24')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/closure3/24')" href="javascript:()" title="24"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">S</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   non  <a href="struct_0.html#V11" title="STRUCT_0:attr.11">void</a>   <a href="msualg_1.html#L1" title="MSUALG_1:struct.1">ManySortedSign</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">MA</font> be   <a href="msualg_1.html#V3" title="MSUALG_1:attr.3">strict</a>   <a href="msualg_1.html#V4" title="MSUALG_1:attr.4">non-empty</a>   <a href="msualg_1.html#L3" title="MSUALG_1:struct.3">MSAlgebra</a> over <font color="Maroon" title="c1">S</font>;<br>
+<div about="#FC3" typeof="oo:Theorem">
+<a NAME="FC3"><span class="kw">cluster </span></a> <a href="closure3.html#K5" title="CLOSURE3:func.5">SubAlgCl</a> <font color="Maroon" title="c2">MA</font><span class="kw"> -&gt; </span> <a href="closure2.html#V11" title="CLOSURE2:attr.11">strict</a>   <a href="closure2.html#V15" title="CLOSURE2:attr.15">absolutely-multiplicative</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:25_1"></a>
+ <a href="closure3.html#K5" title="CLOSURE3:func.5">SubAlgCl</a> <font color="Maroon" title="c2">MA</font> is  <a href="closure2.html#V15" title="CLOSURE2:attr.15">absolutely-multiplicative</a> 
+ </span><div about="#PF25_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/closure3/25_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/closure3/25_1_1')" href="javascript:()" title="25_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">registration</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">S</font> be   non  <a href="struct_0.html#V2" title="STRUCT_0:attr.2">empty</a>   non  <a href="struct_0.html#V11" title="STRUCT_0:attr.11">void</a>   <a href="msualg_1.html#L1" title="MSUALG_1:struct.1">ManySortedSign</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">MA</font> be   <a href="msualg_1.html#V3" title="MSUALG_1:attr.3">strict</a>   <a href="msualg_1.html#V4" title="MSUALG_1:attr.4">non-empty</a>   <a href="msualg_1.html#L3" title="MSUALG_1:struct.3">MSAlgebra</a> over <font color="Maroon" title="c1">S</font>;<br>
+<div about="#FC4" typeof="oo:Theorem">
+<a NAME="FC4"><span class="kw">cluster </span></a> <a href="closure3.html#K5" title="CLOSURE3:func.5">SubAlgCl</a> <font color="Maroon" title="c2">MA</font><span class="kw"> -&gt; </span> <a href="closure2.html#V11" title="CLOSURE2:attr.11">strict</a>   <a href="closure3.html#V2" title="CLOSURE3:attr.2">algebraic</a>  ;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:26_1"></a>
+ <a href="closure3.html#K5" title="CLOSURE3:func.5">SubAlgCl</a> <font color="Maroon" title="c2">MA</font> is  <a href="closure3.html#V2" title="CLOSURE3:attr.2">algebraic</a> 
+ </span><div about="#PF26_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/closure3/26_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/closure3/26_1_1')" href="javascript:()" title="26_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+</body>
+</html>
