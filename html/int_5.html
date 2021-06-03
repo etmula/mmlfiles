@@ -1,0 +1,737 @@
+<html prefix="oo: http://omdoc.org/ontology# owl: http://www.w3.org/2002/07/owl#">
+<style type="text/css">
+div { padding: 0 0 0 0; margin: 0 0 0 0; } 
+div.add { padding-left: 3mm; padding-bottom: 0mm;  margin: 0 0 0 0; } 
+div.box { border-width:thin; border-color:blue; border-style:solid; }
+p { margin: 0 0 0 0; } 
+body {font-family: monospace; margin: 0px;}
+a {text-decoration:none} a:hover { color: red; } 
+a.ref { font-size:x-small; }
+a.ref:link { color:green; } 
+a.ref:hover { color: red; } 
+a.txt:link { color:black; } 
+a.txt:hover { color: red; } 
+.wikiactions ul { background-color: DarkSeaGreen ; color:blue; margin: 0; padding: 6px; list-style-type: none; border-bottom: 1px solid #000; }
+.wikiactions li { display: inline; padding: .2em .4em; }
+.wikiactions a {text-decoration:underline;} 
+span.kw {font-weight: bold; }
+span.lab {font-style: italic; }
+span.comment {font-style: italic; }
+span.hide { display: none; }
+span.p1:hover { color : inherit; background-color : #BAFFFF; } 
+span.p2:hover { color : inherit; background-color : #FFCACA; }
+span.p3:hover { color : inherit; background-color : #FFFFBA; }
+span.p4:hover { color : inherit; background-color : #CACAFF; }
+span.p5:hover { color : inherit; background-color : #CAFFCA; }
+span.p0:hover { color : inherit; background-color : #FFBAFF; }
+.default { background-color: white; color: black; } 
+.default:hover { background-color: white; color: black; }
+#tt { position:absolute; display:block; font-size: small; background: LightYellow; padding:2px 12px 3px 7px; margin-left:5px;}
+:target { background: #5D9BF7; border: solid 1px #aaa;}
+</style>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>INT_5:  Gauss Lemma and Law of Quadratic Reciprocity</title>
+<script type="text/javascript">
+<!-- 
+
+// for saving in rs
+var mizhtm='';
+function hs(obj)
+{
+// document.getElementById('myimage').nextSibling.style.display = 'block';
+if (obj.nextSibling.style.display == 'inline')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'inline'; }
+ else { obj.nextSibling.style.display = 'inline';  }}
+return false;
+}
+
+function hs2(obj)
+{
+if (obj.nextSibling.style.display == 'block')
+ { obj.nextSibling.style.display = 'none'; }
+else { if (obj.nextSibling.style.display == 'none')
+ { obj.nextSibling.style.display = 'block'; }
+ else { obj.nextSibling.style.display = 'none';  }}
+return false;
+}
+function hsNdiv(obj)
+{
+var ndiv = obj;
+while (ndiv.nextSibling.nodeName != 'DIV') { ndiv = ndiv.nextSibling; }
+return hs2(ndiv);
+}
+
+// remote request cache - for each url its http_request.responseText
+var rrCache= {};
+rrCache[0]='';
+
+// explorer7 implements XMLHttpRequest in some strange way
+// optional tooltip is passed to insertRequest
+function makeRequest(obj,url,tooltip) 
+{
+    // if the result is cached, insert it now
+    if (rrCache[url] != null)
+    {
+	insertRequest(obj,null,url,tooltip);
+    }
+    else
+    {
+        var http_request = false;
+        if (window.XMLHttpRequest && !(window.ActiveXObject)) { // Mozilla, Safari,...
+            http_request = new XMLHttpRequest();
+            if (http_request.overrideMimeType) {
+                http_request.overrideMimeType('text/xml');
+            }
+        } else if (window.ActiveXObject) { // IE
+            try {
+                http_request = new ActiveXObject('Msxml2.XMLHTTP');
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject('Microsoft.XMLHTTP');
+                } catch (e) {}
+            }
+        }
+        if (!http_request) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+        http_request.onreadystatechange = function() { insertRequest(obj,http_request,url,tooltip); };
+        http_request.open('GET', url, true);
+        http_request.send(null);
+    }
+}
+// commented the 200 state to have local requests too
+// if tooltip nonnil, obj.innerHTML is changed, and the result is put in rrCache
+function insertRequest(obj,http_request,url,tooltip) 
+{
+    var respText = null;
+    if(http_request == null) // no request done, we are called with cached result
+    {
+	respText = rrCache[url];
+    }
+    else { if (http_request.readyState == 4) { 
+	respText = http_request.responseText; 
+    }}
+
+    if (respText != null) 
+    {
+//            if (http_request.status == 200) {
+	if(http_request != null) {rrCache[url] = respText;}
+	if(tooltip != null)
+	{
+	    obj.innerHTML = respText;	    
+	}
+	else
+	{
+	    var ndiv = obj;
+	    while (ndiv.nodeName != 'SPAN') { ndiv = ndiv.nextSibling; }
+	    ndiv.innerHTML = respText;
+	    obj.onclick = function(){ return hs2(obj) };
+	}
+    }
+}
+
+// simple tooltips
+var tooltip=function(){
+ var id = 'tt';
+ var top = 3;
+ var left = 3;
+ var maxw = 500;
+ var speed = 10;
+ var timer = 2;
+ var endalpha = 95;
+ var alpha = 0;
+ var tt,t,c,b,h;
+ var ie = document.all ? true : false;
+ return{
+  show:function(how,v,w){
+   if(tt == null){
+    tt = document.createElement('div');
+    tt.setAttribute('id',id);
+    document.body.appendChild(tt);
+    tt.style.opacity = 0;
+    tt.style.filter = 'alpha(opacity=0)';
+    document.onmousemove = this.pos;
+   }
+
+   tt.style.display = 'block';
+   if(how == 'url')
+   {
+       if(rrCache[v]==null) { 
+	   tt.innerHTML ='<div>loading...</div>'; 
+	   makeRequest(tt,v,1); 
+       } else { 
+	   tt.innerHTML = rrCache[v]; 
+       }
+   }
+   else { if ((how == 'hs') || (how == 'hs2')) { tt.innerHTML = v.nextSibling.innerHTML; }
+   else { if (how == 'txt') { tt.innerHTML = v; }
+	  else { tt.innerHTML = ''; }
+	}
+   }
+
+   tt.style.width = w ? w + 'px' : 'auto';
+   if(!w && ie){
+    tt.style.width = tt.offsetWidth;
+   }
+  if(tt.offsetWidth > maxw){tt.style.width = maxw + 'px'}
+  h = parseInt(tt.offsetHeight) + top;
+  clearInterval(tt.timer);
+  tt.timer = setInterval(function(){tooltip.fade(1)},timer);
+  },
+  pos:function(e){
+   var u = ie ? event.clientY + document.documentElement.scrollTop : e.pageY;
+   var l = ie ? event.clientX + document.documentElement.scrollLeft : e.pageX;
+   tt.style.top = (u - h) + 'px';
+   tt.style.left = (l + left) + 'px';
+  },
+  fade:function(d){
+   var a = alpha;
+   if((a != endalpha && d == 1) || (a != 0 && d == -1)){
+    var i = speed;
+   if(endalpha - a < speed && d == 1){
+    i = endalpha - a;
+   }else if(alpha < speed && d == -1){
+     i = a;
+   }
+   alpha = a + (i * d);
+   tt.style.opacity = alpha * .01;
+   tt.style.filter = 'alpha(opacity=' + alpha + ')';
+  }else{
+    clearInterval(tt.timer);
+     if(d == -1){tt.style.display = 'none'}
+  }
+ },
+ hide:function(){tt.style.display  = 'none';}
+ };
+}();
+
+// reference show/hide - shortened because frequent, just a wrapper to tooltip.show/hide
+function rs(ref) { tooltip.show('url', mizhtm + 'refs/' + ref); }
+function rh() { tooltip.hide(); } 
+
+// End -->
+</script><script type="text/x-mathjax-config">
+  MathJax.Hub.Config({                                                                                                                            
+    extensions: ['tex2jax.js'],                                                                                                                   
+    jax: ['input/TeX', 'output/HTML-CSS'],                                                                                                        
+    tex2jax: {                                                                                                                                    
+      inlineMath: [ ['$','$'], ['\(','\)'] ],                                                                                                   
+      displayMath: [ ['$$','$$'], ['\[','\]'] ],                                                                                                
+  processClass: 'mathjax',                                                                                                                        
+  ignoreClass: 'no-mathjax',                                                                                                                      
+      processEscapes: true,                                                                                                                       
+    },                                                                                                                                            
+    'HTML-CSS': {   scale: 80, availableFonts: ['TeX'] }                                                                                          
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+</head>
+<body class="no-mathjax">
+<span class="comment"><font color="firebrick">::  Gauss Lemma and Law of Quadratic Reciprocity</font></span><br><span class="comment"><font color="firebrick">:: by Li Yan , Xiquan Liang and Junjie Zhao</font></span><br><span class="comment"><font color="firebrick">:: </font></span><br><span class="comment"><font color="firebrick">:: Received October 9, 2007</font></span><br><span class="comment"><font color="firebrick">:: Copyright (c) 2007-2019 Association of Mizar Users</font></span><br><br><div></div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+<div about="#T1" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E1">Th1</font></span>: <a NAME="T1"><span class="comment"><font color="firebrick">:: INT_5:1</font></span><br></a><div class="add"> for <font color="Olive" title="b1">i1</font>, <font color="Olive" title="b2">i2</font>, <font color="Olive" title="b3">i3</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>  st <font color="Olive" title="b1">i1</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Olive" title="b2">i2</font> &amp; <font color="Olive" title="b1">i1</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Olive" title="b3">i3</font> holds <br><font color="Olive" title="b1">i1</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Olive" title="b2">i2</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Olive" title="b3">i3</font>
+</div>
+<div about="#PF1" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T1"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/1')" href="javascript:()" title="1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T2" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E2">Th2</font></span>: <a NAME="T2"><span class="comment"><font color="firebrick">:: INT_5:2</font></span><br></a><div class="add"> for <font color="Olive" title="b1">i</font>, <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">b</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>  st <font color="Olive" title="b1">i</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Olive" title="b2">a</font> &amp; <font color="Olive" title="b1">i</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Olive" title="b2">a</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Olive" title="b3">b</font> holds <br><font color="Olive" title="b1">i</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Olive" title="b3">b</font>
+</div>
+<div about="#PF2" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T2"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/2')" href="javascript:()" title="2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E3"></a><span class="lab"><font color="Green" title="E3">Lm1</font></span>: <span about="#E3" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">x</font>, <font color="Olive" title="b2">y</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a> holds <br> ( ( <font color="Olive" title="b1">x</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Olive" title="b2">y</font> implies <font color="Olive" title="b2">y</font> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Olive" title="b1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  ) &amp; ( <font color="Olive" title="b1">x</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; <font color="Olive" title="b2">y</font> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Olive" title="b1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies <font color="Olive" title="b1">x</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Olive" title="b2">y</font> ) )
+ </span><br><div about="#PF3" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/3')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/3')" href="javascript:()" title="3"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">fp</font> be    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a> ;<br><div about="#D4" typeof="oo:Definition">
+<a NAME="K1"><span class="kw">func</span> </a> <a href="int_5.html#K1" title="INT_5:func.1">Poly-INT</a> <font color="Maroon" title="c1">fp</font><span class="kw"> -&gt; </span>  <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>,<a href="numbers.html#K4" title="NUMBERS:func.4">INT</a><span class="kw"> means </span>:<span class="lab"><font color="Green" title="E4">Def1</font></span>: <a NAME="D1"><span class="comment"><font color="firebrick">:: INT_5:def 1</font></span><br></a> for <font color="Olive" title="b1">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>   ex <font color="Olive" title="b2">fr</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  st <br>(  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">fr</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">fp</font> &amp; (  for <font color="Olive" title="b3">d</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b3">d</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b2">fr</font> holds <br><font color="Olive" title="b2">fr</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">d</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">fp</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">d</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">x</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p2">(<span class="default"><font color="Olive" title="b3">d</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span></span>)</span> ) &amp; <span class="kw">it</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b1">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="gr_cy_1.html#K1" title="GR_CY_1:func.1">Sum</a> <font color="Olive" title="b2">fr</font> );<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">existence</span> </a><span class="hide"><br><a NAME="E1:4_1"></a>
+ ex <font color="Olive">b<sub>1</sub></font> being   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>,<a href="numbers.html#K4" title="NUMBERS:func.4">INT</a> st <br> for <font color="Olive" title="b2">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>   ex <font color="Olive" title="b3">fr</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  st <br>(  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">fr</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">fp</font> &amp; (  for <font color="Olive" title="b4">d</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b4">d</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b3">fr</font> holds <br><font color="Olive" title="b3">fr</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">d</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">fp</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">d</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">x</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p2">(<span class="default"><font color="Olive" title="b4">d</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span></span>)</span> ) &amp; <font color="Olive">b<sub>1</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="gr_cy_1.html#K1" title="GR_CY_1:func.1">Sum</a> <font color="Olive" title="b3">fr</font> )
+ </span><div about="#PF4_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/int_5/4_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/4_1_1')" href="javascript:()" title="4_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">uniqueness</span> </a><span class="hide"><br><a NAME="E2:4_1"></a>
+ for <font color="Olive">b<sub>1</sub></font>, <font color="Olive">b<sub>2</sub></font> being   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>,<a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  st (  for <font color="Olive" title="b3">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>   ex <font color="Olive" title="b4">fr</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  st <br>(  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b4">fr</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">fp</font> &amp; (  for <font color="Olive" title="b5">d</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b5">d</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b4">fr</font> holds <br><font color="Olive" title="b4">fr</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">d</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">fp</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">d</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">x</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p2">(<span class="default"><font color="Olive" title="b5">d</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span></span>)</span> ) &amp; <font color="Olive">b<sub>1</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="gr_cy_1.html#K1" title="GR_CY_1:func.1">Sum</a> <font color="Olive" title="b4">fr</font> ) ) &amp; (  for <font color="Olive" title="b3">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>   ex <font color="Olive" title="b4">fr</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  st <br>(  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b4">fr</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Maroon" title="c1">fp</font> &amp; (  for <font color="Olive" title="b5">d</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b5">d</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b4">fr</font> holds <br><font color="Olive" title="b4">fr</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">d</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Maroon" title="c1">fp</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">d</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">x</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p2">(<span class="default"><font color="Olive" title="b5">d</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span></span>)</span> ) &amp; <font color="Olive">b<sub>2</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="gr_cy_1.html#K1" title="GR_CY_1:func.1">Sum</a> <font color="Olive" title="b4">fr</font> ) ) holds <br><font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive">b<sub>2</sub></font>
+ </span><div about="#PF4_1_2" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/int_5/4_1_2')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/4_1_2')" href="javascript:()" title="4_1_2"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT1" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E4">Def1</font></span>   defines <a href="int_5.html#K1" title="INT_5:func.1">Poly-INT</a> <a onclick="hs(this)" href="javascript:()">INT_5:def 1 : <br></a><span class="hide"> for <font color="Olive" title="b1">fp</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a> <br>  for <font color="Olive">b<sub>2</sub></font> being   <a href="funct_2.html#NM1" title="FUNCT_2:NM.1">Function</a> of <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>,<a href="numbers.html#K4" title="NUMBERS:func.4">INT</a> holds <br> ( <font color="Olive">b<sub>2</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="int_5.html#K1" title="INT_5:func.1">Poly-INT</a> <font color="Olive" title="b1">fp</font> iff  for <font color="Olive" title="b3">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>   ex <font color="Olive" title="b4">fr</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  st <br>(  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b4">fr</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">fp</font> &amp; (  for <font color="Olive" title="b5">d</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b5">d</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b4">fr</font> holds <br><font color="Olive" title="b4">fr</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">d</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">fp</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">d</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">x</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p2">(<span class="default"><font color="Olive" title="b5">d</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span></span>)</span> ) &amp; <font color="Olive">b<sub>2</sub></font> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b3">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="gr_cy_1.html#K1" title="GR_CY_1:func.1">Sum</a> <font color="Olive" title="b4">fr</font> ) );<br></span>
+</div>
+<br><div about="#T3" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E5">Th3</font></span>: <a NAME="T3"><span class="comment"><font color="firebrick">:: INT_5:3</font></span><br></a><div class="add"> for <font color="Olive" title="b1">fp</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>   st  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">fp</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 holds <br> <a href="int_5.html#K1" title="INT_5:func.1">Poly-INT</a> <font color="Olive" title="b1">fp</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a> <a href="funcop_1.html#K7" title="FUNCOP_1:func.7">--&gt;</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">fp</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> 1</span>)</span>
+</div>
+<div about="#PF5" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T3"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/5')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/5')" href="javascript:()" title="5"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T4" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T4"><span class="comment"><font color="firebrick">:: INT_5:4</font></span><br></a><div class="add"> for <font color="Olive" title="b1">fp</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>   st  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">fp</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 holds <br> for <font color="Olive" title="b2">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  holds  <span class="p1">(<span class="default"><a href="int_5.html#K1" title="INT_5:func.1">Poly-INT</a> <font color="Olive" title="b1">fp</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b2">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">fp</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> 1</div>
+<div about="#PF6" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T4"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/6')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/6')" href="javascript:()" title="6"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+<div about="#T5" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E6">Th5</font></span>: <a NAME="T5"><span class="comment"><font color="firebrick">:: INT_5:5</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b2">f</font>, <font color="Olive" title="b3">f1</font>, <font color="Olive" title="b4">f2</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>   st  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 &amp;  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">f1</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">f</font> &amp;  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b4">f2</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">f</font> &amp; (  for <font color="Olive" title="b5">d</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b5">d</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b2">f</font> holds <br><font color="Olive" title="b2">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">d</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">f1</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">d</font></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">f2</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">d</font></span>)</span> ) holds <br> ex <font color="Olive" title="b5">fr</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>  st <br>(  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b5">fr</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">f</font></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1 &amp; (  for <font color="Olive" title="b6">d</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b6">d</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b5">fr</font> holds <br><font color="Olive" title="b5">fr</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b6">d</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">f1</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b6">d</font></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">f2</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p2">(<span class="default"><font color="Olive" title="b6">d</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span> ) &amp;  <a href="rvsum_1.html#K18" title="RVSUM_1:func.18">Sum</a> <font color="Olive" title="b2">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="rvsum_1.html#K18" title="RVSUM_1:func.18">Sum</a> <font color="Olive" title="b5">fr</font></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <span class="p2">(<span class="default"><font color="Olive" title="b3">f1</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p3">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span></span>)</span></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">f2</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> 1</span>)</span> )</div>
+<div about="#PF7" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T5"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/7')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/7')" href="javascript:()" title="7"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T6" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E7">Th6</font></span>: <a NAME="T6"><span class="comment"><font color="firebrick">:: INT_5:6</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b2">fp</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>   st  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">fp</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 2 holds <br> for <font color="Olive" title="b3">a</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>  ex <font color="Olive" title="b4">fr</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  ex <font color="Olive" title="b5">r</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a> st <br>(  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b4">fr</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 &amp; (  for <font color="Olive" title="b6">x</font> being    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  holds  <span class="p1">(<span class="default"><a href="int_5.html#K1" title="INT_5:func.1">Poly-INT</a> <font color="Olive" title="b2">fp</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b6">x</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b6">x</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Olive" title="b3">a</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="int_5.html#K1" title="INT_5:func.1">Poly-INT</a> <font color="Olive" title="b4">fr</font></span>)</span> <a href="funct_2.html#K3" title="FUNCT_2:func.3">.</a> <font color="Olive" title="b6">x</font></span>)</span></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> <font color="Olive" title="b5">r</font> ) &amp; <font color="Olive" title="b2">fp</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 2</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b4">fr</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> )</div>
+<div about="#PF8" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T6"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/8')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/8')" href="javascript:()" title="8"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T7" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E8">Th7</font></span>: <a NAME="T7"><span class="comment"><font color="firebrick">:: INT_5:7</font></span><br></a><div class="add"> for <font color="Olive" title="b1">i</font>, <font color="Olive" title="b2">j</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b3">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  holds <br>(  not <font color="Olive" title="b3">p</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Olive" title="b1">i</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b2">j</font> or <font color="Olive" title="b3">p</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Olive" title="b1">i</font> or <font color="Olive" title="b3">p</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Olive" title="b2">j</font> )</div>
+<div about="#PF9" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T7"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/9')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/9')" href="javascript:()" title="9"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div about="#T8" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E9">Th8</font></span>: <a NAME="T8"><span class="comment"><font color="firebrick">:: INT_5:8</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a><br>  for <font color="Olive" title="b3">fp</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>   st  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">fp</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1 &amp; <font color="Olive" title="b2">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp;  not <font color="Olive" title="b2">p</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Olive" title="b3">fp</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">n</font> <a href="nat_1.html#K1" title="NAT_1:func.1">+</a> 1</span>)</span> holds <br> for <font color="Olive" title="b4">fr</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>   st (  for <font color="Olive" title="b5">d</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b5">d</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b4">fr</font> holds <br><span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="int_5.html#K1" title="INT_5:func.1">Poly-INT</a> <font color="Olive" title="b3">fp</font></span>)</span> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <span class="p2">(<span class="default"><font color="Olive" title="b4">fr</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">d</font></span>)</span></span>)</span> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  ) &amp; (  for <font color="Olive" title="b5">d</font>, <font color="Olive" title="b6">e</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b5">d</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b4">fr</font> &amp; <font color="Olive" title="b6">e</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b4">fr</font> &amp; <font color="Olive" title="b5">d</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b6">e</font> holds <br> not <font color="Olive" title="b4">fr</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b5">d</font>,<font color="Olive" title="b4">fr</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b6">e</font> <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a> <font color="Olive" title="b2">p</font> ) holds <br> <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b4">fr</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b1">n</font>
+</div>
+<div about="#PF10" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T8"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/10')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/10')" href="javascript:()" title="10"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">a</font> be   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">m</font> be   <a href="ordinal1.html#V7" title="ORDINAL1:attr.7">natural</a>   <a href="ordinal1.html#NM1" title="ORDINAL1:NM.1">Number</a> ;<br><div about="#D0" typeof="oo:Definition">
+<a NAME="R1"><span class="kw">pred</span> </a><font color="Maroon" title="c1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Maroon" title="c2">m</font><span class="kw"> means </span><a NAME="D2"><span class="comment"><font color="firebrick">:: INT_5:def 2</font></span><br></a> ex <font color="Olive" title="b1">x</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a> st <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b1">x</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Maroon" title="c1">a</font></span>)</span> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Maroon" title="c2">m</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> ;<br>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+<div about="#DT2" typeof="oo:Definition">:: <span class="kw">deftheorem </span>   defines <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <a onclick="hs(this)" href="javascript:()">INT_5:def 2 : <br></a><span class="hide"> for <font color="Olive" title="b1">a</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b2">m</font> being   <a href="ordinal1.html#V7" title="ORDINAL1:attr.7">natural</a>   <a href="ordinal1.html#NM1" title="ORDINAL1:NM.1">Number</a>  holds <br> ( <font color="Olive" title="b1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b2">m</font> iff  ex <font color="Olive" title="b3">x</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a> st <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b3">x</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Olive" title="b1">a</font></span>)</span> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Olive" title="b2">m</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  );<br></span>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div about="#T9" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E10">Th9</font></span>: <a NAME="T9"><span class="comment"><font color="firebrick">:: INT_5:9</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b2">m</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds  <font color="Olive" title="b1">a</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a>  <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b2">m</font>
+</div>
+<div about="#PF12" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T9"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/12')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/12')" href="javascript:()" title="12"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T10" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T10"><span class="comment"><font color="firebrick">:: INT_5:10</font></span><br></a><div class="add">1 <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> 2</div>
+<div about="#PF13" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T10"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/13')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/13')" href="javascript:()" title="13"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T11" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E11">Th11</font></span>: <a NAME="T11"><span class="comment"><font color="firebrick">:: INT_5:11</font></span><br></a><div class="add"> for <font color="Olive" title="b1">i</font>, <font color="Olive" title="b2">j</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b3">m</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">i</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b3">m</font> &amp; <font color="Olive" title="b1">i</font>,<font color="Olive" title="b2">j</font> <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a> <font color="Olive" title="b3">m</font> holds <br><font color="Olive" title="b2">j</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b3">m</font>
+</div>
+<div about="#PF14" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T11"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/14')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/14')" href="javascript:()" title="14"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E15"></a><span class="lab"><font color="Green" title="E12">Lm2</font></span>: <span about="#E15" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">i</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  holds <br>( <font color="Olive" title="b1">i</font>,<font color="Olive" title="b2">p</font> <a href="int_2.html#R1" title="INT_2:pred.1">are_coprime</a>  or <font color="Olive" title="b2">p</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Olive" title="b1">i</font> )
+ </span><br><div about="#PF15" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/15')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/15')" href="javascript:()" title="15"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T12" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E13">Th12</font></span>: <a NAME="T12"><span class="comment"><font color="firebrick">:: INT_5:12</font></span><br></a><div class="add"> for <font color="Olive" title="b1">i</font>, <font color="Olive" title="b2">j</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>  st <font color="Olive" title="b1">i</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Olive" title="b2">j</font> holds <br><font color="Olive" title="b1">i</font> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b2">j</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1"><a href="int_2.html#K1" title="INT_2:func.1">|.</a><span class="default"><font color="Olive" title="b1">i</font></span><a href="int_2.html#K1" title="INT_2:func.1">.|</a></span>
+</div>
+<div about="#PF16" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T12"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/16')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/16')" href="javascript:()" title="16"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T13" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E14">Th13</font></span>: <a NAME="T13"><span class="comment"><font color="firebrick">:: INT_5:13</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b2">i</font>, <font color="Olive" title="b3">j</font>, <font color="Olive" title="b4">m</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>  st <font color="Olive" title="b2">i</font> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Olive" title="b4">m</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b3">j</font> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Olive" title="b4">m</font> holds <br><span class="p1">(<span class="default"><font color="Olive" title="b2">i</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Olive" title="b4">m</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">j</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Olive" title="b1">n</font></span>)</span> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Olive" title="b4">m</font>
+</div>
+<div about="#PF17" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T13"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/17')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/17')" href="javascript:()" title="17"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T14" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E15">Th14</font></span>: <a NAME="T14"><span class="comment"><font color="firebrick">:: INT_5:14</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">x</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b3">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b1">a</font> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b3">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 &amp; <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b2">x</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Olive" title="b1">a</font></span>)</span> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Olive" title="b3">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br><font color="Olive" title="b2">x</font>,<font color="Olive" title="b3">p</font> <a href="int_2.html#R1" title="INT_2:pred.1">are_coprime</a> </div>
+<div about="#PF18" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T14"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/18')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/18')" href="javascript:()" title="18"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T15" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T15"><span class="comment"><font color="firebrick">:: INT_5:15</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b2">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b1">a</font> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 &amp; <font color="Olive" title="b1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b2">p</font> holds <br> ex <font color="Olive" title="b3">x</font>, <font color="Olive" title="b4">y</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a> st <br>( <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b3">x</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Olive" title="b1">a</font></span>)</span> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b4">y</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <font color="Olive" title="b1">a</font></span>)</span> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp;  not <font color="Olive" title="b3">x</font>,<font color="Olive" title="b4">y</font> <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a> <font color="Olive" title="b2">p</font> )</div>
+<div about="#PF19" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T15"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/19')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/19')" href="javascript:()" title="19"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T16" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E16">Th16</font></span>: <a NAME="T16"><span class="comment"><font color="firebrick">:: INT_5:16</font></span><br></a><div class="add"> for <font color="Olive" title="b1">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b1">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 holds <br> ex <font color="Olive" title="b2">fp</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  st <br>(  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">fp</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">p</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> 2 &amp; (  for <font color="Olive" title="b3">d</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b3">d</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b2">fp</font> holds <br><span class="p1">(<span class="default"><font color="Olive" title="b2">fp</font> <a href="recdef_1.html#K1" title="RECDEF_1:func.1">.</a> <font color="Olive" title="b3">d</font></span>)</span> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 ) &amp; (  for <font color="Olive" title="b3">d</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b3">d</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b2">fp</font> holds <br><font color="Olive" title="b2">fp</font> <a href="recdef_1.html#K1" title="RECDEF_1:func.1">.</a> <font color="Olive" title="b3">d</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b1">p</font> ) &amp; (  for <font color="Olive" title="b3">d</font>, <font color="Olive" title="b4">e</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b3">d</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b2">fp</font> &amp; <font color="Olive" title="b4">e</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b2">fp</font> &amp; <font color="Olive" title="b3">d</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b4">e</font> holds <br> not <font color="Olive" title="b2">fp</font> <a href="recdef_1.html#K1" title="RECDEF_1:func.1">.</a> <font color="Olive" title="b3">d</font>,<font color="Olive" title="b2">fp</font> <a href="recdef_1.html#K1" title="RECDEF_1:func.1">.</a> <font color="Olive" title="b4">e</font> <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a> <font color="Olive" title="b1">p</font> ) )</div>
+<div about="#PF20" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T16"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/20')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/20')" href="javascript:()" title="20"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div class="comment mathjax"><font color="firebrick">::Euler Criterion<br>  
+  
+</font></div>
+<div about="#T17" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E17">Th17</font></span>: <a NAME="T17"><span class="comment"><font color="firebrick">:: INT_5:17</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b2">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b1">a</font> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 &amp; <font color="Olive" title="b1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b2">p</font> holds <br><span class="p1">(<span class="default"><font color="Olive" title="b1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><font color="Olive" title="b2">p</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> 2</span>)</span></span>)</span> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1</div>
+<div about="#PF21" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T17"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/21')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/21')" href="javascript:()" title="21"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T18" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E18">Th18</font></span>: <a NAME="T18"><span class="comment"><font color="firebrick">:: INT_5:18</font></span><br></a><div class="add"> for <font color="Olive" title="b1">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a><br>  for <font color="Olive" title="b2">b</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b2">b</font> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 &amp;  not <font color="Olive" title="b2">b</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b1">p</font> holds <br><span class="p1">(<span class="default"><font color="Olive" title="b2">b</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><font color="Olive" title="b1">p</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> 2</span>)</span></span>)</span> <a href="nat_d.html#K4" title="NAT_D:func.4">mod</a> <font color="Olive" title="b1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">p</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1</div>
+<div about="#PF22" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T18"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/22')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/22')" href="javascript:()" title="22"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T19" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E19">Th19</font></span>: <a NAME="T19"><span class="comment"><font color="firebrick">:: INT_5:19</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b2">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b1">a</font> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 &amp;  not <font color="Olive" title="b1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b2">p</font> holds <br><span class="p1">(<span class="default"><font color="Olive" title="b1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><font color="Olive" title="b2">p</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> 2</span>)</span></span>)</span> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">p</font> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1</div>
+<div about="#PF23" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T19"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/23')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/23')" href="javascript:()" title="23"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T20" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E20">Th20</font></span>: <a NAME="T20"><span class="comment"><font color="firebrick">:: INT_5:20</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b2">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b1">a</font> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 &amp; <font color="Olive" title="b1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b2">p</font> holds <br><span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p3">(<span class="default"><span class="p4">(<span class="default"><font color="Olive" title="b2">p</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> 2</span>)</span></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> 1</span>)</span> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </div>
+<div about="#PF24" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T20"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/24')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/24')" href="javascript:()" title="24"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T21" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E21">Th21</font></span>: <a NAME="T21"><span class="comment"><font color="firebrick">:: INT_5:21</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b2">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b1">a</font> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 &amp;  not <font color="Olive" title="b1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b2">p</font> holds <br><span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p3">(<span class="default"><span class="p4">(<span class="default"><font color="Olive" title="b2">p</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> 2</span>)</span></span>)</span> <a href="xcmplx_0.html#K2" title="XCMPLX_0:func.2">+</a> 1</span>)</span> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> </div>
+<div about="#PF25" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T21"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/25')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/25')" href="javascript:()" title="25"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+<div about="#T22" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T22"><span class="comment"><font color="firebrick">:: INT_5:22</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a><br>  for <font color="Olive" title="b3">b</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>  st <font color="Olive" title="b1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b2">p</font> &amp; <font color="Olive" title="b3">b</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b2">p</font> holds <br><font color="Olive" title="b1">a</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b3">b</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b2">p</font>
+</div>
+<div about="#PF26" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T22"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/26')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/26')" href="javascript:()" title="26"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T23" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T23"><span class="comment"><font color="firebrick">:: INT_5:23</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a><br>  for <font color="Olive" title="b3">b</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>  st <font color="Olive" title="b2">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b1">a</font> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 &amp; <font color="Olive" title="b3">b</font> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 &amp; <font color="Olive" title="b1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b2">p</font> &amp;  not <font color="Olive" title="b3">b</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b2">p</font> holds <br> not <font color="Olive" title="b1">a</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b3">b</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b2">p</font>
+</div>
+<div about="#PF27" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T23"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/27')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/27')" href="javascript:()" title="27"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T24" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T24"><span class="comment"><font color="firebrick">:: INT_5:24</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a><br>  for <font color="Olive" title="b3">b</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>  st <font color="Olive" title="b2">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b1">a</font> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 &amp; <font color="Olive" title="b3">b</font> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 &amp;  not <font color="Olive" title="b1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b2">p</font> &amp;  not <font color="Olive" title="b3">b</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b2">p</font> holds <br><font color="Olive" title="b1">a</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b3">b</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b2">p</font>
+</div>
+<div about="#PF28" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T24"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/28')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/28')" href="javascript:()" title="28"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">a</font> be   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>;<br><span class="kw">let </span><font color="Maroon" title="c2">p</font> be   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>;<br><div class="comment mathjax"><font color="firebrick">:: <img src="http://mws.cs.ru.nl/~mptp/WP.ico" alt="WP: "> <a href="http://en.wikipedia.org/wiki/Legendre_symbol" title="See Wikipedia entry for Legendre symbol">Legendre symbol</a><br>  
+</font></div>
+<div about="#D22" typeof="oo:Definition">
+<a NAME="K2"><span class="kw">func</span> </a> <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<font color="Maroon" title="c1">a</font>,<font color="Maroon" title="c2">p</font>)<span class="kw"> -&gt; </span>  <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><span class="kw"> equals </span>:<span class="lab"><font color="Green" title="E22">Def3</font></span>: <a NAME="D3"><span class="comment"><font color="firebrick">:: INT_5:def 3</font></span><br></a>1<span class="kw"> if </span>( <font color="Maroon" title="c1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Maroon" title="c2">p</font> &amp; <font color="Maroon" title="c1">a</font> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Maroon" title="c2">p</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  )<br> <a href="numbers.html#K5" title="NUMBERS:func.5">0</a> <span class="kw"> if </span>( <font color="Maroon" title="c1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Maroon" title="c2">p</font> &amp; <font color="Maroon" title="c1">a</font> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Maroon" title="c2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  )<br><span class="kw"> otherwise </span> <a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1;<br>
+</div>
+<a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:29_1"></a>
+( ( <font color="Maroon" title="c1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Maroon" title="c2">p</font> &amp; <font color="Maroon" title="c1">a</font> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Maroon" title="c2">p</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies 1 is   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a> ) &amp; ( <font color="Maroon" title="c1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Maroon" title="c2">p</font> &amp; <font color="Maroon" title="c1">a</font> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Maroon" title="c2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  is   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a> ) &amp; ( (  not <font color="Maroon" title="c1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Maroon" title="c2">p</font> or  not <font color="Maroon" title="c1">a</font> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Maroon" title="c2">p</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  ) &amp; (  not <font color="Maroon" title="c1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Maroon" title="c2">p</font> or  not <font color="Maroon" title="c1">a</font> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Maroon" title="c2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  ) implies  <a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1 is   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a> ) )
+ </span>;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">consistency</span> </a><span class="hide"><br><a NAME="E2:29_1"></a>
+ for <font color="Olive">b<sub>1</sub></font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>  st <font color="Maroon" title="c1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Maroon" title="c2">p</font> &amp; <font color="Maroon" title="c1">a</font> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Maroon" title="c2">p</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; <font color="Maroon" title="c1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Maroon" title="c2">p</font> &amp; <font color="Maroon" title="c1">a</font> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Maroon" title="c2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br>( <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 iff <font color="Olive">b<sub>1</sub></font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  )
+ </span>;<br>
+</div>
+<span class="kw">end;</span>
+</div>
+<br>
+
+
+
+
+
+<div about="#DT3" typeof="oo:Definition">:: <span class="kw">deftheorem </span><span class="lab"><font color="Green" title="E22">Def3</font></span>   defines <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> <a onclick="hs(this)" href="javascript:()">INT_5:def 3 : <br></a><span class="hide"> for <font color="Olive" title="b1">a</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a> holds <br> ( ( <font color="Olive" title="b1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b2">p</font> &amp; <font color="Olive" title="b1">a</font> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies  <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">p</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 ) &amp; ( <font color="Olive" title="b1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b2">p</font> &amp; <font color="Olive" title="b1">a</font> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  implies  <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">p</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  ) &amp; ( (  not <font color="Olive" title="b1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b2">p</font> or  not <font color="Olive" title="b1">a</font> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  ) &amp; (  not <font color="Olive" title="b1">a</font> <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b2">p</font> or  not <font color="Olive" title="b1">a</font> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  ) implies  <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">p</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1 ) );<br></span>
+</div>
+<br><div about="#T25" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E23">Th25</font></span>: <a NAME="T25"><span class="comment"><font color="firebrick">:: INT_5:25</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  holds <br>(  <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">p</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 or  <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">p</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  or  <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">p</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1 )</div>
+<div about="#PF30" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T25"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/30')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/30')" href="javascript:()" title="30"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T26" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E24">Th26</font></span>: <a NAME="T26"><span class="comment"><font color="firebrick">:: INT_5:26</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b1">a</font> <a href="int_1.html#K5" title="INT_1:func.5">mod</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  holds <br> <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<span class="p1">(<span class="default"><font color="Olive" title="b1">a</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a></span>)</span>,<font color="Olive" title="b2">p</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1</div>
+<div about="#PF31" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T26"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/31')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/31')" href="javascript:()" title="31"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T27" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T27"><span class="comment"><font color="firebrick">:: INT_5:27</font></span><br></a><div class="add"> for <font color="Olive" title="b1">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a> holds   <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (1,<font color="Olive" title="b1">p</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1</div>
+<div about="#PF32" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T27"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/32')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/32')" href="javascript:()" title="32"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E33"></a><span class="lab"><font color="Green" title="E25">Lm3</font></span>: <span about="#E33" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">a</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b1">a</font> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 holds <br> not <font color="Olive" title="b2">p</font> <a href="int_1.html#R1" title="INT_1:pred.1">divides</a> <font color="Olive" title="b1">a</font>
+ </span><br><div about="#PF33" typeof="oo:Proof">
+<span rel="oo:proves" resource="#E33"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/33')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/33')" href="javascript:()" title="33"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+<br><div about="#T28" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E26">Th28</font></span>: <a NAME="T28"><span class="comment"><font color="firebrick">:: INT_5:28</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b2">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b1">a</font> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 holds <br> <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">p</font>),<font color="Olive" title="b1">a</font> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b2">p</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> 2</span>)</span> <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a> <font color="Olive" title="b2">p</font>
+</div>
+<div about="#PF34" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T28"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/34')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/34')" href="javascript:()" title="34"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T29" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T29"><span class="comment"><font color="firebrick">:: INT_5:29</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a><br>  for <font color="Olive" title="b3">b</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>  st <font color="Olive" title="b2">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b1">a</font> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 &amp; <font color="Olive" title="b1">a</font>,<font color="Olive" title="b3">b</font> <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a> <font color="Olive" title="b2">p</font> holds <br> <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">p</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<font color="Olive" title="b3">b</font>,<font color="Olive" title="b2">p</font>)</div>
+<div about="#PF35" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T29"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/35')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/35')" href="javascript:()" title="35"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T30" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T30"><span class="comment"><font color="firebrick">:: INT_5:30</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b2">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a><br>  for <font color="Olive" title="b3">b</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a>  st <font color="Olive" title="b2">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b1">a</font> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 &amp; <font color="Olive" title="b3">b</font> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b2">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 holds <br> <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<span class="p1">(<span class="default"><font color="Olive" title="b1">a</font> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b3">b</font></span>)</span>,<font color="Olive" title="b2">p</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<font color="Olive" title="b1">a</font>,<font color="Olive" title="b2">p</font>)</span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<font color="Olive" title="b3">b</font>,<font color="Olive" title="b2">p</font>)</span>)</span>
+</div>
+<div about="#PF36" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T30"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/36')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/36')" href="javascript:()" title="36"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T31" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E27">Th31</font></span>: <a NAME="T31"><span class="comment"><font color="firebrick">:: INT_5:31</font></span><br></a><div class="add"> for <font color="Olive" title="b1">fr</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>   holds <br>(  ex <font color="Olive" title="b2">d</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> st <br>( <font color="Olive" title="b2">d</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b1">fr</font> &amp;  not <font color="Olive" title="b1">fr</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">d</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 &amp;  not <font color="Olive" title="b1">fr</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">d</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp;  not <font color="Olive" title="b1">fr</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b2">d</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1 ) or  <a href="rvsum_1.html#K19" title="RVSUM_1:func.19">Product</a> <font color="Olive" title="b1">fr</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 or  <a href="rvsum_1.html#K19" title="RVSUM_1:func.19">Product</a> <font color="Olive" title="b1">fr</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  or  <a href="rvsum_1.html#K19" title="RVSUM_1:func.19">Product</a> <font color="Olive" title="b1">fr</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1 )</div>
+<div about="#PF37" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T31"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/37')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/37')" href="javascript:()" title="37"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+<div about="#T32" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E28">Th32</font></span>: <a NAME="T32"><span class="comment"><font color="firebrick">:: INT_5:32</font></span><br></a><div class="add"> for <font color="Olive" title="b1">m</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b2">f</font>, <font color="Olive" title="b3">fr</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>   st  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">fr</font> &amp; (  for <font color="Olive" title="b4">d</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b4">d</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b2">f</font> holds <br><font color="Olive" title="b2">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">d</font>,<font color="Olive" title="b3">fr</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">d</font> <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a> <font color="Olive" title="b1">m</font> ) holds <br> <a href="rvsum_1.html#K19" title="RVSUM_1:func.19">Product</a> <font color="Olive" title="b2">f</font>, <a href="rvsum_1.html#K19" title="RVSUM_1:func.19">Product</a> <font color="Olive" title="b3">fr</font> <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a> <font color="Olive" title="b1">m</font>
+</div>
+<div about="#PF38" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T32"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/38')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/38')" href="javascript:()" title="38"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T33" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E29">Th33</font></span>: <a NAME="T33"><span class="comment"><font color="firebrick">:: INT_5:33</font></span><br></a><div class="add"> for <font color="Olive" title="b1">m</font> being   <a href="int_1.html#NM1" title="INT_1:NM.1">Integer</a><br>  for <font color="Olive" title="b2">f</font>, <font color="Olive" title="b3">fr</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>   st  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">fr</font> &amp; (  for <font color="Olive" title="b4">d</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b4">d</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b2">f</font> holds <br><font color="Olive" title="b2">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">d</font>, <a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">fr</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">d</font></span>)</span> <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a> <font color="Olive" title="b1">m</font> ) holds <br> <a href="rvsum_1.html#K19" title="RVSUM_1:func.19">Product</a> <font color="Olive" title="b2">f</font>,<span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1</span>)</span> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p2">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">f</font></span>)</span></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><a href="rvsum_1.html#K19" title="RVSUM_1:func.19">Product</a> <font color="Olive" title="b3">fr</font></span>)</span> <a href="int_1.html#R2" title="INT_1:pred.2">are_congruent_mod</a> <font color="Olive" title="b1">m</font>
+</div>
+<div about="#PF39" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T33"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/39')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/39')" href="javascript:()" title="39"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+<div about="#T34" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E30">Th34</font></span>: <a NAME="T34"><span class="comment"><font color="firebrick">:: INT_5:34</font></span><br></a><div class="add"> for <font color="Olive" title="b1">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a><br>  for <font color="Olive" title="b2">fp</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>   st <font color="Olive" title="b1">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; (  for <font color="Olive" title="b3">d</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b3">d</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b2">fp</font> holds <br><span class="p1">(<span class="default"><font color="Olive" title="b2">fp</font> <a href="recdef_1.html#K1" title="RECDEF_1:func.1">.</a> <font color="Olive" title="b3">d</font></span>)</span> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 ) holds <br> ex <font color="Olive" title="b3">fr</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K4" title="NUMBERS:func.4">INT</a>  st <br>(  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">fr</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">fp</font> &amp; (  for <font color="Olive" title="b4">d</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b4">d</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b3">fr</font> holds <br><font color="Olive" title="b3">fr</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">d</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<span class="p1">(<span class="default"><font color="Olive" title="b2">fp</font> <a href="recdef_1.html#K1" title="RECDEF_1:func.1">.</a> <font color="Olive" title="b4">d</font></span>)</span>,<font color="Olive" title="b1">p</font>) ) &amp;  <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<span class="p1">(<span class="default"><a href="wsierp_1.html#K2" title="WSIERP_1:func.2">Product</a> <font color="Olive" title="b2">fp</font></span>)</span>,<font color="Olive" title="b1">p</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="rvsum_1.html#K19" title="RVSUM_1:func.19">Product</a> <font color="Olive" title="b3">fr</font> )</div>
+<div about="#PF40" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T34"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/40')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/40')" href="javascript:()" title="40"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T35" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T35"><span class="comment"><font color="firebrick">:: INT_5:35</font></span><br></a><div class="add"> for <font color="Olive" title="b1">d</font>, <font color="Olive" title="b2">e</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b3">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b3">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b1">d</font> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b3">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 &amp; <font color="Olive" title="b2">e</font> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b3">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 holds <br> <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b1">d</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b2">e</font></span>)</span>,<font color="Olive" title="b3">p</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<font color="Olive" title="b2">e</font>,<font color="Olive" title="b3">p</font>)</div>
+<div about="#PF41" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T35"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/41')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/41')" href="javascript:()" title="41"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T36" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E31">Th36</font></span>: <a NAME="T36"><span class="comment"><font color="firebrick">:: INT_5:36</font></span><br></a><div class="add"> for <font color="Olive" title="b1">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b1">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 holds <br> <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<span class="p1">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1</span>)</span>,<font color="Olive" title="b1">p</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1</span>)</span> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><font color="Olive" title="b1">p</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> 2</span>)</span>
+</div>
+<div about="#PF42" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T36"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/42')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/42')" href="javascript:()" title="42"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T37" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T37"><span class="comment"><font color="firebrick">:: INT_5:37</font></span><br></a><div class="add"> for <font color="Olive" title="b1">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b1">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b1">p</font> <a href="nat_d.html#K4" title="NAT_D:func.4">mod</a> 4 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 holds <br> <a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1 <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b1">p</font>
+</div>
+<div about="#PF43" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T37"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/43')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/43')" href="javascript:()" title="43"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T38" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T38"><span class="comment"><font color="firebrick">:: INT_5:38</font></span><br></a><div class="add"> for <font color="Olive" title="b1">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b1">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b1">p</font> <a href="nat_d.html#K4" title="NAT_D:func.4">mod</a> 4 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 3 holds <br> not  <a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1 <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b1">p</font>
+</div>
+<div about="#PF44" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T38"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/44')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/44')" href="javascript:()" title="44"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T39" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E32">Th39</font></span>: <a NAME="T39"><span class="comment"><font color="firebrick">:: INT_5:39</font></span><br></a><div class="add"> for <font color="Olive" title="b1">D</font> being   non  <a href="xboole_0.html#V1" title="XBOOLE_0:attr.1">empty</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">f</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of <font color="Olive" title="b1">D</font><br>  for <font color="Olive" title="b3">i</font>, <font color="Olive" title="b4">j</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a> holds <br> ( <font color="Olive" title="b2">f</font> is  <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a>  iff  <a href="finseq_7.html#K2" title="FINSEQ_7:func.2">Swap</a> (<font color="Olive" title="b2">f</font>,<font color="Olive" title="b3">i</font>,<font color="Olive" title="b4">j</font>) is  <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a>  )</div>
+<div about="#PF45" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T39"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/45')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/45')" href="javascript:()" title="45"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T40" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E33">Th40</font></span>: <a NAME="T40"><span class="comment"><font color="firebrick">:: INT_5:40</font></span><br></a><div class="add"> for <font color="Olive" title="b1">n</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b2">f</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>   st  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b1">n</font> &amp; (  for <font color="Olive" title="b3">d</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b3">d</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b2">f</font> holds <br>( <font color="Olive" title="b2">f</font> <a href="recdef_1.html#K1" title="RECDEF_1:func.1">.</a> <font color="Olive" title="b3">d</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a>  <a href="numbers.html#K5" title="NUMBERS:func.5">0</a>  &amp; <font color="Olive" title="b2">f</font> <a href="recdef_1.html#K1" title="RECDEF_1:func.1">.</a> <font color="Olive" title="b3">d</font> <a href="xxreal_0.html#R1" title="XXREAL_0:pred.1">&lt;=</a> <font color="Olive" title="b1">n</font> ) ) &amp; <font color="Olive" title="b2">f</font> is  <a href="funct_1.html#V2" title="FUNCT_1:attr.2">one-to-one</a>  holds <br> <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b2">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K2" title="FINSEQ_1:func.2">Seg</a> <font color="Olive" title="b1">n</font>
+</div>
+<div about="#PF46" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T40"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/46')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/46')" href="javascript:()" title="46"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div about="#T41" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E34">Th41</font></span>: <a NAME="T41"><span class="comment"><font color="firebrick">:: INT_5:41</font></span><br></a><div class="add"> for <font color="Olive" title="b1">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a><br>  for <font color="Olive" title="b2">a</font>, <font color="Olive" title="b3">m</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a><br>  for <font color="Olive" title="b4">f</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>   st <font color="Olive" title="b1">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b2">a</font> <a href="int_2.html#K3" title="INT_2:func.3">gcd</a> <font color="Olive" title="b1">p</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 &amp; <font color="Olive" title="b4">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">a</font> <a href="rvsum_1.html#K10" title="RVSUM_1:func.10">*</a> <span class="p1">(<span class="default"><a href="finseq_2.html#K1" title="FINSEQ_2:func.1">idseq</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><font color="Olive" title="b1">p</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> 2</span>)</span></span>)</span> &amp; <font color="Olive" title="b3">m</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="card_1.html#K1" title="CARD_1:func.1">card</a> <span class="p1"> { <span class="default"> <font color="Olive" title="b5">k</font> where <font color="Olive" title="b5">k</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  : ( <font color="Olive" title="b5">k</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <span class="p1">(<span class="default"><font color="Olive" title="b4">f</font> <a href="euler_2.html#K2" title="EULER_2:func.2">mod</a> <font color="Olive" title="b1">p</font></span>)</span> &amp; <font color="Olive" title="b5">k</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> <font color="Olive" title="b1">p</font> <a href="xcmplx_0.html#K7" title="XCMPLX_0:func.7">/</a> 2 ) </span> } </span>  holds <br> <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<font color="Olive" title="b2">a</font>,<font color="Olive" title="b1">p</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1</span>)</span> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Olive" title="b3">m</font>
+</div>
+<div about="#PF47" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T41"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/47')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/47')" href="javascript:()" title="47"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T42" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E35">Th42</font></span>: <a NAME="T42"><span class="comment"><font color="firebrick">:: INT_5:42</font></span><br></a><div class="add"> for <font color="Olive" title="b1">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b1">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 holds <br> <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (2,<font color="Olive" title="b1">p</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1</span>)</span> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><font color="Olive" title="b1">p</font> <a href="pepin.html#K1" title="PEPIN:func.1">^2</a></span>)</span> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> 8</span>)</span>
+</div>
+<div about="#PF48" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T42"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/48')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/48')" href="javascript:()" title="48"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T43" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T43"><span class="comment"><font color="firebrick">:: INT_5:43</font></span><br></a><div class="add"> for <font color="Olive" title="b1">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b1">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; ( <font color="Olive" title="b1">p</font> <a href="nat_d.html#K4" title="NAT_D:func.4">mod</a> 8 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 or <font color="Olive" title="b1">p</font> <a href="nat_d.html#K4" title="NAT_D:func.4">mod</a> 8 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 7 ) holds <br>2 <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b1">p</font>
+</div>
+<div about="#PF49" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T43"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/49')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/49')" href="javascript:()" title="49"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T44" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T44"><span class="comment"><font color="firebrick">:: INT_5:44</font></span><br></a><div class="add"> for <font color="Olive" title="b1">p</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b1">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; ( <font color="Olive" title="b1">p</font> <a href="nat_d.html#K4" title="NAT_D:func.4">mod</a> 8 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 3 or <font color="Olive" title="b1">p</font> <a href="nat_d.html#K4" title="NAT_D:func.4">mod</a> 8 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 5 ) holds <br> not 2 <a href="int_5.html#R1" title="INT_5:pred.1">is_quadratic_residue_mod</a> <font color="Olive" title="b1">p</font>
+</div>
+<div about="#PF50" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T44"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/50')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/50')" href="javascript:()" title="50"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T45" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E36">Th45</font></span>: <a NAME="T45"><span class="comment"><font color="firebrick">:: INT_5:45</font></span><br></a><div class="add"> for <font color="Olive" title="b1">a</font>, <font color="Olive" title="b2">b</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b1">a</font> <a href="nat_d.html#K4" title="NAT_D:func.4">mod</a> 2 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <font color="Olive" title="b2">b</font> <a href="nat_d.html#K4" title="NAT_D:func.4">mod</a> 2 holds <br><span class="p1">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1</span>)</span> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Olive" title="b1">a</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1</span>)</span> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <font color="Olive" title="b2">b</font>
+</div>
+<div about="#PF51" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T45"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/51')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/51')" href="javascript:()" title="51"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+<a class="ref" href=".html"></a>
+
+<div about="#T46" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E37">Th46</font></span>: <a NAME="T46"><span class="comment"><font color="firebrick">:: INT_5:46</font></span><br></a><div class="add"> for <font color="Olive" title="b1">f</font>, <font color="Olive" title="b2">g</font>, <font color="Olive" title="b3">h</font>, <font color="Olive" title="b4">k</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a>   st  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">f</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b3">h</font> &amp;  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b2">g</font> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b4">k</font> holds <br><span class="p1">(<span class="default"><font color="Olive" title="b1">f</font> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <font color="Olive" title="b2">g</font></span>)</span> <a href="rvsum_1.html#K8" title="RVSUM_1:func.8">-</a> <span class="p1">(<span class="default"><font color="Olive" title="b3">h</font> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <font color="Olive" title="b4">k</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><font color="Olive" title="b1">f</font> <a href="rvsum_1.html#K8" title="RVSUM_1:func.8">-</a> <font color="Olive" title="b3">h</font></span>)</span> <a href="finseq_1.html#K8" title="FINSEQ_1:func.8">^</a> <span class="p1">(<span class="default"><font color="Olive" title="b2">g</font> <a href="rvsum_1.html#K8" title="RVSUM_1:func.8">-</a> <font color="Olive" title="b4">k</font></span>)</span>
+</div>
+<div about="#PF52" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T46"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/52')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/52')" href="javascript:()" title="52"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T47" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E38">Th47</font></span>: <a NAME="T47"><span class="comment"><font color="firebrick">:: INT_5:47</font></span><br></a><div class="add"> for <font color="Olive" title="b1">f</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#K1" title="NUMBERS:func.1">REAL</a> <br>  for <font color="Olive" title="b2">m</font> being   <a href="xreal_0.html#NM1" title="XREAL_0:NM.1">Real</a> holds   <a href="rvsum_1.html#K18" title="RVSUM_1:func.18">Sum</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">f</font></span>)</span> <a href="finseq_2.html#K2" title="FINSEQ_2:func.2">|-&gt;</a> <font color="Olive" title="b2">m</font></span>)</span> <a href="rvsum_1.html#K8" title="RVSUM_1:func.8">-</a> <font color="Olive" title="b1">f</font></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><a href="finseq_1.html#K3" title="FINSEQ_1:func.3">len</a> <font color="Olive" title="b1">f</font></span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <font color="Olive" title="b2">m</font></span>)</span> <a href="xcmplx_0.html#K6" title="XCMPLX_0:func.6">-</a> <span class="p1">(<span class="default"><a href="rvsum_1.html#K18" title="RVSUM_1:func.18">Sum</a> <font color="Olive" title="b1">f</font></span>)</span>
+</div>
+<div about="#PF53" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T47"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/53')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/53')" href="javascript:()" title="53"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+<a class="ref" href=".html"></a>
+
+
+<a class="ref" href=".html"></a>
+
+<div>
+<span class="kw">definition</span><div class="add">
+<span class="kw">let </span><font color="Maroon" title="c1">X</font> be   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> ;<br><span class="kw">let </span><font color="Maroon" title="c2">F</font> be    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <font color="Maroon" title="c1">X</font>;<br><span class="comment"><font color="firebrick">:: original: </font></span><a href="card_3.html#K1" title="CARD_3:func.1">Card</a><br><span class="kw">redefine </span><a NAME="K3"><span class="kw">func</span> </a> <a href="int_5.html#K3" title="INT_5:func.3">Card</a> <font color="Maroon" title="c2">F</font><span class="kw"> -&gt; </span>  <a href="card_3.html#V1" title="CARD_3:attr.1">Cardinal-yielding</a>   <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> ;<br><a class="txt" onmouseover="tooltip.show('hs',this)" onmouseout="tooltip.hide()" onclick="hs(this)" href="javascript:()"><span class="kw">coherence</span> </a><span class="hide"><br><a NAME="E1:54_1"></a>
+ <a href="card_3.html#K1" title="CARD_3:func.1">Card</a> <font color="Maroon" title="c2">F</font> is   <a href="card_3.html#V1" title="CARD_3:attr.1">Cardinal-yielding</a>   <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> 
+ </span><div about="#PF54_1_1" typeof="oo:Proof">
+<a class="txt" onmouseover="tooltip.show('url','proofs/int_5/54_1_1')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/54_1_1')" href="javascript:()" title="54_1_1"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<span class="kw">end;</span>
+</div>
+<br><div about="#T48" typeof="oo:Theorem">
+<span class="kw">theorem </span><span class="lab"><font color="Green" title="E39">Th48</font></span>: <a NAME="T48"><span class="comment"><font color="firebrick">:: INT_5:48</font></span><br></a><div class="add"> for <font color="Olive" title="b1">X</font> being   <a href="finset_1.html#V1" title="FINSET_1:attr.1">finite</a>   <a href="hidden.html#M2" title="HIDDEN:mode.2">set</a> <br>  for <font color="Olive" title="b2">f</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="zfmisc_1.html#K1" title="ZFMISC_1:func.1">bool</a> <font color="Olive" title="b1">X</font>  st (  for <font color="Olive" title="b3">d</font>, <font color="Olive" title="b4">e</font> being   <a href="nat_1.html#NM1" title="NAT_1:NM.1">Nat</a>  st <font color="Olive" title="b3">d</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b2">f</font> &amp; <font color="Olive" title="b4">e</font> <a href="tarski.html#R2" title="TARSKI:pred.2">in</a>  <a href="finseq_1.html#K4" title="FINSEQ_1:func.4">dom</a> <font color="Olive" title="b2">f</font> &amp; <font color="Olive" title="b3">d</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b4">e</font> holds <br><font color="Olive" title="b2">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b3">d</font> <a href="xboole_0.html#R1" title="XBOOLE_0:pred.1">misses</a> <font color="Olive" title="b2">f</font> <a href="funct_1.html#K1" title="FUNCT_1:func.1">.</a> <font color="Olive" title="b4">e</font> ) holds <br> <a href="card_1.html#K4" title="CARD_1:func.4">card</a> <span class="p1">(<span class="default"><a href="tarski.html#K3" title="TARSKI:func.3">union</a> <span class="p2">(<span class="default"><a href="relset_1.html#K2" title="RELSET_1:func.2">rng</a> <font color="Olive" title="b2">f</font></span>)</span></span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="wsierp_1.html#K1" title="WSIERP_1:func.1">Sum</a> <span class="p1">(<span class="default"><a href="int_5.html#K3" title="INT_5:func.3">Card</a> <font color="Olive" title="b2">f</font></span>)</span>
+</div>
+<div about="#PF55" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T48"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/55')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/55')" href="javascript:()" title="55"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><a NAME="E55"></a><span class="lab"><font color="Green" title="E40">Lm4</font></span>: <span about="#E55" typeof="oo:Lemma">
+ for <font color="Olive" title="b1">fp</font> being    <a href="finseq_1.html#M2" title="FINSEQ_1:mode.2">FinSequence</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a>  holds   <a href="wsierp_1.html#K1" title="WSIERP_1:func.1">Sum</a> <font color="Olive" title="b1">fp</font> is    <a href="subset_1.html#M1" title="SUBSET_1:mode.1">Element</a> of  <a href="numbers.html#NK1" title="NUMBERS:NK.1">NAT</a> 
+ </span><br>;<br><br>
+<a class="ref" href=".html"></a>
+
+<div class="comment mathjax"><font color="firebrick">:: <img src="http://mws.cs.ru.nl/~mptp/WP.ico" alt="WP: "> <a href="http://en.wikipedia.org/wiki/The_law_of_quadratic_reciprocity" title="See Wikipedia entry for The law of quadratic reciprocity">The law of quadratic reciprocity</a><br>  
+</font></div>
+<div about="#T49" typeof="oo:Theorem">
+<span rel="owl:sameAs" resource="http://dbpedia.org/resource/The_law_of_quadratic_reciprocity"></span><span class="kw">theorem </span><span class="lab"><font color="Green" title="E41">Th49</font></span>: <a NAME="T49"><span class="comment"><font color="firebrick">:: INT_5:49</font></span><br></a><div class="add"> for <font color="Olive" title="b1">p</font>, <font color="Olive" title="b2">q</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b1">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b2">q</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b1">p</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b2">q</font> holds <br><span class="p1">(<span class="default"><a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<font color="Olive" title="b1">p</font>,<font color="Olive" title="b2">q</font>)</span>)</span> <a href="xcmplx_0.html#K3" title="XCMPLX_0:func.3">*</a> <span class="p1">(<span class="default"><a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<font color="Olive" title="b2">q</font>,<font color="Olive" title="b1">p</font>)</span>)</span> <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> <span class="p1">(<span class="default"><a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> 1</span>)</span> <a href="newton.html#K1" title="NEWTON:func.1">|^</a> <span class="p1">(<span class="default"><span class="p2">(<span class="default"><span class="p3">(<span class="default"><font color="Olive" title="b1">p</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> 2</span>)</span> <a href="nat_1.html#K2" title="NAT_1:func.2">*</a> <span class="p2">(<span class="default"><span class="p3">(<span class="default"><font color="Olive" title="b2">q</font> <a href="nat_d.html#K7" title="NAT_D:func.7">-'</a> 1</span>)</span> <a href="nat_d.html#K3" title="NAT_D:func.3">div</a> 2</span>)</span></span>)</span>
+</div>
+<div about="#PF56" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T49"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/56')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/56')" href="javascript:()" title="56"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T50" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T50"><span class="comment"><font color="firebrick">:: INT_5:50</font></span><br></a><div class="add"> for <font color="Olive" title="b1">p</font>, <font color="Olive" title="b2">q</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b1">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b2">q</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b1">p</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b2">q</font> &amp; <font color="Olive" title="b1">p</font> <a href="nat_d.html#K4" title="NAT_D:func.4">mod</a> 4 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 3 &amp; <font color="Olive" title="b2">q</font> <a href="nat_d.html#K4" title="NAT_D:func.4">mod</a> 4 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 3 holds <br> <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<font color="Olive" title="b1">p</font>,<font color="Olive" title="b2">q</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="xcmplx_0.html#K4" title="XCMPLX_0:func.4">-</a> <span class="p1">(<span class="default"><a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<font color="Olive" title="b2">q</font>,<font color="Olive" title="b1">p</font>)</span>)</span>
+</div>
+<div about="#PF57" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T50"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/57')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/57')" href="javascript:()" title="57"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br><div about="#T51" typeof="oo:Theorem">
+<span class="kw">theorem </span><a NAME="T51"><span class="comment"><font color="firebrick">:: INT_5:51</font></span><br></a><div class="add"> for <font color="Olive" title="b1">p</font>, <font color="Olive" title="b2">q</font> being   <a href="newton.html#NM1" title="NEWTON:NM.1">Prime</a>  st <font color="Olive" title="b1">p</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b2">q</font> <a href="xxreal_0.html#NR4" title="XXREAL_0:NR.4">&gt;</a> 2 &amp; <font color="Olive" title="b1">p</font> <a href="hidden.html#NR2" title="HIDDEN:NR.2">&lt;&gt;</a> <font color="Olive" title="b2">q</font> &amp; ( <font color="Olive" title="b1">p</font> <a href="nat_d.html#K4" title="NAT_D:func.4">mod</a> 4 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 or <font color="Olive" title="b2">q</font> <a href="nat_d.html#K4" title="NAT_D:func.4">mod</a> 4 <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a> 1 ) holds <br> <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<font color="Olive" title="b1">p</font>,<font color="Olive" title="b2">q</font>) <a href="hidden.html#R1" title="HIDDEN:pred.1">=</a>  <a href="int_5.html#K2" title="INT_5:func.2">Lege</a> (<font color="Olive" title="b2">q</font>,<font color="Olive" title="b1">p</font>)</div>
+<div about="#PF58" typeof="oo:Proof">
+<span rel="oo:proves" resource="#T51"></span><a class="txt" onmouseover="tooltip.show('url','proofs/int_5/58')" onmouseout="tooltip.hide()" onclick="makeRequest(this,'proofs/int_5/58')" href="javascript:()" title="58"><span class="kw">proof </span></a><span></span><span class="kw">end;</span>
+</div>
+</div>
+<br>
+</body>
+</html>
