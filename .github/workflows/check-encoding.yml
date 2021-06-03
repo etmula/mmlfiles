@@ -1,0 +1,38 @@
+name: check file encodings in PR
+on: [pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: run the checkout action
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Decompose MML files
+        run: |
+          . decompose.sh
+      - name: list abstr/ files with the wrong encoding
+        run: |
+          files=$(find abstr/.abs)
+          IFS=$'\n'; files=($files); unset IFS;  # split the string into an array
+          ! file --mime "${files[@]}" | grep -v "charset=utf-8\|charset=us-ascii\|charset=binary"
+      - name: list fmbibs/ files with the wrong encoding
+        run: |
+          files=$(find fmbibs/.bib)
+          IFS=$'\n'; files=($files); unset IFS;  # split the string into an array
+          ! file --mime "${files[@]}" | grep -v "charset=utf-8\|charset=us-ascii\|charset=binary"
+      - name: list html/ files with the wrong encoding
+        run: |
+          files=$(find html/.html)
+          IFS=$'\n'; files=($files); unset IFS;  # split the string into an array
+          ! file --mime "${files[@]}" | grep -v "charset=utf-8\|charset=us-ascii\|charset=binary"
+      - name: list mml.ini file with the wrong encoding
+        run: |
+          ! file --mime "mml.ini" | grep -v "charset=utf-8\|charset=us-ascii\|charset=binary"
+      - name: list mml.lar file with the wrong encoding
+        run: |
+          ! file --mime "mml.lar" | grep -v "charset=utf-8\|charset=us-ascii\|charset=binary"
+      - name: list mml.vct file with the wrong encoding
+        run: |
+          ! file --mime "mml.vct" | grep -v "charset=utf-8\|charset=us-ascii\|charset=binary"
