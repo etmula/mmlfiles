@@ -1,0 +1,201 @@
+@misc{PETERSON.MIZ,
+  AUTHOR = {Ivanov, Ievgen and Nikitchenko, Mykola and Abraham, Uri},
+  TITLE = {Event-based Proof of the Mutual Exclusion Property of {P}eterson's Algorithm},
+  ADDRESS1 = {Taras Shevchenko National University of Kyiv, Ukraine},
+  ADDRESS2 = {Taras Shevchenko National University of Kyiv, Ukraine},
+  ADDRESS3 = {Ben-Gurion University, Beer-Sheva, Israel},
+  DAY = {14},
+  MONTH = {August},
+  YEAR = {2015},
+  SUMMARY = {Proving properties of distributed algorithms is still a highly
+  challenging problem and various approaches that have been proposed to tackle
+  it \cite{abr99} can be roughly divided into state-based and event-based proofs.
+  Informally speaking, state-based approaches define the behavior of a distributed
+  algorithm as a set of sequences of memory states during its executions, while
+  event-based approaches treat the behaviors by means of events which are
+  produced by the executions of an algorithm. Of course, combined approaches
+  are also possible.
+  \par
+  Analysis of the literature \cite{abr99,chandy88,Patt86,lamport86,raynal91,Ridge2006,Ridge2007}
+  shows that state-based approaches are more widely used than event-based
+  approaches for proving properties of algorithms, and the difficulties in
+  the event-based approach are often emphasized. We believe, however, that
+  there is a certain naturalness and intuitive content in event-based proofs
+  of correctness of distributed algorithms that makes this approach worthwhile.
+  Besides, state-based proofs of correctness of distributed algorithms are usually
+  applicable only to discrete-time models of distributed systems and cannot
+  be easily adapted to the continuous time case which is important in the domain
+  of cyber-physical systems. On the other hand, event-based proofs can be readily
+  applied to continuous-time / hybrid models of distributed systems.
+  \par
+  In the paper \cite{AbrIvNikitch2011} we presented a compositional approach
+  to reasoning about behavior of distributed systems in terms of events.
+  Compositionality here means (informally) that semantics and properties of
+  a program is determined by semantics of processes and process communication
+  mechanisms. We demonstrated the proposed approach on a proof of the mutual
+  exclusion property of Peterson's algorithm \cite{Peterson81}. We have also
+  demonstrated an application of this approach for proving the mutual exclusion
+  property in the setting of continuous-time models of cyber-physical systems
+  in \cite{IvanovNikitchAbr2014}.
+  \par
+  In this paper we give a formal proof of the mutual exclusion property of
+  Peterson's algorithm in Mizar on the basis of the event-based approach
+  proposed in \cite{AbrIvNikitch2011}. Firstly, we define an event-based model
+  of a shared-memory distributed system as a multi-sorted algebraic structure
+  in which sorts are events, processes, locations (i.e. addresses in the
+  shared memory), traces (of the system). The operations of this structure
+  include a binary precedence relation <= on the set of events which turns
+  it into a linear preorder (events are considered simultaneous, if e1<=e2
+  and e2<=e1), special predicates which check if an event occurs in a given
+  process or trace, predicates which check if an event causes the system to
+  read from or write to a given memory location, and a special partial function
+  "val_of" on events which gives the value associated with a memory read or write
+  event (i.e. a value which is written or is read in this event)
+  \cite{AbrIvNikitch2011}. Then we define several natural consistency requirements
+  (axioms) for this structure which must hold in every distributed system,
+  e.g. each event occurs in some process, etc.
+  (details are given in \cite{AbrIvNikitch2011}).
+  \par
+  After this we formulate and prove the main theorem about the
+  mutual exclusion property of the Peterson's algorithm in an arbitrary consistent
+  algebraic structure of events. Informally, the main theorem states that
+  if a system consists of two processes, and in some trace there occur two events
+  e1 and e2 in different processes and each of these events is preceded by a
+  series of three special events (in the same process) guaranteed by execution
+  of the Peterson's algorithm (setting the flag of the current process,
+  writing the identifier of the opposite process to the "turn" shared variable,
+  and reading zero from the flag of the opposite process or reading the
+  identifier of the current process from the "turn" variable),
+  and moreover, if neither process writes to the flag of the opposite process
+  or writes its own identifier to the "turn" variable, then either the events
+  e1 and e2 coincide, or they are not simultaneous (mutual exclusion property).}
+}
+
+@ARTICLE{Peterson81,
+  author = {Peterson, G.},
+  title = {Myths about the mutual exclusion problem},
+  journal = {Inf. Process Lett.},
+  year = {1981},
+  volume = {12},
+  pages = {1133--1145}
+}
+
+@ARTICLE{Patt86,
+  author = {Pratt, V.},
+  title = {Modeling concurrency with partial orders},
+  journal = {Int. J. Parallel Program},
+  year = {1986},
+  volume = {15},
+  pages = {33--71}
+}
+
+
+@BOOK{chandy88,
+  title = {Parallel Program Design: A Foundation},
+  publisher = {Addison Wesley},
+  year = {1988},
+  author = {Chandy, K., Misra, J.}
+}
+
+
+@ARTICLE{raynal91,
+  author = {Raynal, M.},
+  title = {A simple taxonomy for distributed mutual exclusion algorithms},
+  journal = {SIGOPS Oper. Syst. Rev.},
+  year = {1991},
+  volume = {25},
+  pages = {47--50}
+}
+
+@inproceedings{AbrIvNikitch2011,
+  author = {Abraham, Uri and Ievgen Ivanov and Nikitchenko, Mykola},
+  title = {Proving behavioral properties of distributed algorithms using
+  their compositional semantics},
+  booktitle = {Proceedings of the First International Seminar Specification
+  and Verification of Hybrid Systems, October 10-12, 2011, Taras Shevchenko
+  National University of Kyiv},
+  year = 2011,
+  pages = {9-19}
+}
+
+@incollection{IvanovNikitchAbr2014,
+  year={2014},
+  isbn={978-3-319-13205-1},
+  booktitle={Information and Communication Technologies in
+  Education, Research, and Industrial Applications},
+  volume={469},
+  series={Communications in Computer and Information Science},
+  editor={Ermolayev, Vadim and Mayr, Heinrich C. and Nikitchenko, Mykola
+  and Spivakovsky, Aleksander and Zholtkevych, Grygoriy},
+  doi={10.1007/978-3-319-13206-8_4},
+  title={On a Decidable Formal Theory for Abstract
+  Continuous-Time Dynamical Systems},
+  url={http://dx.doi.org/10.1007/978-3-319-13206-8_4},
+  publisher={Springer International Publishing},
+  keywords={Real-time system; Cyber-physical system; Dynamical system;
+  Continuous-time system; Formal theory; Decidability; Verification; Mathematical
+  Model; Specification Process; Verification Process},
+  author={Ivanov, Ievgen and Nikitchenko, Mykola and Abraham, Uri},
+  pages={78-99},
+  language={English}
+}
+
+@ARTICLE{Abraham2011,
+  author = {Abraham, U.},
+  title = {Logical Classification of Distributed Algorithms
+  (Bakery Algorithms as an example)},
+  journal = {Theor. Comput. Sci.},
+  year = {2011},
+  volume = {412},
+  pages = {2724--2745}
+}
+
+@BOOK{abr99,
+  title = {Models for Concurrency},
+  publisher = {Gordon and Breach},
+  year = {1999},
+  author = {Abraham, U.}
+}
+
+@ARTICLE{abr95,
+  author = {Abraham, U.},
+  title = {On Interprocess Communication and the Implementation of
+  Multi-Writer Atomic Registers},
+  journal = {Theor. Comput. Sci.},
+  year = {1995},
+  volume = {149},
+  pages = {257--298}
+}
+
+@ARTICLE{lamport86,
+  author = {Lamport, L.},
+  title = {On interprocess communication. Part I: Basic formalism;
+  Part II: Algorithms},
+  journal = {Distributed Computing},
+  year = {1986},
+  volume = {1},
+  pages = {77--101}
+}
+
+@MISC{Ridge2006,
+  author = {Ridge, Tom},
+  title = {Peterson's Algorithm in Isabelle/HOL},
+  howpublished = {\url{http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.99.3484}},
+  year = {2006}
+}
+
+@incollection{Ridge2007,
+  year={2007},
+  isbn={978-3-540-74590-7},
+  booktitle={Theorem Proving in Higher Order Logics},
+  volume={4732},
+  series={Lecture Notes in Computer Science},
+  editor={Schneider, Klaus and Brandt, Jens},
+  doi={10.1007/978-3-540-74591-4_21},
+  title={Operational Reasoning for Concurrent Caml Programs and Weak Memory Models},
+  url={http://dx.doi.org/10.1007/978-3-540-74591-4_21},
+  publisher={Springer Berlin Heidelberg},
+  author={Ridge, Tom},
+  pages={278-293},
+  language={English}
+}

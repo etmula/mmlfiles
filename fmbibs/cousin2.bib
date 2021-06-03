@@ -1,0 +1,133 @@
+@ARTICLE{COUSIN2.MIZ,
+    TITLE = {Gauge Integral},
+    AUTHOR = {Coghetto, Roland},
+    ADDRESS1 = {Rue de la Brasserie 5\\7100 La Louvi\`ere, Belgium},
+    DAY = {3},
+    MONTH = {September},
+    YEAR = {2017},
+    SUMMARY = {Some authors have formalized the integral in the MML.
+  The first article in a series on the Darboux/Riemann integral
+  was written
+  by Noboru Endou and Artur Korni{\l}owicz: \cite{INTEGRA1.ABS}.
+  The Lebesgue integral was formalized a little later
+  \cite{shidama2007formalization} and
+  recently the integral of Riemann-Stieltjes was introduced in the MML by
+  Keiko Narita, Kazuhisa Nakasho and Yasunari Shidama
+  \cite{INTEGR22.ABS}.\par
+  A presentation of definitions of integrals in other proof
+  assistant or proof checker (ACL2, COQ, ISABEL/HOL, HOL4, HOL/Light,
+  PVS, ProofPower) may be found in
+  \cite{harrison2007formalizing} and \cite{boldo2016formalization}.\par
+  Using the Mizar system \cite{Mizar:2015}, we define the Gauge
+  integral (Henstock-Kurzweil) of a real-valued function
+  on a interval $\[a,b\]$
+  \cite{bartle1996return},
+  \cite{bartle2001modern},
+  \cite{yee2000integral},
+  \cite{peng2008integral},
+  \cite{mawhin2001eternel}.\par
+  After, we formalize that the Henstock-Kurzweil integral is linear.\par
+  In the last section, we verified that a real-valued bounded integrable
+  (in sense Darboux/Riemann \cite{INTEGRA1.ABS,INTEGRA3.ABS,INTEGRA4.ABS})
+  function over a interval $\[a,b\]$
+  is Gauge integrable.\par
+  Note that, in accordance with the possibilities of the MML
+  \cite{grabowski2007revisions},
+  we reuse a large part of demonstrations already present
+  in another article.
+  Instead of rewriting the proof already contained in
+  \cite{INTEGRA3.ABS} (MML Version: 5.42.1290),
+  we slightly modify this article in order to use directly
+  the expected results.}}
+
+    MSC2010 = {26A39;26A42;03B35},
+    KEYWORDS = {Gauge integral, Henstock-Kurzweil integral,generalized Riemann integral}
+
+@article{bartle1996return,
+  title={Return to the Riemann integral},
+  author={Bartle, Robert G},
+  journal={American Mathematical Monthly},
+  pages={625--632},
+  year={1996},
+  publisher={JSTOR}
+}
+
+@book{bartle2001modern,
+  title={A modern theory of integration},
+  author={Bartle, Robert Gardner},
+  volume={32},
+  year={2001},
+  publisher={American mathematical society Providence}
+}
+
+@book{yee2000integral,
+  title={Integral: an easy approach after Kurzweil and Henstock},
+  author={Yee, Lee Peng and Vyborny, Rudolf},
+  volume={14},
+  year={2000},
+  publisher={Cambridge University Press}
+}
+
+@article{peng2008integral,
+  title={The integral \`a la Henstock},
+  author={Yee, Lee Peng},
+  journal={Scientiae Mathematicae japonicae},
+  volume={67},
+  number={1},
+  pages={13--21},
+  year={2008}
+}
+
+@article{mawhin2001eternel,
+  title={L'{\'e}ternel retour des sommes de Riemann-Stieltjes dans l'{\'e}volution du calcul int{\'e}gral},
+  author={MAWHIN, Jean},
+  journal={Bulletin de la Soci{\'e}t{\'e} Royale des Sciences de Li{\`e}ge},
+  volume={70},
+  number={4-6},
+  pages={345--364},
+  year={2001},
+  publisher={Soci{\'e}t{\'e} royale des sciences de Li{\`e}ge}
+}
+
+@incollection{grabowski2007revisions,
+  title={Revisions as an essential tool to maintain mathematical repositories},
+  author={Grabowski, Adam and Schwarzweller, Christoph},
+  booktitle={Towards Mechanized Mathematical Assistants},
+  pages={235--249},
+  year={2007},
+  publisher={Springer}
+}
+
+@ARTICLE{harrison2007formalizing,
+ TITLE={Formalizing basic complex analysis},
+ AUTHOR={Harrison, John}
+ JOURNAL={Studies in Logic, Grammar and Rhetoric},
+ NUMBER=10,
+ VOLUME=23,
+pages={151--165},
+ PUBLISHER={University of Bia{\l}ystok},
+ YEAR={2007}
+}
+
+@article{shidama2007formalization,
+  title={On the formalization of lebesgue integrals},
+  author={Shidama, Yasunari and Endou, Noburu and Kawamoto, Pauline N},
+  journal={Studies in Logic, Grammar and Rhetoric},
+  volume={10},
+  number={23},
+  pages={167--177},
+ PUBLISHER={University of Bia{\l}ystok},
+  year={2007}
+}
+
+@article{boldo2016formalization,
+  title={Formalization of real analysis: A survey of proof assistants and libraries},
+  author={Boldo, Sylvie and Lelay, Catherine and Melquiond, Guillaume},
+  journal={Mathematical Structures in Computer Science},
+  volume={26},
+  number={7},
+  pages={1196--1233},
+  year={2016},
+  publisher={Cambridge University Press}
+}
+

@@ -1,0 +1,443 @@
+@MISC{PARTPR_1.MIZ,
+  AUTHOR = {Korni{\l}owicz, Artur and Ivanov, Ievgen and Nikitchenko, Mykola},
+  TITLE = {Kleene Algebra of Partial Predicates},
+  DAY = {27},
+  MONTH = {March},
+  YEAR = {2018},
+  ADDRESS1 = {Institute of Informatics\\University of Bia{\l}ystok\\Cio{\l}kowskiego 1M, 15-245 Bia{\l}ystok\\Poland},
+  ADDRESS2 = {Taras Shevchenko National University\\Kyiv, Ukraine},
+  ADDRESS3 = {Taras Shevchenko National University\\Kyiv, Ukraine},
+  SECTION1 = {Partial predicates},
+  SECTION2 = {Algebra of partial connectives with (strong) Kleene logical connectives},
+  SUMMARY = {We show that the set of all partial predicates over a set $D$ together with the disjunction, conjunction, and negation operations (denoted in the paper as {\tt PP\_or},
+  {\tt PP\_and}, and {\tt PP\_not}), defined in accordance with the truth tables of S.C. Kleene's strong logic of indeterminacy \cite{Kleene1952}, forms a~Kleene algebra.
+  A~Kleene algebra is a~De Morgan algebra \cite{Brignole1964} (also called quasi-Boolean algebra) which satisfies the condition $x \wedge \neg x \le y \vee \neg y$
+  (sometimes called the normality axiom). We use the formalization of De Morgan algebras from \cite{ROBBINS1.ABS}.
+   \par
+  The term ``Kleene algebra'' was introduced by A.~Monteiro and D.~Brignole in \cite{Brignole1964}. A~similar notion of a~``normal i-lattice'' had been previously studied by J.A. Kalman \cite{Kalman1958}. More details about the origin of this notion and i
+  relation to other notions can be found in \cite{Monteiro1996,Cignoli1975,Balbes1975,Blyth1994}. It should be noted that there is a~different widely known class of algebras, also called Kleene algebras \cite{Kozen1990,Conway1971}, which generalize
+  the algebra of regular expressions, however, the term ``Kleene algebra'' used in this paper does not refer to them.
+  \par
+  Algebras of partial predicates naturally arise in computability theory in the study on partial recursive predicates. They were studied in connection with non-classical logics \cite{Kleene1952,Cleave1991,Korner1966,Rasiowa1974,NikitchShkilniak2013,
+  NikShk2017:QE-calculus}.
+  A~partial predicate also corresponds to the notion of a~partial set \cite{Negri1998} on a~given domain, which represents a~(partial) property which for any given element of this domain may hold, not hold, or neither hold nor not h
+ field of all partial sets on a~given domain is an algebra with generalized operations of union, intersection, complement, and three constants (0, 1, $n$ which is the fixed point of complement) which can be generalized to an equational class of algebras
+ called DMF-algebras (De Morgan algebras with a~single fixed point of involution) \cite{Negri1996}. In \cite{Negri2013} partial sets and DMF-algebras were considered as a~basis for unification of set-theoretic and linguistic approaches to probability.
+  \par
+  Partial predicates over classes of mathematical models of data were used for formalizing semantics of computer programs in the composition-nominative approach to program formalization \cite{Nikitch98, NikitchShkilniak2008,
+  Skobelev2014, DBLP:journals/csjm/IvanovNS16}, for formalizing extensions of the Floyd-Hoare logic \cite{Floyd1967,Hoare1969} which allow reasoning about properties of programs in the case of partial pre- and postconditions \cite{Kryvolap2013,
+  KornilowiczetalICTERI2017,KornilowiczKNI17,Kornilowicz2018},
+  for formalizing dynamical models with partial behaviors in
+  the context of the mathematical systems theory
+  \cite{Ivanov2014,Ivanov2014a,PETERSON.ABS,Ivanov2016,
+  DBLP:journals/corr/Ivanov17}.
+},
+}
+
+@article{NikShk2017:QE-calculus,
+  author    = {Nikitchenko, Mykola and Shkilniak, Stepan},
+  title = {Algebras and Logics of Partial Quasiary Predicates},
+ journal   = {Algebra and Discrete Mathematics},
+  volume    = {23},
+  number    = {2},
+  year      = {2017},
+  pages     = {263--278}
+}
+
+@article{Negri1998,
+    AUTHOR = {Negri, Maurizio},
+     TITLE = {{DMF}-algebras: representation and topological characterization},
+   JOURNAL = {Boll. Unione Mat. Ital. Sez. B Artic. Ric. Mat. (8)},
+  FJOURNAL = {Bollettino della Unione Matematica Italiana. Serie VIII.
+              Sezione B. Articoli di Ricerca Matematica},
+    VOLUME = {1},
+      YEAR = {1998},
+    NUMBER = {2},
+     PAGES = {369--390}
+}
+
+@article{Negri1996,
+    AUTHOR = {Negri, Maurizio},
+     TITLE = {Three valued semantics and {DMF}-algebras},
+   JOURNAL = {Boll. Un. Mat. Ital. B (7)},
+  FJOURNAL = {Unione Matematica Italiana. Bollettino. B. Serie VII},
+    VOLUME = {10},
+      YEAR = {1996},
+    NUMBER = {3},
+     PAGES = {733--760}
+}
+
+@misc{Negri2013,
+Author = {Negri, Maurizio},
+Title = {Partial Probability and {K}leene Logic},
+Year = {2013},
+Eprint = {arXiv:1310.6172},
+}
+
+@book{Rasiowa1974,
+  title={An Algebraic Approach to Non-classical Logics},
+  author={Rasiowa, Helena},
+  series={Studies in logic and the foundations of mathematics},
+  year={1974},
+  publisher={North-Holland Publishing Company}
+}
+
+@book{Korner1966,
+  title={Experience and Theory: An Essay in the Philosophy of Science},
+  author={K{\"o}rner, S.},
+  series={International library of philosophy and scientific method},
+  year={1966},
+  publisher={Routledge \& Kegan Paul}
+}
+
+
+@book{Brignole1964,
+author={Brignole, Diana and Monteiro, Antonio},
+title={Caract\'erisation des alg\`ebres de {N}elson par des egalit\'es},
+year={1964},
+publisher={Instituto de Matem\'atica, Universidad Nacional del Sur},
+address={Bah\'ia Blanca [Argentina]}
+}
+
+@article{Kalman1958,
+        doi = {10.1090/s0002-9947-1958-0095135-x},
+        year = 1958,
+        month = {February},
+        publisher = {American Mathematical Society ({AMS})},
+        volume = {87},
+        number = {2},
+        pages = {485--485},
+        author = {J. A. Kalman},
+        title = {Lattices with involution},
+        journal = {Transactions of the American Mathematical Society}
+}
+
+@article{Monteiro1996,
+        year = 1996,
+        publisher = {Unpublished Papers, Instituto de Matem\'atica -- Universidad Nacional del Sur -- 1973, Bah\'脹a Blanca -- Argentina},
+        number = {40},
+        pages = {1--11},
+        author = {Monteiro, Antonio and Monteiro, Luiz},
+        title = {Axiomes ind\'ependants pour les alg\`ebres de {N}elson, de {{\L}}ukasiewicz trivalentes, de De {M}organ et de {K}leene},
+        journal = {Notas de l\'ogica matem\'atica}
+}
+
+@book{Balbes1975,
+  Author = {Balbes, Raymond and Dwinger, Philip},
+  Title = {Distributive Lattices},
+  Publisher = {University of Missouri Press},
+  Year = {1975}
+}
+
+@book{Blyth1994,
+  title={Ockham Algebras},
+  author={Blyth, T.S. and Varlet, J.},
+  series={Oxford science publications},
+  year={1994},
+  publisher={Oxford University Press}
+}
+
+@article{Cignoli1975,
+ author = {Cignoli, Roberto},
+ journal = {Proceedings of the American Mathematical Society},
+ number = {2},
+ pages = {269--278},
+ publisher = {American Mathematical Society},
+ title = {Injective de {M}organ and {K}leene Algebras},
+ volume = {47},
+ year = {1975}
+}
+
+@Inbook{Kozen1990,
+author="Kozen, Dexter",
+editor="Rovan, Branislav",
+title="On {K}leene algebras and closed semirings",
+bookTitle="Mathematical Foundations of Computer Science 1990: Bansk{\'a} Bystrica, Czechoslovakia August 27--31, 1990 Proceedings",
+year="1990",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="26--47",
+doi="10.1007/BFb0029594"
+}
+
+@book{Conway1971,
+  title={Regular algebra and finite machines},
+  author={Conway, J.H.},
+  series={Chapman and Hall mathematics series},
+  year={1971},
+  publisher={Chapman and Hall}
+}
+
+@book{Cleave1991,
+  title={A~Study of Logics},
+  author={Cleave, J.P.},
+  isbn={9780198532118},
+  series={Oxford logic guides},
+  year={1991},
+  publisher={Clarendon Press}
+}
+
+@book{Kleene1952,
+  title={Introduction to metamathematics},
+  author={Kleene, S.C.},
+  year={1952},
+  publisher={North-Holland Publishing Co., Amsterdam, and P. Noordhoff, Groningen}
+}
+
+@article{Floyd1967,
+  author = {Floyd, R.W.},
+  journal = {Mathematical aspects of computer science},
+  pages = {19--32},
+  title = {Assigning meanings to programs},
+  volume = 19,
+  year = 1967
+}
+
+@article{Hoare1969,
+  author    = {Hoare, C.A.R.},
+  title     = {An Axiomatic Basis for Computer Programming},
+  journal   = {Commun. {ACM}},
+  volume    = {12},
+  number    = {10},
+  pages     = {576--580},
+  year      = {1969}
+}
+
+@TECHREPORT{Nikitch98,
+  title={A~Composition Nominative Approach to Program Semantics},
+  author={Nikitchenko, Nikolaj S},
+  institution={Department of Information Technology, Technical University of Denmark},
+  number={IT-TR 1998-020},
+  year={1998}
+}
+
+@book{NikitchShkilniak2008,
+author = {Nikitchenko, M.S. and Shkilniak, S.S.},
+title = {Mathematical logic and theory of algorithms},
+publisher = {Publishing house of Taras Shevchenko National University of Kyiv, Ukraine (in Ukrainian)},
+numpages = {528},
+year = {2008}
+}
+
+@book{NikitchShkilniak2013,
+author = {Nikitchenko, M.S. and Shkilniak, S.S.},
+title = {Applied logic},
+publisher = {Publishing house of Taras Shevchenko National University of Kyiv, Ukraine (in Ukrainian)},
+year = {2013}
+}
+
+@Inbook{Skobelev2014,
+author="Skobelev, Volodymyr G.
+and Nikitchenko, Mykola
+and Ivanov, Ievgen",
+editor="Ermolayev, Vadim
+and Mayr, Heinrich C.
+and Nikitchenko, Mykola
+and Spivakovsky, Aleksander
+and Zholtkevych, Grygoriy",
+title="On Algebraic Properties of Nominative Data and Functions",
+bookTitle="Information and Communication Technologies in Education, Research, and Industrial Applications: 10th International Conference, ICTERI 2014, Kherson, Ukraine, June 9--12, 2014, Revised Selected Papers",
+year="2014",
+publisher="Springer International Publishing",
+address="Cham",
+pages="117--138",
+isbn="978-3-319-13206-8",
+doi="10.1007/978-3-319-13206-8_6",
+url="https://doi.org/10.1007/978-3-319-13206-8_6"
+}
+
+@article{DBLP:journals/csjm/IvanovNS16,
+  author    = {Ivanov, Ievgen and
+               Nikitchenko, Mykola and
+               Skobelev, Volodymyr G.},
+  title     = {Proving Properties of Programs on Hierarchical Nominative Data},
+  journal   = {The Computer Science Journal of Moldova},
+  volume    = {24},
+  number    = {3},
+  pages     = {371--398},
+  year      = {2016}
+}
+
+@Inbook{Kryvolap2013,
+author="Kryvolap, Andrii
+and Nikitchenko, Mykola
+and Schreiner, Wolfgang",
+editor="Ermolayev, Vadim
+and Mayr, Heinrich C.
+and Nikitchenko, Mykola
+and Spivakovsky, Aleksander
+and Zholtkevych, Grygoriy",
+title="Extending {F}loyd-{H}oare Logic for Partial Pre- and Postconditions",
+bookTitle="Information and Communication Technologies in Education, Research, and Industrial Applications: 9th International Conference, ICTERI 2013, Kherson, Ukraine, June 19--22, 2013, Revised Selected Papers",
+year="2013",
+publisher="Springer International Publishing",
+address="Cham",
+pages="355--378",
+isbn="978-3-319-03998-5",
+doi="10.1007/978-3-319-03998-5_18",
+url="https://doi.org/10.1007/978-3-319-03998-5_18"
+}
+
+@inproceedings{KornilowiczetalICTERI2017,
+  author    = {Korni{\l}owicz, Artur and Kryvolap, Andrii and Nikitchenko, Mykola and Ivanov, Ievgen},
+  title     = {An Approach To Formalization of an Extension of {F}loyd-{H}oare Logic},
+  booktitle = {Proceedings of the 13th International Conference on ICT in Education, Research and Industrial Applications. Integration, Harmonization and Knowledge Transfer, Kyiv, Ukraine, May 15--18, 2017},
+  pages     = {504--523},
+  year      = {2017},
+  crossref  = {ICTERI2017},
+  url       = {http://ceur-ws.org/Vol-1844/10000504.pdf},
+}
+
+@proceedings{ICTERI2017,
+  editor    = {Vadim Ermolayev and
+               Nick Bassiliades and
+               Hans-Georg Fill and
+               Vitaliy Yakovyna and
+               Heinrich C. Mayr and
+               Vyacheslav Kharchenko and
+               Vladimir Peschanenko and
+			   Mariya Shyshkina and
+			   Mykola Nikitchenko and
+			   Aleksander Spivakovsky},
+  title     = {Proceedings of the 13th International Conference on ICT in Education, Research and Industrial Applications. Integration, Harmonization and Knowledge Transfer, Kyiv, Ukraine, May 15--18, 2017},
+  series    = {{CEUR} Workshop Proceedings},
+  volume    = {1844},
+  publisher = {CEUR-WS.org},
+  year      = {2017},
+  url       = {http://ceur-ws.org/Vol-1844}
+}
+
+@inproceedings{KornilowiczKNI17,
+  author    = {Kornilowicz, Artur and
+               Kryvolap, Andrii and
+               Nikitchenko, Mykola and
+               Ivanov, Ievgen},
+  title     = {Formalization of the Algebra of Nominative Data in {M}izar},
+  booktitle = {Proceedings of the 2017 Federated Conference on Computer Science and
+               Information Systems, FedCSIS 2017, Prague, Czech Republic, September
+               3--6, 2017.},
+  pages     = {237--244},
+  year      = {2017},
+  crossref  = {DBLP:conf/fedcsis/2017},
+  url       = {https://doi.org/10.15439/2017F301},
+  doi       = {10.15439/2017F301}
+}
+
+@proceedings{DBLP:conf/fedcsis/2017,
+  editor    = {Maria Ganzha and
+               Leszek A. Maciaszek and
+               Marcin Paprzycki},
+  title     = {Proceedings of the 2017 Federated Conference on Computer Science and
+               Information Systems, FedCSIS 2017, Prague, Czech Republic, September
+               3--6, 2017},
+  year      = {2017},
+  isbn      = {978-83-946253-7-5}
+}
+
+@Inbook{Kornilowicz2018,
+author="Korni{\l}owicz, Artur
+and Kryvolap, Andrii
+and Nikitchenko, Mykola
+and Ivanov, Ievgen",
+editor="{\'{S}}wi{\k{a}}tek, Jerzy
+and Borzemski, Leszek
+and Wilimowska, Zofia",
+title="Formalization of the Nominative Algorithmic Algebra in {M}izar",
+bookTitle="Information Systems Architecture and Technology: Proceedings of 38th International Conference on Information Systems Architecture and Technology -- ISAT 2017: Part II",
+year="2018",
+publisher="Springer International Publishing",
+address="Cham",
+pages="176--186",
+isbn="978-3-319-67229-8",
+doi="10.1007/978-3-319-67229-8_16",
+url="https://doi.org/10.1007/978-3-319-67229-8_16"
+}
+
+@Inbook{Ivanov2014,
+author="Ivanov, Ievgen",
+editor="Gopal, T. V.
+and Agrawal, Manindra
+and Li, Angsheng
+and Cooper, S. Barry",
+title="On Representations of Abstract Systems with Partial Inputs and Outputs",
+bookTitle="Theory and Applications of Models of Computation: 11th Annual Conference, TAMC 2014, Chennai, India, April 1
+1--13, 2014. Proceedings",
+year="2014",
+publisher="Springer International Publishing",
+address="Cham",
+pages="104--123",
+isbn="978-3-319-06089-7",
+doi="10.1007/978-3-319-06089-7_8",
+url="https://doi.org/10.1007/978-3-319-06089-7_8"
+}
+
+@Inbook{Ivanov2016,
+author="Ivanov, Ievgen",
+editor="Hasuo, Ichiro",
+title="On Local Characterization of Global Timed Bisimulation for Abstract Continuous-Time Systems",
+bookTitle="Coalgebraic Methods in Computer Science: 13th IFIP WG 1.3 International Workshop, CMCS 2016, Colocated with ETAPS 2016, Eindhoven, The Netherlands, April 2--3, 2016, Revised Selected Papers",
+year="2016",
+publisher="Springer International Publishing",
+address="Cham",
+pages="216--234",
+isbn="978-3-319-40370-0",
+doi="10.1007/978-3-319-40370-0_13",
+url="https://doi.org/10.1007/978-3-319-40370-0_13"
+}
+
+@inproceedings{DBLP:journals/corr/Ivanov17,
+  author    = {Ivanov, Ievgen},
+  title     = {On the Underapproximation of Reach Sets of Abstract Continuous-Time Systems},
+  booktitle = {Proceedings 3rd International Workshop on Symbolic and Numerical Methods
+               for Reachability Analysis, SNR@ETAPS 2017, Uppsala, Sweden, 22nd April
+               2017.},
+  pages     = {46--51},
+  year      = {2017},
+  crossref  = {DBLP:journals/corr/AbrahamB17},
+  url       = {https://doi.org/10.4204/EPTCS.247.4},
+  doi       = {10.4204/EPTCS.247.4}
+}
+
+@proceedings{DBLP:journals/corr/AbrahamB17,
+  editor    = {Erika {\'{A}}brah{\'{a}}m and Sergiy Bogomolov},
+  title     = {Proceedings 3rd International Workshop on Symbolic and Numerical Methods
+               for Reachability Analysis, SNR@ETAPS 2017, Uppsala, Sweden, 22nd April
+               2017},
+  series    = {{EPTCS}},
+  volume    = {247},
+  year      = {2017},
+  url       = {http://arxiv.org/abs/1704.02421},
+}
+
+@Inbook{Ivanov2014a,
+author="Ivanov, Ievgen
+and Nikitchenko, Mykola
+and Abraham, Uri",
+editor="Ermolayev, Vadim
+and Mayr, Heinrich C.
+and Nikitchenko, Mykola
+and Spivakovsky, Aleksander
+and Zholtkevych, Grygoriy",
+title="On a Decidable Formal Theory for Abstract Continuous-Time Dynamical Systems",
+bookTitle="Information and Communication Technologies in Education, Research, and Industrial Applications: 10th International Conference, ICTERI 2014, Kherson, Ukraine, June 9--12, 2014, Revised Selected Papers",
+year="2014",
+publisher="Springer International Publishing",
+address="Cham",
+pages="78--99",
+isbn="978-3-319-13206-8",
+doi="10.1007/978-3-319-13206-8_4",
+url="https://doi.org/10.1007/978-3-319-13206-8_4"
+}
+
+@article{DBLP:journals/fm/IvanovNA15,
+  author    = {Ivanov, Ievgen and
+               Nikitchenko, Mykola and
+               Abraham, Uri},
+  title     = {Event-Based Proof of the Mutual Exclusion Property of {P}eterson's Algorithm},
+  journal   = {Formalized Mathematics},
+  volume    = {23},
+  number    = {4},
+  pages     = {325--331},
+  year      = {2015},
+  doi       = {10.1515/forma-2015-0026}
+}

@@ -1,0 +1,83 @@
+@MISC{FINANCE4.MIZ,
+  AUTHOR = {Jaeger, Peter},
+  TITLE = {Introduction to Stopping Time in Stochastic Finance Theory},
+  SECTION1 = {Definition of Stopping Time},
+  SECTION2 = {Examples of Stopping Times},
+  DAY = {27},
+  MONTH = {June},
+  YEAR = {2017},
+  ADDRESS1 = {},
+  SUMMARY = {We start with the definition of stopping time according to
+             (\cite{follmerschied:2004},p.283). We prove, that different
+             defintions for stopping time can coincide. We give
+             examples of stopping times using constant-functions or
+             functions defined with the operator max or min (defined in
+             \cite{klenke:2006},p.37-38). Last we give an example with
+             some given filtration. Stopping times are very important for
+             stochastic finance. A stopping time is the moment, where a
+             certain event occurs \cite{kremer:2006},p.372), and can be
+             used together with stochastic processes
+             (\cite{follmerschied:2004},p.283).
+             Look at the following example:
+             We install a function ST:{1,2,3,4}->{0,1,2} \/ {+infty}
+             We define:
+              a. ST(1)=1, ST(2)=1, ST(3)=2, ST(4)=2
+              b. The set {0,1,2} consists of time points:
+                 0=now,1=tomorow,2=the day after tomorrow
+             We can prove:
+              b. {w where w is Element of Omega: ST.w=0}={} &
+                 {w where w is Element of Omega: ST.w=1}={1,2} &
+                 {w where w is Element of Omega: ST.w=2}={3,4}
+              and
+              c. ST is a stopping time.
+             We use a function Filt as Filtration of {01,2},Sigma where
+              Filt(0)=Omega_now, Filt(1)=Omega_fut1 and Filt(2)=Omega_fut2.
+             From a.,b. and c. we know that:
+              d. {w where w is Element of Omega: ST.w=0} in Omega_now and
+                 {w where w is Element of Omega: ST.w=1} in Omega_fut1 and
+                 {w where w is Element of Omega: ST.w=2} in Omega_fut2
+             The sets in d. are events, which occur at the time points
+             0(=now),1(=tomorrow) or 2(=the day after tomorrow), see also
+              \cite{kremer:2006},p.371. Suppose ST(1)=+infty,
+             then this means, that for ST(1) never stops.
+             As an interpretation for our installed functions consider
+             the given adapted stochastic process in the article FINANCE3.
+             ST(1)=1 means, that the given element 1 in {1,2,3,4} is stopped
+             in 1 (=tomorrow). That tells us, that we have to look at the
+             value f_2(1) which is equal to 80. Same argumentation for the
+             element 2 in {1,2,3,4}.
+             ST(3)=2 means, that the given element 3 in {1,2,3,4} is stopped
+             in 2 (=the day after tomorrow). That tells us, that we have to
+             look at the value f_3(3) which is equal to 100.
+             ST(4)=2 means, that the given element 4 in {1,2,3,4} is stopped
+             in 2 (=the day after tomorrow). That tells us, that we have to
+             look at the value f_3(4) which is equal to 120.
+             In real world, these functions can be used for questions like:
+             When does the share price exceed a certain limit, see
+             \cite{kremer:2006},p.372).
+}}
+
+@book{follmerschied:2004,
+  author={F\"ollmer, Hans and Schied, Alexander},
+  title={Stochastic Finance: An Introduction in Discrete Time},
+  edition={2nd},
+  volume={27},
+  series={Studies in Mathematics},
+  publisher={de Gruyter},
+  year={2004},
+  ADDRESS={Berlin}}
+
+@book{klenke:2006,
+author={Klenke, Achim},
+title={Wahrscheinlichkeitstheorie},
+publisher={Springer-Verlag},
+year={2006},
+ADDRESS={Berlin, Heidelberg}}
+
+@book{kremer:2006,
+  author={Kremer, Jgen},
+  title={Einfrung in die diskrete Finanzmathematik},
+  edition={},
+  publisher={Springer-Verlag},
+  year={2006,
+  ADDRESS={Berlin,Heidelberg,New York}}

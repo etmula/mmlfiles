@@ -1,0 +1,59 @@
+@misc{FIELD_2.MIZ,
+      AUTHOR = {Schwarzweller, Christoph},
+      TITLE = {On Monomorphisms and Subfields},
+      ADDRESS1 = {Institute of Informatics, University of Gdansk, Poland},
+      DAY = {27},
+      MONTH = {May},
+      YEAR = {2019},
+      SUMMARY = {This is the second part of a four-article series containing a Mizar formalization of           Kronecker's construction about roots of polynomials in field extensions,
+      i.e., that for every field $F$ and every polynomial $p \in F[X] \backslash F$
+      there exists a field extension $E$ of $F$ such that $p$ has a root over $E$.
+       The formalization follows Kronecker's classical proof
+       using $F[X]\slash\!\!<\!\!p\!\!>$ as the desired field extension $E$.\par
+     In the first part we show that an irreducible polynomial $p \in F[X] \backslash F$ has a root
+    over $F[X]\slash\!\!<\!\!p\!\!>$. Note, however, that this statement cannot
+    be true in a rigid formal sense:
+    We do not have $F \subseteq F[X]\slash\!\!<\!\!p\!\!>$ as
+    sets, so $F$ is not a subfield of $F[X]\slash\!\!<\!\!p\!\!>$, and
+    hence formally $p$ is not even a polynomial over $F[X]\slash\!\!<\!\!p\!\!>$.
+    Consequently, we translate $p$ along the canonical monomorphism
+    $\phi : F \longrightarrow F[X]\slash\!\!<\!\!p\!\!>$ and show that the
+    translated polynomial $\phi(p)$ has a root over $F[X]\slash\!\!<\!\!p\!\!>$.\par
+    Because $F$ is not a subfield of $F[X]\slash\!\!<\!\!p\!\!>$ we construct in this second part the field
+    $(E\, \backslash \, \phi(F)) \cup F$ for a given monomorphism $\phi : F \longrightarrow E$
+    and show that this field both is isomorphic to $F$ and includes $F$ as a subfield.
+    In the literature this part of the proof usually consists of saying that ``one can identify
+    $F$ with its image $\phi(F)$ in $F[X]\slash\!\!<\!\!p\!\!>$ and therefore consider $F$ as a subfield of     $F[X]\slash\!\!<\!\!p\!\!>$".
+    Interestingly, to do so we need to assume that $F \cap E = \emptyset$, in particular
+    Kronecker's construction can be formalized for fields $F$ with $F \cap F[X] = \emptyset$.\par
+    Surprisingly, as we show in the third part, this condition is not automatically true
+    for arbitrary fields $F$: With the exception of $\mathbb{Z}_2$ we construct for every
+    field $F$ an isomorphic copy $F'$ of $F$ with $F' \cap F'[X] \neq \emptyset$.
+    We also prove that for Mizar's representations of $\mathbb{Z}_n$, $\mathbb{Q}$ and $\mathbb{R}$
+    we have $\mathbb{Z}_n \cap \mathbb{Z}_n[X] = \emptyset$, $\mathbb{Q} \cap \mathbb{Q}[X] = \emptyset$
+    and $\mathbb{R} \cap \mathbb{R}[X] = \emptyset$, respectively.\par
+    In the fourth part we finally define field extensions: $E$ is a field extension of $F$
+    iff $F$ is a subfield of $E$. Note, that in this case we have $F \subseteq E$ as sets, and thus a     polynomial $p$ over $F$ is
+    also a polynomial over $E$. We then apply the construction of the second
+     part to $F[X]\slash\!\!<\!\!p\!\!>$ with the canonical monomorphism
+    $\phi : F \longrightarrow F[X]\slash\!\!<\!\!p\!\!>$. Together with the first part
+   this gives -- for fields $F$ with $F \cap F[X] = \emptyset$ --
+   a field extension $E$ of $F$ in which $p \in F[X] \backslash F$ has a root.}}
+
+@BOOK{HL99,
+      AUTHOR = {H. L\"{u}neburg},
+      TITLE = {Gruppen, Ringe, K\"{o}rper: Die grundlegenden Strukturen der Algebra},
+      PUBLISHER = {Oldenbourg Verlag},
+      YEAR = {1990}}
+
+@BOOK{Rad89,
+      AUTHOR = {Knut Radbruch},
+      TITLE = {Algebra I},
+      PUBLISHER = {Lecture Notes, University of Kaiserslautern, Germany},
+      YEAR = {1991}}
+
+@BOOK{Jac85,
+      AUTHOR = {Nathan Jacobson},
+      TITLE = {Basic Algebra I},
+      PUBLISHER = {Dover Books on Mathematics},
+      YEAR = {1985}}

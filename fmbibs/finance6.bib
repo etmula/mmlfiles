@@ -1,0 +1,85 @@
+@MISC{FINANCE6.MIZ,
+  AUTHOR = {Jaeger, Peter},
+  TITLE = {Introduction to Stochastic Finance: Random-Variables
+    and Arbitrage Theory},
+  SECTION1 = {Put-Option, Call-Option and Straddle are Random-variables},
+  SECTION2 = {Simple-random-variables},
+  SECTION3 = {Arbitrage Theory: Definition and Alternative Representation},
+  SECTION4 = {Risk-neutral Probability Measure},
+  DAY = {27},
+  MONTH = {March},
+  YEAR = {2018},
+  ADDRESS1 = {},
+  SUMMARY = {We start to show, that the Call-Option, the Put-Option and the
+             Straddle (more generally defined as in the literature) are
+             random-variables (\cite{follmerschied:2004}, p.~15).
+             Next we construct and prove the simple random-variables
+             (\cite{heinz:2002}, p.~14).\par
+             In the second part, we introduce the definition
+             of arbitrage opportunity.
+             Next we show, that this definition can be characterized in
+             a different way (Lemma 1.3. in \cite{follmerschied:2004}, p.~5).
+             In our formalization for Lemma 1.3 we make the assumption that phi
+             is a Real_Sequence (there are only finitley many valued of
+             interest, the values of phi in $R^d$).
+             For the definition of almost sure with Probability 1 see
+             \cite{heinz:2002}, p.~6.
+             Last we introduce the risk-neutral Probability
+             (Definition 1.4. in \cite{follmerschied:2004}, p.~6).
+             We give an example in real world:
+             Suppose you have some assets like bonds (riskless assets).
+             Then we can fix our price for these bonds with $x$ for today and
+             $x*(1+r)$ for tomorrow, $r$ is the interest rate.
+             So we simply assume, that in every possible market evolution
+             of tomorrow we have a determinated value.
+             Then every probability measure of \verb!Omega_fut1! is a risk-neutral
+             measure (see FINANCE7:13). This example shows the existence of some
+             risk-neutral measure. If you find more than one of them,
+             you can determine - with an additional conidition to the
+             probability measures - whether a market model is arbitrage free
+             or not (see Theorem 1.6. in \cite{follmerschied:2004}, p.~6.)\par
+             A short graph for FINANCE7:13:
+             \par
+             Suppose we have a portfolio with many (in this example infinitely
+             many) assets. For asset d we have the price jpi.d for today, and
+             the price jpi.d*(1+r) for tomorrow with some interest rate r>0.
+             \begin{verbatim}
+             Let G be a sequence of random-variables on Omega_fut1,Borel_Sets.
+             So you have many functios f_k:{1,2,3,4}->R with G.k=f_k and
+              f_k is random-variable of Omega_fut1,Borel_Sets.
+             For every f_k we have f_k(w)=jpi.k*(1+r) for w in {1,2,3,4}.
+
+                            Today                         Tomorrow
+
+                                                          w_21={1,2}
+                       only one scenario
+                                                          w_22={3,4}
+
+                            Today                        Tomorrow
+
+for all d in NAT holds:     jpi.d                  f_d(w)=(G.d)(w)=jpi.d*(1+r)
+                                                    w in w_w21 or w in w_22,
+                                                    r>0 is the interest rate,
+             \end{verbatim}
+
+         Here, every Probability-measure of Omega_fut1
+         is a Risk-neutral-measure.
+}}
+
+@book{follmerschied:2004,
+  author={F\"ollmer, Hans and Schied, Alexander},
+  title={Stochastic Finance: An Introduction in Discrete Time},
+  edition={2nd},
+  volume={27},
+  series={Studies in Mathematics},
+  publisher={de Gruyter},
+  year={2004},
+  ADDRESS={Berlin}}
+
+@book{heinz:2002,
+author={Heinz, Bauer},
+title={Wahrscheinlichkeitstheorie},
+publisher={de Gruyter-Verlag},
+year={2002},
+ADDRESS={Berlin, New York}}
+

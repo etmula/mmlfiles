@@ -1,0 +1,142 @@
+@ARTICLE{GTARSKI4.ABS,
+  TITLE = {{T}arski Geometry Axioms. {P}art {IV} -- Right angle},
+  AUTHOR = {Coghetto, Roland and Grabowski, Adam},
+  ORCID_ID = {https://orcid.org/0000-0002-4901-0766},
+  DAY = {11},
+  MONTH = {March},
+  YEAR = {2019},
+  ADDRESS1 = {Rue de la Brasserie 5\\7100 La Louvi\`ere, Belgium},
+  ADDRESS2 = {Institute of Informatics, University of Bia{\l}ystok, Poland},
+  SUMMARY = {In the article, we continue \cite{GTARSKI3.ABS} the formalization
+  of the work devoted to Tarski's geometry -- the book ``Metamathematische Methoden
+  in der Geometrie" by W. Schwabh\"auser, W. Szmielew, and A. Tarski
+  \cite{schwabhauser2013metamathematische,DBLP:conf/fedcsis/Grabowski16,
+    DBLP:conf/cikm/GrabowskiC16}.
+  We use the Mizar system \cite{Mizar-State-2015},
+  \cite{BancerekJAR:2018} to systematically formalize
+  Chapter 8 (``Rechte Winkel -- Right angle") of the SST book.\par
+  Note that in this case, the definition of the ``right angle" is $a$,$b$,$c$ bilden einen
+  \textit{rechten winkel} (mit dem \textit{Scheitel $b$}):
+  $$Rabc:\longleftrightarrow ac\equiv aS_b(c)$$.\par
+  In this article:
+  \begin{verbatim}
+  definition
+ let S be satisfying_CongruenceIdentity
+    satisfying_CongruenceSymmetry
+                     satisfying_CongruenceEquivalenceRelation
+    satisfying_SegmentConstruction
+                     satisfying_BetweennessIdentity
+    satisfying_SAS TarskiGeometryStruct;
+    let a,b,c be POINT of S;
+    pred right_angle a,b,c means
+    a,c equiv a,reflection(b,c);
+  end;
+  \end{verbatim}
+  where \verb!reflection! is defined in \cite{GTARSKI3.ABS}.\par
+  The theorems of chapter 8 are valid in neutral geometry \cite{GTARSKI1.ABS}.\par
+  In 2006, the first eight chapters were formalised in Coq in 2006 by Narboux
+  \cite{10.1007/978-3-540-77356-6_9}.
+  The entire SST book have been formalized within intuitionistic logic
+  \cite{boutry:hal-01483457}.
+  (Note that the definition \cite{GeoCoqDefPER}, \cite{boutry2019parallel},
+  \begin{verbatim}
+  (* Definition 8.1. *)
+  Definition Per A B C := exists C', Midpoint B C C' /\ Cong A C A   C'.
+  \end{verbatim}
+   and in \cite{Beeson2019}:  $ABC$ is a right angle if there is a point $D$ such that $  \textbf{B}(A, B, D)$ and $AB = DB$ and $AC=DC$:
+  \begin{verbatim}
+  rightangle      `RR A B C <=> ?X. BE A B X   /\ EE A B X B /\ EE A C X C /\ NE B C`
+  \end{verbatim}\par
+  Some of the results were obtained by means of other automatic proof assistants,
+  either partially \cite{dhurdjevic2015automated}, or completely \cite{beeson2014otter}.},
+   MSC2010 = {51A05 51M04 03B35},
+   KEYWORDS = {Tarski's geometry axioms; foundations of geometry; Euclidean plane; Right angle; Neutral geometry}}
+
+@inproceedings{DBLP:conf/fedcsis/Grabowski16,
+  author    = {Adam Grabowski},
+  title     = {Tarski's geometry modelled in Mizar computerized proof assistant},
+  booktitle = {Proceedings of the 2016 Federated Conference on Computer Science and
+                 Information Systems, FedCSIS 2016, Gda{\'{n}}sk, Poland, September
+ 11-14, 2016.},
+  pages     = {373--381},
+  year      = {2016},
+  url       = {https://doi.org/10.15439/2016F290},
+  doi       = {10.15439/2016F290}}
+
+@article{boutry2019parallel,
+  title={Parallel postulates and continuity axioms: a
+  mechanized study in intuitionistic logic using Coq},
+  author={Boutry, Pierre and Gries, Charly and Narboux, Julien and Schreck, Pascal},
+  journal={Journal of Automated Reasoning},
+  volume={62},
+  number={1},
+  pages={1--68},
+  year={2019},
+  publisher={Springer}
+}
+
+@misc{GeoCoqDefPER,
+  title = {PER,
+  howpublished = {\url{https://github.com/GeoCoq/GeoCoq/blob/master/Tarski_dev/Definitions.v}},
+  note = {Accessed: 2018-02-10}
+}
+
+@Article{Beeson2019,
+author="Beeson, Michael
+and Narboux, Julien
+and Wiedijk, Freek",
+title="Proof-checking Euclid",
+journal="Annals of Mathematics and Artificial Intelligence",
+year="2019",
+month="Jan",
+day="10",
+abstract="We used computer proof-checking methods to verify the correctness of our proofs of the propositions in Euclid Book I. We used axioms as close as possible to those of Euclid, in a language closely related to that used in Tarski's formal geometry.
+ We used proofs as close as possible to those given by Euclid, but filling Euclid's gaps and correcting errors. Euclid Book I has 48 propositions; we proved 235 theorems. The extras were partly ``Book Zero'', preliminaries of a very fundamental nature, pa
+rtly propositions that Euclid omitted but were used implicitly, partly advanced theorems that we found necessary to fill Euclid's gaps, and partly just variants of Euclid's propositions. We wrote these proofs in a simple fragment of first-order logic corr
+esponding to Euclid's logic, debugged them using a custom software tool, and then checked them in the well-known and trusted proof checkers HOL Light and Coq.",
+issn="1573-7470",
+doi="10.1007/s10472-018-9606-x",
+url="https://doi.org/10.1007/s10472-018-9606-x"
+}
+
+@inproceedings{DBLP:conf/cikm/GrabowskiC16,
+  author    = {Adam Grabowski and
+ Roland Coghetto},
+  title     = {Tarski's Geometry and the Euclidean Plane in {M}izar},
+  booktitle = {Joint Proceedings of the FM4M, MathUI, and ThEdu Workshops, Doctoral
+ Program, and Work in Progress at the Conference on Intelligent Computer
+ Mathematics 2016 co-located with the 9th Conference on Intelligent
+ Computer Mathematics {(CICM} 2016), Bialystok, Poland, July 25-29,
+ 2016.},
+  pages     = {4--9},
+  year      = {2016},
+  crossref  = {DBLP:conf/cikm/2016fm4m},
+  url       = {http://ceur-ws.org/Vol-1785/F2.pdf},
+  biburl    = {https://dblp.org/rec/bib/conf/cikm/GrabowskiC16}}
+
+@InProceedings{10.1007/978-3-540-77356-6_9,
+  author="Narboux, Julien",
+  editor="Botana, Francisco and Recio, Tomas",
+  title="Mechanical Theorem Proving in {T}arski's Geometry",
+  booktitle="Automated Deduction in Geometry",
+  year="2007",
+  publisher="Springer Berlin Heidelberg",
+  address="Berlin, Heidelberg",
+  pages="139--156",
+  isbn="978-3-540-77356-6"}
+
+
+@article{boutry:hal-01483457,
+  TITLE = {{Formalization of the Arithmetization of Euclidean Plane Geometry and Applications}},
+  AUTHOR = {Boutry, Pierre and Braun, Gabriel and Narboux, Julien},
+  URL = {https://hal.inria.fr/hal-01483457},
+  JOURNAL = {Journal of Symbolic Computation},
+  PUBLISHER = {Elsevier},
+  SERIES = {Special Issue on Symbolic Computation in Software Science},
+  VOLUME = {90},
+  PAGES = {149-168},
+  YEAR = {2019},
+  DOI = {10.1016/j.jsc.2018.04.007},
+  PDF = {https://hal.inria.fr/hal-01483457/file/extended-arithmetization.pdf},
+  HAL_ID = {hal-01483457},
+  HAL_VERSION = {v1}}

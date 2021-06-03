@@ -1,0 +1,67 @@
+@MISC{GLIB_006.MIZ,
+  AUTHOR = {Koch, Sebastian},
+  NOTE1 = {The author is enrolled in the Johannes Gutenberg University in Mayence, Germany},
+  TITLE = {About Supergraphs, Part {I}},
+  SECTION1 = {General Preliminaries},
+  SECTION2 = {Graph Preliminaries},
+  SECTION3 = {Supergraphs},
+  DAY = {29},
+  MONTH = {June},
+  YEAR = {2018},
+  ADDRESS1 = {Germany\\\href{mailto:skoch02@students.uni-mainz.de}{skoch02@students.uni-mainz.de}},
+  SUMMARY = {Drawing a finite graph is usually done by a finite sequence of the following three operations.
+  \begin{enumerate}
+  \item Draw a vertex of the graph.
+  \item Draw an edge between two vertices of the graph.
+  \item Draw an edge starting from a vertex of the graph and immediately draw a vertex at the other end of   it.
+  \end{enumerate}
+  By this procedure any finite graph can be constructed. This property of graphs is so
+  obvious that the author of this article has yet to find a reference where it is
+  mentioned explicitly. In introductionary books (like \cite{SIMPLE}, \cite{MULTI})
+  as well as in advanced ones (like \cite{SELECTED}), after the initial definition of graphs
+  the examples are usually given by graphical representations rather than explicit
+  set theoretic descriptions, assuming a mutual understanding how the representation is
+  to be translated into a description fitting the definition. However, Mizar does not
+  possess this innate ability of humans to translate pictures into graphs. Therefore, if
+  one wants to create graphs in Mizar without directly providing a set theoretic description
+  (i.e. using the {\texttt{createGraph}} functor), a rigorous approach to the constructing
+  operations is required.\par
+  In this paper supergraphs are defined as an inverse mode to subgraphs as given in
+  \cite{GLIB_000.ABS}. The three graph construction operations are defined as modes
+  extending {\texttt{Supergraph}} similar to how the various remove operations
+  were introduced as submodes of {\texttt{Subgraph}} in \cite{GLIB_000.ABS}. Many theorems
+  are proven that describe how graph properties are transferred to special supergraphs.
+  In particular, to prove that disconnected graphs cannot become connected by adding
+  an edge between two vertices that lie in the same component, the theory of replacing
+  a part of a walk with another walk is introduced in the preliminaries.}
+}
+@book{SIMPLE,
+  TITLE = {Introduction to graph theory},
+  AUTHOR = {Wilson, Robin James},
+  ADDRESS = {Edinburgh},
+  PUBLISHER = {Oliver & Boyd},
+  YEAR = {1972},
+  ISBN = {0-05-002534-1},
+  PAGES = {VIII, 168 S.},
+  URL = {http://scans.hebis.de/HEBCGI/show.pl?10670775_toc.pdf},
+}
+@book{MULTI,
+  TITLE = {Graph theory},
+  SERIES = {Graduate texts in mathematics ; 244},
+  AUTHOR = {Bondy, John Adrian ; Murty, U. S. R.},
+  ADDRESS = {New York, NY},
+  PUBLISHER = {Springer},
+  YEAR = {2008},
+  ISBN = {978-1-84628-969-9},
+  PAGES = {XII, 652 S.},
+  URL = {http://scans.hebis.de/HEBCGI/show.pl?19542627_toc.pdf ; http://scans.hebis.de/HEBCGI/show.pl?19542627_kap-2.pdf ; http://scans.hebis.de/HEBCGI/show.pl?19542627_ein-1.pdf},
+}
+@book{SELECTED,
+  TITLE = {Selected topics in graph theory},
+  EDITOR = {Beineke, Lowell W.},
+  ADDRESS = {London [et al.]},
+  PUBLISHER = {Academic Press},
+  YEAR = {1978},
+  ISBN = {0-12-086250-6},
+  pages = {IX, 451 S.},
+}

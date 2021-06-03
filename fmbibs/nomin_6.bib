@@ -1,0 +1,33 @@
+@MISC{NOMIN_6.MIZ,
+  AUTHOR = {Jaszczak, Adrian},
+  TITLE = {Partial Correctness of a Power Algorithm},
+  DAY = {27},
+  MONTH = {May},
+  YEAR = {2019},
+  ADDRESS1 = {Institute of Informatics\\University of Bia{\l}ystok\\Cio{\l}kowskiego 1M, 15-245 Bia{\l}ystok\\Poland},
+  SUMMARY = {This work continues a~formal verification of algorithms
+  written in terms of simple-named complex-valued nominative data
+  \cite{NOMIN_1.ABS,NOMIN_2.ABS,PARTPR_1.ABS,PARTPR_2.ABS,DBLP:conf/fedcsis/KornilowiczKNI17,DBLP:conf/isat/KornilowiczKNI17}.
+  In this paper we present a~formalization in the Mizar system \cite{FourDecades,BancerekJAR:2018}
+  of the partial correctness of the algorithm
+  \begin{verbatim}
+  i := val.1
+  j := val.2
+  b := val.3
+  n := val.4
+  s := val.5
+  while ( i <> n )
+   i := i + j
+   s := s * b
+  return s
+  \end{verbatim}
+  computing the natural {\tt n} power of given complex number {\tt b},
+  where variables {\tt i, b, n, s} are located as values of a~{\tt V-valued Function}, {\tt loc}, as:
+  \verb!loc/.1 = i!, \verb!loc/.3 = b!, \verb!loc/.4 = n! and \verb!loc/.5 = s!,
+  and the constant {\tt 1} is located in the location \verb!loc/.2 = j! (set {\tt V} represents simple names of considered nominative data \cite{Skobelev2014}).\par
+    The validity of the algorithm is presented in terms of semantic Floyd-Hoare triples over such data \cite{NOMIN_3.ABS}.
+  Proofs of the correctness are based on an~inference system
+  for an~extended Floyd-Hoare logic \cite{Floyd1967,Hoare1969}
+  with partial pre- and post-conditions
+  \cite{KornilowiczetalICTERI2017,Kryvolap2013,Moldova2018,SeqRule2018}.},
+}

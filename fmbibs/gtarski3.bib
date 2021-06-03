@@ -1,0 +1,265 @@
+@ARTICLE{GTARSKI3.ABS,
+
+  TITLE = {{T}arski Geometry Axioms -- Part {III}},
+            
+  AUTHOR = {Coghetto, Roland and Grabowski, Adam},
+            
+  DAY = {29},
+  MONTH = {November},
+  YEAR = {2017},
+  ADDRESS1 = {Rue de la Brasserie 5\\7100 La Louvi\`ere\\Belgium},
+            
+  ADDRESS2 = {Institute of Informatics\\ University of Bia{\l}ystok\\ 
+    Cio{\l}kowskiego 1M, 15-245 Bia{\l}ystok\\Poland},
+
+  SUMMARY = {
+Some chapters of the SST book have been formalized within the classical two-valued 
+  logic with proof checkers: 
+Isabelle/HOL by MAKARIOS (Chapter 2 and 3), METAMATH (chapter 2 to 6), 
+
+  Mizar (\cite{GTARSKI1.ABS,GTARSKI2.ABS}), 
+  or is entirely within intuitionistic logic \cite{narboux2006mechanical}
+
+.
+  Some of the results were obtained by measn of other automatic proof assistants, 
+  either partially \cite{dhurdjevic2015automated},
+  or completely
+\cite{beeson2014otter}.
+ 
+In the first part of this article, we use the Mizar system 
+  to systematically formalize
+ Chapters 2 to 7 of the SST book \cite{schwabhauser2013metamathematische}. 
+
+
+  In addition, using the native Mizar constructions (cluster registration)
+ the propositions ("Satz") 
+  are reformulated with fewer hypotheses, i.e. by using fewer axioms or by proposing
+ 
+  an alternative version that uses other axioms 
+  (ex. Satz 2.1 or Satz2.2).
+ 
+The proposal "6.28 Satz" introduced by Beeson 
+  ("This is used in Satz 11.4, but is never proved in the book,
+ and belongs 
+  in Chapter 6, so we give it the name Satz 6.28" in
+ 
+  \http{www.michaelbeeson.com/research/FormalTarski/index.php?include=archive6.php})
+
+  has been added.
+ 
+The proof of the 2 lemma Lemma5p12p3, Lemma5p12p4 were directly 
+  inspired by Narboux Lemma (\cite{GTARSKI1.ABS} GTARSKI1:26) and 
+"endofsegidand" 
+  from METAMATH.
+ 
+In the following section,
+ the equivalence between 
+  the simplified axiomatic system of Makarios \cite{makarios2014further} is 
+  proved with axioms defines 
+in \cite{GTARSKI1.ABS} and \cite{GTARSKI2.ABS}. 
+  This equivalence has already been shown (see GEOCOQ).
+
+ To recall using 
+  the notations of Makarios:
+
+
+  \begin{itemize}
+
+  \item Reflexivity axiom for equidistance
+ $$\forall a,b, ab \equiv ba$$ (RE)
+
+  \item Transitivity axiom for equidistance 
+$$\forall a,b,p,q,r,s,ab \equiv pq \and ab \equiv rs \implies pq   \equiv rs$$ (TE)
+
+  \item Identity axiom for equidistance 
+$$\forall a,b,c, ab\equiv cc\implies a=b$$ (IE)
+
+  \item Axiom of segment construction
+ $$\forall a,b,c,q\exists x,Bqax\and ax\equiv bc$$ (SC)
+  
+\item Five-segments axiom
+ $$\forall a,b,c,d,a',b',c',d',a\neq b \and Babc \and Ba'b'c' \and 
+  ab\equiv a'b' \and
+ bc \equiv b'c' \and
+ ad \equiv a'd' \and
+ bd \equiv b'd' \implies cd\equiv c'd'$$ (FS)
+
+  \item Identity axiom for betweenness
+ 
+  $$\forall a,b,Baba\implies a=b$$ (IB)
+  
+\item Axiom of Pasch
+$$\forall a,b,c,p,q Bapc \and Bbqc \implies \exists x,Bpxb\and 
+  Bqxa$$(Pa)
+
+  \item Lower 2-dimensional axiom
+ 
+  $$\exists a,b,c,\not Ba,b,c\and \not Bbca \and \not Bcab$$ (LO_2)
+
+  \item Upper 2-dimensional axiom
+$$\forall a,b,c,p,q, p  \neq q \and ap\equiv aq \and bp\equiv bq\and cp  \equiv cq\implies Babc\or Bbca\or Bcab$$ (Up_2)
+
+  \item Euclidean axiom
+ $$\forall a,b,c,d,t, Badt\and Bbdc\and a\neq d \implies \exists x,y, 
+   Babx\and Bacy\and Bxty$$ (EU)
+  
+\item Axiom of continuity
+ 
+  $$\forall X,Y,(\exists a,\forall x,y,x\in X\and y\in Y\implies 
+  Baxy)\implies
+(\exists b,\forall x,y,x\in X\and y\in Y\implies Bxby)$$ (Co)
+
+
+  \item 
+$$\forall a,b,c,d,a',b',c',d',a\neq b \and Babc \and Ba'b'c' \and ab\equiv a'b' 
+  \and 
+bc \equiv b'c'   \and
+ 
+  ad \equiv a'd' \and 
+bd \equiv b'd' \implies dc\equiv c'd'$$ (FS')
+  \end{itemize}
+  \par
+
+  
+We show that (CE) = $\{$(RE) (TE) (IE) (FS) (IB) (Pa) (Lo2) (Up2) (Eu) (Co)$\}$ is equivalent to the   system defined in \cite{GTARSKI1.ABS} and \cite{GTARSKI2
+
+.ABS}.
+  \par
+  Moreover, we show very easily that the real Euclidean plane is a model for
+
+  the axiom system (CE'_2) $\
+${(TE)(IE)(SC)(FS')(IB)(Pa)(Lo2)(Up2)(Eu)(Co)$\}$ 
+  of MAKARIOS.
+
+  
+
+Like Makarios we show the equivalence between (CE_2) and (CE'_2) but
+
+  using less axiom more particularly we show that
+
+  \begin{itemize}
+
+  \item $(RE), (TE),(FS) |- (FS')$
+
+  \item $(TE), (IE) (SC), (FS ') |- (FS)$
+
+  \end{itemize}
+
+
+  \par
+  Additionally, we prove that
+ $$(TE), (IE), (SC), (FS ') |- (RE).$$
+
+
+  We don't use (IB) and (Pa).}
+,
+            
+  MSC2010 = {51A05 51M04 03B35},
+
+  KEYWORDS = {Tarski's geometry axioms; foundations of geometry; Euclidean plane; }}
+
+
+
+@article{makarios2014further,
+  
+author={Makarios, TJM},
+    
+journal={Note di Matematica},
+      
+volume={33},
+   
+number={2},
+	  
+pages={123--132},
+	    
+year={2014}}
+
+
+
+@inproceedings{beeson2014otter,
+  
+title={OTTER proofs in Tarskian geometry},
+  
+author={Beeson, Michael and Wos, Larry},
+  
+booktitle={International Joint Conference on Automated Reasoning},
+  
+pages={495--510},
+  
+year= {2014},
+  
+organization={Springer}
+}
+
+
+
+
+@book{schwabhauser2013metamathematische,
+  
+title={Metamathematische methoden in der geometrie},
+  
+author={Schwabh{\"a}user, Wolfram and Szmielew, Wanda and Tarski, Alfred},
+  
+year={2013},
+ publisher={Springer-Verlag}
+}
+
+
+
+@article{dhurdjevic2015automated,
+
+title={Automated generation of machine verifiable and readable proofs: 
+  A case study of Tarski's geometry},
+
+  author={{\DH}ur{\dj}evi{\'c}, Sana Stojanovi{\'c} and Narboux, Julien and Jani{\v{c}}i{\'c}, Predrag},
+      journal={Annals of Mathematics and Artificial Intelligence},
+      
+volume={74},
+        
+number={3-4},
+	  
+pages={249--269},
+	    
+year= {2015},
+	      
+publisher={Springer}
+}
+
+
+
+GEOCOQ:
+http://geocoq.github.io/GeoCoq/
+http://geocoq.github.io/GeoCoq/html/GeoCoq.Meta_theory.Models.tarski_to_makarios.html
+
+
+
+@inproceedings{narboux2006mechanical,
+  
+title={Mechanical theorem proving in Tarski's geometry},
+    
+author={Narboux, Julien},
+      booktitle={International Workshop on Automated Deduction in Geometry},
+        
+pages={139--156},
+	  
+year={2006},
+	    
+organization={Springer}
+	    }
+
+
+
+
+
+METAMATH: Contributed by Scott Fenton, 2013 / Revised by Mario Carneiro, 2014.
+http://us.metamath.org/mpegif/mmtheorems236.html#mm23591s
+http://us.metamath.org/mpegif/mmtheorems237.html#mm23616s
+http://us.metamath.org/mpegif/mmtheorems237.html#mm23680s
+http://us.metamath.org/mpegif/mmtheorems238.html#mm23710s
+http://us.metamath.org/mpegif/mmtheorems238.html#mm23727s
+http://us.metamath.org/mpegif/mmtheorems238.html#mm23733s
+http://us.metamath.org/mpegif/mmtheorems238.html#mm23785s
+http://us.metamath.org/mpegif/mmtheorems239.html#mm23804s
+http://us.metamath.org/mpegif/mmtheorems239.html#mm23817s
+http://us.metamath.org/mpegif/mmtheorems239.html#mm23832s
+

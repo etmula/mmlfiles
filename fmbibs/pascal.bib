@@ -1,0 +1,76 @@
+@ARTICLE{PASCAL.MIZ,
+    TITLE = {Pascal's Theorem in Real Projective Plane},
+    AUTHOR = {Coghetto, Roland},
+    ADDRESS1 = {Rue de la Brasserie 5\\7100 La Louvi\`ere, Belgium},
+    DAY = {27},
+    MONTH = {June},
+    YEAR = {2017},
+    SUMMARY = {In this article, we check with the Mizar system \cite{Mizar-State-2015},
+  the Pascal's theorem in the real projective plane.
+  ("In projective geometry, Pascal's theorem (also known as the Hexagrammum Mysticum Theorem)
+  states that if six arbitrary points are chosen on a conic
+  (i.e., ellipse, parabola or hyperbola) and joined by line segments in any order
+  to form a hexagon, then the three pairs of opposite sides of the hexagon (extended if necessary)
+  meet in three points which lie on a straight line,
+  called the Pascal line of the hexagon."
+  \footnote{WIKIPEDIA, https://en.wikipedia.org/wiki/Pascal's_theorem}).
+  Pappus's theorem is the special case of a degenerate conic of two lines.\par
+  For proving the Pascal's theorem, we use the technics developped in
+  the section "Projective Proofs of Pappus’s Theorem" in
+  the chapter "Pappos’s Theorem: Nine proofs and three variations"
+  \cite{Richter-Gebert2011}. We also follow some ideas from Harrison's work.
+  With HOL/Light, he has proof the Pascal theorem
+  \footnote{https://github.com/gilith/hol-light/blob/master/100/pascal.ml}.\par
+  For a lemma, we use \verb?PROVER9?\footenote{https://www.cs.unm.edu/~mccune/prover9/} and \verb?OTT2MIZ?   by Josef Urban,
+  \footnote{See its homepage https://github.com/JUrban/ott2miz}\cite{rudnicki2011escape,grabowski2006solving,grabowski2015mechanizing}.
+  We note that we don't use Skolem/Herbrand functions(see ``Skolemization''
+  in \cite{alama2012escape}.}
+    MSC2010 = {51E45,51N15,03B35},
+    KEYWORDS = {Pascal's Theorem, real projective plan, Grassman-Pl{�}ucker relation}
+}
+
+
+@article{grabowski2006solving,
+  title={Solving Two Problems in General Topology Via Types},
+  author={Grabowski, Adam},
+  journal={Types for Proofs and Programs},
+  pages={138--153},
+  year={2006},
+  publisher={Springer}
+}
+@article{grabowski2015mechanizing,
+  title={Mechanizing complemented lattices within Mizar type system},
+  author={Grabowski, Adam},
+  journal={Journal of Automated Reasoning},
+  volume={55},
+  number={3},
+  pages={211--221},
+  year={2015},
+  publisher={Springer}
+}
+@inproceedings{rudnicki2011escape,
+  title={Escape to ATP for Mizar},
+  author={Rudnicki, Piotr and Urban, Josef},
+  booktitle={First International Workshop on Proof eXchange for Theorem Proving-PxTP 2011},
+  year={2011}
+}
+
+@Inbook{Richter-Gebert2011,
+author="Richter-Gebert, J{\"u}rgen",
+title="Pappos's Theorem: Nine Proofs and Three Variations",
+bookTitle="Perspectives on Projective Geometry: A Guided Tour Through Real and Complex Geometry",
+year="2011",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="3--31",
+isbn="978-3-642-17286-1",
+doi="10.1007/978-3-642-17286-1_1",
+url="http://dx.doi.org/10.1007/978-3-642-17286-1_1"
+}
+
+@article{alama2012escape,
+  title={Escape to Mizar for ATPs},
+  author={Alama, Jesse},
+  journal={arXiv preprint arXiv:1204.6615},
+  year={2012}
+}

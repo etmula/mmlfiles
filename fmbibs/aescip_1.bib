@@ -1,0 +1,45 @@
+@MISC{AESCIP_1.MIZ,
+  AUTHOR = {Arai, Kenichi and Okazaki, Hiroyuki},
+  TITLE = {Formalization of the Advanced Encryption Standard -- Part {I}},
+  SECTION1 = {Preliminaries},
+  SECTION2 = {State Array},
+  SECTION3 = {SubBytes},
+  SECTION4 = {ShiftRows},
+  SECTION5 = {AddRoundKey},
+  SECTION6 = {Key Expansion},
+  SECTION7 = {Encryption and Decryption},
+  DAY = {7},
+  MONTH = {October},
+  YEAR = {2013},
+  ADDRESS1 = {Tokyo University of Science, Chiba, Japan},
+  ADDRESS2 = {Shinshu University, Nagano, Japan},
+  SUMMARY = {In this article, we formalize the Advanced Encryption
+    Standard (AES). AES, which is the most widely used symmetric
+    cryptosystem in the world, is a block cipher that was selected
+    by the National Institute of Standards and Technology (NIST)
+    as an official Federal Information Processing Standard for the
+    United States in 2001 \cite{FIPS:197}. AES is the successor to
+    DES \cite{DESCIP_1.ABS}, which was formerly the most widely used
+    symmetric cryptosystem in the world. We formalize the AES
+    algorithm according to \cite{FIPS:197}. We then verify the
+    correctness of the formalized algorithm that the ciphertext
+    encoded by the AES algorithm can be decoded uniquely by the same
+    key. Please note the following points about this formalization.
+    The AES round process is composed of the SubBytes, ShiftRows,
+    MixColumns, and AddRoundKey transformations. In this formalization,
+    the SubBytes and MixColumns transformations are given as permutations,
+    because it is necessary to treat the finite field GF($2^8$) for
+    those transformations. The formalization of AES that considers
+    the finite field GF($2^8$) is formalized by the future
+    article.},
+  NOTE = {This work was supported by JSPS KAKENHI 21240001 and 22300285.}}
+
+@ARTICLE{FIPS:197,
+  AUTHOR = {U.S. Department of Commerce/National Institute of
+    Standards and Technology},
+  TITLE = {FIPS PUB 197, Advanced Encryption Standard (AES)},
+  JOURNAL = {Federal Information Processing Standars Publication},
+  YEAR = {2001},
+  NOTE = {Available at:
+    {\tt http://csrc.nist.gov/publications/fips/fips197/fips-197.pdf}}}
+

@@ -1,0 +1,85 @@
+@MISC{HILB10_2.MIZ,
+  AUTHOR = {P\k{a}k, Karol},
+  TITLE = {Diophantine sets -- Preliminaries},
+  NOTE = {This work has been financed by the
+    resources of the Polish National Science Centre granted by decision
+    no. DEC-2015/19/D/ST6/01473.},
+  SECTION1 = {Preliminaries},
+  SECTION2 = {Polynomial extended by 0},
+  SECTION3 = {Polynomial permuted by $perm$},
+  SECTION4 = {Main Lemmas},
+  SECTION5 = {Diophantine Sets}
+  DAY = {27},
+  MONTH = {March},
+  YEAR = {2018},
+  ADDRESS1 = {Institute of Informatics\\University of Bia{\l}ystok\\Konstantego Cio{\l}kowskiego 1M, 15-245 Bia{\l}ystok\\Poland},
+  SUMMARY = {In this article, we define Diophantine sets using the Mizar formalism.
+  We focus on selected properties of multivariate polynomials, i.e.,  functions of several variables
+  to show finally that the class of Diophantine sets is closed with  respect to the operations of union and intersection.
+  \par This article is the next in a series aiming to formalize
+  the proof of Matiyasevich's negative solution of Hilbert's
+  tenth problem.},
+  INTRODUCTION={
+  Multivariate polynomials are often interpreted in informal  mathematical practice
+  as
+  a finite sum of terms with each term being a product of a nonzero  coefficient $c\in\mathfrak{F}\setminus\{{\bf 0}\}$ and
+  a monomial $x_1^{e_1}\cdot x_2^{e_2}\cdot \ldots \cdot x_n^{e_n}$  determined by an exponent vector $\langle e_1,e_2,\ldots,e_n\rangle\in  \mathbb{N}^n$
+  where $n$ is a given natural number.
+  \par
+  Formal interpretation of multivariate polynomials developed in the Mizar
+  Mathematical Library \cite{FourDecades}
+  can be considered as a generalization of the informal approach, where  the natural number $n$ is replaced by an ordinal number $\lambda$.
+  Additionally, to avoid problems that occur when multiplying an  infinite number of nonzero factors,
+  each exponent vector $e:\lambda\mapsto\mathbb{N}$ has only a finite  number of nonzero coordinates.
+  Such exponent vectors are called \textit{bags} of  $\lambda$ and the  set of all bags for a given $\lambda$ is denoted by
+  \textit{Bags} $\lambda$.
+  It is important to note that for a finite $\lambda$,
+  each bag $b$ corresponds to a finite sequence (with $0$-based numbering).
+  Using bags, multivariate polynomials have been defined in \cite{POLYNOM1.ABS}
+  as functions that assign a coefficient (an element of $\mathfrak{F}$)  to each bag of $\lambda$ and are zero almost
+  everywhere. Moreover, the evaluation for a multivariate polynomial $p$
+  and vector ${x}:\lambda\mapsto\mathfrak{F}$  has been defined as
+  \begin{equation}
+  \mbox{eval}(p,{x}) = \displaystyle\sum_{b\in {Bags}\,\lambda} p(b)\:
+  \cdot\:  \prod_{i \in \lambda}x(i)^{b(i)}.
+  \end{equation}\par
+  Based on this approach we define Diophantine sets in Def.~\ref{def6}  as follows.
+  Let us consider a natural number $n$ that plays the role of the dimension and
+   a subset $D$ of all finite sequences of length $n$ numbered from $0$  (see Def.~\ref{def5}).
+  We call $D$ {\it Diophantine} if there exist a natural number $k$ and  a $n\!+\!k$--variable polynomial $p$ such that
+  each coefficient is an integer number and
+  \begin{equation}
+  \forall_{{x}:n\mapsto \mathbb{N}} \,{x}\in D \:\Longleftrightarrow\:
+  \exists_{{y}:k\mapsto \mathbb{N}}\, \mbox{eval}(p,{x}^\smallfrown{y})=0.
+  \end{equation}
+  \par The main aim of our article is to show that
+  the union and intersection of two $n$--dimension Diophantine sets $D_1$, $D_2$
+  is also Diophantine. The informal proof of these facts as presented by  Z. Adamowicz and  P. Zbierski in \cite{AdamowiczZbierski}
+  is quite obvious. Suppose that $p_i$ is $n+k_i$--variable polynomial  which determines $D_i$ for $i=1,2$.
+  Then $p^\prime_1\cdot p^\prime_2$ determines $D_1\cap D_2$ and  $(p^\prime_1)^2+ (p^\prime_2)^2$ determines $D_1\cup D_2$
+  where $p^\prime_i$ is the $n+k_1+k_2$--variable polynomial obtained  from $p_i$ by modifying the order of variables
+  and adding insignificant variables. The property of $p^\prime_1,  p^\prime_2$, used in \cite{AdamowiczZbierski}
+  can be formally formulated as follows:
+  \begin{equation}
+  \mbox{eval}(p^\prime_1,x^\smallfrown{y_1}^\smallfrown{y_2})=\mbox{eval}(p_1,x^\smallfrown{y_1})\;\wedge\;
+  \mbox{eval}(p^\prime_2,x^\smallfrown{y_1}^\smallfrown{y_2})=\mbox{eval}(p_2,x^\smallfrown{y_2})
+  \end{equation}
+  for arbitrary ${{x}:n\mapsto \mathbb{N}},\,{{y_1}:k_1\mapsto \mathbb{N}},\,
+  {{y_2}:k_2\mapsto \mathbb{N}}$.
+  The existence of such polynomials have been showed in  Th.~\ref{Th27},~\ref{Th28}.
+  The construction of these polynomials is useful for the further  development of multivariate polynomials in
+  the Mizar Mathematical Library. Therefore we define and provide basic  properties of two transformations
+  that
+  \begin{itemize}
+  \item add an additional variable to the polynomial, preserving its value, i.e.
+  \begin{equation}
+    \forall_{{x}:n\mapsto \mathbb{N},a \in \mathbb{N}}\,
+    \mbox{eval}(p \mbox{ extended by }0,x^\smallfrown\langle a\rangle)  =  \mbox{eval}(p,x),\\
+  \end{equation}
+  \item permute the order of variables, preserving its value, i.e.
+  \begin{equation}
+   \forall_{{x}:n\mapsto \mathbb{N}}\,
+  \mbox{eval}(p \mbox{ permuted by }\sigma,x) =   \mbox{eval}(p,x\cdot\sigma^{-1}).
+  \end{equation}
+  \end{itemize}}
+  }

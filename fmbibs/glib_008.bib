@@ -1,0 +1,67 @@
+@MISC{GLIB_008.MIZ,
+  AUTHOR = {Koch, Sebastian},
+  NOTE1 = {The author is enrolled in the Johannes Gutenberg University in Mayence, Germany},
+  TITLE = {About Supergraphs, {P}art {III}},
+  SECTION1 = {Preliminaries},
+  SECTION2 = {Edgeless and non edgeless Graphs},
+  SECTION3 = {Finite Graph Sequences},
+  SECTION4 = {Construction of finite Graphs},
+  DAY = {27},
+  MONTH = {May},
+  YEAR = {2018},
+  ADDRESS1 = {Germany\\\href{mailto:skoch02@students.uni-mainz.de}{skoch02@students.uni-mainz.de}},
+  SUMMARY = {The previous articles \cite{GLIB_006} and \cite{GLIB_007} introduced formalizations of the step-by-step operations we use to construct finite graphs by hand. That implicitly showed that any finite graph can be constructed from the trivial edgeless graph $K_1$ by applying a finite sequence of these basic operations. In this article that claim is proven explicitly with Mizar\cite{FourDecades}. In the literature a mutual understanding how the graphical representation of graphs is to be translated into a description fitting the set-theoretic definition is usually assumed (cf. \cite{SIMPLE,MULTI,GERWAG,SELECTED}), but in Mizar we need explicit operations.\par
+  For certain types of finite graphs (e.g. simple or connected) and for finite graphs in general, finite graph sequences are given to construct the graph from $K_1$ or a certain subgraph using only a selection of the operations. The length of these sequences is given depending only on the order and size of the graph to be constructed. From these theorems schemes are derived providing easier methods to prove properties of such graphs given that they hold for $K_1$ and the corresponding basic operations needed to construct such graphs.\par
+  In the preliminaries many miscellaneous graph facts are proven. The property of a graph to be edgeless is rigorously introduced. Technicalities of {\texttt{Graph-yielding}} finite sequences are formalized, too.
+  }
+}
+@Article{FourDecades,
+author={Grabowski, Adam and Korni{\l}owicz, Artur and Naumowicz, Adam},
+title={Four Decades of {M}izar},
+journal={Journal of Automated Reasoning},
+year={2015},
+volume={55},
+number={3},
+pages={191--198},
+issn={1573-0670},
+doi={10.1007/s10817-015-9345-1}}
+@book{GERWAG,
+  title = {Graphentheorie},
+  series = {B.I-Hochschultaschenb端cher ; 248},
+  author = {Wagner, Klaus},
+  address = {Mannheim [u.a.]},
+  publisher = {Bibliograph. Inst.},
+  year = {1970},
+  ISBN = {3-411-00248-4},
+  pages = {220 S.}
+}
+@book{SIMPLE,
+  TITLE = {Introduction to graph theory},
+  AUTHOR = {Wilson, Robin James},
+  ADDRESS = {Edinburgh},
+  PUBLISHER = {Oliver & Boyd},
+  YEAR = {1972},
+  ISBN = {0-05-002534-1},
+  PAGES = {VIII, 168 S.},
+  URL = {http://scans.hebis.de/HEBCGI/show.pl?10670775_toc.pdf},
+}
+@book{MULTI,
+  TITLE = {Graph theory},
+  SERIES = {Graduate texts in mathematics ; 244},
+  AUTHOR = {Bondy, John Adrian ; Murty, U. S. R.},
+  ADDRESS = {New York, NY},
+  PUBLISHER = {Springer},
+  YEAR = {2008},
+  ISBN = {978-1-84628-969-9},
+  PAGES = {XII, 652 S.},
+  URL = {http://scans.hebis.de/HEBCGI/show.pl?19542627_toc.pdf ; http://scans.hebis.de/HEBCGI/show.pl?19542627_kap-2.pdf ; http://scans.hebis.de/HEBCGI/show.pl?19542627_ein-1.pdf}
+}
+@book{SELECTED,
+  TITLE = {Selected topics in graph theory},
+  EDITOR = {Beineke, Lowell W.},
+  ADDRESS = {London [et al.]},
+  PUBLISHER = {Academic Press},
+  YEAR = {1978},
+  ISBN = {0-12-086250-6},
+  pages = {IX, 451 S.}
+}

@@ -1,0 +1,79 @@
+@MISC{ANPROJ_9.MIZ,
+    TITLE = {Group of Homography in Real Projective Plane},
+    AUTHOR = {Coghetto, Roland},
+    ADDRESS1 = {Rue de la Brasserie 5\\ 7100 La Louvi\`ere, Belgium},
+    DAY = {17},
+    MONTH = {March},
+    YEAR = {2017},
+    SUMMARY = {Using the Mizar system \cite{Mizar:2015}, we formalized that
+    homographies of the projective real plane (as defined
+    in \cite{ANPROJ_8.ABS}), form a group.
+    \par
+    Then, we prove that, using the notations of Borsuk and Szmielew in \cite{BORSUK:1}:
+    "Consider in space $\mathbb{RP}^2$ points $P_1,P_2,P_3,P_4$ of which three points
+    are not collinear and points $Q_1,Q_2,Q_3,Q_4$ each three points of which are also
+    not collinear. There exists one homography $h$ of space $\mathbb{RP}^2$ such that
+    $h(P_i)=Q_i$ for $i = 1,2,3,4$." (Existence Statement 52 and Existence Statement 53)
+    \cite{BORSUK:1}. Or, using notations of Richter \cite{richter2011perspective}:
+    "Let $[a]$, $[b]$, $[c]$, $[d]$ in $\mathbb{RP}^2$ be four points of which no three
+    are collinear and let $[a']$,$[b']$,$[c']$,$[d']$ in $\mathbb{RP}^2$ be another four
+    points of which no three are collinear, then there exists a
+    $3\times 3$ matrix $M$ such that $[Ma] = [a']$, $[Mb] = [b']$, $[Mc]$ = $[c']$,
+    and $[Md] = [d']$.
+    \par
+    Makarios has formalized the same results in Isabelle/Isar (the collineations form a group,
+    lemma statement52-existence and lemma statement 53-existence) and published it
+    in Archive of Formal Proofs \cite{makarios2012mechanical,Tarskis_Geometry-AFP},
+    MSC2010 = {51E45,51N15,03B35},
+    KEYWORDS = {projectivity; projective transformation; real projective plane;
+     group of homography}}
+
+
+@book{richter2011perspectives,
+  title={Perspectives on projective geometry: a guided tour through real and complex geometry},
+  author={Richter-Gebert, J{\"u}rgen},
+  year={2011},
+  publisher={Springer Science \& Business Media}
+}
+@article{richter1995mechanical,
+  title={Mechanical theorem proving in projective geometry},
+  author={Richter-Gebert, J{\"u}rgen},
+  journal={Annals of Mathematics and Artificial Intelligence},
+  volume={13},
+  number={1-2},
+  pages={139--172},
+  year={1995},
+  publisher={Springer}
+}
+@incollection{magaud2008formalizing,
+  title={Formalizing projective plane geometry in Coq},
+  author={Magaud, Nicolas and Narboux, Julien and Schreck, Pascal},
+  booktitle={Automated Deduction in Geometry},
+  pages={141--162},
+  year={2008},
+  publisher={Springer}
+}
+@incollection{fuchs2010formalization,
+  title={A formalization of grassmann-cayley algebra in COQ and its application to theorem proving in projective geometry},
+  author={Fuchs, Laurent and Thery, Laurent},
+  booktitle={Automated Deduction in Geometry},
+  pages={51--67},
+  year={2010},
+  publisher={Springer}
+}
+@book{makarios2012mechanical,
+  title={A Mechanical Verification of the Independence of Tarski's Euclidean Axiom: A Thesis Submitted to the Victoria University of Wellington in Fulfilment of the Requirements for the Degree of Master of Science in Mathematics},
+  author={Makarios, T.J.M.K.},
+  year={2012},
+  publisher={Victoria University of Wellington}
+}
+@article{Tarskis_Geometry-AFP,
+  author  = {T. J. M. Makarios},
+  title   = {The independence of Tarski's Euclidean axiom},
+  journal = {Archive of Formal Proofs},
+  month   = oct,
+  year    = 2012,
+  note    = {\url{http://isa-afp.org/entries/Tarskis_Geometry.shtml},
+            Formal proof development},
+  ISSN    = {2150-914x},
+}

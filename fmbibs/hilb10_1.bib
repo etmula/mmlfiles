@@ -1,0 +1,80 @@
+@MISC{HILB10_1.MIZ, 
+  AUTHOR = {P\k{a}k, Karol},
+  TITLE = {The {M}atiyasevich Theorem -- Preliminaries},
+  NOTE = {This work has been financed by the
+    resources of the Polish National Science Centre granted by decision
+    no. DEC-2015/19/D/ST6/01473.},
+  SECTION1 = {Preliminaries},
+  SECTION2 = {Solutions of Pell's Equation - Special Case},
+  SECTION3 = {Solutions of Pell's Equation - Inequalities},
+  SECTION4 = {Solutions of Pell's Equation - Equality},
+  SECTION5 = {Solutions of Pell's Equation - Congruences},
+  SECTION6 = {Solutions of Pell's Equation - Divisibility},
+  SECTION7 = {Special Case of Pell's Equation is Diophantin},
+  SECTION8 = {Exponential Function is Diophantin},
+  DAY = {29},
+  MONTH = {November},
+  YEAR = {2017},
+  ADDRESS1 = {Institute of Informatics\\University of Bia{\l}ystok\\Konstantego Cio{\l}kowskiego 1M, 15-245 Bia{\l}ystok\\Poland},
+  SUMMARY = {In this article, we prove, using the Mizar formalism,
+  a number of properties that correspond to the Pell's Equation
+  to prove finally two basic lemmas that are essential in the proof
+  of Matiyasevich's negative solution of Hilbert's tenth problem.
+  \par For this purpose, first, we focus on a special case of the
+  Pell's Equation, which has the form
+  \begin{equation}x^2-(a^2-1)y^2=1,
+  \end{equation} where $a>1$ and integer numerical solutions
+  are sought for $x$ and $y$. We develop the Pell's Equation
+  theory formalized for the general case in \cite{Pelle_eq.abs}.
+  Note that $x_0(a)=1$, $y_0(a)=0$ is an obvious solution.
+  Additionally, if we know a solution of the Pell's equation,
+  we can determine all solutions as well as we can order them.
+  In our case the $n+1$-solution $x_{n+1}(a)$, $y_{n+1}(a)$
+  can be simply determined in terms of the $n$-solution as follows:
+  \begin{align}
+   x_{n+1}(a) =& a \cdot x_n(a) + (a^2-1)\cdot y_n(a)\notag\\
+   y_{n+1}(a) =&  x_n(a) + a \cdot y_n(a)\notag
+  \end{align}
+  We show a number of dependency between the elements of these sequences
+  to provide that the equality $y_z(a)=y$ is diophantin.
+  For this purpose we justify that for a given $a$, $z$, $y$ holds
+  $y_z(a)=y$ if and only if the following system has a solution for
+  natural numbers $x$, $x_1$, $y_1$, $A$, $x_2$, $y_2$:
+  \begin{align}
+    &a>1 \;\wedge\; y_1\geq y \;\wedge\; A > y \;\wedge\; y \geq z\;\wedge\notag\\
+    &x^2 - (a^2-1)y^2 =1\;\wedge\; x_1^2 - (a^2-1)y_1^2 =1\;\wedge\; x_2^2 - (A^2-1)y_2^2 =1 \;\wedge\notag\\
+    &y_2 \equiv y \mbox{ mod } x_1 \;\wedge\;A \equiv a \mbox{ mod } x_1\;\wedge\notag\\
+    &y_2 \equiv z \mbox{ mod } 2y\;\wedge\;A \equiv 1 \mbox{ mod } 2y\;\wedge\;y_1\equiv 0 \mbox{ mod } y^2\notag
+   \end{align}
+  Based on this result we prove that the equality $y = x^z$ is diophantin.
+  For this purpose we justify that for a given $x$, $y$, $z$ that $y = x^z$
+  if and only if
+  \begin{align}
+    & (y = 1 \wedge z = 0) \;\vee\notag\\
+    & (x = 0 \wedge y = 0 \wedge z > 0) \;\vee\;(x = 1 \wedge y = 1 \wedge z > 0) \;\vee\notag\\
+    &(x > 1 \wedge z > 0 \wedge \exists_{ y_1,y_2,y_3,K \in\mathbb{N}}\notag\\
+     & \strut\mkern50mu   y_1 = y_{z+1}(x) \wedge K > 2zy_1 \wedge y_2 = y_{z+1}(K) \wedge y_3 = y_{z+1}(Kx) \wedge\notag\\
+    &  \strut\mkern50mu   (0 \leq y-\frac{y_3}{y_2} <\frac{1}{2} \vee 0 \leq \frac{y_3}{y_2} -y < \frac{1}{2})).\notag
+   \end{align}
+ \par The formalization follows Z. Adamowicz, P. Zbierski \cite{AdamowiczZbierski}
+  as well as M. Davis \cite{Hilbert10}.}
+}
+
+@book{AdamowiczZbierski,
+  author    = {Adamowicz, Zofia and Zbierski, Pawe\l{}},
+  title     = {Logic of Mathematics: A Modern Course of Classical Logic},
+  series    = {Pure and Applied Mathematics: A Wiley Series of Texts, Monographs and Tracts},
+  year      = {1997},
+  publisher = {Wiley-Interscience}
+}
+
+@ARTICLE{Hilbert10,
+  AUTHOR =       {Martin Davis},
+  TITLE =        {Hilbert's Tenth Problem is Unsolvable},
+  JOURNAL =      {The American Mathematical Monthly, Mathematical Association of America},
+  YEAR =         {1973},
+  volume =       {80},
+  number =       {3},
+  pages =        {233--269},
+  DOI   =        {10.2307/2318447}
+}

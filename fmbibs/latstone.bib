@@ -1,0 +1,72 @@
+@MISC{LATSTONE.MIZ,
+  AUTHOR = {Grabowski, Adam},
+  TITLE = {Stone Lattices},
+  SECTION1 = {Preliminaries},
+  SECTION2 = {Pseudocomplements in Lattices},
+  SECTION3 = {Skeleton of a Pseudocomplemented Lattice},
+  SECTION4 = {Stone Identity},
+  SECTION5 = {Dense Elements in Lattices},
+  SECTION6 = {An Example: Lattice of Natural Divisors},
+  SECTION7 = {Products of Pseudocomplemented Lattices},
+  SECTION8 = {Special Construction: $B$ Squared},
+  DAY = {22},
+  MONTH = {October},
+  YEAR = {2015},
+  ADDRESS1 = {Institute of Informatics, Univeristy of Bia{\l}ystok\\
+  Cio{\l}kowskiego 1M, 15-245 Bia{\l}ystok, Poland},
+  SUMMARY = {The article continues the formalization
+    of the lattice theory (as structures with two binary operations,
+    not in terms of ordering relations).
+  In the paper, the notion of a pseudocomplement in a lattice is
+  formally introduced in Mizar, and based on this we define the notion
+  of the skeleton and the set of dense elements in a pseudo-complemented
+  lattice, giving the meet-decomposition of arbitrary element of a lattice
+  as the infimum of two elements: one belonging to the skeleton, and
+  the other which is dense.
+  \par
+  The core of the paper is of course the idea of Stone identity
+  $$a^{\star} \sqcup a^{\star\star} = \top,$$
+  which is fundamental for us: Stone lattices are those lattices $L$,
+  which are distributive, bounded, and satisfy Stone identity for all
+  elements $a\in L.$
+  Stone algebras were introduced by Gr\"atzer and Schmidt
+  in \cite{Gratzer:1957}.
+  \par
+  All Boolean lattices are Stone, and
+  a natural example of the lattice which is Stone, but not Boolean,
+  is the lattice of all natural divisors of $p^2$ for arbitrary
+  prime number $p$. At the end we formalize the notion of
+  the Stone lattice constructed as a sublattice of $B^2$, where $B$
+  is arbitrary Boolean algebra (and we describe skeleton and
+  the set of dense elements in such lattices).
+  In a natural way, we deal
+  with Cartesian product of pseudo-complemented lattices.
+  \par
+  Our formalization was inspired by \cite{NewGratzer}, and is an important
+  step in formalizing Jouni J{\"a}rvinen \emph{Lattice theory
+  for rough sets} \cite{Jarvinen:2007}, so it follows rather the
+  latter paper.}}
+
+@BOOK{NewGratzer,
+ AUTHOR = {Gr\"atzer, George},
+ TITLE = {Lattice Theory: Foundation},
+ YEAR = 2011,
+ PUBLISHER = {Birkh\"auser}}
+
+@ARTICLE{Jarvinen:2007,
+  AUTHOR = {J\"arvinen, Jouni},
+  TITLE = {Lattice Theory for Rough Sets},
+  JOURNAL = {Transactions of Rough Sets, {VI}, Lecture Notes in Computer
+  Science},
+  VOLUME = 4374,
+  YEAR = 2007,
+  PAGES = {400-498}}
+
+@ARTICLE{Gratzer:1957,
+  AUTHOR = {Gr\"atzer, George and Schmidt, E.T.},
+  TITLE = {On a problem of M.H. Stone},
+  JOURNAL = {Acta Mathematica Academiae Scientarum Hungaricae},
+  NUMBER = {8},
+  YEAR = 1957,
+  PAGES = {455-460}}
+

@@ -1,0 +1,206 @@
+@MISC{FINANCE3.MIZ,
+  AUTHOR = {Jaeger, Peter},
+  TITLE = {Modelling Real World Using Stochastic Processes and Filtration},
+  SECTION1 = {Special Random-Variables},
+  SECTION2 = {Special Sigma-Fields},
+  SECTION3 = {Construction of Filtration and Examples},
+  SECTION4 = {Stochastic Process: Adapted and Predictable},
+  SECTION5 = {Example for a Stochastic Process},
+  DAY = {30},
+  MONTH = {December},
+  YEAR = {2015},
+  ADDRESS1 = {Siegmund-Schacky Str. 18a, 80993 Munich, Germany},
+  SUMMARY = {First we give an implementation in Mizar \cite{Mizar:2015}
+  of basic important definitions of stochastic finance, i.e. filtration
+             (\cite{klenke}, p. 183, 185), (adapted) stochastic process
+             (\cite{klenke}, p. 185) and predictable stochastic process
+             (\cite{follmerschied:2004}, p. 224). Second we give some
+             concrete formalization and verification to real world examples.
+             \par
+             In article \cite{FINANCE2.ABS}
+             we started to define random variables for a
+             similar presentation to the book \cite{follmerschied:2004}. Here
+             we continue to do this. Next we define the stochastic process.
+             For further definitions based on stochastic process we implement
+             the definition of filtration.
+             \par
+             To get a better understanding we give a real world example and
+             connect the statements to the theorems.
+             Other similar examples are given in \cite{kremer:2006},
+              p. 143--159
+             and \cite{sandmann:2001}, p. 110--124.
+             \par
+             First we introduce sets which give informations depending on
+             today, tomorrow and the day after tomorrow.
+              \par
+             Today: Omega_now = {{},{1,2,3,4}}
+                    see FINANCE3:def 6, Special_SigmaField1
+             Tomorrow: Omega_fut1 = {{},{1,2},{3,4},{1,2,3,4}}
+                    see FINANCE3:def 7, Special_SigmaField2
+             The day after tomorrow: Omega_fut2 =
+                       power set of({1,2,3,4})
+                    see FINANCE3:def 8, Special_SigmaField3
+             \par
+             We give an overview for some events in the sigma-algebras
+             Omega_now,Omega_fut1,Omega_fut2:
+             \par
+             Events of Omega_fut2  Events of Omega_fut1   Events of Omega_now
+                  {}              =         {}          =         {}
+                 {1}             c=        {1,2}       c=   {1,2,3,4}
+                 {2}             c=        {1,2}       c=   {1,2,3,4}
+                 {3}             c=        {3,4}       c=   {1,2,3,4}
+                 {4}             c=        {3,4}       c=   {1,2,3,4}
+              {1,2,3,4}           =      {1,2,3,4}      =   {1,2,3,4}
+                  see FINANCE3:20 and FINANCE3:21
+             The given events are necessary for creating our next functions.
+              \par
+             The implementations looks like:
+             Omega_now c= Omega_fut1 c= Omega_fut2 see theorem FINANCE3:22.
+             This tells us growing informations from now to the future
+             1=now, 2=tomorrow, 3=the day after tomorrow.
+             We install functions f:{1,2,3,4} -> R as following:
+             f_1:x->100 for all x in dom f
+                   see theorem FINANCE3:38
+             f_2:x-> 80 for x=1 or x=2 and
+             f_2:->120 for x=3 or x=4
+                   see theorem FINANCE3:39
+             f_3:x->60 if x=1,f_3:x->80 if x=2,
+             f_3:x->100 if x=3,f_3:x->120 if x=4
+                   see FINANCE3:40
+             These functions are real random variables - f_1 over Omega_now,
+             f_2 over Omega_fut1 and f_3 over Omega_fut2 -.
+                   see FINANCE3:48, FINANCE3:45, FINANCE3:42
+             We can prove that these functions can be used for giving an example
+             for an adapted stochastic process. See FINANCE3:51.
+             We want to give an interpretation to these functions:
+             Suppose you have an equity A which has now (=w1) the value 100.
+             Tomorrow A changes depending which scenario occurs e.g. another
+             marketing strategy -.  In Scenario 1 (=w11) it has the value 80 in
+             scenario 2 (=w12) it has the value 120. The day after to tomorrow
+             A changes again. In scenario 1 (=w111) it has the value 60, in
+             scenario 2 (w=112) the value 80, in scenario 3 (=w121) the value
+             100 and in scenario 4 (=w122) it has the value 120.
+             For a visualization look at the following tree:
+              \par
+                    Now         tomorrow    The day after tomorrow
+                                         / -  w111={1}
+                                w11={1,2}
+                             /           \ -  w112={2}
+                 w1={1,2,3,4}
+                              \          / -  w121={3}
+                                w12={3,4}
+                                         \ -  w122={4}
+             The sets w1,w11,w12,w111,w112,w121,w122 which are subsets of
+             {1,2,3,4} tell us which market scenario occurs.
+             \par
+             The functions tell us the values to the relevant market scenario:
+                   Now         tomorrow    The day after tomorrow
+                                              f_3(wi)= 60,
+                               f_2(wi)=80,    wi in w111
+                               wi in w11      f_3(w112)= 80,
+                f_1(wi)=100,                  wi in w112
+                wi in w1                      f_3(w121)= 100,
+                               f_2(wi)=120,   wi in w121
+                               wi in w12      f_3(w122)=120,
+                                              wi in w122
+             For a better understanding of the definition of the
+             random-variable and the relation to the functions look at
+             \cite{georgii:2004}, p. 20. For the proof of certain sets as
+             $\sigma$-fields look at \cite{georgii:2004}, p. 10--11
+             and \cite{klenke:2006}, p. 1--2.
+             \par
+             This article is the next step to the arbitrage opportunity.
+             If you use for example a simple probability measure, look e.g.
+             to the literature \cite{caratheodorycommunity:2004}, p. 28--34,
+             \cite{follmerschied:2004}, p. 6 and p. 232 you can calculate whether
+             an arbitrage exists or not.
+             Note, that the example given in the literature
+             \cite{caratheodorycommunity:2004} need 8 instead of 4 informations
+             as in our model. If we want to code the first 3 given time points
+             into our model we would have the following graph (see FINANCE3:49,
+             FINANCE3:46, FINANCE3:43)
+             \par
+                   Now         tomorrow    The day after tomorrow
+                                              f_3(wi)= 180,
+                               f_2(wi)=150,    wi in w111
+                               wi in w11      f_3(w112)= 120,
+                f_1(wi)=125,                  wi in w112
+                wi in w1                      f_3(w121)= 120,
+                               f_2(wi)=100,   wi in w121
+                               wi in w12      f_3(w122)=80,
+                                              wi in w122
+             The Function for the Call-Option is given in the literature
+             \cite{caratheodorycommunity:2004}, p. 29. The function is realized
+             in definition FINANCE3:def 5.
+              \par
+             As a background, more examples for using the definition of
+             filtration are given in \cite{klenke:2006}, p. 185--188.}}
+
+@inproceedings{Mizar:2015,
+  author    = {Bancerek, Grzegorz and
+               Byli{\'n}ski, Czes{\l}aw and
+               Grabowski, Adam and
+               Korni{\l}owicz, Artur and
+               Matuszewski, Roman and
+               Naumowicz, Adam and
+               P\c{a}k, Karol and
+               Urban, Josef},
+  title     = {Mizar: State-of-the-art and Beyond},
+  booktitle = {Intelligent Computer Mathematics -- International Conference,
+               {CICM} 2015, Washington, DC, USA, July 13--17, 2015, Proceedings},
+  pages     = {261--279},
+  year      = {2015},
+  crossref  = {DBLP:conf/mkm/2015},
+  url       = {http://dx.doi.org/10.1007/978-3-319-20615-8_17},
+  doi       = {10.1007/978-3-319-20615-8_17}}
+
+@book{georgii:2004,
+author={Georgii, Hans-Otto},
+title={Stochastik, Einf\"uhrung
+  in die Wahrscheinlichkeitstheorie und Statistik},
+edition={2},
+publisher={deGruyter},
+year={2004},
+ADDRESS={Berlin}}
+
+@book{caratheodorycommunity:2004,
+author={Biagini, Francesca and Rost, Daniel},
+title={Money out of nothing? Prinzipien und Grundlagen der Finanzmathematik},
+edition={},
+publisher={},
+year={2012},
+ADDRESS={https://caratheodory-gesellschaft-lmu.de/content/03-zeitschrift/ausgabe25.pdf}}
+
+@book{follmerschied:2004,
+  author={F\"ollmer, Hans and Schied, Alexander},
+  title={Stochastic Finance: An Introduction in Discrete Time},
+  edition={2nd},
+  volume={27},
+  series={Studies in Mathematics},
+  publisher={de Gruyter},
+  year={2004},
+  ADDRESS={Berlin}}
+
+@book{klenke:2006,
+author={Klenke, Achim},
+title={Wahrscheinlichkeitstheorie},
+publisher={Springer-Verlag},
+year={2006},
+ADDRESS={Berlin, Heidelberg}}
+
+@book{kremer:2006,
+  author={Kremer, Jgen},
+  title={Einfrung in die diskrete Finanzmathematik},
+  edition={},
+  publisher={Springer-Verlag},
+  year={2006,
+  ADDRESS={Berlin, Heidelberg, New York}}
+
+@book{sandmann:2001,
+  author={Sandmann, Klaus},
+  title={Einfrung in die Stochastik der Finanzm闊震te},
+  edition={2},
+  publisher={Springer-Verlag},
+  year={2001,
+  ADDRESS={Berlin, Heidelberg, New York}}
+

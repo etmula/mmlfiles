@@ -1,0 +1,69 @@
+@MISC{GTARSKI1.MIZ,
+  AUTHOR = {Richter, William and Grabowski, Adam and Alama, Jesse},
+  TITLE = {Tarski Geometry Axioms},
+  SECTION1 = {Tarski's Geometry Axioms},
+  SECTION2 = {Existence Proofs for Tarski Plane},
+  SECTION3 = {Proofs of Basic Properties},
+  SECTION4 = {Construction of the Euclidean Example},
+  DAY = {17},
+  MONTH = {June},
+  YEAR = {2014},
+  ADDRESS1 = {Departament of Mathematics\\Nortwestern University\\ USA},
+  ADDRESS2 = {Institute of Computer Science\\University of Bia{\l}ystok\\Poland},
+  ADDRESS3 = {Technical University of Vienna\\ Austria},
+  SUMMARY = {This is the translation of Mizar article
+  containing readable Mizar proofs of some axiomatic
+  geometry theorems due
+ to the great Polish mathematician Alfred Tarski (born Teitelbaum)
+ \cite{TarskiGivant}, and
+ we hope to continue this work. The first author ported the code to
+ HOL Light (\url{http://www.cl.cam.ac.uk/~jrh13/hol-light/}), which can be
+ found in any recent subversion of HOL Light as
+ \url{hol_light/RichterHilbertAxiomGeometry/TarskiAxiomGeometry_read.ml}.
+  \par
+  The article is an extension and upgrading of the source code
+  written by the first author with the help of \verb!miz3! tool;
+  his primary goal was to use proof checkers to help
+  teach rigorous axiomatic geometry in high school using Hilbert's axioms.
+  \par
+  This is largely a Mizar port of Julien Narboux's Coq pseudo-code
+  \cite{Narboux:2007}.
+  We partially prove the theorem of \cite{Schwabhauser:1983}
+  that Tarski's
+  (extremely weak!) plane geometry axioms imply Hilbert's axioms.  He
+  got about as far as Narboux, with Gupta's amazing proof which
+  implies Hilbert's axiom I1 that two points determine a line.
+  \par
+  The primary Mizar coding was heavily influenced by \cite{INCSP_1.ABS}
+  on axioms of incidence geometry.
+  The original development was much improved using Mizar adjectives
+  instead of predicates only, and to use this machinery in full extent,
+  we have to construct some models of Tarski geometry. These are listed
+  in the second section, together with appropriate registrations of
+  clusters. Also models of Tarski's geometry related to real planes
+  were constructed.}}
+
+@BOOK{Schwabhauser:1983,
+ AUTHOR = {Schwabh\"auser, Wolfram and Szmielew, Wanda and Tarski, Alfred},
+ TITLE = {Metamathematische Methoden in der Geometrie},
+ YEAR = {1983},
+ PUBLISHER = {Springer-Verlag, Berlin, Heidelberg, New York, Tokyo}}
+
+@INPROCEEDINGS{Narboux:2007,
+       AUTHOR = {Narboux, Julien},
+        TITLE = {Mechanical theorem proving in Tarski's geometry},
+      JOURNAL = {Lecture Notes in Computer Science},
+      BOOKTITLE = {Automated Deduction in Geometry},
+      EDITOR = {F. Botana and T. Recio},
+         YEAR = {2007},
+       VOLUME = {4869},
+        PAGES = {139--156}}
+
+@ARTICLE{TarskiGivant,
+ AUTHOR = {Tarski, Alfred and Givant, Steven},
+ TITLE = {Tarski's system of geometry},
+ JOURNAL = {Bulletin of Symbolic Logic},
+ YEAR = 1999,
+ VOLUME = 5,
+ NUMBER = 2,
+ PAGES={175--214}}

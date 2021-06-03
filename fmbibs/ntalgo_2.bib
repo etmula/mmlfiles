@@ -1,0 +1,48 @@
+@MISC{NTALGO_2.MIZ,
+  AUTHOR = {Okazaki, Hiroyuki and Nagao, Koich and Futa, Yuichi},
+  TITLE = {Maximum Number of Steps Taken by Modular Exponentiation and Euclidean Algorithm},
+  SECTION1 = {Right--to--left binary Algorithm for modular exponentiation},
+  SECTION2 = {Lam\acute{e}'s Theorem},
+  DAY = {11},
+  MONTH = {March},
+  YEAR = {2019},
+  ADDRESS1 = {Shinshu University, Nagano, Japan},
+  ADDRESS2 = {Tokyo University of Technology, Tokyo, Japan},
+  ADDRESS3 = {Kanto Gakuin University, Kanagawa, Japan},
+  SUMMARY = {In this article we formalize the maximum number of steps taken by some number theoretical
+             algorithms, Right--to--left binary Algorithm for modular exponentiation
+             and Euclidean Algorithm\cite{KNUTH2}. For any natural numbers $a$,$b$,$n$,
+             Right--to--left binary Algorithm can calculate the natural number
+             \verb+ ALGO_BPOW+$(a,n,m):=a^b \bmod n$ and  for any integers $a$,$b$,
+             Euclidean Algorithm can calculate the non negative integer ${\text gcd}(a,b)$.
+             We have not formalized computational complexity of algorithms yet,
+             though we had already formalize the Euclidean Algorithm in \cite{NTALGO_1.ABS}.
+             For Right-to-left binary Algorithm, we formalize the theorem, which says
+             that the required number of the modular squares and modular products in
+              this algorithms are  $1+\lfloor \log_2 n \rfloor$ and for Euclidean
+              Algorithm,  we formalize the Lam\acute{e}'s theorem \cite{LAME}, which says the required
+              number of the divisions in this algorithm is at most
+              $5 \log_{10} \min(|a|,|b|)$.
+              Our aim is to support the implementation of number theoretic tools and
+              evaluating computational complexities of algorithms to prove the security of
+              cryptographic systems.},
+  ACKNOWLEDGEMENT = {This study was supported in part by JSPS KAKENHI Grant Numbers JP17K00182 and JP15K00183.
+        The authors would also like to express our gratitude to
+        Prof. Yasunari Shidama for his support and encouragement.}}
+
+@BOOK{KNUTH2,
+      AUTHOR = {Donald E. Knuth},
+      TITLE = {Art of Computer Programming, Volume 2: Seminumerical Algorithms 3rd Edition},
+      PUBLISHER = {Addison-Wesley Professional},
+      YEAR = {1997}}
+
+@ARTICLE{LAME,
+       AUTHOR = {Gabriel Lam\acute{e}},
+        TITLE = {Note sur la limite du nombre des divisions
+        dans la recherche du plus grand commun diviseur entre
+        deux nombres entiers},
+      JOURNAL = {Comptes Rendus Acad. Sci.},
+         YEAR = {1844},
+       VOLUME = {19},
+        PAGES = {867--870}}
+
