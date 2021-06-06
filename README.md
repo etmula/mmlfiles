@@ -11,7 +11,7 @@ $ sudo apt install pbzip2
 1. Clone this repository
 2. Decompress
 ```
-$ . decompress.sh
+$ sh decompress.sh
 ```
 
 ## For developers
@@ -20,7 +20,7 @@ $ . decompress.sh
 3. Create new MML files
 4. Compress new MML files
 ```
-$ . compress.sh
+$ sh compress.sh
 ```
 5. Push and PullRequest
 6. Check the result of CI when PullRequest.
